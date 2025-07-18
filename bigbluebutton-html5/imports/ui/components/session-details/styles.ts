@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import {
-  colorGrayLightest,
-  colorGrayDark,
   colorPrimary,
 } from '/imports/ui/stylesheets/styled-components/palette';
 import Button from '/imports/ui/components/common/button/component';
@@ -18,11 +16,12 @@ const Container = styled.div<{ isFullWidth: boolean }>`
   width: 100%;
   box-sizing: border-box;
   text-align: left;
+  margin-top: 16px;
 
   & > div {
     flex: ${({ isFullWidth }) => (isFullWidth ? '1 1 100%' : '1 1 50%')};
     box-sizing: border-box;
-    padding: 10px;
+    padding: 2px;
     overflow: auto;
     overflow-wrap: break-word;
   }
@@ -30,18 +29,6 @@ const Container = styled.div<{ isFullWidth: boolean }>`
   & div p {
     margin: 0;
   }
-
-  ${({ isFullWidth }) => !isFullWidth && `
-    &::before {
-      content: '';
-      position: absolute;
-      height: 50%;
-      left: 50%;
-      width: 1px;
-      background-color: ${colorGrayLightest};
-      transform: translateX(-50%);
-    }
-  `}
 
   & a {
     color: ${colorPrimary};
@@ -70,11 +57,21 @@ const Container = styled.div<{ isFullWidth: boolean }>`
   }
 `;
 
-const JoinTitle = styled.h2`
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  color: ${colorGrayDark};
-  font-weight: 600;
+const JoinTitle = styled.p`
+  font-size: 1rem;
+  color: var(--text-primary-light, #313131);
+`;
+
+const JoinContainer = styled.div`
+  font-size: 1rem;
+  color: var(--text-primary-light, #313131);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #F7F8F9;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: 8px;
 `;
 
 // @ts-ignore - as button comes from JS, we can't provide its props
@@ -106,6 +103,7 @@ export default {
   WelcomeMessage,
   Container,
   JoinTitle,
+  JoinContainer,
   CopyButton,
   Chevron,
 };

@@ -6,6 +6,7 @@ import ModalSimple from '/imports/ui/components/common/modal/simple/component';
 import { useQuery } from '@apollo/client';
 import { GET_WELCOME_MESSAGE, WelcomeMsgsResponse } from './queries';
 import Styled from './styles';
+import './styles.css';
 import deviceInfo from '/imports/utils/deviceInfo';
 
 const intlMessages = defineMessages({
@@ -55,7 +56,6 @@ interface SessionDetailsContainerProps {
 
 interface SessionDetailsProps extends SessionDetailsContainerProps {
   welcomeMessage: string;
-  welcomeMsgForModerators: string;
   loginUrl: string,
   formattedDialNum: string,
   formattedTelVoice: string,
@@ -67,7 +67,6 @@ const COPY_MESSAGE_TIMEOUT = 3000;
 const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
   const {
     welcomeMessage,
-    welcomeMsgForModerators,
     isOpen,
     onRequestClose,
     priority,
@@ -78,19 +77,19 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
   } = props;
   const intl = useIntl();
   const [copyingJoinUrl, setCopyingJoinUrl] = useState(false);
-  const [copyingDialIn, setCopyingDialIn] = useState(false);
+  // const [copyingDialIn, setCopyingDialIn] = useState(false);
 
-  const formattedPin = formattedTelVoice.replace(/(?=(\d{3})+(?!\d))/g, ' ');
+  // const formattedPin = formattedTelVoice.replace(/(?=(\d{3})+(?!\d))/g, ' ');
 
   const copyData = async (content: string, type: string) => {
     if (type === 'join-url') setCopyingJoinUrl(true);
-    if (type === 'dial-in') setCopyingDialIn(true);
+    // if (type === 'dial-in') setCopyingDialIn(true);
 
     await navigator.clipboard.writeText(content);
 
     setTimeout(() => {
       if (type === 'join-url') setCopyingJoinUrl(false);
-      if (type === 'dial-in') setCopyingDialIn(false);
+      // if (type === 'dial-in') setCopyingDialIn(false);
     }, COPY_MESSAGE_TIMEOUT);
   };
 
@@ -109,29 +108,32 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
         priority,
         anchorElement,
       }}
+      className="modal-session-details"
     >
       <Styled.Chevron />
       <Styled.Container
         isFullWidth={isMobile || !(loginUrl || (formattedDialNum && formattedTelVoice))}
       >
-        <div>
+        <div className="session-details-content">
           <Styled.WelcomeMessage dangerouslySetInnerHTML={{ __html: welcomeMessage }} />
-          <Styled.WelcomeMessage dangerouslySetInnerHTML={{ __html: welcomeMsgForModerators }} />
-        </div>
-        <div>
+          {/* <Styled.WelcomeMessage dangerouslySetInnerHTML={{ __html: welcomeMsgForModerators }} /> */}
           {loginUrl && (
-            <>
+            <div>
               <Styled.JoinTitle>
                 {intl.formatMessage(intlMessages.joinByUrlLabel)}
               </Styled.JoinTitle>
-              <p>
+              <Styled.JoinContainer>
                 {loginUrl}
                 <Styled.CopyButton
                   key="copy-join-url"
                   onClick={() => copyData(loginUrl, 'join-url')}
                   hideLabel
                   color="light"
-                  icon={copyingJoinUrl ? 'check' : 'copy'}
+                  customIcon={(
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M10.7775 5.33398H11.4663C12.5864 5.33398 13.1465 5.33398 13.5743 5.55197C13.9506 5.74372 14.2566 6.04968 14.4484 6.426C14.6663 6.85383 14.6663 7.41388 14.6663 8.53398V11.4673C14.6663 12.5874 14.6663 13.1475 14.4484 13.5753C14.2566 13.9516 13.9506 14.2576 13.5743 14.4493C13.1465 14.6673 12.5864 14.6673 11.4663 14.6673H8.53301C7.4129 14.6673 6.85285 14.6673 6.42503 14.4493C6.0487 14.2576 5.74274 13.9516 5.55099 13.5753C5.33301 13.1475 5.33301 12.5874 5.33301 11.4673V10.7784M4.53301 10.6673H7.46634C8.58645 10.6673 9.1465 10.6673 9.57432 10.4493C9.95065 10.2576 10.2566 9.95162 10.4484 9.5753C10.6663 9.14748 10.6663 8.58742 10.6663 7.46732V4.53398C10.6663 3.41388 10.6663 2.85383 10.4484 2.426C10.2566 2.04968 9.95065 1.74372 9.57432 1.55197C9.1465 1.33398 8.58645 1.33398 7.46634 1.33398H4.53301C3.4129 1.33398 2.85285 1.33398 2.42503 1.55197C2.0487 1.74372 1.74274 2.04968 1.55099 2.426C1.33301 2.85383 1.33301 3.41388 1.33301 4.53398V7.46732C1.33301 8.58742 1.33301 9.14748 1.55099 9.5753C1.74274 9.95162 2.0487 10.2576 2.42503 10.4493C2.85285 10.6673 3.4129 10.6673 4.53301 10.6673Z" stroke="#5F6166" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  )}
                   size="sm"
                   circle
                   ghost
@@ -139,10 +141,32 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
                     ? intl.formatMessage(intlMessages.copied)
                     : intl.formatMessage(intlMessages.copyUrlTooltip)}
                 />
-              </p>
-            </>
+              </Styled.JoinContainer>
+            </div>
           )}
-          {formattedDialNum && formattedTelVoice && (
+          <div>
+            For help on using BigBlueButton see these (short)&nbsp;
+            <a href="https://www.bigbluebutton.org/html5" target="_blank" rel="noreferrer">
+              <u>tutorial videos.</u>
+            </a>
+          </div>
+          <div>
+            <span>To join the audio bridge click the speaker button.</span>
+            <span> Use a headset to avoid causing background noise for others.</span>
+          </div>
+
+          <div style={{
+            borderTop: '1px solid #EFEFEF',
+          }}
+          />
+
+          <div>
+            This server is running&nbsp;
+            <a href="https://docs.bigbluebutton.org/" target="_blank" rel="noreferrer"><u>BigBlueButton</u></a>
+            .
+          </div>
+
+          {/* {formattedDialNum && formattedTelVoice && (
             <>
               <Styled.JoinTitle>
                 {intl.formatMessage(intlMessages.joinByPhoneLabel)}
@@ -168,7 +192,7 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
                 {` ${formattedPin} #`}
               </p>
             </>
-          )}
+          )} */}
         </div>
       </Styled.Container>
     </ModalSimple>
@@ -232,7 +256,6 @@ const SessionDetailsContainer: React.FC<SessionDetailsContainerProps> = ({
       priority={priority}
       loginUrl={loginUrl}
       welcomeMessage={welcomeData.user_welcomeMsgs[0]?.welcomeMsg ?? ''}
-      welcomeMsgForModerators={welcomeData.user_welcomeMsgs[0]?.welcomeMsgForModerators ?? ''}
       formattedDialNum={formattedDialNum}
       formattedTelVoice={formattedTelVoice}
       anchorElement={anchorElement}
