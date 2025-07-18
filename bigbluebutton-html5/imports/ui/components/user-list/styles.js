@@ -15,6 +15,7 @@ const UserList = styled(FlexColumn)`
   background-color: ${userListBg};
   color: ${userListText};
   height: 100%;
+  width: 100%;
 `;
 
 const SmallTitle = styled.h2`
