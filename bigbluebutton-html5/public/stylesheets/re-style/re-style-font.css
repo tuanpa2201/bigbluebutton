@@ -1,0 +1,38 @@
+@font-face {
+	font-family: "FS PFBeauSansPro";
+	src: url("../../fonts/FS PFBeauSansPro/FS PFBeauSansPro-Bold.otf") format("opentype");
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "FS PFBeauSansPro";
+	src: url("../../fonts/FS PFBeauSansPro/FS PFBeauSansPro-SemiBold.otf") format("opentype");
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: "FS PFBeauSansPro";
+	src: url("../../fonts/FS PFBeauSansPro/FS PFBeauSansPro-Bbook.otf") format("opentype");
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: "FS PFBeauSansPro";
+	src: url("../../fonts/FS PFBeauSansPro/FS PFBeauSansPro-Regular.otf") format("opentype");
+	font-weight: 400;
+}
+
+* {
+	font-family: "FS PFBeauSansPro", sans-serif !important;
+}
+
+.rcx-chip,
+.rcx-box--full::before,
+.rcx-box--full::after,
+.rcx-box--full {
+	font-family: "FS PFBeauSansPro", sans-serif !important;
+}
+
+.rcx-icon {
+	font-family: "RocketChat" !important;
+}

@@ -1,0 +1,22 @@
+@import 're-style-font.css';
+
+/* AUDIO MODAL */
+.ReactModal__Content.audio_modal {
+    width: 468px;
+    min-height: max-content;
+    & button {
+        padding: 1.5rem 2rem;
+
+        & span:last-child {
+            color: var(--text-primary-light, #313131);
+            text-align: center;
+
+            /* Regular/S */
+            font-size: 14px!important;
+            font-style: normal;
+            font-weight: 400!important;
+            line-height: 20px; /* 142.857% */
+        }
+    }
+}
+
