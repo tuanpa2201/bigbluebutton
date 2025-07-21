@@ -1,0 +1,24 @@
+select {
+    background-color: var(--bg-00-light, #FFF);
+    border: 0.05rem solid var(--border-01-light, #A7B3BD) !important;
+    border-radius: 8px!important;
+    width: 100%;
+    height: 32px!important;
+    padding: 6px 12px!important;
+
+    /* Arrow */
+    appearance: none;
+    background-image: url("../../svgs/ic-arrow-down.svg");
+    background-repeat: no-repeat;
+    background-position: right 12px top 50%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-primary-light, #313131)!important;
+    font-family: "FS PF BeauSans Pro", sans-serif !important;
+    /* Regular/S */
+    font-size: 14px!important;
+    font-style: normal;
+    font-weight: 400!important;
+    line-height: 20px; /* 142.857% */
+}

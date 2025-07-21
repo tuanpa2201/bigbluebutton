@@ -47,7 +47,7 @@ const LocalEcho = ({
   const [hearing, setHearing] = useState(initialHearingState);
   const Settings = getSettingsSingletonInstance();
   const { animations } = Settings.application;
-  const icon = hearing ? 'no_audio' : 'listen';
+  const icon = hearing ? 'volume_slash' : 'volume_high';
   const label = hearing ? intlMessages.stopAudioFeedbackLabel : intlMessages.startAudioFeedback;
 
   const applyHearingState = (_stream) => {
@@ -82,7 +82,7 @@ const LocalEcho = ({
     <Styled.LocalEchoTestButton
       data-test={hearing ? 'stopHearingButton' : 'testSpeakerButton'}
       label={intl.formatMessage(label)}
-      icon={icon}
+      svgIcon={icon}
       size="md"
       color="primary"
       onClick={() => setHearing(!hearing)}

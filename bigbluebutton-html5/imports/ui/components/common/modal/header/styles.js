@@ -9,9 +9,10 @@ import {
 } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   mdPaddingX,
-  borderSize,
+  borderSize, smPaddingX, smPadding,
 } from '/imports/ui/stylesheets/styled-components/general';
 import {
+  btnFontWeight,
   fontSizeBase,
   fontSizeLarge,
   headingsFontWeight,
@@ -43,11 +44,11 @@ const Header = styled.header`
 const Title = styled(TitleElipsis)`
   display: block;
   text-align: center;
-  font-weight: ${headingsFontWeight};
+  font-weight: ${btnFontWeight};
   font-size: calc(${fontSizeLarge} + 0.05rem);
   color: ${colorGrayDark};
   white-space: normal;
-  margin: 0;
+  margin: ${smPadding} 0 0;
   line-height: calc(${lineHeightComputed} * 2);
 
   @media ${smallOnly} {
@@ -60,11 +61,11 @@ const Title = styled(TitleElipsis)`
   `}
 
   ${({ $innerHeader }) => $innerHeader && `
-    grid-area: 2 / 1 / 3 / 2;
+    grid-area: 1 / 1 / 3 / 2;
   `}
 
   ${({ $hasMarginBottom }) => $hasMarginBottom && `
-    margin-bottom: ${mdPaddingX};
+    margin-bottom: ${smPaddingX};
   `}
 `;
 
@@ -77,7 +78,7 @@ const DismissButton = styled(Button)`
   }
 
   ${({ $headerOnTop }) => $headerOnTop && `
-    grid-area: 1 / 2 / 2 / 3;
+    grid-area: 1 / 1 / 2 / 3;
   `}
 
   ${({ $innerHeader }) => $innerHeader && `

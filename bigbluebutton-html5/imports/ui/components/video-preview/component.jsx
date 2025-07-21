@@ -918,8 +918,8 @@ class VideoPreview extends Component {
     } = this.state;
 
     return (
-      <Styled.InternCol>
-        <Styled.Label htmlFor="setCam">
+      <Styled.InternCol className="device-selectors">
+        <Styled.Label htmlFor="setCam" className="mt-36-i">
           {intl.formatMessage(intlMessages.cameraLabel)}
         </Styled.Label>
         { availableWebcams && availableWebcams.length > 0
@@ -1050,7 +1050,7 @@ class VideoPreview extends Component {
     if(cameraAsContent || webcamDeviceId === cameraAsContentDeviceId){ return null }
 
     return (
-      <Styled.InternCol>
+      <Styled.InternCol className="brightness-input">
         <Styled.Label htmlFor="brightness">
           {intl.formatMessage(intlMessages.brightness)}
         </Styled.Label>
@@ -1086,7 +1086,7 @@ class VideoPreview extends Component {
           <Styled.Marker>{'0'}</Styled.Marker>
           <Styled.Marker>{'100'}</Styled.Marker>
         </Styled.MarkerWrapper>
-        <div style={{ display: 'flex', marginTop: '.5rem' }}>
+        <div style={{ display: 'flex' }}>
           <Checkbox
             onChange={this.handleBrightnessAreaChange}
             checked={wholeImageBrightness}
@@ -1134,15 +1134,15 @@ class VideoPreview extends Component {
     const shouldShowVirtualBackgrounds = isVirtualBackgroundsEnabled && !cameraAsContent;
   
     return (
-      <Styled.ContentCol>
+      <Styled.ContentCol className="w-100">
         {tabNumber === 0 && (
-          <Styled.Col>
+          <Styled.Col className="m-0-i">
             {this.renderDeviceSelectors()}
             {isVirtualBackgroundSupported() && this.renderBrightnessInput()}
           </Styled.Col>
         )}
         {tabNumber === 1 && shouldShowVirtualBackgrounds && (
-          <Styled.BgnCol>
+          <Styled.BgnCol className="m-0-i">
             {this.renderVirtualBgSelector()}
           </Styled.BgnCol>
         )}
@@ -1166,7 +1166,6 @@ class VideoPreview extends Component {
 
     const containerStyle = {
       width: '60%',
-      height: '25vh',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center', 
@@ -1194,7 +1193,7 @@ class VideoPreview extends Component {
       default:
         return (
           <Styled.Content>
-            <Styled.VideoCol>
+            <Styled.VideoCol className="w-50 m-0-i">
               {
                 previewError
                   ? (
@@ -1202,6 +1201,7 @@ class VideoPreview extends Component {
                   )
                   : (
                     <Styled.VideoPreview
+                      className="video-preview"
                       mirroredVideo={VideoService.mirrorOwnWebcam()}
                       id="preview"
                       data-test={VideoService.mirrorOwnWebcam() ? 'mirroredVideoPreview' : 'videoPreview'}
@@ -1213,7 +1213,9 @@ class VideoPreview extends Component {
                   )
               }
             </Styled.VideoCol>
-            {this.renderTabsContent(selectedTab)}
+            <div className="w-50 mr-0-i pl-24">
+              {this.renderTabsContent(selectedTab)}
+            </div>
           </Styled.Content>
         );
     }
@@ -1222,6 +1224,11 @@ class VideoPreview extends Component {
   getModalTitle() {
     const { intl, cameraAsContent } = this.props;
     if (cameraAsContent) return intl.formatMessage(intlMessages.cameraAsContentSettingsTitle);
+    return intl.formatMessage(intlMessages.webcamSettingsTitle);
+  }
+
+  getModalTitle2() {
+    const { intl } = this.props;
     return intl.formatMessage(intlMessages.webcamSettingsTitle);
   }
 
@@ -1266,7 +1273,7 @@ class VideoPreview extends Component {
 
         {this.renderContent(selectedTab)}
 
-        <Styled.Footer>
+        <Styled.Footer className="video-preview-footer">
           <Styled.BottomSeparator />
             <Styled.FooterContainer>
               {showStopAllButton ? (
@@ -1282,13 +1289,15 @@ class VideoPreview extends Component {
                 {!shared && camCapReached ? (
                   <span>{intl.formatMessage(intlMessages.camCapReached)}</span>
                 ) : (
-                  <div style={{ display: 'flex' }}>
+                  <div style={{ display: 'flex', gap: '8px' }}>
                       <Styled.CancelButton
+                        className="btn btn-default m-0-i"
                         data-test="cancelSharingWebcam"
                         label={intl.formatMessage(intlMessages.cancelLabel)}
                         onClick={closeModal}
                       />
                       <Styled.SharingButton
+                        className="btn btn-primary m-0-i"
                         data-test="startSharingWebcam"
                         color={shared ? 'danger' : 'primary'}
                         label={intl.formatMessage(shared ? intlMessages.stopSharingLabel : intlMessages.startSharingLabel)}
@@ -1356,8 +1365,10 @@ class VideoPreview extends Component {
 
     return (
       <Styled.VideoPreviewModal
+        className="video-preview-modal"
         onRequestClose={this.handleProceed}
         contentLabel={intl.formatMessage(intlMessages.webcamSettingsTitle)}
+        title={intl.formatMessage(intlMessages.webcamSettingsTitle)}
         shouldShowCloseButton={allowCloseModal}
         shouldCloseOnOverlayClick={allowCloseModal}
         isPhone={deviceInfo.isPhone}
@@ -1367,46 +1378,37 @@ class VideoPreview extends Component {
           priority,
         }}
       >
-        <Styled.Container>
-    <Styled.Header>
-      <Styled.WebcamTabs
-        onSelect={this.handleSelectTab}
-        selectedIndex={selectedTab}
-              >
-                <Styled.WebcamTabList>
-                  <Styled.WebcamTabSelector selectedClassName="is-selected">
-                    <Styled.IconSvg
-                      src={WebcamSettingsImg}
-                      darkThemeState={darkThemeState}
-                    />
-                    <span 
-                      id="webcam-settings-title">{this.getModalTitle()}
-                    </span>
+        <Styled.Container className="video-preview-container">
+          <Styled.Header>
+            <Styled.WebcamTabs
+              onSelect={this.handleSelectTab}
+              selectedIndex={selectedTab}
+            >
+              <Styled.WebcamTabList className="webcam-tab-list">
+                <Styled.WebcamTabSelector selectedClassName="is-selected" className="webcam-tab-item">
+                  <span
+                    id="webcam-settings-title">{this.getModalTitle()}
+                  </span>
+                </Styled.WebcamTabSelector>
+                {shouldShowVirtualBackgroundsTab && (
+                <>
+                  <Styled.WebcamTabSelector selectedClassName="is-selected" className="webcam-tab-item">
+                    <span id="backgrounds-title">{intl.formatMessage(intlMessages.webcamVirtualBackgroundTitle)}</span>
                   </Styled.WebcamTabSelector>
-                  {shouldShowVirtualBackgroundsTab && (
-                  <>
-                    <Styled.HeaderSeparator />
-                    <Styled.WebcamTabSelector selectedClassName="is-selected">
-                      <Styled.IconSvg
-                        src={WebcamBackgroundImg}
-                        darkThemeState={darkThemeState}
-                      />
-                      <span id="backgrounds-title">{intl.formatMessage(intlMessages.webcamVirtualBackgroundTitle)}</span>
-                    </Styled.WebcamTabSelector>
-                  </>
-                )}
-                </Styled.WebcamTabList>
-                
-              </Styled.WebcamTabs>
-            </Styled.Header>
+                </>
+              )}
+              </Styled.WebcamTabList>
 
-            {deviceInfo.hasMediaDevices
-                ? this.renderModalContent(selectedTab)
-                : this.supportWarning()
-              }
+            </Styled.WebcamTabs>
+          </Styled.Header>
 
-          </Styled.Container>
-        </Styled.VideoPreviewModal>
+          {deviceInfo.hasMediaDevices
+              ? this.renderModalContent(selectedTab)
+              : this.supportWarning()
+            }
+
+        </Styled.Container>
+      </Styled.VideoPreviewModal>
     );
   }
 }

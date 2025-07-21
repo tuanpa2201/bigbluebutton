@@ -13,6 +13,8 @@ import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import { CameraSettingsDropdownInterface } from 'bigbluebutton-html-plugin-sdk';
 import VideoService from '../service';
 import Styled from './styles';
+import { useIsUserLocked } from '/imports/ui/components/video-provider/hooks';
+import { useStorageKey } from '/imports/ui/services/storage/hooks';
 
 const intlMessages = defineMessages({
   videoSettings: {
@@ -87,7 +89,9 @@ const JoinVideoButton: React.FC<JoinVideoButtonProps> = ({
   const { isMobile } = deviceInfo;
   const isMobileSharingCamera = hasVideoStream && isMobile;
   const isDesktopSharingCamera = hasVideoStream && !isMobile;
-
+  const settingsStorage = window.meetingClientSettings.public.app.userSettingsStorage;
+  const isCamLocked = useIsUserLocked();
+  const webcamDeviceId = useStorageKey('WebcamDeviceId', settingsStorage) as string;
   const ENABLE_WEBCAM_SELECTOR_BUTTON = window.meetingClientSettings.public.app.enableWebcamSelectorButton;
 
   const shouldEnableWebcamSelectorButton = ENABLE_WEBCAM_SELECTOR_BUTTON
@@ -127,6 +131,7 @@ const JoinVideoButton: React.FC<JoinVideoButtonProps> = ({
         } else {
           setForceOpen(isMobileSharingCamera);
           setVideoPreviewModalIsOpen(true);
+          // VideoService.joinVideo(webcamDeviceId, isCamLocked);
         }
     }
   }, JOIN_VIDEO_DELAY_MILLISECONDS);
@@ -232,7 +237,7 @@ const JoinVideoButton: React.FC<JoinVideoButtonProps> = ({
           disabled={!!disableReason}
           loading={videoConnecting}
         />
-        {renderUserActions()}
+        {/* {renderUserActions()} */}
       </Styled.OffsetBottom>
       {isVideoPreviewModalOpen ? (
         <VideoPreviewContainer

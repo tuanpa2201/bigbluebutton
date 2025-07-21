@@ -515,11 +515,7 @@ class AudioSettings extends React.Component {
             />
           </Styled.LabelSmall>
         </Styled.FormElement>
-        <Styled.LabelSmallFullWidth htmlFor="audioStreamVolume">
-          {intl.formatMessage(intlMessages.streamVolumeLabel)}
-          <AudioStreamVolume stream={stream} />
-        </Styled.LabelSmallFullWidth>
-        <Styled.FormElement>
+        <Styled.FormElement className="pb-20">
           <Styled.LabelSmall htmlFor="outputDeviceSelector">
             {intl.formatMessage(intlMessages.speakerSourceLabel)}
             <DeviceSelector
@@ -534,18 +530,25 @@ class AudioSettings extends React.Component {
             />
           </Styled.LabelSmall>
         </Styled.FormElement>
-        <Styled.LabelSmall htmlFor="audioTest">
-          {intl.formatMessage(intlMessages.testSpeakerLabel)}
-          {!withEcho ? (
-            <AudioTestContainer id="audioTest" />
-          ) : (
-            <LocalEchoContainer
-              intl={intl}
-              outputDeviceId={outputDeviceId}
-              stream={stream}
-            />
-          )}
-        </Styled.LabelSmall>
+        <div className="d-flex align-items-center justify-content-between gap-20 pt-20 pb-16 border-separator">
+          <Styled.LabelSmall htmlFor="audioStreamVolume" className="w-50">
+            {intl.formatMessage(intlMessages.streamVolumeLabel)}
+            <AudioStreamVolume stream={stream} />
+          </Styled.LabelSmall>
+          <Styled.LabelSmall htmlFor="audioTest" className="w-50 audio-test-container">
+            {intl.formatMessage(intlMessages.testSpeakerLabel)}
+            {!withEcho ? (
+              <AudioTestContainer id="audioTest" />
+            ) : (
+              <LocalEchoContainer
+                className="local-echo-container"
+                intl={intl}
+                outputDeviceId={outputDeviceId}
+                stream={stream}
+              />
+            )}
+          </Styled.LabelSmall>
+        </div>
         {this.renderAudioCaptionsSelector()}
       </>
     );
@@ -566,8 +569,8 @@ class AudioSettings extends React.Component {
     }
 
     return (
-      <Styled.AudioNote>
-        <span>{subtitle}</span>
+      <Styled.AudioNote className="audio-settings-note">
+        <span className="subtitle">{subtitle}</span>
         {findingDevices && <Styled.FetchingAnimation animations={animations} />}
       </Styled.AudioNote>
     );
@@ -587,23 +590,21 @@ class AudioSettings extends React.Component {
     return (
       <Styled.FormWrapper data-test="audioSettingsModal">
         {this.renderAudioNote()}
-        <Styled.Form>
+        <Styled.Form className="audio-settings-form">
           {this.renderDeviceSelectors()}
         </Styled.Form>
-        <Styled.BottomSeparator />
-        <Styled.EnterAudio>
+        <Styled.EnterAudio className="enter-audio-buttons">
           <Styled.BackButton
             label={(isConnected || skipAudioOptions())
               ? intl.formatMessage(intlMessages.cancelLabel)
               : intl.formatMessage(intlMessages.backLabel)}
-            color="secondary"
             onClick={this.handleCancelClick}
             disabled={isConnecting}
+            className="btn btn-default"
           />
           <Button
             data-test="joinEchoTestButton"
-            size="md"
-            color="primary"
+            className="btn btn-primary svg-to-css-shadow"
             label={isConnected
               ? intl.formatMessage(intlMessages.confirmLabel)
               : intl.formatMessage(intlMessages.retryLabel)}

@@ -1,11 +1,54 @@
 @import 're-style-font.css';
+@import 're-style-base.css';
+@import 're-style-select.css';
+@import 're-style-button.css';
 
 /* AUDIO MODAL */
+.ReactModal__Content {
+    & .connecting {
+        text-align: center;
+        padding-bottom: 50px;
+
+        & .connecting-label {
+            color: var(--Text-Primary, #313131);
+            text-align: center;
+
+            /* Regular/XL */
+            font-size: 20px!important;
+            font-style: normal;
+            font-weight: 400!important;
+            line-height: 32px; /* 160% */
+        }
+
+        & .connecting-animation {
+            margin-top: 20px;
+            .three-bars-loader {
+                justify-content: center;
+            }
+        }
+    }
+}
+
 .ReactModal__Content.audio_modal {
     width: 468px;
     min-height: max-content;
+    border-radius: 12px;
+    padding: 0;
+
+    & header {
+        padding: 12px 16px 0;
+    }
+
+    & .audio-modal-content {
+        padding: 1rem;
+    }
+
     & button {
-        padding: 1.5rem 2rem;
+        padding: 22px 2rem;
+
+        &:first-child {
+            margin: 0;
+        }
 
         & span:last-child {
             color: var(--text-primary-light, #313131);
@@ -20,3 +63,157 @@
     }
 }
 
+/* SETTING MODAL */
+.ReactModal__Content.audio-settings-modal {
+    width: 468px;
+    min-height: max-content;
+    border-radius: 12px;
+    padding: 0;
+
+    & header {
+        padding: 12px 16px 0;
+
+        border-bottom: 1px solid var(--border-00-light, #EFEFEF);
+        background: var(--bg-01-light, #F7F8F9);
+
+        & h2 {
+            text-align: left;
+        }
+    }
+
+    & .audio-settings-modal-content {
+        padding-bottom: 0;
+
+        & .audio-settings-note {
+            text-align: left;
+            margin: 0 16px 1.5rem;
+
+            & .subtitle {
+                color: var(--text-secondary-light, #6F767E);
+
+                /* Regular/S */
+                font-size: 14px!important;
+                font-style: normal;
+                font-weight: 400!important;
+                line-height: 20px; /* 142.857% */
+            }
+        }
+
+        & .audio-settings-form {
+            grid-template-columns: unset;
+            margin: 0.45rem 16px 0;
+
+            & label {
+                color: var(--Text-Primary, #313131);
+
+                /* Medium/S */
+                font-size: 14px!important;
+                font-style: normal;
+                font-weight: 500!important;
+                line-height: 20px; /* 142.857% */
+
+                &:first-child {
+                    margin: 0.3rem 0px 0px !important;
+                }
+
+            }
+
+            & .audio-test-container {
+                & button {
+                    text-align: left;
+                    margin-top: 0!important;
+                    padding: 0!important;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+    }
+
+    & .enter-audio-buttons {
+        padding: 12px 16px;
+        margin: 0;
+        border-top: 1px solid var(--border-00-light, #EFEFEF);
+    }
+
+}
+
+
+/* PREVIEW VIDEO MODAL */
+.ReactModal__Content.video-preview-modal {
+    width: 600px;
+    min-height: max-content;
+    border-radius: 12px;
+    padding: 0;
+
+    & header {
+        padding: 12px 16px 0;
+
+        border-bottom: 1px solid var(--border-00-light, #EFEFEF);
+        background: var(--bg-01-light, #F7F8F9);
+
+        & h2 {
+            text-align: left;
+        }
+    }
+    & .video-preview-container {
+        padding: 16px 16px 12px;
+        & .webcam-tab-list {
+            margin-top: 0;
+            & .webcam-tab-item {
+                width: 50%;
+                display: flex;
+                height: 28px;
+                padding: var(--p-space-150) var(--p-space-300);
+                justify-content: center;
+                align-items: center;
+                flex: 1 0 0;
+                border-radius: 8px;
+
+                & span {
+                    color: var(--Text-Primary, #313131);
+                    text-align: center;
+
+                    /* Semibold/XS */
+                    font-size: 12px!important;
+                    font-style: normal;
+                    font-weight: 400!important;
+                    line-height: 16px; /* 133.333% */
+                }
+
+                &.is-selected {
+                    background: var(--bg-04-hover-light, #EFEFEF);
+
+                    & span {
+                        font-weight: 600!important;
+                    }
+                }
+            }
+        }
+
+        & .video-preview {
+            border-radius: 10px;
+        }
+
+        & .brightness-input,
+        & .device-selectors {
+            margin: 0;
+            & label {
+                margin-top: 12px;
+                color: var(--Text-Primary, #313131);
+
+                /* Medium/S */
+                font-size: 14px!important;
+                font-style: normal;
+                font-weight: 500!important;
+                line-height: 20px; /* 142.857% */
+            }
+        }
+
+        & .video-preview-footer {
+            margin-top: 32px;
+        }
+    }
+
+
+}
