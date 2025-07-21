@@ -4,6 +4,7 @@ import Resizable from 're-resizable';
 import { ACTIONS } from '../layout/enums';
 import UserListContainer from '../user-list/container';
 import SidebarMenuContainer from '../sidebar-menu/component';
+import { layoutSelectInput } from '../layout/context';
 
 const propTypes = {
   top: PropTypes.number.isRequired,
@@ -35,6 +36,8 @@ const SidebarNavigation = ({
   const [resizableWidth, setResizableWidth] = useState(width);
   const [isResizing, setIsResizing] = useState(false);
   const [resizeStartWidth, setResizeStartWidth] = useState(0);
+  const sidebarContentInput = layoutSelectInput((i) => i.sidebarContent);
+  const currentPanel = sidebarContentInput.sidebarContentPanel;
 
   useEffect(() => {
     if (!isResizing) setResizableWidth(width);
@@ -95,7 +98,7 @@ const SidebarNavigation = ({
         height,
       }}
     >
-      <SidebarMenuContainer />
+      <SidebarMenuContainer contextDispatch={contextDispatch} currentPanel={currentPanel} />
       <UserListContainer />
     </Resizable>
   );
