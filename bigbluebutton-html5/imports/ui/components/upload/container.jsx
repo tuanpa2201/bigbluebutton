@@ -177,25 +177,15 @@ const ConfirmButton = styled.button`
   }
 `;
 
-// const RadioInner = styled.span`
-//   display: ${({ selected }) => (selected ? 'block' : 'none')};
-//   width: 12px;
-//   height: 12px;
-//   background: #EE0033;
-//   border-radius: 50%;
-//   position: absolute;
-//   top: 3px;
-//   left: 3px;
-// `;
-
-const files = [
-  { name: 'Default.pdf', current: true },
-  { name: 'File test 2.pdf', current: false },
-];
+// const files = [
+//   { name: 'Default.pdf', current: true },
+//   { name: 'File test 2.pdf', current: false },
+// ];
 
 const UploadContainer = ({ isChrome = false, isRTL = false }) => {
   const layoutContextDispatch = layoutDispatch();
   const [selectedFile, setSelectedFile] = useState('Default.pdf');
+  const [files, setFiles] = useState([]);
 
   const closePanel = useCallback(() => {
     layoutContextDispatch({
@@ -212,6 +202,18 @@ const UploadContainer = ({ isChrome = false, isRTL = false }) => {
     e.preventDefault();
     document.getElementById('upload-input').click();
   };
+
+  const handleFileChange = (event) => {
+    const selectedFiles = Array.from(event.target.files);
+    const mappedFiles = selectedFiles.map(file => ({
+        name: file.name,
+        file: file,
+        current: false,
+    }));
+    setFiles(mappedFiles);
+    setSelectedFile(mappedFiles[0]?.name);
+   };
+
   const BASE_NAME = window.meetingClientSettings.public.app.basename;
   //   const WebcamSettingsImg = `${BASE_NAME}/resources/images/webcam_settings.svg`;
 
@@ -249,7 +251,7 @@ const UploadContainer = ({ isChrome = false, isRTL = false }) => {
                         </div>
                         <BrowseLink onClick={handleBrowseClick}>browse for files</BrowseLink>
                     </span>
-                    <HiddenInput id="upload-input" type="file" multiple />
+                    <HiddenInput id="upload-input" type="file" multiple onChange={handleFileChange} />
                 </DropZone>
             </div>
             <div style={{ gap: '16px' }}>
