@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { Component, useState, useRef, useEffect } from 'react';
 import {
   defineMessages, injectIntl, FormattedMessage,
 } from 'react-intl';
@@ -28,6 +28,7 @@ import { CustomVirtualBackgroundsContext } from '/imports/ui/components/video-pr
 import VBGSelectorService from '/imports/ui/components/video-preview/virtual-background/service';
 import Session from '/imports/ui/services/storage/in-memory';
 import getFromUserSettings from '/imports/ui/services/users-settings';
+import CustomDropdown from '/imports/ui/components/CustomDropdown/CustomDropdown';
 
 const VIEW_STATES = {
   finding: 'finding',
@@ -220,6 +221,7 @@ const intlMessages = defineMessages({
     description: 'Brightness slider aria description',
   },
 });
+
 
 class VideoPreview extends Component {
   static contextType = CustomVirtualBackgroundsContext;
@@ -917,24 +919,27 @@ class VideoPreview extends Component {
       selectedProfile,
     } = this.state;
 
+    // Prepare options for custom dropdown
+    const webcamOptions = availableWebcams
+      ? availableWebcams.map((webcam, index) => ({
+          value: webcam.deviceId,
+          label: webcam.label || this.getFallbackLabel(webcam, index),
+        }))
+      : [];
+
     return (
       <Styled.InternCol className="device-selectors">
-        <Styled.Label htmlFor="setCam" className="mt-36-i">
+        <Styled.Label htmlFor="setCam" className="mt-0-i">
           {intl.formatMessage(intlMessages.cameraLabel)}
         </Styled.Label>
         { availableWebcams && availableWebcams.length > 0
           ? (
-            <Styled.Select
-              id="setCam"
+            <CustomDropdown
+              options={webcamOptions}
               value={webcamDeviceId || ''}
               onChange={this.handleSelectWebcam}
-            >
-              {availableWebcams.map((webcam, index) => (
-                <option key={webcam.deviceId} value={webcam.deviceId}>
-                  {webcam.label || this.getFallbackLabel(webcam, index)}
-                </option>
-              ))}
-            </Styled.Select>
+              disabled={false}
+            />
           )
           : (
             <span>
@@ -975,6 +980,17 @@ class VideoPreview extends Component {
     // Filtered, without hidden profiles
     const PREVIEW_CAMERA_PROFILES = CAMERA_PROFILES.filter(p => !p.hidden);
 
+    // Map camera profiles to CustomDropdown options
+    const profileOptions = PREVIEW_CAMERA_PROFILES.map((profile) => {
+      const label = intlMessages[`${profile.id}`]
+        ? intl.formatMessage(intlMessages[`${profile.id}`])
+        : profile.name;
+      return {
+        value: profile.id,
+        label: `${label}`,
+      };
+    });
+
     return (
       <>
         <Styled.Label htmlFor="setQuality">
@@ -982,23 +998,12 @@ class VideoPreview extends Component {
         </Styled.Label>
         {PREVIEW_CAMERA_PROFILES.length > 0
           ? (
-            <Styled.Select
-              id="setQuality"
+            <CustomDropdown
+              options={profileOptions}
               value={selectedProfile || ''}
               onChange={this.handleSelectProfile}
-            >
-              {PREVIEW_CAMERA_PROFILES.map((profile) => {
-                const label = intlMessages[`${profile.id}`]
-                  ? intl.formatMessage(intlMessages[`${profile.id}`])
-                  : profile.name;
-
-                return (
-                  <option key={profile.id} value={profile.id}>
-                    {`${label}`}
-                  </option>
-                );
-              })}
-            </Styled.Select>
+              disabled={false}
+            />
           )
           : (
             <span>
@@ -1136,15 +1141,15 @@ class VideoPreview extends Component {
     return (
       <Styled.ContentCol className="w-100">
         {tabNumber === 0 && (
-          <Styled.Col className="m-0-i">
-            {this.renderDeviceSelectors()}
-            {isVirtualBackgroundSupported() && this.renderBrightnessInput()}
-          </Styled.Col>
+            <>
+              {this.renderDeviceSelectors()}
+              {isVirtualBackgroundSupported() && this.renderBrightnessInput()}
+            </>
         )}
         {tabNumber === 1 && shouldShowVirtualBackgrounds && (
-          <Styled.BgnCol className="m-0-i">
-            {this.renderVirtualBgSelector()}
-          </Styled.BgnCol>
+            <>
+              {this.renderVirtualBgSelector()}
+            </>
         )}
       </Styled.ContentCol>
     );
@@ -1165,10 +1170,9 @@ class VideoPreview extends Component {
     const { animations } = Settings.application;
 
     const containerStyle = {
-      width: '60%',
       display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center', 
+      justifyContent: 'space-between',
+      alignItems: 'center',
     };
 
     switch (viewState) {
@@ -1192,8 +1196,8 @@ class VideoPreview extends Component {
       case VIEW_STATES.found:
       default:
         return (
-          <Styled.Content>
-            <Styled.VideoCol className="w-50 m-0-i">
+          <div className="d-flex align-items-start justify-content-between gap-20">
+            <div className="w-50">
               {
                 previewError
                   ? (
@@ -1212,11 +1216,11 @@ class VideoPreview extends Component {
                     />
                   )
               }
-            </Styled.VideoCol>
-            <div className="w-50 mr-0-i pl-24">
+            </div>
+            <div className="w-50">
               {this.renderTabsContent(selectedTab)}
             </div>
-          </Styled.Content>
+          </div>
         );
     }
   }

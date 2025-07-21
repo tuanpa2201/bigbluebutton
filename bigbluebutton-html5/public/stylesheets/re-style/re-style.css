@@ -47,7 +47,7 @@
         padding: 22px 2rem;
 
         &:first-child {
-            margin: 0;
+            margin: 0 2px 0 0 ;
         }
 
         & span:last-child {
@@ -141,7 +141,7 @@
 
 /* PREVIEW VIDEO MODAL */
 .ReactModal__Content.video-preview-modal {
-    width: 600px;
+    width: 632px;
     min-height: max-content;
     border-radius: 12px;
     padding: 0;
@@ -159,7 +159,8 @@
     & .video-preview-container {
         padding: 16px 16px 12px;
         & .webcam-tab-list {
-            margin-top: 0;
+            margin: 0 0 16px;
+            gap: 20px;
             & .webcam-tab-item {
                 width: 50%;
                 display: flex;
@@ -210,8 +211,48 @@
             }
         }
 
-        & .video-preview-footer {
-            margin-top: 32px;
+        & .virtual-background-label {
+            color: var(--Text-Primary, #313131);
+
+            /* Medium/S */
+            font-size: 14px!important;
+            font-style: normal;
+            font-weight: 500!important;
+            line-height: 20px; /* 142.857% */
+        }
+
+        & .virtual-background-row-thumbnail {
+            margin: 0;
+
+            & .virtual-background-wrapper {
+                width: 100%;
+                margin: 20px 0 0;
+                padding: 0;
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                row-gap: 12px;
+                column-gap: 12px;
+                max-width: unset;
+
+                & .virtual-background-none-button,
+                & .virtual-background-custom-button,
+                & .thumbnail-button-wrapper {
+                    margin: 0;
+                }
+
+                & .virtual-background-none-button,
+                & .virtual-background-custom-button,
+                & .thumbnail-button-wrapper button {
+                    width: 63px;
+                    height: 63px;
+                    padding: 0;
+                    border-radius: 8px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                }
+            }
         }
     }
 

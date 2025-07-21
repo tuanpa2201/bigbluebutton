@@ -1,20 +1,15 @@
 import React, { memo, useEffect, useState } from 'react';
 import { FetchResult } from '@apollo/client';
-import ButtonEmoji from '/imports/ui/components/common/button/button-emoji/ButtonEmoji';
 import { IntlShape, defineMessages, injectIntl } from 'react-intl';
 import deviceInfo from '/imports/utils/deviceInfo';
 import { debounce } from '/imports/utils/debounce';
-import BBBMenu from '/imports/ui/components/common/menu/component';
 import Button from '/imports/ui/components/common/button/component';
 import VideoPreviewContainer from '/imports/ui/components/video-preview/container';
 import PreviewService from '/imports/ui/components/video-preview/service';
-import { CameraSettingsDropdownItemType } from 'bigbluebutton-html-plugin-sdk/dist/cjs/extensible-areas/camera-settings-dropdown-item/enums';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import { CameraSettingsDropdownInterface } from 'bigbluebutton-html-plugin-sdk';
 import VideoService from '../service';
 import Styled from './styles';
-import { useIsUserLocked } from '/imports/ui/components/video-provider/hooks';
-import { useStorageKey } from '/imports/ui/services/storage/hooks';
 
 const intlMessages = defineMessages({
   videoSettings: {
@@ -58,7 +53,8 @@ const intlMessages = defineMessages({
 const JOIN_VIDEO_DELAY_MILLISECONDS = 500;
 
 interface JoinVideoButtonProps {
-  cameraSettingsDropdownItems: CameraSettingsDropdownInterface[];
+  // eslint-disable-next-line react/no-unused-prop-types
+  cameraSettingsDropdownItems?: CameraSettingsDropdownInterface[];
   hasVideoStream: boolean;
   updateSettings: (
     obj: object,
@@ -80,7 +76,6 @@ const JoinVideoButton: React.FC<JoinVideoButtonProps> = ({
   status,
   disableReason,
   updateSettings,
-  cameraSettingsDropdownItems,
   setLocalSettings,
   exitVideo: exit,
   stopVideo,
@@ -89,9 +84,6 @@ const JoinVideoButton: React.FC<JoinVideoButtonProps> = ({
   const { isMobile } = deviceInfo;
   const isMobileSharingCamera = hasVideoStream && isMobile;
   const isDesktopSharingCamera = hasVideoStream && !isMobile;
-  const settingsStorage = window.meetingClientSettings.public.app.userSettingsStorage;
-  const isCamLocked = useIsUserLocked();
-  const webcamDeviceId = useStorageKey('WebcamDeviceId', settingsStorage) as string;
   const ENABLE_WEBCAM_SELECTOR_BUTTON = window.meetingClientSettings.public.app.enableWebcamSelectorButton;
 
   const shouldEnableWebcamSelectorButton = ENABLE_WEBCAM_SELECTOR_BUTTON
@@ -136,12 +128,6 @@ const JoinVideoButton: React.FC<JoinVideoButtonProps> = ({
     }
   }, JOIN_VIDEO_DELAY_MILLISECONDS);
 
-  const handleOpenAdvancedOptions = (callback?: () => void) => {
-    if (callback) callback();
-    setForceOpen(isDesktopSharingCamera);
-    setVideoPreviewModalIsOpen(true);
-  };
-
   const getMessageFromStatus = () => {
     let statusMessage = status;
     if (status !== 'videoConnecting') {
@@ -153,74 +139,6 @@ const JoinVideoButton: React.FC<JoinVideoButtonProps> = ({
   const label = disableReason
     ? intl.formatMessage(intlMessages[disableReason as keyof typeof intlMessages])
     : intl.formatMessage(intlMessages[getMessageFromStatus() as keyof typeof intlMessages]);
-
-  const renderUserActions = () => {
-    const actions = [];
-
-    if (shouldEnableWebcamSelectorButton) {
-      actions.push(
-        {
-          key: 'advancedVideo',
-          label: intl.formatMessage(intlMessages.advancedVideo),
-          onClick: () => handleOpenAdvancedOptions(),
-          dataTest: 'advancedVideoSettingsButton',
-        },
-      );
-    }
-
-    if (actions.length === 0) return null;
-    const customStyles = { top: '-3.6rem' };
-
-    cameraSettingsDropdownItems.forEach((plugin) => {
-      switch (plugin.type) {
-        case CameraSettingsDropdownItemType.OPTION:
-          actions.push({
-            key: plugin.id,
-            // @ts-expect-error -> Plugin-related.
-            label: plugin.label,
-            // @ts-expect-error -> Plugin-related.
-            onClick: plugin.onClick,
-            // @ts-expect-error -> Plugin-related.
-            icon: plugin.icon,
-          });
-          break;
-        case CameraSettingsDropdownItemType.SEPARATOR:
-          actions.push({
-            key: plugin.id,
-            isSeparator: true,
-          });
-          break;
-        default:
-          break;
-      }
-    });
-    return (
-      <BBBMenu
-        customStyles={!isMobile ? customStyles : null}
-        trigger={(
-          <ButtonEmoji
-            emoji="device_list_selector"
-            data-test="videoDropdownMenu"
-            hideLabel
-            label={intl.formatMessage(intlMessages.videoSettings)}
-            rotate
-            tabIndex={0}
-          />
-        )}
-        actions={actions}
-        opts={{
-          id: 'video-dropdown-menu',
-          keepMounted: true,
-          transitionDuration: 0,
-          elevation: 3,
-          getcontentanchorel: null,
-          fullwidth: 'true',
-          anchorOrigin: { vertical: 'top', horizontal: 'center' },
-          transformOrigin: { vertical: 'top', horizontal: 'center' },
-        }}
-      />
-    );
-  };
 
   return (
     <>

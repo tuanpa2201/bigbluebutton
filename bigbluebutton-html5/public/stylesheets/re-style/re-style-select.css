@@ -11,14 +11,83 @@ select {
     background-image: url("../../svgs/ic-arrow-down.svg");
     background-repeat: no-repeat;
     background-position: right 12px top 50%;
-
     overflow: hidden;
     text-overflow: ellipsis;
     color: var(--text-primary-light, #313131)!important;
     font-family: "FS PF BeauSans Pro", sans-serif !important;
+
     /* Regular/S */
     font-size: 14px!important;
     font-style: normal;
     font-weight: 400!important;
     line-height: 20px; /* 142.857% */
+}
+
+/* Custom dropdown styles */
+.custom-dropdown {
+    position: relative;
+    width: 100%;
+    user-select: none;
+}
+.custom-dropdown__selected {
+    height: 32px!important;
+    border: 0.05rem solid var(--border-01-light, #A7B3BD);
+    border-radius: 8px;
+    padding: 6px 12px;
+    background: var(--bg-00-light, #FFF);
+    color: var(--text-primary-light, #313131);
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 20px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.custom-dropdown__selected:focus,
+.custom-dropdown__selected:active {
+    outline: none;
+    border-color: var(--border-00-light, #EFEFEF);
+    box-shadow: 0 0 0 2px rgba(51, 141, 241, 0.15);
+}
+.custom-dropdown__selected[aria-disabled="true"]:focus,
+.custom-dropdown__selected[aria-disabled="true"]:active {
+    border-color: var(--border-01-light, #A7B3BD);
+    box-shadow: none;
+}
+.custom-dropdown__list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    background: var(--bg-00-light, #FFF);
+    border: 0.05rem solid var(--border-01-light, #A7B3BD);
+    border-radius: 12px;
+    margin: 4px 0 0 0;
+    padding: 0;
+    list-style: none;
+    z-index: 1000;
+    /* [L] Popover shadow */
+    box-shadow: 0px 4px 6px -2px rgba(26, 26, 26, 0.20), 1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, -1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, 0px -1px 0px 0px rgba(0, 0, 0, 0.17) inset, 0px 1px 0px 0px rgba(204, 204, 204, 0.50) inset;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.custom-dropdown__option {
+    padding: 8px 12px;
+    overflow: hidden;
+    color: var(--Text-Primary, #313131);
+    text-overflow: ellipsis;
+
+    /* Regular/S */
+    font-size: 14px!important;
+    font-style: normal;
+    font-weight: 400!important;
+    line-height: 20px; /* 142.857% */
+    cursor: pointer;
+}
+.custom-dropdown__option:hover,
+.custom-dropdown__option--selected {
+    background: var(--bg-01-light, #F7F8F9);
 }

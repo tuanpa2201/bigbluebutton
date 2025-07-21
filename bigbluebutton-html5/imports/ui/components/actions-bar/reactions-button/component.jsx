@@ -63,15 +63,15 @@ const ReactionsButton = (props) => {
     padding: '4px',
   };
 
-  let actions = [];
-
+  const actions = [];
   REACTIONS.forEach(({ id, native }) => {
     actions.push({
+      // eslint-disable-next-line max-len
       label: <Styled.ButtonWrapper active={currentUserReaction === native}><em-emoji key={native} native={native} {...emojiProps} /></Styled.ButtonWrapper>,
       key: id,
       onClick: () => handleReactionSelect(native),
       customStyles: actionCustomStyles,
-      dataTest: 'reaction'
+      dataTest: 'reaction',
     });
   });
 
@@ -81,6 +81,7 @@ const ReactionsButton = (props) => {
   let customIcon = null;
 
   if (!svgIcon) {
+    // eslint-disable-next-line max-len
     customIcon = <em-emoji key={currentUserReactionEmoji?.id} native={currentUserReactionEmoji?.native} emoji={{ id: currentUserReactionEmoji?.id }} {...emojiProps} />;
   }
 

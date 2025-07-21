@@ -91,7 +91,6 @@ const InternCol = styled.div`
 
 const ContentCol = styled.div`
   width: 60%;
-  height: 25vh;
 
   @media ${smallOnly} {
     width: 90%;

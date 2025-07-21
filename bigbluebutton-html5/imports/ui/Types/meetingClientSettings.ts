@@ -569,7 +569,8 @@ export interface UserReaction {
 
 export interface Reaction {
   id: string
-  native: string
+  native?: string
+  svgIcon?: string
 }
 
 export interface Notes {

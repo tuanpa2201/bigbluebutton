@@ -35,7 +35,6 @@ class ActionsBar extends PureComponent {
 
   renderPluginsActionBarItems(position) {
     const { actionBarItems } = this.props;
-    console.log(`Rendering action bar items for position: ${position}`, actionBarItems);
     return (
       <>
         {

@@ -271,9 +271,11 @@ const VirtualBgSelector = ({
 
     const renderBlurButton = (index) => (
       <Styled.ThumbnailButtonWrapper
+        className="thumbnail-button-wrapper"
         key={`blur-${index}`}
       >
         <Styled.ThumbnailButton
+          className="thumbnail-button"
           background={getVirtualBackgroundThumbnail(BLUR_FILENAME)}
           aria-label={intl.formatMessage(intlMessages.blurLabel)}
           label={intl.formatMessage(intlMessages.blurLabel)}
@@ -299,9 +301,11 @@ const VirtualBgSelector = ({
 
       return (
         <Styled.ThumbnailButtonWrapper
+          className="thumbnail-button-wrapper"
           key={`${imageName}-${index + 1}`}
         >
           <Styled.ThumbnailButton
+            className="thumbnail-button"
             id={`${imageName}-${index + 1}`}
             label={label}
             tabIndex={disabled ? -1 : 0}
@@ -384,6 +388,7 @@ const VirtualBgSelector = ({
     const renderInputButton = () => (
       <>
         <Styled.BgCustomButton
+          className="virtual-background-custom-button"
           icon="upload"
           label={intl.formatMessage(intlMessages.customLabel)}
           aria-describedby="vr-cam-btn-custom"
@@ -414,6 +419,7 @@ const VirtualBgSelector = ({
     const renderNoneButton = () => (
       <>
         <Styled.BgNoneButton
+          className="virtual-background-none-button"
           icon="close"
           label={intl.formatMessage(intlMessages.noneLabel)}
           aria-pressed={currentVirtualBg?.name === undefined}
@@ -445,8 +451,9 @@ const VirtualBgSelector = ({
     const ENABLE_CAMERA_BRIGHTNESS = window.meetingClientSettings.public.app.enableCameraBrightness;
 
     return (
-      <Styled.VirtualBackgroundRowThumbnail>
+      <Styled.VirtualBackgroundRowThumbnail className="virtual-background-row-thumbnail">
         <Styled.BgWrapper
+          className="virtual-background-wrapper"
           role="group"
           aria-label={intl.formatMessage(intlMessages.virtualBackgroundSettingsLabel)}
           brightnessEnabled={ENABLE_CAMERA_BRIGHTNESS}
@@ -502,7 +509,7 @@ const VirtualBgSelector = ({
 
   return (
     <>
-      <Styled.Label>
+      <Styled.Label className="virtual-background-label">
         {intl.formatMessage(
           isVirtualBackgroundSupported()
             ? intlMessages.virtualBackgroundSettingsLabel
