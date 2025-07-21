@@ -77,19 +77,14 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
   } = props;
   const intl = useIntl();
   const [copyingJoinUrl, setCopyingJoinUrl] = useState(false);
-  // const [copyingDialIn, setCopyingDialIn] = useState(false);
-
-  // const formattedPin = formattedTelVoice.replace(/(?=(\d{3})+(?!\d))/g, ' ');
 
   const copyData = async (content: string, type: string) => {
     if (type === 'join-url') setCopyingJoinUrl(true);
-    // if (type === 'dial-in') setCopyingDialIn(true);
 
     await navigator.clipboard.writeText(content);
 
     setTimeout(() => {
       if (type === 'join-url') setCopyingJoinUrl(false);
-      // if (type === 'dial-in') setCopyingDialIn(false);
     }, COPY_MESSAGE_TIMEOUT);
   };
 
@@ -116,7 +111,6 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
       >
         <div className="session-details-content">
           <Styled.WelcomeMessage dangerouslySetInnerHTML={{ __html: welcomeMessage }} />
-          {/* <Styled.WelcomeMessage dangerouslySetInnerHTML={{ __html: welcomeMsgForModerators }} /> */}
           {loginUrl && (
             <div>
               <Styled.JoinTitle>
@@ -165,34 +159,6 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
             <a href="https://docs.bigbluebutton.org/" target="_blank" rel="noreferrer"><u>BigBlueButton</u></a>
             .
           </div>
-
-          {/* {formattedDialNum && formattedTelVoice && (
-            <>
-              <Styled.JoinTitle>
-                {intl.formatMessage(intlMessages.joinByPhoneLabel)}
-                <Styled.CopyButton
-                  key="copy-dial-in"
-                  onClick={() => copyData(formattedDialNum, 'dial-in')}
-                  hideLabel
-                  color="light"
-                  icon={copyingDialIn ? 'check' : 'copy'}
-                  size="sm"
-                  circle
-                  ghost
-                  label={copyingDialIn
-                    ? intl.formatMessage(intlMessages.copied)
-                    : intl.formatMessage(intlMessages.copyPhoneTooltip)}
-                />
-              </Styled.JoinTitle>
-              <p>{formattedDialNum}</p>
-              <p>
-                <b>
-                  {`${intl.formatMessage(intlMessages.phonePinLabel)}:`}
-                </b>
-                {` ${formattedPin} #`}
-              </p>
-            </>
-          )} */}
         </div>
       </Styled.Container>
     </ModalSimple>

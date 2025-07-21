@@ -2,18 +2,20 @@
   border-radius: 12px !important;
   background-color: #FFF;
 }
+
 .modal-session-details .modal-header {
   padding: 2px !important;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   >h2 {
     margin: 0px !important;
     color: #313131;
   }
 }
 
-.session-details-content{
+.session-details-content {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -22,3 +24,7 @@
   color: var(--text-primary-light, #313131);
 }
 
+.modal-session-details u {
+  color: #1087FF;
+  text-decoration: underline;
+}

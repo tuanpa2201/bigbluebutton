@@ -7,7 +7,6 @@ import { smPadding } from '/imports/ui/stylesheets/styled-components/general';
 
 const WelcomeMessage = styled.div`
   font-size: 1.0rem;
-  margin-bottom: 1rem;
 `;
 
 const Container = styled.div<{ isFullWidth: boolean }>`
