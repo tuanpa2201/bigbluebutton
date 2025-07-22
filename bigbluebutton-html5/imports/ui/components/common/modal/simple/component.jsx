@@ -148,6 +148,7 @@ class ModalSimple extends Component {
                 'aria-label': `${intl.formatMessage(intlMessages.modalClose)} ${title || contentLabel}`,
                 onClick: this.handleRequestClose,
               }}
+              className="modal-header"
             >
               {title || ''}
             </Styled.Header>

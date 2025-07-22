@@ -19,6 +19,10 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+
+  <!--  Access HTTPS call API HTTP -->
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
   <meta charset="utf-8">
   <link rel="stylesheet" href="stylesheets/normalize.css" crossorigin="anonymous"/>
   <style>
@@ -168,9 +172,8 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
     </defs>
   </svg>
   <main>
-    <div id="app" role="document">
+    <div id="app" role="document"></div>
   </main>
-  </div>
   <span id="destination"></span>
   <audio id="remote-media" autoplay></audio>
   <audio id="local-media" autoplay></audio>

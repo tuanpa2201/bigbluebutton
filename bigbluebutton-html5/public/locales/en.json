@@ -1548,7 +1548,7 @@
     "app.sessionDetails.title": "Session Details",
     "app.sessionDetails.dismissLabel": "Close",
     "app.sessionDetails.dismissDesc": "Close modal",
-    "app.sessionDetails.joinByUrl": "Join by URL",
+    "app.sessionDetails.joinByUrl": "To invite someone to the meeting, send them this link:",
     "app.sessionDetails.joinByPhone": "Join by phone",
     "app.sessionDetails.copyUrlTooltip": "Copy join URL",
     "app.sessionDetails.copyPhoneTooltip": "Copy phone number",
