@@ -433,3 +433,22 @@
     }
 
 }
+
+.notes {
+    font-family: "FS PF BeauSans Pro", sans-serif;
+
+    & .notes-header {
+        & .buttonWrapper {
+            & span {
+                color: var(--Text-Primary, #313131);
+
+                /* Semibold/XL */
+                font-size: 20px!important;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 32px!important; /* 160% */
+            }
+        }
+
+    }
+}
