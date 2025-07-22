@@ -234,7 +234,7 @@ const MeetingEnded: React.FC<MeetingEndedProps> = ({
             {intl.formatMessage(intlMessage.messageEnded)}
           </Styled.Text>
 
-          <Styled.MeetingEndedButton
+          <Styled.MeetingEndedButton className='btn btn-primary'
             color="primary"
             onClick={() => confirmRedirect(isBreakout, allowDefaultLogoutUrl)}
             /* @eslint-disable-next-line */
