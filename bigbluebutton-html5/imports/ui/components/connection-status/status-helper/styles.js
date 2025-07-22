@@ -1,31 +1,32 @@
 import styled from 'styled-components';
 import {
   colorPrimary,
-  colorSuccess,
   colorWarning,
   colorDanger,
 } from '/imports/ui/stylesheets/styled-components/palette';
 
 const StatusIconWrapper = styled.div`
   border-radius: 50%;
-  padding: 1.5rem;
+  padding: 1.7857rem;
 
   ${({ color }) => {
-    let bgColor = colorSuccess;
+    let bgColor = '#6CC17C';
     bgColor = color === 'warning' ? colorWarning : bgColor;
     bgColor = color === 'danger' ? colorDanger : bgColor;
-    return `background-color: ${bgColor};`
+    return `background-color: ${bgColor};`;
   }}
 `;
 
 const IconWrapper = styled.div`
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.857rem;
+  height: 2.857rem;
 `;
 
 const Label = styled.div`
   font-weight: 600;
-  margin: .25rem 0 .5rem;
+  margin-top: 12px;
+  color: #6F767E;
+  font-size: 1rem;
 `;
 
 const Settings = styled.span`
