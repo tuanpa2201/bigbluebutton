@@ -4,7 +4,7 @@ import { PANELS, ACTIONS } from '/imports/ui/components/layout/enums';
 
 // Styled sidebar container
 const Sidebar = styled.div`
-  width: 60px;
+  width: 72px;
   background: #F7F8F9;
   border-right: 1px solid #e0e0e0;
   display: flex;
