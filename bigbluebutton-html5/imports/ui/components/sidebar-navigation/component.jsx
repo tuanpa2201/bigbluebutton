@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Resizable from 're-resizable';
 import { ACTIONS } from '../layout/enums';
-import UserListContainer from '../user-list/container';
+// import UserListContainer from '../user-list/container';
 import SidebarMenuContainer from '../sidebar-menu/component';
 import { layoutSelectInput } from '../layout/context';
 
@@ -99,7 +99,7 @@ const SidebarNavigation = ({
       }}
     >
       <SidebarMenuContainer contextDispatch={contextDispatch} currentPanel={currentPanel} />
-      <UserListContainer />
+      {/* <UserListContainer /> */}
     </Resizable>
   );
 };
