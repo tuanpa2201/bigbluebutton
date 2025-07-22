@@ -2,7 +2,7 @@ import { LAYOUT_TYPE, CAMERADOCK_POSITION, PANELS } from './enums';
 
 const DEFAULT_VALUES = {
   layoutType: LAYOUT_TYPE.CUSTOM_LAYOUT,
-  panelType: 'chat',
+  panelType: PANELS.USERLIST,
   fontSize: 16,
 
   cameraPosition: CAMERADOCK_POSITION.CONTENT_TOP,
@@ -26,7 +26,7 @@ const DEFAULT_VALUES = {
   actionBarPadding: 11.2,
   actionBarTabOrder: 6,
 
-  sidebarNavMaxWidth: 240,
+  sidebarNavMaxWidth: 70,
   sidebarNavMinWidth: 70,
   sidebarNavHeight: '100%',
   sidebarNavTop: 0,

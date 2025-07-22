@@ -63,15 +63,15 @@ class UserContent extends PureComponent {
           </Styled.ScrollableList>
         ) : (
           <>
-            {isChatEnabled ? <ChatList /> : null}
-            <UserNotesContainer />
-            {isTimerActive && <TimerContainer isModerator={currentUser?.role === ROLE_MODERATOR} />}
-            {currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}
-            <UserPollsContainer isPresenter={currentUser?.presenter} />
-            <BreakoutRoomContainer />
-            <GenericSidekickContentNavButtonContainer />
             <UserTitleContainer />
             <UserListParticipants compact={compact} />
+            {/*{isChatEnabled ? <ChatList /> : null}*/}
+            {/*<UserNotesContainer />*/}
+            {/*{isTimerActive && <TimerContainer isModerator={currentUser?.role === ROLE_MODERATOR} />}*/}
+            {/*{currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}*/}
+            {/*<UserPollsContainer isPresenter={currentUser?.presenter} />*/}
+            {/*<BreakoutRoomContainer />*/}
+            {/*<GenericSidekickContentNavButtonContainer />*/}
           </>
         )}
       </Styled.Content>
