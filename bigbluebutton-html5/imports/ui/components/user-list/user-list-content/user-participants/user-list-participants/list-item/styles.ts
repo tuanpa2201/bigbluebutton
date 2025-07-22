@@ -394,7 +394,7 @@ const RightIconVoiceContainer = styled.div<RightIconVoiceProps>`
     width: 24px;
     height: 24px;
     padding: .5rem 0 0;
-    border: 1.5px solid ${userListBg};
+    border: 1.5px solid transparent;
     border-radius: 5px;
     background-color: transparent;
     color: ${colorWhite};
@@ -491,7 +491,7 @@ const RightIconPresenterContainer = styled.div<RightIconPresenterProps>`
     position: absolute;
     width: 24px;
     height: 24px;
-    border: 1.5px solid ${userListBg};
+    border: 1.5px solid transparent;
     border-radius: 5px;
     background-color: transparent;
     color: ${colorWhite};
@@ -566,6 +566,26 @@ const RightIconHandContainer = styled.div<RightIconHandProps>`
   top: 6px;
 `;
 
+const RightIconMoreContainer = styled.div`
+  position: relative;
+  height: 24px;
+  width: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid transparent;
+  user-select: none;
+  color: ${colorBlack} !important;
+  font-size: 110%;
+  text-transform: capitalize;
+  display: none;
+  justify-content: center;
+  align-items:center;
+  background-color: transparent;
+  transition: de;
+  top: 6px;
+`;
+
 
 const UserItemContents = styled.div<UserItemContentsProps>`
   position: static;
@@ -618,6 +638,16 @@ const UserItemContents = styled.div<UserItemContentsProps>`
     }
     flex-flow: column;
     flex-shrink: 0;
+    & ${RightIconVoiceContainer},
+    & ${RightIconPresenterContainer}
+    {
+      display: flex;
+    }
+  
+    & ${RightIconMoreContainer}
+    {
+      display: none;
+    }
   `}
 
   ${({isActionsOpen}) => isActionsOpen && `
@@ -633,6 +663,16 @@ const UserItemContents = styled.div<UserItemContentsProps>`
       outline-style: solid;
       outline-color: transparent !important;
     }
+    & ${RightIconVoiceContainer},
+    & ${RightIconPresenterContainer}
+    {
+      display: none;
+    }
+  
+    & ${RightIconMoreContainer}
+    {
+      display: flex;
+    }
   `}
 
   flex-grow: 0;
@@ -644,32 +684,15 @@ const UserItemContents = styled.div<UserItemContentsProps>`
     padding: ${lgPaddingY} ${lgPaddingY} ${lgPaddingY} 0;
   }
 
-  &:hover::after,
-  &:active::after{
-    content: "\\00a0\\e902\\00a0";
-    transform: rotate(90deg);
-    width: 24px;
-    height: 24px;
-    border-radius: 5px;
-    background-color: transparent;
-    color: ${colorBlack};
-    opacity: 1;
-    font-family: 'bbb-icons';
-    font-size: .85rem;
-    text-align: center;
-    vertical-align: middle;
-    letter-spacing: 5px;
-    z-index: 1;
-    margin: .25rem ${smPaddingX} .25rem .25rem;
-  }
-
-
   &:hover ${RightIconVoiceContainer},
-  &:hover ${RightIconPresenterContainer},
-  &:active ${RightIconVoiceContainer},
-  &:active ${RightIconPresenterContainer}
+  &:hover ${RightIconPresenterContainer}
   {
     display: none;
+  }
+
+  &:hover ${RightIconMoreContainer}
+  {
+    display: flex;
   }
 `;
 
@@ -685,4 +708,5 @@ export default {
   RightIconVoiceContainer,
   RightIconPresenterContainer,
   RightIconHandContainer,
+  RightIconMoreContainer,
 };
