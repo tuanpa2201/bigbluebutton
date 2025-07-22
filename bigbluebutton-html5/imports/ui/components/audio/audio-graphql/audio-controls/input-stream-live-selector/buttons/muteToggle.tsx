@@ -126,24 +126,24 @@ export const MuteToggle: React.FC<MuteToggleProps> = ({
 
   const onClickCallback = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    openAudioSettings({ unmuteOnExit: true });
 
-    // if (muted) {
-    //   if (away) {
-    //     if (!noInputDevice) muteAway(muted, true, toggleVoice);
-    //     VideoService.setTrackEnabled(true);
-    //     setAway({
-    //       variables: {
-    //         away: false,
-    //       },
-    //     });
-    //   } else if (noInputDevice) {
-    //     // User is in duplex audio, passive-sendrecv, but has no input device set
-    //     // Open the audio settings modal to allow them to select an input device
-    //   }
-    // }
-    //
-    // toggleMuteMicrophone(muted, toggleVoice);
+    if (muted) {
+      if (away) {
+        if (!noInputDevice) muteAway(muted, true, toggleVoice);
+        VideoService.setTrackEnabled(true);
+        setAway({
+          variables: {
+            away: false,
+          },
+        });
+      } else {
+        // User is in duplex audio, passive-sendrecv, but has no input device set
+        // Open the audio settings modal to allow them to select an input device
+        openAudioSettings({ unmuteOnExit: true });
+      }
+    }
+
+    toggleMuteMicrophone(muted, toggleVoice);
   };
 
   return (
