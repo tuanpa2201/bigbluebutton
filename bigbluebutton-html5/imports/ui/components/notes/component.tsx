@@ -134,6 +134,7 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
 
   return (shouldRenderNotes || shouldShowSharedNotesOnPresentationArea) && (
     <Styled.Notes
+      className="notes"
       data-test="notes"
       isChrome={isChrome}
       style={style}
@@ -143,17 +144,8 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
         <>
           <h2 className="sr-only">{intl.formatMessage(intlMessages.title)}</h2>
           <Header
+            className="notes-header"
             leftButtonProps={{
-              onClick: () => {
-                layoutContextDispatch({
-                  type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
-                  value: false,
-                });
-                layoutContextDispatch({
-                  type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
-                  value: PANELS.NONE,
-                });
-              },
               'data-test': 'hideNotesLabel',
               'aria-label': intl.formatMessage(intlMessages.hide),
               label: intl.formatMessage(intlMessages.title),

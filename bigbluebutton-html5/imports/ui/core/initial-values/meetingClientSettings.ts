@@ -586,12 +586,12 @@ export const meetingClientSettingsInitialValues: MeetingClientSettings = {
           native: '😃',
         },
         {
-          id: 'smiling_face_with_tear',
-          native: '😢',
+          id: 'neutral_face',
+          native: '😐',
         },
         {
-          id: 'heart',
-          native: '❤️',
+          id: 'slightly_frowning_face',
+          native: '🙁',
         },
         {
           id: '+1',
