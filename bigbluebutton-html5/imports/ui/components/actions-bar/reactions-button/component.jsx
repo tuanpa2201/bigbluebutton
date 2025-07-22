@@ -7,7 +7,7 @@ import data from '@emoji-mart/data';
 import { init } from 'emoji-mart';
 import { SET_REACTION_EMOJI } from '/imports/ui/core/graphql/mutations/userMutations';
 import { useMutation } from '@apollo/client';
-import joypixels from 'emoji-toolkit';
+// import joypixels from 'emoji-toolkit';
 import Styled from './styles';
 
 const ReactionsButton = (props) => {
@@ -29,20 +29,20 @@ const ReactionsButton = (props) => {
   //   { id: 'clap', native: '👏', code: ':clap:' },
   // ];
 
-  const html = (code) => {
-    const styles = [
-      'width: 32px',
-      'height: 32px',
-      'top: -1px',
-      'position: relative',
-    ];
-    const html = joypixels
-      .toImage(code)
-      .split('<img class="joypixels"')
-      .join(`<img class="joypixels" style="${styles.join(';')}"`);
-
-    return { __html: html };
-  };
+  // const html = (code) => {
+  //   const styles = [
+  //     'width: 32px',
+  //     'height: 32px',
+  //     'top: -1px',
+  //     'position: relative',
+  //   ];
+  //   const html = joypixels
+  //     .toImage(code)
+  //     .split('<img class="joypixels"')
+  //     .join(`<img class="joypixels" style="${styles.join(';')}"`);
+  //
+  //   return { __html: html };
+  // };
 
   // initialize emoji-mart data, need for the new version
   init({ data });
