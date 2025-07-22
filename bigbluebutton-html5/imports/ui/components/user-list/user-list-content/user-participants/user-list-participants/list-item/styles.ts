@@ -19,7 +19,7 @@ import {
   userListBg,
   colorSuccess,
   colorDanger,
-  colorOffWhite,
+  colorOffWhite, colorBlack,
 } from '/imports/ui/stylesheets/styled-components/palette';
 
 import Icon from '/imports/ui/components/common/icon/icon-ts/component';
@@ -43,96 +43,45 @@ interface AvatarProps {
     isSkeleton?: boolean;
 }
 
+interface RightIconPresenterProps {
+  moderator?: boolean;
+  presenter?: boolean;
+  whiteboardAccess?: boolean;
+  animations?: boolean;
+  isChrome?: boolean;
+  isFirefox?: boolean;
+  isEdge?: boolean;
+}
+
+interface RightIconVoiceProps {
+  talking?: boolean;
+  muted?: boolean;
+  listenOnly?: boolean;
+  voice?: boolean;
+  noVoice?: boolean;
+  color?: string;
+  animations?: boolean;
+  isChrome?: boolean;
+  isFirefox?: boolean;
+  isEdge?: boolean;
+}
+
 interface UserItemContentsProps {
   selected?: boolean;
   isActionsOpen?: boolean;
 }
 
-const UserItemContents = styled.div<UserItemContentsProps>`
-  position: static;
-  padding: .45rem;
-  width: 100%;
-
-  ${({ selected }) => selected && `
-    background-color: ${listItemBgHover};
-    border-top-left-radius: ${smPaddingY};
-    border-bottom-left-radius: ${smPaddingY};
-
-    &:focus {
-      box-shadow: inset 0 0 0 ${borderSize} ${itemFocusBorder}, inset 1px 0 0 1px ${itemFocusBorder};
-    }
-  `}
-
-  ${({ isActionsOpen }) => !isActionsOpen && `
-    display: flex;
-    flex-flow: row;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    cursor: pointer;
-
-    [dir="rtl"] & {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 5px;
-      border-bottom-right-radius: 5px;
-    }
-
-    &:first-child {
-      margin-top: 0;
-    }
-    &:focus,
-    &:hover {
-      outline: transparent;
-      outline-style: dotted;
-      outline-width: ${borderSize};
-      background-color: ${listItemBgHover};
-    }
-
-    &:active{
-      outline: transparent;
-      outline-width: ${borderSize};
-      outline-style: solid;
-      background-color: ${listItemBgHover};
-      box-shadow: inset 0 0 0 ${borderSize} ${itemFocusBorder}, inset 1px 0 0 1px ${itemFocusBorder};
-    }
-    flex-flow: column;
-    flex-shrink: 0;
-  `}
-
-  ${({ isActionsOpen }) => isActionsOpen && `
-    outline: transparent;
-    outline-width: ${borderSize};
-    outline-style: solid;
-    background-color: ${listItemBgHover};
-    box-shadow: inset 0 0 0 ${borderSize} ${itemFocusBorder}, inset 1px 0 0 1px ${itemFocusBorder};
-    border-top-left-radius: ${smPaddingY};
-    border-bottom-left-radius: ${smPaddingY};
-
-    &:focus {
-      outline-style: solid;
-      outline-color: transparent !important;
-    }
-  `}
-
-  flex-grow: 0;
-  display: flex;
-  flex-flow: row;
-  border: 3px solid transparent;
-
-  [dir="rtl"] & {
-    padding: ${lgPaddingY} ${lgPaddingY} ${lgPaddingY} 0;
-  }
-`;
+interface RightIconHandProps {
+  hand?: boolean;
+}
 
 // ===== avatar =====
 
 const Avatar = styled.div<AvatarProps>`
   position: relative;
-  height: 2.25rem;
-  width: 2.25rem;
-  min-width: 2.25rem;
+  height: 36px;
+  width: 36px;
+  min-width: 36px;
   border-radius: 50%;
   text-align: center;
   font-size: .85rem;
@@ -148,45 +97,45 @@ const Avatar = styled.div<AvatarProps>`
     transition: .3s ease-in-out;
   `}
 
-  &:after,
-  &:before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding-top: .5rem;
-    padding-right: 0;
-    padding-left: 0;
-    padding-bottom: 0;
-    color: inherit;
-    top: auto;
-    left: auto;
-    bottom: ${userIndicatorsOffset};
-    right: ${userIndicatorsOffset};
-    border: 1.5px solid ${userListBg};
-    border-radius: 50%;
-    background-color: ${colorSuccess};
-    color: ${colorWhite};
-    opacity: 0;
-    font-family: 'bbb-icons';
-    font-size: .65rem;
-    line-height: 0;
-    text-align: center;
-    vertical-align: middle;
-    letter-spacing: -.65rem;
-    z-index: 1;
-
-    [dir="rtl"] & {
-      left: ${userIndicatorsOffset};
-      right: auto;
-      padding-right: .65rem;
-      padding-left: 0;
-    }
-
-    ${({ animations }) => animations && `
-      transition: .3s ease-in-out;
-    `}
-  }
+  // &:after,
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   width: 0;
+  //   height: 0;
+  //   padding-top: .5rem;
+  //   padding-right: 0;
+  //   padding-left: 0;
+  //   padding-bottom: 0;
+  //   color: inherit;
+  //   top: auto;
+  //   left: auto;
+  //   bottom: ${userIndicatorsOffset};
+  //   right: ${userIndicatorsOffset};
+  //   border: 1.5px solid ${userListBg};
+  //   border-radius: 50%;
+  //   background-color: ${colorSuccess};
+  //   color: ${colorWhite};
+  //   opacity: 0;
+  //   font-family: 'bbb-icons';
+  //   font-size: .65rem;
+  //   line-height: 0;
+  //   text-align: center;
+  //   vertical-align: middle;
+  //   letter-spacing: -.65rem;
+  //   z-index: 1;
+  //
+  //   [dir="rtl"] & {
+  //     left: ${userIndicatorsOffset};
+  //     right: auto;
+  //     padding-right: .65rem;
+  //     padding-left: 0;
+  //   }
+  //
+  //   ${({ animations }) => animations && `
+  //     transition: .3s ease-in-out;
+  //   `}
+  // }
 
   ${({ moderator }) => moderator && `
     border-radius: 5px;
@@ -194,118 +143,118 @@ const Avatar = styled.div<AvatarProps>`
   `}
 
   ${({ presenter }) => presenter && `
-    &:before {
-      content: "\\00a0\\e90b\\00a0";
-      padding: ${mdPaddingY} !important;
-      opacity: 1;
-      top: ${userIndicatorsOffset};
-      left: ${userIndicatorsOffset};
-      bottom: auto;
-      right: auto;
-      border-radius: 5px;
-      background-color: ${colorPrimary};
-
-      [dir="rtl"] & {
-        left: auto;
-        right: ${userIndicatorsOffset};
-        letter-spacing: -.33rem;
-      }
-    }
+  //   &:before {
+  //     content: "\\00a0\\e90b\\00a0";
+  //     padding: ${mdPaddingY} !important;
+  //     opacity: 1;
+  //     top: ${userIndicatorsOffset};
+  //     left: ${userIndicatorsOffset};
+  //     bottom: auto;
+  //     right: auto;
+  //     border-radius: 5px;
+  //     background-color: ${colorPrimary};
+  //
+  //     [dir="rtl"] & {
+  //       left: auto;
+  //       right: ${userIndicatorsOffset};
+  //       letter-spacing: -.33rem;
+  //     }
+  //   }
   `}
 
   ${({
     presenter, isChrome, isFirefox, isEdge,
   }) => presenter && (isChrome || isFirefox || isEdge) && `
-    &:before {
-      padding: ${indicatorPadding} !important;
-    }
+    // &:before {
+    //   padding: ${indicatorPadding} !important;
+    // }
   `}
 
   ${({ whiteboardAccess, presenter }) => whiteboardAccess && !presenter && `
-    &:before {
-      content: "\\00a0\\e925\\00a0";
-      padding: ${mdPaddingY} !important;
-      border-radius: 50% !important;
-      opacity: 1;
-      top: ${userIndicatorsOffset};
-      left: ${userIndicatorsOffset};
-      bottom: auto;
-      right: auto;
-      border-radius: 5px;
-      background-color: ${colorPrimary};
-
-      [dir="rtl"] & {
-        left: auto;
-        right: ${userIndicatorsOffset};
-        letter-spacing: -.33rem;
-        transform: scale(-1, 1);
-      }
-    }
+    // &:before {
+    //   content: "\\00a0\\e925\\00a0";
+    //   padding: ${mdPaddingY} !important;
+    //   border-radius: 50% !important;
+    //   opacity: 1;
+    //   top: ${userIndicatorsOffset};
+    //   left: ${userIndicatorsOffset};
+    //   bottom: auto;
+    //   right: auto;
+    //   border-radius: 5px;
+    //   background-color: ${colorPrimary};
+    //
+    //   [dir="rtl"] & {
+    //     left: auto;
+    //     right: ${userIndicatorsOffset};
+    //     letter-spacing: -.33rem;
+    //     transform: scale(-1, 1);
+    //   }
+    // }
   `}
 
   ${({
     whiteboardAccess, isChrome, isFirefox, isEdge,
   }) => whiteboardAccess && (isChrome || isFirefox || isEdge) && `
-    &:before {
-      padding: ${indicatorPadding};
-    }
+    // &:before {
+    //   padding: ${indicatorPadding};
+    // }
   `}
 
   ${({ voice }) => voice && `
-    &:after {
-      content: "\\00a0\\e931\\00a0";
-      background-color: ${colorSuccess};
-      top: 1.375rem;
-      left: 1.375rem;
-      right: auto;
-
-      [dir="rtl"] & {
-        left: auto;
-        right: 1.375rem;
-      }
-      opacity: 1;
-      width: 1.2rem;
-      height: 1.2rem;
-    }
+    // &:after {
+    //   content: "\\00a0\\e931\\00a0";
+    //   background-color: ${colorSuccess};
+    //   top: 1.375rem;
+    //   left: 1.375rem;
+    //   right: auto;
+    //
+    //   [dir="rtl"] & {
+    //     left: auto;
+    //     right: 1.375rem;
+    //   }
+    //   opacity: 1;
+    //   width: 1.2rem;
+    //   height: 1.2rem;
+    // }
   `}
 
   ${({ muted }) => muted && `
-    &:after {
-      content: "\\00a0\\e932\\00a0";
-      background-color: ${colorDanger};
-      opacity: 1;
-      width: 1.2rem;
-      height: 1.2rem;
-    }
+    // &:after {
+    //   content: "\\00a0\\e932\\00a0";
+    //   background-color: ${colorDanger};
+    //   opacity: 1;
+    //   width: 1.2rem;
+    //   height: 1.2rem;
+    // }
   `}
 
   ${({ listenOnly }) => listenOnly && `
-    &:after {
-      content: "\\00a0\\e90c\\00a0";
-      opacity: 1;
-      width: 1.2rem;
-      height: 1.2rem;
-      background-color: ${colorSuccess};
-    }
+    // &:after {
+    //   content: "\\00a0\\e90c\\00a0";
+    //   opacity: 1;
+    //   width: 1.2rem;
+    //   height: 1.2rem;
+    //   background-color: ${colorSuccess};
+    // }
   `}
 
   ${({ noVoice }) => noVoice && `
-    &:after {
-      content: "";
-      background-color: ${colorOffWhite};
-      top: 1.375rem;
-      left: 1.375rem;
-      right: auto;
-
-      [dir="rtl"] & {
-        left: auto;
-        right: 1.375rem;
-      }
-
-      opacity: 1;
-      width: 1.2rem;
-      height: 1.2rem;
-    }
+    // &:after {
+    //   content: "";
+    //   background-color: ${colorOffWhite};
+    //   top: 1.375rem;
+    //   left: 1.375rem;
+    //   right: auto;
+    //
+    //   [dir="rtl"] & {
+    //     left: auto;
+    //     right: 1.375rem;
+    //   }
+    //
+    //   opacity: 1;
+    //   width: 1.2rem;
+    //   height: 1.2rem;
+    // }
   `}
 
   // ================ talking animation ================
@@ -336,8 +285,8 @@ const Avatar = styled.div<AvatarProps>`
   // ================ content ================
 
   & .react-loading-skeleton {    
-    height: 2.25rem;
-    width: 2.25rem;
+    height: 36px;
+    width: 36px;
   }
 `;
 
@@ -418,6 +367,315 @@ const IconRightContainer = styled.div`
   margin: .25rem;  
 `;
 
+const RightIconVoiceContainer = styled.div<RightIconVoiceProps>`
+  position: relative;
+  height: 24px;
+  width: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid transparent;
+  user-select: none;
+  color: ${colorWhite} !important;
+  font-size: 110%;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+
+  ${({animations}) => animations && `
+    transition: .3s ease-in-out;
+  `}
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    padding: .5rem 0 0;
+    border: 1.5px solid ${userListBg};
+    border-radius: 5px;
+    background-color: transparent;
+    color: ${colorWhite};
+    opacity: 1;
+    font-family: 'bbb-icons';
+    font-size: 0.85rem;
+    line-height: 5px;
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: -0.85rem;
+    z-index: 1;
+    bottom: 0;
+    top: 8px;
+
+    [dir="rtl"] & {
+      left: ${userIndicatorsOffset};
+      right: auto;
+      padding-right: .65rem;
+      padding-left: 0;
+    }
+
+    ${({animations}) => animations && `
+        transition: .3s ease-in-out;
+      `}
+  }
+
+  ${({voice}) => voice && `
+    &:after {
+      content: "\\00a0\\e931\\00a0";
+      background-color: ${colorSuccess};
+    }
+  `}
+
+  ${({muted}) => muted && `
+    &:after {
+      content: "\\00a0\\e932\\00a0";
+      color: ${colorBlack};
+      background-color: transparent;
+      border: None;
+    }
+  `}
+
+  ${({listenOnly}) => listenOnly && `
+    &:after {
+      content: "\\00a0\\e90c\\00a0";
+      background-color: ${colorSuccess};
+    }
+  `}
+
+  ${({noVoice}) => noVoice && `
+    &:after {
+      content: "";
+      background-color: transparent;
+    }
+  `} // ================ talking animation ================
+  ${({talking, animations, color}) => talking && animations && color && css`
+    &:after {
+      animation: ${pulse(color)} 1s infinite ease-in;
+    }
+  `}
+
+  ${({talking, animations}) => talking && !animations && css`
+    &:after {
+      box-shadow: 0 0 0 4px currentColor;
+    }
+  `}
+`;
+
+const RightIconPresenterContainer = styled.div<RightIconPresenterProps>`
+  position: relative;
+  height: 24px;
+  width: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid transparent;
+  user-select: none;
+  color: ${colorWhite} !important;
+  font-size: 110%;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  inset: auto;
+  background-color: transparent;
+  
+  ${({ animations }) => animations && `
+    transition: .3s ease-in-out;
+  `}
+
+  &:after,
+  &:before {
+    content: "";
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border: 1.5px solid ${userListBg};
+    border-radius: 5px;
+    background-color: transparent;
+    color: ${colorWhite};
+    opacity: 1;
+    font-family: 'bbb-icons';
+    font-size: .85rem;
+    line-height: 6px;
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: -.85rem;
+    z-index: 1;
+    bottom: 0;
+    top: 8px;
+  
+    ${({ animations }) => animations && `
+        transition: .3s ease-in-out;
+      `}
+  }
+  ${({ moderator }) => moderator && `
+    color: ${colorWhite} !important;
+  `}
+
+  ${({ presenter }) => presenter && `
+    &:after {
+      content: "\\00a0\\e90b\\00a0";
+      padding: ${mdPaddingY} !important;
+      background-color: ${colorPrimary};
+    }
+  `}
+
+  ${({
+       presenter, isChrome, isFirefox, isEdge,
+     }) => presenter && (isChrome || isFirefox || isEdge) && `
+    &:after {
+      padding: ${indicatorPadding} !important;
+    }
+  `}
+
+  ${({ whiteboardAccess, presenter }) => whiteboardAccess && !presenter && `
+    &:after {
+      content: "\\00a0\\e925\\00a0";
+      padding: ${mdPaddingY} !important;
+      background-color: ${colorPrimary};
+    }
+  `}
+
+  ${({
+       whiteboardAccess, isChrome, isFirefox, isEdge,
+     }) => whiteboardAccess && (isChrome || isFirefox || isEdge) && `
+    &:after {
+      padding: ${indicatorPadding};
+    }
+  `}
+`;
+
+const RightIconHandContainer = styled.div<RightIconHandProps>`
+  position: relative;
+  height: 24px;
+  width: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  text-align: center;
+  border: 2px solid transparent;
+  user-select: none;
+  color: ${colorWhite} !important;
+  font-size: 110%;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  background-color: transparent;
+  top: 9px;
+`;
+
+
+const UserItemContents = styled.div<UserItemContentsProps>`
+  position: static;
+  padding: .45rem;
+  width: 100%;
+  
+  ${({selected}) => selected && `
+    background-color: ${listItemBgHover};
+    border-top-left-radius: ${smPaddingY};
+    border-bottom-left-radius: ${smPaddingY};
+
+    &:focus {
+      box-shadow: inset 0 0 0 ${borderSize} ${itemFocusBorder}, inset 1px 0 0 1px ${itemFocusBorder};
+    }
+  `}
+
+  ${({isActionsOpen}) => !isActionsOpen && `
+    display: flex;
+    flex-flow: row;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    cursor: pointer;
+
+    [dir="rtl"] & {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+    &:first-child {
+      margin-top: 0;
+    }
+    &:focus,
+    &:hover {
+      outline: transparent;
+      outline-style: dotted;
+      outline-width: ${borderSize};
+      background-color: ${listItemBgHover};
+    }
+
+    &:active{
+      outline: transparent;
+      outline-width: ${borderSize};
+      outline-style: solid;
+      background-color: ${listItemBgHover};
+      box-shadow: inset 0 0 0 ${borderSize} ${itemFocusBorder}, inset 1px 0 0 1px ${itemFocusBorder};
+    }
+    flex-flow: column;
+    flex-shrink: 0;
+  `}
+
+  ${({isActionsOpen}) => isActionsOpen && `
+    outline: transparent;
+    outline-width: ${borderSize};
+    outline-style: solid;
+    background-color: ${listItemBgHover};
+    box-shadow: inset 0 0 0 ${borderSize} ${itemFocusBorder}, inset 1px 0 0 1px ${itemFocusBorder};
+    border-top-left-radius: ${smPaddingY};
+    border-bottom-left-radius: ${smPaddingY};
+
+    &:focus {
+      outline-style: solid;
+      outline-color: transparent !important;
+    }
+  `}
+
+  flex-grow: 0;
+  display: flex;
+  flex-flow: row;
+  border: 3px solid transparent;
+
+  [dir="rtl"] & {
+    padding: ${lgPaddingY} ${lgPaddingY} ${lgPaddingY} 0;
+  }
+
+  &:hover::after,
+  &:active::after{
+    content: "\\00a0\\e902\\00a0";
+    transform: rotate(90deg);
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: ${colorBlack};
+    opacity: 1;
+    font-family: 'bbb-icons';
+    font-size: .85rem;
+    line-height: 6px;
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: -.85rem;
+    z-index: 1;
+    margin: .25rem ${smPaddingX} .25rem .25rem;
+  }
+
+
+  &:hover ${RightIconVoiceContainer},
+  &:hover ${RightIconPresenterContainer},
+  &:hover ${RightIconHandContainer},
+  &:active ${RightIconVoiceContainer},
+  &:active ${RightIconPresenterContainer},
+  &:active ${RightIconHandContainer}
+  {
+    display: none;
+  }
+`;
+
 export default {
   Avatar,
   Skeleton,
@@ -427,4 +685,7 @@ export default {
   UserNameSub,
   UserName,
   IconRightContainer,
+  RightIconVoiceContainer,
+  RightIconPresenterContainer,
+  RightIconHandContainer,
 };

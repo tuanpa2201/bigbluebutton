@@ -107,6 +107,10 @@ const intlMessages = defineMessages({
     id: 'app.actionsBar.actionsDropdown.breakoutRoomInvitationDesc',
     description: 'Invitation item description',
   },
+  closeLabel: {
+    id: 'app.modal.close',
+    description: 'Close',
+  },
 });
 
 interface RenderModalProps {
@@ -321,6 +325,11 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
     ].filter(({ allow }) => allow);
   }, [isModerator, hasBreakoutRooms, isMeetingMuted, locale, intl, isBreakoutRoomsEnabled, isLearningDashboardEnabled]);
 
+  const onCloseUserList = () => {
+    alert("CloseUserList");
+    debugger
+  };
+
   const newLocal = 'true';
   return (
     <>
@@ -329,7 +338,7 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
           <Styled.OptionsButton
             label={intl.formatMessage(intlMessages.optionsLabel)}
             data-test="manageUsers"
-            icon="settings"
+            icon="more"
             color="light"
             hideLabel
             size="md"
@@ -348,6 +357,16 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
           anchorOrigin: { vertical: 'bottom', horizontal: isRTL ? 'right' : 'left' },
           transformOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },
         }}
+      />
+      <Styled.OptionsButton
+          label={intl.formatMessage(intlMessages.closeLabel)}
+          data-test="manageUsers"
+          icon="close"
+          color="light"
+          hideLabel
+          size="md"
+          circle
+          onClick={() => onCloseUserList()}
       />
       {renderModal({
         isOpen: isCreateBreakoutRoomModalOpen,

@@ -63,6 +63,8 @@ class UserContent extends PureComponent {
           </Styled.ScrollableList>
         ) : (
           <>
+            <UserTitleContainer />
+            <UserListParticipants compact={compact} />
             {isChatEnabled ? <ChatList /> : null}
             <UserNotesContainer />
             {isTimerActive && <TimerContainer isModerator={currentUser?.role === ROLE_MODERATOR} />}
@@ -70,8 +72,6 @@ class UserContent extends PureComponent {
             <UserPollsContainer isPresenter={currentUser?.presenter} />
             <BreakoutRoomContainer />
             <GenericSidekickContentNavButtonContainer />
-            <UserTitleContainer />
-            <UserListParticipants compact={compact} />
           </>
         )}
       </Styled.Content>

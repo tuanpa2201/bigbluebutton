@@ -80,7 +80,7 @@ const renderUserListItemIconsFromPlugin = (
 ).map((item: PluginSdk.UserListItemAdditionalInformationInterface) => {
   const itemToRender = item as PluginSdk.UserListItemIcon;
   return (
-    <Styled.IconRightContainer
+    <Styled.IconRightContainer className="rightIconHand"
       key={item.id}
     >
       <Icon iconName={itemToRender.icon} />
@@ -182,18 +182,17 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index }
       native: '⏰',
     },
   ];
-
+  const emojiSize = convertRemToPixels(1.3);
   const getIconUser = () => {
-    const emojiSize = convertRemToPixels(1.3);
 
     if (user.isDialIn) {
       return <Icon iconName="volume_level_2" />;
     }
-    if (user.raiseHand === true) {
-      return reactionsEnabled
-        ? <Emoji key={emojiIcons[0].id} emoji={emojiIcons[0]} native={emojiIcons[0].native} size={emojiSize} />
-        : <Icon iconName="hand" />;
-    }
+    // if (user.raiseHand === true) {
+    //   return reactionsEnabled
+    //     ? <Emoji key={emojiIcons[0].id} emoji={emojiIcons[0]} native={emojiIcons[0].native} size={emojiSize} />
+    //     : <Icon iconName="hand" />;
+    // }
     if (user.away === true) {
       return reactionsEnabled
         ? <Emoji key="away" emoji={emojiIcons[1]} native={emojiIcons[1].native} size={emojiSize} />
@@ -264,6 +263,30 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index }
           {subs.length ? addSeparator(subs) : null}
         </Styled.UserNameSub>
       </Styled.UserNameContainer>
+      <Styled.RightIconHandContainer hand={user.raiseHand} className="rightIconHand">
+        {user.raiseHand? <Emoji key={emojiIcons[0].id} emoji={emojiIcons[0]} native={emojiIcons[0].native} size={emojiSize} /> : ''}
+      </Styled.RightIconHandContainer>
+      <Styled.RightIconVoiceContainer className="rightIconHand"
+          talking={voiceUser?.talking}
+          muted={voiceUser?.muted}
+          listenOnly={voiceUser?.listenOnly}
+          voice={voiceUser?.joined}
+          noVoice={!voiceUser?.joined}
+          color={user.color}
+          animations={animations}
+          isChrome={isChrome}
+          isFirefox={isFirefox}
+          isEdge={isEdge}
+      />
+      <Styled.RightIconPresenterContainer className="rightIconHand"
+          moderator={user.isModerator}
+          presenter={user.presenter}
+          whiteboardAccess={hasWhiteboardAccess}
+          animations={animations}
+          isChrome={isChrome}
+          isFirefox={isFirefox}
+          isEdge={isEdge}
+      />
       {renderUserListItemIconsFromPlugin(userItemsFromPlugin)}
     </Styled.UserItemContents>
   );

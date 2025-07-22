@@ -291,7 +291,7 @@ const UserActions: React.FC<UserActionsProps> = ({
     isMuted,
   );
   const {
-    allowedToChatPrivately,
+    // allowedToChatPrivately,
     allowedToMuteAudio,
     allowedToUnmuteAudio,
     allowedToChangeWhiteboardAccess,
@@ -350,7 +350,7 @@ const UserActions: React.FC<UserActionsProps> = ({
   );
   const dropdownOptions = [
     {
-      allowed: true,
+      allowed: false,
       key: 'userName',
       label: user.name,
       titleActions,
@@ -383,21 +383,22 @@ const UserActions: React.FC<UserActionsProps> = ({
       icon: user.pinned ? 'pin-video_off' : 'pin-video_on',
     },
     {
-      allowed: (() => {
-        const preventSelfChat = user.userId !== currentUser.userId;
-        const moderatorOverride = currentUser.isModerator
-          && allowedToChatPrivately;
-        const regularUserCondition = (isChatEnabled
-          && !lockSettings?.disablePrivateChat
-          && !isVoiceOnlyUser(user.userId)
-          && !isBreakout)
-          || user.isModerator;
-
-        const isAllowed = preventSelfChat
-          && (moderatorOverride || regularUserCondition || !currentUser.locked);
-
-        return isAllowed;
-      })(),
+      // allowed: (() => {
+      //   const preventSelfChat = user.userId !== currentUser.userId;
+      //   const moderatorOverride = currentUser.isModerator
+      //     && allowedToChatPrivately;
+      //   const regularUserCondition = (isChatEnabled
+      //     && !lockSettings?.disablePrivateChat
+      //     && !isVoiceOnlyUser(user.userId)
+      //     && !isBreakout)
+      //     || user.isModerator;
+      //
+      //   const isAllowed = preventSelfChat
+      //     && (moderatorOverride || regularUserCondition || !currentUser.locked);
+      //
+      //   return isAllowed;
+      // })(),
+      allowed: false,
       key: 'activeChat',
       label: intl.formatMessage(messages.StartPrivateChat),
       onClick: () => {
@@ -589,7 +590,7 @@ const UserActions: React.FC<UserActionsProps> = ({
   ];
 
   const actions = dropdownOptions.filter((key) => key.allowed);
-  if (!(actions.length > 1) || user.bot) {
+  if (!(actions.length > 0) || user.bot) {
     return (
       <Styled.NoPointerEvents>
         {children}
