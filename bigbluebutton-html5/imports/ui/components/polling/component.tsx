@@ -102,7 +102,7 @@ const PollingGraphql: React.FC<PollingGraphqlProps> = (props) => {
     }
   }, []);
 
-  const handleUpdateResponseInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUpdateResponseInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (responseInput.current) {
       responseInput.current.value = validateInput(e.target.value);
       setTypedAns(responseInput.current.value);
@@ -123,7 +123,7 @@ const PollingGraphql: React.FC<PollingGraphqlProps> = (props) => {
     setCheckedAnswers([...checkedAnswers]);
   };
 
-  const handleMessageKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleMessageKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.keyCode === 13 && typedAns.length > 0) {
       handleTypedVote(poll.pollId, typedAns);
     }
@@ -145,11 +145,12 @@ const PollingGraphql: React.FC<PollingGraphqlProps> = (props) => {
         {poll.type !== pollTypes.Response && (
           <span>
             {questionText.length === 0 && (
-              <Styled.PollingTitle>
+              <Styled.PollingTitle className="pollingQuestionTitle">
                 {intl.formatMessage(intlMessages.pollingTitleLabel)}
               </Styled.PollingTitle>
             )}
             <Styled.PollingAnswers
+              className="pollingAnswers"
               removeColumns={options.length === 1}
               stacked={stackOptions}
             >
@@ -166,8 +167,9 @@ const PollingGraphql: React.FC<PollingGraphqlProps> = (props) => {
                 }
 
                 return (
-                  <Styled.PollButtonWrapper key={option.optionId}>
+                  <Styled.PollButtonWrapper key={option.optionId} className="pollingButtonWrapper">
                     <Styled.PollingButton
+                      className="pollingButton"
                       color="primary"
                       size="md"
                       label={label}
@@ -194,30 +196,21 @@ const PollingGraphql: React.FC<PollingGraphqlProps> = (props) => {
           </span>
         )}
         {poll.type === pollTypes.Response && (
-          <Styled.TypedResponseWrapper>
-            <Styled.TypedResponseInput
-              data-test="pollAnswerOption"
-              onChange={(e) => {
-                handleUpdateResponseInput(e);
-              }}
-              onKeyDown={(e) => {
-                handleMessageKeyDown(e);
-              }}
-              type="text"
-              placeholder={intl.formatMessage(intlMessages.responsePlaceholder)}
+          <Styled.TypedResponseWrapper className="pollingResponseInputWrapper">
+            <textarea
+              rows={3}
+              data-test="pollAnswerInput"
               maxLength={MAX_INPUT_CHARS}
+              onChange={(e) => handleUpdateResponseInput(e)}
+              onKeyDown={(e) => handleMessageKeyDown(e)}
+              onPaste={(e) => { e.stopPropagation(); }}
+              onCut={(e) => { e.stopPropagation(); }}
+              onCopy={(e) => { e.stopPropagation(); }}
+              placeholder={intl.formatMessage(intlMessages.responsePlaceholder)}
               ref={responseInput}
-              onPaste={(e) => {
-                e.stopPropagation();
-              }}
-              onCut={(e) => {
-                e.stopPropagation();
-              }}
-              onCopy={(e) => {
-                e.stopPropagation();
-              }}
             />
             <Styled.SubmitVoteButton
+              className="btn btn-primary mt-12"
               data-test="submitAnswer"
               disabled={typedAns.length === 0}
               color="primary"
@@ -230,7 +223,7 @@ const PollingGraphql: React.FC<PollingGraphqlProps> = (props) => {
             />
           </Styled.TypedResponseWrapper>
         )}
-        <Styled.PollingSecret>
+        <Styled.PollingSecret className="pollingSecretHint">
           {intl.formatMessage(
             poll.secret
               ? intlMessages.responseIsSecret
@@ -307,6 +300,7 @@ const PollingGraphql: React.FC<PollingGraphqlProps> = (props) => {
     <Styled.Overlay>
       <Styled.PollingContainer
         autoWidth={poll.stackOptions}
+        className="pollingContainer"
         data-test="pollingContainer"
         role="complementary"
         ref={pollingContainer}
@@ -314,10 +308,10 @@ const PollingGraphql: React.FC<PollingGraphqlProps> = (props) => {
       >
         {poll.questionText.length > 0 && (
           <Styled.QHeader>
-            <Styled.QTitle>
+            <Styled.QTitle className="pollingQuestionTitle">
               {intl.formatMessage(intlMessages.pollQuestionTitle)}
             </Styled.QTitle>
-            <Styled.QText data-test="pollQuestion">
+            <Styled.QText data-test="pollQuestion" className="pollingQuestionText">
               {poll.questionText}
             </Styled.QText>
           </Styled.QHeader>
