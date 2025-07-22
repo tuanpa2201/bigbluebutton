@@ -2,19 +2,10 @@ import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints
 import styled from 'styled-components';
 
 import {
-  borderRadius,
-  lgPaddingX,
-} from '/imports/ui/stylesheets/styled-components/general';
-import {
-  fontSizeSmall,
   fontSizeBase,
-  fontSizeLarge,
-  headingsFontWeight,
-  lineHeightComputed,
 } from '/imports/ui/stylesheets/styled-components/typography';
 import {
   colorWhite,
-  colorText,
   colorBackground,
 } from '/imports/ui/stylesheets/styled-components/palette';
 
@@ -29,10 +20,10 @@ const Parent = styled.div`
 
 const Modal = styled.div`
   display: flex;
-  padding: ${lgPaddingX};
+  padding: 24px 16px 12px;
   background-color: ${colorWhite};
   flex-direction: column;
-  border-radius: ${borderRadius};
+  border-radius: 12px;
   max-width: 95vw;
   width: 600px;
 `;
@@ -42,19 +33,22 @@ const Content = styled.div`
 `;
 
 const Title = styled.h1`
-  margin: 0;
-  font-size: ${fontSizeLarge};
-  font-weight: ${headingsFontWeight};
+  color: var(--Text-Primary, #313131);
+  text-align: center;
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 `;
 
 const Text = styled.div`
-  color: ${colorText};
-  font-weight: normal;
-  padding: ${lineHeightComputed} 0;
-
-  @media ${smallOnly} {
-    font-size: ${fontSizeSmall};
-  }
+  color: var(--Text-Primary, #313131);
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
 `;
 
 const Wrapper = styled.div`

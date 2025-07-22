@@ -262,7 +262,7 @@
     "app.meeting.ended": "This session has ended",
     "app.meeting.endedFromAPI": "The session was terminated by the system",
     "app.meeting.endedWhenNoUserJoined": "The session was ended because no users joined",
-    "app.meeting.endedWhenLastUserLeft": "The session was ended when the last user left",
+    "app.meeting.endedWhenLastUserLeft": "You have logged out of the conference",
     "app.meeting.endedAfterExceedingDuration": "The session was ended due to exceeding the maximum duration",
     "app.meeting.breakoutEndedAfterExceedingDuration": "Breakout was ended due to exceeding the maximum duration",
     "app.meeting.breakoutEndedByModerator": "Breakout was terminated by Moderator",
