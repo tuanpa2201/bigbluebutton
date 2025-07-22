@@ -19,15 +19,15 @@ const ReactionsButton = (props) => {
     autoCloseReactionsBar,
   } = props;
 
-  // const REACTIONS = window.meetingClientSettings.public.userReaction.reactions;
-  const REACTIONS = [
-    { id: 'smiley', native: '😃', code: ':smiley:' },
-    { id: 'smiling_face_with_tear', native: '😢', code: ':smiling_face_with_tear:' },
-    { id: 'heart', native: '❤️', code: ':heart:' },
-    { id: '+1', native: '👎', code: ':thumbsdown:' },
-    { id: '-1', native: '👍', code: ':thumbsup:' },
-    { id: 'clap', native: '👏', code: ':clap:' },
-  ];
+  const REACTIONS = window.meetingClientSettings.public.userReaction.reactions;
+  // const REACTIONS = [
+  //   { id: 'smiley', native: '😃', code: ':smiley:' },
+  //   { id: 'smiling_face_with_tear', native: '😢', code: ':smiling_face_with_tear:' },
+  //   { id: 'heart', native: '❤️', code: ':heart:' },
+  //   { id: '+1', native: '👎', code: ':thumbsdown:' },
+  //   { id: '-1', native: '👍', code: ':thumbsup:' },
+  //   { id: 'clap', native: '👏', code: ':clap:' },
+  // ];
 
   const html = (code) => {
     const styles = [
@@ -91,13 +91,7 @@ const ReactionsButton = (props) => {
   REACTIONS.forEach(({ id, native, code }) => {
     actions.push({
       // eslint-disable-next-line max-len
-      label: <Styled.ButtonWrapper active={currentUserReaction === native}>
-        <span
-          className="emojiAsset"
-          style={{ display: 'inline-block' }}
-          dangerouslySetInnerHTML={html(code)}
-        />
-      </Styled.ButtonWrapper>,
+      label: <Styled.ButtonWrapper active={currentUserReaction === native}><em-emoji key={native} native={native} {...emojiProps} /></Styled.ButtonWrapper>,
       key: id,
       onClick: () => handleReactionSelect(native),
       customStyles: actionCustomStyles,
@@ -112,7 +106,7 @@ const ReactionsButton = (props) => {
 
   if (!svgIcon) {
     // eslint-disable-next-line max-len
-    customIcon = <span className="emojiAsset" style={{ display: 'inline-block' }} dangerouslySetInnerHTML={html(currentUserReactionEmoji?.code)}/>;
+    customIcon = <em-emoji key={currentUserReactionEmoji?.id} native={currentUserReactionEmoji?.native} emoji={{ id: currentUserReactionEmoji?.id }} {...emojiProps} />;
   }
 
   return (
