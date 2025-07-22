@@ -5,6 +5,9 @@ import {
 } from 'react-intl';
 import Styled from './styles';
 import { uniqueId } from '/imports/utils/string-utils';
+// Import CustomDropdown
+import CustomDropdown from '/imports/ui/components/CustomDropdown/CustomDropdown';
+import logger from "/imports/startup/client/logger";
 
 const propTypes = {
   intl: PropTypes.shape({
@@ -63,12 +66,13 @@ class DeviceSelector extends Component {
   }
 
   handleSelectChange(event) {
+    // event.target.value for both native and CustomDropdown
+    console.log('DeviceSelector.handleSelectChange', event);
     const { value } = event.target;
     const { devices, onChange } = this.props;
     const selectedDeviceId = (value === 'listen-only')
       ? value
       : devices.find((d) => d.deviceId === value)?.deviceId;
-
     onChange(selectedDeviceId);
   }
 
@@ -106,34 +110,35 @@ class DeviceSelector extends Component {
     let notFoundOption;
 
     if (blocked) {
-      notFoundOption = <option value="finding">{intl.formatMessage(intlMessages.findingDevicesLabel)}</option>;
+      notFoundOption = {
+        label: intl.formatMessage(intlMessages.findingDevicesLabel),
+        value: 'finding',
+        key: uniqueId('device-option-'),
+      };
     } else if (kind === 'audiooutput' && !('setSinkId' in HTMLMediaElement.prototype)) {
       const defaultOutputDeviceLabel = intl.formatMessage(intlMessages.defaultOutputDeviceLabel);
-      notFoundOption = <option value="not-found">{defaultOutputDeviceLabel}</option>;
+      notFoundOption = {
+        label: defaultOutputDeviceLabel,
+        value: 'not-found',
+        key: uniqueId('device-option-'),
+      };
     } else {
       const noDeviceFoundLabel = intl.formatMessage(intlMessages.noDeviceFoundLabel);
-      notFoundOption = <option value="not-found">{noDeviceFoundLabel}</option>;
+      notFoundOption = {
+        label: noDeviceFoundLabel,
+        value: 'not-found',
+        key: uniqueId('device-option-'),
+      };
     }
 
+    // Render CustomDropdown
     return (
-      <Styled.Select
+      <CustomDropdown
+        options={options.length ? options : [notFoundOption]}
         value={deviceId}
         onChange={this.handleSelectChange}
         disabled={!options.length}
-      >
-        {
-          options.length
-            ? options.map((option) => (
-              <option
-                key={option.key}
-                value={option.value}
-              >
-                {option.label}
-              </option>
-            ))
-            : notFoundOption
-        }
-      </Styled.Select>
+      />
     );
   }
 }

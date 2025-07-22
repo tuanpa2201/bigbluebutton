@@ -221,46 +221,42 @@ const InputStreamLiveSelector: React.FC<InputStreamLiveSelectorProps> = ({
         </div>
       ) : null}
       {
-
-        enableDynamicAudioDeviceSelection ? (
-          <LiveSelection
-            listenOnly={listenOnly}
-            inputDevices={inputDevices}
-            outputDevices={outputDevices}
-            inputDeviceId={inputDeviceId}
-            outputDeviceId={outputDeviceId}
-            meetingIsBreakout={meetingIsBreakout}
+        // <LiveSelection
+        //   listenOnly={listenOnly}
+        //   inputDevices={inputDevices}
+        //   outputDevices={outputDevices}
+        //   inputDeviceId={inputDeviceId}
+        //   outputDeviceId={outputDeviceId}
+        //   meetingIsBreakout={meetingIsBreakout}
+        //   talking={talking}
+        //   muted={muted}
+        //   disabled={disabled || isAudioLocked}
+        //   isAudioLocked={isAudioLocked}
+        //   toggleMuteMicrophone={toggleMuteMicrophone}
+        //   away={away}
+        //   supportsTransparentListenOnly={supportsTransparentListenOnly}
+        //   openAudioSettings={openAudioSettings}
+        // />
+        <>
+          {(isConnected && !listenOnly) && (
+          <MuteToggle
             talking={talking}
             muted={muted}
             disabled={disabled || isAudioLocked}
             isAudioLocked={isAudioLocked}
             toggleMuteMicrophone={toggleMuteMicrophone}
             away={away}
-            supportsTransparentListenOnly={supportsTransparentListenOnly}
             openAudioSettings={openAudioSettings}
+            noInputDevice={inputDeviceId === 'listen-only'}
           />
-        ) : (
-          <>
-            {(isConnected && !listenOnly) && (
-              <MuteToggle
-                talking={talking}
-                muted={muted}
-                disabled={disabled || isAudioLocked}
-                isAudioLocked={isAudioLocked}
-                toggleMuteMicrophone={toggleMuteMicrophone}
-                away={away}
-                openAudioSettings={openAudioSettings}
-                noInputDevice={inputDeviceId === 'listen-only'}
-              />
-            )}
-            <ListenOnly
-              listenOnly={listenOnly}
-              handleLeaveAudio={handleLeaveAudio}
-              meetingIsBreakout={meetingIsBreakout}
-              actAsDeviceSelector={enableDynamicAudioDeviceSelection && isMobile}
-            />
-          </>
-        )
+          )}
+          {/* <ListenOnly
+            listenOnly={listenOnly}
+            handleLeaveAudio={handleLeaveAudio}
+            meetingIsBreakout={meetingIsBreakout}
+            actAsDeviceSelector={enableDynamicAudioDeviceSelection && isMobile}
+          /> */}
+        </>
       }
     </>
   );

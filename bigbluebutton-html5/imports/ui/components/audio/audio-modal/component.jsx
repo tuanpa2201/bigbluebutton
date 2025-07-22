@@ -25,6 +25,7 @@ import {
 } from '/imports/ui/components/audio/audio-graphql/audio-controls/input-stream-live-selector/service';
 import Session from '/imports/ui/services/storage/in-memory';
 import logger from '/imports/startup/client/logger';
+import ThreeBarsLoader from "/imports/ui/components/ThreeBarsLoader/ThreeBarsLoader";
 
 const propTypes = {
   intl: PropTypes.shape({
@@ -451,8 +452,7 @@ const AudioModal = ({
                 label={intl.formatMessage(intlMessages.microphoneLabel)}
                 data-test="microphoneBtn"
                 aria-describedby="mic-description"
-                icon="unmute"
-                circle
+                svgIcon="microphone_2"
                 size="jumbo"
                 disabled={audioLocked}
                 onClick={
@@ -472,8 +472,7 @@ const AudioModal = ({
                 label={intl.formatMessage(intlMessages.listenOnlyLabel)}
                 data-test="listenOnlyBtn"
                 aria-describedby="listenOnly-description"
-                icon="listen"
-                circle
+                svgIcon="headphone_2"
                 size="jumbo"
                 onClick={handleJoinListenOnly}
               />
@@ -526,6 +525,7 @@ const AudioModal = ({
 
     return (
       <AudioSettings
+        className="audio-settings-modal"
         animations={animations}
         handleBack={handleBack}
         handleConfirmation={confirmationCallback}
@@ -639,16 +639,18 @@ const AudioModal = ({
 
       if (skipAudioOptions()) {
         return (
-          <Styled.Connecting role="alert">
-            <span data-test={!isEchoTest ? 'establishingAudioLabel' : 'connectingToEchoTest'}>
+          <Styled.Connecting role="alert" className="connecting">
+            <div data-test={!isEchoTest ? 'establishingAudioLabel' : 'connectingToEchoTest'} className="connecting-label">
               {intl.formatMessage(intlMessages.connecting)}
-            </span>
+            </div>
             {isReconnecting && (
               <Styled.ConnectingSubtext>
                 {intl.formatMessage(intlMessages.retrying)}
               </Styled.ConnectingSubtext>
             )}
-            <Styled.ConnectingAnimation animations={animations} />
+            <div className="connecting-animation">
+              <ThreeBarsLoader />
+            </div>
           </Styled.Connecting>
         );
       }
@@ -719,6 +721,7 @@ const AudioModal = ({
   return (
     <Styled.Background isBlurred={Session.getItem('audioModalIsOpen')}>
       <Styled.AudioModal
+        className={content === 'settings' ? 'audio-settings-modal' : 'audio_modal'}
         modalName="AUDIO"
         onRequestClose={closeModal}
         data-test="audioModal"
@@ -742,7 +745,7 @@ const AudioModal = ({
             />
           </Styled.BrowserWarning>
         ) : null}
-        <Styled.Content>
+        <Styled.Content className={content === 'settings' ? 'audio-settings-modal-content' : 'audio_modal-content'}>
           {renderContent()}
         </Styled.Content>
       </Styled.AudioModal>

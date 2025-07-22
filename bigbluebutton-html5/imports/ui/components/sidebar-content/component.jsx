@@ -12,6 +12,8 @@ import Styled from './styles';
 import ErrorBoundary from '/imports/ui/components/common/error-boundary/component';
 import FallbackView from '/imports/ui/components/common/fallback-errors/fallback-view/component';
 import GenericContentSidekickContainer from '/imports/ui/components/generic-content/generic-sidekick-content/container';
+import UploadContainer from '/imports/ui/components/upload/container';
+import UserListContainer from '/imports/ui/components/user-list/container';
 
 const propTypes = {
   top: PropTypes.number.isRequired,
@@ -148,6 +150,8 @@ const SidebarContent = (props) => {
           isToSharedNotesBeShow={sidebarContentPanel === PANELS.SHARED_NOTES}
         />
       )}
+      {sidebarContentPanel === PANELS.USERLIST && <UserListContainer />}
+      {sidebarContentPanel === PANELS.UPLOAD && <UploadContainer />}
       {sidebarContentPanel === PANELS.BREAKOUT && <BreakoutRoomContainer />}
       {sidebarContentPanel === PANELS.TIMER && <TimerContainer isModerator={amIModerator} />}
       {sidebarContentPanel === PANELS.WAITING_USERS && <GuestUsersManagementPanel />}

@@ -146,6 +146,7 @@ export const PRESENTATION_AREA = {
 export const PANELS = {
   USERLIST: 'userlist',
   CHAT: 'chat',
+  UPLOAD: 'upload',
   POLL: 'poll',
   CAPTIONS: 'captions',
   BREAKOUT: 'breakoutroom',
