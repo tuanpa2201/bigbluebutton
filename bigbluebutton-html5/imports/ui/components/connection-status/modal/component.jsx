@@ -2,11 +2,11 @@ import React, { PureComponent } from 'react';
 import { FormattedTime, defineMessages, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import UserAvatar from '/imports/ui/components/user-avatar/component';
-import CommonIcon from '/imports/ui/components/common/icon/component';
 import TooltipContainer from '/imports/ui/components/common/tooltip/container';
 import Icon from '/imports/ui/components/connection-status/icon/component';
 import { getHelp } from '../service';
 import Styled from './styles';
+import './styles.css';
 import ConnectionStatusHelper from '../status-helper/component';
 import Auth from '/imports/ui/services/auth';
 import connectionStatus from '../../../core/graphql/singletons/connectionStatus';
@@ -438,11 +438,21 @@ class ConnectionStatusComponent extends PureComponent {
           <Styled.DataColumn>
             <Styled.NetworkData>
               <div>{`${audioUploadLabel}`}</div>
-              <div>{`${audioCurrentUploadRate}k ↑`}</div>
+              <div>
+                {`${audioCurrentUploadRate}k`}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.00033 12.25L7.00033 1.75M7.00033 1.75L11.0837 5.83333M7.00033 1.75L2.91699 5.83333" stroke="#5F6166" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </Styled.NetworkData>
             <Styled.NetworkData>
               <div>{`${videoUploadLabel}`}</div>
-              <div data-test="videoUploadRateData">{`${videoCurrentUploadRate}k ↑`}</div>
+              <div data-test="videoUploadRateData">
+                {`${videoCurrentUploadRate}k`}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.00033 12.25L7.00033 1.75M7.00033 1.75L11.0837 5.83333M7.00033 1.75L2.91699 5.83333" stroke="#5F6166" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </Styled.NetworkData>
             <Styled.NetworkData>
               <div>{`${intl.formatMessage(intlMessages.jitter)}`}</div>
@@ -457,11 +467,21 @@ class ConnectionStatusComponent extends PureComponent {
           <Styled.DataColumn>
             <Styled.NetworkData>
               <div>{`${audioDownloadLabel}`}</div>
-              <div>{`${audioCurrentDownloadRate}k ↓`}</div>
+              <div>
+                {`${audioCurrentDownloadRate}k`}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.00033 1.75L7.00033 12.25M7.00033 12.25L11.0837 8.16667M7.00033 12.25L2.91699 8.16667" stroke="#5F6166" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </Styled.NetworkData>
             <Styled.NetworkData>
               <div>{`${videoDownloadLabel}`}</div>
-              <div>{`${videoCurrentDownloadRate}k ↓`}</div>
+              <div>
+                {`${videoCurrentDownloadRate}k`}
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7.00033 1.75L7.00033 12.25M7.00033 12.25L11.0837 8.16667M7.00033 12.25L2.91699 8.16667" stroke="#5F6166" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
             </Styled.NetworkData>
             <Styled.NetworkData>
               <div>{`${intl.formatMessage(intlMessages.lostPackets)}`}</div>
@@ -527,14 +547,10 @@ class ConnectionStatusComponent extends PureComponent {
         isOpen={isModalOpen}
         contentLabel={intl.formatMessage(intlMessages.ariaTitle)}
         data-test="connectionStatusModal"
+        title={intl.formatMessage(intlMessages.title)}
+        className="modal-connection-status"
       >
         <Styled.Container>
-          <Styled.Header>
-            <Styled.Title>
-              {intl.formatMessage(intlMessages.title)}
-            </Styled.Title>
-          </Styled.Header>
-
           <Styled.ConnectionTabs
             onSelect={this.handleSelectTab}
             selectedIndex={selectedTab}
