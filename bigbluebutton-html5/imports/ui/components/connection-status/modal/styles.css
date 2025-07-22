@@ -1,0 +1,30 @@
+.modal-connection-status {
+  border-radius: 12px !important;
+  background-color: #FFF;
+}
+
+.modal-connection-status .modal-header {
+  padding: 16px 12px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F7F8F9;
+  height: 56px;
+
+  >h2 {
+    margin: 0px !important;
+    color: #313131;
+  }
+}
+
+.modal-connection-status u {
+  color: #1087FF;
+  text-decoration: underline;
+}
+
+.text-base {
+  font-size: 1rem;
+}
+.font-semibold {
+  font-weight: 600;
+}

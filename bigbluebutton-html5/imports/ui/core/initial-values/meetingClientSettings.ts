@@ -587,11 +587,11 @@ export const meetingClientSettingsInitialValues: MeetingClientSettings = {
         },
         {
           id: 'neutral_face',
-          native: '😢',
+          native: '😐',
         },
         {
-          id: 'hearth',
-          native: '❤️',
+          id: 'slightly_frowning_face',
+          native: '🙁',
         },
         {
           id: '+1',
