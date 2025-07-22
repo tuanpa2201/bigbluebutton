@@ -10,7 +10,7 @@ import CreateBreakoutRoomContainerGraphql from '../../../../breakout-room/create
 import BBBMenu from '/imports/ui/components/common/menu/component';
 import Styled from './styles';
 import { defineMessages, useIntl } from 'react-intl';
-import { layoutSelect } from '/imports/ui/components/layout/context';
+import {layoutDispatch, layoutSelect} from '/imports/ui/components/layout/context';
 import { Layout } from '/imports/ui/components/layout/layoutTypes';
 import { uid } from 'radash';
 import useMeeting from '/imports/ui/core/hooks/useMeeting';
@@ -25,6 +25,7 @@ import { useMutation, useLazyQuery } from '@apollo/client';
 import { SET_MUTED } from './mutations';
 import { GET_USER_NAMES } from '/imports/ui/core/graphql/queries/users';
 import logger from '/imports/startup/client/logger';
+import {ACTIONS, PANELS} from "/imports/ui/components/layout/enums";
 
 const intlMessages = defineMessages({
   optionsLabel: {
@@ -325,9 +326,16 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
     ].filter(({ allow }) => allow);
   }, [isModerator, hasBreakoutRooms, isMeetingMuted, locale, intl, isBreakoutRoomsEnabled, isLearningDashboardEnabled]);
 
-  const onCloseUserList = () => {
-    alert("CloseUserList");
-    debugger
+  const layoutContextDispatch = layoutDispatch();
+  const handleClick = () => {
+    layoutContextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
+      value: PANELS.NONE,
+    });
+    layoutContextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
+      value: false,
+    });
   };
 
   const newLocal = 'true';
@@ -366,7 +374,7 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
           hideLabel
           size="md"
           circle
-          onClick={() => onCloseUserList()}
+          onClick={() => handleClick()}
       />
       {renderModal({
         isOpen: isCreateBreakoutRoomModalOpen,

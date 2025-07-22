@@ -563,7 +563,7 @@ const RightIconHandContainer = styled.div<RightIconHandProps>`
   justify-content: center;
   align-items:center;
   background-color: transparent;
-  top: 9px;
+  top: 6px;
 `;
 
 
@@ -656,10 +656,9 @@ const UserItemContents = styled.div<UserItemContentsProps>`
     opacity: 1;
     font-family: 'bbb-icons';
     font-size: .85rem;
-    line-height: 6px;
     text-align: center;
     vertical-align: middle;
-    letter-spacing: -.85rem;
+    letter-spacing: 5px;
     z-index: 1;
     margin: .25rem ${smPaddingX} .25rem .25rem;
   }
@@ -667,10 +666,8 @@ const UserItemContents = styled.div<UserItemContentsProps>`
 
   &:hover ${RightIconVoiceContainer},
   &:hover ${RightIconPresenterContainer},
-  &:hover ${RightIconHandContainer},
   &:active ${RightIconVoiceContainer},
-  &:active ${RightIconPresenterContainer},
-  &:active ${RightIconHandContainer}
+  &:active ${RightIconPresenterContainer}
   {
     display: none;
   }
