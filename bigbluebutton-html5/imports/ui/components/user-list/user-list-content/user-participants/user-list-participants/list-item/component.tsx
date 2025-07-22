@@ -71,6 +71,7 @@ interface UserListItemProps {
   user: User;
   lockSettings: LockSettings;
   index: number;
+  isSelected: boolean
 }
 
 const renderUserListItemIconsFromPlugin = (
@@ -92,7 +93,7 @@ const Emoji: React.FC<EmojiProps> = ({ emoji, native, size }) => (
   <em-emoji emoji={emoji} native={native} size={size} />
 );
 
-const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index }) => {
+const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index, isSelected }) => {
   const { pluginsExtensibleAreasAggregatedState } = useContext(PluginsContext);
   let userItemsFromPlugin = [] as PluginSdk.UserListItemAdditionalInformationInterface[];
   if (pluginsExtensibleAreasAggregatedState.userListItemAdditionalInformation) {
@@ -278,6 +279,7 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index }
             isChrome={isChrome}
             isFirefox={isFirefox}
             isEdge={isEdge}
+            isSelected={isSelected}
         />
         <Styled.RightIconPresenterContainer className="rightIconNomal"
             moderator={user.isModerator}
@@ -287,10 +289,11 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index }
             isChrome={isChrome}
             isFirefox={isFirefox}
             isEdge={isEdge}
+            isSelected={isSelected}
         />
         {renderUserListItemIconsFromPlugin(userItemsFromPlugin)}
       </>
-      <Styled.RightIconMoreContainer className="rightIconHover">
+      <Styled.RightIconMoreContainer className="rightIconHover" isSelected={isSelected}>
         <Icon iconName="more" />
       </Styled.RightIconMoreContainer>
     </Styled.UserItemContents>

@@ -51,6 +51,7 @@ interface RightIconPresenterProps {
   isChrome?: boolean;
   isFirefox?: boolean;
   isEdge?: boolean;
+  isSelected?: boolean;
 }
 
 interface RightIconVoiceProps {
@@ -64,6 +65,7 @@ interface RightIconVoiceProps {
   isChrome?: boolean;
   isFirefox?: boolean;
   isEdge?: boolean;
+  isSelected?: boolean;
 }
 
 interface UserItemContentsProps {
@@ -73,6 +75,10 @@ interface UserItemContentsProps {
 
 interface RightIconHandProps {
   hand?: boolean;
+}
+
+interface RightIconMorePops {
+  isSelected?: boolean;
 }
 
 // ===== avatar =====
@@ -383,7 +389,10 @@ const RightIconVoiceContainer = styled.div<RightIconVoiceProps>`
   justify-content: center;
   align-items: center;
   background-color: transparent;
-
+  
+  ${({isSelected}) => isSelected && `
+    display: none;
+  `}
   ${({animations}) => animations && `
     transition: .3s ease-in-out;
   `}
@@ -480,7 +489,10 @@ const RightIconPresenterContainer = styled.div<RightIconPresenterProps>`
   align-items:center;
   inset: auto;
   background-color: transparent;
-  
+
+  ${({isSelected}) => isSelected && `
+    display: none;
+  `}
   ${({ animations }) => animations && `
     transition: .3s ease-in-out;
   `}
@@ -566,7 +578,7 @@ const RightIconHandContainer = styled.div<RightIconHandProps>`
   top: 6px;
 `;
 
-const RightIconMoreContainer = styled.div`
+const RightIconMoreContainer = styled.div<RightIconMorePops>`
   position: relative;
   height: 24px;
   width: 24px;
@@ -584,6 +596,9 @@ const RightIconMoreContainer = styled.div`
   background-color: transparent;
   transition: de;
   top: 6px;
+  ${({isSelected}) => isSelected && `
+    display: flex;
+  `}
 `;
 
 
@@ -638,13 +653,13 @@ const UserItemContents = styled.div<UserItemContentsProps>`
     }
     flex-flow: column;
     flex-shrink: 0;
-    & ${RightIconVoiceContainer},
-    & ${RightIconPresenterContainer}
+    & .${RightIconVoiceContainer},
+    & .${RightIconPresenterContainer}
     {
       display: flex;
     }
   
-    & ${RightIconMoreContainer}
+    & .${RightIconMoreContainer}
     {
       display: none;
     }
@@ -663,13 +678,13 @@ const UserItemContents = styled.div<UserItemContentsProps>`
       outline-style: solid;
       outline-color: transparent !important;
     }
-    & ${RightIconVoiceContainer},
-    & ${RightIconPresenterContainer}
+    & .${RightIconVoiceContainer},
+    & .${RightIconPresenterContainer}
     {
       display: none;
     }
   
-    & ${RightIconMoreContainer}
+    & .${RightIconMoreContainer}
     {
       display: flex;
     }
