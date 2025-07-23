@@ -19,6 +19,7 @@ import ToggleGroup from '/imports/ui/components/common/toggle-group/component';
 import Separator from '/imports/ui/components/common/separator/component';
 import OptionsDropdownContainer from '/imports/ui/components/nav-bar/options-dropdown/container';
 import getFromUserSettings from '/imports/ui/services/users-settings';
+import LeaveMeetingButtonContainer from '../nav-bar/leave-meeting-button/container';
 
 const intlMessages = defineMessages({
   actionsBarLabel: {
@@ -137,6 +138,7 @@ class ActionsBar extends PureComponent {
       ariaHidden,
       showScreenshareQuickSwapButton,
       isReactionsButtonEnabled,
+      isDirectLeaveButtonEnabled,
     } = this.props;
 
     const Settings = getSettingsSingletonInstance();
@@ -222,6 +224,8 @@ class ActionsBar extends PureComponent {
               amIModerator={amIModerator}
               isDirectLeaveButtonEnabled={IS_DIRECT_LEAVE_BUTTON_ENABLED}
             />
+            {isDirectLeaveButtonEnabled && isMeteorConnected
+              ? <LeaveMeetingButtonContainer amIModerator={amIModerator} /> : null}
             {this.renderPluginsActionBarItems(ActionsBarPosition.RIGHT)}
           </Styled.Center>
           <Styled.Right>

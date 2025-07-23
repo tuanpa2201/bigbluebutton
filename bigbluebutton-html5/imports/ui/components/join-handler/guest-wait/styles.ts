@@ -6,22 +6,38 @@ const Container = styled.div`
   align-items: center;
   height: 100vh;
   margin: 0;
+  background: var(--BG-Meet-bg, #303338);
 `;
 
 const Content = styled.div`
   text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 24px;
+
+  color: var(--Neutral-02, #F2F2F2);
+
+  font-family: "FS PF BeauSans Pro";
+  font-size: 18px;
+  line-height: 24px;
 `;
 
 const Heading = styled.h1`
-  font-size: 2rem;
+  color: var(--Neutral-02, #F2F2F2);
+  text-align: center;
+  text-overflow: ellipsis;
+  font-family: "FS PF BeauSans Pro";
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  margin-top: 48px;
 `;
 
 const Position = styled.div`
   align-items: center;
   text-align: center;
+  color: var(--Neutral-02, #F2F2F2);
+
+  font-family: "FS PF BeauSans Pro";
+  font-size: 18px;
+  line-height: 24px;
 `;
 
 const sk_bouncedelay = keyframes`
@@ -59,6 +75,10 @@ const Bounce2 = styled(Bounce)`
   animation-delay: -0.16s;
 `;
 
+const IconSvg = styled.img`
+  height: 16rem;
+`;
+
 export default {
   Container,
   Content,
@@ -68,4 +88,5 @@ export default {
   Bounce1,
   Bounce2,
   Spinner,
+  IconSvg,
 };
