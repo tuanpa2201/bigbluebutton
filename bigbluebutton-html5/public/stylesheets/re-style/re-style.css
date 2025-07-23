@@ -357,3 +357,37 @@
         }
     }
 }
+
+.policy-modal {
+    & .policy-container {
+        margin: auto;
+        & .policy-desc {
+            text-align: unset;
+            color: var(--Text-Primary, #313131);
+        }
+        & .policy-content {
+            align-items: normal;
+            & .policy-radio-label {
+                border: 1px solid var(--Border-00, #EFEFEF);
+            }
+        }
+        & span {
+            color: var(--Text-Primary, #313131);
+        }
+        & input[type="radio"] {
+            margin-right: 10px;
+        }
+        & input[type="radio"]:checked {
+            accent-color: var(--Highlight-Light-Red, #EB5366) !important;
+        }
+    }
+
+    & .policy-footer {
+        padding-top: 16px;
+        border-top: 1px solid var(--border-00-light);
+        margin: 16px 0 0;
+        & .policy-action {
+
+        }
+    }
+}

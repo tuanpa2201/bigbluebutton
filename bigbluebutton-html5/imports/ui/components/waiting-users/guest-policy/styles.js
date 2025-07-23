@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import { colorGrayDark, colorGray } from '/imports/ui/stylesheets/styled-components/palette';
+import {colorGray, listItemBgHover} from '/imports/ui/stylesheets/styled-components/palette';
 import {
   jumboPaddingY,
   lgPaddingX,
-  lgPaddingY,
-  titlePositionLeft,
   modalMargin,
+  smPadding,
+  smPaddingX,
 } from '/imports/ui/stylesheets/styled-components/general';
-import { fontSizeLarge } from '/imports/ui/stylesheets/styled-components/typography';
 import ModalSimple from '/imports/ui/components/common/modal/simple/component';
 import Button from '/imports/ui/components/common/button/component';
 
@@ -41,10 +40,59 @@ const GuestPolicyButton = styled(Button)`
   `}
 `;
 
+const Footer = styled.div`
+  display: flex;
+  margin: ${smPaddingX} ${smPadding} 0;
+`;
+
+const Actions = styled.div`
+  margin-left: auto;
+  margin-right: 0;
+  display: flex;
+  [dir="rtl"] & {
+    margin-right: auto;
+    margin-left: 3px;
+  }
+`;
+
+const ButtonCancel = styled(Button)`
+  margin: 0 0.25rem;
+`;
+
+const ButtonApply = styled(Button)`
+  margin: 0 0.25rem;
+`;
+
+const RadioGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const RadioLabel = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: ${listItemBgHover};
+  }
+`;
+
 export default {
   GuestPolicyModal,
   Container,
   Description,
   Content,
   GuestPolicyButton,
+  Footer,
+  Actions,
+  ButtonCancel,
+  ButtonApply,
+  RadioGroup,
+  RadioLabel,
 };
