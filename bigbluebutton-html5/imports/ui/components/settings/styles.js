@@ -1,21 +1,13 @@
 import styled from 'styled-components';
 import {
   smPaddingX,
-  smPaddingY,
-  mdPaddingY,
-  mdPaddingX,
 } from '/imports/ui/stylesheets/styled-components/general';
 import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
-import {
-  colorGrayDark,
-  colorPrimary,
-  colorWhite,
-} from '/imports/ui/stylesheets/styled-components/palette';
 import { fontSizeLarge } from '/imports/ui/stylesheets/styled-components/typography';
 import {
   Tab, Tabs, TabList, TabPanel,
 } from 'react-tabs';
-import Icon from '/imports/ui/components/common/icon/component';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const ToggleLabel = styled.span`
   margin-right: ${smPaddingX};
@@ -29,7 +21,7 @@ const SettingsTabs = styled(Tabs)`
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
-
+  margin-top: 0px;
   @media ${smallOnly} {
     width: 100%;
     flex-flow: column;
@@ -59,14 +51,15 @@ const SettingsTabSelector = styled(Tab)`
   flex: 0 0 auto;
   justify-content: flex-start;
   border: none !important;
-  padding: ${mdPaddingY} ${mdPaddingX};
-  color: ${colorGrayDark};
-  border-radius: .2rem;
+  padding: 6px 12px;
+  color: var(--Text-Primary, #313131);
+  border-radius: 8px;
   cursor: pointer;
-  margin-bottom: ${smPaddingY};
+  margin-bottom: 8px;
   align-items: center;
   flex-grow: 0;
   min-width: 0;
+  gap: 8px;
 
   & > span {
     min-width: 0;
@@ -89,23 +82,13 @@ const SettingsTabSelector = styled(Tab)`
   }
 
   &.is-selected {
-    color: ${colorWhite};
-    background-color: ${colorPrimary};
-    font-weight: bold;
-
-    & > i {
-      color: ${colorWhite};
-    }
+    background: var(--BG-04---hover, #EFEFEF);
+    font-weight: semibold;
   }
 `;
 
-const SettingsIcon = styled(Icon)`
-  margin: 0 .5rem 0 0;
-  font-size: ${fontSizeLarge};
-
-  [dir="rtl"] & {
-     margin: 0 0 0 .5rem;
-  }
+const SettingsIcon = styled(SvgIcon)`
+  
 `;
 
 const SettingsTabPanel = styled(TabPanel)`
