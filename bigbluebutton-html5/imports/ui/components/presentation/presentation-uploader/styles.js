@@ -105,11 +105,11 @@ const StatusInfo = styled.div`
 `;
 
 const FileList = styled(ScrollboxVertical)`
-  height: 100%;
-  max-height: ${uploadListHeight};
-  padding: 1px;
-  margin-bottom: 2rem;
-  overflow-x: hidden;
+  // height: 100%;
+  // max-height: ${uploadListHeight};
+  // padding: 1px;
+  margin-bottom: 16px;
+  // overflow-x: hidden;
 `;
 
 const Table = styled.table`
@@ -368,6 +368,7 @@ const UploaderModal = styled.div`
 `;
 
 const ModalInner = styled.div`
+  display: grid;
   margin-left: auto;
   margin-right: auto;
   width: ${modalInnerWidth};
@@ -413,7 +414,7 @@ const ConfirmButton = styled(Button)`
   border-radius: 8px;
   min-width: 296px;
   height: 32px;
-  margin-top: 80%%;
+  margin-top: auto;
   margin-bottom: 12px;
   margin-left: 16px;
   margin-right: 16px;

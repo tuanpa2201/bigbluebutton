@@ -35,6 +35,7 @@ const PresentationToolbarWrapper = styled.div`
   padding: 0 20px;
   background: var(--Neutral-01, #F7F8F9);
   height: 54px;
+  border-radius: 0 0 8px 8px;
   
   select {
     &:-moz-focusring {

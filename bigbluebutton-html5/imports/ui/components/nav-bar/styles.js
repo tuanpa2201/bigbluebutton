@@ -18,7 +18,8 @@ const Navbar = styled.header`
   flex-direction: column;
   text-align: center;
   font-size: 1.5rem;
-  background-color: ${colorBackground};
+  // background-color: ${colorBackground};
+  background-color: #303338;
   padding: ${barsPadding} ${barsPadding} 0 ${barsPadding};
 `;
 
