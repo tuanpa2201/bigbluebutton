@@ -118,10 +118,11 @@ const Table = styled.table`
   width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
-
+  margin-top: 24px;
   & > tbody {
     text-align: left;
-
+    gap: 12px;
+    display:grid;
     [dir="rtl"] & {
       text-align: right;
     }
@@ -235,45 +236,53 @@ const CurrentLabel = styled.span`
   font-size: 75%;
   font-weight: 700;
   line-height: 1;
-  color: ${colorWhite};
-  background: ${colorPrimary};
+  color: #0A84FF;
+  background: #CFE9F5;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
-  border-radius: .25em;
+  border-radius: 8px;
   text-transform: uppercase;
 `;
 
-const TableItemName = styled.th`
-  height: 1rem;
-  width: auto;
-  position: relative;
+const TableItemName = styled.span`
+  // height: 1rem;
+  // width: auto;
+  // position: relative;
 
-  &:before {
-    content: "\\00a0";
-    visibility: hidden;
-  }
+  // &:before {
+  //   content: "\\00a0";
+  //   visibility: hidden;
+  // }
 
-  & > span {
-    min-width: 0;
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  // & > span {
+  //   min-width: 0;
+  //   display: inline-block;
+  //   white-space: nowrap;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
 
-    position: absolute;
-    left: 0;
-    right: 0;
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
 
-    [dir="rtl"] & {
-      right: 1rem;
-    }
-  }
+  //   [dir="rtl"] & {
+  //     right: 1rem;
+  //   }
+  // }
+  font-weight: 400;
+  font-size: 14px;
+  color: #313131;
+  min-width: 110px;
+  max-width:110px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const TableItemStatus = styled.td`
   width: 1%;
-
+  display: none;
   text-align: right;
 
   [dir="rtl"] & {
@@ -301,103 +310,73 @@ const ItemAction = styled.div`
   }
 `;
 
-const RemoveButton = styled(Button)`
-  [dir="ltr"] & {
-    margin-left: ${smPaddingX};
-  }
-
-  [dir="rtl"] & {
-    margin-right: ${smPaddingX};
-  }
-
-  div > i {
-    margin-top: .25rem;
-  }
-
-  &,
-  & > i {
-    display: inline-block;
-    border: 0;
-    background: transparent;
-    cursor: pointer;
-    font-size: 1.35rem;
-    color: ${colorGrayLight};
-    padding: 0;
-
-    ${({ animations }) => animations && `
-      transition: all .25s;
-    `}
-
-    :hover, :focus {
-      padding: unset !important;
-    }
-  }
-
-  background-color: transparent;
-  border: 0 !important;
-
-  & > i:focus,
-  & > i:hover {
-    color: ${colorDanger} !important;
-  }
-
-  &[aria-disabled="true"] {
-    cursor: not-allowed;
-    opacity: .5;
-    box-shadow: none;
-    pointer-events: none;
-  }
+const RemoveButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  color: #888;
+  padding: 0 4px;
 `;
 
 const UploaderDropzone = styled(Dropzone)`
   flex: auto;
-  border: ${borderSize} dashed ${colorGray};
+  border: 1px dashed #C8C8C8;
   color: ${colorGray};
   border-radius: ${borderRadius};
-  padding: calc(${lgPaddingY} * 2.5) ${lgPaddingX};
+  padding: 12px;
   text-align: center;
   font-size: ${fontSizeLarge};
   cursor: pointer;
-
+  display: flex;
+  background: #F7F8F9;
+  align-items: center;
   & .dropzoneActive {
     background-color: ${colorGrayLighter};
   }
 `;
 
 const DropzoneIcon = styled(Icon)`
-  font-size: calc(${fontSizeLarge} * 3);
+  height: 16px;
+  width: 16px;
+  margin-right:8px
 `;
 
 const DropzoneMessage = styled.p`
   margin: ${mdPaddingY} 0;
+  font-size: 14px;
+  display: flex;
 `;
 
 const DropzoneLink = styled.span`
-  color: ${colorLink};
+  color: #1087FF;
   text-decoration: underline;
-  font-size: 80%;
+  font-size: 14px;
   display: block;
 `;
 
 const UploaderModal = styled.div`
   background-color: white;
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 900;
+  height: 100%;
+  padding: 0 16px 16px 16px;
+  width: 360px;
+  min-width: 360px;
+  z-index: 100;
 `;
 
 const ModalInner = styled.div`
   margin-left: auto;
   margin-right: auto;
   width: ${modalInnerWidth};
-  max-height: 100%;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
   padding-bottom: .75rem;
   overflow-y: auto;
-  
+  align-items: space-between;
   @media ${smallOnly} {
     padding-left: ${statusInfoHeight};
     padding-right: ${statusInfoHeight};
@@ -408,7 +387,6 @@ const ModalHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom:${borderSize} solid ${colorGrayLighter};
   margin-bottom: 2rem;
   padding: ${mdPaddingX} 0;
 
@@ -425,21 +403,46 @@ const ActionWrapper = styled.div`
   margin: 0 0.25rem;
 `;
 
-const DismissButton = styled(Button)`
-  min-width: 6rem;
-  height: 1.875rem;
-  margin-right: ${toastMdMargin};
+const DismissButton = styled.div`
+
 `;
 
 const ConfirmButton = styled(Button)`
-  min-width: 6rem;
-  height: 1.875rem;
+  background-color: #EE0033;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  min-width: 296px;
+  height: 32px;
+  margin-top: 80%%;
+  margin-bottom: 12px;
+  margin-left: 16px;
+  margin-right: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #d4002e;
+  }
+
+  &:active {
+    background-color: #b30026;
+  }
+
+  &:disabled {
+    background-color: #f5a5b5;
+    cursor: not-allowed;
+  }
 `;
 
 const ModalHint = styled.div`
-  margin-bottom: 1rem;
-  color: ${colorText};
-  font-weight: normal;
+  margin-bottom: 16px;
+  color: #6F767E;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 `;
 
 const ToastItemIcon = styled(Icon)`
@@ -480,7 +483,7 @@ const StatusInfoSpan = styled.span`
   `}
 `;
 
-const PresentationItem = styled.tr`
+const PresentationItem = styled.div`
   ${({ isNew }) => isNew && `
     background-color: rgba(0, 128, 129, 0.05);
   `}
@@ -496,31 +499,21 @@ const PresentationItem = styled.tr`
   ${({ error }) => error && `
     background-color: rgba(223, 39, 33, 0.25);
   `}
-
-  ${({ animated }) => animated && `
-    background-image: linear-gradient(45deg,
-    rgba(255, 255, 255, .15) 25%,
-    transparent 25%,
-    transparent 50%,
-    rgba(255, 255, 255, .15) 50%,
-    rgba(255, 255, 255, .15) 75%,
-    transparent 75%,
-    transparent
-    );
-    background-size: 1rem 1rem;
-
-    ${({ animations }) => animations && css`
-      animation: ${barStripes} 1s linear infinite;
-    `}
-    }
-  `}
+  display: flex;
+  align-items: center;
+  background: #FFFFFF; 
+  border: 1px solid #EFEFEF;
+  border-radius: 8px;
+  height: 52px;
+  width: 100%;
+  padding: 12px;
 `;
 
-const TableItemActions = styled.td`
-  width: 1%;
-  min-width: ${itemActionsWidth};
+const TableItemActions = styled.div`
   text-align: left;
-
+  align-items: center;
+  display: flex;
+  margin-left: auto;
   [dir="rtl"] & {
     text-align: right;
   }
@@ -563,7 +556,10 @@ const ExternalUploadButton = styled(Button)`
 `;
 
 const ExportHint = styled(ModalHint)`
-  margin: 2rem 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #6F767E;
 `;
 
 const SetCurrentAction = styled.td`
@@ -587,6 +583,25 @@ const SetCurrentAction = styled.td`
       transition: all .25s;
     `}
   }
+`;
+
+const RadioCircle = styled.span`
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: ${({ checked }) => checked ? '4px solid #EE0033' : '1.5px solid #C8C8C8'};
+  border-radius: 20px;
+  position: relative;
+  background: #fff;
+  box-sizing: border-box;
+  margin-right: 12px;
+`;
+
+const FileIcon = styled.span`
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
 `;
 
 const Head = styled.tr`
@@ -666,4 +681,6 @@ export default {
   SetCurrentAction,
   Head,
   Title,
+  RadioCircle,
+  FileIcon,
 };

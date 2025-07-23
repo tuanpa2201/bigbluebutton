@@ -488,36 +488,6 @@ class PresentationToolbar extends PureComponent {
           />
         </Styled.PresentationSlideControls>
         <Styled.PresentationZoomControls>
-          {(showIWB) && (
-          <Styled.InfiniteWhiteboardButton
-            data-test={isInfiniteWhiteboard ? 'turnInfiniteWhiteboardOff' : 'turnInfiniteWhiteboardOn'}
-            role="button"
-            aria-label={
-              isInfiniteWhiteboard
-                ? intl.formatMessage(intlMessages.infiniteWhiteboardOff)
-                : intl.formatMessage(intlMessages.infiniteWhiteboardOn)
-            }
-            color="light"
-            disabled={!isMeteorConnected}
-            customIcon={infiniteWhiteboardIcon(isInfiniteWhiteboard)}
-            size="md"
-            circle
-            onClick={() => {
-              if (isInfiniteWhiteboard) {
-                tldrawAPI.setCamera({ x: 0, y: 0 });
-                resetSlide();
-                zoomChanger(100);
-              }
-              setPresentationPageInfiniteWhiteboard(!isInfiniteWhiteboard);
-            }}
-            label={
-              isInfiniteWhiteboard
-                ? intl.formatMessage(intlMessages.infiniteWhiteboardOff)
-                : intl.formatMessage(intlMessages.infiniteWhiteboardOn)
-            }
-            hideLabel
-          />
-          )}
 
           <Styled.WBAccessButton
             data-test={multiUser ? 'turnMultiUsersWhiteboardOff' : 'turnMultiUsersWhiteboardOn'}
@@ -556,6 +526,36 @@ class PresentationToolbar extends PureComponent {
               />
             </TooltipContainer>
           ) : null}
+          {(showIWB) && (
+          <Styled.InfiniteWhiteboardButton
+            data-test={isInfiniteWhiteboard ? 'turnInfiniteWhiteboardOff' : 'turnInfiniteWhiteboardOn'}
+            role="button"
+            aria-label={
+              isInfiniteWhiteboard
+                ? intl.formatMessage(intlMessages.infiniteWhiteboardOff)
+                : intl.formatMessage(intlMessages.infiniteWhiteboardOn)
+            }
+            color="light"
+            disabled={!isMeteorConnected}
+            customIcon={infiniteWhiteboardIcon(isInfiniteWhiteboard)}
+            size="md"
+            circle
+            onClick={() => {
+              if (isInfiniteWhiteboard) {
+                tldrawAPI.setCamera({ x: 0, y: 0 });
+                resetSlide();
+                zoomChanger(100);
+              }
+              setPresentationPageInfiniteWhiteboard(!isInfiniteWhiteboard);
+            }}
+            label={
+              isInfiniteWhiteboard
+                ? intl.formatMessage(intlMessages.infiniteWhiteboardOff)
+                : intl.formatMessage(intlMessages.infiniteWhiteboardOn)
+            }
+            hideLabel
+          />
+          )}
           <Styled.FitToWidthButton
             role="button"
             data-test="fitToWidthButton"

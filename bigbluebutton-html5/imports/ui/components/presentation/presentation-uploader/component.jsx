@@ -828,10 +828,10 @@ class PresentationUploader extends Component {
                 {intl.formatMessage(intlMessages.options)}
               </Styled.VisuallyHidden>
             </tr>
-            <Styled.Head>
+            {/* <Styled.Head>
               <th colSpan={4}>{intl.formatMessage(intlMessages.currentLabel)}</th>
               <th>{intl.formatMessage(intlMessages.actionsLabel)}</th>
-            </Styled.Head>
+            </Styled.Head> */}
           </thead>
           <tbody>
             {unique(presentationsSorted, p => p.presentationId) .map((item) => this.renderPresentationItem(item))}
@@ -881,6 +881,7 @@ class PresentationUploader extends Component {
     if (hasError) {
       this.hasError = true;
     }
+    const BASE_NAME = window.meetingClientSettings.public.app.basename;
 
     const Settings = getSettingsSingletonInstance();
     const { animations } = Settings.application;
@@ -914,27 +915,33 @@ class PresentationUploader extends Component {
         animations={animations}
         data-test="presentationItem"
       >
-        <Styled.SetCurrentAction>
-          <Radio
+        <div>
+          <Styled.RadioCircle
             animations={animations}
-            ariaLabel={`${intl.formatMessage(intlMessages.setAsCurrentPresentation)} ${item.name}`}
+            // ariaLabel={`${intl.formatMessage(intlMessages.setAsCurrentPresentation)} ${item.name}`}
             checked={item.current}
             keyValue={item.presentationId}
-            onChange={() => this.handleCurrentChange(item.presentationId)}
+            onClick={() => this.handleCurrentChange(item.presentationId)}
             disabled={disableActions || hasError}
           />
-        </Styled.SetCurrentAction>
+        </div>
+        <Styled.FileIcon>
+            <img
+                src={`${BASE_NAME}/resources/icon-bbb/file-text-2.png`}
+                alt="File Text"
+            />
+        </Styled.FileIcon>
         <Styled.TableItemName colSpan={!isActualCurrent ? 2 : 0}>
           <span>{item.name}</span>
         </Styled.TableItemName>
         {
           isActualCurrent
             ? (
-              <Styled.TableItemCurrent>
+              <div>
                 <Styled.CurrentLabel>
                   {intl.formatMessage(intlMessages.currentBadge)}
                 </Styled.CurrentLabel>
-              </Styled.TableItemCurrent>
+              </div>
             )
             : null
         }
@@ -968,11 +975,17 @@ class PresentationUploader extends Component {
                 data-test="removePresentation"
                 aria-label={`${intl.formatMessage(intlMessages.removePresentation)} ${item.name}`}
                 size="sm"
-                icon="delete"
+                // icon="delete"
                 hideLabel
                 onClick={() => this.handleRemove(item)}
                 animations={animations}
-              />
+              >
+                <img
+                    src={`${BASE_NAME}/resources/icon-bbb/trash.png`}
+                    alt="Trash"
+                    style={{ width: 16, height: 16 }}
+                />
+              </Styled.RemoveButton>
             ) : null}
           </Styled.TableItemActions>
         )}
@@ -985,6 +998,7 @@ class PresentationUploader extends Component {
       intl,
       fileValidMimeTypes,
     } = this.props;
+    const BASE_NAME = window.meetingClientSettings.public.app.basename;
 
     const { disableActions } = this.state;
 
@@ -1013,7 +1027,13 @@ class PresentationUploader extends Component {
         disablepreview="true"
         onDrop={(files, files2) => this.handleFiledrop(files, files2, this, intl, intlMessages)}
       >
-        <Styled.DropzoneIcon iconName="upload" />
+        <Styled.DropzoneIcon >
+          <img
+              src={`${BASE_NAME}/resources/icon-bbb/cloud-upload.png`}
+              alt="Cloud Upload"
+              style={{ width: 16, height: 16 }}
+          />
+        </Styled.DropzoneIcon>
         <Styled.DropzoneMessage>
           {intl.formatMessage(intlMessages.dropzoneLabel)}
           &nbsp;
@@ -1103,6 +1123,7 @@ class PresentationUploader extends Component {
     } = this.props;
     if (!isPresenter) return null;
     const { presentations, disableActions } = this.state;
+    const BASE_NAME = window.meetingClientSettings.public.app.basename;
 
     let hasNewUpload = false;
 
@@ -1116,36 +1137,43 @@ class PresentationUploader extends Component {
           ? (
             <Styled.UploaderModal id="upload-modal">
               <Styled.ModalInner>
-                <Styled.ModalHeader>
-                  <Styled.Title>{intl.formatMessage(intlMessages.title)}</Styled.Title>
-                  <Styled.ActionWrapper>
-                    <Styled.DismissButton
-                      color="secondary"
-                      onClick={this.handleDismiss}
-                      label={intl.formatMessage(intlMessages.dismissLabel)}
-                      aria-describedby={intl.formatMessage(intlMessages.dismissDesc)}
-                    />
-                    <Styled.ConfirmButton
-                      data-test="confirmManagePresentation"
-                      color="primary"
-                      onClick={() => this.handleConfirm()}
-                      disabled={disableActions}
-                      label={hasNewUpload
-                        ? intl.formatMessage(intlMessages.uploadLabel)
-                        : intl.formatMessage(intlMessages.confirmLabel)}
-                    />
-                  </Styled.ActionWrapper>
-                </Styled.ModalHeader>
+                <div>
+                  <Styled.ModalHeader>
+                    <Styled.Title>{intl.formatMessage(intlMessages.title)}</Styled.Title>
+                    <Styled.ActionWrapper>
+                      <Styled.DismissButton
+                        onClick={this.handleDismiss}
+                        // label={intl.formatMessage(intlMessages.dismissLabel)}
+                        // aria-describedby={intl.formatMessage(intlMessages.dismissDesc)}
+                      >
+                        <img
+                          src={`${BASE_NAME}/resources/icon-bbb/close.png`}
+                          alt="Close"
+                          style={{ width: 16, height: 16 }}
+                        />
+                      </Styled.DismissButton>
+                    </Styled.ActionWrapper>
+                  </Styled.ModalHeader>
 
-                <Styled.ModalHint>
-                  {`${intl.formatMessage(intlMessages.message)}`}
-                  {fileUploadConstraintsHint ? this.renderExtraHint() : null}
-                </Styled.ModalHint>
-                {this.renderPresentationList()}
-                {this.renderDownloadableWithAnnotationsHint()}
-                {isMobile ? this.renderPicDropzone() : null}
-                {this.renderDropzone()}
-                {this.renderExternalUpload()}
+                  <Styled.ModalHint>
+                    {`${intl.formatMessage(intlMessages.message)}`}
+                    {fileUploadConstraintsHint ? this.renderExtraHint() : null}
+                  </Styled.ModalHint>
+                  {this.renderDropzone()}
+                  {this.renderPresentationList()}
+                  {this.renderDownloadableWithAnnotationsHint()}
+                  {isMobile ? this.renderPicDropzone() : null}
+                  {/* {this.renderDropzone()} */}
+                  {this.renderExternalUpload()}
+                </div>
+                <Styled.ConfirmButton
+                  data-test="confirmManagePresentation"
+                  onClick={() => this.handleConfirm()}
+                  disabled={disableActions}
+                  label={hasNewUpload
+                    ? intl.formatMessage(intlMessages.uploadLabel)
+                    : intl.formatMessage(intlMessages.confirmLabel)}
+                />
               </Styled.ModalInner>
             </Styled.UploaderModal>
           )

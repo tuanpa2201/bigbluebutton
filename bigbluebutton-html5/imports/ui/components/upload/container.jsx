@@ -5,6 +5,9 @@ import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints
 import { smPaddingX } from '/imports/ui/stylesheets/styled-components/general';
 import { layoutDispatch } from '/imports/ui/components/layout/context';
 import { PANELS, ACTIONS } from '/imports/ui/components/layout/enums';
+import presentationService from '/imports/ui/components/presentation/presentation-uploader/service';
+import { uniqueId } from '/imports/utils/string-utils';
+import { v4 as uuid } from 'uuid';
 
 const UploadStyled = styled.div`
   background-color: ${colorWhite};
@@ -95,8 +98,8 @@ const HiddenInput = styled.input`
 const FileCard = styled.div`
   display: flex;
   align-items: center;
-  background: #FFFFFF;         // BG/00
-  border: 1px solid #EFEFEF;   // Border/00
+  background: #FFFFFF; 
+  border: 1px solid #EFEFEF;
   border-radius: 8px;
   height: 52px;
   width: 100%;
@@ -212,7 +215,38 @@ const UploadContainer = ({ isChrome = false, isRTL = false }) => {
     }));
     setFiles(mappedFiles);
     setSelectedFile(mappedFiles[0]?.name);
-   };
+  };
+  const handleConfirmUpload = () => {
+    const fileToUpload = files.find(f => f.name === selectedFile);
+    if (!fileToUpload) return;
+    const id = uniqueId(uuid());
+
+        // Tạo object đúng định dạng expected
+    const presentation = {
+            file: fileToUpload.file,
+            name: fileToUpload.name,
+            current: true,
+            isRemovable: true,
+            presentationId: id,
+            upload: { done: false, error: false, progress: 0 },
+            conversion: { done: false, error: false },
+            exportation: { error: false },
+            onUpload: () => {},
+            onProgress: () => {},
+            onConversion: () => {},
+            onDone: () => {},
+    };
+
+    presentationService.handleSavePresentation(
+        [presentation],
+        true,
+        {},
+        [],
+        () => { },
+        undefined,
+        true,
+    );
+  };
 
   const BASE_NAME = window.meetingClientSettings.public.app.basename;
   //   const WebcamSettingsImg = `${BASE_NAME}/resources/images/webcam_settings.svg`;
@@ -243,7 +277,7 @@ const UploadContainer = ({ isChrome = false, isRTL = false }) => {
                     <img
                         src={`${BASE_NAME}/resources/icon-bbb/cloud-upload.png`}
                         alt="Cloud Upload"
-                        style={{ marginRight: 8, width: 16, height: 16 }}
+                        style={{ width: 16, height: 16 }}
                     />
                     <span style={{ display: 'flex' }}>
                         <div style={{ fontSize: '14px', color: '#313131', fontWeight: '400', lineHeight: '20px' }}>
@@ -290,7 +324,7 @@ const UploadContainer = ({ isChrome = false, isRTL = false }) => {
             </div>
         </div>
         
-        <ConfirmButton>Confirm</ConfirmButton>
+        <ConfirmButton onClick={handleConfirmUpload}>Confirm</ConfirmButton>
     </UploadStyled>
   );
 };
