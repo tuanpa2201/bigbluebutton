@@ -252,7 +252,8 @@ const PresentationMenu = (props) => {
           key: 'list-item-fullscreen',
           dataTest: 'presentationFullscreen',
           label: formattedLabel(isFullscreen),
-          icon: isFullscreen ? 'exit_fullscreen' : 'fullscreen',
+          // icon: isFullscreen ? 'exit_fullscreen' : 'fullscreen',
+          svgIcon: isFullscreen ? 'arrows_expand' : 'arrows_expand',
           onClick: () => {
             handleToggleFullscreen(fullscreenRef);
             const newElement = (elementId === currentElement) ? '' : elementId;
@@ -279,7 +280,7 @@ const PresentationMenu = (props) => {
           key: 'list-item-screenshot',
           label: intl.formatMessage(intlMessages.snapshotLabel),
           dataTest: 'presentationSnapshot',
-          icon: 'video',
+          svgIcon: 'screenshot',
           onClick: async () => {
             setState({
               loading: true,
@@ -384,7 +385,8 @@ const PresentationMenu = (props) => {
         key: 'list-item-toolvisibility',
         dataTest: 'toolVisibility',
         label: formattedVisibilityLabel(isToolbarVisible),
-        icon: isToolbarVisible ? 'close' : 'pen_tool',
+        // icon: isToolbarVisible ? 'close' : 'pen_tool',
+        svgIcon: isToolbarVisible ? 'cross' : 'cross',
         onClick: () => {
           setIsToolbarVisible(!isToolbarVisible);
         },
@@ -470,7 +472,7 @@ const PresentationMenu = (props) => {
                 setIsDropdownOpen((isOpen) => !isOpen);
               }}
             >
-              <SvgIcon iconName="whiteboardOptions" />
+              <SvgIcon iconName="gear" />
             </Styled.DropdownButton>
           </TooltipContainer>
         )}
@@ -481,8 +483,8 @@ const PresentationMenu = (props) => {
           elevation: 3,
           getcontentanchorel: null,
           fullwidth: 'true',
-          anchorOrigin: { vertical: 'bottom', horizontal: isRTL ? 'right' : 'left' },
-          transformOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },
+          anchorOrigin: { vertical: 'bottom', horizontal: 'right' },
+          transformOrigin: { vertical: 'top', horizontal: 'right' },
           container: fullscreenRef,
         }}
         actions={options}

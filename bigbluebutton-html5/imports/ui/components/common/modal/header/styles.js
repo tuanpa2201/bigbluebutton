@@ -20,9 +20,15 @@ import {
 } from '/imports/ui/stylesheets/styled-components/typography';
 
 const Header = styled.header`
+  padding: 12px 16px;
+  align-items: center;
+  
+  border-bottom: 1px solid var(--Border-00, #EFEFEF);
+  background: var(--BG-01, #F7F8F9);
+  
   margin: 0;
-  padding: 0;
-  border: none;
+  //padding: 0;
+  //border: none;
   display: grid;
 
   ${({ $headerOnTop }) => $headerOnTop && `
@@ -42,14 +48,20 @@ const Header = styled.header`
 `;
 
 const Title = styled(TitleElipsis)`
+  color: var(--Text-Primary, #313131);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  margin: 0 ;
   display: block;
-  text-align: center;
-  font-weight: ${btnFontWeight};
-  font-size: calc(${fontSizeLarge} + 0.05rem);
-  color: ${colorGrayDark};
+  //text-align: center;
+  //font-weight: ${btnFontWeight};
+  // font-size: calc(${fontSizeLarge} + 0.05rem);
+  // color: ${colorGrayDark};
   white-space: normal;
-  margin: ${smPadding} 0 0;
-  line-height: calc(${lineHeightComputed} * 2);
+  //margin: ${smPadding} 0 0;
+  //line-height: calc(${lineHeightComputed} * 2);
 
   @media ${smallOnly} {
     font-size: ${fontSizeBase};
@@ -65,16 +77,21 @@ const Title = styled(TitleElipsis)`
   `}
 
   ${({ $hasMarginBottom }) => $hasMarginBottom && `
-    margin-bottom: ${smPaddingX};
+    // margin-bottom: ${smPaddingX};
   `}
 `;
 
 const DismissButton = styled(Button)`
   & > span:first-child {
-    border-color: transparent;
-    background-color: transparent;
-
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: unset !important;
+    padding: 6px;
+    border: unset;
     & > i { color: ${colorText}; }
+    &:focus{
+      background: transparent !important;
+    }
   }
 
   ${({ $headerOnTop }) => $headerOnTop && `

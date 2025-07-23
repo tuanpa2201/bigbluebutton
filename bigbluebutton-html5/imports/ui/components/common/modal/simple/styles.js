@@ -16,7 +16,7 @@ const SimpleModal = styled(Styled.BaseModal)`
   outline-style: solid;
   display: flex;
   flex-direction: column;
-  padding: ${mdPaddingX};
+  padding: 0;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
   background-color: ${colorWhite} !important;
 `;
@@ -27,7 +27,9 @@ const Content = styled.div`
   overflow: visible;
   color: ${colorText};
   font-weight: normal;
-  padding: 0;
+  //padding: 0;
+  
+  padding: 16px;
 `;
 
 export default {

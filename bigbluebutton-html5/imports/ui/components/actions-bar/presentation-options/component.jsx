@@ -70,7 +70,7 @@ const PresentationOptionsContainer = ({
   const isGridLayout = useStorageKey('isGridEnabled');
   return (
     <Button
-      icon={`${buttonType}${!presentationIsOpen ? '_off' : ''}`}
+      svgIcon={`${buttonType}${!presentationIsOpen ? '_off' : ''}`}
       label={intl.formatMessage(!presentationIsOpen ? intlMessages.restorePresentationLabel : intlMessages.minimizePresentationLabel)}
       aria-label={intl.formatMessage(!presentationIsOpen ? intlMessages.restorePresentationLabel : intlMessages.minimizePresentationLabel)}
       aria-describedby={intl.formatMessage(!presentationIsOpen ? intlMessages.restorePresentationDesc : intlMessages.minimizePresentationDesc)}
