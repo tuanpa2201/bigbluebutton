@@ -173,17 +173,15 @@ const GuestWait: React.FC<GuestWaitProps> = (props) => {
     updatePositionInWaitingQueue,
   ]);
 
+  const BASE_NAME = window.meetingClientSettings.public.app.cdn + window.meetingClientSettings.public.app.basename;
+
   return (
     <Styled.Container>
       <Styled.Content id="content">
-        <Styled.Heading id="heading">{intl.formatMessage(intlMessages.windowTitle)}</Styled.Heading>
-        {animate && (
-          <Styled.Spinner>
-            <Styled.Bounce1 />
-            <Styled.Bounce2 />
-            <Styled.Bounce />
-          </Styled.Spinner>
-        )}
+        <Styled.IconSvg
+          src={`${BASE_NAME}/resources/images/guest-lobby.svg`}
+        />
+        <Styled.Heading id="heading">Vops Meet - Guest Lobby</Styled.Heading>
         <p
           aria-live="polite"
           data-test="guestMessage"
