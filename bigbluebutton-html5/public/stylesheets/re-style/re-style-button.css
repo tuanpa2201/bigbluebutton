@@ -22,24 +22,32 @@
         height: 28px !important;
         line-height: 16px !important;
     }
+    box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.2), inset 2px 0px 0px rgba(255, 255, 255, 0.2), inset -2px 0px 0px rgba(255, 255, 255, 0.2), inset 0px -1px 0px 1px #CB132E, inset 0px 1px 0px #CB132E;
 
 	gap: 6px;
 }
 
 .btn.btn-primary:hover {
     color: var(--Neutral-04, #D6D6D6) !important;
+    border-radius: var(--p-border-radius-button) !important;
+    background: var(--Color-01, #E03) !important;
 }
 
 .btn.btn-primary:focus {
-    border: 1px solid rgba(0, 0, 0, 0.00) !important;
-    box-shadow: 0px 0px 0px 2px #005BD3 !important;
-    color: var(--Neutral-04, #D6D6D6) !important;
-}
-
-.btn.btn-primary:active {
+    border: unset;
+    border-radius: var(--p-border-radius-button) !important;;
+    background: var(--Color-01, #E03) !important;
     box-shadow: 0px 3px 0px 0px #CB132E inset !important;
 }
 
+.btn.btn-primary:active {
+    border: unset;
+    border-radius: var(--p-border-radius-button) !important;;
+    background: var(--Color-01, #E03) !important;
+    box-shadow: 0px 3px 0px 0px #CB132E inset !important;
+}
+
+.btn.btn-primary[aria-disabled="true"],
 .btn.btn-primary:disabled {
     background: var(--Neutral-05, #C0C0C0) !important;
     color: var(--Neutral-00, #FFF) !important;
@@ -86,9 +94,12 @@
     box-shadow: -1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset, 1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset, 0px 2px 1px 0px rgba(26, 26, 26, 0.20) inset !important;
 }
 
+.btn.btn-default[aria-disabled="true"],
 .btn.btn-default:disabled {
+    opacity: 1 !important;
     background: var(--BG-05---disable, #EFEFEF) !important;
-    color: var(--Text-Disable, #BBB) !important;
+    color: var(--Text-Disable, #BBB) !important;;
+    box-shadow: unset !important;
 }
 
 .ant-input-group .ant-btn{

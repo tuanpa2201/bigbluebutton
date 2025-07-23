@@ -20,7 +20,8 @@ import Button from '/imports/ui/components/common/button/component';
 
 const TimerSidebarContent = styled.div`
   background-color: ${colorWhite};
-  padding: ${smPaddingX};
+  //padding: ${smPaddingX};
+  padding: 0 16px;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -30,12 +31,35 @@ const TimerSidebarContent = styled.div`
   transform: translateZ(0);
 `;
 
-const TimerHeader = styled.header`
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+const CloseTimerButton = styled.button`
+    background-color: transparent;
+    border: none;
+    border-radius: 12px;
+    box-shadow: unset;
+    color: #2F384C;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    tab-index: 0;
+    margin-left: auto;
+
+    &:hover {
+        background-color: ${colorGrayLightest};
+    }
+`;
+
+
+const TimerHeader = styled.div`
+    display: flex;
+    align-items: center;
+    color: var(--Text-Primary, #313131);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    padding: 16px 0px;
 `;
 
 const TimerTitle = styled.div`
@@ -87,37 +111,85 @@ const TimerContent = styled.div`
 `;
 
 const TimerCurrent = styled.span`
-  border-bottom: 1px solid ${colorGrayLightest};
-  border-top: 1px solid ${colorGrayLightest};
+  // border-bottom: 1px solid ${colorGrayLightest};
+  // border-top: 1px solid ${colorGrayLightest};
   display: flex;
-  font-size: xxx-large;
+  //font-size: xxx-large;
   justify-content: center;
+
+    border-radius: 8px;
+    border: 0.66px solid var(--Border-01, #C8C8C8);
+    padding: 24px 0;
+    color: var(--Text-Primary, #313131);
+    text-align: center;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 48px;
+    margin-top: 36px;
 `;
 
 const TimerType = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-  padding-top: 2rem;
+  //padding-top: 2rem;
+    margin-top: 16px;
+    gap: 8px;
 `;
 // @ts-ignore - JS code
 const TimerSwitchButton = styled(Button)`
   width: 100%;
-  height: 2rem;
-  margin: 0 .5rem;
+  //height: 2rem;
+  //margin: 0 .5rem;
+    padding: 6px 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--p-border-radius-button);
+    border: unset !important;
+    font-size: 12px;
+    font-style: normal;
+    line-height: 16px;
+    color: var(--Text-Primary, #313131);
+    opacity: 1 !important;
+    
+    ${({ color }) => color === 'primary' && `
+      background: var(--BG-04---hover, #EFEFEF);
+      font-weight: 600;
+      &:hover {
+        background-color: var(--BG-04---hover, #EFEFEF) !important;
+        color: var(--Text-Primary, #313131) !important;
+      }
+    `}
+
+    ${({ color }) => color === 'secondary' && `
+      background: transparent;
+      font-weight: 400;
+    `}
+    
+    & span{
+        color: var(--Text-Primary, #313131) !important;
+        &:hover{
+            color: var(--Text-Primary, #313131) !important;
+            opacity: 1;
+        }
+    }
 `;
 
 const StopwatchTime = styled.div`
   display: flex;
-  margin-top: 4rem;
+  //margin-top: 4rem;
+  margin-top: 36px;
   width: 100%;
-  height: 3rem;
+  //height: 3rem;
   font-size: x-large;
   justify-content: center;
 
   input {
-    width: 5rem;
+    //width: 5rem;
+      width: 100%;
   }
+    gap: 6px;
 `;
 
 const StopwatchTimeInput = styled.div`
@@ -133,13 +205,21 @@ const StopwatchTimeInput = styled.div`
 
 const StopwatchTimeInputLabel = styled.div`
   display: flex;
-  font-size: small;
   justify-content: center;
+    
+    color: var(--Text-Secondary, #6F767E);
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px; 
+    margin-top: 4px;
 `;
 
 const StopwatchTimeColon = styled.span`
-  align-self: center;
-  padding: 0 .25rem;
+    align-self: center;
+    //padding: 0 .25rem;
+    padding: 0 0 20px;
 `;
 
 const TimerSongsWrapper = styled.div`
@@ -202,20 +282,25 @@ const TimerControls = styled.div`
   width: 100%;
   justify-content: center;
   margin-top: 4rem;
+    gap: 8px;
 `;
 // @ts-ignore - JS code
 const TimerControlButton = styled(Button)`
-  width: 6rem;
-  margin: 0 1rem;
+  width: 50%;
+  //margin: 0 1rem;
 `;
 
 const TimerInput = styled.input`
   flex: 1;
-  border: 1px solid ${colorGrayLighter};
+  //border: 1px solid ${colorGrayLighter};
+  border: unset;
   width: 50%;
   text-align: center;
-  padding: .25rem;
-  border-radius: ${borderRadius};
+  //padding: .25rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+    background: var(--BG-01, #F7F8F9);
+  //border-radius: ${borderRadius};
   background-clip: padding-box;
   outline: none;
 
@@ -235,6 +320,14 @@ const TimerInput = styled.input`
     opacity: .75;
     background-color: rgba(167,179,189,0.25);
   }
+
+    &::-webkit-inner-spin-button {
+        //-webkit-appearance: none;
+        //-moz-appearance: none;
+        //appearance: none;
+        //margin: 0;
+    }
+    
 `;
 
 export default {
@@ -257,4 +350,5 @@ export default {
   TimerControls,
   TimerControlButton,
   TimerInput,
+  CloseTimerButton,
 };

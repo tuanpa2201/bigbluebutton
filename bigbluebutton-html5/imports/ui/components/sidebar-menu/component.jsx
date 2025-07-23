@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import { PANELS, ACTIONS } from '/imports/ui/components/layout/enums';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
 import { PINNED_PAD_SUBSCRIPTION } from '/imports/ui/components/notes/queries';
+import {useMutation} from "@apollo/client";
+import {TIMER_ACTIVATE} from "/imports/ui/components/timer/mutations";
 
 // Styled sidebar container
 const Sidebar = styled.div`
@@ -50,6 +52,7 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
     PINNED_PAD_SUBSCRIPTION,
   );
   const NOTES_CONFIG = window.meetingClientSettings.public.notes;
+  const [timerActivate] = useMutation(TIMER_ACTIVATE);
   const isPinned = !!pinnedPadData && pinnedPadData?.sharedNotes[0]?.sharedNotesExtId === NOTES_CONFIG.id;
   const BASE_NAME = window.meetingClientSettings.public.app.basename;
   const handleClick = (key) => {
@@ -77,6 +80,19 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
       });
     }
   };
+
+  const activateTimer = () => {
+    const TIMER_CONFIG = window.meetingClientSettings.public.timer;
+    const MILLI_IN_MINUTE = 60000;
+    const stopwatch = true;
+    const running = false;
+    const time = TIMER_CONFIG.time * MILLI_IN_MINUTE;
+    timerActivate({ variables: { stopwatch, running, time } });
+  };
+
+  useEffect(() => {
+    activateTimer();
+  }, []);
 
   return (
     <Sidebar>
