@@ -27,11 +27,13 @@ const TldrawV2GlobalStyle = createGlobalStyle`
   #whiteboard-element {
     position: relative;
     height: 100%;
+    border-radius: 8px 8px 0px 0px;
   }
 
   #whiteboard-element > * {
     position: relative; 
     height: 100%;
+    border-radius: 8px 8px 0px 0px;
   }
 
   #whiteboard-element .tl-overlays {
