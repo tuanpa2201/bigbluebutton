@@ -148,6 +148,10 @@ const TldrawV2GlobalStyle = createGlobalStyle`
     width: 20px !important;
   }
 
+  .tlui-layout__mobile .tlui-toolbar__overflow > div {
+    transform: rotate(270deg);
+  }
+
   .tlui-toolbar__inner {
     flex-direction: column-reverse !important;
   }
