@@ -181,6 +181,16 @@ const iconsMap: { [key: string]: JSX.Element } = {
       <path d="M4 12L12 4M4 4L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   ),
+  undo: (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.66699 5.00002H12.5003C15.722 5.00002 18.3337 7.61169 18.3337 10.8334V10.8334C18.3337 14.055 15.722 16.6667 12.5003 16.6667H8.33366M1.66699 5.00002L5.00033 1.66669M1.66699 5.00002L5.00033 8.33335" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  ),
+  redo: (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M18.3337 5.00002H7.50033C4.27867 5.00002 1.66699 7.61169 1.66699 10.8334V10.8334C1.66699 14.055 4.27866 16.6667 7.50032 16.6667H11.667M18.3337 5.00002L15.0003 1.66669M18.3337 5.00002L15.0003 8.33335" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  ),
 };
 
 const Icon: React.FC<IconProps> = ({
