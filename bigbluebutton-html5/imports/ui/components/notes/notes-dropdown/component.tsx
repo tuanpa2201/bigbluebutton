@@ -60,6 +60,7 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
         {
           key: uniqueId('notes-option-'),
           icon: uploadIcon,
+          svgIcon: 'upload',
           dataTest: 'moveNotesToWhiteboard',
           label: intl.formatMessage(intlMessages.convertAndUploadLabel),
           disabled: converterButtonDisabled,
@@ -77,6 +78,7 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
         {
           key: uniqueId('notes-option-'),
           icon: pinIcon,
+          svgIcon: 'graph',
           dataTest: 'pinNotes',
           label: intl.formatMessage(intlMessages.pinNotes),
           onClick: () => {
@@ -96,6 +98,7 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
   return (
     <>
       <BBBMenu
+        className="notes-options-menu"
         trigger={(
           <Trigger
             data-test="notesOptionsMenu"

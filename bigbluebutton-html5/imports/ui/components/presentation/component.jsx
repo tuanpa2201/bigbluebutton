@@ -21,6 +21,7 @@ import { throttle } from '/imports/utils/throttle';
 import LocatedErrorBoundary from '/imports/ui/components/common/error-boundary/located-error-boundary/component';
 import FallbackView from '/imports/ui/components/common/fallback-errors/fallback-view/component';
 import TooltipContainer from '/imports/ui/components/common/tooltip/container';
+import SvgIcon from "/imports/ui/components/common/icon-svg/component";
 
 const intlMessages = defineMessages({
   presentationLabel: {
@@ -677,6 +678,7 @@ class Presentation extends PureComponent {
   render() {
     const {
       userIsPresenter,
+      hasWBAccess,
       currentSlide,
       slidePosition,
       presentationBounds,
@@ -760,6 +762,7 @@ class Presentation extends PureComponent {
       || presentationBounds.width === 0
       || presentationBounds.height === 0;
     if (!presentationIsOpen || presentationIsHidden) return null;
+
     return (
       <>
         <Styled.PresentationContainer
@@ -815,7 +818,7 @@ class Presentation extends PureComponent {
                       aria-label={intl?.messages["app.shortcut-help.undo"]}
                       onClick={() => tldrawAPI?.undo()}
                     >
-                      <img src={`${window.meetingClientSettings.public.app.basename}/svgs/tldraw/undo.svg`} width="20" height="20" />
+                      <SvgIcon iconName="undo"></SvgIcon>
                     </Styled.Button>
                   </TooltipContainer>
                   <TooltipContainer title={intl?.messages["app.shortcut-help.redo"]}>
@@ -823,7 +826,7 @@ class Presentation extends PureComponent {
                       aria-label={intl?.messages["app.shortcut-help.redo"]}
                       onClick={() => tldrawAPI?.redo()}
                     >
-                      <img src={`${window.meetingClientSettings.public.app.basename}/svgs/tldraw/redo.svg`} width="20" height="20" />
+                      <SvgIcon iconName="redo"></SvgIcon>
                     </Styled.Button>
                   </TooltipContainer>
                 </Styled.ExtraTools>}

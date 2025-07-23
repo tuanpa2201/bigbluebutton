@@ -150,6 +150,14 @@ const messages = defineMessages({
     id: 'app.whiteboard.toolbar.multiUserLimitHasBeenReachedNotification',
     description: 'message for when the maximum number of whiteboard writers has been reached',
   },
+  dialogTitleRemoveUserLabel: {
+    id: 'app.userList.menu.removeTitle.label',
+    description: 'Remove user',
+  },
+  dialogDescRemoveUserLabel: {
+    id: 'app.userList.menu.removeDescConfirmation.label',
+    description: 'Do you want to remove user?',
+  }
 });
 const makeDropdownPluginItem: (
   userDropdownItems: PluginSdk.UserListDropdownInterface[]) => DropdownItem[] = (
@@ -633,6 +641,9 @@ const UserActions: React.FC<UserActionsProps> = ({
           confirmParam={user.userId}
           onConfirm={removeUser}
           confirmButtonDataTest="removeUserConfirmation"
+          title={intl.formatMessage(messages.dialogTitleRemoveUserLabel)}
+          description= {intl.formatMessage(messages.dialogDescRemoveUserLabel,{ 0: user.name },)}
+          fromFeature='removeUser'
           {...{
             onRequestClose: () => setIsConfirmationModalOpen(false),
             priority: 'low',

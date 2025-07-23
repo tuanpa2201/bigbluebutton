@@ -104,8 +104,8 @@ const Avatar = styled.div`
   border-radius: 50%;
   text-align: center;
   font-size: .85rem;
-  border: 2px solid transparent;
   user-select: none;
+  overflow: hidden;
 
   ${({ animations }) => animations && `
     transition: .3s ease-in-out;
@@ -152,7 +152,7 @@ const Avatar = styled.div`
   }
 
   ${({ moderator }) => moderator && `
-    border-radius: 5px;
+    border-radius: 10px;
   `}
 
   ${({ presenter }) => presenter && `
@@ -164,7 +164,7 @@ const Avatar = styled.div`
       left: ${userIndicatorsOffset};
       bottom: auto;
       right: auto;
-      border-radius: 5px;
+      border-radius: 10px;
       background-color: ${colorPrimary};
 
       [dir="rtl"] & {
@@ -193,7 +193,7 @@ const Avatar = styled.div`
       left: ${userIndicatorsOffset};
       bottom: auto;
       right: auto;
-      border-radius: 5px;
+      border-radius: 10px;
       background-color: ${colorPrimary};
 
       [dir="rtl"] & {

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PANELS, ACTIONS } from '/imports/ui/components/layout/enums';
+import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
+import { PINNED_PAD_SUBSCRIPTION } from '/imports/ui/components/notes/queries';
 
 // Styled sidebar container
 const Sidebar = styled.div`
@@ -78,6 +80,11 @@ const icons = [
 ];
 
 const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
+  const { data: pinnedPadData } = useDeduplicatedSubscription(
+    PINNED_PAD_SUBSCRIPTION,
+  );
+  const NOTES_CONFIG = window.meetingClientSettings.public.notes;
+  const isPinned = !!pinnedPadData && pinnedPadData?.sharedNotes[0]?.sharedNotesExtId === NOTES_CONFIG.id;
   const BASE_NAME = window.meetingClientSettings.public.app.basename;
   const handleClick = (key) => {
     const panelKey = PANELS[key.toUpperCase()];
@@ -92,6 +99,7 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
         value: false,
       });
     } else {
+      if (panelKey === PANELS.SHARED_NOTES && isPinned) return;
       // Nếu chưa mở, thì mở tab đó
       contextDispatch({
         type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
@@ -112,7 +120,8 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
           key={item.key}
           title={item.label}
           onClick={() => handleClick(item.key)}
-          className={currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''}>
+          className={currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''}
+        >
           <img
             src={`${BASE_NAME}/resources/icon-bbb/${item.file}`}
             alt={item.label}

@@ -139,7 +139,7 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
             </div>
           )}
           <div>
-            For help on using BigBlueButton see these (short)&nbsp;
+            For help see these (short)&nbsp;
             <a href="https://www.bigbluebutton.org/html5" target="_blank" rel="noreferrer">
               <u>tutorial videos.</u>
             </a>
@@ -155,9 +155,7 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
           />
 
           <div>
-            This server is running&nbsp;
-            <a href="https://docs.bigbluebutton.org/" target="_blank" rel="noreferrer"><u>BigBlueButton</u></a>
-            .
+            This server is running.
           </div>
         </div>
       </Styled.Container>

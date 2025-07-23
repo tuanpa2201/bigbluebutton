@@ -75,9 +75,10 @@ class ConfirmationModal extends Component {
     } = this.state;
 
     const hasCheckbox = !!checkboxMessageId;
+    const isRemoveUSer= (confirmButtonDataTest==="removeUserConfirmation");
 
     return (
-      <Styled.ConfirmationModal
+      <Styled.ConfirmationModal className={isRemoveUSer?"remove-user-modal": ""}
         onRequestClose={() => setIsOpen(false)}
         contentLabel={title}
         title={title || intl.formatMessage({ id: titleMessageId }, { 0: titleMessageExtra })}
@@ -88,12 +89,12 @@ class ConfirmationModal extends Component {
         }}
       >
         <Styled.Container>
-          <Styled.Description>
-            <Styled.DescriptionText>
+          <Styled.Description className={isRemoveUSer?'remove-user-content':''}>
+            <Styled.DescriptionText className={isRemoveUSer?'remove-user-desc':''}>
               {description}
             </Styled.DescriptionText>
             { hasCheckbox ? (
-              <Styled.Label htmlFor="confirmationCheckbox" key="confirmation-checkbox">
+              <Styled.Label htmlFor="confirmationCheckbox" key="confirmation-checkbox" className={isRemoveUSer?'remove-user-checkbox':''}>
                 <Styled.Checkbox
                   type="checkbox"
                   id="confirmationCheckbox"
@@ -106,26 +107,26 @@ class ConfirmationModal extends Component {
             ) : null }
           </Styled.Description>
 
-          <Styled.Footer>
-            {!hideConfirmButton && (
-              <Styled.ConfirmationButton
-                color={confirmButtonColor}
-                label={confirmButtonLabel || intl.formatMessage(messages.yesLabel)}
-                disabled={disableConfirmButton}
-                data-test={confirmButtonDataTest}
-                onClick={() => {
-                  onConfirm(confirmParam, checked);
-                  setIsOpen(false);
-                }}
-              />
-            )}
+          <Styled.Footer className={isRemoveUSer?'remove-user-footer':''}>
             <div ref={this.cancelButtonRef}>
-              <Styled.CancelButton
+              <Styled.CancelButton className={isRemoveUSer?'btn btn-default':''}
                 color="secondary"
                 label={cancelButtonLabel || intl.formatMessage(messages.noLabel)}
                 onClick={() => setIsOpen(false)}
               />
             </div>
+            {!hideConfirmButton && (
+                <Styled.ConfirmationButton className={isRemoveUSer?'remove-user-btnok btn btn-primary':''}
+                    color={confirmButtonColor}
+                    label={confirmButtonLabel || intl.formatMessage(messages.yesLabel)}
+                    disabled={disableConfirmButton}
+                    data-test={confirmButtonDataTest}
+                    onClick={() => {
+                      onConfirm(confirmParam, checked);
+                      setIsOpen(false);
+                    }}
+                />
+            )}
           </Styled.Footer>
         </Styled.Container>
       </Styled.ConfirmationModal>

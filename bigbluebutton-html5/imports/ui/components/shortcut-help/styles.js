@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { smPaddingX } from '/imports/ui/stylesheets/styled-components/general';
-import { colorOffWhite, colorPrimary } from '/imports/ui/stylesheets/styled-components/palette';
 import { Tabs } from 'react-tabs';
 import { ScrollboxVertical } from '/imports/ui/stylesheets/styled-components/scrollable';
 import StyledSettings from '../settings/styles';
@@ -25,9 +24,21 @@ const ShortcutTable = styled.table`
   margin: 0;
   width: 100%;
 
-  > tbody > tr:nth-child(even) {
-    background-color: ${colorOffWhite};
-    color: ${colorPrimary};
+  color: var(--Text-Primary, #313131);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+
+  th {
+    padding: 0px 10px;
+    color: var(--Text-Secondary, #6F767E);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    &:first-child {
+      text-align: left;
+    }
   }
 `;
 
@@ -35,7 +46,6 @@ const SettingsTabs = styled(Tabs)`
   display: flex;
   flex-flow: row;
   justify-content: flex-start;
-  margin-top: 1rem;
 
   @media ${smallOnly} {
     width: 100%;
@@ -49,8 +59,6 @@ const TableWrapper = styled(ScrollboxVertical)`
 `;
 
 const TabPanel = styled(StyledSettings.SettingsTabPanel)`
-  margin-top: ${smPaddingX};
-
   @media ${smallOnly} {
     padding: 0;
   }

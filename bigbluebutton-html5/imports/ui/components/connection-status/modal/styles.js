@@ -1,25 +1,19 @@
 import styled from 'styled-components';
 import ModalSimple from '/imports/ui/components/common/modal/simple/component';
 import {
-  colorOffWhite,
   colorGrayDark,
   colorGrayLightest,
   colorPrimary,
-  colorWhite,
-  btnPrimaryActiveBg,
   colorDanger,
 } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   smPaddingX,
   smPaddingY,
-  mdPaddingY,
   lgPaddingY,
   titlePositionLeft,
-  mdPaddingX,
-  borderSizeLarge,
 } from '/imports/ui/stylesheets/styled-components/general';
 import {
-  fontSizeSmall,
+  fontSizeBase,
   fontSizeXL,
 } from '/imports/ui/stylesheets/styled-components/typography';
 import {
@@ -38,9 +32,10 @@ import {
 const Item = styled.li`
   display: flex;
   width: 100%;
-  height: 4rem;
   border-bottom: 1px solid ${colorGrayLightest};
-
+  align-items: center;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
   ${({ last }) => last && `
     border: none;
   `}
@@ -50,11 +45,12 @@ const Left = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  align-items: center;
 `;
 
 const Name = styled.div`
   display: flex;
-  width: 27.5%;
+  width: 43.5%;
   height: 100%;
   align-items: center;
   justify-content: flex-start;
@@ -82,10 +78,12 @@ const ClientNotRespondingText = styled.div`
 `;
 
 const Text = styled.div`
-  padding-left: .5rem;
+  padding-left: 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  color: #313131;
+  font-weight: 500;
 
   ${({ offline }) => offline && `
     font-style: italic;
@@ -93,7 +91,7 @@ const Text = styled.div`
 
   [dir="rtl"] & {
     padding: 0;
-    padding-right: .5rem;
+    padding-right: 10px;
   }
 `;
 
@@ -105,8 +103,8 @@ const Avatar = styled.div`
 `;
 
 const Icon = styled.div`
-  width: 2.05rem;
-  height: 2.05rem;
+  width: 1.5rem;
+  height: 1.5rem;
 `;
 
 const Right = styled.div`
@@ -121,6 +119,11 @@ const Time = styled.div`
   width: 100%;
   height: 100%;
   justify-content: flex-end;
+  >time {
+    color: #6F767E !important;
+    font-size: 1rem;
+    font-weight: 500;
+  }
 `;
 
 const TimeActive = styled.time`
@@ -155,7 +158,7 @@ const NetworkDataContainer = styled(ScrollboxVertical)`
 `;
 
 const NetworkData = styled.div`
-  font-size: ${fontSizeSmall};
+  font-size: ${fontSizeBase};
 
   ${({ invisible }) => invisible && `
     visibility: hidden;
@@ -163,6 +166,12 @@ const NetworkData = styled.div`
 
   & :first-child {
     font-weight: 600;
+    color: #313131;
+  }
+  & :last-child {
+    display: flex;
+    align-items: center;
+    gap: 4px;
   }
 `;
 
@@ -171,18 +180,17 @@ const CopyContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   border: none;
-  border-top: 1px solid ${colorOffWhite};
-  padding: ${mdPaddingX} 0 0 0;
+  border-top: 1px solid #EFEFEF;
+  padding: 12px 0 0 0;
 `;
 
 const ConnectionStatusModal = styled(ModalSimple)`
-  padding: 1rem;
-  height: 28rem;
-
+  padding: 0px;
+  height: 32rem;
+  border-radius: 12px !important;
 `;
 
 const Container = styled.div`
-  padding: 0 calc(${mdPaddingX} / 2 + ${borderSizeLarge});
 `;
 
 const Header = styled.div`
@@ -228,7 +236,9 @@ const Status = styled.div`
 
 const Copy = styled.span`
   cursor: pointer;
-  color: ${colorPrimary};
+  color: #1087FF;
+  padding: 6px 12px;
+  display: block;
 
   &:hover {
     text-decoration: underline;
@@ -253,10 +263,10 @@ const HelperWrapper = styled.div`
 `;
 
 const Helper = styled.div`
-  width: 12.5rem;
-  height: 100%;
-  border-radius: .5rem;
-  background-color: ${colorOffWhite};
+  width: 15.142rem;
+  height: 15.142rem;
+  border-radius: 8px;
+  background-color: #F7F8F9;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -317,7 +327,7 @@ const ConnectionTabList = styled(TabList)`
 
 const ConnectionTabPanel = styled(TabPanel)`
   display: none;
-  margin: 0 0 0 1rem;
+  margin-top: 8px;
   height: 13rem;
 
   [dir="rtl"] & {
@@ -348,7 +358,7 @@ const ConnectionTabSelector = styled(Tab)`
   flex: 0 0 auto;
   justify-content: flex-start;
   border: none !important;
-  padding: ${mdPaddingY} ${mdPaddingX};
+  padding: 6px 12px;
 
   border-radius: .2rem;
   cursor: pointer;
@@ -377,17 +387,13 @@ const ConnectionTabSelector = styled(Tab)`
     }
   }
 
-  span {
-    border-bottom: 2px solid ${colorWhite};
-  }
-
+  color: #313131 !important;
+  font-size: 12px;
   &.is-selected {
     border: none;
-    color: ${colorPrimary};
-
-    span {
-      border-bottom: 2px solid ${btnPrimaryActiveBg};
-    }
+    font-weight: 600;
+    background-color: #EFEFEF;
+    border-radius: 8px;
   }
 `;
 

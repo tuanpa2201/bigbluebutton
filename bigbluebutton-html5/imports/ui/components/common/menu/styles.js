@@ -57,14 +57,15 @@ const TitleAction = styled(Button)`
 `;
 
 const Option = styled.div`
-  line-height: 1;
-  margin-right: 1.65rem;
+  //line-height: 1;
+  //margin-right: 1.65rem;
   ${({ hasIcon }) => hasIcon && `
-    margin-left: .5rem;
+    margin-left: 8px;
+    margin-right: 8px;
   `}
   white-space: normal;
   overflow-wrap: anywhere;
-  padding: .1rem 0;
+  //padding: .1rem 0;
 
   ${({ isTitle }) => isTitle && `
     margin-left: .1rem;
@@ -92,7 +93,11 @@ const Option = styled.div`
     padding: .1rem 0 0 0;
     width: 100%;
  `}
-
+  
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; 
 `;
 
 const CloseButton = styled(Button)`
@@ -137,9 +142,11 @@ const BBBMenuInformation = styled.div`
 `;
 
 const BBBMenuItem = styled(MenuItem)`
+  border-radius: 8px !important;
+  padding: 6px 8px !important;
   transition: none !important;
   font-size: 90% !important;
-  
+  color: var(--Text-Primary, #313131);
   &:focus,
   &:hover {
     i { 

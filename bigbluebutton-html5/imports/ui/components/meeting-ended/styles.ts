@@ -1,20 +1,7 @@
-import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import styled from 'styled-components';
 
 import {
-  borderRadius,
-  lgPaddingX,
-} from '/imports/ui/stylesheets/styled-components/general';
-import {
-  fontSizeSmall,
-  fontSizeBase,
-  fontSizeLarge,
-  headingsFontWeight,
-  lineHeightComputed,
-} from '/imports/ui/stylesheets/styled-components/typography';
-import {
   colorWhite,
-  colorText,
   colorBackground,
 } from '/imports/ui/stylesheets/styled-components/palette';
 
@@ -29,10 +16,10 @@ const Parent = styled.div`
 
 const Modal = styled.div`
   display: flex;
-  padding: ${lgPaddingX};
+  padding: 24px 16px 12px;
   background-color: ${colorWhite};
   flex-direction: column;
-  border-radius: ${borderRadius};
+  border-radius: 12px;
   max-width: 95vw;
   width: 600px;
 `;
@@ -41,20 +28,24 @@ const Content = styled.div`
   text-align: center;
 `;
 
-const Title = styled.h1`
-  margin: 0;
-  font-size: ${fontSizeLarge};
-  font-weight: ${headingsFontWeight};
+const Title = styled.div`
+  color: var(--Text-Primary, #313131);
+  text-align: center;
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  margin-bottom: 16px;
 `;
 
 const Text = styled.div`
-  color: ${colorText};
-  font-weight: normal;
-  padding: ${lineHeightComputed} 0;
-
-  @media ${smallOnly} {
-    font-size: ${fontSizeSmall};
-  }
+  color: var(--Text-Primary, #313131);
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
 `;
 
 const Wrapper = styled.div`
@@ -63,32 +54,16 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const MeetingEndedButton = styled.button`
-  border: none;
-  overflow: visible;
-  border-radius: 2px;
-  font-weight: 600;
-  line-height: 1;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  cursor: pointer;
-  user-select: none;
-  height: 3rem;
-  display: flex !important;
-  align-items: center;
-  box-align: center;
-  flex-align: center;
-  box-pack: center;
+const MeetingEndedButton = styled.span`
+  display: flex;
   justify-content: center;
-  flex-pack: center;
-  color: var(--btn-primary-color, var(--color-white, #FFF));
-  background-color: var(--btn-primary-bg, var(--color-primary, #0F70D7));
-  border: 3px solid transparent;
-  padding: calc(1.25rem / 2);
-  @media ${smallOnly} {
-    font-size: ${fontSizeBase};
-  }
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  color: var(--Text-Link, #1087FF);
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 8px;
 `;
 
 const TextArea = styled.textarea`

@@ -31,8 +31,11 @@ const PresentationToolbarWrapper = styled.div`
   bottom: 0px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  padding: 2px;
-
+  //padding: 2px;
+  padding: 0 20px;
+  background: var(--Neutral-01, #F7F8F9);
+  height: 54px;
+  
   select {
     &:-moz-focusring {
       outline: none;

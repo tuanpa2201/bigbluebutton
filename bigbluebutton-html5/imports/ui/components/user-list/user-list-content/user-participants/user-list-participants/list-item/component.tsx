@@ -71,6 +71,7 @@ interface UserListItemProps {
   user: User;
   lockSettings: LockSettings;
   index: number;
+  isSelected: boolean
 }
 
 const renderUserListItemIconsFromPlugin = (
@@ -92,7 +93,7 @@ const Emoji: React.FC<EmojiProps> = ({ emoji, native, size }) => (
   <em-emoji emoji={emoji} native={native} size={size} />
 );
 
-const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index }) => {
+const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index, isSelected }) => {
   const { pluginsExtensibleAreasAggregatedState } = useContext(PluginsContext);
   let userItemsFromPlugin = [] as PluginSdk.UserListItemAdditionalInformationInterface[];
   if (pluginsExtensibleAreasAggregatedState.userListItemAdditionalInformation) {
@@ -263,31 +264,38 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index }
           {subs.length ? addSeparator(subs) : null}
         </Styled.UserNameSub>
       </Styled.UserNameContainer>
-      <Styled.RightIconHandContainer hand={user.raiseHand} className="rightIconHand">
+      <Styled.RightIconHandContainer hand={user.raiseHand}>
         {user.raiseHand? <Emoji key={emojiIcons[0].id} emoji={emojiIcons[0]} native={emojiIcons[0].native} size={emojiSize} /> : ''}
       </Styled.RightIconHandContainer>
-      <Styled.RightIconVoiceContainer className="rightIconHand"
-          talking={voiceUser?.talking}
-          muted={voiceUser?.muted}
-          listenOnly={voiceUser?.listenOnly}
-          voice={voiceUser?.joined}
-          noVoice={!voiceUser?.joined}
-          color={user.color}
-          animations={animations}
-          isChrome={isChrome}
-          isFirefox={isFirefox}
-          isEdge={isEdge}
-      />
-      <Styled.RightIconPresenterContainer className="rightIconHand"
-          moderator={user.isModerator}
-          presenter={user.presenter}
-          whiteboardAccess={hasWhiteboardAccess}
-          animations={animations}
-          isChrome={isChrome}
-          isFirefox={isFirefox}
-          isEdge={isEdge}
-      />
-      {renderUserListItemIconsFromPlugin(userItemsFromPlugin)}
+      <>
+        <Styled.RightIconVoiceContainer className="rightIconNomal"
+            talking={voiceUser?.talking}
+            muted={voiceUser?.muted}
+            listenOnly={voiceUser?.listenOnly}
+            voice={voiceUser?.joined}
+            noVoice={!voiceUser?.joined}
+            color={user.color}
+            animations={animations}
+            isChrome={isChrome}
+            isFirefox={isFirefox}
+            isEdge={isEdge}
+            isSelected={isSelected}
+        />
+        <Styled.RightIconPresenterContainer className="rightIconNomal"
+            moderator={user.isModerator}
+            presenter={user.presenter}
+            whiteboardAccess={hasWhiteboardAccess}
+            animations={animations}
+            isChrome={isChrome}
+            isFirefox={isFirefox}
+            isEdge={isEdge}
+            isSelected={isSelected}
+        />
+        {renderUserListItemIconsFromPlugin(userItemsFromPlugin)}
+      </>
+      <Styled.RightIconMoreContainer className="rightIconHover" isSelected={isSelected}>
+        <Icon iconName="more" />
+      </Styled.RightIconMoreContainer>
     </Styled.UserItemContents>
   );
 };

@@ -65,7 +65,7 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
                 open={user.userId === openUserAction}
                 setOpenUserAction={setOpenUserAction}
               >
-                <ListItem index={offset + idx} user={user} lockSettings={meeting.lockSettings} />
+                <ListItem index={offset + idx} user={user} lockSettings={meeting.lockSettings} isSelected={user.userId === openUserAction}/>
               </UserActions>
             </Styled.UserListItem>
           );

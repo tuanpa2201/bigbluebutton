@@ -17,6 +17,10 @@ import {
 import { SCREENSHARING_ERRORS } from '/imports/api/screenshare/client/bridge/errors';
 import Button from '/imports/ui/components/common/button/component';
 import { EXTERNAL_VIDEO_STOP } from '../../external-video-player/mutations';
+import BBBMenu from '/imports/ui/components/common/menu/component';
+import VideoPreviewContainer from '/imports/ui/components/video-preview/container';
+import ExternalVideoModal from '/imports/ui/components/external-video-player/external-video-player-graphql/modal/component';
+import useMeeting from "/imports/ui/core/hooks/useMeeting";
 
 const { isMobile } = deviceInfo;
 const { isSafari, isTabletApp } = browserInfo;
@@ -27,7 +31,7 @@ const propTypes = {
   amIPresenter: PropTypes.bool,
   isScreenBroadcasting: PropTypes.bool.isRequired,
   isScreenGloballyBroadcasting: PropTypes.bool.isRequired,
-  isMeteorConnected: PropTypes.bool.isRequired,
+  isMeteorConnected: PropTypes.bool.isRequired
 };
 
 const intlMessages = defineMessages({
@@ -94,7 +98,16 @@ const intlMessages = defineMessages({
   toastHelpLabel: {
     id: 'app.screenshare.screenshareToastHelpLabel',
     description: 'Label of the help button in toast notifications that opens external link',
-  }
+  },
+  shareCamera: {
+    id: 'app.screenshare.actionsDropdown.shareCamera',
+  },
+  shareScreen: {
+    id: 'app.screenshare.actionsDropdown.shareScreen',
+  },
+  shareVideo: {
+    id: 'app.screenshare.actionsDropdown.shareVideo',
+  },
 });
 
 const getErrorLocale = (errorCode) => {
@@ -148,11 +161,24 @@ const ScreenshareButton = ({
   isMeteorConnected,
   screenshareDataSavingSetting,
 }) => {
+  const { data: currentMeeting } = useMeeting((m) => ({
+    externalVideo: m.externalVideo,
+    componentsFlags: m.componentsFlags,
+  }));
+
+  const isSharingVideo = !!currentMeeting?.externalVideo?.externalVideoUrl;
+  const hasCameraAsContent = currentMeeting?.componentsFlags?.hasCameraAsContent;
+
   const TROUBLESHOOTING_URLS = window.meetingClientSettings.public.media.screenshareTroubleshootingLinks;
   const [stopExternalVideoShare] = useMutation(EXTERNAL_VIDEO_STOP);
   const isCameraAsContentBroadcasting = useIsCameraAsContentBroadcasting();
 
   const [isScreenshareUnavailableModalOpen, setScreenshareUnavailableModalIsOpen] = useState(false);
+
+  const [openShareScreen, setOpenShareScreen] = useState(false);
+  const [isCameraAsContentModalOpen, setCameraAsContentModalIsOpen] = useState(false);
+  const [propsToPassModal, setPropsToPassModal] = useState({});
+  const [isExternalVideoModalOpen, setExternalVideoModalIsOpen] = useState(false);
 
   const getHelpInfoForError = (errorCode) => {
     if (TROUBLESHOOTING_URLS && Object.keys(TROUBLESHOOTING_URLS).includes(errorCode)) {
@@ -221,37 +247,141 @@ const ScreenshareButton = ({
   const dataTest = isScreenBroadcasting ? 'stopScreenShare' : 'startScreenShare';
   const loading = isScreenBroadcasting && !isScreenGloballyBroadcasting;
 
+  const onClickShareScreen = () => {
+      if (isSafari && !ScreenshareBridgeService.HAS_DISPLAY_MEDIA) {
+        setScreenshareUnavailableModalIsOpen(true);
+      } else {
+        shareScreen(isCameraAsContentBroadcasting, stopExternalVideoShare, amIPresenter, handleFailure).then(r => {
+        });
+      }
+  }
+
+  const onClickShareCamera = () => {
+      screenshareHasEnded();
+      setCameraAsContentModalIsOpen(true);
+  }
+
+  const onClickShareVideo = () => {
+    setExternalVideoModalIsOpen(true);
+  }
+
+  const dropdownOptions = [
+    {
+      svgIcon: 'shareScreen',
+      label: intl.formatMessage(intlMessages.shareScreen),
+      key: 'shareScreen',
+      onClick: onClickShareScreen,
+      dataTest: 'shareScreen',
+    },
+    {
+      svgIcon: 'shareCamera',
+      label: intl.formatMessage(intlMessages.shareCamera),
+      key: 'shareCamera',
+      onClick: onClickShareCamera,
+      dataTest: 'shareCamera',
+    },
+    {
+      svgIcon: 'shareVideo',
+      label: intl.formatMessage(intlMessages.shareVideo),
+      key: 'shareVideo',
+      onClick: onClickShareVideo,
+      dataTest: 'shareVideo',
+    }
+  ]
+
+  const onClickScreensharing = () => {
+    if (amIBroadcasting) {
+      screenshareHasEnded();
+    } else if (hasCameraAsContent) {
+      screenshareHasEnded();
+      setCameraAsContentModalIsOpen(false);
+    } else if (isSharingVideo) {
+      stopExternalVideoShare().then(r => {});
+      setExternalVideoModalIsOpen(false);
+    } else {
+      setOpenShareScreen(true);
+    }
+  }
+
+  const renderModal = (isOpen, setIsOpen, priority, Component) => {
+    return isOpen ? (
+        <Component
+            {...{
+              onRequestClose: () => setIsOpen(false),
+              priority,
+              setIsOpen,
+              isOpen,
+            }}
+        />
+    ) : null;
+  };
+
   return (
     <>
       {
         shouldAllowScreensharing
-          ? (
-            <Styled.Container>
-              <Button
-                disabled={(!isMeteorConnected && !isScreenBroadcasting) || !screenshareDataSavingSetting || !amIPresenter}
-                icon={amIBroadcasting ? 'desktop' : 'desktop_off'}
-                data-test={dataTest}
-                label={intl.formatMessage(intlMessages[`${info}Label`])}
-                description={intl.formatMessage(intlMessages[`${info}Desc`])}
-                color={amIBroadcasting ? 'primary' : 'default'}
-                hideLabel
-                circle
-                size="lg"
-                loading={loading}
-                onClick={amIBroadcasting
-                  ? screenshareHasEnded
-                  : () => {
-                    if (isSafari && !ScreenshareBridgeService.HAS_DISPLAY_MEDIA) {
-                      setScreenshareUnavailableModalIsOpen(true);
-                    } else {
-                      // eslint-disable-next-line max-len
-                      shareScreen(isCameraAsContentBroadcasting, stopExternalVideoShare, amIPresenter, handleFailure);
-                    }
-                  }}
-                id={amIBroadcasting ? 'unshare-screen-button' : 'share-screen-button'}
-              />
-            </Styled.Container>
-          ) : null
+            ? (
+                <>
+                    <BBBMenu
+                        opts={{
+                            id: 'screensharing-dropdown-menu',
+                            anchorOrigin: {vertical: 'top', horizontal: 'center'},
+                            transformOrigin: {vertical: 'bottom', horizontal: 'center'},
+                        }}
+                        trigger={
+                            (
+                                <Styled.Container>
+                                    <Button
+                                        disabled={(!isMeteorConnected && !isScreenBroadcasting) || !screenshareDataSavingSetting || !amIPresenter}
+                                        svgIcon={amIBroadcasting || isSharingVideo || hasCameraAsContent ? 'desktop' : 'desktop_off'}
+                                        data-test={dataTest}
+                                        label={intl.formatMessage(intlMessages[`${info}Label`])}
+                                        description={intl.formatMessage(intlMessages[`${info}Desc`])}
+                                        color={amIBroadcasting || isSharingVideo || hasCameraAsContent ? 'primary' : 'default'}
+                                        hideLabel
+                                        circle
+                                        size="lg"
+                                        loading={loading}
+                                        onClick={onClickScreensharing}
+                                        id={amIBroadcasting || isSharingVideo || hasCameraAsContent ? 'unshare-screen-button' : 'share-screen-button'}
+                                    />
+                                </Styled.Container>
+                            )
+                        }
+                        actions={dropdownOptions}
+                        onCloseCallback={() => {
+                            setOpenShareScreen(false);
+                        }}
+                        open={openShareScreen}
+                    />
+                    {renderModal(
+                        isExternalVideoModalOpen,
+                        setExternalVideoModalIsOpen,
+                        'low',
+                        ExternalVideoModal,
+                    )}
+                    {renderModal(
+                        isCameraAsContentModalOpen,
+                        setCameraAsContentModalIsOpen,
+                        'low',
+                        () => (
+                            <VideoPreviewContainer
+                                cameraAsContent
+                                amIPresenter
+                                {...{
+                                    callbackToClose: () => {
+                                        setPropsToPassModal({});
+                                    },
+                                    priority: 'low',
+                                    setIsOpen: setCameraAsContentModalIsOpen,
+                                    isOpen: isCameraAsContentModalOpen,
+                                }}
+                                {...propsToPassModal}
+                            />
+                        ),
+                    )}
+                </>
+            ) : null
       }
       {
         isScreenshareUnavailableModalOpen ? (
