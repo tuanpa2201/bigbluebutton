@@ -133,8 +133,11 @@ const SkipSlideSelect = styled.select`
   padding: 0 ${smPaddingY};
   margin: ${borderSize};
   margin-left: ${whiteboardToolbarMargin};
-  border: unset;
-
+  border: unset !important;
+  width: 70px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  padding: unset !important;
   [dir="rtl"] & {
     margin: ${borderSize};
     margin-right: ${whiteboardToolbarMargin};
