@@ -39,23 +39,8 @@ const intlMessages = defineMessages({
 });
 
 const AboutComponent = (props) => {
-  const {
-    settings, isOpen, onRequestClose, priority,
-  } = props;
+  const { isOpen, onRequestClose, priority } = props;
   const intl = useIntl();
-  const {
-    html5ClientBuild,
-    copyright,
-    bbbServerVersion,
-    displayBbbServerVersion,
-  } = settings;
-
-  const showLabelVersion = () => (
-    <>
-      <br />
-      {`${intl.formatMessage(intlMessages.version_label)} ${bbbServerVersion}`}
-    </>
-  );
 
   return (
     <ModalSimple
@@ -71,11 +56,10 @@ const AboutComponent = (props) => {
         priority,
       }}
     >
-      {`${intl.formatMessage(intlMessages.copyright)} ${copyright}`}
-      <br />
-      {`${intl.formatMessage(intlMessages.version)} ${html5ClientBuild}`}
-      {displayBbbServerVersion ? showLabelVersion() : null}
-
+      <div className="text-base">
+        {`${intl.formatMessage(intlMessages.copyright)} ${new Date().getFullYear()}`}
+        <div className="mt-16">Developed: Viettel IT Center (VIC)</div>
+      </div>
     </ModalSimple>
   );
 };

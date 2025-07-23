@@ -1,3 +1,9 @@
+.text-base {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--Text-Primary, #313131);
+}
+
 /* WIDTH, HEIGHT */
 .w-100 {
     width: 100% !important;
@@ -125,6 +131,10 @@
 
 .mt-12 {
     margin-top: 12px;
+}
+
+.mt-16 {
+    margin-top: 16px;
 }
 
 .mt-28 {
