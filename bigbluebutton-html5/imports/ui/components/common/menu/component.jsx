@@ -164,16 +164,17 @@ class BBBMenu extends React.Component {
               isMobile={isMobile}
               isEmoji={isEmoji}
             >
-              {a?.isUseSvgIcon ? <img src={a.svgIcon} alt={label} /> : a.icon ? <Icon iconName={a.icon} key="icon" /> : null}
-              {a.svgIcon ? <SvgIcon iconName={a.svgIcon} key="icon" /> : null}
+              {a.svgIcon ? <SvgIcon color={textColor} iconName={a.svgIcon} key="icon" /> : null}
               <Styled.Option hasIcon={!!(a.icon || a.svgIcon)} isHorizontal={isHorizontal} isMobile={isMobile} aria-describedby={`${key}-option-desc`} $isToggle={isToggle}>{label}</Styled.Option>
               {description && <div className="sr-only" id={`${key}-option-desc`}>{`${description}${selected ? ` - ${intl.formatMessage(intlMessages.active)}` : ''}`}</div>}
               {a.iconRight ? <Styled.IconRight iconName={a.iconRight} key="iconRight" style={iconStyles} /> : null}
+              {a.svgIconRight ? <div style={{ display: 'flex', justifyContent: 'flex-end', flex: 1 }}><SvgIcon color={textColor} iconName={a.svgIconRight} key="iconRight" /></div> : null}
             </Styled.MenuItemWrapper>
           </Styled.BBBMenuItem>
         ),
         (!onClick && !a.isSeparator) && (
           <Styled.BBBMenuInformation
+            className="bbb-menu-information"
             key={a.key}
             isTitle={isTitle}
             isGenericContent={!!contentFunction}
@@ -187,6 +188,7 @@ class BBBMenu extends React.Component {
                   {a.svgIcon ? <SvgIcon color={textColor} iconName={a.svgIcon} key="icon" /> : null}
                   <Styled.Option hasIcon={!!(a.icon)} isTitle={isTitle} textColor={textColor} isHorizontal={isHorizontal} isMobile={isMobile} aria-describedby={`${key}-option-desc`} $isToggle={isToggle}>{label}</Styled.Option>
                   {a.iconRight ? <Styled.IconRight color={textColor} iconName={a.iconRight} key="iconRight" /> : null}
+                  {a.svgIconRight ? <div style={{ display: 'flex', justifyContent: 'flex-end', flex: 1 }}><SvgIcon color={textColor} iconName={a.svgIconRight} key="iconRight" /></div> : null}
                   {(isTitle && titleActions?.length > 0) ? (
                     titleActions.map((item, index) => (
                       <Styled.TitleAction
