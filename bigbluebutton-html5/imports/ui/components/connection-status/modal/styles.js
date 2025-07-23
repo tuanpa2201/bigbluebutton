@@ -33,7 +33,9 @@ const Item = styled.li`
   display: flex;
   width: 100%;
   border-bottom: 1px solid ${colorGrayLightest};
-
+  align-items: center;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
   ${({ last }) => last && `
     border: none;
   `}
@@ -43,11 +45,12 @@ const Left = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
+  align-items: center;
 `;
 
 const Name = styled.div`
   display: flex;
-  width: 27.5%;
+  width: 43.5%;
   height: 100%;
   align-items: center;
   justify-content: flex-start;
@@ -75,11 +78,12 @@ const ClientNotRespondingText = styled.div`
 `;
 
 const Text = styled.div`
-  padding-left: .5rem;
+  padding-left: 8px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #313131;
+  font-weight: 500;
 
   ${({ offline }) => offline && `
     font-style: italic;
@@ -87,7 +91,7 @@ const Text = styled.div`
 
   [dir="rtl"] & {
     padding: 0;
-    padding-right: .5rem;
+    padding-right: 10px;
   }
 `;
 
@@ -99,8 +103,8 @@ const Avatar = styled.div`
 `;
 
 const Icon = styled.div`
-  width: 2.05rem;
-  height: 2.05rem;
+  width: 1.5rem;
+  height: 1.5rem;
 `;
 
 const Right = styled.div`
@@ -115,6 +119,11 @@ const Time = styled.div`
   width: 100%;
   height: 100%;
   justify-content: flex-end;
+  >time {
+    color: #6F767E !important;
+    font-size: 1rem;
+    font-weight: 500;
+  }
 `;
 
 const TimeActive = styled.time`

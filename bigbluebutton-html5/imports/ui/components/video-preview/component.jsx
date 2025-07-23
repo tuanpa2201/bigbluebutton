@@ -1156,9 +1156,7 @@ class VideoPreview extends Component {
   }
 
   renderContent(selectedTab) {
-    const {
-      intl,
-    } = this.props;
+    const { intl, cameraAsContent } = this.props;
 
     const {
       viewState,
@@ -1196,8 +1194,8 @@ class VideoPreview extends Component {
       case VIEW_STATES.found:
       default:
         return (
-          <div className="d-flex align-items-start justify-content-between gap-20">
-            <div className="w-50">
+          <div className={cameraAsContent ? '' : 'd-flex align-items-start justify-content-between gap-20'}>
+            <div className={cameraAsContent ? 'video-preview-wrapper' : 'w-50'}>
               {
                 previewError
                   ? (
@@ -1217,7 +1215,7 @@ class VideoPreview extends Component {
                   )
               }
             </div>
-            <div className="w-50">
+            <div className={cameraAsContent ? '' : 'w-50'}>
               {this.renderTabsContent(selectedTab)}
             </div>
           </div>
@@ -1369,7 +1367,7 @@ class VideoPreview extends Component {
 
     return (
       <Styled.VideoPreviewModal
-        className="video-preview-modal"
+        className={cameraAsContent ? 'video-preview-modal camera-as-content' : 'video-preview-modal'}
         onRequestClose={this.handleProceed}
         contentLabel={intl.formatMessage(intlMessages.webcamSettingsTitle)}
         title={intl.formatMessage(intlMessages.webcamSettingsTitle)}
@@ -1383,29 +1381,28 @@ class VideoPreview extends Component {
         }}
       >
         <Styled.Container className="video-preview-container">
-          <Styled.Header>
-            <Styled.WebcamTabs
-              onSelect={this.handleSelectTab}
-              selectedIndex={selectedTab}
-            >
-              <Styled.WebcamTabList className="webcam-tab-list">
-                <Styled.WebcamTabSelector selectedClassName="is-selected" className="webcam-tab-item">
-                  <span
-                    id="webcam-settings-title">{this.getModalTitle()}
-                  </span>
-                </Styled.WebcamTabSelector>
-                {shouldShowVirtualBackgroundsTab && (
-                <>
-                  <Styled.WebcamTabSelector selectedClassName="is-selected" className="webcam-tab-item">
-                    <span id="backgrounds-title">{intl.formatMessage(intlMessages.webcamVirtualBackgroundTitle)}</span>
-                  </Styled.WebcamTabSelector>
-                </>
-              )}
-              </Styled.WebcamTabList>
-
-            </Styled.WebcamTabs>
-          </Styled.Header>
-
+          {!cameraAsContent &&
+              <Styled.Header>
+                <Styled.WebcamTabs
+                    onSelect={this.handleSelectTab}
+                    selectedIndex={selectedTab}
+                >
+                  <Styled.WebcamTabList className="webcam-tab-list">
+                    <Styled.WebcamTabSelector selectedClassName="is-selected" className="webcam-tab-item">
+                      <span id="webcam-settings-title">{this.getModalTitle()}</span>
+                    </Styled.WebcamTabSelector>
+                    {shouldShowVirtualBackgroundsTab && (
+                        <>
+                          <Styled.WebcamTabSelector selectedClassName="is-selected" className="webcam-tab-item">
+                            <span
+                                id="backgrounds-title">{intl.formatMessage(intlMessages.webcamVirtualBackgroundTitle)}</span>
+                          </Styled.WebcamTabSelector>
+                        </>
+                    )}
+                  </Styled.WebcamTabList>
+                </Styled.WebcamTabs>
+              </Styled.Header>
+          }
           {deviceInfo.hasMediaDevices
               ? this.renderModalContent(selectedTab)
               : this.supportWarning()

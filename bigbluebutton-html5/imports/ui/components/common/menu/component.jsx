@@ -1,13 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import { Divider } from '@mui/material';
+import {Divider} from '@mui/material';
 import Icon from '/imports/ui/components/common/icon/component';
 import { SMALL_VIEWPORT_BREAKPOINT } from '/imports/ui/components/layout/enums';
 import KEY_CODES from '/imports/utils/keyCodes';
 import MenuSkeleton from './skeleton';
 import GenericContentItem from '/imports/ui/components/generic-content/generic-content-item/component';
 import Styled from './styles';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const intlMessages = defineMessages({
   close: {
@@ -163,9 +164,9 @@ class BBBMenu extends React.Component {
               isMobile={isMobile}
               isEmoji={isEmoji}
             >
-              {/* eslint-disable-next-line no-nested-ternary */}
               {a?.isUseSvgIcon ? <img src={a.svgIcon} alt={label} /> : a.icon ? <Icon iconName={a.icon} key="icon" /> : null}
-              <Styled.Option hasIcon={!!(a.icon)} isHorizontal={isHorizontal} isMobile={isMobile} aria-describedby={`${key}-option-desc`} $isToggle={isToggle}>{label}</Styled.Option>
+              {a.svgIcon ? <SvgIcon iconName={a.svgIcon} key="icon" /> : null}
+              <Styled.Option hasIcon={!!(a.icon || a.svgIcon)} isHorizontal={isHorizontal} isMobile={isMobile} aria-describedby={`${key}-option-desc`} $isToggle={isToggle}>{label}</Styled.Option>
               {description && <div className="sr-only" id={`${key}-option-desc`}>{`${description}${selected ? ` - ${intl.formatMessage(intlMessages.active)}` : ''}`}</div>}
               {a.iconRight ? <Styled.IconRight iconName={a.iconRight} key="iconRight" style={iconStyles} /> : null}
             </Styled.MenuItemWrapper>
@@ -183,6 +184,7 @@ class BBBMenu extends React.Component {
               {!contentFunction ? (
                 <>
                   {a.icon ? <Icon color={textColor} iconName={a.icon} key="icon" /> : null}
+                  {a.svgIcon ? <SvgIcon color={textColor} iconName={a.svgIcon} key="icon" /> : null}
                   <Styled.Option hasIcon={!!(a.icon)} isTitle={isTitle} textColor={textColor} isHorizontal={isHorizontal} isMobile={isMobile} aria-describedby={`${key}-option-desc`} $isToggle={isToggle}>{label}</Styled.Option>
                   {a.iconRight ? <Styled.IconRight color={textColor} iconName={a.iconRight} key="iconRight" /> : null}
                   {(isTitle && titleActions?.length > 0) ? (

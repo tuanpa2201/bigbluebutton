@@ -1,5 +1,6 @@
 const colorWhite = 'var(--color-white, #FFF)';
 const colorOffWhite = 'var(--color-off-white, #F3F6F9)';
+const colorSecondary = 'var(--color-secondary, #5F6166)';
 
 const colorBlack = 'var(--color-black, #000000)';
 
@@ -129,6 +130,7 @@ const toastWarningBg = `var(--toast-warning-bg, ${colorWarning})`;
 export {
   colorWhite,
   colorOffWhite,
+  colorSecondary,
   colorBlack,
   colorGray,
   colorGrayDark,
