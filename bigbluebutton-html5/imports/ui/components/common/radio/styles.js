@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { colorText, colorSuccess } from '/imports/ui/stylesheets/styled-components/palette';
-import Icon from '/imports/ui/components/common/icon/component';
+import { colorSuccess } from '/imports/ui/stylesheets/styled-components/palette';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 import BaseRadio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { styled as muiStyled } from '@mui/system';
@@ -14,14 +14,14 @@ const Radio = muiStyled(BaseRadio)(() => ({
 const Label = muiStyled(FormControlLabel)(() => ({
   '& .MuiFormControlLabel-label': {
     fontFamily: 'inherit !important',
-    color: `${colorText} !important`,
+    color: '#313131 !important',
   },
   '&.Mui-disabled': {
     cursor: 'not-allowed !important',
   },
 }));
 
-const RadioIcon = styled(Icon)``;
+const RadioIcon = styled(SvgIcon)``;
 
 const RadioIconChecked = styled(RadioIcon)``;
 

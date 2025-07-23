@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import {
-  colorPrimary,
   colorWhite,
 } from '/imports/ui/stylesheets/styled-components/palette';
 import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
@@ -12,13 +11,11 @@ const Content = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: .5rem 0 .5rem 0;
+  padding: 2px 0 12px 0;
   overflow: hidden;
 `;
 
 const LayoutModal = styled(ModalSimple)`
-  padding: 1rem;
-
   @media ${smallOnly} {
     height: unset;
   }
@@ -38,8 +35,7 @@ const LayoutModal = styled(ModalSimple)`
 `;
 
 const BodyContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  width: 100%;
 `;
 
 const IconSvg = styled.img`
@@ -56,11 +52,10 @@ const LayoutBtn = styled(Button)`
   display: flex;
   box-shadow: unset !important;
   background-color: ${colorWhite};
-  border: ${colorWhite} solid 6px;
   align-items: center;
   flex-direction: column;
   padding: 0 !important;
-  margin: 1rem 1rem 0.5rem 1rem;
+  margin-bottom: 6px;
   width: fit-content;
 
   @media ${smallOnly} {
@@ -69,59 +64,10 @@ const LayoutBtn = styled(Button)`
       display: none;
     `};
 
-    margin: 0.5rem;
     border: ${colorWhite} solid 6px;
     border-radius: 10px;
     width: fit-content;
   }
-
-  &:focus,
-  &:hover {
-    border: ${colorPrimary} solid 6px;
-    border-radius: 5px;
-  }
-  
-  ${({ active }) => (active === 'true') && `
-    border: ${colorPrimary} solid 6px;
-    border-radius: 5px;
-
-    @media ${smallOnly} {
-      border: ${colorPrimary} solid 6px;
-      border-radius: 5px;
-    }
-
-    &:before {
-      font-family: 'bbb-icons';
-      color: ${colorWhite};
-      position: fixed;
-      content: "\\e946";
-      background-color: ${colorPrimary};
-      margin-left: 13.1rem;
-      padding: 0.3rem 0.2rem 0 0.6rem;
-      border-radius: 0 0 0 .3rem;
-
-      [dir="rtl"] & {
-        left: auto;
-        margin-right: 13.1rem;
-        margin-left: unset;
-        padding: 0.3rem 0.6rem 0 0.2rem;
-        border-radius: 0 0 .3rem 0;
-      }
-      width: 1.8rem;
-      height: 1.8rem;
-
-      @media ${smallOnly} {
-        width: 2rem;
-        height: 1.5rem;
-        font-size: 0.8rem;
-        padding: 0.2rem 0.2rem 0 0.3rem;
-
-        [dir="rtl"] & {
-          padding: 0.2rem 0.3rem 0 0.2rem;
-        }
-      }
-    }
-  `};
 `;
 
 const ButtonLayoutContainer = styled.div`
@@ -133,25 +79,17 @@ const ButtonLayoutContainer = styled.div`
 `;
 
 const ButtonsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-
-  @media ${smallOnly} {
-    flex-wrap: unset;
-    flex-direction: column;
-    align-items: center;
-  }
+  
 `;
 
 const ButtonBottomContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-self: end;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-top: 1rem;
+  padding: 16px 0px 0px;
   width: 100%;
+
+  border-top: 1px solid var(--Border-00, #EFEFEF);
 
   @media ${smallOnly} {
     align-self: center;

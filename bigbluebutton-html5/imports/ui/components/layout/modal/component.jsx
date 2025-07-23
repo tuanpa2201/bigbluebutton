@@ -10,6 +10,7 @@ import Styled from './styles';
 import Tooltip from '/imports/ui/components/common/tooltip/component';
 import Auth from '/imports/ui/services/auth';
 import Storage from '/imports/ui/services/storage/session';
+import Radio from '../../common/radio/component';
 
 const LayoutModalComponent = ({
   intl,
@@ -163,7 +164,7 @@ const LayoutModalComponent = ({
           showToggleLabel={false}
         />
       </Styled.ToggleStatusWrapper>
-    )
+    );
   };
 
   const renderPushLayoutsOptions = () => {
@@ -193,7 +194,18 @@ const LayoutModalComponent = ({
       {Object.values(LAYOUT_TYPE)
         .filter((layout) => !HIDDEN_LAYOUTS.includes(layout))
         .map((layout) => (
-          <Styled.ButtonLayoutContainer key={layout}>
+          <div className="d-flex justify-content-between align-items-center" key={layout}>
+            <Radio
+              label={intl.formatMessage(intlMessages[`${layout}Layout`])}
+              checked={layout === selectedLayout}
+              onChange={() => {
+                handleSwitchLayout(layout);
+                if (layout === LAYOUT_TYPE.CUSTOM_LAYOUT
+                  && application.selectedLayout !== layout) {
+                  document.getElementById('layout')?.setAttribute('data-cam-position', CAMERADOCK_POSITION.CONTENT_TOP);
+                }
+              }}
+            />
             <Styled.LayoutBtn
               layout={layout}
               label=""
@@ -203,21 +215,8 @@ const LayoutModalComponent = ({
                   alt={`${layout} ${intl.formatMessage(intlMessages.layoutSingular)}`}
                 />
               )}
-              onClick={() => {
-                handleSwitchLayout(layout);
-                if (layout === LAYOUT_TYPE.CUSTOM_LAYOUT && application.selectedLayout !== layout) {
-                  document.getElementById('layout')?.setAttribute('data-cam-position', CAMERADOCK_POSITION.CONTENT_TOP);
-                }
-              }}
-              active={(layout === selectedLayout).toString()}
-              aria-describedby="layout-btn-desc"
-              data-test={`${layout}Layout`}
             />
-            <Styled.LabelLayoutNames
-              layout={layout}
-              aria-hidden>{intl.formatMessage(intlMessages[`${layout}Layout`])}
-            </Styled.LabelLayoutNames>
-          </Styled.ButtonLayoutContainer>
+          </div>
         ))}
     </Styled.ButtonsContainer>
   );
@@ -242,9 +241,9 @@ const LayoutModalComponent = ({
         </Styled.BodyContainer>
       </Styled.Content>
       <Styled.ButtonBottomContainer>
-        {renderPushLayoutsOptions()}
+        {/* {renderPushLayoutsOptions()} */}
         <Button
-          color="primary"
+          className="btn btn-primary"
           label={intl.formatMessage(intlMessages.update)}
           onClick={() => handleUpdateLayout()}
           data-test="updateLayoutBtn"
