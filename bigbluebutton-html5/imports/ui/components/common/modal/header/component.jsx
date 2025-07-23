@@ -60,7 +60,7 @@ class Header extends React.Component {
         {shouldShowCloseButton ? (
           <Styled.DismissButton
             data-test="closeModal"
-            icon="close"
+            svgIcon="close"
             circle
             hideLabel
             aria-describedby="modalDismissDescription"

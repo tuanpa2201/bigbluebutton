@@ -35,6 +35,10 @@ const intlMessages = defineMessages({
     id: 'app.externalVideo.noteLabel',
     description: 'provides hint about Shared External videos',
   },
+  cancelLabel: {
+    id: 'app.mobileAppModal.dismissLabel',
+    description: 'Close button label',
+  },
 });
 
 const YOUTUBE_SHORTS_REGEX = new RegExp(/^(?:https?:\/\/)?(?:www\.)?(youtube\.com\/shorts)\/.+$/);
@@ -80,6 +84,7 @@ const ExternalVideoPlayerModal: React.FC<ExternalVideoPlayerModalProps> = ({
 
   return (
     <Styled.ExternalVideoModal
+      className="external-video-modal"
       onRequestClose={onRequestClose}
       contentLabel={intl.formatMessage(intlMessages.title)}
       title={intl.formatMessage(intlMessages.title)}
@@ -89,9 +94,9 @@ const ExternalVideoPlayerModal: React.FC<ExternalVideoPlayerModalProps> = ({
     >
       <Styled.Content>
         <Styled.VideoUrl animations={animations}>
-          <label htmlFor="video-modal-input">
+          <Styled.Label htmlFor="video-modal-input">
             {intl.formatMessage(intlMessages.input)}
-            <input
+            <Styled.InputUrl
               id="video-modal-input"
               onChange={(e) => setVideoUrl(e.target.value)}
               name="video-modal-input"
@@ -101,24 +106,33 @@ const ExternalVideoPlayerModal: React.FC<ExternalVideoPlayerModalProps> = ({
               onCut={(e) => { e.stopPropagation(); }}
               onCopy={(e) => { e.stopPropagation(); }}
             />
-          </label>
+          </Styled.Label>
           <Styled.ExternalVideoNote id="external-video-note">
             {intl.formatMessage(intlMessages.note)}
           </Styled.ExternalVideoNote>
         </Styled.VideoUrl>
-        <div>
+
           {
             !valid && videoUrl
               ? (
-                <Styled.UrlError animations={animations}>
-                  {intl.formatMessage(intlMessages.urlError)}
-                </Styled.UrlError>
+                <div>
+                  <Styled.UrlError animations={animations}>
+                    {intl.formatMessage(intlMessages.urlError)}
+                  </Styled.UrlError>
+                </div>
               )
               : null
           }
-        </div>
-
+      </Styled.Content>
+      <Styled.ButtonFooter>
+        <Styled.CancelButton
+          className="btn btn-default m-0-i"
+          data-test="cancelSharingWebcam"
+          label={intl.formatMessage(intlMessages.cancelLabel)}
+          onClick={onRequestClose}
+        />
         <Styled.StartButton
+          className="btn btn-primary m-0-i"
           label={intl.formatMessage(intlMessages.start)}
           disabled={!valid || !videoUrl}
           onClick={() => {
@@ -128,7 +142,8 @@ const ExternalVideoPlayerModal: React.FC<ExternalVideoPlayerModalProps> = ({
           data-test="startNewVideo"
           color="primary"
         />
-      </Styled.Content>
+      </Styled.ButtonFooter>
+
     </Styled.ExternalVideoModal>
   );
 };

@@ -110,7 +110,10 @@
     "app.videoPreview.cancelLabel": "Hủy bỏ",
     "app.videoPreview.closeLabel": "Đóng",
     "app.video.cancel": "Hủy bỏ",
-    "app.externalVideo.close": "Đóng"
-
+    "app.externalVideo.close": "Đóng",
+    "app.screenshare.actionsDropdown.shareCamera": "Share camera",
+    "app.screenshare.actionsDropdown.shareScreen": "Share screen",
+    "app.screenshare.actionsDropdown.shareVideo": "Share video",
+    "EOF": "EOF"
 }
 

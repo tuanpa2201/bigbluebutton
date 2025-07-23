@@ -30,22 +30,51 @@ const UrlError = styled.div<urlProps>`
 `;
 
 const ExternalVideoModal = styled(ModalSimple)`
-  padding: 1rem;
-  min-height: 23rem;
+  //padding: 1rem;
+  //min-height: 23rem;
 `;
+
+const Label = styled.label`
+    color: var(--Text-Primary, #313131);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+`
+const InputUrl = styled.input`
+    display: flex !important;
+    padding: 6px 12px !important;
+    align-items: center !important;
+    border-radius: var(--p-border-radius-button) !important;
+    border: 0.66px solid var(--Border-01, #C8C8C8) !important;
+    background: var(--BG-00, #FFF) !important;
+    line-height: 20px !important;
+    margin: 4px 0 0 !important;
+`
 
 const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0;
-  margin-right: auto;
-  margin-left: auto;
-  width: 100%;
+    padding-bottom: 16px;
+  //display: flex;
+  //flex-direction: column;
+  //justify-content: center;
+  //padding: 0;
+  //margin-right: auto;
+  //margin-left: auto;
+  //width: 100%;
 `;
 
+const ButtonFooter = styled.div`
+    display: flex;
+    padding-top: 12px;
+    border-top: 1px solid var(--Border-00, #EFEFEF);
+    background: var(--BG-00, #FFF);
+    gap: 8px;
+    justify-content: end;
+`;
+
+
 const VideoUrl = styled.div<urlProps>`
-  margin: 0 ${borderSize} 0 ${borderSize};
+  //margin: 0 ${borderSize} 0 ${borderSize};
 
   & > label {
     display: block;
@@ -80,11 +109,23 @@ const VideoUrl = styled.div<urlProps>`
 `;
 
 const ExternalVideoNote = styled.div`
-  color: ${colorGray};
-  font-size: ${fontSizeSmall};
-  font-style: italic;
-  padding-top: ${smPaddingY};
+  color: var(--Text-Secondary, #6F767E);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+  padding-top: 16px; 
+    
+  //color: ${colorGray};
+  //font-size: ${fontSizeSmall};
+  //font-style: italic;
+  //padding-top: ${smPaddingY};
 `;
+
+const CancelButton = styled(Button)`
+
+`;
+
 
 // @ts-ignore - Button is JSX element
 const StartButton = styled(Button)`
@@ -101,15 +142,19 @@ const StartButton = styled(Button)`
 
   margin: 0;
   display: block;
-  position: absolute;
-  bottom: ${mdPaddingX};
+  //position: absolute;
+  //bottom: ${mdPaddingX};
 `;
 
 export default {
   UrlError,
   ExternalVideoModal,
   Content,
+  ButtonFooter,
   VideoUrl,
   ExternalVideoNote,
   StartButton,
+  CancelButton,
+  InputUrl,
+  Label,
 };

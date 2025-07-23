@@ -19,18 +19,23 @@ import {
 const DropdownButton = styled.button`
   background-color: ${colorOffWhite};
   border: none;
-  border-radius: 13px;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.16),
-    0px 2px 3px rgba(0, 0, 0, 0.24),
-    0px 2px 6px rgba(0, 0, 0, 0.1);
+  //border-radius: 13px;
+  //box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.16),
+  //  0px 2px 3px rgba(0, 0, 0, 0.24),
+  //  0px 2px 6px rgba(0, 0, 0, 0.1);
   color: #2d2d2d;
   cursor: pointer;
-  padding: .3rem .5rem;
+  //padding: .3rem .5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   tab-index: 0;
-
+  
+  padding: 4px;
+  border-radius: 8px;
+  background: var(--BG-04---hover, #EFEFEF);
+  box-shadow: 0 4px 6px -2px rgba(26, 26, 26, 0.20), 1px 0 0 0 rgba(0, 0, 0, 0.13) inset, -1px 0 0 0 rgba(0, 0, 0, 0.13) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.17) inset, 0 1px 0 0 rgba(204, 204, 204, 0.50) inset;
+ 
   &:hover {
     background-color: ${colorGrayLightest};
   }
@@ -39,8 +44,8 @@ const DropdownButton = styled.button`
 const Right = styled.div`
   cursor: pointer;
   position: absolute;
-  right: 3px;
-  top: 2px;
+  right: 16px;
+  top: 16px;
   z-index: 999;
   > div {
     width: 35px;
