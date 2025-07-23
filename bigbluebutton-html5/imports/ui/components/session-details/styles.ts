@@ -15,7 +15,6 @@ const Container = styled.div<{ isFullWidth: boolean }>`
   width: 100%;
   box-sizing: border-box;
   text-align: left;
-  margin-top: 16px;
 
   & > div {
     flex: ${({ isFullWidth }) => (isFullWidth ? '1 1 100%' : '1 1 50%')};

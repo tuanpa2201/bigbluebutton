@@ -47,6 +47,7 @@ const Right = styled.div`
   right: 16px;
   top: 16px;
   z-index: 999;
+
   > div {
     width: 35px;
     height: 35px;
@@ -54,6 +55,7 @@ const Right = styled.div`
     align-items: center;
     justify-content: center;
   }
+
   button {
     height: 100%;
     width: 100%;
@@ -62,11 +64,12 @@ const Right = styled.div`
     justify-content: center;
   }
 
-  [dir="rtl"] &{
-      left: 3px;
-      right: auto;
-    }
+  [dir="rtl"] & {
+    left: 3px;
+    right: auto;
+  }
 `;
+
 const ToastText = styled.span`
   overflow: hidden;
   text-overflow: ellipsis;

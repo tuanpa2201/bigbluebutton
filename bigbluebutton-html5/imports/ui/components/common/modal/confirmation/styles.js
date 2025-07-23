@@ -53,7 +53,7 @@ const Footer = styled.div`
 const ConfirmationButton = styled(Button)`
   padding-right: ${jumboPaddingY};
   padding-left: ${jumboPaddingY};
-  margin: 0 ${smPaddingX} 0 0;
+  //margin: 0 ${smPaddingX} 0 0;
 
   [dir="rtl"] & {
     margin: 0 0 0 ${smPaddingX};
