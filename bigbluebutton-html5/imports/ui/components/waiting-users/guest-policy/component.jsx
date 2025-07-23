@@ -1,8 +1,8 @@
-import React, { PureComponent } from 'react';
-import { defineMessages, injectIntl } from 'react-intl';
+import React, {PureComponent} from 'react';
+import {defineMessages, injectIntl} from 'react-intl';
 import PropTypes from 'prop-types';
 import Styled from './styles';
-import { notify } from '/imports/ui/services/notification';
+import {notify} from '/imports/ui/services/notification';
 
 const ASK_MODERATOR = 'ASK_MODERATOR';
 const ALWAYS_ACCEPT = 'ALWAYS_ACCEPT';
@@ -41,6 +41,14 @@ const intlMessages = defineMessages({
     id: 'app.guest-policy.feedbackMessage',
     description: 'Feedback message for guest policy change',
   },
+  buttonApply: {
+    id: 'app.lock-viewers.button.apply',
+    description: 'label for apply button',
+  },
+  buttonCancel: {
+    id: 'app.lock-viewers.button.cancel',
+    description: 'label for cancel button',
+  },
 });
 
 const propTypes = {
@@ -54,9 +62,15 @@ const propTypes = {
 class GuestPolicyComponent extends PureComponent {
   constructor(props) {
     super(props);
-
+    this.state = {
+      selectedRole: 'askModerator', // default value
+    };
     this.handleChangePolicy = this.handleChangePolicy.bind(this);
   }
+
+  handleChange = (e) => {
+    this.setState({ selectedRole: e.target.value });
+  };
 
   componentWillUnmount() {
     const { setIsOpen } = this.props;
@@ -64,11 +78,28 @@ class GuestPolicyComponent extends PureComponent {
     setIsOpen(false);
   }
 
-  handleChangePolicy(policyRule, messageId) {
+  // handleChangePolicy(policyRule, messageId) {
+  //   const { intl, changeGuestPolicy } = this.props;
+  //
+  //   changeGuestPolicy(policyRule);
+  //
+  //   notify(intl.formatMessage(intlMessages.feedbackMessage) + intl.formatMessage(messageId), 'success');
+  // }
+
+  handleChangePolicy() {
     const { intl, changeGuestPolicy } = this.props;
-
+    // default askModerator
+    let policyRule= ASK_MODERATOR;
+    let messageId = intlMessages.askModerator;
+    if ("alwaysAccept" === this.state.selectedRole) {
+      policyRule= ALWAYS_ACCEPT;
+      messageId = intlMessages.alwaysAccept;
+    } else if ("alwaysDeny" === this.state.selectedRole) {
+      policyRule= ALWAYS_DENY;
+      messageId = intlMessages.alwaysDeny;
+    }
+    // alert("selectedRole: " + this.state.selectedRole)
     changeGuestPolicy(policyRule);
-
     notify(intl.formatMessage(intlMessages.feedbackMessage) + intl.formatMessage(messageId), 'success');
   }
 
@@ -81,9 +112,9 @@ class GuestPolicyComponent extends PureComponent {
       onRequestClose,
       priority,
     } = this.props;
-
+    const { selectedRole } = this.state;
     return (
-      <Styled.GuestPolicyModal
+      <Styled.GuestPolicyModal className="policy-modal"
         onRequestClose={() => setIsOpen(false)}
         contentLabel={intl.formatMessage(intlMessages.ariaModalTitle)}
         title={intl.formatMessage(intlMessages.guestPolicyTitle)}
@@ -93,15 +124,15 @@ class GuestPolicyComponent extends PureComponent {
           priority,
         }}
       >
-        <Styled.Container
+        <Styled.Container className="policy-container"
           data-test="guestPolicySettingsModal"
         >
-          <Styled.Description>
+          <Styled.Description className="policy-desc">
             {intl.formatMessage(intlMessages.guestPolicyDescription)}
           </Styled.Description>
 
-          <Styled.Content>
-            <Styled.GuestPolicyButton
+          <Styled.Content className="policy-content">
+            {/*<Styled.GuestPolicyButton
               color="primary"
               disabled={guestPolicy === ASK_MODERATOR}
               label={intl.formatMessage(intlMessages.askModerator)}
@@ -136,12 +167,62 @@ class GuestPolicyComponent extends PureComponent {
                 this.handleChangePolicy(ALWAYS_DENY, intlMessages.alwaysDeny);
                 setIsOpen(false);
               }}
-            />
+            />*/}
+
+            <Styled.RadioGroup className="policy-radio-group">
+              <Styled.RadioLabel className="policy-radio-label">
+                <input type="radio"
+                       name="role"
+                       value="askModerator"
+                       checked={selectedRole === 'askModerator'}
+                       onChange={this.handleChange}
+                />
+                <span>{intl.formatMessage(intlMessages.askModerator)}</span>
+              </Styled.RadioLabel>
+              <Styled.RadioLabel className="policy-radio-label">
+                <input type="radio"
+                       name="role"
+                       value="alwaysAccept"
+                       checked={selectedRole === 'alwaysAccept'}
+                       onChange={this.handleChange}
+                />
+                <span>{intl.formatMessage(intlMessages.alwaysAccept)}</span>
+              </Styled.RadioLabel>
+              <Styled.RadioLabel className="policy-radio-label">
+                <input type="radio"
+                       name="role"
+                       value="alwaysDeny"
+                       checked={selectedRole === 'alwaysDeny'}
+                       onChange={this.handleChange}
+                />
+                <span>{intl.formatMessage(intlMessages.alwaysDeny)}</span>
+              </Styled.RadioLabel>
+            </Styled.RadioGroup>
           </Styled.Content>
           <div id="policy-btn-desc" aria-hidden className="sr-only">
             {intl.formatMessage(intlMessages.policyBtnDesc)}
           </div>
         </Styled.Container>
+        <Styled.Footer className="policy-footer">
+          <Styled.Actions className="policy-action">
+            <Styled.ButtonCancel className="btn btn-default"
+             label={intl.formatMessage(intlMessages.buttonCancel)}
+             onClick={() => {
+               setIsOpen(false);
+             }}
+             color="secondary"
+            />
+            <Styled.ButtonApply className="btn btn-primary"
+              color="primary"
+              label={intl.formatMessage(intlMessages.buttonApply)}
+              onClick={() => {
+                this.handleChangePolicy();
+                setIsOpen(false);
+              }}
+              data-test="applyLockSettings"
+            />
+          </Styled.Actions>
+        </Styled.Footer>
       </Styled.GuestPolicyModal>
     );
   }
