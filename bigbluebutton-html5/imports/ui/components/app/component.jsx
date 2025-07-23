@@ -327,7 +327,7 @@ class App extends Component {
           { (
             !hideNotificationToasts
             && isNotificationEnabled) && <PresentationUploaderToastContainer intl={intl} /> }
-          <UploaderContainer />
+          {/* <UploaderContainer /> */}
           <BreakoutJoinConfirmationContainerGraphQL />
           <BBBLiveKitRoomContainer />
           <AudioContainer {...{

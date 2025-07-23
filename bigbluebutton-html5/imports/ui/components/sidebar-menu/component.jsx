@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PANELS, ACTIONS } from '/imports/ui/components/layout/enums';
 
@@ -10,7 +10,7 @@ const Sidebar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 16px;
+  padding: 24px 16px;
   box-sizing: border-box;
 `;
 
@@ -31,6 +31,40 @@ const IconButton = styled.button`
   transition: background 0.2s;
   &:hover, &.active {
     background: #e6e9f0;
+  }
+`;
+
+const ThemeSwitch = styled.div`
+  width: 40px;
+  padding: 4px;
+  border-radius: 32px;
+  background: #efefef;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+`;
+
+const ThemeButton = styled.button`
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: ${({ active }) => (active ? '#ffffff' : 'transparent')};
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #ffffff;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
   }
 `;
 
@@ -69,6 +103,7 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
       });
     }
   };
+  const [theme, setTheme] = useState('light');
 
   return (
     <Sidebar>
@@ -85,6 +120,20 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
           />
         </IconButton>
       ))}
+      <ThemeSwitch>
+        <ThemeButton
+          active={theme === 'light'}
+          title="Light theme"
+        >
+          <img src={`${BASE_NAME}/resources/icon-bbb/light.png`} alt="Light" />
+        </ThemeButton>
+        <ThemeButton
+          active={theme === 'dark'}
+          title="Dark theme"
+        >
+          <img src={`${BASE_NAME}/resources/icon-bbb/moon.png`} alt="Dark" />
+        </ThemeButton>
+      </ThemeSwitch>
     </Sidebar>
   );
 };
