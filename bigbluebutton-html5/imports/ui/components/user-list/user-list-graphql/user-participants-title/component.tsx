@@ -36,17 +36,17 @@ const UserTitle: React.FC<UserTitleProps> = ({
   const userListLabel = hideUserList ? messages.lockedUsersTitle : messages.usersTitle;
 
   return (
-    <Styled.Container>
+    <Styled.Container className="menuUserTitle">
       <Styled.SmallTitle>
         <span
           data-test-users-count={count}
           data-test-users-with-audio-count={countWithAudio}
         >
           {intl.formatMessage(
-            userListLabel,
-            {
-              0: count.toLocaleString('en-US', { notation: 'standard' }),
-            },
+            userListLabel
+            // ,{
+            //   0: count.toLocaleString('en-US', { notation: 'standard' }),
+            // },
           )}
         </span>
       </Styled.SmallTitle>

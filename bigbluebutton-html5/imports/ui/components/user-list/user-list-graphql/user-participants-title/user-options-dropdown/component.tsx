@@ -366,15 +366,15 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
           transformOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },
         }}
       />
-      <Styled.OptionsButton
-          label={intl.formatMessage(intlMessages.closeLabel)}
-          data-test="manageUsers"
-          icon="close"
-          color="light"
-          hideLabel
-          size="md"
-          circle
-          onClick={() => handleClick()}
+      <Styled.OptionsButton className="lastMenuBtn"
+        label={intl.formatMessage(intlMessages.closeLabel)}
+        // data-test="manageUsers"
+        icon="close"
+        color="light"
+        hideLabel
+        size="md"
+        circle
+        onClick={() => handleClick()}
       />
       {renderModal({
         isOpen: isCreateBreakoutRoomModalOpen,
