@@ -167,9 +167,7 @@ class LeaveMeetingButton extends PureComponent {
               tooltipLabel={intl.formatMessage(intlMessages.leaveMeetingBtnLabel)}
               description={intl.formatMessage(intlMessages.leaveMeetingBtnDesc)}
               data-test="leaveMeetingDropdown"
-              icon="logout"
-              color="danger"
-              size="lg"
+              svgIcon="shutdown"
               hideLabel
               // FIXME: Without onClick react proptypes keep warning
               // even after the DropdownTrigger inject an onClick handler

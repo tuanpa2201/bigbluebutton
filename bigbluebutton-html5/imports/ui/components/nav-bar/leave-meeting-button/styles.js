@@ -3,6 +3,9 @@ import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints
 import Button from '/imports/ui/components/common/button/component';
 
 const LeaveButton = styled(Button)`
+  padding: 0px;
+  background-color: transparent;
+
   ${({ state }) => state === 'open' && `
     @media ${smallOnly} {
       display: none;
@@ -15,11 +18,6 @@ const LeaveButton = styled(Button)`
     margin-right: 0;
   }
 `}
-
-  ${({ state, isMobile }) => state === 'closed' && !isMobile && `
-    margin-left: 1.0rem;
-    margin-right: 0.5rem;
-  `}
 
   ${({ state }) => state === 'closed' && `
     border-radius: 1.1rem;

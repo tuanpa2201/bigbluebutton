@@ -53,7 +53,7 @@ class UserContent extends PureComponent {
               {/*<UserNotesContainer />*/}
               {/*{isTimerActive*/}
               {/*&& <TimerContainer isModerator={currentUser?.role === ROLE_MODERATOR} />}*/}
-              {/*{currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}*/}
+              {currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}
               {/*<UserPollsContainer isPresenter={currentUser?.presenter} />*/}
               {/*<BreakoutRoomContainer />*/}
               {/*<GenericSidekickContentNavButtonContainer />*/}
@@ -63,12 +63,12 @@ class UserContent extends PureComponent {
           </Styled.ScrollableList>
         ) : (
           <>
+            {currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}
             <UserTitleContainer />
             <UserListParticipants compact={compact} />
             {/*{isChatEnabled ? <ChatList /> : null}*/}
             {/*<UserNotesContainer />*/}
             {/*{isTimerActive && <TimerContainer isModerator={currentUser?.role === ROLE_MODERATOR} />}*/}
-            {/*{currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}*/}
             {/*<UserPollsContainer isPresenter={currentUser?.presenter} />*/}
             {/*<BreakoutRoomContainer />*/}
             {/*<GenericSidekickContentNavButtonContainer />*/}

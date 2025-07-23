@@ -123,6 +123,10 @@ const ActionsBarContainer = (props) => {
 
   const isSharedNotesPinnedFromGraphql = !!pinnedPadData
   && pinnedPadData.sharedNotes[0]?.sharedNotesExtId === NOTES_CONFIG.id;
+  const IS_DIRECT_LEAVE_BUTTON_ENABLED = getFromUserSettings(
+    'bbb_direct_leave_button',
+    window.meetingClientSettings.public.app.defaultSettings.application.directLeaveButton,
+  );
 
   const isSharedNotesPinned = isSharedNotesPinnedFromGraphql;
   return (
@@ -159,6 +163,7 @@ const ActionsBarContainer = (props) => {
         setMeetingLayout,
         showPushLayout: showPushLayoutButton && applicationSettings.selectedLayout === 'custom',
         ariaHidden,
+        isDirectLeaveButtonEnabled: IS_DIRECT_LEAVE_BUTTON_ENABLED,
       }
     }
     />
