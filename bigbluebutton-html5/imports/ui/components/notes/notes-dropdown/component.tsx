@@ -52,6 +52,8 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
   const getAvailableActions = () => {
     const uploadIcon = 'upload';
     const pinIcon = 'presentation';
+    const uploadSvgIcon = `${window.meetingClientSettings.public.app.basename}/svgs/ic-upload.svg`;
+    const pinSvgIcon = `${window.meetingClientSettings.public.app.basename}/svgs/ic-graph.svg`;
 
     const menuItems = [];
 
@@ -60,6 +62,8 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
         {
           key: uniqueId('notes-option-'),
           icon: uploadIcon,
+          svgIcon: uploadSvgIcon,
+          isUseSvgIcon: true,
           dataTest: 'moveNotesToWhiteboard',
           label: intl.formatMessage(intlMessages.convertAndUploadLabel),
           disabled: converterButtonDisabled,
@@ -77,6 +81,8 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
         {
           key: uniqueId('notes-option-'),
           icon: pinIcon,
+          svgIcon: pinSvgIcon,
+          isUseSvgIcon: true,
           dataTest: 'pinNotes',
           label: intl.formatMessage(intlMessages.pinNotes),
           onClick: () => {
@@ -96,6 +102,7 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
   return (
     <>
       <BBBMenu
+        className="notes-options-menu"
         trigger={(
           <Trigger
             data-test="notesOptionsMenu"

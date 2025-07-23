@@ -163,7 +163,8 @@ class BBBMenu extends React.Component {
               isMobile={isMobile}
               isEmoji={isEmoji}
             >
-              {a.icon ? <Icon iconName={a.icon} key="icon" /> : null}
+              {/* eslint-disable-next-line no-nested-ternary */}
+              {a?.isUseSvgIcon ? <img src={a.svgIcon} alt={label} /> : a.icon ? <Icon iconName={a.icon} key="icon" /> : null}
               <Styled.Option hasIcon={!!(a.icon)} isHorizontal={isHorizontal} isMobile={isMobile} aria-describedby={`${key}-option-desc`} $isToggle={isToggle}>{label}</Styled.Option>
               {description && <div className="sr-only" id={`${key}-option-desc`}>{`${description}${selected ? ` - ${intl.formatMessage(intlMessages.active)}` : ''}`}</div>}
               {a.iconRight ? <Styled.IconRight iconName={a.iconRight} key="iconRight" style={iconStyles} /> : null}

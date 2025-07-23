@@ -436,19 +436,59 @@
 
 .notes {
     font-family: "FS PF BeauSans Pro", sans-serif;
+    padding: 16px!important;
 
-    & .notes-header {
+    & .notes-header-container {
+        margin-bottom: 16px;
+        & .notes-header {
+            color: var(--Text-Primary, #313131);
+
+            /* Semibold/XL */
+            font-size: 20px!important;
+            font-style: normal;
+            font-weight: 600;
+            line-height: 32px!important; /* 160% */
+        }
+
         & .buttonWrapper {
             & span {
                 color: var(--Text-Primary, #313131);
-
-                /* Semibold/XL */
-                font-size: 20px!important;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 32px!important; /* 160% */
             }
         }
 
+        & .btnClose {
+            display: flex;
+            align-items: center;
+            padding-left: 12px;
+            &:hover {
+                border-radius: 50%;
+                background: var(--bg-04-hover-light, #EFEFEF);
+            }
+        }
+    }
+
+
+}
+
+#notes-options-dropdown {
+    & .css-nmz4cj-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+        border-radius: 12px;
+
+        & .MuiMenu-list {
+            padding: 6px 0!important;
+            & .MuiMenuItem-root {
+                padding: 8px 12px!important;
+
+                overflow: hidden;
+                color: var(--Text-Primary, #313131);
+                text-overflow: ellipsis;
+
+                /* Regular/S */
+                font-size: 14px!important;
+                font-style: normal;
+                font-weight: 400!important;
+                line-height: 20px; /* 142.857% */
+            }
+        }
     }
 }

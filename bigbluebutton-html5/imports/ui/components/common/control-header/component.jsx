@@ -22,7 +22,7 @@ const Header = ({
   );
 
   return (
-    <Styled.Header data-test={dataTest ? dataTest : ''} {...rest}>
+    <Styled.Header data-test={dataTest || ''} {...rest}>
       {leftButtonProps ? <Left {...leftButtonProps} /> : <div />}
       {customRightButton
         ? renderCustomRightButton()
@@ -31,7 +31,7 @@ const Header = ({
           : null}
     </Styled.Header>
   );
-}
+};
 
 Header.propTypes = {
   leftButtonProps: PropTypes.object,

@@ -7,7 +7,6 @@ import data from '@emoji-mart/data';
 import { init } from 'emoji-mart';
 import { SET_REACTION_EMOJI } from '/imports/ui/core/graphql/mutations/userMutations';
 import { useMutation } from '@apollo/client';
-import joypixels from 'emoji-toolkit';
 import Styled from './styles';
 
 const ReactionsButton = (props) => {
@@ -20,30 +19,6 @@ const ReactionsButton = (props) => {
   } = props;
 
   const REACTIONS = window.meetingClientSettings.public.userReaction.reactions;
-  // const REACTIONS = [
-  //   { id: 'smiley', native: '😃', code: ':smiley:' },
-  //   { id: 'smiling_face_with_tear', native: '😢', code: ':smiling_face_with_tear:' },
-  //   { id: 'heart', native: '❤️', code: ':heart:' },
-  //   { id: '+1', native: '👎', code: ':thumbsdown:' },
-  //   { id: '-1', native: '👍', code: ':thumbsup:' },
-  //   { id: 'clap', native: '👏', code: ':clap:' },
-  // ];
-
-  const html = (code) => {
-    const styles = [
-      'width: 32px',
-      'height: 32px',
-      'top: -1px',
-      'position: relative',
-    ];
-    const html = joypixels
-      .toImage(code)
-      .split('<img class="joypixels"')
-      .join(`<img class="joypixels" style="${styles.join(';')}"`);
-
-    return { __html: html };
-  };
-
   // initialize emoji-mart data, need for the new version
   init({ data });
 
@@ -88,7 +63,7 @@ const ReactionsButton = (props) => {
   };
 
   const actions = [];
-  REACTIONS.forEach(({ id, native, code }) => {
+  REACTIONS.forEach(({ id, native }) => {
     actions.push({
       // eslint-disable-next-line max-len
       label: <Styled.ButtonWrapper active={currentUserReaction === native}><em-emoji key={native} native={native} {...emojiProps} /></Styled.ButtonWrapper>,

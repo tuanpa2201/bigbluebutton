@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { useMutation } from '@apollo/client';
 import injectWbResizeEvent from '/imports/ui/components/presentation/resize-wrapper/component';
 import PadContainer from '/imports/ui/components/pads/pads-graphql/component';
 import browserInfo from '/imports/utils/browserInfo';
-import Header from '/imports/ui/components/common/control-header/component';
 import NotesDropdown from './notes-dropdown/component';
 import {
   PANELS, ACTIONS,
@@ -82,8 +81,17 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
 
   const { isChrome } = browserInfo;
   const isOnMediaArea = area === 'media';
+  console.log('=================================================');
+  console.log('sharedNotesOutput ==> ', sharedNotesOutput);
+  const widthFull = sharedNotesOutput.width;
+  sharedNotesOutput.width = 1440;
+  sharedNotesOutput.left += (widthFull - 1440) / 2;
+  console.log('widthFull', widthFull);
+  console.log('sharedNotesOutput ==> ', sharedNotesOutput);
+  console.log('=================================================');
   const style = isOnMediaArea ? {
     position: 'absolute',
+    borderRadius: '8px',
     ...sharedNotesOutput,
   } : {};
 
@@ -132,37 +140,52 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
 
   const NOTES_CONFIG = window.meetingClientSettings.public.notes;
 
+  const closePanel = useCallback(() => {
+    layoutContextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
+      value: false,
+    });
+    layoutContextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
+      value: PANELS.NONE,
+    });
+  }, [layoutContextDispatch]);
+
   return (shouldRenderNotes || shouldShowSharedNotesOnPresentationArea) && (
-    <Styled.Notes
-      className="notes"
-      data-test="notes"
-      isChrome={isChrome}
-      style={style}
-    >
-      {!isOnMediaArea ? (
+    <div style={{ width: isOnMediaArea ? widthFull : 'unset', height: '100%' }}>
+      <Styled.Notes
+        className="notes"
+        data-test="notes"
+        isChrome={isChrome}
+        style={style}
+      >
+        {!isOnMediaArea ? (
         // @ts-ignore Until everything in Typescript
-        <>
-          <h2 className="sr-only">{intl.formatMessage(intlMessages.title)}</h2>
-          <Header
-            className="notes-header"
-            leftButtonProps={{
-              'data-test': 'hideNotesLabel',
-              'aria-label': intl.formatMessage(intlMessages.hide),
-              label: intl.formatMessage(intlMessages.title),
-            }}
-            customRightButton={
-              <NotesDropdown handlePinSharedNotes={handlePinSharedNotes} presentationEnabled={isPresentationEnabled} />
-          }
-          />
-        </>
-      ) : renderHeaderOnMedia()}
-      <PadContainer
-        externalId={NOTES_CONFIG.id}
-        hasPermission={hasPermission}
-        isResizing={isResizing}
-        isRTL={isRTL}
-      />
-    </Styled.Notes>
+          <>
+            <h2 className="sr-only">{intl.formatMessage(intlMessages.title)}</h2>
+            <div className="d-flex align-items-center justify-content-between notes-header-container">
+              <span className="notes-header">{intl.formatMessage(intlMessages.title)}</span>
+              <div className="d-flex align-items-center">
+                {/* eslint-disable-next-line max-len */}
+                <NotesDropdown handlePinSharedNotes={handlePinSharedNotes} presentationEnabled={isPresentationEnabled} />
+                <button type="button" onClick={closePanel} style={{ background: 'none', border: 'none' }} className="btnClose">
+                  <img
+                    src={`${window.meetingClientSettings.public.app.basename}/resources/icon-bbb/close.png`}
+                    alt="Close"
+                  />
+                </button>
+              </div>
+            </div>
+          </>
+        ) : renderHeaderOnMedia()}
+        <PadContainer
+          externalId={NOTES_CONFIG.id}
+          hasPermission={hasPermission}
+          isResizing={isResizing}
+          isRTL={isRTL}
+        />
+      </Styled.Notes>
+    </div>
   );
 };
 
