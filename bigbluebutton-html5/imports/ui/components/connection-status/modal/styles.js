@@ -191,7 +191,6 @@ const ConnectionStatusModal = styled(ModalSimple)`
 `;
 
 const Container = styled.div`
-  padding: 16px;
 `;
 
 const Header = styled.div`

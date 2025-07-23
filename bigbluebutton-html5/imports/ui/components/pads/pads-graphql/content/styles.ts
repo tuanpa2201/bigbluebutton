@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const contentText = `
-font-family: Verdana, Arial, Helvetica, sans-serif;
+font-family: "FS PF BeauSans Pro", sans-serif;
 font-size: 15px;
 color: ${colorGray};
 bottom: 0;

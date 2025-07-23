@@ -17,6 +17,7 @@ import browserInfo from '/imports/utils/browserInfo';
 import AppService from '/imports/ui/components/app/service';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import ConfirmationModal from '/imports/ui/components/common/modal/confirmation/component';
 
 const intlMessages = defineMessages({
   downloading: {
@@ -71,6 +72,26 @@ const intlMessages = defineMessages({
   showToolsDesc: {
     id: 'app.presentation.presentationToolbar.showToolsDesc',
     description: 'Show toolbar label',
+  },
+  clearAnnotationsTitle: {
+    id: 'app.presentation.modal.clearAnnotationsTitle',
+    description: 'Title of clear annotations modal',
+  },
+  clearAnnotationsDescription: {
+    id: 'app.presentation.modal.modClearAnnotationsDesc',
+    description: 'Description of clear annotations modal for presenter and moderator',
+  },
+  viewerClearAnnotationsDescription: {
+    id: 'app.presentation.modal.viewerClearAnnotationsDesc',
+    description: 'Description of clear annotations modal for viewers',
+  },
+  clearAnnotationsCancelLabel: {
+    id: 'app.presentation.modal.clearAnnotationsCancelLabel',
+    description: 'Label for the cancel button',
+  },
+  clearAnnotationsConfirmLabel: {
+    id: 'app.presentation.modal.clearAnnotationsConfirmLabel',
+    description: 'Label for the confirm button',
   },
 });
 
@@ -135,6 +156,7 @@ const PresentationMenu = (props) => {
   });
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isClearModalOpen, setIsClearModalOpen] = useState(false);
   const toastId = useRef('presentation-menu-toast');
   const dropdownRef = useRef(null);
 
@@ -393,6 +415,18 @@ const PresentationMenu = (props) => {
       },
     );
 
+    menuItems.push(
+        {
+          key: 'list-item-clear-annotations',
+          dataTest: 'clearAnnotations',
+          label: intl.formatMessage(intlMessages.clearAnnotationsTitle),
+          svgIcon: 'trash',
+          onClick: () => {
+            setIsClearModalOpen(true);
+          },
+        },
+    );
+
     // if (props.amIPresenter) {
     //   menuItems.push({
     //     key: 'list-item-load-shapes',
@@ -459,43 +493,70 @@ const PresentationMenu = (props) => {
   }
 
   return (
-    <Styled.Right id="WhiteboardOptionButton">
-      <BBBMenu
-        trigger={(
-          <TooltipContainer title={intl.formatMessage(intlMessages.optionsLabel)}>
-            <Styled.DropdownButton
-              state={isDropdownOpen ? 'open' : 'closed'}
-              aria-label={`${intl.formatMessage(intlMessages.whiteboardLabel)} ${intl.formatMessage(intlMessages.optionsLabel)}`}
-              data-test="whiteboardOptionsButton"
-              data-state={isDropdownOpen ? 'open' : 'closed'}
-              onClick={() => {
-                setIsDropdownOpen((isOpen) => !isOpen);
+      <>
+        <Styled.Right id="WhiteboardOptionButton">
+          <BBBMenu
+              trigger={(
+                  <TooltipContainer title={intl.formatMessage(intlMessages.optionsLabel)}>
+                    <Styled.DropdownButton
+                        state={isDropdownOpen ? 'open' : 'closed'}
+                        aria-label={`${intl.formatMessage(intlMessages.whiteboardLabel)} ${intl.formatMessage(intlMessages.optionsLabel)}`}
+                        data-test="whiteboardOptionsButton"
+                        data-state={isDropdownOpen ? 'open' : 'closed'}
+                        onClick={() => {
+                          setIsDropdownOpen((isOpen) => !isOpen);
+                        }}
+                    >
+                      <SvgIcon iconName="gear" />
+                    </Styled.DropdownButton>
+                  </TooltipContainer>
+              )}
+              opts={{
+                id: 'presentation-dropdown-menu',
+                keepMounted: true,
+                transitionDuration: 0,
+                elevation: 3,
+                getcontentanchorel: null,
+                fullwidth: 'true',
+                anchorOrigin: { vertical: 'bottom', horizontal: 'right' },
+                transformOrigin: { vertical: 'top', horizontal: 'right' },
+                container: fullscreenRef,
               }}
-            >
-              <SvgIcon iconName="gear" />
-            </Styled.DropdownButton>
-          </TooltipContainer>
-        )}
-        opts={{
-          id: 'presentation-dropdown-menu',
-          keepMounted: true,
-          transitionDuration: 0,
-          elevation: 3,
-          getcontentanchorel: null,
-          fullwidth: 'true',
-          anchorOrigin: { vertical: 'bottom', horizontal: 'right' },
-          transformOrigin: { vertical: 'top', horizontal: 'right' },
-          container: fullscreenRef,
-        }}
-        actions={options}
-      />
-      <input
-        type="file"
-        id="hiddenFileInput"
-        style={{ display: 'none' }}
-        onChange={handleFileInput}
-      />
-    </Styled.Right>
+              actions={options}
+          />
+          <input
+              type="file"
+              id="hiddenFileInput"
+              style={{ display: 'none' }}
+              onChange={handleFileInput}
+          />
+        </Styled.Right>
+        <ConfirmationModal
+            intl={intl}
+            isOpen={isClearModalOpen}
+            onRequestClose={() => setIsClearModalOpen(false)}
+            onConfirm={() => {
+              tldrawAPI?.deleteShapes(tldrawAPI?.getCurrentPageShapes().map((shape) => {
+                if (currentUser?.presenter
+                    || currentUser.isModerator
+                    || (shape?.meta?.createdBy === currentUser?.userId)
+                ) {
+                  return shape?.id;
+                }
+                return '';
+              })?.filter((s) => s?.length > 0));
+              setIsClearModalOpen(false);
+            }}
+            priority="0"
+            title={intl.formatMessage(intlMessages.clearAnnotationsTitle)}
+            description={(currentUser?.presenter || currentUser.isModerator)
+                ? intl.formatMessage(intlMessages.clearAnnotationsDescription)
+                : intl.formatMessage(intlMessages.viewerClearAnnotationsDescription)}
+            confirmButtonLabel={intl.formatMessage(intlMessages.clearAnnotationsConfirmLabel)}
+            cancelButtonLabel={intl.formatMessage(intlMessages.clearAnnotationsCancelLabel)}
+            setIsOpen={setIsClearModalOpen}
+        />
+      </>
   );
 };
 

@@ -45,14 +45,14 @@ const Switch = styled.div`
 
 const ToggleTrack = styled.div`
   overflow: hidden;
-  width: 3.5rem;
+  width: 2.5rem;
   height: 1.5rem;
   padding: 0;
-  border-radius: 2rem;
+  border-radius: 6px;
   background-color: ${colorDanger};
 
   [dir="rtl"] & {
-    width: 4rem;
+    width: 3rem;
   }
 
   ${({ animations }) => animations && `
@@ -120,11 +120,11 @@ const ToggleTrackX = styled.div`
 
 const ToggleThumb = styled.div`
   position: absolute;
-  top: 1px;
-  left: ${({ isRTL }) => isRTL ? '2.6rem' : '1px'};
-  width: 1.35rem;
-  height: 1.35rem;
-  border-radius: 50%;
+  top: 2px;
+  left: ${({ isRTL }) => (isRTL ? '1.6rem' : '2px')};
+  width: 1.2rem;
+  height: 1.2rem;
+  border-radius: 6px;
   background-color: #FAFAFA;
   box-sizing: border-box;
   box-shadow: 2px 0px 10px -1px rgba(0,0,0,0.4);
@@ -134,7 +134,7 @@ const ToggleThumb = styled.div`
   `}
 
   ${({ checked }) => checked && css`
-    left: ${({ isRTL }) => isRTL ? '1px' : '2.1rem' };
+    left: ${({ isRTL }) => (isRTL ? '2px' : '1.1rem')};
     box-shadow: -2px 0px 10px -1px rgba(0,0,0,0.4);
   `}
 
