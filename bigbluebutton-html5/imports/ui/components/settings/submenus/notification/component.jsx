@@ -66,37 +66,36 @@ class NotificationMenu extends BaseMenu {
     const { settings } = this.state;
 
     return (
-      <div>
+      <div className="notification-menu">
         <div>
-          <Styled.Title>
+          <Styled.Title className="title">
             {intl.formatMessage(intlMessages.notificationSectionTitle)}
           </Styled.Title>
-          <Styled.SubTitle>
+          <Styled.SubTitle className="sub-title">
             {intl.formatMessage(intlMessages.notificationSectionDesc)}
           </Styled.SubTitle>
         </div>
 
-        <Styled.Form>
-          <Styled.Row aria-hidden>
-            <Styled.Col />
-            <Styled.ColHeading>
+        <Styled.Form className="form">
+          <Styled.Row className="row mb-0-i" aria-hidden>
+            <Styled.Col className="col" />
+            <Styled.ColHeading className="font-medium-s text-secondary">
               {intl.formatMessage(intlMessages.audioAlertLabel)}
             </Styled.ColHeading>
-            <Styled.ColHeading>
+            <Styled.ColHeading className="font-medium-s text-secondary">
               {intl.formatMessage(intlMessages.pushAlertLabel)}
             </Styled.ColHeading>
           </Styled.Row>
 
           {isChatEnabled ? (
-            <Styled.Row>
-              <Styled.Col>
+            <Styled.Row className="row">
+              <Styled.Col className="col">
                 <Styled.Label aria-hidden>
                   {intl.formatMessage(intlMessages.messagesLabel)}
                 </Styled.Label>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.Col className="col">
                 <Styled.FormElementCenter>
-                  {displaySettingsStatus(settings.chatAudioAlerts)}
                   <Toggle
                     icons={false}
                     defaultChecked={settings.chatAudioAlerts}
@@ -106,9 +105,8 @@ class NotificationMenu extends BaseMenu {
                   />
                 </Styled.FormElementCenter>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.Col className="col">
                 <Styled.FormElementCenter>
-                  {displaySettingsStatus(settings.chatPushAlerts)}
                   <Toggle
                     icons={false}
                     defaultChecked={settings.chatPushAlerts}
@@ -122,15 +120,14 @@ class NotificationMenu extends BaseMenu {
             </Styled.Row>
           ) : null}
 
-          <Styled.Row>
-            <Styled.Col>
+          <Styled.Row className="row">
+            <Styled.Col className="col">
               <Styled.Label aria-hidden>
                 {intl.formatMessage(intlMessages.userJoinLabel)}
               </Styled.Label>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementCenter>
-                {displaySettingsStatus(settings.userJoinAudioAlerts)}
                 <Toggle
                   icons={false}
                   defaultChecked={settings.userJoinAudioAlerts}
@@ -140,9 +137,8 @@ class NotificationMenu extends BaseMenu {
                 />
               </Styled.FormElementCenter>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementCenter>
-                {displaySettingsStatus(settings.userJoinPushAlerts)}
                 <Toggle
                   icons={false}
                   defaultChecked={settings.userJoinPushAlerts}
@@ -155,15 +151,14 @@ class NotificationMenu extends BaseMenu {
             </Styled.Col>
           </Styled.Row>
 
-          <Styled.Row>
-            <Styled.Col>
+          <Styled.Row className="row">
+            <Styled.Col className="col">
               <Styled.Label aria-hidden>
                 {intl.formatMessage(intlMessages.userLeaveLabel)}
               </Styled.Label>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementCenter>
-                {displaySettingsStatus(settings.userLeaveAudioAlerts)}
                 <Toggle
                   icons={false}
                   defaultChecked={settings.userLeaveAudioAlerts}
@@ -173,9 +168,8 @@ class NotificationMenu extends BaseMenu {
                 />
               </Styled.FormElementCenter>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementCenter>
-                {displaySettingsStatus(settings.userLeavePushAlerts)}
                 <Toggle
                   icons={false}
                   defaultChecked={settings.userLeavePushAlerts}
@@ -188,15 +182,14 @@ class NotificationMenu extends BaseMenu {
           </Styled.Row>
 
           {isModerator && showGuestNotification ? (
-            <Styled.Row>
-              <Styled.Col>
+            <Styled.Row className="row">
+              <Styled.Col className="col">
                 <Styled.Label aria-hidden>
                   {intl.formatMessage(intlMessages.guestWaitingLabel)}
                 </Styled.Label>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.Col className="col">
                 <Styled.FormElementCenter>
-                  {displaySettingsStatus(settings.guestWaitingAudioAlerts)}
                   <Toggle
                     icons={false}
                     defaultChecked={settings.guestWaitingAudioAlerts}
@@ -206,9 +199,8 @@ class NotificationMenu extends BaseMenu {
                   />
                 </Styled.FormElementCenter>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.Col className="col">
                 <Styled.FormElementCenter>
-                  {displaySettingsStatus(settings.guestWaitingPushAlerts)}
                   <Toggle
                     icons={false}
                     defaultChecked={settings.guestWaitingPushAlerts}
@@ -222,15 +214,14 @@ class NotificationMenu extends BaseMenu {
           ) : null}
 
           {isModerator ? (
-            <Styled.Row>
-              <Styled.Col>
+            <Styled.Row className="row">
+              <Styled.Col className="col">
                 <Styled.Label aria-hidden>
                   {intl.formatMessage(intlMessages.raiseHandLabel)}
                 </Styled.Label>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.Col className="col">
                 <Styled.FormElementCenter>
-                  {displaySettingsStatus(settings.raiseHandAudioAlerts)}
                   <Toggle
                     icons={false}
                     defaultChecked={settings.raiseHandAudioAlerts}
@@ -240,9 +231,8 @@ class NotificationMenu extends BaseMenu {
                   />
                 </Styled.FormElementCenter>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.Col className="col">
                 <Styled.FormElementCenter>
-                  {displaySettingsStatus(settings.raiseHandPushAlerts)}
                   <Toggle
                     icons={false}
                     defaultChecked={settings.raiseHandPushAlerts}

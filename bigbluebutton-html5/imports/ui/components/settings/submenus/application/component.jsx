@@ -1,14 +1,13 @@
 import React from 'react';
-import Button from '/imports/ui/components/common/button/component';
 import Toggle from '/imports/ui/components/common/switch/component';
 import LocalesDropdown from '/imports/ui/components/common/locales-dropdown/component';
 import { defineMessages, injectIntl } from 'react-intl';
 import BaseMenu from '../base/component';
 import Styled from './styles';
-import VideoService from '/imports/ui/components/video-provider/service';
 import WakeLockService from '/imports/ui/components/wake-lock/service';
 import { ACTIONS } from '/imports/ui/components/layout/enums';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
+import CustomDropdown from '/imports/ui/components/CustomDropdown/CustomDropdown';
 
 const MIN_FONTSIZE = 0;
 
@@ -140,6 +139,7 @@ class ApplicationMenu extends BaseMenu {
     this.state = {
       settingsName: 'application',
       settings: props.settings,
+      selectedFontSize: '',
       isLargestFontSize: false,
       isSmallestFontSize: false,
       showSelect: false,
@@ -153,6 +153,8 @@ class ApplicationMenu extends BaseMenu {
       audioFilterEnabled: ApplicationMenu.isAudioFilterEnabled(props
         .settings.microphoneConstraints),
     };
+
+    this.handleSelectChangeFontSize = this.handleSelectChangeFontSize.bind(this);
   }
 
   componentDidMount() {
@@ -177,6 +179,7 @@ class ApplicationMenu extends BaseMenu {
     this.setState({
       isSmallestFontSize: fontIndex <= MIN_FONTSIZE,
       isLargestFontSize: fontIndex >= (fontSizes.length - 1),
+      selectedFontSize: clientFont,
       fontSizes,
     });
   }
@@ -266,6 +269,15 @@ class ApplicationMenu extends BaseMenu {
     this.setState({ isLargestFontSize: false });
   }
 
+  handleSelectChangeFontSize(event) {
+    const currentFontSize = event.target.value;
+    const { fontSizes } = this.state;
+    const availableFontSizes = fontSizes;
+    const fs = availableFontSizes.indexOf(currentFontSize);
+    this.changeFontSize(availableFontSizes[fs]);
+    this.setState({ selectedFontSize: currentFontSize });
+  }
+
   handleSelectChange(fieldname, e) {
     const obj = this.state;
     obj.settings[fieldname] = e.target.value;
@@ -287,17 +299,16 @@ class ApplicationMenu extends BaseMenu {
         .isAudioFilterEnabled(settings.microphoneConstraints);
 
       audioFilterOption = (
-        <Styled.Row>
-          <Styled.Col aria-hidden="true">
+        <Styled.Row className="row">
+          <Styled.Col className="col" aria-hidden="true">
             <Styled.FormElement>
               <Styled.Label>
                 {intl.formatMessage(intlMessages.audioFilterLabel)}
               </Styled.Label>
             </Styled.FormElement>
           </Styled.Col>
-          <Styled.Col>
+          <Styled.Col className="col">
             <Styled.FormElementRight>
-              {displaySettingsStatus(audioFilterStatus)}
               <Toggle
                 icons={false}
                 defaultChecked={this.state.audioFilterEnabled}
@@ -323,8 +334,8 @@ class ApplicationMenu extends BaseMenu {
     const { settings } = this.state;
 
     return (
-      <Styled.Row>
-        <Styled.Col aria-hidden="true">
+      <Styled.Row className="row">
+        <Styled.Col className="col" aria-hidden="true">
           <Styled.FormElement>
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <Styled.Label>
@@ -332,9 +343,8 @@ class ApplicationMenu extends BaseMenu {
             </Styled.Label>
           </Styled.FormElement>
         </Styled.Col>
-        <Styled.Col>
+        <Styled.Col className="col">
           <Styled.FormElementRight>
-            {displaySettingsStatus(settings.paginationEnabled)}
             <Toggle
               icons={false}
               defaultChecked={settings.paginationEnabled}
@@ -356,8 +366,8 @@ class ApplicationMenu extends BaseMenu {
     if (!isDarkThemeEnabled) return null;
 
     return (
-      <Styled.Row>
-        <Styled.Col aria-hidden="true">
+      <Styled.Row className="row">
+        <Styled.Col className="col" aria-hidden="true">
           <Styled.FormElement>
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <Styled.Label>
@@ -365,9 +375,8 @@ class ApplicationMenu extends BaseMenu {
             </Styled.Label>
           </Styled.FormElement>
         </Styled.Col>
-        <Styled.Col>
+        <Styled.Col className="col">
           <Styled.FormElementRight>
-            {displaySettingsStatus(settings.darkTheme)}
             <Toggle
               icons={false}
               defaultChecked={settings.darkTheme}
@@ -385,12 +394,12 @@ class ApplicationMenu extends BaseMenu {
   renderWakeLockToggle() {
     if (!WakeLockService.isSupported()) return null;
 
-    const { intl, showToggleLabel, displaySettingsStatus } = this.props;
+    const { intl, showToggleLabel } = this.props;
     const { settings } = this.state;
 
     return (
-      <Styled.Row>
-        <Styled.Col>
+      <Styled.Row className="row">
+        <Styled.Col className="col">
           <Styled.FormElement>
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <Styled.Label>
@@ -398,9 +407,8 @@ class ApplicationMenu extends BaseMenu {
             </Styled.Label>
           </Styled.FormElement>
         </Styled.Col>
-        <Styled.Col>
+        <Styled.Col className="col">
           <Styled.FormElementRight>
-            {displaySettingsStatus(settings.wakeLock)}
             <Toggle
               icons={false}
               defaultChecked={settings.wakeLock}
@@ -415,6 +423,25 @@ class ApplicationMenu extends BaseMenu {
   }
 
   render() {
+    // conversions can be found at http://pxtoem.com
+    // const pixelPercentage = {
+    //   '12px': '75%',
+    //   // 14px is actually 87.5%, rounding up to show more friendly value
+    //   '14px': '90%',
+    //   '16px': '100%',
+    //   // 18px is actually 112.5%, rounding down to show more friendly value
+    //   '18px': '110%',
+    //   '20px': '125%',
+    // };
+
+    const pixelPercentageList = [
+      { label: '75%', value: '12px' },
+      { label: '90%', value: '14px' },
+      { label: '100%', value: '16px' },
+      { label: '110%', value: '18px' },
+      { label: '125%', value: '20px' },
+    ];
+
     const {
       allLocales,
       intl,
@@ -423,36 +450,22 @@ class ApplicationMenu extends BaseMenu {
       isReactionsEnabled,
     } = this.props;
     const {
-      isLargestFontSize, isSmallestFontSize, settings,
+      selectedFontSize, settings,
     } = this.state;
-
-    // conversions can be found at http://pxtoem.com
-    const pixelPercentage = {
-      '12px': '75%',
-      // 14px is actually 87.5%, rounding up to show more friendly value
-      '14px': '90%',
-      '16px': '100%',
-      // 18px is actually 112.5%, rounding down to show more friendly value
-      '18px': '110%',
-      '20px': '125%',
-    };
-
-    const ariaValueLabel = intl.formatMessage(intlMessages.currentValue, { 0: `${pixelPercentage[settings.fontSize]}` });
-
     const showSelect = allLocales && allLocales.length > 0;
     const Settings = getSettingsSingletonInstance();
     const animations = Settings?.application?.animations;
 
     return (
-      <div>
+      <div className="application-menu">
         <div>
-          <Styled.Title>
+          <Styled.Title className="title">
             {intl.formatMessage(intlMessages.applicationSectionTitle)}
           </Styled.Title>
         </div>
-        <Styled.Form>
-          <Styled.Row>
-            <Styled.Col aria-hidden="true">
+        <Styled.Form className="form mt-20">
+          <Styled.Row className="row">
+            <Styled.Col className="col" aria-hidden="true">
               <Styled.FormElement>
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <Styled.Label>
@@ -460,9 +473,8 @@ class ApplicationMenu extends BaseMenu {
                 </Styled.Label>
               </Styled.FormElement>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementRight>
-                {displaySettingsStatus(settings.animations)}
                 <Toggle
                   icons={false}
                   defaultChecked={settings.animations}
@@ -475,8 +487,8 @@ class ApplicationMenu extends BaseMenu {
           </Styled.Row>
 
           {this.renderAudioFilters()}
-          <Styled.Row>
-            <Styled.Col aria-hidden="true">
+          <Styled.Row className="row">
+            <Styled.Col className="col" aria-hidden="true">
               <Styled.FormElement>
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <Styled.Label>
@@ -484,9 +496,8 @@ class ApplicationMenu extends BaseMenu {
                 </Styled.Label>
               </Styled.FormElement>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementRight>
-                {displaySettingsStatus(settings.pushToTalkEnabled)}
                 <Toggle
                   icons={false}
                   defaultChecked={settings.pushToTalkEnabled}
@@ -501,8 +512,8 @@ class ApplicationMenu extends BaseMenu {
           {this.renderDarkThemeToggle()}
           {this.renderWakeLockToggle()}
 
-          <Styled.Row>
-            <Styled.Col aria-hidden="true">
+          <Styled.Row className="row">
+            <Styled.Col className="col" aria-hidden="true">
               <Styled.FormElement>
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <Styled.Label>
@@ -510,9 +521,8 @@ class ApplicationMenu extends BaseMenu {
                 </Styled.Label>
               </Styled.FormElement>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementRight>
-                {displaySettingsStatus(settings.whiteboardToolbarAutoHide)}
                 <Toggle
                   icons={false}
                   defaultChecked={settings.whiteboardToolbarAutoHide}
@@ -524,17 +534,17 @@ class ApplicationMenu extends BaseMenu {
             </Styled.Col>
           </Styled.Row>
 
-          <Styled.Row>
-            <Styled.Col aria-hidden="true">
+          <Styled.Row className="row">
+            <Styled.Col className="col" aria-hidden="true">
               <Styled.FormElement>
                 <Styled.Label>
                   {intl.formatMessage(intlMessages.disableLabel)}
                 </Styled.Label>
               </Styled.FormElement>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementRight>
-                {displaySettingsStatus(settings.selfViewDisable)}
+                {(settings.selfViewDisable)}
                 <Toggle
                   icons={false}
                   defaultChecked={settings.selfViewDisable}
@@ -547,112 +557,73 @@ class ApplicationMenu extends BaseMenu {
           </Styled.Row>
 
           {isReactionsEnabled && (
-            <Styled.Row>
-              <Styled.Col aria-hidden="true">
-                <Styled.FormElement>
-                  <Styled.Label>
-                    {intl.formatMessage(intlMessages.autoCloseReactionsBarLabel)}
-                  </Styled.Label>
-                </Styled.FormElement>
-              </Styled.Col>
-              <Styled.Col>
-                <Styled.FormElementRight>
-                  {displaySettingsStatus(settings.autoCloseReactionsBar)}
-                  <Toggle
-                    icons={false}
-                    defaultChecked={settings.autoCloseReactionsBar}
-                    onChange={() => this.handleToggle('autoCloseReactionsBar')}
-                    ariaLabel={`${intl.formatMessage(intlMessages.autoCloseReactionsBarLabel)} - ${displaySettingsStatus(settings.autoCloseReactionsBar, false)}`}
-                    showToggleLabel={showToggleLabel}
-                  />
-                </Styled.FormElementRight>
-              </Styled.Col>
-            </Styled.Row>
+          <Styled.Row className="row">
+            <Styled.Col className="col" aria-hidden="true">
+              <Styled.FormElement>
+                <Styled.Label>
+                  {intl.formatMessage(intlMessages.autoCloseReactionsBarLabel)}
+                </Styled.Label>
+              </Styled.FormElement>
+            </Styled.Col>
+            <Styled.Col className="col">
+              <Styled.FormElementRight>
+                <Toggle
+                  icons={false}
+                  defaultChecked={settings.autoCloseReactionsBar}
+                  onChange={() => this.handleToggle('autoCloseReactionsBar')}
+                  ariaLabel={`${intl.formatMessage(intlMessages.autoCloseReactionsBarLabel)} - ${displaySettingsStatus(settings.autoCloseReactionsBar, false)}`}
+                  showToggleLabel={showToggleLabel}
+                />
+              </Styled.FormElementRight>
+            </Styled.Col>
+          </Styled.Row>
           )}
 
-          <Styled.Row>
-            <Styled.Col>
+          <div className="d-block">
+            <div className="d-block">
               <Styled.FormElement>
-                <Styled.Label aria-hidden>
+                <Styled.Label aria-hidden className="font-regular-s text-primary">
                   {intl.formatMessage(intlMessages.languageLabel)}
                 </Styled.Label>
               </Styled.FormElement>
-            </Styled.Col>
-            <Styled.Col>
-              <Styled.FormElementRight>
-                {showSelect ? (
-                  <Styled.LocalesDropdownSelect>
-                    <LocalesDropdown
-                      allLocales={allLocales}
-                      handleChange={(e) => this.handleSelectChange('locale', e)}
-                      value={settings.locale}
-                      elementId="langSelector"
-                      ariaLabel={intl.formatMessage(intlMessages.languageLabel)}
-                      selectMessage={intl.formatMessage(intlMessages.languageOptionLabel)}
-                    />
-                  </Styled.LocalesDropdownSelect>
-                ) : (
-                  <Styled.SpinnerOverlay animations={animations}>
-                    <Styled.Bounce1 animations={animations} />
-                    <Styled.Bounce2 animations={animations} />
-                    <div />
-                  </Styled.SpinnerOverlay>
-                )}
-              </Styled.FormElementRight>
-            </Styled.Col>
-          </Styled.Row>
-
-          <Styled.Separator />
-          <Styled.Row>
-            <Styled.Col>
+            </div>
+            <Styled.FormElementRight>
+              {showSelect ? (
+                <Styled.LocalesDropdownSelect className="w-100">
+                  <LocalesDropdown
+                    allLocales={allLocales}
+                    handleChange={(e) => this.handleSelectChange('locale', e)}
+                    value={settings.locale}
+                    elementId="langSelector"
+                    ariaLabel={intl.formatMessage(intlMessages.languageLabel)}
+                    selectMessage={intl.formatMessage(intlMessages.languageOptionLabel)}
+                  />
+                </Styled.LocalesDropdownSelect>
+              ) : (
+                <Styled.SpinnerOverlay animations={animations}>
+                  <Styled.Bounce1 animations={animations} />
+                  <Styled.Bounce2 animations={animations} />
+                  <div />
+                </Styled.SpinnerOverlay>
+              )}
+            </Styled.FormElementRight>
+          </div>
+          <div className="d-block">
+            <div className="d-block">
               <Styled.FormElement>
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <Styled.Label>
+                <Styled.Label className="font-regular-s text-primary">
                   {intl.formatMessage(intlMessages.fontSizeControlLabel)}
                 </Styled.Label>
               </Styled.FormElement>
-            </Styled.Col>
-            <Styled.Col>
-              <Styled.FormElementCenter aria-hidden>
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <Styled.BoldLabel>
-                  {`${pixelPercentage[settings.fontSize]}`}
-                </Styled.BoldLabel>
-              </Styled.FormElementCenter>
-            </Styled.Col>
-            <Styled.Col>
-              <Styled.FormElementRight>
-                <Styled.PullContentRight>
-                  <Styled.Col>
-                    <Button
-                      onClick={() => this.handleDecreaseFontSize()}
-                      color="primary"
-                      icon="substract"
-                      circle
-                      hideLabel
-                      label={intl.formatMessage(intlMessages.decreaseFontBtnLabel)}
-                      aria-label={`${intl.formatMessage(intlMessages.decreaseFontBtnLabel)}, ${ariaValueLabel}`}
-                      disabled={isSmallestFontSize}
-                      data-test="decreaseFontSize"
-                    />
-                  </Styled.Col>
-                  <Styled.Col>
-                    <Button
-                      onClick={() => this.handleIncreaseFontSize()}
-                      color="primary"
-                      icon="add"
-                      circle
-                      hideLabel
-                      label={intl.formatMessage(intlMessages.increaseFontBtnLabel)}
-                      aria-label={`${intl.formatMessage(intlMessages.increaseFontBtnLabel)}, ${ariaValueLabel}`}
-                      disabled={isLargestFontSize}
-                      data-test="increaseFontSize"
-                    />
-                  </Styled.Col>
-                </Styled.PullContentRight>
-              </Styled.FormElementRight>
-            </Styled.Col>
-          </Styled.Row>
+            </div>
+            <CustomDropdown
+              options={pixelPercentageList}
+              value={selectedFontSize}
+              onChange={this.handleSelectChangeFontSize}
+              disabled={!pixelPercentageList.length}
+            />
+          </div>
         </Styled.Form>
       </div>
     );

@@ -15,7 +15,7 @@
 .ReactModal__Content {
   -webkit-transform: scale(0.5) rotateX(-30deg);
   transform: scale(0.5) rotateX(-30deg);
-  width: 600px;
+  width: 632px;
 }
 
 .ReactModal__Content--after-open {
