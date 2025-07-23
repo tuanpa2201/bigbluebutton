@@ -75,9 +75,10 @@ class ConfirmationModal extends Component {
     } = this.state;
 
     const hasCheckbox = !!checkboxMessageId;
+    const isRemoveUSer= (confirmButtonDataTest==="removeUserConfirmation");
 
     return (
-      <Styled.ConfirmationModal className="remove-user-modal"
+      <Styled.ConfirmationModal className={isRemoveUSer?"remove-user-modal": ""}
         onRequestClose={() => setIsOpen(false)}
         contentLabel={title}
         title={title || intl.formatMessage({ id: titleMessageId }, { 0: titleMessageExtra })}
@@ -88,12 +89,12 @@ class ConfirmationModal extends Component {
         }}
       >
         <Styled.Container>
-          <Styled.Description className='remove-user-content'>
-            <Styled.DescriptionText className='remove-user-desc'>
+          <Styled.Description className={isRemoveUSer?'remove-user-content':''}>
+            <Styled.DescriptionText className={isRemoveUSer?'remove-user-desc':''}>
               {description}
             </Styled.DescriptionText>
             { hasCheckbox ? (
-              <Styled.Label htmlFor="confirmationCheckbox" key="confirmation-checkbox" className='remove-user-checkbox'>
+              <Styled.Label htmlFor="confirmationCheckbox" key="confirmation-checkbox" className={isRemoveUSer?'remove-user-checkbox':''}>
                 <Styled.Checkbox
                   type="checkbox"
                   id="confirmationCheckbox"
@@ -106,16 +107,16 @@ class ConfirmationModal extends Component {
             ) : null }
           </Styled.Description>
 
-          <Styled.Footer className='remove-user-footer'>
+          <Styled.Footer className={isRemoveUSer?'remove-user-footer':''}>
             <div ref={this.cancelButtonRef}>
-              <Styled.CancelButton className='btn btn-default'
+              <Styled.CancelButton className={isRemoveUSer?'btn btn-default':''}
                 color="secondary"
                 label={cancelButtonLabel || intl.formatMessage(messages.noLabel)}
                 onClick={() => setIsOpen(false)}
               />
             </div>
             {!hideConfirmButton && (
-                <Styled.ConfirmationButton className='remove-user-btnok btn btn-primary'
+                <Styled.ConfirmationButton className={isRemoveUSer?'remove-user-btnok btn btn-primary':''}
                     color={confirmButtonColor}
                     label={confirmButtonLabel || intl.formatMessage(messages.yesLabel)}
                     disabled={disableConfirmButton}

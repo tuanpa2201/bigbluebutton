@@ -643,6 +643,7 @@ const UserActions: React.FC<UserActionsProps> = ({
           confirmButtonDataTest="removeUserConfirmation"
           title={intl.formatMessage(messages.dialogTitleRemoveUserLabel)}
           description= {intl.formatMessage(messages.dialogDescRemoveUserLabel,{ 0: user.name },)}
+          fromFeature='removeUser'
           {...{
             onRequestClose: () => setIsConfirmationModalOpen(false),
             priority: 'low',

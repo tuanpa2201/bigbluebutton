@@ -488,6 +488,23 @@ class PresentationToolbar extends PureComponent {
           />
         </Styled.PresentationSlideControls>
         <Styled.PresentationZoomControls>
+
+          
+          {!isMobile ? (
+            <TooltipContainer>
+              <ZoomTool
+                slidePosition={slidePosition}
+                zoomValue={zoom}
+                currentSlideNum={currentSlideNum}
+                change={this.change}
+                minBound={isInfiniteWhiteboard ? MIN_PERCENT : HUNDRED_PERCENT}
+                maxBound={MAX_PERCENT}
+                step={STEP}
+                isInfiniteWhiteboard={isInfiniteWhiteboard}
+                isMeteorConnected={isMeteorConnected}
+              />
+            </TooltipContainer>
+          ) : null}
           {(showIWB) && (
           <Styled.InfiniteWhiteboardButton
             data-test={isInfiniteWhiteboard ? 'turnInfiniteWhiteboardOff' : 'turnInfiniteWhiteboardOn'}
@@ -518,7 +535,6 @@ class PresentationToolbar extends PureComponent {
             hideLabel
           />
           )}
-
           <Styled.WBAccessButton
             data-test={multiUser ? 'turnMultiUsersWhiteboardOff' : 'turnMultiUsersWhiteboardOn'}
             role="button"
@@ -541,21 +557,6 @@ class PresentationToolbar extends PureComponent {
           ) : (
             <Styled.MUTPlaceholder />
           )}
-          {!isMobile ? (
-            <TooltipContainer>
-              <ZoomTool
-                slidePosition={slidePosition}
-                zoomValue={zoom}
-                currentSlideNum={currentSlideNum}
-                change={this.change}
-                minBound={isInfiniteWhiteboard ? MIN_PERCENT : HUNDRED_PERCENT}
-                maxBound={MAX_PERCENT}
-                step={STEP}
-                isInfiniteWhiteboard={isInfiniteWhiteboard}
-                isMeteorConnected={isMeteorConnected}
-              />
-            </TooltipContainer>
-          ) : null}
           <Styled.FitToWidthButton
             role="button"
             data-test="fitToWidthButton"

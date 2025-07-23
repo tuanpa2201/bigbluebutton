@@ -12,8 +12,10 @@ import Styled from './styles';
 import ErrorBoundary from '/imports/ui/components/common/error-boundary/component';
 import FallbackView from '/imports/ui/components/common/fallback-errors/fallback-view/component';
 import GenericContentSidekickContainer from '/imports/ui/components/generic-content/generic-sidekick-content/container';
-import UploadContainer from '/imports/ui/components/upload/container';
+// import UploadContainer from '/imports/ui/components/upload/container';
+import PresentationUploaderContainer from '/imports/ui/components/presentation/presentation-uploader/container';
 import UserListContainer from '/imports/ui/components/user-list/container';
+import InMemory from '/imports/ui/services/storage/in-memory';
 
 const propTypes = {
   top: PropTypes.number.isRequired,
@@ -85,6 +87,8 @@ const SidebarContent = (props) => {
   const smallSidebar = width < (maxWidth / 2);
   const pollDisplay = sidebarContentPanel === PANELS.POLL ? 'inherit' : 'none';
 
+  InMemory.setItem('showUploadPresentationView', true);
+
   return (
     <Resizable
       minWidth={minWidth}
@@ -151,7 +155,8 @@ const SidebarContent = (props) => {
         />
       )}
       {sidebarContentPanel === PANELS.USERLIST && <UserListContainer />}
-      {sidebarContentPanel === PANELS.UPLOAD && <UploadContainer />}
+      {/* {sidebarContentPanel === PANELS.UPLOAD && <UploadContainer />} */}
+      {sidebarContentPanel === PANELS.UPLOAD && <PresentationUploaderContainer />}
       {sidebarContentPanel === PANELS.BREAKOUT && <BreakoutRoomContainer />}
       {sidebarContentPanel === PANELS.TIMER && <TimerContainer isModerator={amIModerator} />}
       {sidebarContentPanel === PANELS.WAITING_USERS && <GuestUsersManagementPanel />}
