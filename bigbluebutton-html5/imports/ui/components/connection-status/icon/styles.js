@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import {
+  colorSecondary,
   colorWhite,
-  colorDanger,
-  colorWarning,
-  colorSuccess,
 } from '/imports/ui/stylesheets/styled-components/palette';
 
 const SignalBars = styled.div`
@@ -21,31 +19,31 @@ const SignalBars = styled.div`
 
   ${({ grayscale, level }) => !grayscale && level === 'critical' && `
     & > div {
-      background-color: ${colorDanger};
+      background-color: #EE0033;
     }
   `}
 
   ${({ grayscale, level }) => !grayscale && level === 'danger' && `
     & > div {
-      background-color: ${colorWarning};
+      background-color: #F26724;
    }
   `}
 
   ${({ grayscale, level }) => !grayscale && level === 'warning' && `
     & > div {
-      background-color: ${colorSuccess};
+      background-color: #9207FF;
     }
   `}
 
   ${({ grayscale, level }) => !grayscale && level === 'normal' && `
     & > div {
-      background-color: ${colorWhite};
+      background-color: ${colorSecondary};
     }
   `}
 `;
 
 const Bar = styled.div`
-  width: 20%;
+  width: 14%;
   border-radius: .46875em;
 `;
 
@@ -57,7 +55,7 @@ const SecondBar = styled(Bar)`
   height: 50%;
 
   ${({ active }) => !active && `
-    opacity: .5;
+    background-color: #BEBEBE !important;
   `}
 `;
 
@@ -65,7 +63,7 @@ const ThirdBar = styled(Bar)`
   height: 75%;
 
   ${({ active }) => !active && `
-    opacity: .5;
+    background-color: #BEBEBE !important;
   `}
 `;
 
@@ -73,7 +71,7 @@ const FourthBar = styled(Bar)`
   height: 100%;
 
   ${({ active }) => !active && `
-    opacity: .5;
+    background-color: #BEBEBE !important;
   `}
 `;
 

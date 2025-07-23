@@ -348,7 +348,7 @@ class ConnectionStatusComponent extends PureComponent {
               {
                 !conn.clientNotResponding
                   ? (
-                    <time dateTime={dateTime}>
+                    <time className="font-medium" dateTime={dateTime}>
                       <FormattedTime value={dateTime} />
                     </time>
                   )
