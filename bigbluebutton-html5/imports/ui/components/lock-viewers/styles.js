@@ -6,7 +6,7 @@ import {
   modalMargin,
   lgPaddingY,
   titlePositionLeft,
-  mdPaddingX,
+  mdPaddingX, smPadding,
 } from '../../stylesheets/styled-components/general';
 import { fontSizeBase, fontSizeSmall } from '/imports/ui/stylesheets/styled-components/typography';
 import { colorGray, colorGrayLabel, colorGrayLighter } from '../../stylesheets/styled-components/palette';
@@ -24,11 +24,11 @@ const ToggleLabel = styled.span`
 const LockViewersModal = styled(ModalSimple)``;
 
 const Container = styled.div`
-  margin: 0 ${modalMargin} ${lgPaddingX};
+  //margin: 0 ${modalMargin} ${lgPaddingX};
 `;
 
 const Description = styled.div`
-  text-align: center;
+  //text-align: center;
   color: ${colorGray};
   margin-bottom: ${jumboPaddingY};
 `;
@@ -102,13 +102,13 @@ const Label = styled.div`
 
 const Footer = styled.div`
   display: flex;
-  margin: ${smPaddingX} ${modalMargin} 0;
+  margin: ${smPaddingX} ${smPadding} 0;
 `;
 
 const Actions = styled.div`
   margin-left: auto;
   margin-right: 0;
-
+  display: flex;
   [dir="rtl"] & {
     margin-right: auto;
     margin-left: 3px;
