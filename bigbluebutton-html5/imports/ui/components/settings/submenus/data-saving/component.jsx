@@ -45,25 +45,24 @@ class DataSaving extends BaseMenu {
     const { viewParticipantsWebcams, viewScreenshare } = this.state.settings;
 
     return (
-      <div>
+      <div className="data-saving-menu">
         <div>
-          <Styled.Title>{intl.formatMessage(intlMessages.dataSavingLabel)}</Styled.Title>
-          <Styled.SubTitle>{intl.formatMessage(intlMessages.dataSavingDesc)}</Styled.SubTitle>
+          <Styled.Title className="title">{intl.formatMessage(intlMessages.dataSavingLabel)}</Styled.Title>
+          <Styled.SubTitle className="sub-title">{intl.formatMessage(intlMessages.dataSavingDesc)}</Styled.SubTitle>
         </div>
-        <Styled.Form>
+        <Styled.Form className="form">
           {isVideoEnabled
             ? (
-              <Styled.Row>
-                <Styled.Col aria-hidden>
+              <Styled.Row className="row">
+                <Styled.Col className="col" aria-hidden>
                   <Styled.FormElement>
                     <Styled.Label>
                       {intl.formatMessage(intlMessages.webcamLabel)}
                     </Styled.Label>
                   </Styled.FormElement>
                 </Styled.Col>
-                <Styled.Col>
+                <Styled.Col className="col">
                   <Styled.FormElementRight>
-                    {displaySettingsStatus(viewParticipantsWebcams)}
                     <Toggle
                       icons={false}
                       defaultChecked={viewParticipantsWebcams}
@@ -79,17 +78,16 @@ class DataSaving extends BaseMenu {
             : null}
           {isScreenSharingEnabled
             ? (
-              <Styled.Row>
-                <Styled.Col aria-hidden>
+              <Styled.Row className="row">
+                <Styled.Col className="col" aria-hidden>
                   <Styled.FormElement>
                     <Styled.Label>
                       {intl.formatMessage(intlMessages.screenShareLabel)}
                     </Styled.Label>
                   </Styled.FormElement>
                 </Styled.Col>
-                <Styled.Col>
+                <Styled.Col className="col">
                   <Styled.FormElementRight>
-                    {displaySettingsStatus(viewScreenshare)}
                     <Toggle
                       icons={false}
                       defaultChecked={viewScreenshare}

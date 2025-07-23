@@ -11,6 +11,8 @@ import Styled from './styles';
 import { formatLocaleCode } from '/imports/utils/string-utils';
 import { setUseCurrentLocale } from '../../core/local-states/useCurrentLocale';
 import Transcription from '/imports/ui/components/settings/submenus/transcription/component';
+import ModalSimple from '/imports/ui/components/common/modal/simple/component';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const intlMessages = defineMessages({
   appTabLabel: {
@@ -144,6 +146,7 @@ class Settings extends Component {
     this.handleUpdateSettings = this.handleUpdateSettings.bind(this);
     this.handleSelectTab = this.handleSelectTab.bind(this);
     this.displaySettingsStatus = this.displaySettingsStatus.bind(this);
+    this.onHandleAction = this.onHandleAction.bind(this);
   }
 
   componentDidMount() {
@@ -183,6 +186,38 @@ class Settings extends Component {
     this.setState({
       selectedTab: tab,
     });
+  }
+
+  onHandleAction(action) {
+    const {
+      setIsOpen,
+      setLocalSettings,
+    } = this.props;
+    const {
+      current,
+      saved,
+    } = this.state;
+    if (action === 'save') {
+      this.updateSettings(current, intlMessages.savedAlertLabel, setLocalSettings);
+
+      if (saved.application.locale !== current.application.locale) {
+        const { language } = formatLocaleCode(saved.application.locale);
+        const newLanguage = current.application.locale;
+        setUseCurrentLocale(newLanguage);
+        document.body.classList.remove(`lang-${language}`);
+      }
+
+      /* We need to use setIsOpen(false) here to prevent submenu state updates,
+      *  from re-opening the modal.
+      */
+      setIsOpen(false);
+    }
+
+    if (action === 'cancel') {
+      Settings.setHtmlFontSize(saved.application.fontSize);
+      document.getElementsByTagName('html')[0].lang = saved.application.locale;
+      setIsOpen(false);
+    }
   }
 
   displaySettingsStatus(status, textOnly = false) {
@@ -226,6 +261,7 @@ class Settings extends Component {
 
     return (
       <Styled.SettingsTabs
+        className="settings-tabs"
         onSelect={this.handleSelectTab}
         selectedIndex={selectedTab}
         role="presentation"
@@ -235,13 +271,13 @@ class Settings extends Component {
             aria-labelledby="appTab"
             selectedClassName="is-selected"
           >
-            <Styled.SettingsIcon iconName="application" />
+            <SvgIcon iconName="divices" />
             <span id="appTab">{intl.formatMessage(intlMessages.appTabLabel)}</span>
           </Styled.SettingsTabSelector>
           <Styled.SettingsTabSelector
             selectedClassName="is-selected"
           >
-            <Styled.SettingsIcon iconName="alert" />
+            <SvgIcon iconName="bell" />
             <span id="notificationTab">{intl.formatMessage(intlMessages.notificationLabel)}</span>
           </Styled.SettingsTabSelector>
           {isDataSavingTabEnabled
@@ -250,7 +286,7 @@ class Settings extends Component {
                 aria-labelledby="dataSavingTab"
                 selectedClassName="is-selected"
               >
-                <Styled.SettingsIcon iconName="network" />
+                <SvgIcon iconName="diskette" />
                 <span id="dataSaving">{intl.formatMessage(intlMessages.dataSavingLabel)}</span>
               </Styled.SettingsTabSelector>
             )
@@ -267,7 +303,7 @@ class Settings extends Component {
             )
             : null}
         </Styled.SettingsTabList>
-        <Styled.SettingsTabPanel selectedClassName="is-selected">
+        <Styled.SettingsTabPanel className="setting-tab-panel" selectedClassName="is-selected">
           <Application
             allLocales={allLocales}
             handleUpdateSettings={this.handleUpdateSettings}
@@ -281,7 +317,7 @@ class Settings extends Component {
             paginationToggleEnabled={paginationToggleEnabled}
           />
         </Styled.SettingsTabPanel>
-        <Styled.SettingsTabPanel selectedClassName="is-selected">
+        <Styled.SettingsTabPanel className="setting-tab-panel" selectedClassName="is-selected">
           <Notification
             handleUpdateSettings={this.handleUpdateSettings}
             settings={current.application}
@@ -294,7 +330,7 @@ class Settings extends Component {
         </Styled.SettingsTabPanel>
         {isDataSavingTabEnabled
           ? (
-            <Styled.SettingsTabPanel selectedClassName="is-selected">
+            <Styled.SettingsTabPanel className="setting-tab-panel" selectedClassName="is-selected">
               <DataSaving
                 settings={current.dataSaving}
                 handleUpdateSettings={this.handleUpdateSettings}
@@ -308,7 +344,7 @@ class Settings extends Component {
           : null}
         {isGladiaEnabled
           ? (
-            <Styled.SettingsTabPanel selectedClassName="is-selected">
+            <Styled.SettingsTabPanel className="setting-tab-panel" selectedClassName="is-selected">
               <Transcription
                 handleUpdateSettings={this.handleUpdateSettings}
                 settings={current.transcription}
@@ -324,53 +360,39 @@ class Settings extends Component {
   render() {
     const {
       intl,
-      setIsOpen,
       isOpen,
       priority,
-      setLocalSettings,
     } = this.props;
-    const {
-      current,
-      saved,
-    } = this.state;
+
     return (
-      <ModalFullscreen
+      <ModalSimple
+        className="settings-modal"
         title={intl.formatMessage(intlMessages.SettingsLabel)}
-        confirm={{
-          callback: () => {
-            this.updateSettings(current, intlMessages.savedAlertLabel, setLocalSettings);
-
-            if (saved.application.locale !== current.application.locale) {
-              const { language } = formatLocaleCode(saved.application.locale);
-              const newLanguage = current.application.locale;
-              setUseCurrentLocale(newLanguage);
-              document.body.classList.remove(`lang-${language}`);
-            }
-
-            /* We need to use setIsOpen(false) here to prevent submenu state updates,
-            *  from re-opening the modal.
-            */
-            setIsOpen(false);
-          },
-          label: intl.formatMessage(intlMessages.SaveLabel),
-          description: intl.formatMessage(intlMessages.SaveLabelDesc),
-        }}
-        dismiss={{
-          callback: () => {
-            Settings.setHtmlFontSize(saved.application.fontSize);
-            document.getElementsByTagName('html')[0].lang = saved.application.locale;
-            setIsOpen(false);
-          },
-          label: intl.formatMessage(intlMessages.CancelLabel),
-          description: intl.formatMessage(intlMessages.CancelLabelDesc),
-        }}
         {...{
           isOpen,
           priority,
         }}
       >
-        {this.renderModalContent()}
-      </ModalFullscreen>
+        <div className="settings-modal-content">
+          {this.renderModalContent()}
+        </div>
+        <div className="d-flex justify-content-end align-items-center gap-8 mt-12 settings-modal-actions">
+          <button
+            type="button"
+            className="btn btn-default"
+            onClick={() => this.onHandleAction('cancel')}
+          >
+            {intl.formatMessage(intlMessages.CancelLabel)}
+          </button>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => this.onHandleAction('save')}
+          >
+            {intl.formatMessage(intlMessages.SaveLabel)}
+          </button>
+        </div>
+      </ModalSimple>
     );
   }
 }

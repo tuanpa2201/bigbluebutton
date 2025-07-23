@@ -8,17 +8,19 @@
 
 #reactions-dropdown-menu {
     /* Main menu container */
+
     & .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation3.MuiPopover-paper.MuiMenu-paper {
         /* Custom background, border, and shadow */
         background: var(--bg-00-light, #FFF);
         border-radius: 16px;
-        box-shadow: 0 8px 24px rgba(26,26,26,0.18), 0 1.5px 0 rgba(0,0,0,0.10) inset;
+        box-shadow: 0 8px 24px rgba(26, 26, 26, 0.18), 0 1.5px 0 rgba(0, 0, 0, 0.10) inset;
         padding: 8px 12px;
         min-width: 260px;
         gap: 8px;
     }
 
     /* Reaction button styles */
+
     .MuiMenu-list {
         display: flex;
         flex-direction: row;
@@ -53,6 +55,7 @@
     }
 
     /* Emoji icon inside button */
+
     .emojiAsset {
         width: 32px;
         height: 32px;
@@ -61,21 +64,22 @@
 }
 
 .pollingContainer {
-    width: 440px!important;
+    width: 440px !important;
     font-family: "FS PF BeauSans Pro", sans-serif;
-    padding: 16px!important;
-    border-radius: 12px!important;
-    background: var(--bg-00-light, #FFF)!important;
+    padding: 16px !important;
+    border-radius: 12px !important;
+    background: var(--bg-00-light, #FFF) !important;
 
     /* shadow-600 */
     box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, -1px 0px 0px 0px rgba(0, 0, 0, 0.17) inset, 0px -1px 0px 0px rgba(0, 0, 0, 0.17) inset, 0px 1px 0px 0px rgba(204, 204, 204, 0.50) inset, 0px 20px 20px -8px rgba(26, 26, 26, 0.28) !important;
+
     & .pollingQuestionTitle {
         color: var(--Text-Primary, #313131);
 
         /* Semibold/L */
-        font-size: 18px!important;
+        font-size: 18px !important;
         font-style: normal;
-        font-weight: 600!important;
+        font-weight: 600 !important;
         line-height: 24px; /* 133.333% */
         text-align: left;
     }
@@ -85,9 +89,9 @@
         color: var(--Text-Primary, #313131);
 
         /* Medium/S */
-        font-size: 14px!important;
+        font-size: 14px !important;
         font-style: normal;
-        font-weight: 500!important;
+        font-weight: 500 !important;
         line-height: 20px; /* 142.857% */
     }
 
@@ -96,16 +100,17 @@
         flex-direction: column;
         gap: 12px;
         padding: 20px 0;
-        border-bottom: 1px solid var(--border-00-light, #EFEFEF)!important;
+        border-bottom: 1px solid var(--border-00-light, #EFEFEF) !important;
 
         & .pollingButtonWrapper {
             width: 100% !important;
             padding: 0;
+
             & .pollingButton {
                 text-align: left;
                 width: 100% !important;
                 padding: var(--p-space-150) var(--p-space-300) !important;
-                border: 0.66px solid var(--Border-01, #C8C8C8)!important;
+                border: 0.66px solid var(--Border-01, #C8C8C8) !important;
                 background: var(--bg-00-light, #FFF) !important;
                 overflow: hidden;
                 color: var(--Text-Primary, #313131);
@@ -113,9 +118,9 @@
                 max-width: unset;
                 border-radius: 8px !important;
                 /* Regular/S */
-                font-size: 14px!important;
+                font-size: 14px !important;
                 font-style: normal;
-                font-weight: 400!important;
+                font-weight: 400 !important;
                 line-height: 20px; /* 142.857% */
 
                 &:hover {
@@ -133,20 +138,20 @@
     & .pollingResponseInputWrapper {
         padding: 20px 0;
         margin: 0;
-        border-bottom: 1px solid var(--border-01-light, #C8C8C8)!important;
+        border-bottom: 1px solid var(--border-01-light, #C8C8C8) !important;
 
         & textarea {
             padding: 6px 12px;
             align-items: center;
 
             border-radius: 8px;
-            border: 1px solid var(--border-00-light, #EFEFEF)!important;
+            border: 1px solid var(--border-00-light, #EFEFEF) !important;
             background: var(--bg-00-light, #FFFFFF);
 
             /* Regular/S */
-            font-size: 14px!important;
+            font-size: 14px !important;
             font-style: normal;
-            font-weight: 400!important;
+            font-weight: 400 !important;
             line-height: 20px; /* 142.857% */
 
             /* Disable horizontal resize */
@@ -155,7 +160,7 @@
             &:hover,
             &:focus,
             &:focus-visible {
-                border-color: var(--Border-02-hover, #989898)!important;
+                border-color: var(--Border-02-hover, #989898) !important;
                 outline: none;
             }
 
@@ -174,9 +179,9 @@
         text-align: left;
 
         /* Regular/S */
-        font-size: 14px!important;
+        font-size: 14px !important;
         font-style: normal;
-        font-weight: 400!important;
+        font-weight: 400 !important;
         line-height: 20px; /* 142.857% */
     }
 
@@ -184,18 +189,19 @@
 
 .notes {
     font-family: "FS PF BeauSans Pro", sans-serif;
-    padding: 16px!important;
+    padding: 16px !important;
 
     & .notes-header-container {
         margin-bottom: 16px;
+
         & .notes-header {
             color: var(--Text-Primary, #313131);
 
             /* Semibold/XL */
-            font-size: 20px!important;
+            font-size: 20px !important;
             font-style: normal;
             font-weight: 600;
-            line-height: 32px!important; /* 160% */
+            line-height: 32px !important; /* 160% */
         }
 
         & .buttonWrapper {
@@ -208,6 +214,7 @@
             display: flex;
             align-items: center;
             padding-left: 12px;
+
             &:hover {
                 border-radius: 50%;
                 background: var(--bg-04-hover-light, #EFEFEF);
@@ -223,18 +230,19 @@
         border-radius: 12px;
 
         & .MuiMenu-list {
-            padding: 6px 0!important;
+            padding: 6px 0 !important;
+
             & .MuiMenuItem-root {
-                padding: 8px 12px!important;
+                padding: 8px 12px !important;
 
                 overflow: hidden;
                 color: var(--Text-Primary, #313131);
                 text-overflow: ellipsis;
 
                 /* Regular/S */
-                font-size: 14px!important;
+                font-size: 14px !important;
                 font-style: normal;
-                font-weight: 400!important;
+                font-weight: 400 !important;
                 line-height: 20px; /* 142.857% */
             }
         }
@@ -289,9 +297,11 @@
         gap: 8px;
         align-items: center;
         width: 100%;
+
         & > button {
             border-radius: 5px;
         }
+
         & .remove-user-btnok {
 
         }
@@ -301,12 +311,12 @@
 
 /* APP-SETTINGS-DROPDOWN-MENU */
 #app-settings-dropdown-menu {
-    & .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root+.MuiDivider-root {
+    & .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root + .MuiDivider-root {
         margin: 0;
     }
 
     & .bbb-menu-information {
-        padding: 6px 8px!important;
+        padding: 6px 8px !important;
     }
 }
 
@@ -327,10 +337,120 @@
 
         & span:first-child {
             background-color: unset;
-            color: var(--neutral-00-light, #FFF)!important;
+            color: var(--neutral-00-light, #FFF) !important;
 
             &:hover {
-                background-color: unset!important;
+                background-color: unset !important;
+            }
+        }
+    }
+}
+
+/* MODAL SETTINGS */
+.settings-modal {
+    & .settings-modal-content {
+        min-height: 488px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid var(--border-00-light, #EFEFEF);
+
+        & .settings-tabs {
+            justify-content: space-between;
+            gap: 24px;
+
+            & ul {
+                width: 200px !important;
+
+                & li {
+                    display: flex;
+                    height: 28px;
+                    padding: var(--p-space-150) var(--p-space-300);
+                    align-items: center;
+                    gap: 6px;
+                    align-self: stretch;
+                    color: var(--Text-Primary, #313131) !important;
+                    text-align: center;
+                    font-size: 12px !important;
+                    font-style: normal;
+                    font-weight: 400 !important;
+                    line-height: 16px;
+
+                    &.is-selected {
+                        font-weight: 600 !important;
+                        border-radius: var(--p-border-radius-button);
+                        background: var(--BG-04---hover, #EFEFEF);
+                    }
+                }
+            }
+
+            & .setting-tab-panel {
+                width: calc(100% - 224px);
+                margin: 0;
+
+                & .transcription-menu,
+                & .data-saving-menu,
+                & .notification-menu,
+                & .application-menu {
+                    & .title {
+                        color: var(--Text-Primary, #313131);
+
+                        /* Semibold/L */
+                        font-size: 18px !important;
+                        font-style: normal;
+                        font-weight: 600 !important;
+                        line-height: 24px; /* 133.333% */
+                        margin-bottom: 12px;
+                    }
+
+                    & .sub-title {
+                        color: var(--Text-Primary, #313131);
+                        /* Regular/S */
+                        font-size: 14px!important;
+                        font-style: normal;
+                        font-weight: 400!important;
+                        line-height: 20px; /* 142.857% */
+                        margin: 12px 0;
+                    }
+                }
+
+                & .form {
+                    gap: 10px;
+
+                    & .row {
+                        align-items: center;
+                        margin-bottom: 10px;
+                        flex: 2 1;
+
+                        & .col {
+                            & span {
+                                color: var(--Text-Primary, #313131) !important;
+
+                                /* Regular/S */
+                                font-size: 14px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 20px; /* 142.857% */
+                                margin-bottom: 0;
+                            }
+
+                            &:first-child {
+                                flex-grow: 2;
+                            }
+
+                            &:last-child {
+                                flex-grow: 1;
+                            }
+                        }
+                    }
+
+                    & .custom-input {
+                        padding: var(--p-space-150) var(--p-space-300);
+                        border-radius: var(--p-border-radius-button);
+                        border: 0.66px solid var(--Border-01, #C8C8C8);
+                        background: var(--BG-00, #FFF);
+
+                        color: var(--Text-Primary, #313131);
+                    }
+                }
             }
         }
     }

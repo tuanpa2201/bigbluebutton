@@ -36,26 +36,26 @@ class Transcription extends BaseMenu {
     const { partialUtterances, minUtteranceLength } = this.state.settings;
 
     return (
-      <div>
+      <div className="transcription-menu">
         <div>
-          <Styled.Title>
+          <Styled.Title className="title">
             {intl.formatMessage(intlMessages.transcriptionLabel)}
           </Styled.Title>
-          <Styled.SubTitle>
+          <Styled.SubTitle className="sub-title">
             {intl.formatMessage(intlMessages.transcriptionDesc)}
           </Styled.SubTitle>
         </div>
 
-        <Styled.Form>
-          <Styled.Row>
-            <Styled.Col aria-hidden>
+        <Styled.Form className="form">
+          <Styled.Row className="row">
+            <Styled.Col className="col" aria-hidden>
               <Styled.FormElement>
                 <Styled.Label>
                   {intl.formatMessage(intlMessages.partialUtterancesLabel)}
                 </Styled.Label>
               </Styled.FormElement>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementRight>
                 <Toggle
                   icons={false}
@@ -70,15 +70,15 @@ class Transcription extends BaseMenu {
               </Styled.FormElementRight>
             </Styled.Col>
           </Styled.Row>
-          <Styled.Row>
-            <Styled.Col aria-hidden>
+          <Styled.Row className="row">
+            <Styled.Col className="col" aria-hidden>
               <Styled.FormElement>
                 <Styled.Label>
                   {intl.formatMessage(intlMessages.minUtteranceLengthLabel)}
                 </Styled.Label>
               </Styled.FormElement>
             </Styled.Col>
-            <Styled.Col>
+            <Styled.Col className="col">
               <Styled.FormElementRight>
                 <input
                   value={minUtteranceLength}
