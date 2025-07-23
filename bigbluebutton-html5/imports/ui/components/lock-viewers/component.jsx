@@ -163,7 +163,7 @@ class LockViewersComponent extends Component {
     const invertColors = true;
 
     return (
-      <Styled.LockViewersModal
+      <Styled.LockViewersModal className="lock-viewer-modal"
         onRequestClose={closeModal}
         contentLabel={intl.formatMessage(intlMessages.ariaModalTitle)}
         title={intl.formatMessage(intlMessages.lockViewersTitle)}
@@ -186,7 +186,7 @@ class LockViewersComponent extends Component {
             <Styled.Row data-test="lockShareWebcamItem">
               <Styled.Col aria-hidden="true">
                 <Styled.FormElement>
-                  <Styled.Label>
+                  <Styled.Label className="lock-viewer-left-label">
                     {intl.formatMessage(intlMessages.webcamLabel)}
                   </Styled.Label>
                 </Styled.FormElement>
@@ -211,7 +211,7 @@ class LockViewersComponent extends Component {
             <Styled.Row data-test="lockSeeOtherViewersWebcamItem">
               <Styled.Col aria-hidden="true">
                 <Styled.FormElement>
-                  <Styled.Label>
+                  <Styled.Label className="lock-viewer-left-label">
                     {intl.formatMessage(intlMessages.otherViewersWebcamLabel)}
                   </Styled.Label>
                 </Styled.FormElement>
@@ -236,7 +236,7 @@ class LockViewersComponent extends Component {
             <Styled.Row data-test="lockShareMicrophoneItem">
               <Styled.Col aria-hidden="true">
                 <Styled.FormElement>
-                  <Styled.Label>
+                  <Styled.Label className="lock-viewer-left-label">
                     {intl.formatMessage(intlMessages.microphoneLable)}
                   </Styled.Label>
                 </Styled.FormElement>
@@ -264,7 +264,7 @@ class LockViewersComponent extends Component {
                 <Styled.Row data-test="lockPublicChatItem">
                   <Styled.Col aria-hidden="true">
                     <Styled.FormElement>
-                      <Styled.Label>
+                      <Styled.Label className="lock-viewer-left-label">
                         {intl.formatMessage(intlMessages.publicChatLabel)}
                       </Styled.Label>
                     </Styled.FormElement>
@@ -290,7 +290,7 @@ class LockViewersComponent extends Component {
                   <Styled.Row data-test="lockPrivateChatItem">
                     <Styled.Col aria-hidden="true">
                       <Styled.FormElement>
-                        <Styled.Label>
+                        <Styled.Label className="lock-viewer-left-label">
                           {intl.formatMessage(intlMessages.privateChatLable)}
                         </Styled.Label>
                       </Styled.FormElement>
@@ -320,7 +320,7 @@ class LockViewersComponent extends Component {
                 <Styled.Row data-test="lockEditSharedNotesItem">
                   <Styled.Col aria-hidden="true">
                     <Styled.FormElement>
-                      <Styled.Label>
+                      <Styled.Label className="lock-viewer-left-label">
                         {intl.formatMessage(intlMessages.notesLabel)}
                       </Styled.Label>
                     </Styled.FormElement>
@@ -347,7 +347,7 @@ class LockViewersComponent extends Component {
             <Styled.Row data-test="lockUserListItem">
               <Styled.Col aria-hidden="true">
                 <Styled.FormElement>
-                  <Styled.Label>
+                  <Styled.Label className="lock-viewer-left-label">
                     {intl.formatMessage(intlMessages.userListLabel)}
                   </Styled.Label>
                 </Styled.FormElement>
@@ -373,7 +373,7 @@ class LockViewersComponent extends Component {
             <Styled.Row data-test="hideViewersCursorItem">
               <Styled.Col aria-hidden="true">
                 <Styled.FormElement>
-                  <Styled.Label>
+                  <Styled.Label className="lock-viewer-left-label">
                     {intl.formatMessage(intlMessages.hideCursorsLabel)}
                   </Styled.Label>
                 </Styled.FormElement>
@@ -399,7 +399,7 @@ class LockViewersComponent extends Component {
             <Styled.Row data-test="hideViewersAnnotation">
               <Styled.Col aria-hidden="true">
                 <Styled.FormElement>
-                  <Styled.Label>
+                  <Styled.Label className="lock-viewer-left-label">
                     {intl.formatMessage(intlMessages.hideAnnotationsLabel)}
                   </Styled.Label>
                 </Styled.FormElement>

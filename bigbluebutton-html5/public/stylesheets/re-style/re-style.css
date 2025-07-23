@@ -511,3 +511,9 @@
         }
     }
 }
+
+.lock-viewer-modal {
+    & .lock-viewer-left-label {
+        color: var(--Text-Primary, #313131) !important;
+    }
+}
