@@ -81,14 +81,9 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
 
   const { isChrome } = browserInfo;
   const isOnMediaArea = area === 'media';
-  console.log('=================================================');
-  console.log('sharedNotesOutput ==> ', sharedNotesOutput);
   const widthFull = sharedNotesOutput.width;
   sharedNotesOutput.width = 1440;
   sharedNotesOutput.left += (widthFull - 1440) / 2;
-  console.log('widthFull', widthFull);
-  console.log('sharedNotesOutput ==> ', sharedNotesOutput);
-  console.log('=================================================');
   const style = isOnMediaArea ? {
     position: 'absolute',
     borderRadius: '8px',

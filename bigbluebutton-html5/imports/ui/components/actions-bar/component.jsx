@@ -17,6 +17,8 @@ import RaiseHandButtonContainer from '/imports/ui/components/actions-bar/raise-h
 import Selector from '/imports/ui/components/common/selector/component';
 import ToggleGroup from '/imports/ui/components/common/toggle-group/component';
 import Separator from '/imports/ui/components/common/separator/component';
+import OptionsDropdownContainer from '/imports/ui/components/nav-bar/options-dropdown/container';
+import getFromUserSettings from '/imports/ui/services/users-settings';
 
 const intlMessages = defineMessages({
   actionsBarLabel: {
@@ -146,7 +148,11 @@ class ActionsBar extends PureComponent {
 
     const shouldShowOptionsButton = (isPresentationEnabled && isThereCurrentPresentation)
       || isSharingVideo || hasScreenshare || isSharedNotesPinned;
-
+    const PUBLIC_CONFIG = window.meetingClientSettings.public;
+    const IS_DIRECT_LEAVE_BUTTON_ENABLED = getFromUserSettings(
+      'bbb_direct_leave_button',
+      PUBLIC_CONFIG.app.defaultSettings.application.directLeaveButton,
+    );
     return (
       <Styled.ActionsBarWrapper
         id="ActionsBar"
@@ -212,6 +218,10 @@ class ActionsBar extends PureComponent {
             )}
             {isReactionsButtonEnabled && this.renderReactionsButton()}
             <RaiseHandButtonContainer />
+            <OptionsDropdownContainer
+              amIModerator={amIModerator}
+              isDirectLeaveButtonEnabled={IS_DIRECT_LEAVE_BUTTON_ENABLED}
+            />
             {this.renderPluginsActionBarItems(ActionsBarPosition.RIGHT)}
           </Styled.Center>
           <Styled.Right>
