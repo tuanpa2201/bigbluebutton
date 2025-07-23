@@ -489,28 +489,7 @@ class PresentationToolbar extends PureComponent {
         </Styled.PresentationSlideControls>
         <Styled.PresentationZoomControls>
 
-          <Styled.WBAccessButton
-            data-test={multiUser ? 'turnMultiUsersWhiteboardOff' : 'turnMultiUsersWhiteboardOn'}
-            role="button"
-            aria-label={multiUserLabel}
-            color="light"
-            disabled={disableStartingMultiUser}
-            icon={multiUser ? 'multi_whiteboard' : 'whiteboard'}
-            size="md"
-            circle
-            onClick={() => this.handleSwitchWhiteboardMode(!multiUser)}
-            label={multiUserLabel}
-            hideLabel
-          />
-          {multiUser ? (
-            <Styled.MultiUserTool
-              onClick={() => this.handleSwitchWhiteboardMode(!multiUser)}
-            >
-              {multiUserSize}
-            </Styled.MultiUserTool>
-          ) : (
-            <Styled.MUTPlaceholder />
-          )}
+          
           {!isMobile ? (
             <TooltipContainer>
               <ZoomTool
@@ -555,6 +534,28 @@ class PresentationToolbar extends PureComponent {
             }
             hideLabel
           />
+          )}
+          <Styled.WBAccessButton
+            data-test={multiUser ? 'turnMultiUsersWhiteboardOff' : 'turnMultiUsersWhiteboardOn'}
+            role="button"
+            aria-label={multiUserLabel}
+            color="light"
+            disabled={disableStartingMultiUser}
+            icon={multiUser ? 'multi_whiteboard' : 'whiteboard'}
+            size="md"
+            circle
+            onClick={() => this.handleSwitchWhiteboardMode(!multiUser)}
+            label={multiUserLabel}
+            hideLabel
+          />
+          {multiUser ? (
+            <Styled.MultiUserTool
+              onClick={() => this.handleSwitchWhiteboardMode(!multiUser)}
+            >
+              {multiUserSize}
+            </Styled.MultiUserTool>
+          ) : (
+            <Styled.MUTPlaceholder />
           )}
           <Styled.FitToWidthButton
             role="button"
