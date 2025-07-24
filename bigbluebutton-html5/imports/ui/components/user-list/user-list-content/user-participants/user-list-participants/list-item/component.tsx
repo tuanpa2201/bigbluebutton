@@ -4,7 +4,6 @@ import * as PluginSdk from 'bigbluebutton-html-plugin-sdk';
 import {
   UserListItemAdditionalInformationType,
 } from 'bigbluebutton-html-plugin-sdk/dist/cjs/extensible-areas/user-list-item-additional-information/enums';
-import Styled from './styles';
 import browserInfo from '/imports/utils/browserInfo';
 import { defineMessages, useIntl } from 'react-intl';
 import Icon from '/imports/ui/components/common/icon/icon-ts/component';
@@ -19,6 +18,8 @@ import { useIsReactionsEnabled } from '/imports/ui/services/features';
 import useWhoIsTalking from '/imports/ui/core/hooks/useWhoIsTalking';
 import useWhoIsUnmuted from '/imports/ui/core/hooks/useWhoIsUnmuted';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
+import joypixels from 'emoji-toolkit';
+import Styled from './styles';
 
 const messages = defineMessages({
   moderator: {
@@ -81,7 +82,8 @@ const renderUserListItemIconsFromPlugin = (
 ).map((item: PluginSdk.UserListItemAdditionalInformationInterface) => {
   const itemToRender = item as PluginSdk.UserListItemIcon;
   return (
-    <Styled.IconRightContainer className="rightIconHand"
+    <Styled.IconRightContainer
+      className="rightIconHand"
       key={item.id}
     >
       <Icon iconName={itemToRender.icon} />
@@ -89,11 +91,14 @@ const renderUserListItemIconsFromPlugin = (
   );
 });
 
-const Emoji: React.FC<EmojiProps> = ({ emoji, native, size }) => (
-  <em-emoji emoji={emoji} native={native} size={size} />
+const Emoji: React.FC<EmojiProps> = ({ native, size }) => (
+  // <em-emoji emoji={emoji} native={native} size={size} />
+  <span dangerouslySetInnerHTML={{ __html: joypixels.toImage(native) }} />
 );
 
-const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index, isSelected }) => {
+const UserListItem: React.FC<UserListItemProps> = ({
+  user, lockSettings, index, isSelected,
+}) => {
   const { pluginsExtensibleAreasAggregatedState } = useContext(PluginsContext);
   let userItemsFromPlugin = [] as PluginSdk.UserListItemAdditionalInformationInterface[];
   if (pluginsExtensibleAreasAggregatedState.userListItemAdditionalInformation) {
@@ -175,8 +180,8 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index, 
 
   const emojiIcons = [
     {
-      id: 'hand',
-      native: '✋',
+      id: 'hand_splayed',
+      native: '🖐️',
     },
     {
       id: 'clock7',
@@ -185,7 +190,6 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index, 
   ];
   const emojiSize = convertRemToPixels(1.3);
   const getIconUser = () => {
-
     if (user.isDialIn) {
       return <Icon iconName="volume_level_2" />;
     }
@@ -196,11 +200,11 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index, 
     // }
     if (user.away === true) {
       return reactionsEnabled
-        ? <Emoji key="away" emoji={emojiIcons[1]} native={emojiIcons[1].native} size={emojiSize} />
+        ? <span dangerouslySetInnerHTML={{ __html: joypixels.toImage(emojiIcons[1].native) }} />
         : <Icon iconName="time" />;
     }
     if (user.reactionEmoji && user.reactionEmoji !== 'none') {
-      return user.reactionEmoji;
+      return <span className="user-avatar-icon" dangerouslySetInnerHTML={{ __html: joypixels.toImage(user.reactionEmoji) }} />;
     }
     if (user.name && userAvatarFiltered.length === 0) {
       return user.name.toLowerCase().slice(0, 2);
@@ -265,31 +269,33 @@ const UserListItem: React.FC<UserListItemProps> = ({ user, lockSettings, index, 
         </Styled.UserNameSub>
       </Styled.UserNameContainer>
       <Styled.RightIconHandContainer hand={user.raiseHand}>
-        {user.raiseHand? <Emoji key={emojiIcons[0].id} emoji={emojiIcons[0]} native={emojiIcons[0].native} size={emojiSize} /> : ''}
+        {user.raiseHand ? <span dangerouslySetInnerHTML={{ __html: joypixels.toImage(emojiIcons[0].native) }} /> : ''}
       </Styled.RightIconHandContainer>
       <>
-        <Styled.RightIconVoiceContainer className="rightIconNomal"
-            talking={voiceUser?.talking}
-            muted={voiceUser?.muted}
-            listenOnly={voiceUser?.listenOnly}
-            voice={voiceUser?.joined}
-            noVoice={!voiceUser?.joined}
-            color={user.color}
-            animations={animations}
-            isChrome={isChrome}
-            isFirefox={isFirefox}
-            isEdge={isEdge}
-            isSelected={isSelected}
+        <Styled.RightIconVoiceContainer
+          className="rightIconNomal"
+          talking={voiceUser?.talking}
+          muted={voiceUser?.muted}
+          listenOnly={voiceUser?.listenOnly}
+          voice={voiceUser?.joined}
+          noVoice={!voiceUser?.joined}
+          color={user.color}
+          animations={animations}
+          isChrome={isChrome}
+          isFirefox={isFirefox}
+          isEdge={isEdge}
+          isSelected={isSelected}
         />
-        <Styled.RightIconPresenterContainer className="rightIconNomal"
-            moderator={user.isModerator}
-            presenter={user.presenter}
-            whiteboardAccess={hasWhiteboardAccess}
-            animations={animations}
-            isChrome={isChrome}
-            isFirefox={isFirefox}
-            isEdge={isEdge}
-            isSelected={isSelected}
+        <Styled.RightIconPresenterContainer
+          className="rightIconNomal"
+          moderator={user.isModerator}
+          presenter={user.presenter}
+          whiteboardAccess={hasWhiteboardAccess}
+          animations={animations}
+          isChrome={isChrome}
+          isFirefox={isFirefox}
+          isEdge={isEdge}
+          isSelected={isSelected}
         />
         {renderUserListItemIconsFromPlugin(userItemsFromPlugin)}
       </>

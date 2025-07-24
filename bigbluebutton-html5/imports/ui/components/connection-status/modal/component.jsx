@@ -295,6 +295,7 @@ class ConnectionStatusComponent extends PureComponent {
     }
 
     return connections.map((conn, index) => {
+      console.log(`Rendering connection status for user: ${conn.user} (${conn.user.userId})`);
       const dateTime = new Date(conn.lastUnstableStatusAt);
       const lastActiveConnection = conn.connectionAliveAt
         ? new Date(conn.connectionAliveAt) : new Date();

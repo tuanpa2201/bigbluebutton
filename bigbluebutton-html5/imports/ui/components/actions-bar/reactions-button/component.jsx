@@ -7,6 +7,7 @@ import data from '@emoji-mart/data';
 import { init } from 'emoji-mart';
 import { SET_REACTION_EMOJI } from '/imports/ui/core/graphql/mutations/userMutations';
 import { useMutation } from '@apollo/client';
+import joypixels from 'emoji-toolkit';
 import Styled from './styles';
 
 const ReactionsButton = (props) => {
@@ -19,6 +20,7 @@ const ReactionsButton = (props) => {
   } = props;
 
   const REACTIONS = window.meetingClientSettings.public.userReaction.reactions;
+  console.log('Reactions:', REACTIONS);
   // initialize emoji-mart data, need for the new version
   init({ data });
 
@@ -62,11 +64,19 @@ const ReactionsButton = (props) => {
     padding: '4px',
   };
 
+  const convertEmoji = (native) => {
+    const output = joypixels.toImage(native);
+
+    return (
+      <span dangerouslySetInnerHTML={{ __html: output }} />
+    );
+  };
+
   const actions = [];
   REACTIONS.forEach(({ id, native }) => {
     actions.push({
       // eslint-disable-next-line max-len
-      label: <Styled.ButtonWrapper active={currentUserReaction === native}><em-emoji key={native} native={native} {...emojiProps} /></Styled.ButtonWrapper>,
+      label: <Styled.ButtonWrapper active={currentUserReaction === native}>{convertEmoji(native)}</Styled.ButtonWrapper>,
       key: id,
       onClick: () => handleReactionSelect(native),
       customStyles: actionCustomStyles,
@@ -81,50 +91,35 @@ const ReactionsButton = (props) => {
 
   if (!svgIcon) {
     // eslint-disable-next-line max-len
-    customIcon = <em-emoji key={currentUserReactionEmoji?.id} native={currentUserReactionEmoji?.native} emoji={{ id: currentUserReactionEmoji?.id }} {...emojiProps} />;
+    customIcon = (
+      convertEmoji(currentUserReactionEmoji?.native)
+    );
   }
 
   return (
-    <BBBMenu
-      trigger={(
-        <Styled.ReactionsDropdown id="interactionsButton">
-          <Styled.ReactionsButton
-            data-test="reactionsButton"
-            svgIcon={svgIcon}
-            customIcon={customIcon}
-            label={intl.formatMessage(intlMessages.reactionsLabel)}
-            description="Reactions"
-            onKeyPress={() => { }}
-            onClick={() => setShowEmojiPicker(true)}
-            color={showEmojiPicker || customIcon ? 'primary' : 'default'}
-            hideLabel
-            circle
-            size="lg"
-          />
-        </Styled.ReactionsDropdown>
+    <div className="reactions-dropdown-container">
+      <Styled.ReactionsButton
+        data-test="reactionsButton"
+        svgIcon={svgIcon}
+        customIcon={customIcon}
+        label={intl.formatMessage(intlMessages.reactionsLabel)}
+        description="Reactions"
+        onKeyPress={() => {
+        }}
+        onClick={() => setShowEmojiPicker(true)}
+        color={showEmojiPicker || customIcon ? 'primary' : 'default'}
+        hideLabel
+        circle
+        size="lg"
+      />
+      {showEmojiPicker && (
+      <div className="reactions-dropdown-menu">
+        {actions.map((action) => (
+          <button className="reactions-dropdown-item" type="button" key={action.key} onClick={action.onClick}>{action.label}</button>
+        ))}
+      </div>
       )}
-      actions={actions}
-      onCloseCallback={() => handleClose()}
-      customAnchorEl={!isMobile ? actionsBarRef.current : null}
-      customStyles={customStyles}
-      open={showEmojiPicker}
-      hasRoundedCorners
-      overrideMobileStyles
-      isHorizontal={!isMobile}
-      isMobile={isMobile}
-      isEmoji
-      roundButtons
-      keepOpen={!autoCloseReactionsBar}
-      opts={{
-        id: 'reactions-dropdown-menu',
-        keepMounted: true,
-        transitionDuration: 0,
-        elevation: 3,
-        getcontentanchorel: null,
-        anchorOrigin: { vertical: 'top', horizontal: 'center' },
-        transformOrigin: { vertical: 'bottom', horizontal: 'center' },
-      }}
-    />
+    </div>
   );
 };
 

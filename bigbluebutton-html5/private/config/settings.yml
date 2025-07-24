@@ -783,12 +783,12 @@ public:
     enabled: true
     expire: 30
     reactions:
-      - id: 'smiley'
-        native: '😃'
-      - id: 'neutral_face'
-        native: '😐'
-      - id: 'slightly_frowning_face'
-        native: '🙁'
+      - id: 'smile'
+        native: '😄'
+      - id: 'cry'
+        native: '😢'
+      - id: 'heart'
+        native: '❤️'
       - id: '-1'
         native: '👎'
       - id: '+1'

@@ -1,4 +1,5 @@
 import React from 'react';
+import joypixels from 'emoji-toolkit';
 import Styled from './styles';
 import { User, VideoItem } from '/imports/ui/components/video-provider/types';
 
@@ -23,8 +24,8 @@ const UserStatus: React.FC<UserStatusProps> = (props) => {
   const away = data?.away;
   return (
     <div>
-      {away && <span>⏰</span>}
-      {(emoji && emoji !== 'none' && !away) && <span>{emoji}</span>}
+      {away && <span className="user-avatar-icon" dangerouslySetInnerHTML={{ __html: joypixels.toImage('⏰') }} /> }
+      {(emoji && emoji !== 'none' && !away) && <span className="user-avatar-icon" dangerouslySetInnerHTML={{ __html: joypixels.toImage(data?.reactionEmoji) }} />}
       {(muted && !listenOnly) && <Styled.Muted iconName="unmute_filled" />}
       {listenOnly && <Styled.Voice iconName="listen" /> }
       {(voiceUserJoined && !muted) && <Styled.Voice iconName="unmute" />}

@@ -164,6 +164,7 @@ class BBBMenu extends React.Component {
               isMobile={isMobile}
               isEmoji={isEmoji}
             >
+              {a.icon ? <Icon color={textColor} iconName={a.icon} key="icon" /> : null}
               {a.svgIcon ? <SvgIcon color={textColor} iconName={a.svgIcon} key="icon" /> : null}
               <Styled.Option hasIcon={!!(a.icon || a.svgIcon)} isHorizontal={isHorizontal} isMobile={isMobile} aria-describedby={`${key}-option-desc`} $isToggle={isToggle}>{label}</Styled.Option>
               {description && <div className="sr-only" id={`${key}-option-desc`}>{`${description}${selected ? ` - ${intl.formatMessage(intlMessages.active)}` : ''}`}</div>}
@@ -284,7 +285,7 @@ class BBBMenu extends React.Component {
           $isHorizontal={isHorizontal}
           PaperProps={{
             style: hasRoundedCorners ? roundedCornersStyles : {},
-            className: overrideMobileStyles ? 'override-mobile-styles' : 'MuiPaper-root-mobile',
+            className: overrideMobileStyles ? '' : 'MuiPaper-root-mobile',
           }}
         >
           {actionsItems}
