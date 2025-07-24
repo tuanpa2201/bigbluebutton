@@ -41,7 +41,7 @@ const ToggleLabel = styled.span`
 `;
 
 const PollOptionInput = styled.input`
-  margin-right: 1rem;
+  margin-right: 8px;
 
   [dir="rtl"] & {
       margin-right: 0;
@@ -57,21 +57,38 @@ const PollOptionInput = styled.input`
   width: 100%;
   color: ${colorText};
   -webkit-appearance: none;
-  padding: calc(${smPaddingY} * 2) ${smPaddingX};
-  border-radius: ${borderRadius};
+  //padding: calc(${smPaddingY} * 2) ${smPaddingX};
+  //border-radius: ${borderRadius};
   font-size: ${fontSizeBase};
-  border: 1px solid ${colorGrayLighter};
+  // border: 1px solid ${colorGrayLighter};
   box-shadow: 0 0 0 1px ${colorGrayLighter};
+
+    border-radius: var(--p-border-radius-button);
+    border: 0.66px solid var(--Border-01, #C8C8C8);
+    background: var(--BG-00, #FFF);
+    padding: 6px 12px;
 `;
 // @ts-ignore - Button is a JS Component
-const DeletePollOptionButton = styled(Button)`
-  font-size: ${fontSizeBase};
-  flex: none;
-  width: 40px;
-  position: relative;
-  & > i {
-    font-size: 150%;
-  }
+const DeletePollOptionButton = styled(Button)` 
+    //font-size: ${fontSizeBase};
+    flex: none;
+    //width: 40px;
+    position: relative;
+    padding: 6px;
+    border-radius: 8px;
+
+    & > i {
+        //font-size: 150%;
+    }
+
+    & > span {
+        background: transparent !important;
+    }
+
+    &:hover {
+        background: var(--BG-04---hover, #EFEFEF);
+    }
+    
 `;
 
 const ErrorSpacer = styled.div`
@@ -98,30 +115,50 @@ const PollQuestionArea = styled.textarea<PollQuestionAreaProps>`
 
   &:focus {
     outline: none;
-    border-radius: ${borderSize};
-    box-shadow: 0 0 0 ${borderSize} ${colorBlueLight}, inset 0 0 0 1px ${colorPrimary};
+    //border-radius: ${borderSize};
+    //box-shadow: 0 0 0 ${borderSize} ${colorBlueLight}, inset 0 0 0 1px ${colorPrimary};
   }
 
   width: 100%;
   color: ${colorText};
   -webkit-appearance: none;
   padding: calc(${smPaddingY} * 2) ${smPaddingX};
-  border-radius: ${borderRadius};
+  // border-radius: ${borderRadius};
   font-size: ${fontSizeBase};
-  border: 1px solid ${colorGrayLighter};
+  // border: 1px solid ${colorGrayLighter};
   box-shadow: 0 0 0 1px ${colorGrayLighter};
 
   ${({ hasError }) => hasError && `
     border-color: ${colorDanger};
     box-shadow: 0 0 0 1px ${colorDanger};
   `}
+  
+  padding: 6px 12px;
+  border-radius: var(--p-border-radius-button);
+  border: 0.66px solid var(--Border-01, #C8C8C8);
+  background: var(--BG-00, #FFF);
 `;
 
 const SectionHeading = styled.h4`
   margin-top: 0;
   font-weight: 600;
-  color: ${colorHeading};
-  margin-bottom: .25rem; 
+  //color: ${colorHeading};
+  //margin-bottom: .25rem; 
+  margin-bottom: 16px;
+  padding-bottom: 0 !important;
+
+  color: var(--Text-Primary, #313131);
+  font-size: 14px;
+  font-style: normal;
+  line-height: 20px;
+`;
+
+const ResponseTypes = styled.div`
+  margin-top: 16px;
+`;
+
+const ResponseChoices = styled.div`
+  margin-top: 16px;
 `;
 
 const ResponseType = styled.div`
@@ -132,7 +169,7 @@ const ResponseType = styled.div`
   position: relative;
   width: 100%;
   margin-bottom: ${lgPaddingX};
-
+  gap: 8px;
   & > button {
     position: relative;
     width: 100%;
@@ -141,14 +178,24 @@ const ResponseType = styled.div`
 
 // @ts-ignore - Button is a JS Component
 const PollConfigButton = styled(Button)`
-  border: solid ${colorGrayLight} 1px;
+  //border: solid ${colorGrayLight} 1px;
   min-height: ${pollInputHeight};
   font-size: ${fontSizeBase};
   white-space: pre-wrap;
-  width: 100%;
-  margin-bottom: 1rem;
+  width: calc(50% - 4px) !important;
+  //margin-bottom: 1rem;
 
+  border-radius: 8px;
+  background: var(--BG-01, #F7F8F9);
+  padding: 0 12px;
+  
   & > span {
+    color: var(--Text-Primary, #313131);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    
     &:hover {
       opacity: 1;
     }
@@ -176,29 +223,47 @@ const PollConfigButton = styled(Button)`
 `;
 
 const PollParagraph = styled.div`
-  color: ${colorText};
-  margin-bottom: 0.9rem;
+  //color: ${colorText};
+  //margin-bottom: 0.9rem;
+  margin-bottom: 16px;
+
+  color: var(--Text-Primary, #313131);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
 `;
 
 const PollCheckbox = styled.div`
   display: inline-block;
-  margin-right: ${pollSmMargin};
-  margin-bottom: ${pollMdMargin};
+  //margin-right: ${pollSmMargin};
+  //margin-bottom: ${pollMdMargin};
+    margin-bottom: 22px;
 `;
 
 // @ts-ignore - Button is a JS Component
 const AddItemButton = styled(Button)`
   top: 1px;
   position: relative;
-  display: block;
-  width: 100%;
+  //display: block;
+  //width: 100%;
   text-align: left;
-  color: ${colorPrimary};
+  //color: ${colorPrimary};
   padding-left: 0;
   padding-right: 0;
-  font-size: ${fontSizeBase};
+  //font-size: ${fontSizeBase};
   white-space: pre-wrap;
-
+    
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--Color-01, #E03);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    
   &:hover {
     & > span {
       opacity: 1;
@@ -581,6 +646,12 @@ const THeading = styled.th`
 `;
 
 const DndTextArea = styled.textarea<{ active: boolean }>`
+  height: 124px;
+  padding: 6px 12px;
+  border-radius: var(--p-border-radius-button);
+  border: 0.66px solid var(--Border-01, #C8C8C8);
+  background: var(--BG-00, #FFF);
+  
   ${({ active }) => active && `
     background: ${colorGrayLighter};
   `}
@@ -590,7 +661,38 @@ const DndTextArea = styled.textarea<{ active: boolean }>`
   `}
 `;
 
+const PollHeader = styled.div`
+    display: flex;
+    align-items: center;
+    color: var(--Text-Primary, #313131);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 32px;
+    padding: 16px 0px;
+`;
+
+const ClosePollButton = styled.button`
+    background-color: transparent;
+    border: none;
+    border-radius: 12px;
+    box-shadow: unset;
+    color: #2F384C;
+    cursor: pointer;
+    padding: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    tab-index: 0;
+    margin-left: auto;
+
+    &:hover {
+        background-color: ${colorGrayLightest};
+    }
+`;
 export default {
+  ClosePollButton,
+  PollHeader,
   ToggleLabel,
   PollOptionInput,
   DeletePollOptionButton,
@@ -600,6 +702,8 @@ export default {
   PollQuestionArea,
   SectionHeading,
   ResponseType,
+  ResponseTypes,
+  ResponseChoices,
   PollConfigButton,
   PollParagraph,
   PollCheckbox,

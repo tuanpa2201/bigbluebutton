@@ -68,6 +68,20 @@ interface RightIconVoiceProps {
   isSelected?: boolean;
 }
 
+interface RightBlockIconsProps {
+  moderator?: boolean;
+  presenter?: boolean;
+  talking?: boolean;
+  muted?: boolean;
+  listenOnly?: boolean;
+  voice?: boolean;
+  noVoice?: boolean;
+  color?: string;
+  whiteboardAccess?: boolean;
+  isSelected?: boolean;
+  animations?: boolean;
+}
+
 interface UserItemContentsProps {
   selected?: boolean;
   isActionsOpen?: boolean;
@@ -373,6 +387,88 @@ const IconRightContainer = styled.div`
   margin: .25rem;  
 `;
 
+const UserListIconContainer = styled.div`
+  position: relative;
+  height: 24px;
+  width: 24px;
+  min-width: 24px;
+  border-radius: 5px;
+  text-align: center;
+  border: 2px solid transparent;
+  user-select: none;
+  font-size: 110%;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  top: 6px;
+`;
+
+const RightBlockIconsContainer = styled.div<RightBlockIconsProps>`
+  display: flex;
+  gap: 5px;
+  color: ${colorWhite};
+  ${({isSelected}) => isSelected && `
+    display: none;
+  `}
+  ${({voice}) => voice && `
+    & .talking {
+      display: flex;
+      background: var(--Color-02, #75C044);
+    }
+    & .micSlash {
+      display: none;
+    }
+  `}
+
+  ${({listenOnly, muted, noVoice}) => (listenOnly || muted || noVoice) && `
+    & .talking {
+      display: none;
+    }
+    & .micSlash {
+      display: flex;
+      color: ${colorBlack};
+    }
+  `}
+
+  ${({ presenter }) => presenter && `
+    & .presentationLine {
+      display: flex;
+      background: var(--Color-05, #0A84FF);
+    }
+  `}
+  ${({ presenter }) => !presenter && `
+    & .presentationLine {
+      display: none;
+    }
+  `}
+
+  ${({ whiteboardAccess }) => whiteboardAccess && `
+    & .whiteboardAccess {
+      display: flex;
+      color: ${colorBlack};
+    }
+  `}
+  ${({ whiteboardAccess }) => !whiteboardAccess && `
+    & .whiteboardAccess {
+      display: none;
+    }
+  `}
+    
+  // ================ talking animation ================
+  ${({talking, animations, color}) => talking && animations && color && css`
+    & .talking {
+      animation: ${pulse(color)} 1s infinite ease-in;
+    }
+  `}
+
+  ${({talking, animations}) => talking && !animations && css`
+    & .talking {
+        box-shadow: 0 0 0 4px currentColor;
+    }
+  `}
+`;
+
 const RightIconVoiceContainer = styled.div<RightIconVoiceProps>`
   position: relative;
   height: 24px;
@@ -390,9 +486,6 @@ const RightIconVoiceContainer = styled.div<RightIconVoiceProps>`
   align-items: center;
   background-color: transparent;
   
-  ${({isSelected}) => isSelected && `
-    display: none;
-  `}
   ${({animations}) => animations && `
     transition: .3s ease-in-out;
   `}
@@ -490,9 +583,6 @@ const RightIconPresenterContainer = styled.div<RightIconPresenterProps>`
   inset: auto;
   background-color: transparent;
 
-  ${({isSelected}) => isSelected && `
-    display: none;
-  `}
   ${({ animations }) => animations && `
     transition: .3s ease-in-out;
   `}
@@ -653,8 +743,7 @@ const UserItemContents = styled.div<UserItemContentsProps>`
     }
     flex-flow: column;
     flex-shrink: 0;
-    & .${RightIconVoiceContainer},
-    & .${RightIconPresenterContainer}
+    & .${RightBlockIconsContainer}
     {
       display: flex;
     }
@@ -678,8 +767,7 @@ const UserItemContents = styled.div<UserItemContentsProps>`
       outline-style: solid;
       outline-color: transparent !important;
     }
-    & .${RightIconVoiceContainer},
-    & .${RightIconPresenterContainer}
+    & .${RightBlockIconsContainer}
     {
       display: none;
     }
@@ -699,8 +787,7 @@ const UserItemContents = styled.div<UserItemContentsProps>`
     padding: ${lgPaddingY} ${lgPaddingY} ${lgPaddingY} 0;
   }
 
-  &:hover ${RightIconVoiceContainer},
-  &:hover ${RightIconPresenterContainer}
+  &:hover ${RightBlockIconsContainer}
   {
     display: none;
   }
@@ -724,4 +811,6 @@ export default {
   RightIconPresenterContainer,
   RightIconHandContainer,
   RightIconMoreContainer,
+  RightBlockIconsContainer,
+  UserListIconContainer,
 };

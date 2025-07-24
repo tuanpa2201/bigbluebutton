@@ -5,6 +5,7 @@
 @import 'variables.css';
 @import 're-style-dropdown.css';
 @import 're-style-modal.css';
+@import 're-style-input.css';
 
 .user-avatar-icon {
     display: flex;

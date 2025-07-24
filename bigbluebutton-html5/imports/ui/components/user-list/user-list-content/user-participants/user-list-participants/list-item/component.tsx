@@ -18,6 +18,7 @@ import { useIsReactionsEnabled } from '/imports/ui/services/features';
 import useWhoIsTalking from '/imports/ui/core/hooks/useWhoIsTalking';
 import useWhoIsUnmuted from '/imports/ui/core/hooks/useWhoIsUnmuted';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 import joypixels from 'emoji-toolkit';
 import Styled from './styles';
 
@@ -82,10 +83,7 @@ const renderUserListItemIconsFromPlugin = (
 ).map((item: PluginSdk.UserListItemAdditionalInformationInterface) => {
   const itemToRender = item as PluginSdk.UserListItemIcon;
   return (
-    <Styled.IconRightContainer
-      className="rightIconHand"
-      key={item.id}
-    >
+    <Styled.IconRightContainer key={item.id} className="rightIconHand">
       <Icon iconName={itemToRender.icon} />
     </Styled.IconRightContainer>
   );
@@ -120,7 +118,10 @@ const UserListItem: React.FC<UserListItemProps> = ({
 
   const LABEL = window.meetingClientSettings.public.user.label;
 
-  if (user.isModerator && LABEL.moderator) {
+  // if (user.isModerator && LABEL.moderator) {
+  //   subs.push(intl.formatMessage(messages.moderator));
+  // }
+  if (user.isModerator) {
     subs.push(intl.formatMessage(messages.moderator));
   }
   if (user.guest && LABEL.guest) {
@@ -232,6 +233,12 @@ const UserListItem: React.FC<UserListItemProps> = ({
 
   const Settings = getSettingsSingletonInstance();
   const animations = Settings?.application?.animations;
+  const rightIcon = [
+    { key: 'talking', name: 'talking', clazzName: 'talking' },
+    { key: 'presentationLine', name: 'presentationLine', clazzName: 'presentationLine' },
+    { key: 'whiteboardAccess', name: 'whiteboardAccess', clazzName: 'whiteboardAccess' },
+    { key: 'micSlash', name: 'micSlash', clazzName: 'micSlash' },
+  ];
 
   return (
     <Styled.UserItemContents id={`user-index-${index}`} tabIndex={-1} data-test={(user.userId === Auth.userID) ? 'userListItemCurrent' : 'userListItem'} role="listitem">
@@ -271,34 +278,49 @@ const UserListItem: React.FC<UserListItemProps> = ({
       <Styled.RightIconHandContainer hand={user.raiseHand}>
         {user.raiseHand ? <span dangerouslySetInnerHTML={{ __html: joypixels.toImage(emojiIcons[0].native) }} /> : ''}
       </Styled.RightIconHandContainer>
-      <>
-        <Styled.RightIconVoiceContainer
-          className="rightIconNomal"
-          talking={voiceUser?.talking}
-          muted={voiceUser?.muted}
-          listenOnly={voiceUser?.listenOnly}
-          voice={voiceUser?.joined}
-          noVoice={!voiceUser?.joined}
-          color={user.color}
-          animations={animations}
-          isChrome={isChrome}
-          isFirefox={isFirefox}
-          isEdge={isEdge}
-          isSelected={isSelected}
-        />
-        <Styled.RightIconPresenterContainer
-          className="rightIconNomal"
-          moderator={user.isModerator}
-          presenter={user.presenter}
-          whiteboardAccess={hasWhiteboardAccess}
-          animations={animations}
-          isChrome={isChrome}
-          isFirefox={isFirefox}
-          isEdge={isEdge}
-          isSelected={isSelected}
-        />
+      <Styled.RightBlockIconsContainer
+        className="rightIconNomal"
+        presenter={user.presenter}
+        talking={voiceUser?.talking}
+        muted={voiceUser?.muted}
+        listenOnly={voiceUser?.listenOnly}
+        voice={voiceUser?.joined}
+        noVoice={!voiceUser?.joined}
+        color={user.color}
+        whiteboardAccess={hasWhiteboardAccess}
+        animations={animations}
+        isSelected={isSelected}
+      >
+        {rightIcon.map((icon) => (
+          <Styled.UserListIconContainer className={icon.clazzName}>
+            <SvgIcon iconName={icon.name} />
+          </Styled.UserListIconContainer>
+        ))}
+        {/* <Styled.RightIconVoiceContainer */}
+        {/*    talking={voiceUser?.talking} */}
+        {/*    muted={voiceUser?.muted} */}
+        {/*    listenOnly={voiceUser?.listenOnly} */}
+        {/*    voice={voiceUser?.joined} */}
+        {/*    noVoice={!voiceUser?.joined} */}
+        {/*    color={user.color} */}
+        {/*    animations={animations} */}
+        {/*    isChrome={isChrome} */}
+        {/*    isFirefox={isFirefox} */}
+        {/*    isEdge={isEdge} */}
+        {/*    isSelected={isSelected} */}
+        {/* /> */}
+        {/* <Styled.RightIconPresenterContainer */}
+        {/*    moderator={user.isModerator} */}
+        {/*    presenter={user.presenter} */}
+        {/*    whiteboardAccess={hasWhiteboardAccess} */}
+        {/*    animations={animations} */}
+        {/*    isChrome={isChrome} */}
+        {/*    isFirefox={isFirefox} */}
+        {/*    isEdge={isEdge} */}
+        {/*    isSelected={isSelected} */}
+        {/* /> */}
         {renderUserListItemIconsFromPlugin(userItemsFromPlugin)}
-      </>
+      </Styled.RightBlockIconsContainer>
       <Styled.RightIconMoreContainer className="rightIconHover" isSelected={isSelected}>
         <Icon iconName="more" />
       </Styled.RightIconMoreContainer>

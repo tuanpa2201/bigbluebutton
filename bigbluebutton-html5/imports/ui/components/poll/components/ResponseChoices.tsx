@@ -57,7 +57,7 @@ const ResponseChoices: React.FC<ResponseChoicesProps> = ({
   const intl = useIntl();
   if ((!customInput && type) || (questionAndOptions && customInput)) {
     return (
-      <div data-test="responseChoices">
+      <Styled.ResponseChoices data-test="responseChoices">
         {customInput && questionAndOptions && (
           <Styled.Question>
             <Styled.SectionHeading>
@@ -91,7 +91,7 @@ const ResponseChoices: React.FC<ResponseChoicesProps> = ({
           handleInputChange={handleInputChange}
           handleRemoveOption={handleRemoveOption}
         />
-      </div>
+      </Styled.ResponseChoices>
     );
   }
   return null;

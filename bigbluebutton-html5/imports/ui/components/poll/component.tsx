@@ -17,6 +17,7 @@ import ResponseTypes from './components/ResponseTypes';
 import PollQuestionArea from './components/PollQuestionArea';
 import LiveResultContainer from './components/LiveResult';
 import Session from '/imports/ui/services/storage/in-memory';
+import SvgIcon from "/imports/ui/components/common/icon-svg/component";
 
 const intlMessages = defineMessages({
   pollPaneTitle: {
@@ -390,11 +391,6 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
               </Styled.CustomInputHeadingCol>
               <Styled.CustomInputToggleCol>
                 <Styled.Toggle>
-                  <Styled.ToggleLabel>
-                    {customInput
-                      ? intl.formatMessage(intlMessages.on)
-                      : intl.formatMessage(intlMessages.off)}
-                  </Styled.ToggleLabel>
                   <Toggle
                   // @ts-ignore - JS component wrapped by intl
                     icons={false}
@@ -466,44 +462,29 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
 
   return (
     <div>
-      <Header
-        data-test="pollPaneTitle"
-        leftButtonProps={{
-          'aria-label': intl.formatMessage(intlMessages.hidePollDesc),
-          'data-test': 'hidePollDesc',
-          label: intl.formatMessage(intlMessages.pollPaneTitle),
-          onClick: () => {
-            layoutContextDispatch({
-              type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
-              value: false,
-            });
-            layoutContextDispatch({
-              type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
-              value: PANELS.NONE,
-            });
-          },
-        }}
-        rightButtonProps={{
-          'aria-label': `${intl.formatMessage(intlMessages.closeLabel)} ${intl.formatMessage(intlMessages.pollPaneTitle)}`,
-          'data-test': 'closePolling',
-          icon: 'close',
-          label: intl.formatMessage(intlMessages.closeLabel),
-          onClick: () => {
-            if (hasPoll) stopPoll();
-            layoutContextDispatch({
-              type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
-              value: false,
-            });
-            layoutContextDispatch({
-              type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
-              value: PANELS.NONE,
-            });
-            Session.setItem('forcePollOpen', false);
-            Session.setItem('pollInitiated', false);
-          },
-        }}
-        customRightButton={null}
-      />
+
+      <Styled.PollHeader data-test="hidePollDesc">
+        <div aria-label={intl.formatMessage(intlMessages.hidePollDesc)} className={'header-title'}>
+          {`${intl.formatMessage(intlMessages.pollPaneTitle)}`}
+        </div>
+        <Styled.ClosePollButton className={'header-icon'} onClick={() => {
+          // if (hasPoll) stopPoll();
+          layoutContextDispatch({
+            type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
+            value: false,
+          });
+          layoutContextDispatch({
+            type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
+            value: PANELS.NONE,
+          });
+          // Session.setItem('forcePollOpen', false);
+          // Session.setItem('pollInitiated', false);
+        }}>
+          <SvgIcon iconName="cross"></SvgIcon>
+        </Styled.ClosePollButton>
+      </Styled.PollHeader>
+
+
       {pollOptions()}
       <span className="sr-only" id="poll-config-button">{intl.formatMessage(intlMessages.showRespDesc)}</span>
       <span className="sr-only" id="add-item-button">{intl.formatMessage(intlMessages.addRespDesc)}</span>
