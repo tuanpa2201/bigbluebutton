@@ -34,8 +34,8 @@ const DEFAULT_VALUES = {
   sidebarNavTabOrder: 1,
   sidebarNavPanel: PANELS.USERLIST,
 
-  sidebarContentMaxWidth: 800,
-  sidebarContentMinWidth: 70,
+  sidebarContentMaxWidth: 612,
+  sidebarContentMinWidth: 360,
   sidebarContentMinHeight: 200,
   sidebarContentHeight: '100%',
   sidebarContentTop: 0,
