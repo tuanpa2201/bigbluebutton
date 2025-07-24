@@ -13,7 +13,8 @@ const ActionsBar = styled.div`
 const ActionsBarWrapper = styled.section`
   flex: 1;
   padding: ${barsPadding};
-  background-color: ${colorBackground};
+  // background-color: ${colorBackground};
+  background-color: #303338;
   position: relative;
   order: 3;
 `;

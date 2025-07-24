@@ -27,11 +27,13 @@ const TldrawV2GlobalStyle = createGlobalStyle`
   #whiteboard-element {
     position: relative;
     height: 100%;
+    border-radius: 8px 8px 0px 0px;
   }
 
   #whiteboard-element > * {
     position: relative; 
     height: 100%;
+    border-radius: 8px 8px 0px 0px;
   }
 
   #whiteboard-element .tl-overlays {
@@ -144,6 +146,10 @@ const TldrawV2GlobalStyle = createGlobalStyle`
   .tlui-layout__mobile .tlui-button__tool {
     height: 30px !important;
     width: 20px !important;
+  }
+
+  .tlui-layout__mobile .tlui-toolbar__overflow > div {
+    transform: rotate(270deg);
   }
 
   .tlui-toolbar__inner {

@@ -45,12 +45,16 @@ const Switch = styled.div`
 
 const ToggleTrack = styled.div`
   overflow: hidden;
-  width: 2.5rem;
-  height: 1.5rem;
+  //width: 2.5rem;
+  //height: 1.5rem;
   padding: 0;
   border-radius: 6px;
-  background-color: ${colorDanger};
-
+  // background-color: ${colorDanger};
+  
+  width: 32px;
+  height: 20px;
+  background: #EFEFEF;
+  
   [dir="rtl"] & {
     width: 3rem;
   }
@@ -60,7 +64,8 @@ const ToggleTrack = styled.div`
   `}
 
   ${({ checked }) => checked && `
-    background-color: ${colorSuccess};
+    // background-color: ${colorSuccess};
+    background-color: #EE0033;
   `}
 
   ${({ invertColors, checked }) => invertColors && !checked && `
@@ -120,31 +125,40 @@ const ToggleTrackX = styled.div`
 
 const ToggleThumb = styled.div`
   position: absolute;
-  top: 2px;
+  //top: 2px;
   left: ${({ isRTL }) => (isRTL ? '1.6rem' : '2px')};
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 6px;
-  background-color: #FAFAFA;
+  //width: 1.2rem;
+  //height: 1.2rem;
+  //border-radius: 6px;
+  //background-color: #FAFAFA;
   box-sizing: border-box;
-  box-shadow: 2px 0px 10px -1px rgba(0,0,0,0.4);
+  //box-shadow: 2px 0px 10px -1px rgba(0,0,0,0.4);
+  
+  top: 2px;
+  width: 16px;
+  height: 16px;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 2px -1px rgba(0, 0, 0, 0.35), inset 0px -1px 1px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
 
+  
   ${({ animations }) => animations && `
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   `}
 
   ${({ checked }) => checked && css`
-    left: ${({ isRTL }) => (isRTL ? '2px' : '1.1rem')};
-    box-shadow: -2px 0px 10px -1px rgba(0,0,0,0.4);
+    left: ${({ isRTL }) => (isRTL ? '2px' : 'calc(100% - 16px - 2px)')};
+    //box-shadow: -2px 0px 10px -1px rgba(0,0,0,0.4);
+    box-shadow: 0px 1px 2px rgba(240, 65, 87, 0.35), inset 0px -2px 1px rgba(0, 0, 0, 0.1);
   `}
 
   ${({ hasFocus }) => hasFocus && `
-    box-shadow: 0px 0px 2px 3px #0F70D7;
+    // box-shadow: 0px 0px 2px 3px #0F70D7;
   `}
 
   ${({ disabled }) => !disabled && `
     &:active{
-      box-shadow: 0px 0px 5px 5px #0F70D7;
+      // box-shadow: 0px 0px 5px 5px #0F70D7;
     }
   `}
 `;

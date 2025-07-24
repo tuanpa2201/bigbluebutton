@@ -25,6 +25,10 @@
     box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.2), inset 2px 0px 0px rgba(255, 255, 255, 0.2), inset -2px 0px 0px rgba(255, 255, 255, 0.2), inset 0px -1px 0px 1px #CB132E, inset 0px 1px 0px #CB132E;
 
 	gap: 6px;
+
+    & span:hover {
+        opacity: 1;
+    }
 }
 
 .btn.btn-primary:hover {
@@ -75,6 +79,10 @@
     }
 
 	gap: 6px;
+
+    & span:hover {
+        opacity: 1;
+    }
 }
 
 .btn.btn-default:hover {

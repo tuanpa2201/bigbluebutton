@@ -102,7 +102,7 @@ const ResponseArea: React.FC<ResponseAreaProps> = ({
             label={intl.formatMessage(intlMessages.addOptionLabel)}
             aria-describedby="add-item-button"
             color="default"
-            icon="add"
+            svgIcon="addItem"
             disabled={optList.length >= MAX_CUSTOM_FIELDS}
             onClick={() => handleAddOption()}
           />
@@ -116,11 +116,7 @@ const ResponseArea: React.FC<ResponseAreaProps> = ({
           <Styled.AnonymousToggleCol>
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
             <Styled.Toggle>
-              <Styled.ToggleLabel>
-                {secretPoll
-                  ? intl.formatMessage(intlMessages.on)
-                  : intl.formatMessage(intlMessages.off)}
-              </Styled.ToggleLabel>
+
               <Toggle
               // @ts-ignore - component Wrapped by intl, not reflecting the correct props
                 icons={false}

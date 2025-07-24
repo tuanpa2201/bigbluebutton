@@ -16,8 +16,10 @@ const Poll = styled.div`
   height: 100%;
   background-color: ${colorWhite};
   min-width: 20em;
-  padding: ${smPaddingX};
-
+  //padding: ${smPaddingX};
+  
+  padding: 0 16px 16px 16px;
+  
   @media ${smallOnly} {
     top: 0;
     right: 0;

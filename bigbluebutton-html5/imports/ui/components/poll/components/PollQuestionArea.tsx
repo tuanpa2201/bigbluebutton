@@ -85,15 +85,11 @@ const PollQuestionArea: React.FC<PollQuestionAreaProps> = ({
         as={customInput ? DraggableTextArea : 'textarea'}
         ref={textareaRef}
       />
-      {hasQuestionError || hasOptionError ? (
+      {hasQuestionError || hasOptionError && (
         <Styled.InputError>{error}</Styled.InputError>
-      ) : (
-        <Styled.ErrorSpacer>&nbsp;</Styled.ErrorSpacer>
       )}
-      {hasWarning ? (
+      {hasWarning && (
         <Styled.Warning>{warning}</Styled.Warning>
-      ) : (
-        <Styled.ErrorSpacer>&nbsp;</Styled.ErrorSpacer>
       )}
     </div>
   );
