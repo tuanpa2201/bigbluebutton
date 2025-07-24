@@ -451,19 +451,36 @@ const AnonymousRow = styled(Row)`
 `;
 
 const ResultLeft = styled.td`
-  padding: 0 .5rem 0 0;
-  border-bottom: 1px solid ${colorGrayLightest};
+    //padding: 0 .5rem 0 0;
+        //border-bottom: 1px solid ${colorGrayLightest};
 
-  [dir="rtl"] & {
-    padding: 0 0 0 .5rem;
-  }
-  padding-bottom: .25rem;
-  word-break: break-all;
+    [dir="rtl"] & {
+        //padding: 0 0 0 .5rem;
+    }
+
+    //padding-bottom: .25rem;
+    word-break: break-all;
+
+    color: var(--Text-Primary, #313131);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    //padding-bottom: 12px;
+    padding-top: 12px;
 `;
 
 const ResultRight = styled.td`
-  padding-bottom: .25rem;
-  word-break: break-all;
+    //padding-bottom: .25rem;
+
+    //padding-bottom: 12px;
+    padding-top: 12px;
+    word-break: break-all;
+    color: var(--Text-Primary, #313131);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
 `;
 
 const Main = styled.div`
@@ -543,9 +560,9 @@ const Stats = styled.div`
   margin-bottom: ${smPaddingX};
   display: flex;
   flex-direction: column;
-  border: 1px solid ${pollStatsBorderColor};
+  //border: 1px solid ${pollStatsBorderColor};
   border-radius: ${borderSizeLarge};
-  padding: ${mdPaddingX};
+  //padding: ${mdPaddingX};
 
   & > div {
     display: flex;
@@ -605,6 +622,12 @@ const ButtonsActions = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
+    
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    padding-left: 16px;
+    padding-right: 16px;
 `;
 
 // @ts-ignore - Button is a JS Component
@@ -643,6 +666,15 @@ const THeading = styled.th`
   [dir="rtl"] & {
     text-align: right;
   }
+
+    border-bottom: 1px solid var(--Border-00,#EFEFEF);
+    padding-bottom: 12px;
+
+    color: var(--Text-Secondary, #6F767E);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
 `;
 
 const DndTextArea = styled.textarea<{ active: boolean }>`
@@ -690,6 +722,16 @@ const ClosePollButton = styled.button`
         background-color: ${colorGrayLightest};
     }
 `;
+
+const TableResult = styled.table`
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 0.66px solid var(--Border-01, #C8C8C8);
+`;
+
+
+
 export default {
   ClosePollButton,
   PollHeader,
@@ -746,4 +788,5 @@ export default {
   Separator,
   THeading,
   DndTextArea,
+  TableResult,
 };
