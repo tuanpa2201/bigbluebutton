@@ -388,7 +388,8 @@ const UserActions: React.FC<UserActionsProps> = ({
           },
         });
       },
-      icon: user.pinned ? 'pin-video_off' : 'pin-video_on',
+      // icon: user.pinned ? 'pin-video_off' : 'pin-video_on',
+      svgIcon: user.pinned ? 'pinWebcam' : 'pinWebcam',
     },
     {
       // allowed: (() => {
@@ -450,7 +451,8 @@ const UserActions: React.FC<UserActionsProps> = ({
         }
         setOpenUserAction(null);
       },
-      icon: userChatLocked ? 'unlock' : 'lock',
+      // icon: userChatLocked ? 'unlock' : 'lock',
+      svgIcon: userChatLocked ? 'lock2opened' : 'lock2',
       dataTest: 'togglePublicChat',
     },
     {
@@ -462,7 +464,8 @@ const UserActions: React.FC<UserActionsProps> = ({
         toggleVoice(user.userId, true, voiceToggle);
         setOpenUserAction(null);
       },
-      icon: 'mute',
+      // icon: 'mute',
+      svgIcon: 'micSlash',
     },
     {
       allowed: allowedToUnmuteAudio
@@ -474,7 +477,8 @@ const UserActions: React.FC<UserActionsProps> = ({
         toggleVoice(user.userId, false, voiceToggle);
         setOpenUserAction(null);
       },
-      icon: 'unmute',
+      // icon: 'unmute',
+      svgIcon: 'mic',
       dataTest: 'unmuteUser',
     },
     {
@@ -489,7 +493,8 @@ const UserActions: React.FC<UserActionsProps> = ({
         handleWhiteboardAccessChange();
         setOpenUserAction(null);
       },
-      icon: 'pen_tool',
+      // icon: 'pen_tool',
+      svgIcon: 'whiteboardAccess',
       dataTest: 'changeWhiteboardAccess',
     },
     {
@@ -506,7 +511,8 @@ const UserActions: React.FC<UserActionsProps> = ({
         });
         setOpenUserAction(null);
       },
-      icon: 'presentation',
+      // icon: 'presentation',
+      svgIcon: 'presentationLine',
       dataTest: isMe(user.userId) ? 'takePresenter' : 'makePresenter',
     },
     {
@@ -522,7 +528,8 @@ const UserActions: React.FC<UserActionsProps> = ({
         });
         setOpenUserAction(null);
       },
-      icon: 'promote',
+      // icon: 'promote',
+      svgIcon: 'megaPhone',
       dataTest: 'promoteToModerator',
     },
     {
@@ -538,7 +545,8 @@ const UserActions: React.FC<UserActionsProps> = ({
         });
         setOpenUserAction(null);
       },
-      icon: 'user',
+      // icon: 'user',
+      svgIcon: 'user',
       dataTest: 'demoteToViewer',
     },
     {
@@ -555,7 +563,8 @@ const UserActions: React.FC<UserActionsProps> = ({
         });
         setOpenUserAction(null);
       },
-      icon: userLocked ? 'unlock' : 'lock',
+      // icon: userLocked ? 'unlock' : 'lock',
+      svgIcon: userLocked ? 'lock2opened' : 'lock2',
       dataTest: 'unlockUserButton',
     },
     {
@@ -566,7 +575,8 @@ const UserActions: React.FC<UserActionsProps> = ({
         setIsConfirmationModalOpen(true);
         setOpenUserAction(null);
       },
-      icon: 'circle_close',
+      // icon: 'circle_close',
+      svgIcon: 'crossCircle',
       dataTest: 'removeUser',
     },
     {
