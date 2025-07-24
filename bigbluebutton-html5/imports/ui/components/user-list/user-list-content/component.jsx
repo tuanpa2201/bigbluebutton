@@ -53,18 +53,18 @@ class UserContent extends PureComponent {
               {/*<UserNotesContainer />*/}
               {/*{isTimerActive*/}
               {/*&& <TimerContainer isModerator={currentUser?.role === ROLE_MODERATOR} />}*/}
-              {currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}
               {/*<UserPollsContainer isPresenter={currentUser?.presenter} />*/}
               {/*<BreakoutRoomContainer />*/}
               {/*<GenericSidekickContentNavButtonContainer />*/}
               <UserTitleContainer />
+              {currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}
               <UserListParticipants compact={compact} />
             </Styled.List>
           </Styled.ScrollableList>
         ) : (
           <>
-            {currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}
             <UserTitleContainer />
+            {currentUser?.role === ROLE_MODERATOR ? <GuestPanelOpenerContainer /> : null}
             <UserListParticipants compact={compact} />
             {/*{isChatEnabled ? <ChatList /> : null}*/}
             {/*<UserNotesContainer />*/}

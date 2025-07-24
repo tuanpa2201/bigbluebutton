@@ -1,0 +1,11 @@
+.header-waiting-user{
+  padding-bottom: 44px;
+  span{
+    cursor: pointer;
+  }
+  .icon_cancel{
+    path{
+      stroke: #2F384C;
+    }
+  }
+}

@@ -199,11 +199,14 @@ const UnreadMessagesText = styled.div`
   justify-content: center;
   color: ${colorWhite};
   line-height: calc(1rem + 1px);
-  padding: 0 0.5rem;
+  padding: 0 2px;
   text-align: center;
   border-radius: 0.5rem/50%;
   font-size: 0.8rem;
   background-color: ${unreadMessagesBg};
+  height: 16px;
+  min-width: 16px;
+  font-size: 10px;
 `;
 
 export default {

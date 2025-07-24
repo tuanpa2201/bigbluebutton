@@ -8,6 +8,7 @@ import { useMutation } from '@apollo/client';
 import { defineMessages, useIntl } from 'react-intl';
 import { useMeeting } from '/imports/ui/core/hooks/useMeeting';
 import { notify } from '/imports/ui/services/notification';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 import {
   GET_GUEST_WAITING_USERS_SUBSCRIPTION,
@@ -17,11 +18,11 @@ import {
 import { layoutDispatch } from '../../layout/context';
 import { ACTIONS, PANELS } from '../../layout/enums';
 import Styled from './styles';
+import './styles.css';
 import {
   privateMessageVisible,
 } from './service';
 import browserInfo from '/imports/utils/browserInfo';
-import Header from '/imports/ui/components/common/control-header/component';
 import TextInput from '/imports/ui/components/text-input/component';
 import renderNoUserWaitingItem from './guest-items/noPendingGuestUser';
 import renderPendingUsers from './guest-items/guestPendingUser';
@@ -55,10 +56,11 @@ type SeparatedUsers = {
 
 type ButtonProps = {
   key: string;
-  color: string;
+  color?: string;
   policy: string;
   action: ()=> void;
   dataTest: string;
+  className?: string;
 };
 
 type ButtonData = {
@@ -68,7 +70,7 @@ type ButtonData = {
   },
   action: () => void,
   key: string,
-  color: string,
+  color?: string,
   policy: string,
   dataTest: string,
 }
@@ -259,6 +261,7 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
       policy,
       action,
       dataTest,
+      className,
     }: ButtonProps) => (
       <Styled.CustomButton
         key={key}
@@ -267,6 +270,7 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
         size="lg"
         onClick={changePolicy(rememberChoice, policy, action, message)}
         data-test={dataTest}
+        className={className}
       />
   ), [rememberChoice]);
 
@@ -281,9 +285,9 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
       messageId: intlMessages.allowAllAuthenticated,
       action: () => guestUsersCall(authedGuestUsers, ALLOW_STATUS),
       key: 'allow-all-auth',
-      color: 'primary',
       policy: 'ALWAYS_ACCEPT_AUTH',
       dataTest: 'allowAllAuthenticated',
+      className: 'btn btn-primary',
     },
     {
       messageId: intlMessages.allowAllGuests,
@@ -292,28 +296,28 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
         ALLOW_STATUS,
       ),
       key: 'allow-all-guest',
-      color: 'primary',
       policy: 'ALWAYS_ACCEPT',
       dataTest: 'allowAllGuests',
+      className: 'btn btn-primary',
     },
   ], [authedGuestUsers, unauthedGuestUsers, rememberChoice]);
 
   const guestButtonsData = useMemo(() => [
     {
-      messageId: intlMessages.allowEveryone,
-      action: () => guestUsersCall([...unauthedGuestUsers, ...authedGuestUsers], ALLOW_STATUS),
-      key: 'allow-everyone',
-      color: 'primary',
-      policy: 'ALWAYS_ACCEPT',
-      dataTest: 'allowEveryone',
-    },
-    {
       messageId: intlMessages.denyEveryone,
       action: () => guestUsersCall([...unauthedGuestUsers, ...authedGuestUsers], DENY_STATUS),
       key: 'deny-everyone',
-      color: 'danger',
       policy: 'ALWAYS_DENY',
       dataTest: 'denyEveryone',
+      className: 'btn btn-default',
+    },
+    {
+      messageId: intlMessages.allowEveryone,
+      action: () => guestUsersCall([...unauthedGuestUsers, ...authedGuestUsers], ALLOW_STATUS),
+      key: 'allow-everyone',
+      policy: 'ALWAYS_ACCEPT',
+      dataTest: 'allowEveryone',
+      className: 'btn btn-primary',
     },
   ], [unauthedGuestUsers, authedGuestUsers]);
 
@@ -322,17 +326,40 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
     : guestButtonsData;
 
   return (
-    <Styled.Panel data-test="note" isChrome={isChrome}>
-      <Header
-        leftButtonProps={{
-          onClick: () => closePanel(),
-          label: intl.formatMessage(intlMessages.title),
-        }}
-        rightButtonProps={null}
-        data-test="guestUsersManagementPanel"
-        customRightButton={null}
-        x="guestUsersManagementPanel"
-      />
+    <Styled.Panel className="waiting-users-container" data-test="note" isChrome={isChrome}>
+      <div className="d-flex justify-content-between header-waiting-user">
+        <span
+          role="button"
+          tabIndex={0}
+          className="d-flex gap-8"
+          onClick={closePanel}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              closePanel();
+            }
+          }}
+          aria-label={intl.formatMessage(intlMessages.title)}
+        >
+          <SvgIcon iconName="chevronLeft" />
+          <span>{intl.formatMessage(intlMessages.title)}</span>
+        </span>
+        <span
+          className="icon_cancel"
+          role="button"
+          tabIndex={0}
+          onClick={closePanel}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              closePanel();
+            }
+          }}
+          aria-label={intl.formatMessage(intlMessages.title)}
+        >
+          <SvgIcon iconName="cancel" />
+        </span>
+      </div>
       <Styled.ScrollableArea>
         {isGuestLobbyMessageEnabled ? (
           <Styled.LobbyMessage data-test="lobbyMessage">
@@ -342,27 +369,19 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
               send={setGuestLobbyMessage}
             />
             <p>
-              <i>
-                &quot;
-                {
-                  guestLobbyMessage && guestLobbyMessage !== ''
-                  // eslint-disable-next-line react/no-danger
-                    ? <span dangerouslySetInnerHTML={{ __html: guestLobbyMessage }} />
-                    : intl.formatMessage(intlMessages.emptyMessage)
-                }
-                &quot;
-              </i>
+              &quot;
+              {
+                guestLobbyMessage && guestLobbyMessage !== ''
+                // eslint-disable-next-line react/no-danger
+                  ? <span dangerouslySetInnerHTML={{ __html: guestLobbyMessage }} />
+                  : intl.formatMessage(intlMessages.emptyMessage)
+              }
+              &quot;
             </p>
           </Styled.LobbyMessage>
         ) : null}
         <Styled.ModeratorActions>
           <Styled.MainTitle>{intl.formatMessage(intlMessages.optionTitle)}</Styled.MainTitle>
-          {
-            buttonsData.map((btData: ButtonData) => renderButton(
-              intl.formatMessage(btData.messageId),
-              btData,
-            ))
-          }
           {allowRememberChoice ? (
             <Styled.RememberContainer>
               <input id="rememberCheckboxId" type="checkbox" onChange={onCheckBoxChange} />
@@ -371,6 +390,14 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
               </label>
             </Styled.RememberContainer>
           ) : null}
+          <div className="d-flex gap-8">
+            {
+              buttonsData.map((btData: ButtonData) => renderButton(
+                intl.formatMessage(btData.messageId),
+                btData,
+              ))
+            }
+          </div>
         </Styled.ModeratorActions>
         {renderPendingUsers(
           intl.formatMessage(intlMessages.pendingUsers,

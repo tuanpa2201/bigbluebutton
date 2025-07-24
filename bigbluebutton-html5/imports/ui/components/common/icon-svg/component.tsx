@@ -340,6 +340,26 @@ const iconsMap: { [key: string]: JSX.Element } = {
       <path d="M5.99967 10.0007L7.99967 8.00065M7.99967 8.00065L9.99967 6.00065M7.99967 8.00065L5.99967 6.00065M7.99967 8.00065L9.99967 10.0007M14.6663 8.00065C14.6663 11.6825 11.6816 14.6673 7.99967 14.6673C4.31778 14.6673 1.33301 11.6825 1.33301 8.00065C1.33301 4.31875 4.31778 1.33398 7.99967 1.33398C11.6816 1.33398 14.6663 4.31875 14.6663 8.00065Z" stroke="#ED1B2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   ),
+  accept: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.66699 12.6667L10.0003 16L17.3337 8" stroke="#2F384C" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  chevronLeft: (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11.667 5L6.66699 10L11.667 15" stroke="#2F384C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  chevronRight: (
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14.333 11L19.333 16L14.333 21" stroke="#5F6166" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  ),
+  cancel: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 16L16 8M8 8L16 16" stroke="#AA2007" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
 };
 
 const Icon: React.FC<IconProps> = ({
