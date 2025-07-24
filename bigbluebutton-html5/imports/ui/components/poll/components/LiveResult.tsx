@@ -3,7 +3,7 @@ import React, { useCallback } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import Session from '/imports/ui/services/storage/in-memory';
 import {
-  Bar, BarChart, ResponsiveContainer, XAxis, YAxis,
+  Bar, BarChart, Cell, ResponsiveContainer, XAxis, YAxis,
 } from 'recharts';
 import Styled from '../styles';
 import {
@@ -104,35 +104,74 @@ const LiveResult: React.FC<LiveResultProps> = ({
       </Styled.Instructions>
       <Styled.Stats>
         {questionText ? <Styled.Title data-test="currentPollQuestion">{questionText}</Styled.Title> : null}
-        <Styled.Status>
-          {usersCount !== numberOfAnswerCount
-            ? (
-              <span>
-                {`${intl.formatMessage(intlMessages.waitingLabel, {
-                  0: numberOfAnswerCount,
-                  1: usersCount,
-                })} `}
-              </span>
-            )
-            : <span>{intl.formatMessage(intlMessages.doneLabel)}</span>}
-          {usersCount !== numberOfAnswerCount
-            ? <Styled.ConnectingAnimation animations={animations} /> : null}
-        </Styled.Status>
-        <ResponsiveContainer width="90%" height={250}>
+        {/*<Styled.Status>*/}
+        {/*  {usersCount !== numberOfAnswerCount*/}
+        {/*    ? (*/}
+        {/*      <span>*/}
+        {/*        {`${intl.formatMessage(intlMessages.waitingLabel, {*/}
+        {/*          0: numberOfAnswerCount,*/}
+        {/*          1: usersCount,*/}
+        {/*        })} `}*/}
+        {/*      </span>*/}
+        {/*    )*/}
+        {/*    : <span>{intl.formatMessage(intlMessages.doneLabel)}</span>}*/}
+        {/*  {usersCount !== numberOfAnswerCount*/}
+        {/*    ? <Styled.ConnectingAnimation animations={animations} /> : null}*/}
+        {/*</Styled.Status>*/}
+        <ResponsiveContainer width="100%" height={275}>
           <BarChart
             data={responses}
-            layout="vertical"
+            layout="horizontal"
           >
-            <XAxis type="number" allowDecimals={false} />
-            <YAxis width={70} type="category" dataKey="optionDesc" tick={<CustomizedAxisTick />} />
-            <Bar dataKey="optionResponsesCount" fill="#0C57A7" />
+            <XAxis stroke="#C8C8C8" width={ 0 } type="category" dataKey="optionDesc" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
+            <YAxis stroke="#C8C8C8" width={ 20 } type="number" allowDecimals={false}/>
+            <Bar dataKey="optionResponsesCount" fill="#0C57A7" radius={[8,8,0,0]} ></Bar>
           </BarChart>
         </ResponsiveContainer>
       </Styled.Stats>
+
+      {
+        !isSecret
+          ? (
+            <Styled.TableResult>
+              <tbody>
+              <tr>
+                <Styled.THeading>{intl.formatMessage(intlMessages.usersTitle)}</Styled.THeading>
+                <Styled.THeading>{intl.formatMessage(intlMessages.responsesTitle)}</Styled.THeading>
+              </tr>
+              {
+                users.map((user) => (
+                  <tr key={user.user.userId}>
+                    <Styled.ResultLeft>{user.user.name}</Styled.ResultLeft>
+                    <Styled.ResultRight data-test="userVoteLiveResult">{user.optionDescIds.join()}</Styled.ResultRight>
+                  </tr>
+                ))
+              }
+              </tbody>
+            </Styled.TableResult>
+          )
+          : (
+            <div>
+              {intl.formatMessage(intlMessages.secretPollLabel)}
+            </div>
+          )
+      }
+      {/*<Styled.Separator />*/}
       {numberOfAnswerCount >= 0
         ? (
           <Styled.ButtonsActions>
+            <Styled.CancelButton
+              className={'btn btn-default'}
+              onClick={() => {
+                Session.setItem('pollInitiated', false);
+                Session.setItem('resetPollPanel', true);
+                stopPoll();
+              }}
+              label={intl.formatMessage(intlMessages.cancelPollLabel)}
+              data-test="cancelPollLabel"
+            />
             <Styled.PublishButton
+              className={'btn btn-primary'}
               onClick={() => {
                 Session.setItem('pollInitiated', false);
                 publishPoll(pollId);
@@ -155,15 +194,6 @@ const LiveResult: React.FC<LiveResultProps> = ({
               data-test="publishPollingLabel"
               color="primary"
             />
-            <Styled.CancelButton
-              onClick={() => {
-                Session.setItem('pollInitiated', false);
-                Session.setItem('resetPollPanel', true);
-                stopPoll();
-              }}
-              label={intl.formatMessage(intlMessages.cancelPollLabel)}
-              data-test="cancelPollLabel"
-            />
           </Styled.ButtonsActions>
         ) : (
           <Styled.LiveResultButton
@@ -175,33 +205,6 @@ const LiveResult: React.FC<LiveResultProps> = ({
             data-test="restartPoll"
           />
         )}
-      <Styled.Separator />
-      {
-        !isSecret
-          ? (
-            <table>
-              <tbody>
-                <tr>
-                  <Styled.THeading>{intl.formatMessage(intlMessages.usersTitle)}</Styled.THeading>
-                  <Styled.THeading>{intl.formatMessage(intlMessages.responsesTitle)}</Styled.THeading>
-                </tr>
-                {
-                  users.map((user) => (
-                    <tr key={user.user.userId}>
-                      <Styled.ResultLeft>{user.user.name}</Styled.ResultLeft>
-                      <Styled.ResultRight data-test="userVoteLiveResult">{user.optionDescIds.join()}</Styled.ResultRight>
-                    </tr>
-                  ))
-                }
-              </tbody>
-            </table>
-          )
-          : (
-            <div>
-              {intl.formatMessage(intlMessages.secretPollLabel)}
-            </div>
-          )
-      }
     </div>
   );
 };

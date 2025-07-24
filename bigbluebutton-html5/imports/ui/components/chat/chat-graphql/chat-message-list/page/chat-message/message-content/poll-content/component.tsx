@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  Bar, BarChart, ResponsiveContainer, XAxis, YAxis,
+  Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Cell
 } from 'recharts';
 import caseInsensitiveReducer from '/imports/utils/caseInsensitiveReducer';
 import { defineMessages, useIntl } from 'react-intl';
@@ -94,8 +94,10 @@ const ChatPollContent: React.FC<ChatPollContentProps> = ({
       pollAnswer,
     };
   });
+  const barColors = ["#B5E4CA", "#FFBC99"]
 
   const useHeight = height || translatedAnswers.length * 50;
+
   return (
     <Styled.PollWrapper data-test="chatPollMessageText">
       <Styled.PollText>
@@ -104,14 +106,11 @@ const ChatPollContent: React.FC<ChatPollContentProps> = ({
       <ResponsiveContainer width="100%" height={useHeight}>
         <BarChart
           data={translatedAnswers}
-          layout="vertical"
+          layout="horizontal"
         >
-          <XAxis
-            type="number"
-            allowDecimals={false}
-          />
-          <YAxis width={100} type="category" dataKey="pollAnswer" tick={<CustomizedAxisTick />} />
-          <Bar dataKey="numVotes" fill="#0C57A7" />
+          <XAxis stroke="#C8C8C8" type="category" dataKey="pollAnswer" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
+          <YAxis stroke="#C8C8C8" type="number" allowDecimals={false}/>
+          <Bar dataKey="numVotes" fill="#0C57A7" width={60} radius={[8,8,0,0]} ></Bar>
         </BarChart>
       </ResponsiveContainer>
     </Styled.PollWrapper>
