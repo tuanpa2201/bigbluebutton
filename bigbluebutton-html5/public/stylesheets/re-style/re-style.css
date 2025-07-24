@@ -7,60 +7,14 @@
 @import 're-style-modal.css';
 @import 're-style-input.css';
 
-#reactions-dropdown-menu {
-    /* Main menu container */
+.user-avatar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    & .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation3.MuiPopover-paper.MuiMenu-paper {
-        /* Custom background, border, and shadow */
-        background: var(--bg-00-light, #FFF);
-        border-radius: 16px;
-        box-shadow: 0 8px 24px rgba(26, 26, 26, 0.18), 0 1.5px 0 rgba(0, 0, 0, 0.10) inset;
-        padding: 8px 12px;
-        min-width: 260px;
-        gap: 8px;
-    }
-
-    /* Reaction button styles */
-
-    .MuiMenu-list {
-        display: flex;
-        flex-direction: row;
-        gap: 8px;
-        padding: 0;
-        background: transparent;
-        box-shadow: none;
-    }
-
-    .MuiMenuItem-root {
-        background: transparent;
-        border-radius: 50%;
-        transition: background 0.15s;
-        padding: 0;
-        margin: 0 4px;
-        min-width: 44px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .MuiMenuItem-root:hover,
-    .MuiMenuItem-root:focus {
-        background: var(--bg-04-hover-light, #F0F0F0);
-    }
-
-    .MuiMenuItem-root[aria-selected="true"],
-    .MuiMenuItem-root.active {
-        background: var(--bg-03-light, #E0E0E0);
-        box-shadow: 0 0 0 2px var(--primary, #1976d2);
-    }
-
-    /* Emoji icon inside button */
-
-    .emojiAsset {
-        width: 32px;
-        height: 32px;
-        display: block;
+    & img {
+        width: 24px;
+        height: 24px;
     }
 }
 
@@ -516,5 +470,59 @@
 .lock-viewer-modal {
     & .lock-viewer-left-label {
         color: var(--Text-Primary, #313131) !important;
+    }
+}
+
+.reactions-dropdown-container {
+    position: relative;
+    z-index: 1000;
+    & .reactions-dropdown-menu {
+        position: absolute;
+        top: -50px;
+        left: -100px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 4px 6px;
+        background-color: var(--bg-00-light, #FFFFFF);
+        border-radius: 12px;
+
+        /* [L] Popover shadow */
+        box-shadow: 0 4px 6px -2px rgba(26, 26, 26, 0.20), 1px 0 0 0 rgba(0, 0, 0, 0.13) inset, -1px 0 0 0 rgba(0, 0, 0, 0.13) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.17) inset, 0 1px 0 0 rgba(204, 204, 204, 0.50) inset;
+        & .reactions-dropdown-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: unset;
+            background-color: var(--bg-00-light, #FFFFFF);
+
+            & div {
+                margin: 0;
+                background-color: unset;
+
+                & span {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    & img {
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+
+                &:hover {
+                    background-color: unset!important;
+                    color: unset!important;
+                    filter: unset!important;
+                }
+            }
+
+            &:hover {
+                background: var(--bg-04-hover-light, #EFEFEF);
+                border-radius: 10px;
+            }
+        }
     }
 }

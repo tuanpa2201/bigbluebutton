@@ -582,16 +582,16 @@ export const meetingClientSettingsInitialValues: MeetingClientSettings = {
       expire: 60,
       reactions: [
         {
-          id: 'smiley',
-          native: '😃',
+          id: 'smile',
+          native: '😄',
         },
         {
-          id: 'neutral_face',
-          native: '😐',
+          id: 'cry',
+          native: '😢',
         },
         {
-          id: 'slightly_frowning_face',
-          native: '🙁',
+          id: 'heart',
+          native: '❤️',
         },
         {
           id: '+1',
