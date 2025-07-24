@@ -41,8 +41,6 @@ const ToggleLabel = styled.span`
 `;
 
 const PollOptionInput = styled.input`
-  margin-right: 8px;
-
   [dir="rtl"] & {
       margin-right: 0;
       margin-left: 1rem;
@@ -320,16 +318,23 @@ const StartPollBtn = styled(Button)`
   position: relative;
   width: 100%;
   min-height: ${pollInputHeight};
-  margin-top: 1rem;
+  //margin-top: 1rem;
   font-size: ${fontSizeBase};
   overflow-wrap: break-word;
   white-space: pre-wrap;
-
   &:hover {
     & > span {
       opacity: 1;
     }
   }
+`;
+const StartPoll = styled.div`
+    width: 100%;
+    position: absolute;
+    bottom: 28px;
+    left: 0;
+    padding-left: 16px;
+    padding-right: 16px;
 `;
 
 const NoSlidePanelContainer = styled.div`
@@ -417,6 +422,7 @@ const Question = styled.div`
 const OptionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+    gap: 8px;
 `;
 
 const ResponseArea = styled.div`
@@ -789,4 +795,5 @@ export default {
   THeading,
   DndTextArea,
   TableResult,
+  StartPoll,
 };

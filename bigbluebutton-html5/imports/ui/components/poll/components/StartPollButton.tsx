@@ -97,61 +97,65 @@ const StartPollButton: React.FC<StartPollButtonProps> = ({
     && optList.filter((o) => o.val.trim().length > 0).length < 2;
 
   return (
-    <Styled.StartPollBtn
-      data-test="startPoll"
-      label={intl.formatMessage(intlMessages.startPollLabel)}
-      color="primary"
-      disabled={hasNotMinOptions}
-      title={hasNotMinOptions ? intl.formatMessage(intlMessages.minOptionsErr) : ''}
-      onClick={() => {
-        const optionsList = optList.slice(0, MAX_CUSTOM_FIELDS);
-        let hasVal = false;
-        optionsList.forEach((o) => {
-          if (o.val.trim().length > 0) hasVal = true;
-        });
-
-        let err = null;
-        if (hasNotMinOptions) {
-          err = intl.formatMessage(intlMessages.optionErr);
-        }
-        if (type === pollTypes.Response && question.length === 0) {
-          err = intl.formatMessage(intlMessages.questionErr);
-        }
-        if (!hasVal && type !== pollTypes.Response) {
-          err = intl.formatMessage(intlMessages.optionErr);
-        }
-
-        if (err) {
-          setError(err);
-        } else {
-          setIsPolling(true);
-          const verifiedPollType = checkPollType(
-            type,
-            optionsList,
-            intl.formatMessage(intlMessages.yes),
-            intl.formatMessage(intlMessages.no),
-            intl.formatMessage(intlMessages.abstention),
-            intl.formatMessage(intlMessages.true),
-            intl.formatMessage(intlMessages.false),
-          );
-          const verifiedOptions = optionsList.map((o) => {
-            if (o.val.trim().length > 0) return o.val;
-            return null;
+    <Styled.StartPoll>
+      <Styled.StartPollBtn
+        data-test="startPoll"
+        className={'btn btn-primary'}
+        label={intl.formatMessage(intlMessages.startPollLabel)}
+        color="primary"
+        disabled={hasNotMinOptions}
+        title={hasNotMinOptions ? intl.formatMessage(intlMessages.minOptionsErr) : ''}
+        onClick={() => {
+          const optionsList = optList.slice(0, MAX_CUSTOM_FIELDS);
+          let hasVal = false;
+          optionsList.forEach((o) => {
+            if (o.val.trim().length > 0) hasVal = true;
           });
-          if (verifiedPollType === pollTypes.Custom) {
-            startPoll(
-              verifiedPollType,
-              secretPoll,
-              question,
-              isMultipleResponse,
-              verifiedOptions?.filter(Boolean),
-            );
-          } else {
-            startPoll(verifiedPollType, secretPoll, question, isMultipleResponse);
+
+          let err = null;
+          if (hasNotMinOptions) {
+            err = intl.formatMessage(intlMessages.optionErr);
           }
-        }
-      }}
-    />
+          if (type === pollTypes.Response && question.length === 0) {
+            err = intl.formatMessage(intlMessages.questionErr);
+          }
+          if (!hasVal && type !== pollTypes.Response) {
+            err = intl.formatMessage(intlMessages.optionErr);
+          }
+
+          if (err) {
+            setError(err);
+          } else {
+            setIsPolling(true);
+            const verifiedPollType = checkPollType(
+              type,
+              optionsList,
+              intl.formatMessage(intlMessages.yes),
+              intl.formatMessage(intlMessages.no),
+              intl.formatMessage(intlMessages.abstention),
+              intl.formatMessage(intlMessages.true),
+              intl.formatMessage(intlMessages.false),
+            );
+            const verifiedOptions = optionsList.map((o) => {
+              if (o.val.trim().length > 0) return o.val;
+              return null;
+            });
+            if (verifiedPollType === pollTypes.Custom) {
+              startPoll(
+                verifiedPollType,
+                secretPoll,
+                question,
+                isMultipleResponse,
+                verifiedOptions?.filter(Boolean),
+              );
+            } else {
+              startPoll(verifiedPollType, secretPoll, question, isMultipleResponse);
+            }
+          }
+        }}
+      />
+    </Styled.StartPoll>
+
   );
 };
 
