@@ -85,7 +85,7 @@ const UserContentContainer = styled.div`
 
 const UserAvatarContainer = styled.div`
   min-width: 2.25rem;
-  margin: .5rem;
+  margin: 10px 12px 10px 0px;
 `;
 
 const UserName = styled.p`
@@ -95,6 +95,11 @@ const UserName = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: initial;
+  color: var(--Text-Primary, #313131);
+
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
 `;
 
 const ButtonContainer = styled.div`
@@ -165,6 +170,7 @@ const WaitingUsersButtonDeny = styled(Button)`
 const PendingUsers = styled.div`
   display: flex;
   flex-direction: column;
+  border-top: 1px solid #EFEFEF;
 `;
 
 const NoPendingUsers = styled.p`
@@ -173,7 +179,11 @@ const NoPendingUsers = styled.p`
 `;
 
 const MainTitle = styled.p`
-  color: ${colorGray};
+  color: var(--Text-Primary, #313131);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 12px;
 `;
 
 const UsersWrapper = styled.div`
@@ -188,12 +198,6 @@ const Users = styled.div`
 // @ts-ignore - Button is JS
 const CustomButton = styled(Button)`
   width: 100%;
-  padding: .75rem;
-  margin: .3rem 0;
-  font-weight: 400;
-  font-size: ${fontSizeBase};
-  overflow: hidden;
-  text-overflow: ellipsis;
 `;
 
 const Panel = styled.div<PanelProps>`
@@ -220,11 +224,16 @@ const LobbyMessage = styled.div`
   margin: 2px 2px 0 2px;
 
   & > p {
-    background-color: ${colorOffWhite};
-    box-sizing: border-box;
-    color: ${colorGray};
-    padding: 1rem;
-    text-align: center;
+    display: flex;
+    padding: 12px 8px;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    align-self: stretch;
+    border-radius: 8px;
+    background: var(--BG-01, #F7F8F9);
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -241,19 +250,18 @@ const PrivateLobbyMessage = styled.div`
 `;
 
 const RememberContainer = styled.div`
-  margin: 1rem 1rem;
+  margin: 22px 0px 18px;
   height: 2rem;
   display: flex;
   align-items: center;
+  gap: 12px;
   & > label {
     height: fit-content;
     padding: 0;
     margin: 0;
-    margin-left: .7rem;
 
     [dir="rtl"] & {
       margin: 0;
-      margin-right: .7rem;
     }
   }
 `;
@@ -264,7 +272,7 @@ const ScrollableArea = styled(ScrollboxVertical)`
 `;
 
 const ModeratorActions = styled.div`
-  padding: 0 .2rem;
+  padding-bottom: 20px;
 `;
 
 const pulse = (color: string) => keyframes`
@@ -279,9 +287,9 @@ const pulse = (color: string) => keyframes`
 
 const Avatar = styled.div<AvatarProps>`
   position: relative;
-  height: 2.25rem;
-  width: 2.25rem;
-  border-radius: 50%;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 6px;
   text-align: center;
   font-size: .85rem;
   border: 2px solid transparent;

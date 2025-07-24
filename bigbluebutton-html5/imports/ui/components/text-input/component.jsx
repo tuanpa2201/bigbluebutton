@@ -153,8 +153,7 @@ class TextInput extends PureComponent {
           value={message}
         />
         <Styled.TextInputButton
-          circle
-          color="primary"
+          className="btn btn-primary"
           hideLabel
           icon="send"
           label={intl.formatMessage(messages.sendLabel)}

@@ -68,15 +68,14 @@ const renderGuestUserItem = (
         <Styled.ButtonContainer key={`userlist-btns-${userId}`}>
           <Styled.WaitingUsersButton
             key={`userbtn-accept-${userId}`}
-            size="md"
             aria-label={intl.formatMessage(intlMessages.accept)}
             ghost
             hideLabel
-            icon="add"
+            svgIcon="accept"
             onClick={handleAccept}
             data-test="acceptGuest"
           />
-          {isGuestLobbyMessageEnabled ? (
+          {/* {isGuestLobbyMessageEnabled ? (
             <Styled.WaitingUsersButtonMsg
               key={`userbtn-message-${userId}`}
               size="lg"
@@ -86,7 +85,7 @@ const renderGuestUserItem = (
               onClick={privateMessageVisible}
               data-test="privateMessageGuest"
             />
-          ) : null}
+          ) : null} */}
           <Styled.WaitingUsersButtonDeny
             key={`userbtn-deny-${userId}`}
             aria-label={intl.formatMessage(intlMessages.deny)}
@@ -94,8 +93,7 @@ const renderGuestUserItem = (
             hideLabel
             onClick={handleDeny}
             data-test="denyGuest"
-            size="sm"
-            icon="close"
+            svgIcon="cancel"
           />
         </Styled.ButtonContainer>
       </Styled.ListItem>

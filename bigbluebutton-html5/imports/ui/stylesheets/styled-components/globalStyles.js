@@ -3,8 +3,6 @@ import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints
 import {
   smPaddingX,
   borderRadius,
-  borderSize,
-  borderSizeSmall,
 } from '/imports/ui/stylesheets/styled-components/general';
 import {
   dropdownBg,
@@ -82,9 +80,10 @@ const GlobalStyle = createGlobalStyle`
   .toastClass {
     position: relative;
     margin-bottom: ${smPaddingX};
-    padding: ${smPaddingX};
-    border-radius: ${borderRadius};
-    box-shadow: 0 ${borderSizeSmall} 10px 0 rgba(0, 0, 0, 0.1), 0 ${borderSize} 15px 0 rgba(0, 0, 0, 0.05);
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--BG-00, #FFF);
+    box-shadow: 0 8px 16px -4px rgba(26, 26, 26, 0.22);
     display: flex;
     justify-content: space-between;
     color: ${colorText};

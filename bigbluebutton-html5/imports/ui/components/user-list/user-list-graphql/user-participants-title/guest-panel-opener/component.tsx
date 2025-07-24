@@ -5,7 +5,7 @@ import { GET_GUESTS_COUNT, GuestUsersCountResponse } from './queries';
 import { layoutDispatch, layoutSelectInput } from '/imports/ui/components/layout/context';
 import { Input } from '/imports/ui/components/layout/layoutTypes';
 import { ACTIONS, PANELS } from '/imports/ui/components/layout/enums';
-import Icon from '/imports/ui/components/common/icon/icon-ts/component';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 import Styled from './styles';
 import logger from '/imports/startup/client/logger';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
@@ -48,11 +48,6 @@ const GuestPanelOpener: React.FC<GuestPanelOpenerProps> = ({
 
   return (
     <Styled.Messages>
-      <Styled.Container>
-        <Styled.SmallTitle>
-          {intl.formatMessage(intlMessages.waitingUsersTitle)}
-        </Styled.SmallTitle>
-      </Styled.Container>
       <Styled.ScrollableList>
         <Styled.List>
           <Styled.ListItem
@@ -66,7 +61,6 @@ const GuestPanelOpener: React.FC<GuestPanelOpenerProps> = ({
               }
             }}
           >
-            <Icon iconName="user" />
             <span>{intl.formatMessage(intlMessages.title)}</span>
             {pendingUsers > 0 && (
               <Styled.UnreadMessages>
@@ -75,6 +69,7 @@ const GuestPanelOpener: React.FC<GuestPanelOpenerProps> = ({
                 </Styled.UnreadMessagesText>
               </Styled.UnreadMessages>
             )}
+            <SvgIcon iconName="chevronRight" />
           </Styled.ListItem>
         </Styled.List>
       </Styled.ScrollableList>
