@@ -25,6 +25,7 @@ class ToastContainer extends React.Component {
         pauseOnHover
         icon={false}
         theme="colored"
+        position="bottom-right"
       />
     );
   }

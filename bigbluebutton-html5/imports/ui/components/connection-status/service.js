@@ -2,7 +2,7 @@ import { defineMessages } from 'react-intl';
 import { makeVar } from '@apollo/client';
 import Auth from '/imports/ui/services/auth';
 import Session from '/imports/ui/services/storage/in-memory';
-import { notify } from '/imports/ui/services/notification';
+import { notifyCustom } from '/imports/ui/services/notification';
 import AudioService from '/imports/ui/components/audio/service';
 import ScreenshareService from '/imports/ui/components/screenshare/service';
 import VideoService from '/imports/ui/components/video-provider/service';
@@ -103,7 +103,7 @@ export const notification = (level, intl) => {
   }
   Session.setItem('connectionStatusNotified', true);
 
-  if (intl) notify(intl.formatMessage(intlMessages.notification), level, 'warning');
+  if (intl) notifyCustom(intl.formatMessage(intlMessages.notification), level, 'disconnect');
   return null;
 };
 

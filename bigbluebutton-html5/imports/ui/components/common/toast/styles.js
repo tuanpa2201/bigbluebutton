@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { ToastContainer as Toastify } from 'react-toastify';
-import Icon from '/imports/ui/components/common/icon/component';
 import {
   fontSizeSmallest,
   fontSizeSmaller,
@@ -30,8 +29,9 @@ import {
   jumboPaddingY,
 } from '/imports/ui/stylesheets/styled-components/general';
 import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
-const CloseIcon = styled(Icon)`
+const CloseIcon = styled(SvgIcon)`
   align-self: flex-start;
   background: transparent;
   outline: none;
@@ -102,6 +102,14 @@ const ToastIcon = styled.div`
     position: absolute;
     top: 50%;
     width: 100%;
+  }
+    
+  & > svg {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   ${({ small }) => small && `
@@ -186,7 +194,6 @@ const ToastifyContainer = styled(Toastify)`
   box-sizing: border-box;
   right: ${jumboPaddingY};
   left: auto;
-  top: 4.5rem;
   max-height: 75vh;
   overflow: hidden;
 

@@ -335,6 +335,11 @@ const iconsMap: { [key: string]: JSX.Element } = {
       <path d="M3.33337 7.99967H8.00004M12.6667 7.99967H8.00004M8.00004 7.99967V3.33301M8.00004 7.99967V12.6663" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   ),
+  disconnect: (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.99967 10.0007L7.99967 8.00065M7.99967 8.00065L9.99967 6.00065M7.99967 8.00065L5.99967 6.00065M7.99967 8.00065L9.99967 10.0007M14.6663 8.00065C14.6663 11.6825 11.6816 14.6673 7.99967 14.6673C4.31778 14.6673 1.33301 11.6825 1.33301 8.00065C1.33301 4.31875 4.31778 1.33398 7.99967 1.33398C11.6816 1.33398 14.6663 4.31875 14.6663 8.00065Z" stroke="#ED1B2F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  ),
 };
 
 const Icon: React.FC<IconProps> = ({
