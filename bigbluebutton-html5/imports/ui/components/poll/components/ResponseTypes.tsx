@@ -82,7 +82,7 @@ const ResponseTypes: React.FC<ResponseTypesProps> = ({
   const intl = useIntl();
   if (!customInput) {
     return (
-      <div data-test="responseTypes">
+      <Styled.ResponseTypes data-test="responseTypes">
         <Styled.SectionHeading>
           {intl.formatMessage(intlMessages.responseTypesLabel)}
         </Styled.SectionHeading>
@@ -149,7 +149,7 @@ const ResponseTypes: React.FC<ResponseTypesProps> = ({
             onClick={() => { setType(pollTypes.Response); }}
           />
         </Styled.ResponseType>
-      </div>
+      </Styled.ResponseTypes>
     );
   }
   return null;

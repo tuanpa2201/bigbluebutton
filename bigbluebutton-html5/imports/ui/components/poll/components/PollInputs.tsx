@@ -64,7 +64,7 @@ const PollInputs: React.FC<PollInputsProps> = ({
             <Styled.DeletePollOptionButton
               label={intl.formatMessage(intlMessages.delete)}
               aria-describedby={`option-${i}`}
-              icon="delete"
+              svgIcon="trash_20"
               data-test="deletePollOption"
               hideLabel
               circle

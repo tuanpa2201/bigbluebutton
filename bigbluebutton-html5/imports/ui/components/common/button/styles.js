@@ -519,10 +519,10 @@ const ButtonSpan = styled.span`
 
     &:focus,
     .buttonWrapper:focus:not([aria-disabled="true"]) & {
-      color: ${btnDefaultColor};
-      background-color: ${btnDefaultBg};
-      background-clip: padding-box;
-      box-shadow: 0 0 0 ${borderSize} ${btnPrimaryBg};
+      // color: ${btnDefaultColor};
+      // background-color: ${btnDefaultBg};
+      // background-clip: padding-box;
+      // box-shadow: 0 0 0 ${borderSize} ${btnPrimaryBg};
     }
 
     &:hover & {
@@ -912,10 +912,10 @@ const Button = styled(BaseButton)`
 
     &:focus,
     .buttonWrapper:focus:not([aria-disabled="true"]) & {
-      color: ${btnDefaultColor};
-      background-color: ${btnDefaultBg};
-      background-clip: padding-box;
-      box-shadow: 0 0 0 ${borderSize} ${btnPrimaryBg};
+      // color: ${btnDefaultColor};
+      // background-color: ${btnDefaultBg};
+      // background-clip: padding-box;
+      // box-shadow: 0 0 0 ${borderSize} ${btnPrimaryBg};
     }
 
     &:hover,
