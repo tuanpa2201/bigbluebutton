@@ -37,7 +37,8 @@ const Toast = ({
         )
         : (
           <Styled.ToastIcon className="toastIcon" small={small}>
-            <Icon iconName={icon || defaultIcons[type]} />
+            {/*<Icon iconName={icon || defaultIcons[type]} />*/}
+            <SvgIcon iconName="checkCircle" />
           </Styled.ToastIcon>
         )}
       <Styled.ToastMessage data-test="toastSmallMsg">
