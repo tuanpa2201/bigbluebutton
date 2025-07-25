@@ -167,7 +167,7 @@ const Toast = styled.div`
   ${({ type }) => type === 'info' && `
     & .toastIcon {
       color: ${toastInfoColor};
-      background-color: ${toastInfoBg};
+      background-color: #FFFFFF;
     }
   `}
 

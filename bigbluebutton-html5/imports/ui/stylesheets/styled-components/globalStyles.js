@@ -129,7 +129,7 @@ const GlobalStyle = createGlobalStyle`
     height: 5px;
     z-index: 999;
     animation: track-progress linear 1;
-    background-color: ${colorGrayLighter} !important;
+    background-color: #6CC17C !important;
     border-radius: ${borderRadius};
 
     [dir="rtl"] & {

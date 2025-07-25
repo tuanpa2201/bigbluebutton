@@ -5,6 +5,7 @@ import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedS
 import { PINNED_PAD_SUBSCRIPTION } from '/imports/ui/components/notes/queries';
 import {useMutation} from "@apollo/client";
 import {TIMER_ACTIVATE} from "/imports/ui/components/timer/mutations";
+// import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 // Styled sidebar container
 const Sidebar = styled.div`
