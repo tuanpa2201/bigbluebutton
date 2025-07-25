@@ -50,9 +50,6 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
   const NOTES_IS_PINNABLE = window.meetingClientSettings.public.notes.pinnable;
 
   const getAvailableActions = () => {
-    const uploadIcon = 'upload';
-    const pinIcon = 'presentation';
-
     const menuItems = [];
 
     if (amIPresenter) {

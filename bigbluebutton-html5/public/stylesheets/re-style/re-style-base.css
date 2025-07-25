@@ -42,6 +42,14 @@
     display: flex;
 }
 
+.d-inline-flex {
+    display: inline-flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
 .align-items-center {
     align-items: center;
 }
@@ -73,6 +81,14 @@
 
 .justify-content-between {
     justify-content: space-between;
+}
+
+.gap-4 {
+    gap: 4px;
+}
+
+.gap-6 {
+    gap: 6px;
 }
 
 .gap-8 {
@@ -168,6 +184,26 @@
 
 .mb-0-i {
     margin-bottom: 0 !important;
+}
+
+.mt-0 {
+    margin-top: 0;
+}
+
+.mt-4 {
+    margin-top: 4px;
+}
+
+.mt-6 {
+    margin-top: 6px;
+}
+
+.m-8-i {
+    margin: 8px !important;
+}
+
+.mb-8-i {
+    margin-bottom: 8px !important;
 }
 
 .mt-12 {

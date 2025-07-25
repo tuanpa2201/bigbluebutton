@@ -14,6 +14,7 @@ const LocalEchoTestButton = styled(Button)`
   }
 
   i {
+    margin-right: 4px;
     ${({ animations }) => animations && `
       transition: all .2s ease-in-out;
     `}

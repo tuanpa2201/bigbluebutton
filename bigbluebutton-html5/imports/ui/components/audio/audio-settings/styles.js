@@ -54,7 +54,7 @@ const LabelSmall = styled.label`
   font-weight: 600;
 
   & > :first-child {
-    margin: 0.5rem 0 0 0 !important;
+    margin: 4px 0 0 0 !important;
   }
 `;
 

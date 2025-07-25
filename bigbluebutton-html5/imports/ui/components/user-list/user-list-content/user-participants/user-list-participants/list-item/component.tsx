@@ -12,7 +12,6 @@ import TooltipContainer from '/imports/ui/components/common/tooltip/container';
 import Auth from '/imports/ui/services/auth';
 import { LockSettings } from '/imports/ui/Types/meeting';
 import { uniqueId } from '/imports/utils/string-utils';
-import { convertRemToPixels } from '/imports/utils/dom-utils';
 import { PluginsContext } from '/imports/ui/components/components-data/plugin-context/context';
 import { useIsReactionsEnabled } from '/imports/ui/services/features';
 import useWhoIsTalking from '/imports/ui/core/hooks/useWhoIsTalking';
@@ -153,10 +152,10 @@ const UserListItem: React.FC<UserListItemProps> = ({
   }
   if (user.cameras.length > 0 && LABEL.sharingWebcam) {
     subs.push(
-      <span key={uniqueId('breakout-')}>
+      <span key={uniqueId('breakout-')} className="d-inline-flex align-items-center gap-6">
         {user.pinned === true
           ? <Icon iconName="pin-video_on" />
-          : <Icon iconName="video" />}
+          : <SvgIcon iconName="shareCamera3" />}
         &nbsp;
         {intl.formatMessage(messages.sharingWebcam)}
       </span>,
@@ -189,7 +188,6 @@ const UserListItem: React.FC<UserListItemProps> = ({
       native: '⏰',
     },
   ];
-  const emojiSize = convertRemToPixels(1.3);
   const getIconUser = () => {
     if (user.isDialIn) {
       return <Icon iconName="volume_level_2" />;

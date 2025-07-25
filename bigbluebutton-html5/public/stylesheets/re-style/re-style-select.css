@@ -28,6 +28,7 @@ select {
     position: relative;
     width: 100%;
     user-select: none;
+    margin-top: 4px !important;
 }
 .custom-dropdown__selected {
     height: 32px!important;
@@ -38,6 +39,7 @@ select {
     color: var(--text-primary-light, #313131);
     cursor: pointer;
     font-size: 14px;
+    font-weight: 400;
     line-height: 20px;
     transition: border-color 0.2s, box-shadow 0.2s;
 }

@@ -56,17 +56,7 @@ trait PresentationConversionCompletedSysPubMsgHdlr {
       pods = pods.addPresentationToPod(pod.id, presWithConvertedName)
 
       PresPresentationDAO.updatePages(presWithConvertedName)
-      if(pres.current) {
-        val notifyEvent = MsgBuilder.buildNotifyAllInMeetingEvtMsg(
-          meetingId,
-          "info",
-          "presentation",
-          "app.presentation.newCurrentPresentationNotification",
-          "Notification when a new presentation is set as current",
-          Vector(s"${pres.name}")
-        )
-        NotificationDAO.insert(notifyEvent)
-      }
+
 
       state.update(pods)
     }

@@ -73,7 +73,6 @@ const ToastFileName = styled.span`
   white-space: nowrap;
   height: 1.25rem !important;
   margin-left: ${mdPaddingY};
-  height: 1rem;
   width: auto;
   text-align: left;
   font-weight: ${headingsFontWeight};
@@ -169,6 +168,9 @@ const UploadToastHeader = styled.div`
   position: relative;
   margin-bottom: ${toastMdMargin};
   padding-bottom: ${smPaddingX};
+  display: flex;
+  align-items: center; 
+  gap: 12px;
 `;
 
 const UploadIcon = styled(Icon)`
@@ -189,7 +191,16 @@ const UploadIcon = styled(Icon)`
 
 const UploadToastTitle = styled.span`
   position: fixed;
-  font-weight: 600;
+  overflow: hidden;
+  color: var(--Text-Primary, #313131);
+  text-overflow: ellipsis;
+
+  /* Medium/S */
+  font-family: "FS PF BeauSans Pro", sans-serif;
+  font-size: 14px!important;
+  font-style: normal;
+  font-weight: 500!important;
+  line-height: 20px; /* 142.857% */
   margin-top: ${toastMdMargin};
 `;
 

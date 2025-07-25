@@ -54,6 +54,14 @@
     & button {
         padding: 22px 2rem;
 
+        & i {
+            color: var(--icon-primary-light, #2F384C);
+
+            &:hover {
+                color: rgba(47, 56, 76, 0.75);
+            }
+        }
+
         &:first-child {
             margin: 0 2px 0 0 ;
         }
@@ -90,11 +98,11 @@
     }
 
     & .audio-settings-modal-content {
-        padding-bottom: 0;
+        padding: 0;
 
         & .audio-settings-note {
             text-align: left;
-            margin: 0 16px 1.5rem;
+            margin: 0 0 1.5rem;
 
             & .subtitle {
                 color: var(--text-secondary-light, #6F767E);
@@ -109,7 +117,8 @@
 
         & .audio-settings-form {
             grid-template-columns: unset;
-            margin: 0.45rem 16px 0;
+            margin: 0.45rem 0 0;
+            gap: 12px;
 
             & label {
                 color: var(--Text-Primary, #313131);
@@ -119,11 +128,6 @@
                 font-style: normal;
                 font-weight: 500!important;
                 line-height: 20px; /* 142.857% */
-
-                &:first-child {
-                    margin: 0.3rem 0px 0px !important;
-                }
-
             }
 
             & .audio-test-container {
