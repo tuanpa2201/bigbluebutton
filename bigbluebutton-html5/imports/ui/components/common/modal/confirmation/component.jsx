@@ -75,7 +75,7 @@ class ConfirmationModal extends Component {
     } = this.state;
 
     const hasCheckbox = !!checkboxMessageId;
-    const isRemoveUSer= (confirmButtonDataTest==="removeUserConfirmation");
+    const isRemoveUSer= (confirmButtonDataTest==="removeUserConfirmation" || confirmButtonDataTest==="confirmEndMeeting");
 
     return (
       <Styled.ConfirmationModal className={isRemoveUSer?"remove-user-modal": ""}
