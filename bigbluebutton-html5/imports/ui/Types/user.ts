@@ -81,6 +81,8 @@ export interface User {
   userId: string;
   extId: string;
   name: string;
+  userName: string;
+  username: string;
   nameSortable: string;
   isModerator: boolean;
   clientType: string;
