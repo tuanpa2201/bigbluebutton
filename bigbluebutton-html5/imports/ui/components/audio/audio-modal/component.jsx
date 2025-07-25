@@ -451,6 +451,7 @@ const AudioModal = ({
               <Styled.AudioModalButton
                 label={intl.formatMessage(intlMessages.microphoneLabel)}
                 data-test="microphoneBtn"
+                className="microphoneBtn"
                 aria-describedby="mic-description"
                 svgIcon="microphone_2"
                 size="jumbo"
@@ -471,6 +472,7 @@ const AudioModal = ({
               <Styled.AudioModalButton
                 label={intl.formatMessage(intlMessages.listenOnlyLabel)}
                 data-test="listenOnlyBtn"
+                className="listenOnlyBtn"
                 aria-describedby="listenOnly-description"
                 svgIcon="headphone_2"
                 size="jumbo"

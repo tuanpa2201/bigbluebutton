@@ -89,7 +89,7 @@ function CustomDropdown({
   ) : null;
 
   return (
-    <div className="custom-dropdown" ref={ref}>
+    <div className="custom-dropdown" style={{ marginTop: '4px !important' }} ref={ref}>
       <div
         className="custom-dropdown__selected"
         tabIndex={disabled ? -1 : 0}

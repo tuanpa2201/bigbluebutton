@@ -367,6 +367,9 @@ const UserName = styled.span`
   }`;
 
 const UserNameSub = styled.span`
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   margin: 0;
   font-size: 0.75rem;
   font-weight: 200;

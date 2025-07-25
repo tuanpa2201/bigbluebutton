@@ -530,10 +530,13 @@ class AudioSettings extends React.Component {
             />
           </Styled.LabelSmall>
         </Styled.FormElement>
-        <div className="d-flex align-items-center justify-content-between gap-20 pt-20 pb-16 border-separator">
-          <Styled.LabelSmall htmlFor="audioStreamVolume" className="w-50">
+        <div className="d-flex justify-content-between gap-20 pt-20 pb-16 border-separator">
+          <Styled.LabelSmall htmlFor="audioStreamVolume" className="mt-0-i w-50 ">
             {intl.formatMessage(intlMessages.streamVolumeLabel)}
-            <AudioStreamVolume stream={stream} />
+            <div />
+            <div className="mt-6">
+              <AudioStreamVolume stream={stream} />
+            </div>
           </Styled.LabelSmall>
           <Styled.LabelSmall htmlFor="audioTest" className="w-50 audio-test-container">
             {intl.formatMessage(intlMessages.testSpeakerLabel)}

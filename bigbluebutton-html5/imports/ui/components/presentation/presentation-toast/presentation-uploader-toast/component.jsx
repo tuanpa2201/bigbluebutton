@@ -6,6 +6,7 @@ import { defineMessages } from 'react-intl';
 import { usePreviousValue } from '/imports/ui/hooks/usePreviousValue';
 import { notify } from '/imports/ui/services/notification';
 import Session from '/imports/ui/services/storage/in-memory';
+import SvgIcon from "/imports/ui/components/common/icon-svg/component";
 
 const EXPORT_STATUSES = {
   RUNNING: 'RUNNING',
@@ -265,20 +266,9 @@ function renderToastItem(item, intl) {
     >
       <Styled.FileLine>
         <span>
-          <Icon iconName="file" />
-        </span>
-        <Styled.ToastFileName>
+          <SvgIcon iconName="file" />
           <span>{item.filename || item.name}</span>
-        </Styled.ToastFileName>
-        <Styled.StatusIcon>
-          <Styled.ToastItemIcon
-            data-test={isDone && 'uploadDoneIcon'}
-            done={isDone}
-            error={hasError}
-            loading={isProcessing}
-            iconName={icon}
-          />
-        </Styled.StatusIcon>
+        </span>
       </Styled.FileLine>
       <Styled.StatusInfo>
         <Styled.StatusInfoSpan data-test={isProcessing && 'processingPresentationItem'} styles={hasError ? 'error' : 'info'}>
@@ -330,8 +320,8 @@ const renderToastList = (presentations, intl) => {
   return (
     <Styled.ToastWrapper data-test="presentationUploadProgressToast">
       <Styled.UploadToastHeader>
-        <Styled.UploadIcon iconName="upload" />
-        <Styled.UploadToastTitle>{toastHeading}</Styled.UploadToastTitle>
+        <SvgIcon iconName="cloud_upload" />
+        <span className="font-medium-s text-primary">{toastHeading}</span>
       </Styled.UploadToastHeader>
       <Styled.InnerToast>
         <div>
