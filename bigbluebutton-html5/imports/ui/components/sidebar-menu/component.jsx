@@ -5,7 +5,7 @@ import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedS
 import { PINNED_PAD_SUBSCRIPTION } from '/imports/ui/components/notes/queries';
 import {useMutation} from "@apollo/client";
 import {TIMER_ACTIVATE} from "/imports/ui/components/timer/mutations";
-// import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 // Styled sidebar container
 const Sidebar = styled.div`
@@ -35,7 +35,10 @@ const IconButton = styled.button`
   justify-content: center;
   transition: background 0.2s;
   &:hover, &.active {
-    background: #e6e9f0;
+    background: #E03;
+  }
+  &:hover svg, &.active svg {
+    color: #FFFFFF;
   }
 `;
 
@@ -74,12 +77,12 @@ const ThemeButton = styled.button`
 `;
 
 const icons = [
-  { key: 'userlist', label: 'Users', file: 'users.png' },
-  { key: 'chat', label: 'Chat', file: 'comments-2.png' },
-  { key: 'upload', label: 'Upload', file: 'file-text.png' },
-  { key: 'shared_notes', label: 'Slides', file: 'note-2-text.png' },
-  { key: 'poll', label: 'Poll', file: 'equalizer.png' },
-  { key: 'timer', label: 'Timer', file: 'stopwatch.png' },
+  { key: 'userlist', label: 'Users', file: 'users' },
+  { key: 'chat', label: 'Chat', file: 'chat' },
+  { key: 'upload', label: 'Upload', file: 'upload' },
+  { key: 'shared_notes', label: 'Slides', file: 'shareNote' },
+  { key: 'poll', label: 'Poll', file: 'poll' },
+  { key: 'timer', label: 'Timer', file: 'timer' },
 ];
 
 const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
@@ -139,11 +142,12 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
           onClick={() => handleClick(item.key)}
           className={currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''}
         >
-          <img
-            src={`${BASE_NAME}/resources/icon-bbb/${item.file}`}
-            alt={item.label}
-            style={{ width: 20, height: 20 }}
-          />
+          {/*<img*/}
+          {/*  src={`${BASE_NAME}/resources/icon-bbb/${item.file}`}*/}
+          {/*  alt={item.label}*/}
+          {/*  style={{ width: 20, height: 20 }}*/}
+          {/*/>*/}
+          <SvgIcon iconName={item.file} />
         </IconButton>
       ))}
       <ThemeSwitch>
