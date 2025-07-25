@@ -892,6 +892,12 @@
     "app.learningDashboard.pollsTable.anonymousAnswer": "Khảo sát ẩn danh (câu trả lời ở hàng cuối cùng)",
     "app.learningDashboard.pollsTable.anonymousRowName": "Ẩn danh",
     "app.userList.menu.removeTitle.label": "Loại bỏ người dùng",
-    "app.userList.menu.removeDescConfirmation.label": "Loại bỏ người dùng: {0}?"
+    "app.userList.menu.removeDescConfirmation.label": "Loại bỏ người dùng: {0}?",
+    "app.screenshare.actionsDropdown.shareCamera": "Share camera",
+    "app.screenshare.actionsDropdown.shareScreen": "Share screen",
+    "app.screenshare.actionsDropdown.shareVideo": "Share video",
+
+
+    "EOF": "EOF"
 }
 
