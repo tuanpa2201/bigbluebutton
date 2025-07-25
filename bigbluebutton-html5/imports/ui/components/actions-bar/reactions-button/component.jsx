@@ -20,7 +20,6 @@ const ReactionsButton = (props) => {
   } = props;
 
   const REACTIONS = window.meetingClientSettings.public.userReaction.reactions;
-  console.log('Reactions:', REACTIONS);
   // initialize emoji-mart data, need for the new version
   init({ data });
 

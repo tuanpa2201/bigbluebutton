@@ -110,7 +110,7 @@ class ConnectionStatusButton extends PureComponent {
           hideLabel
           aria-label={intl.formatMessage(intlMessages.description)}
           size="sm"
-          color={'transparent'}
+          color={color}
           circle
           onClick={() => this.setState({isModalOpen: true})}
           data-test="connectionStatusButton"
