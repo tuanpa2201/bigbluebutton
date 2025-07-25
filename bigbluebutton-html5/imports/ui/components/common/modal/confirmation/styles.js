@@ -11,7 +11,7 @@ import { colorGray } from '/imports/ui/stylesheets/styled-components/palette';
 import { lineHeightBase } from '/imports/ui/stylesheets/styled-components/typography';
 
 const ConfirmationModal = styled(ModalSimple)`
-  padding: ${mdPaddingX};
+  //padding: ${mdPaddingX};
 `;
 
 const Container = styled.div`
