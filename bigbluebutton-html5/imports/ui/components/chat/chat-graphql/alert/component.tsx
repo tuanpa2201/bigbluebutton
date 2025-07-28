@@ -31,6 +31,10 @@ const intlMessages = defineMessages({
     id: 'app.toast.chat.private',
     description: 'when entry various message',
   },
+  hasSentAMessage: {
+    id: 'app.toast.chat.hasSendAMessage',
+    description: 'sent a message to the chat',
+  },
   appToastChatSystem: {
     id: 'app.toast.chat.system',
     description: 'system for use',
@@ -150,7 +154,6 @@ const ChatAlertGraphql: React.FC<ChatAlertGraphqlProps> = (props) => {
 
   const createMessage = (msg: Message) => (
     <Styled.PushMessageContent>
-      <Styled.UserNameMessage>{msg.senderName}</Styled.UserNameMessage>
       <Styled.ContentMessage>
         {mapTextContent(msg)}
       </Styled.ContentMessage>
@@ -189,8 +192,20 @@ const ChatAlertGraphql: React.FC<ChatAlertGraphqlProps> = (props) => {
         content={content}
         title={
           messageChatId === PUBLIC_CHAT_ID
-            ? <span>{intl.formatMessage(intlMessages.appToastChatPublic)}</span>
-            : <span>{intl.formatMessage(intlMessages.appToastChatPrivate)}</span>
+            ? (
+              <span>
+                {message.senderName}
+                {' '}
+                {intl.formatMessage(intlMessages.hasSentAMessage)}
+              </span>
+            )
+            : (
+              <span>
+                {message.senderName}
+                {' '}
+                {intl.formatMessage(intlMessages.appToastChatPrivate)}
+              </span>
+            )
         }
         alertDuration={ALERT_DURATION}
         layoutContextDispatch={layoutContextDispatch}

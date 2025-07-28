@@ -4,7 +4,6 @@ import { $3xlPadding, smPadding } from '/imports/ui/stylesheets/styled-component
 
 export const Root = styled.div`
   color: #313131;
-  padding: 0 ${$3xlPadding};
   width: 100%;
   text-align: center;
   display: flex;
@@ -13,9 +12,20 @@ export const Root = styled.div`
   gap: 4px;
   
 
-  svg {
+  & svg {
     width: 16px;
     height: 16px;
+  }
+  
+  & p {
+    text-align: left;
+    color: var(--Text-Secondary, #6F767E);
+
+    /* Regular/M */
+    font-size: 16px!important;
+    font-style: normal;
+    font-weight: 400!important;
+    line-height: 24px; /* 150% */
   }
 `;
 

@@ -5,7 +5,7 @@
     "app.chat.disconnected": "Kết nối bị gián đoạn, tin nhắn không thể gửi đi",
     "app.chat.locked": "Chát bị khóa, bạn không thể gửi tin nhắn",
     "app.chat.inputLabel": "Nội dung cho chat {0}",
-    "app.chat.inputPlaceholder": "Gửi tin nhắn đến {0}",
+    "app.chat.inputPlaceholder": "Nhập tin nhắn...",
     "app.chat.titlePublic": "Chát công khai",
     "app.chat.titlePrivate": "Chát riêng với {0}",
     "app.chat.partnerDisconnected": "{0} cuộc trò truyện còn lại",

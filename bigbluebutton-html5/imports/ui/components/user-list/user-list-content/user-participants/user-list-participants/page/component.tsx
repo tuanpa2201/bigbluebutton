@@ -58,7 +58,6 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
     ];
   }
   const intl = useIntl();
-
   const [setRaiseHand] = useMutation(SET_RAISE_HAND);
 
   const lowerAllUserHands = () => {
@@ -102,7 +101,15 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
           );
         })
       }
-      <button type="button" className="btn btn-default font-semibold-s text-primary btn-raised-all-hands" onClick={lowerAllUserHands}>{intl.formatMessage(intlMessages.lowerAllHands)}</button>
+      {currentUser.isModerator && (
+      <button
+        type="button"
+        className="btn btn-default font-semibold-s text-primary btn-raised-all-hands"
+        onClick={lowerAllUserHands}
+      >
+        {intl.formatMessage(intlMessages.lowerAllHands)}
+      </button>
+      )}
 
     </>
   );

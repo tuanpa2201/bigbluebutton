@@ -51,16 +51,13 @@ const Toast = ({
           </Styled.ToastIcon>
         )}
       <Styled.ToastMessage data-test="toastSmallMsg">
-        <span className="font-regular-s text-primary">{message}</span>
+        <span className={['text-primary', !content ? 'font-regular-s ' : 'font-medium-s'].join(' ')}>{message}</span>
       </Styled.ToastMessage>
     </Styled.Toast>
     {content
       ? (
         <Styled.BackgroundColorInherit>
-          <Styled.Separator />
-          <Styled.BackgroundColorInherit>
-            {content}
-          </Styled.BackgroundColorInherit>
+          <span className="font-regular-s text-secondary">{content}</span>
         </Styled.BackgroundColorInherit>
       ) : null}
   </Styled.ToastContainer>

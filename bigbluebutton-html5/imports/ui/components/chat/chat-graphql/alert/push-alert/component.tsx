@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import injectNotify from '/imports/ui/components/common/toast/inject-notify/component';
 import { PANELS, ACTIONS } from '/imports/ui/components/layout/enums';
+import { notifyCustom } from '/imports/ui/services/notification';
 
 interface ChatPushAlertProps {
   notify: (...args: unknown[]) => void;
@@ -54,15 +55,13 @@ const ChatPushAlert: React.FC<ChatPushAlertProps> = (props) => {
       content,
       alertDuration,
     } = props;
-    console.log('showNotify is called');
 
-    return notify(
+    return notifyCustom(
       link(title, chatId),
-      'info',
-      'chat',
+      'default',
+      'discuss',
       { autoClose: alertDuration },
       link(content, chatId),
-      true,
     );
   };
 

@@ -629,7 +629,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
 
   const contentElement = (
     <ChatContent
-      className={['chat-message-content', shouldRenderHeader && message.user?.userId !== currentUserId ? 'chat-message-content-with-header' : ''].join(' ')}
+      className={[!messageContent.isSystemSender && 'chat-message-content', shouldRenderHeader && message.user?.userId !== currentUserId ? 'chat-message-content-with-header' : ''].join(' ')}
       ref={messageContentRef}
       sameSender={message?.user ? sameSender : false}
       isCustomPluginMessage={isCustomPluginMessage}
@@ -643,78 +643,85 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
       $emphasizedMessage={message.chatEmphasizedText}
       role="listitem"
     >
-      <ChatMessageToolbar
-        hasToolbar={hasToolbar && messageContent.showToolbar}
-        locked={locked}
-        deleted={!!deleteTime}
-        own={message.user?.userId === currentUserId}
-        amIModerator={currentUserIsModerator}
-        isBreakoutRoom={isBreakoutRoom}
-        messageSequence={message.messageSequence}
-        onReactionPopoverOpenChange={setIsToolbarReactionPopoverOpen}
-        reactionPopoverIsOpen={isToolbarReactionPopoverOpen}
-        chatDeleteEnabled={chatDeleteEnabled}
-        chatEditEnabled={chatEditEnabled}
-        chatReactionsEnabled={chatReactionsEnabled}
-        chatReplyEnabled={chatReplyEnabled}
-        onDelete={onDelete}
-        onEdit={onEdit}
-        onReply={onReply}
-      />
-      {shouldRenderHeader && message.user?.userId !== currentUserId && (
-        <ChatMessageHeader
-          sameSender={message?.user ? sameSender : false}
-          name={messageContent.name}
-          currentlyInMeeting={message.user?.currentlyInMeeting ?? true}
-          dateTime={dateTime}
-          deleteTime={deleteTime}
-          editTime={editTime}
-          role="listitem"
-        />
-      )}
-      <div className="chat-message-content-wrapper">
-        {message.replyToMessage && !deleteTime && (
-        <div className="chat-message-reply-to-message">
-          <ChatMessageReplied
-            message={message.replyToMessage.message || ''}
-            sequence={message.replyToMessage.messageSequence}
-            deletedByUser={message.replyToMessage.deletedBy?.name ?? null}
-          />
-        </div>
-        )}
-        <div className="d-flex w-100 justify-content-between align-items-center gap-8">
-
-          {!deleteTime && (
-          <MessageItemWrapper className="chat-message-item-wrapper">
-            {messageContent.component}
-            {messageReadFeedbackEnabled && (
-            <MessageReadConfirmation
-              message={message}
+      {messageContent.isSystemSender
+        ? (messageContent.component)
+        : (
+          <>
+            <ChatMessageToolbar
+              hasToolbar={hasToolbar && messageContent.showToolbar}
+              locked={locked}
+              deleted={!!deleteTime}
+              own={message.user?.userId === currentUserId}
+              amIModerator={currentUserIsModerator}
+              isBreakoutRoom={isBreakoutRoom}
+              messageSequence={message.messageSequence}
+              onReactionPopoverOpenChange={setIsToolbarReactionPopoverOpen}
+              reactionPopoverIsOpen={isToolbarReactionPopoverOpen}
+              chatDeleteEnabled={chatDeleteEnabled}
+              chatEditEnabled={chatEditEnabled}
+              chatReactionsEnabled={chatReactionsEnabled}
+              chatReplyEnabled={chatReplyEnabled}
+              onDelete={onDelete}
+              onEdit={onEdit}
+              onReply={onReply}
+            />
+            {shouldRenderHeader && message.user?.userId !== currentUserId && (
+            <ChatMessageHeader
+              sameSender={message?.user ? sameSender : false}
+              name={messageContent.name}
+              currentlyInMeeting={message.user?.currentlyInMeeting ?? true}
+              dateTime={dateTime}
+              deleteTime={deleteTime}
+              editTime={editTime}
+              role="listitem"
             />
             )}
-          </MessageItemWrapper>
-          )}
-          {deleteTime && (
-          <DeleteMessage>
-            {intl.formatMessage(intlMessages.deleteMessage, { 0: message.deletedBy?.name })}
-          </DeleteMessage>
-          )}
-          <ChatContentFooter className="chat-content-footer">
-            {!deleteTime && editTime && (
-            <Tooltip title={intl.formatTime(editTime, { hour12: false })}>
-              <EditLabel>
-                <Icon iconName="pen_tool" />
-                <span>{intl.formatMessage(intlMessages.edited)}</span>
-              </EditLabel>
-            </Tooltip>
-            )}
-            <ChatTime className="chat-time">
-              <FormattedTime value={dateTime} hour12={false} />
-            </ChatTime>
-          </ChatContentFooter>
-        </div>
+            <div className="chat-message-content-wrapper">
+              {message.replyToMessage && !deleteTime && (
+              <div className="chat-message-reply-to-message">
+                <ChatMessageReplied
+                  message={message.replyToMessage.message || ''}
+                  sequence={message.replyToMessage.messageSequence}
+                  deletedByUser={message.replyToMessage.deletedBy?.name ?? null}
+                />
+              </div>
+              )}
+              <div className="d-flex w-100 justify-content-between align-items-center gap-8">
 
-      </div>
+                {!deleteTime && (
+                <MessageItemWrapper className="chat-message-item-wrapper">
+                  {messageContent.component}
+                  {messageReadFeedbackEnabled && (
+                  <MessageReadConfirmation
+                    message={message}
+                  />
+                  )}
+                </MessageItemWrapper>
+                )}
+                {deleteTime && (
+                <DeleteMessage>
+                  {intl.formatMessage(intlMessages.deleteMessage, { 0: message.deletedBy?.name })}
+                </DeleteMessage>
+                )}
+                <ChatContentFooter className="chat-content-footer">
+                  {!deleteTime && editTime && (
+                  <Tooltip title={intl.formatTime(editTime, { hour12: false })}>
+                    <EditLabel>
+                      <Icon iconName="pen_tool" />
+                      <span>{intl.formatMessage(intlMessages.edited)}</span>
+                    </EditLabel>
+                  </Tooltip>
+                  )}
+                  <ChatTime className="chat-time">
+                    <FormattedTime value={dateTime} hour12={false} />
+                  </ChatTime>
+                </ChatContentFooter>
+              </div>
+
+            </div>
+          </>
+        )}
+
     </ChatContent>
   );
 
