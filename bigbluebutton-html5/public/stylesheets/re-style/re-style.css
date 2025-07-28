@@ -662,13 +662,14 @@
         & .chat-message-content {
             padding: 8px 12px;
             min-width: 120px;
-            width: fit-content;
+            width: 100%;
             background: var(--bg-01-light, #F7F8F9);
             & .chat-message-content-wrapper {
                 display: flex;
                 flex-direction: column;
                 gap: 8px;
                 & .chat-message-item-wrapper {
+                    width: 100%;
                     padding: 0;
                 }
 

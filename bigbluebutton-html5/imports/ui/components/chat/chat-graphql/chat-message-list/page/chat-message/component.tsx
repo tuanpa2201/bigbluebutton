@@ -797,7 +797,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
                 {avatarDisplay}
               </ChatAvatar>
             )}
-            <div style={{ marginLeft: '10px' }}>
+            <div style={{ marginLeft: '10px', width: '100%' }}>
               {contentElement}
               {reactionsElement}
             </div>
@@ -829,7 +829,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
           <div
             style={{
               marginLeft: shouldRenderHeader || message.messageType === ChatMessageType.USER_IS_PRESENTER_MSG || message.messageType === ChatMessageType.CHAT_CLEAR || message.user?.userId === currentUserId ? '0' : '50px',
-              width: message.messageType === ChatMessageType.USER_IS_PRESENTER_MSG ? '100%' : 'fit-content',
+              width: message.messageType === ChatMessageType.USER_IS_PRESENTER_MSG || message.messageType === ChatMessageType.POLL ? '100%' : 'fit-content',
             }}
           >
             {!shouldRenderHeader && contentElement}
