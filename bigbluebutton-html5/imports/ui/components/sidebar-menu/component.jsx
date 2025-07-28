@@ -11,7 +11,7 @@ import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 const Sidebar = styled.div`
   width: 72px;
   background: #F7F8F9;
-  border-right: 1px solid #e0e0e0;
+  //border-right: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
   align-items: center;

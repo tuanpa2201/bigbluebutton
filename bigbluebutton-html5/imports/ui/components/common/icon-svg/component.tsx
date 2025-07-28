@@ -511,7 +511,19 @@ const iconsMap: { [key: string]: JSX.Element } = {
       <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M17.0833 3.74967L15.3033 5.52971M15.3033 5.52971C13.9461 4.17247 12.0711 3.33301 10 3.33301C5.85786 3.33301 2.5 6.69087 2.5 10.833C2.5 14.9751 5.85786 18.333 10 18.333C14.1421 18.333 17.5 14.9751 17.5 10.833C17.5 8.76194 16.6605 6.88694 15.3033 5.52971ZM10 8.33301V11.6663M11.6667 0.833008H8.33333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-  )
+  ),
+    time: (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1971_297744)">
+                <path d="M13.6667 2.99935L12.2426 4.42337M12.2426 4.42337C11.1569 3.33759 9.65685 2.66602 8 2.66602C4.68629 2.66602 2 5.35231 2 8.66602C2 11.9797 4.68629 14.666 8 14.666C11.3137 14.666 14 11.9797 14 8.66602C14 7.00916 13.3284 5.50916 12.2426 4.42337ZM8 6.66602V9.33268M9.33333 0.666016H6.66667" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_1971_297744">
+                    <rect width="16" height="16" fill="currentColor"/>
+                </clipPath>
+            </defs>
+        </svg>
+    ),
 };
 
 const Icon: React.FC<IconProps> = ({

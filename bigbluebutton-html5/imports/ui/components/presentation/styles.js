@@ -174,7 +174,7 @@ const Button = styled.button`
   border: none;
   border-radius: 12px;
   box-shadow: unset;
-  color: #C0C0C0;
+  color: #313131;
   cursor: pointer;
   padding: 6px;
   display: flex;

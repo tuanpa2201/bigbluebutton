@@ -234,7 +234,7 @@ const ScreenshareButton = ({
   let info = screenshareDataSavingSetting ? 'desktopShare' : 'lockedDesktopShare';
   if (!amIPresenter) {
     info = 'notPresenterDesktopShare';
-  } else if (isScreenBroadcasting) {
+  } else if (isScreenBroadcasting || isSharingVideo || hasCameraAsContent) {
     info = 'stopDesktopShare';
   }
 
@@ -244,7 +244,7 @@ const ScreenshareButton = ({
     && (!isMobile || isTabletApp)
     && (amIPresenter || showButtonForNonPresenters);
 
-  const dataTest = isScreenBroadcasting ? 'stopScreenShare' : 'startScreenShare';
+  const dataTest = isScreenBroadcasting || isSharingVideo || hasCameraAsContent ? 'stopScreenShare' : 'startScreenShare';
   const loading = isScreenBroadcasting && !isScreenGloballyBroadcasting;
 
   const onClickShareScreen = () => {

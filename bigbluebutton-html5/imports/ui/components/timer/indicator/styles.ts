@@ -13,8 +13,8 @@ interface TimerButtonProps {
   hide: boolean;
 }
 
-const colorTimerRunning = `${colorSuccess}`;
-const colorTimerStopped = `${colorDanger}`;
+const colorTimerRunning = `var(--Highlight-Green, #6CC17C)`;
+const colorTimerStopped = `var(--Highlight-Light-Red, #EB5366)`;
 const timerMarginSM = '.5rem';
 const timerPaddingSM = '.25rem';
 const timerPaddingXL = '1.62rem';
@@ -35,12 +35,12 @@ const Timer = styled.div`
 
 const timerRunning = `
   background-color: ${colorTimerRunning};
-  border: solid 2px ${colorTimerRunning};
+  // border: solid 2px ${colorTimerRunning};
 `;
 
 const timerStopped = `
   background-color: ${colorTimerStopped};
-  border: solid 2px ${colorTimerStopped};
+  // border: solid 2px ${colorTimerStopped};
 `;
 
 const disabledStyle = `
@@ -58,11 +58,14 @@ const TimerButton = styled.div<TimerButtonProps>`
   cursor: pointer;
   color: white;
   font-weight: ${timerFontWeight};
-  border-radius: ${timerBorderRadius} ${timerBorderRadius};
+  // border-radius: ${timerBorderRadius} ${timerBorderRadius};
   font-size: ${fontSizeBase};
-  margin-left: ${borderRadius};
-  margin-right: ${borderRadius};
+  //margin-left: ${borderRadius};
+  //margin-right: ${borderRadius};
 
+  border: unset;
+  padding: 3px 8px;
+  border-radius: 6px;
   @media ${phoneLandscape} {
     height: 1rem;
   }
@@ -72,7 +75,12 @@ const TimerButton = styled.div<TimerButtonProps>`
     text-overflow: ellipsis;
     white-space: nowrap;
     max-width: ${timerMaxWidth};
-
+    color: var(--Neutral-00, #FFF);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    
     @media ${phoneLandscape} {
       font-size: ${fontSizeXS};
     }
@@ -100,7 +108,8 @@ const time = `
   box-sizing: border-box;
   display: flex;
   align-self: center;
-  padding: 0 ${timerPaddingSM} 0 0;
+  gap: 4px;
+  // padding: 0 ${timerPaddingSM} 0 0;
 `;
 
 const TimerContent = styled.div`
@@ -109,13 +118,13 @@ const TimerContent = styled.div`
 
   [dir="ltr"] & {
     span:first-child {
-      padding: 0 ${timerPaddingSM};
+      //padding: 0 ${timerPaddingSM};
     }
   }
 
   [dir="rtl"] & {
     span:last-child {
-      padding: 0 ${timerPaddingSM};
+      //padding: 0 ${timerPaddingSM};
     }
   }
 `;

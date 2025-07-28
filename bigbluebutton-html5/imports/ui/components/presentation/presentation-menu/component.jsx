@@ -275,7 +275,7 @@ const PresentationMenu = (props) => {
           dataTest: 'presentationFullscreen',
           label: formattedLabel(isFullscreen),
           // icon: isFullscreen ? 'exit_fullscreen' : 'fullscreen',
-          svgIcon: isFullscreen ? 'arrows_expand' : 'arrows_expand',
+          svgIcon: isFullscreen ? 'arrows_exit' : 'arrows_expand',
           onClick: () => {
             handleToggleFullscreen(fullscreenRef);
             const newElement = (elementId === currentElement) ? '' : elementId;

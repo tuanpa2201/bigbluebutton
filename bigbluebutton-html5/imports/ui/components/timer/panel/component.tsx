@@ -358,7 +358,6 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
           <Styled.TimerControlButton
             className={'btn btn-default'}
             color="secondary"
-            disabled={running}
             label={intl.formatMessage(intlMessages.reset)}
             onClick={() => {
               timerStop();
@@ -392,7 +391,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
       {/* @ts-ignore - JS code */}
       <Styled.TimerHeader data-test="timerHeader">
         <div aria-label={intl.formatMessage(intlMessages.hideTimerLabel)} className={'header-title'}>
-          {`${intl.formatMessage(intlMessages.stopwatch)}/ ${intl.formatMessage(intlMessages.timer)}`}
+          {`${intl.formatMessage(intlMessages.timer)}/ ${intl.formatMessage(intlMessages.stopwatch)}`}
         </div>
         <Styled.CloseTimerButton  className={'header-icon'} onClick={() => closePanel()}>
           <SvgIcon iconName="cross"></SvgIcon>
