@@ -356,6 +356,7 @@ const DropzoneMessage = styled.p`
   margin: ${mdPaddingY} 0;
   font-size: 14px;
   display: flex;
+  color: #6F767E;
 `;
 
 const DropzoneLink = styled.span`
@@ -373,7 +374,7 @@ const UploaderModal = styled.div`
   bottom: 0;
   height: 100%;
   padding: 0 16px 16px 16px;
-  width: 360px;
+  width: 100%;
   min-width: 360px;
   z-index: 100;
 `;
@@ -450,7 +451,7 @@ const ConfirmButton = styled(Button)`
 
 const ModalHint = styled.div`
   margin-bottom: 16px;
-  color: #6F767E;
+  color: #313131;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
@@ -646,6 +647,7 @@ const Title = styled.h1`
   text-overflow: ellipsis;
   font-size: ${fontSizeLarger};
   font-weight: ${headingsFontWeight};
+  color: #313131;
 `;
 
 export default {

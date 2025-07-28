@@ -15,16 +15,18 @@ const IncreaseZoomButton = styled(Button)``;
 
 const ResetZoomButton = styled(Button)`
   text-align: center;
-  color: black;
+  //color: black;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 0 !important;
   font-weight: 200;
+  font-size: 14px;
   margin-left: ${whiteboardToolbarMargin};
   margin-right: ${whiteboardToolbarMargin};
   position: relative;
-  color: ${toolbarButtonColor};
+  //color: ${toolbarButtonColor};
+  color: #2F384C;
   background-color: ${colorOffWhite};
   border-radius: 0;
   box-shadow: none !important;
