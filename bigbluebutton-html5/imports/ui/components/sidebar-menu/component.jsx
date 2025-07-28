@@ -6,6 +6,11 @@ import { PINNED_PAD_SUBSCRIPTION } from '/imports/ui/components/notes/queries';
 import {useMutation} from "@apollo/client";
 import {TIMER_ACTIVATE} from "/imports/ui/components/timer/mutations";
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import useCurrentUser from "/imports/ui/core/hooks/useCurrentUser";
+import { updateSettings } from '/imports/ui/components/settings/service';
+import useUserChangedLocalSettings from '/imports/ui/services/settings/hooks/useUserChangedLocalSettings';
+import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
+import AppService from '/imports/ui/components/app/service';
 
 // Styled sidebar container
 const Sidebar = styled.div`
@@ -79,16 +84,28 @@ const ThemeButton = styled.button`
 const icons = [
   { key: 'userlist', label: 'Users', file: 'users' },
   { key: 'chat', label: 'Chat', file: 'chat' },
-  { key: 'upload', label: 'Upload', file: 'upload' },
+  { key: 'upload', label: 'Upload', file: 'upload', isPresenter: true },
   { key: 'shared_notes', label: 'Slides', file: 'shareNote' },
-  { key: 'poll', label: 'Poll', file: 'poll' },
-  { key: 'timer', label: 'Timer', file: 'timer' },
+  { key: 'poll', label: 'Poll', file: 'poll', isPresenter: true },
+  { key: 'timer', label: 'Timer', file: 'timer', isModerator: true },
 ];
 
 const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
   const { data: pinnedPadData } = useDeduplicatedSubscription(
     PINNED_PAD_SUBSCRIPTION,
   );
+  const setLocalSettings = useUserChangedLocalSettings();
+  const Settings = getSettingsSingletonInstance();
+
+  const { data: currentUser } = useCurrentUser((user) => ({
+    away: user.away,
+    isModerator: user.isModerator,
+    presenter: user.presenter,
+  }));
+  const isModerator = currentUser?.isModerator;
+  const isPresenter = currentUser?.presenter;
+  const isDarkTheme = AppService.isDarkThemeEnabled();
+
   const NOTES_CONFIG = window.meetingClientSettings.public.notes;
   const [timerActivate] = useMutation(TIMER_ACTIVATE);
   const isPinned = !!pinnedPadData && pinnedPadData?.sharedNotes[0]?.sharedNotesExtId === NOTES_CONFIG.id;
@@ -118,6 +135,16 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
       });
     }
   };
+
+  const switchDarkTheme = (theme) => {
+    updateSettings({
+      application: {
+        ...Settings.application,
+        darkTheme: theme,
+      },
+    }, null, setLocalSettings);
+  }
+
   const [theme, setTheme] = useState('light');
 
   const activateTimer = () => {
@@ -135,30 +162,29 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
 
   return (
     <Sidebar>
-      {icons.map((item) => (
-        <IconButton
-          key={item.key}
-          title={item.label}
-          onClick={() => handleClick(item.key)}
-          className={currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''}
-        >
-          {/*<img*/}
-          {/*  src={`${BASE_NAME}/resources/icon-bbb/${item.file}`}*/}
-          {/*  alt={item.label}*/}
-          {/*  style={{ width: 20, height: 20 }}*/}
-          {/*/>*/}
-          <SvgIcon iconName={item.file} />
-        </IconButton>
-      ))}
+      {icons.map((item) => <>
+            {(!item.isModerator || (isModerator && item.isModerator)) && (!item.isPresenter || (isPresenter && item.isPresenter)) &&
+                <IconButton
+                    key={item.key}
+                    title={item.label}
+                    onClick={() => handleClick(item.key)}
+                    className={currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''}
+                >
+                  <SvgIcon iconName={item.file}/>
+                </IconButton>}
+          </>
+      )}
       <ThemeSwitch>
         <ThemeButton
-          active={theme === 'light'}
+          onClick={() => switchDarkTheme(false)}
+          active={!isDarkTheme}
           title="Light theme"
         >
           <img src={`${BASE_NAME}/resources/icon-bbb/light.png`} alt="Light" />
         </ThemeButton>
         <ThemeButton
-          active={theme === 'dark'}
+          onClick={() => switchDarkTheme(true)}
+          active={isDarkTheme}
           title="Dark theme"
         >
           <img src={`${BASE_NAME}/resources/icon-bbb/moon.png`} alt="Dark" />
