@@ -128,6 +128,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
   const layoutContextDispatch = layoutDispatch();
 
   const [runningTime, setRunningTime] = useState<number>(0);
+  const [disabledReset, setDisabledReset] = useState<boolean>(true);
   const intervalRef = useRef<ReturnType<typeof setInterval>>();
 
   const headerMessage = useMemo(() => {
@@ -358,6 +359,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
           <Styled.TimerControlButton
             className={'btn btn-default'}
             color="secondary"
+            disabled={disabledReset}
             label={intl.formatMessage(intlMessages.reset)}
             onClick={() => {
               timerStop();
@@ -376,6 +378,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
               } else {
                 timerStart();
               }
+              setDisabledReset(false)
             }}
             data-test="startStopTimer"
           />
