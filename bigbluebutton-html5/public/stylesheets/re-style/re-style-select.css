@@ -28,7 +28,7 @@ select {
     position: relative;
     width: 100%;
     user-select: none;
-    margin-top: 4px !important;
+    margin-top: 0 !important;
 }
 .custom-dropdown__selected {
     height: 32px!important;

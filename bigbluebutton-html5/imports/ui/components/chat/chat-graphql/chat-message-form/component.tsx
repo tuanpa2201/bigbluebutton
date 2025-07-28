@@ -557,7 +557,7 @@ const ChatMessageForm: React.FC<ChatMessageFormProps> = ({
         <Styled.Wrapper>
           <Styled.InputWrapper>
             <Styled.Input
-              id="message-input"
+              id="message-input1"
               ref={textAreaRef}
               placeholder={intl.formatMessage(messages.inputPlaceholder, { 0: title })}
               aria-label={intl.formatMessage(messages.inputLabel, { 0: title })}
@@ -604,20 +604,6 @@ const ChatMessageForm: React.FC<ChatMessageFormProps> = ({
               />
             ) : null}
           </Styled.InputWrapper>
-          <div style={{ zIndex: 10 }}>
-            <Styled.SendButton
-              hideLabel
-              circle
-              aria-label={intl.formatMessage(messages.submitLabel)}
-              type="submit"
-              disabled={disabled || partnerIsLoggedOut || chatSendMessageLoading}
-              label={intl.formatMessage(messages.submitLabel)}
-              color="primary"
-              icon="send"
-              onClick={() => { }}
-              data-test="sendMessageButton"
-            />
-          </div>
         </Styled.Wrapper>
         {
           error && (

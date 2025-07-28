@@ -1,22 +1,19 @@
 import React, { useState } from 'react';
 import { defineMessages } from 'react-intl';
 import PropTypes from 'prop-types';
-import BBBMenu from '/imports/ui/components/common/menu/component';
 import { convertRemToPixels } from '/imports/utils/dom-utils';
 import data from '@emoji-mart/data';
 import { init } from 'emoji-mart';
 import { SET_REACTION_EMOJI } from '/imports/ui/core/graphql/mutations/userMutations';
 import { useMutation } from '@apollo/client';
-import joypixels from 'emoji-toolkit';
 import Styled from './styles';
+import JoypixelsEmoji from '/imports/ui/components/common/JoypixelsEmoji';
 
 const ReactionsButton = (props) => {
   const {
     intl,
-    actionsBarRef,
     isMobile,
     currentUserReaction,
-    autoCloseReactionsBar,
   } = props;
 
   const REACTIONS = window.meetingClientSettings.public.userReaction.reactions;
@@ -46,11 +43,6 @@ const ReactionsButton = (props) => {
     setReactionEmoji({ variables: { reactionEmoji: reaction } });
   };
 
-  const customStyles = {
-    top: '-1rem',
-    borderRadius: '1.7rem',
-  };
-
   const actionCustomStyles = {
     paddingLeft: 0,
     paddingRight: 0,
@@ -63,19 +55,11 @@ const ReactionsButton = (props) => {
     padding: '4px',
   };
 
-  const convertEmoji = (native) => {
-    const output = joypixels.toImage(native);
-
-    return (
-      <span dangerouslySetInnerHTML={{ __html: output }} />
-    );
-  };
-
   const actions = [];
   REACTIONS.forEach(({ id, native }) => {
     actions.push({
       // eslint-disable-next-line max-len
-      label: <Styled.ButtonWrapper active={currentUserReaction === native}>{convertEmoji(native)}</Styled.ButtonWrapper>,
+      label: <Styled.ButtonWrapper active={currentUserReaction === native}><JoypixelsEmoji native={native} {...emojiProps} /></Styled.ButtonWrapper>,
       key: id,
       onClick: () => handleReactionSelect(native),
       customStyles: actionCustomStyles,
@@ -91,7 +75,7 @@ const ReactionsButton = (props) => {
   if (!svgIcon) {
     // eslint-disable-next-line max-len
     customIcon = (
-      convertEmoji(currentUserReactionEmoji?.native)
+      <JoypixelsEmoji native={currentUserReactionEmoji?.native} size={24} />
     );
   }
 
@@ -114,7 +98,7 @@ const ReactionsButton = (props) => {
       {showEmojiPicker && (
       <div className="reactions-dropdown-menu">
         {actions.map((action) => (
-          <button className="reactions-dropdown-item" type="button" key={action.key} onClick={action.onClick}>{action.label}</button>
+          <button className="reactions-dropdown-item" type="button" key={action.key} onClick={() => { action.onClick(); handleClose(); }}>{action.label}</button>
         ))}
       </div>
       )}

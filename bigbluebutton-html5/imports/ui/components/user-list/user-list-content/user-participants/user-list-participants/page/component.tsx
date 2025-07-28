@@ -70,6 +70,7 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
             </Styled.UserListItem>
           );
         })
+
       }
     </>
   );

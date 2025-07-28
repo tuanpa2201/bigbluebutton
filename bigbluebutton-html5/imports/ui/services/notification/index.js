@@ -28,7 +28,7 @@ export function notify(message, type = 'default', icon, options, content, small)
 
   if (!toast.isActive(lastToast.id) || !isEqual(lastToastProps, toastProps)) {
     if (options?.helpLink != null && options?.helpLabel != null) {
-      const id = toast(
+      const element = (
         <div role="alert">
           <Toast {...toastProps} />
           <Styled.HelpLinkButton
@@ -38,8 +38,27 @@ export function notify(message, type = 'default', icon, options, content, small)
             onClick={() => { window.open(options.helpLink); }}
             data-test="helpLinkToastButton"
           />
-        </div>, settings,
+        </div>
       );
+      let id;
+
+      switch (type) {
+        case 'info':
+          id = toast.info(element, settings);
+          break;
+        case 'success':
+          id = toast.success(element, settings);
+          break;
+        case 'warning':
+          id = toast.warn(element, settings);
+          break;
+        case 'error':
+          id = toast.error(element, settings);
+          break;
+        default:
+          id = toast(element, settings);
+          break;
+      }
 
       lastToast = { id, ...toastProps };
 
@@ -81,7 +100,7 @@ export function notifyCustom(message, type = 'default', svgIcon, options, conten
 
   if (!toast.isActive(lastToast.id) || !isEqual(lastToastProps, toastProps)) {
     if (options?.helpLink != null && options?.helpLabel != null) {
-      const id = toast(
+      const element = (
         <div role="alert">
           <Toast {...toastProps} />
           <Styled.HelpLinkButton
@@ -91,9 +110,27 @@ export function notifyCustom(message, type = 'default', svgIcon, options, conten
             onClick={() => { window.open(options.helpLink); }}
             data-test="helpLinkToastButton"
           />
-        </div>, settings,
+        </div>
       );
+      let id;
 
+      switch (type) {
+        case 'info':
+          id = toast.info(element, settings);
+          break;
+        case 'success':
+          id = toast.success(element, settings);
+          break;
+        case 'warning':
+          id = toast.warn(element, settings);
+          break;
+        case 'error':
+          id = toast.error(element, settings);
+          break;
+        default:
+          id = toast(element, settings);
+          break;
+      }
       lastToast = { id, ...toastProps };
 
       return id;
@@ -108,8 +145,26 @@ export function notifyCustom(message, type = 'default', svgIcon, options, conten
         },
       );
     } else {
-      const id = toast(<div role="alert"><Toast {...toastProps} /></div>, settings);
+      const element = (<div role="alert"><Toast {...toastProps} /></div>);
+      let id;
 
+      switch (type) {
+        case 'info':
+          id = toast.info(element, settings);
+          break;
+        case 'success':
+          id = toast.success(element, settings);
+          break;
+        case 'warning':
+          id = toast.warn(element, settings);
+          break;
+        case 'error':
+          id = toast.error(element, settings);
+          break;
+        default:
+          id = toast(element, settings);
+          break;
+      }
       lastToast = { id, ...toastProps };
 
       return id;

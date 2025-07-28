@@ -1087,10 +1087,9 @@ class AudioManager {
     );
   }
 
-  notify(message, error = false, icon = 'unmute') {
-    const audioIcon = this.isListenOnly ? 'listen' : icon;
-
-    notify(message, error ? 'error' : 'info', audioIcon);
+  // eslint-disable-next-line class-methods-use-this
+  notify(message, error = false, icon = '') {
+    notify(message, error ? 'error' : 'info', icon);
   }
 
   monitor() {

@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import { toast } from 'react-toastify';
-import Icon from '/imports/ui/components/common/icon/component';
 import { ENTER } from '/imports/utils/keyCodes';
 import Styled from './styles';
 import TooltipContainer from '/imports/ui/components/common/tooltip/container';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import {notify, notifyCustom} from '/imports/ui/services/notification';
 
 const messages = defineMessages({
   lowerHandsLabel: {
@@ -74,13 +75,14 @@ class RaiseHandNotifier extends Component {
         });
       }
 
-      toast(this.renderRaisedHands(), {
-        autoClose: false,
-        closeOnClick: false,
-        closeButton: false,
-        className: 'raiseHandToast',
-        toastId: this.statusNotifierId,
-      });
+      notifyCustom(this.getRaisedHandNames(), 'default', 'raised_hand');
+      // toast(this.renderRaisedHands(), {
+      //   autoClose: false,
+      //   closeOnClick: false,
+      //   closeButton: false,
+      //   className: 'raiseHandToast',
+      //   toastId: this.statusNotifierId,
+      // });
     }
 
     return true;
@@ -154,32 +156,18 @@ class RaiseHandNotifier extends Component {
   }
 
   renderRaisedHands() {
-    const { raiseHandUsers, intl, lowerUserHands } = this.props;
+    // const { raiseHandUsers, intl, lowerUserHands } = this.props;
     const formattedRaisedHands = this.getRaisedHandNames();
     return (
       <Styled.ToastContentWrapper>
         <Styled.ToastContent>
           <Styled.IconWrapper>
-            <Icon iconName="hand" />
+            <SvgIcon iconName="raised_hand" />
           </Styled.IconWrapper>
-          <Styled.AvatarWrapper>
-            {this.raisedHandAvatars()}
-          </Styled.AvatarWrapper>
+          <Styled.ToastMessage>
+            {formattedRaisedHands}
+          </Styled.ToastMessage>
         </Styled.ToastContent>
-        <Styled.ToastMessage>
-          <div>{intl.formatMessage(messages.raisedHandsTitle)}</div>
-          {formattedRaisedHands}
-        </Styled.ToastMessage>
-        <Styled.ToastSeparator />
-        <Styled.ClearButton
-          label={intl.formatMessage(messages.lowerHandsLabel)}
-          color="default"
-          size="md"
-          onClick={() => {
-            raiseHandUsers.map((u) => lowerUserHands(u.userId));
-          }}
-          data-test="raiseHandRejection"
-        />
       </Styled.ToastContentWrapper>
     );
   }

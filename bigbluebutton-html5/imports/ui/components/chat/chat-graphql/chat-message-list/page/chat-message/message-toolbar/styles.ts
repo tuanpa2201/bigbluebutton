@@ -19,7 +19,7 @@ const Root = styled.div<RootProps>`
   justify-content: flex-end;
   display: none;
   position: absolute;
-  bottom: 100%;
+  bottom: 120%;
   transform: translateY(50%);
   z-index: 10;
 

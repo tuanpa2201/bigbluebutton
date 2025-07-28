@@ -11,6 +11,7 @@ import { defineMessages, FormattedTime, useIntl } from 'react-intl';
 import FocusTrap from 'focus-trap-react';
 import classNames from 'classnames';
 import { useMutation } from '@apollo/client';
+import { Popover } from '@mui/material';
 import ChatMessageHeader from './message-header/component';
 import ChatMessageTextContent from './message-content/text-content/component';
 import ChatPollContent from './message-content/poll-content/component';
@@ -42,7 +43,6 @@ import KEY_CODES from '/imports/utils/keyCodes';
 import ConfirmationModal from '/imports/ui/components/common/modal/confirmation/component';
 import logger from '/imports/startup/client/logger';
 import { CHAT_DELETE_MESSAGE_MUTATION } from './mutations';
-import { Popover } from '@mui/material';
 import { EmojiPicker, EmojiPickerWrapper } from './message-toolbar/styles';
 import { isMobile } from '/imports/utils/deviceInfo';
 import { layoutSelect } from '/imports/ui/components/layout/context';
@@ -332,7 +332,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
   const deleteTime = message.deletedAt ? new Date(message.deletedAt) : null;
 
   const msgTime = formattedTime;
-  const clearMessage = `${msgTime} ${intl.formatMessage(intlMessages.chatClear)}`;
+  const clearMessage = `${intl.formatMessage(intlMessages.chatClear)} ${msgTime}`;
 
   const messageContent: {
     name: string;
@@ -346,6 +346,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
     showHeading: boolean;
     showToolbar: boolean;
   } = useMemo(() => {
+    console.log('message.messageType =>', message.messageType);
     switch (message.messageType) {
       case ChatMessageType.POLL:
         return {
@@ -386,7 +387,6 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
           isSystemSender: true,
           component: (
             <ChatMessageNotificationContent
-              iconName="delete"
               text={clearMessage}
             />
           ),
@@ -630,7 +630,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
 
   const contentElement = (
     <ChatContent
-      className="chat-message-content"
+      className={['chat-message-content', shouldRenderHeader && !messageContent.isModerator ? 'chat-message-content-with-header' : ''].join(' ')}
       ref={messageContentRef}
       sameSender={message?.user ? sameSender : false}
       isCustomPluginMessage={isCustomPluginMessage}
@@ -662,43 +662,60 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
         onEdit={onEdit}
         onReply={onReply}
       />
-      {message.replyToMessage && !deleteTime && (
-      <ChatMessageReplied
-        message={message.replyToMessage.message || ''}
-        sequence={message.replyToMessage.messageSequence}
-        deletedByUser={message.replyToMessage.deletedBy?.name ?? null}
-      />
-      )}
-      {!deleteTime && (
-      <MessageItemWrapper>
-        {messageContent.component}
-        {messageReadFeedbackEnabled && (
-        <MessageReadConfirmation
-          message={message}
+      {shouldRenderHeader && !messageContent.isModerator && (
+        <ChatMessageHeader
+          sameSender={message?.user ? sameSender : false}
+          name={messageContent.name}
+          currentlyInMeeting={message.user?.currentlyInMeeting ?? true}
+          dateTime={dateTime}
+          deleteTime={deleteTime}
+          editTime={editTime}
+          role="listitem"
         />
+      )}
+      <div className="chat-message-content-wrapper">
+        {message.replyToMessage && !deleteTime && (
+        <div className="chat-message-reply-to-message">
+          <ChatMessageReplied
+            message={message.replyToMessage.message || ''}
+            sequence={message.replyToMessage.messageSequence}
+            deletedByUser={message.replyToMessage.deletedBy?.name ?? null}
+          />
+        </div>
         )}
-      </MessageItemWrapper>
-      )}
-      {sameSender && (
-      <ChatContentFooter>
-        {!deleteTime && editTime && (
-        <Tooltip title={intl.formatTime(editTime, { hour12: false })}>
-          <EditLabel>
-            <Icon iconName="pen_tool" />
-            <span>{intl.formatMessage(intlMessages.edited)}</span>
-          </EditLabel>
-        </Tooltip>
-        )}
-        <ChatTime>
-          <FormattedTime value={dateTime} hour12={false} />
-        </ChatTime>
-      </ChatContentFooter>
-      )}
-      {deleteTime && (
-      <DeleteMessage>
-        {intl.formatMessage(intlMessages.deleteMessage, { 0: message.deletedBy?.name })}
-      </DeleteMessage>
-      )}
+        <div className="d-flex w-100 justify-content-between align-items-center gap-8">
+
+          {!deleteTime && (
+          <MessageItemWrapper className="chat-message-item-wrapper">
+            {messageContent.component}
+            {messageReadFeedbackEnabled && (
+            <MessageReadConfirmation
+              message={message}
+            />
+            )}
+          </MessageItemWrapper>
+          )}
+          {deleteTime && (
+          <DeleteMessage>
+            {intl.formatMessage(intlMessages.deleteMessage, { 0: message.deletedBy?.name })}
+          </DeleteMessage>
+          )}
+          <ChatContentFooter className="chat-content-footer">
+            {!deleteTime && editTime && (
+            <Tooltip title={intl.formatTime(editTime, { hour12: false })}>
+              <EditLabel>
+                <Icon iconName="pen_tool" />
+                <span>{intl.formatMessage(intlMessages.edited)}</span>
+              </EditLabel>
+            </Tooltip>
+            )}
+            <ChatTime className="chat-time">
+              <FormattedTime value={dateTime} hour12={false} />
+            </ChatTime>
+          </ChatContentFooter>
+        </div>
+
+      </div>
     </ChatContent>
   );
 
@@ -762,6 +779,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
       tabIndex={focusable ? -1 : undefined}
     >
       <ChatWrapper
+        className={['chat-message-wrapper', messageContent.isModerator ? 'chat-message-is-moderator' : ''].join(' ')}
         isSystemSender={isSystemSender}
         sameSender={sameSender}
         ref={messageRef}
@@ -769,9 +787,10 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
         isCustomPluginMessage={isCustomPluginMessage}
       >
         {(shouldRenderAvatar || shouldRenderHeader) && (
-          <ChatHeading>
-            {shouldRenderAvatar && (
+          <ChatHeading className="chat-header">
+            {shouldRenderAvatar && !messageContent.isModerator && (
               <ChatAvatar
+                className="chat-avatar"
                 avatar={message.user?.avatar || ''}
                 color={messageContent.color}
                 moderator={messageContent.isModerator}
@@ -779,17 +798,10 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
                 {avatarDisplay}
               </ChatAvatar>
             )}
-            {shouldRenderHeader && (
-              <ChatMessageHeader
-                sameSender={message?.user ? sameSender : false}
-                name={messageContent.name}
-                currentlyInMeeting={message.user?.currentlyInMeeting ?? true}
-                dateTime={dateTime}
-                deleteTime={deleteTime}
-                editTime={editTime}
-                role="listitem"
-              />
-            )}
+            <div style={{ marginLeft: '10px' }}>
+              {contentElement}
+              {reactionsElement}
+            </div>
           </ChatHeading>
         )}
         {
@@ -815,14 +827,20 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
             </FlexColumn>
           </FocusTrap>
         ) : (
-          <>
-            {contentElement}
-            {reactionsElement}
-          </>
+          <div
+            style={{
+              marginLeft: shouldRenderHeader || message.messageType === ChatMessageType.USER_IS_PRESENTER_MSG || message.messageType === ChatMessageType.CHAT_CLEAR || messageContent.isModerator ? '0' : '50px',
+              width: message.messageType === ChatMessageType.USER_IS_PRESENTER_MSG ? '100%' : 'fit-content',
+            }}
+          >
+            {!shouldRenderHeader && contentElement}
+            {!shouldRenderHeader && reactionsElement}
+          </div>
         )}
       </ChatWrapper>
       {isTryingToDelete && (
         <ConfirmationModal
+          className="chat-message-confirmation-modal"
           isOpen={isTryingToDelete}
           setIsOpen={setIsTryingToDelete}
           onRequestClose={() => setIsTryingToDelete(false)}

@@ -100,6 +100,28 @@ const GlobalStyle = createGlobalStyle`
     &:focus {
       background-color: #EEE;
     }
+    
+    
+    & .Toastify__progress-bar-theme--light,
+    & .Toastify__progress-bar-theme--light.Toastify__progress-bar--default {
+      background: #C8C8C8!important;
+    }
+
+    & .Toastify__progress-bar-theme--light.Toastify__progress-bar--info {
+      background: #3498db!important;
+    }
+
+    & .Toastify__progress-bar-theme--light.Toastify__progress-bar--error {
+      background: #FF5565!important;
+    }
+    
+    & .Toastify__progress-bar-theme--light.Toastify__progress-bar--success {
+      background: #6CC17C!important;
+    }
+    
+    & .Toastify__progress-bar-theme--light.Toastify__progress-bar--warning {
+      background: #EBB94C!important;
+    }
   }
 
   .toastBodyClass {
@@ -129,7 +151,6 @@ const GlobalStyle = createGlobalStyle`
     height: 5px;
     z-index: 999;
     animation: track-progress linear 1;
-    background-color: #6CC17C !important;
     border-radius: ${borderRadius};
 
     [dir="rtl"] & {

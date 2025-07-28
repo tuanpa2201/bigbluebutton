@@ -364,10 +364,10 @@ class OptionsDropdown extends PureComponent {
     this.menuItems.push({
       label: (
         <Styled.AwayOption>
-          <span>
+          <span className="font-medium-s text-primary">
             {intl.formatMessage(intlMessages.presenceLabel)}
             {' '}
-            <b>{ToggleAFKLabel()}</b>
+            <span className="font-medium-s text-primary">{ToggleAFKLabel()}</span>
           </span>
           <Styled.ToggleButtonWrapper>
             <Toggle

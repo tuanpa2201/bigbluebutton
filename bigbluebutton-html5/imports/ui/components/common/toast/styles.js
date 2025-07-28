@@ -152,36 +152,31 @@ const Toast = styled.div`
 
   ${({ type }) => type === 'default' && `
     & .toastIcon {
-      color: ${toastDefaultColor};
-      background-color: ${toastDefaultBg};
+      color: #C8C8C8;
     }
   `}
 
   ${({ type }) => type === 'error' && `
     & .toastIcon {
-      color: ${toastErrorColor};
-      background-color: ${toastErrorBg};
+      color: #FF5565;
     }
   `}
 
   ${({ type }) => type === 'info' && `
     & .toastIcon {
-      color: ${toastInfoColor};
-      background-color: #FFFFFF;
+      color: #C8C8C8;
     }
   `}
 
   ${({ type }) => type === 'success' && `
     & .toastIcon {
-      color: ${toastSuccessColor};
-      background-color: ${toastSuccessBg};
+      color: #6CC17C;
     }
   `}
 
   ${({ type }) => type === 'warning' && `
     & .toastIcon {
-      color: ${toastWarningColor};
-      background-color: ${toastWarningBg};
+      color: #EBB94C;
     }
   `}
 `;

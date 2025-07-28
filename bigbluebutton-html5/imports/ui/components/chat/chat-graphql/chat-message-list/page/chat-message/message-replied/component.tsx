@@ -27,6 +27,7 @@ const ChatMessageReplied: React.FC<MessageRepliedProps> = (props) => {
 
   return (
     <Styled.Container
+      className="chat-message-replied"
       onClick={(e) => {
         e.stopPropagation();
         if (e.target instanceof HTMLAnchorElement) {

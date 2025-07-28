@@ -12,6 +12,7 @@
     "app.chat.emojiButtonLabel": "Emoji Picker",
     "app.chat.loadMoreButtonLabel": "Load More",
     "app.chat.inputPlaceholder": "Message {0}",
+    "app.chat.titleDiscuss": "Discuss",
     "app.chat.titlePublic": "Public Chat",
     "app.chat.titlePrivate": "Private Chat with {0}",
     "app.chat.partnerDisconnected": "{0} has left the session",
