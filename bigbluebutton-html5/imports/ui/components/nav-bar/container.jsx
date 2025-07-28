@@ -44,6 +44,7 @@ const NavBarContainer = ({ children, ...props }) => {
   }));
 
   const hasUnreadMessages = chats && chats.reduce((acc, chat) => acc + chat?.totalUnread, 0) > 0;
+  const totalUnreadMessages = chats && chats.reduce((acc, chat) => acc + chat?.totalUnread, 0);
 
   const { data: currentUserData } = useCurrentUser((user) => ({
     isModerator: user.isModerator,
@@ -107,6 +108,7 @@ const NavBarContainer = ({ children, ...props }) => {
       {...{
         amIModerator,
         hasUnreadMessages,
+        totalUnreadMessages,
         hasUnreadNotes,
         sidebarNavPanel,
         sidebarContentPanel,

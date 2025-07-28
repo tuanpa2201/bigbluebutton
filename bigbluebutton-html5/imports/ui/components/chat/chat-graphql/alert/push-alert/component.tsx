@@ -13,6 +13,7 @@ interface ChatPushAlertProps {
 
 const ChatPushAlert: React.FC<ChatPushAlertProps> = (props) => {
   useEffect(() => {
+    console.log('ChatPushAlert mounted');
     showNotify();
   });
 
@@ -53,6 +54,7 @@ const ChatPushAlert: React.FC<ChatPushAlertProps> = (props) => {
       content,
       alertDuration,
     } = props;
+    console.log('showNotify is called');
 
     return notify(
       link(title, chatId),

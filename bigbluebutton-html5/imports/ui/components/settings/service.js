@@ -1,5 +1,5 @@
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
-import { notify } from '/imports/ui/services/notification';
+import {notify, notifyCustom} from '/imports/ui/services/notification';
 import intlHolder from '../../core/singletons/intlHolder';
 
 export const isKeepPushingLayoutEnabled = () => window.meetingClientSettings.public.layout.showPushLayoutToggle;
@@ -12,10 +12,10 @@ export const updateSettings = (obj, msgDescriptor, mutation) => {
   if (msgDescriptor) {
     // prevents React state update on unmounted component
     const intl = intlHolder.getIntl();
-    notify(
+    notifyCustom(
       intl.formatMessage(msgDescriptor),
-      'info',
-      'settings',
+      'success',
+      'check_circle',
     );
   }
 };

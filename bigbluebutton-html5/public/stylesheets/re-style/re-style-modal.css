@@ -277,3 +277,8 @@
         }
     }
 }
+
+/* MODAL ABOUT */
+.ReactModal__Content.modal-about {
+    width: 500px;
+}

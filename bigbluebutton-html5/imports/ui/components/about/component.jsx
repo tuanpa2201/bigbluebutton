@@ -45,6 +45,7 @@ const AboutComponent = (props) => {
   return (
     <ModalSimple
       data-test="aboutModalTitleLabel"
+      className="modal-about"
       title={intl.formatMessage(intlMessages.title)}
       dismiss={{
         label: intl.formatMessage(intlMessages.dismissLabel),
@@ -57,7 +58,7 @@ const AboutComponent = (props) => {
       }}
     >
       <div className="text-base">
-        {`${intl.formatMessage(intlMessages.copyright)} ${new Date().getFullYear()}`}
+        <span className="font-regular-s text-primary">{`${intl.formatMessage(intlMessages.copyright)} ©${new Date().getFullYear()}`}</span>
         <div className="mt-16">Developed: Viettel IT Center (VIC)</div>
       </div>
     </ModalSimple>

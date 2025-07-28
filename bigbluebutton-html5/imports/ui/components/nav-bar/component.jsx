@@ -65,6 +65,7 @@ const intlMessages = defineMessages({
 const propTypes = {
   presentationTitle: PropTypes.string,
   hasUnreadMessages: PropTypes.bool,
+  totalUnreadMessages: PropTypes.bool,
   shortcuts: PropTypes.string,
   breakoutNum: PropTypes.number,
   breakoutName: PropTypes.string,
@@ -77,6 +78,7 @@ const propTypes = {
 const defaultProps = {
   presentationTitle: 'Default Room Title',
   hasUnreadMessages: false,
+  totalUnreadMessages: 0,
   shortcuts: '',
 };
 
@@ -303,6 +305,7 @@ class NavBar extends Component {
   render() {
     const {
       hasUnreadMessages,
+      totalUnreadMessages,
       hasUnreadNotes,
       intl,
       shortcuts: TOGGLE_USERLIST_AK,

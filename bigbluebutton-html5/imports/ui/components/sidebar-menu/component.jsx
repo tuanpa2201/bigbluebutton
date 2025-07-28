@@ -1,16 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PANELS, ACTIONS } from '/imports/ui/components/layout/enums';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
 import { PINNED_PAD_SUBSCRIPTION } from '/imports/ui/components/notes/queries';
-import {useMutation} from "@apollo/client";
-import {TIMER_ACTIVATE} from "/imports/ui/components/timer/mutations";
+import { useMutation } from '@apollo/client';
+import { TIMER_ACTIVATE } from '/imports/ui/components/timer/mutations';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
-import useCurrentUser from "/imports/ui/core/hooks/useCurrentUser";
+import useCurrentUser from '/imports/ui/core/hooks/useCurrentUser';
 import { updateSettings } from '/imports/ui/components/settings/service';
 import useUserChangedLocalSettings from '/imports/ui/services/settings/hooks/useUserChangedLocalSettings';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import AppService from '/imports/ui/components/app/service';
+import useChat from '/imports/ui/core/hooks/useChat';
 
 // Styled sidebar container
 const Sidebar = styled.div`
@@ -84,10 +85,16 @@ const ThemeButton = styled.button`
 const icons = [
   { key: 'userlist', label: 'Users', file: 'users' },
   { key: 'chat', label: 'Chat', file: 'chat' },
-  { key: 'upload', label: 'Upload', file: 'upload', isPresenter: true },
+  {
+    key: 'upload', label: 'Upload', file: 'upload', isPresenter: true,
+  },
   { key: 'shared_notes', label: 'Slides', file: 'shareNote' },
-  { key: 'poll', label: 'Poll', file: 'poll', isPresenter: true },
-  { key: 'timer', label: 'Timer', file: 'timer', isModerator: true },
+  {
+    key: 'poll', label: 'Poll', file: 'poll', isPresenter: true,
+  },
+  {
+    key: 'timer', label: 'Timer', file: 'timer', isModerator: true,
+  },
 ];
 
 const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
@@ -143,7 +150,7 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
         darkTheme: theme,
       },
     }, null, setLocalSettings);
-  }
+  };
 
   const [theme, setTheme] = useState('light');
 
@@ -160,20 +167,33 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
     activateTimer();
   }, []);
 
+  const { data: chats } = useChat((chat) => ({
+    totalUnread: chat.totalUnread,
+  }));
+
+  const totalUnreadMessages = chats && chats.reduce((acc, chat) => acc + chat?.totalUnread, 0);
+
+
   return (
     <Sidebar>
-      {icons.map((item) => <>
-            {(!item.isModerator || (isModerator && item.isModerator)) && (!item.isPresenter || (isPresenter && item.isPresenter)) &&
+      {icons.map((item) => (
+        <>
+          {(!item.isModerator || (isModerator && item.isModerator)) && (!item.isPresenter || (isPresenter && item.isPresenter))
+                && (
                 <IconButton
-                    key={item.key}
-                    title={item.label}
-                    onClick={() => handleClick(item.key)}
-                    className={currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''}
+                  key={item.key}
+                  title={item.label}
+                  onClick={() => handleClick(item.key)}
+                  className={[`sidebar_${PANELS[item.key.toUpperCase()]}`, currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''].join(' ')}
                 >
-                  <SvgIcon iconName={item.file}/>
-                </IconButton>}
-          </>
-      )}
+                  <SvgIcon iconName={item.file} />
+                  {PANELS[item.key.toUpperCase()] === PANELS.CHAT && totalUnreadMessages > 0 && (
+                  <span className="unreadNumber">{totalUnreadMessages}</span>
+                  )}
+                </IconButton>
+                )}
+        </>
+      ))}
       <ThemeSwitch>
         <ThemeButton
           onClick={() => switchDarkTheme(false)}

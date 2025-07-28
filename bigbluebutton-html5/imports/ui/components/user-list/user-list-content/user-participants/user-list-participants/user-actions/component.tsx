@@ -40,7 +40,7 @@ import { CURRENT_PAGE_WRITERS_QUERY } from '/imports/ui/components/whiteboard/qu
 import { PRESENTATION_SET_WRITERS } from '/imports/ui/components/presentation/mutations';
 import useToggleVoice from '/imports/ui/components/audio/audio-graphql/hooks/useToggleVoice';
 import useWhoIsUnmuted from '/imports/ui/core/hooks/useWhoIsUnmuted';
-import { notify, notifyCustom } from '/imports/ui/services/notification';
+import { notifyCustom } from '/imports/ui/services/notification';
 
 interface UserActionsProps {
   userListDropdownItems: PluginSdk.UserListDropdownInterface[];

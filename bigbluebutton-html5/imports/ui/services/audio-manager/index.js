@@ -3,7 +3,7 @@ import SIPBridge from '/imports/api/audio/client/bridge/sip';
 import SFUAudioBridge from '/imports/api/audio/client/bridge/sfu-audio-bridge';
 import LiveKitAudioBridge from '/imports/api/audio/client/bridge/livekit';
 import logger from '/imports/startup/client/logger';
-import { notify } from '/imports/ui/services/notification';
+import {notify, notifyCustom} from '/imports/ui/services/notification';
 import playAndRetry from '/imports/utils/mediaElementPlayRetry';
 import { monitorAudioConnection } from '/imports/utils/stats';
 import browserInfo from '/imports/utils/browserInfo';
@@ -732,7 +732,7 @@ class AudioManager {
     if (!this.isEchoTest) {
       const secondsToActivateAudio = this._calculateAudioJoinTime();
 
-      this.notify(this.intl.formatMessage(this.messages.info.JOINED_AUDIO));
+      notifyCustom(this.intl.formatMessage(this.messages.info.JOINED_AUDIO), 'success', 'check_circle');
       logger.info({
         logCode: 'audio_joined',
         extraInfo: {

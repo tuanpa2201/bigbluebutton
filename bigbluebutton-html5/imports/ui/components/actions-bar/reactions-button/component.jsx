@@ -96,7 +96,27 @@ const ReactionsButton = (props) => {
         size="lg"
       />
       {showEmojiPicker && (
-      <div className="reactions-dropdown-menu">
+      <div
+        className="reactions-dropdown-menu"
+        ref={(menuRef) => {
+          if (menuRef) {
+            const handleClickOutside = (event) => {
+              if (!menuRef.contains(event.target)) {
+                handleClose();
+              }
+            };
+            document.addEventListener('mousedown', handleClickOutside);
+            menuRef._removeClickOutside = () => {
+              document.removeEventListener('mousedown', handleClickOutside);
+            };
+          }
+        }}
+        onUnmount={() => {
+          if (menuRef && menuRef._removeClickOutside) {
+            menuRef._removeClickOutside();
+          }
+        }}
+      >
         {actions.map((action) => (
           <button className="reactions-dropdown-item" type="button" key={action.key} onClick={() => { action.onClick(); handleClose(); }}>{action.label}</button>
         ))}

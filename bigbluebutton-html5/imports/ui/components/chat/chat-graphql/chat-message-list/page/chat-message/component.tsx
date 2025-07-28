@@ -346,7 +346,6 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
     showHeading: boolean;
     showToolbar: boolean;
   } = useMemo(() => {
-    console.log('message.messageType =>', message.messageType);
     switch (message.messageType) {
       case ChatMessageType.POLL:
         return {
@@ -630,7 +629,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
 
   const contentElement = (
     <ChatContent
-      className={['chat-message-content', shouldRenderHeader && !messageContent.isModerator ? 'chat-message-content-with-header' : ''].join(' ')}
+      className={['chat-message-content', shouldRenderHeader && message.user?.userId !== currentUserId ? 'chat-message-content-with-header' : ''].join(' ')}
       ref={messageContentRef}
       sameSender={message?.user ? sameSender : false}
       isCustomPluginMessage={isCustomPluginMessage}
@@ -662,7 +661,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
         onEdit={onEdit}
         onReply={onReply}
       />
-      {shouldRenderHeader && !messageContent.isModerator && (
+      {shouldRenderHeader && message.user?.userId !== currentUserId && (
         <ChatMessageHeader
           sameSender={message?.user ? sameSender : false}
           name={messageContent.name}
@@ -779,7 +778,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
       tabIndex={focusable ? -1 : undefined}
     >
       <ChatWrapper
-        className={['chat-message-wrapper', messageContent.isModerator ? 'chat-message-is-moderator' : ''].join(' ')}
+        className={['chat-message-wrapper', message.user?.userId === currentUserId ? 'chat-message-is-current' : ''].join(' ')}
         isSystemSender={isSystemSender}
         sameSender={sameSender}
         ref={messageRef}
@@ -788,7 +787,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
       >
         {(shouldRenderAvatar || shouldRenderHeader) && (
           <ChatHeading className="chat-header">
-            {shouldRenderAvatar && !messageContent.isModerator && (
+            {shouldRenderAvatar && message.user?.userId !== currentUserId && (
               <ChatAvatar
                 className="chat-avatar"
                 avatar={message.user?.avatar || ''}
@@ -829,7 +828,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
         ) : (
           <div
             style={{
-              marginLeft: shouldRenderHeader || message.messageType === ChatMessageType.USER_IS_PRESENTER_MSG || message.messageType === ChatMessageType.CHAT_CLEAR || messageContent.isModerator ? '0' : '50px',
+              marginLeft: shouldRenderHeader || message.messageType === ChatMessageType.USER_IS_PRESENTER_MSG || message.messageType === ChatMessageType.CHAT_CLEAR || message.user?.userId === currentUserId ? '0' : '50px',
               width: message.messageType === ChatMessageType.USER_IS_PRESENTER_MSG ? '100%' : 'fit-content',
             }}
           >

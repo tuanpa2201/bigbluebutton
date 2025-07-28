@@ -42,7 +42,7 @@ import PresentationUploaderToastContainer from '/imports/ui/components/presentat
 import BreakoutJoinConfirmationContainerGraphQL from '../breakout-join-confirmation/breakout-join-confirmation-graphql/component';
 import FloatingWindowContainer from '/imports/ui/components/floating-window/container';
 import ChatAlertContainerGraphql from '../chat/chat-graphql/alert/component';
-import { notify } from '/imports/ui/services/notification';
+import {notify, notifyCustom} from '/imports/ui/services/notification';
 import VoiceActivityAdapter from '../../core/adapters/voice-activity';
 import LayoutObserver from '../layout/observer';
 import BBBLiveKitRoomContainer from '/imports/ui/components/livekit/component';
@@ -160,17 +160,17 @@ class App extends Component {
 
     if (prevProps.currentUserAway !== currentUserAway) {
       if (currentUserAway === true) {
-        notify(intl.formatMessage(intlMessages.away), 'info', 'user');
+        notifyCustom(intl.formatMessage(intlMessages.away), 'success', 'check_circle');
       } else {
-        notify(intl.formatMessage(intlMessages.notAway), 'info', 'clear_status');
+        notifyCustom(intl.formatMessage(intlMessages.notAway), 'success', 'check_circle');
       }
     }
 
     if (prevProps.currentUserRaiseHand !== currentUserRaiseHand) {
       if (currentUserRaiseHand === true) {
-        notify(intl.formatMessage(intlMessages.raisedHand), 'success', 'user');
+        notifyCustom(intl.formatMessage(intlMessages.raisedHand), 'success', 'check_circle');
       } else {
-        notify(intl.formatMessage(intlMessages.loweredHand), 'success', 'clear_status');
+        notifyCustom(intl.formatMessage(intlMessages.loweredHand), 'success', 'check_circle');
       }
     }
   }
