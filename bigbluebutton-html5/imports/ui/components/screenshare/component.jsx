@@ -11,7 +11,7 @@ import PluginButtonContainer from '../plugins/plugin-button/container';
 import AutoplayOverlay from '../media/autoplay-overlay/component';
 import logger from '/imports/startup/client/logger';
 import playAndRetry from '/imports/utils/mediaElementPlayRetry';
-import { notify } from '/imports/ui/services/notification';
+import {notify, notifyCustom} from '/imports/ui/services/notification';
 import {
   SCREENSHARE_MEDIA_ELEMENT_NAME,
   isMediaFlowing,
@@ -139,7 +139,7 @@ class ScreenshareComponent extends React.Component {
 
     this.setState({ switched: startPreviewSizeBig });
 
-    notify(intl.formatMessage(this.locales.started), 'info', this.icon);
+    notifyCustom(intl.formatMessage(this.locales.started), 'success', this.icon);
 
     layoutContextDispatch({
       type: ACTIONS.SET_PILE_CONTENT_FOR_PRESENTATION_AREA,
@@ -188,9 +188,9 @@ class ScreenshareComponent extends React.Component {
 
     const Settings = getSettingsSingletonInstance();
     if (Settings.dataSaving.viewScreenshare) {
-      notify(intl.formatMessage(this.locales.ended), 'info', this.icon);
+      notifyCustom(intl.formatMessage(this.locales.ended), 'success', this.icon);
     } else {
-      notify(intl.formatMessage(this.locales.endedDueToDataSaving), 'info', this.icon);
+      notifyCustom(intl.formatMessage(this.locales.endedDueToDataSaving), 'success', this.icon);
     }
 
     layoutContextDispatch({

@@ -137,7 +137,7 @@ const ScreenshareContainer = (props) => {
 
   const info = {
     screenshare: {
-      icon: 'desktop',
+      icon: 'check_circle',
       locales: screenshareIntlMessages,
       startPreviewSizeBig: false,
       showSwitchPreviewSizeButton: true,

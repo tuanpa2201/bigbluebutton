@@ -159,6 +159,7 @@
     "app.user.activityCheck.label": "Check if user is still in session ({0})",
     "app.user.activityCheck.check": "Check",
     "app.userList.usersTitle": "Users",
+    "app.userList.lowerAllHands": "Lower all hands",
     "app.userList.lockedUsersTitle": "Moderators ({0})",
     "app.userList.participantsTitle": "Participants",
     "app.userList.messagesTitle": "Messages",

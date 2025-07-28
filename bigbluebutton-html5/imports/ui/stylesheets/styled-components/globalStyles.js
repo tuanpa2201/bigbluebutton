@@ -123,7 +123,31 @@ const GlobalStyle = createGlobalStyle`
       background: #EBB94C!important;
     }
   }
+  
+  .Toastify__toast--info {
+    & .toastWrapper {
+      color: #3498db!important;
+    }
+  }
 
+  .Toastify__toast--success {
+    & .toastWrapper {
+      color: #6CC17C!important;
+    }
+  }
+
+  .Toastify__toast--error {
+    & .toastWrapper {
+      color: #FF5565!important;
+    }
+  }
+
+  .Toastify__toast--warning {
+    & .toastWrapper {
+      color: #EBB94C!important;
+    }
+  }
+  
   .toastBodyClass {
     font-family: 'Source Sans Pro';
     margin: auto auto;

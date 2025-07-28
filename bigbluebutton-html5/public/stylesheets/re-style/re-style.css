@@ -359,6 +359,19 @@
         margin-right: 16px;
     }
 }
+
+.userListContent {
+    position: relative;
+
+    & .btn-raised-all-hands {
+        position: absolute;
+        bottom: 12px;
+        width: calc(100% - 32px);
+        left: 0;
+        right: 0;
+    }
+}
+
 /* APP-SETTINGS-DROPDOWN-MENU */
 #app-settings-dropdown-menu {
     & .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root + .MuiDivider-root {

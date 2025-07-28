@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import * as PluginSdk from 'bigbluebutton-html-plugin-sdk';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
+import { useMutation } from '@apollo/client';
+import { defineMessages, useIntl } from 'react-intl';
 import { MEETING_PERMISSIONS_SUBSCRIPTION } from '../queries';
 import { setLocalUserList, useLoadedUserList } from '/imports/ui/core/hooks/useLoadedUserList';
 import useCurrentUser from '/imports/ui/core/hooks/useCurrentUser';
@@ -15,6 +17,7 @@ import { layoutSelect } from '/imports/ui/components/layout/context';
 import { Layout } from '/imports/ui/components/layout/layoutTypes';
 import SkeletonUserListItem from '../list-item/skeleton/component';
 import { PluginsContext } from '/imports/ui/components/components-data/plugin-context/context';
+import { SET_RAISE_HAND } from '/imports/ui/core/graphql/mutations/userMutations';
 
 interface UserListParticipantsContainerProps {
   index: number;
@@ -38,6 +41,13 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
   pageId,
   offset,
 }) => {
+  const intlMessages = defineMessages({
+    lowerAllHands: {
+      id: 'app.userList.lowerAllHands',
+      description: 'Lower all hands confirmation label',
+    },
+  });
+
   const [openUserAction, setOpenUserAction] = React.useState<string | null>(null);
   const isRTL = layoutSelect((i: Layout) => i.isRTL);
   const { pluginsExtensibleAreasAggregatedState } = useContext(PluginsContext);
@@ -47,6 +57,22 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
       ...pluginsExtensibleAreasAggregatedState.userListDropdownItems,
     ];
   }
+  const intl = useIntl();
+
+  const [setRaiseHand] = useMutation(SET_RAISE_HAND);
+
+  const lowerAllUserHands = () => {
+    users.forEach((user) => {
+      if (user.raiseHand) {
+        setRaiseHand({
+          variables: {
+            userId: user.userId,
+            raiseHand: false,
+          },
+        });
+      }
+    });
+  };
 
   return (
     <>
@@ -65,13 +91,19 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
                 open={user.userId === openUserAction}
                 setOpenUserAction={setOpenUserAction}
               >
-                <ListItem index={offset + idx} user={user} lockSettings={meeting.lockSettings} isSelected={user.userId === openUserAction}/>
+                <ListItem
+                  index={offset + idx}
+                  user={user}
+                  lockSettings={meeting.lockSettings}
+                  isSelected={user.userId === openUserAction}
+                />
               </UserActions>
             </Styled.UserListItem>
           );
         })
-
       }
+      <button type="button" className="btn btn-default font-semibold-s text-primary btn-raised-all-hands" onClick={lowerAllUserHands}>{intl.formatMessage(intlMessages.lowerAllHands)}</button>
+
     </>
   );
 };
@@ -105,9 +137,9 @@ const UserListParticipantsPageContainer: React.FC<UserListParticipantsContainerP
     for (let i = 0; i < usersData.length; i++) {
       usersData[i].color = '';
       if (!usersData[i].avatar) {
-        const urlAvatar = process.env.VOPS_URL + '/avatar/'
+        const urlAvatar = `${process.env.VOPS_URL}/avatar/`;
         const userName = usersData[i].username || usersData[i].userName || usersData[i].name || 'user';
-        usersData[i].avatar = urlAvatar + encodeURIComponent(userName)
+        usersData[i].avatar = urlAvatar + encodeURIComponent(userName);
       }
     }
   }

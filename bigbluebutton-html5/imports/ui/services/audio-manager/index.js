@@ -876,7 +876,7 @@ class AudioManager {
         }, 'Attempting to reconnect audio');
         this.notify(
           this.intl.formatMessage(this.messages.info.RECONNECTING_AUDIO),
-          true,
+          false,
         );
         this.playHangUpSound();
       } else if (status === AUTOPLAY_BLOCKED) {

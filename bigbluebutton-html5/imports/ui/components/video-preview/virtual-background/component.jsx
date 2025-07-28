@@ -335,6 +335,7 @@ const VirtualBgSelector = ({
 
       return (
         <Styled.ThumbnailButtonWrapper
+          className="thumbnail-button-wrapper"
           key={`${filename}-${index + 1}`}
         >
           <Styled.ThumbnailButton

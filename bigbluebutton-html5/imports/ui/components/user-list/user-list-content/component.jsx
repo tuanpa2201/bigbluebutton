@@ -45,7 +45,7 @@ class UserContent extends PureComponent {
     const ROLE_MODERATOR = window.meetingClientSettings.public.user.role_moderator;
 
     return (
-      <Styled.Content data-test="userListContent">
+      <Styled.Content data-test="userListContent" className="userListContent">
         {isMobile || (isMobile && isPortrait) ? (
           <Styled.ScrollableList role="tabpanel" tabIndex={0}>
             <Styled.List>

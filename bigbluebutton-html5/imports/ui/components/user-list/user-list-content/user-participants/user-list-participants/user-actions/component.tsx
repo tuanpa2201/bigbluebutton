@@ -40,7 +40,7 @@ import { CURRENT_PAGE_WRITERS_QUERY } from '/imports/ui/components/whiteboard/qu
 import { PRESENTATION_SET_WRITERS } from '/imports/ui/components/presentation/mutations';
 import useToggleVoice from '/imports/ui/components/audio/audio-graphql/hooks/useToggleVoice';
 import useWhoIsUnmuted from '/imports/ui/core/hooks/useWhoIsUnmuted';
-import { notify } from '/imports/ui/services/notification';
+import { notify, notifyCustom } from '/imports/ui/services/notification';
 
 interface UserActionsProps {
   userListDropdownItems: PluginSdk.UserListDropdownInterface[];
@@ -157,7 +157,7 @@ const messages = defineMessages({
   dialogDescRemoveUserLabel: {
     id: 'app.userList.menu.removeDescConfirmation.label',
     description: 'Do you want to remove user?',
-  }
+  },
 });
 const makeDropdownPluginItem: (
   userDropdownItems: PluginSdk.UserListDropdownInterface[]) => DropdownItem[] = (
@@ -262,13 +262,11 @@ const UserActions: React.FC<UserActionsProps> = ({
       // If so, notify the user then return.
       const WHITEBOARD_CONFIG = window.meetingClientSettings.public.whiteboard;
       if (newUsersIds.length >= WHITEBOARD_CONFIG.maxNumberOfActiveUsers) {
-        notify(
-          intl.formatMessage(
-            messages.multiUserLimitHasBeenReachedNotification,
-            { 0: WHITEBOARD_CONFIG.maxNumberOfActiveUsers },
-          ),
+        notifyCustom(
+          intl.formatMessage(messages.multiUserLimitHasBeenReachedNotification,
+            { 0: WHITEBOARD_CONFIG.maxNumberOfActiveUsers }),
           'info',
-          'pen_tool',
+          'info',
         );
         return;
       }
@@ -652,8 +650,8 @@ const UserActions: React.FC<UserActionsProps> = ({
           onConfirm={removeUser}
           confirmButtonDataTest="removeUserConfirmation"
           title={intl.formatMessage(messages.dialogTitleRemoveUserLabel)}
-          description= {intl.formatMessage(messages.dialogDescRemoveUserLabel,{ 0: user.name },)}
-          fromFeature='removeUser'
+          description={intl.formatMessage(messages.dialogDescRemoveUserLabel, { 0: user.name })}
+          fromFeature="removeUser"
           {...{
             onRequestClose: () => setIsConfirmationModalOpen(false),
             priority: 'low',

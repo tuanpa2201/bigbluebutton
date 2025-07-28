@@ -45,6 +45,15 @@ trait SetCurrentPresentationPubMsgHdlr extends RightsManagementTrait {
       } yield {
         broadcastSetCurrentPresentationEvent(podId, userId, presId)
 
+        val notifyEvent = MsgBuilder.buildNotifyAllInMeetingEvtMsg(
+          liveMeeting.props.meetingProp.intId,
+          "info",
+          "presentation",
+          "app.presentation.newCurrentPresentationNotification",
+          "Notification when a new presentation is set as current",
+          Vector(s"${pres.name}")
+        )
+        NotificationDAO.insert(notifyEvent)
 
         val pods = state.presentationPodManager.addPod(updatedPod)
         state.update(pods)

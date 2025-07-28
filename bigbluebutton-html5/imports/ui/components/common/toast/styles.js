@@ -85,7 +85,7 @@ const ToastContainer = styled.div`
 
 const ToastIcon = styled.div`
   align-self: flex-start;
-  margin: 0 ${smPaddingX} auto 0;
+  margin: auto ${smPaddingX} auto 0;
   width: ${toastIconMd};
   height: ${toastIconMd};
   border-radius: 50%;

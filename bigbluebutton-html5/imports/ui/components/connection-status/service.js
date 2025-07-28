@@ -103,7 +103,7 @@ export const notification = (level, intl) => {
   }
   Session.setItem('connectionStatusNotified', true);
 
-  if (intl) notifyCustom(intl.formatMessage(intlMessages.notification), level, 'disconnect');
+  if (intl) notifyCustom(intl.formatMessage(intlMessages.notification), 'error', 'disconnect');
   return null;
 };
 

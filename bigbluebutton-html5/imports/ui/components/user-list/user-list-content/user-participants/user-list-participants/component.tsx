@@ -13,8 +13,6 @@ import UserListParticipantsPageContainer from './page/component';
 import IntersectionWatcher from './intersection-watcher/intersectionWatcher';
 import { setLocalUserList } from '/imports/ui/core/hooks/useLoadedUserList';
 import roveBuilder from '/imports/ui/core/utils/keyboardRove';
-// import { SET_RAISE_HAND } from '/imports/ui/core/graphql/mutations/userMutations';
-// import { useMutation } from '@apollo/client';
 
 interface UserListParticipantsProps {
   count: number;
@@ -79,22 +77,7 @@ const UserListParticipants: React.FC<UserListParticipantsProps> = ({
     };
   }, []);
   // --- End of plugin related code ---
-  // const [setRaiseHand] = useMutation(SET_RAISE_HAND);
-  //
-  // const lowerAllUserHands = () => {
-  //   visibleUsers.map((user) => {
-  //     users.forEach((user) => {
-  //       if (user.raiseHand) {
-  //         setRaiseHand({
-  //           variables: {
-  //             userId: user.userId,
-  //             raiseHand: false,
-  //           },
-  //         });
-  //       }
-  //     });
-  //   });
-  // };
+
   const amountOfPages = Math.ceil(count / 50);
   return (
     (

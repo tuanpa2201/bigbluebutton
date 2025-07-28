@@ -140,12 +140,12 @@ export function notifyCustom(message, type = 'default', svgIcon, options, conten
       toast.update(
         lastToast.id,
         {
-          render: <div role="alert"><Toast {...toastProps} /></div>,
+          render: <div role="alert" className="toastWrapper"><Toast {...toastProps} /></div>,
           autoClose: options.autoClose,
         },
       );
     } else {
-      const element = (<div role="alert"><Toast {...toastProps} /></div>);
+      const element = (<div role="alert" className="toastWrapper"><Toast {...toastProps} /></div>);
       let id;
 
       switch (type) {

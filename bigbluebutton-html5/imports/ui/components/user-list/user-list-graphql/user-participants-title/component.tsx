@@ -42,12 +42,7 @@ const UserTitle: React.FC<UserTitleProps> = ({
           data-test-users-count={count}
           data-test-users-with-audio-count={countWithAudio}
         >
-          {intl.formatMessage(
-            userListLabel
-            // ,{
-            //   0: count.toLocaleString('en-US', { notation: 'standard' }),
-            // },
-          )}
+          {intl.formatMessage(userListLabel)}
         </span>
       </Styled.SmallTitle>
       <UserTitleOptionsContainer />

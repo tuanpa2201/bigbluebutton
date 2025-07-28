@@ -51,7 +51,7 @@ const Toast = ({
           </Styled.ToastIcon>
         )}
       <Styled.ToastMessage data-test="toastSmallMsg">
-        <span>{message}</span>
+        <span className="font-regular-s text-primary">{message}</span>
       </Styled.ToastMessage>
     </Styled.Toast>
     {content
