@@ -10,7 +10,7 @@ function Card(props) {
   try {
     React.Children.only(children);
     icons = (
-      <div className={`p-2 rounded-full ${iconClass || 'text-orange-500'}`}>
+      <div className={`p-2 ${iconClass || 'text-orange-500'}`}>
         { children }
       </div>
     );
