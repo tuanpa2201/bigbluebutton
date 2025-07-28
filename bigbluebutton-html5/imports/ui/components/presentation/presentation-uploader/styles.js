@@ -373,7 +373,7 @@ const UploaderModal = styled.div`
   bottom: 0;
   height: 100%;
   padding: 0 16px 16px 16px;
-  width: 360px;
+  width: 100%;
   min-width: 360px;
   z-index: 100;
 `;
