@@ -168,7 +168,7 @@ class PresentationDownloadDropdown extends PureComponent {
         dataTest: 'sendCurrentStateDocument',
         label: intl.formatMessage(intlMessages.sendCurrentStateDocument),
         onClick: () => {
-          closeModal();
+          // closeModal();
           handleDownloadingOfPresentation('Annotated');
         },
       });
