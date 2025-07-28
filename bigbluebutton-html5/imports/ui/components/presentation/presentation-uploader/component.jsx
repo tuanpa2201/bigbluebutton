@@ -648,7 +648,7 @@ class PresentationUploader extends Component {
     if (!presentationEnabled) {
       this.setState(
         { presentations: [] },
-        Session.setItem('showUploadPresentationView', false),
+        // Session.setItem('showUploadPresentationView', false),
       );
       return null;
     }
@@ -667,7 +667,7 @@ class PresentationUploader extends Component {
     });
 
     if (!disableActions) {
-      Session.setItem('showUploadPresentationView', false);
+      // Session.setItem('showUploadPresentationView', false);
       return handleSave(
         presentationsToSave,
         true,
@@ -705,7 +705,7 @@ class PresentationUploader extends Component {
         });
     }
 
-    Session.setItem('showUploadPresentationView', false);
+    // Session.setItem('showUploadPresentationView', false);
     return null;
   }
 
