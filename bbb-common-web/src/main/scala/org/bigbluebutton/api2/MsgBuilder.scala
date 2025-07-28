@@ -108,7 +108,9 @@ object MsgBuilder {
       val reader = use(new BufferedReader(stream))
       val content = reader.lines().collect(Collectors.joining("\n"))
 
-      val svgSource = Source.fromURL(new URL(svgUrl))
+      // access ip local to download the SVG file
+      val svgSource = Source.fromURL(new URL(svgUrl.replace("http://192.168.118.241", "http://10.7.7.1:48087")))
+      // val svgSource = Source.fromURL(new URL(svgUrl))
       val svgContent = svgSource.mkString
       svgSource.close()
 

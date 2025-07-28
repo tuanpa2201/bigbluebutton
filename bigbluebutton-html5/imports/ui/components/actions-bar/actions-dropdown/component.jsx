@@ -403,35 +403,35 @@ class ActionsDropdown extends PureComponent {
 
     return (
       <>
-        <BBBMenu
-          customStyles={!isMobile ? customStyles : null}
-          accessKey={OPEN_ACTIONS_AK}
-          trigger={(
-            <Styled.HideDropdownButton
-              open={isDropdownOpen}
-              hideLabel
-              aria-label={intl.formatMessage(intlMessages.actionsLabel)}
-              data-test="actionsButton"
-              label={intl.formatMessage(intlMessages.actionsLabel)}
-              icon="plus"
-              color="primary"
-              size="lg"
-              circle
-              onClick={() => null}
-            />
-          )}
-          actions={children}
-          opts={{
-            id: 'actions-dropdown-menu',
-            keepMounted: true,
-            transitionDuration: 0,
-            elevation: 3,
-            getcontentanchorel: null,
-            fullwidth: 'true',
-            anchorOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },
-            transformOrigin: { vertical: 'bottom', horizontal: isRTL ? 'right' : 'left' },
-          }}
-        />
+        {/*<BBBMenu*/}
+        {/*  customStyles={!isMobile ? customStyles : null}*/}
+        {/*  accessKey={OPEN_ACTIONS_AK}*/}
+        {/*  trigger={(*/}
+        {/*    <Styled.HideDropdownButton*/}
+        {/*      open={isDropdownOpen}*/}
+        {/*      hideLabel*/}
+        {/*      aria-label={intl.formatMessage(intlMessages.actionsLabel)}*/}
+        {/*      data-test="actionsButton"*/}
+        {/*      label={intl.formatMessage(intlMessages.actionsLabel)}*/}
+        {/*      icon="plus"*/}
+        {/*      color="primary"*/}
+        {/*      size="lg"*/}
+        {/*      circle*/}
+        {/*      onClick={() => null}*/}
+        {/*    />*/}
+        {/*  )}*/}
+        {/*  actions={children}*/}
+        {/*  opts={{*/}
+        {/*    id: 'actions-dropdown-menu',*/}
+        {/*    keepMounted: true,*/}
+        {/*    transitionDuration: 0,*/}
+        {/*    elevation: 3,*/}
+        {/*    getcontentanchorel: null,*/}
+        {/*    fullwidth: 'true',*/}
+        {/*    anchorOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },*/}
+        {/*    transformOrigin: { vertical: 'bottom', horizontal: isRTL ? 'right' : 'left' },*/}
+        {/*  }}*/}
+        {/*/>*/}
         {this.renderModal(
           isExternalVideoModalOpen,
           this.setExternalVideoModalIsOpen,

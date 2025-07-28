@@ -1559,9 +1559,6 @@
     "app.sessionDetails.copyUrlTooltip": "Copy join URL",
     "app.sessionDetails.copyPhoneTooltip": "Copy phone number",
     "app.sessionDetails.phonePin": "pin",
-    "app.screenshare.actionsDropdown.shareScreen": "Share Screen",
-    "app.screenshare.actionsDropdown.shareCamera": "Share Camera",
-    "app.screenshare.actionsDropdown.shareVideo": "Share Video",
     "mobileApp.portals.list.empty.addFirstPortal.label": "Add your first portal using the button above,",
     "mobileApp.portals.list.empty.orUseOurDemoServer.label": "or use our demo server.",
     "mobileApp.portals.list.add.button.label": "Add portal",
@@ -1574,5 +1571,11 @@
     "mobileApp.portals.addPortalPopup.validation.portalNameAlreadyExists": "Name already in use",
     "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Error trying to load the page - check URL and network connection",
     "app.userList.menu.removeTitle.label": "Remove user",
-    "app.userList.menu.removeDescConfirmation.label": "Do you want to remove user: {0}?"
+    "app.userList.menu.removeDescConfirmation.label": "Do you want to remove user: {0}?",
+    "app.screenshare.actionsDropdown.shareCamera": "Share camera",
+    "app.screenshare.actionsDropdown.shareScreen": "Share screen",
+    "app.screenshare.actionsDropdown.shareVideo": "Share video",
+
+
+    "EOF": "EOF"
 }

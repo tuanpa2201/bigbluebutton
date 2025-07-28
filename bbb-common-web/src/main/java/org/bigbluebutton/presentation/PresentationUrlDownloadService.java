@@ -238,7 +238,7 @@ public class PresentationUrlDownloadService {
                     log.warn("Warning: All protocols are supported for presentation download. It is recommended to only allow HTTPS.");
                 } else {
                     log.error("Invalid protocol [{}]", protocol);
-                    return false;
+//                    return false;
                 }
             }
 

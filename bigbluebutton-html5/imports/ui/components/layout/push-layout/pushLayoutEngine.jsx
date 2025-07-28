@@ -156,7 +156,7 @@ const PushLayoutEngine = (props) => {
           });
           layoutContextDispatch({
             type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
-            value: PANELS.CHAT,
+            value: PANELS.USERLIST,
           });
         }
         if (!equalDouble(meetingLayoutVideoRate, 0)) {

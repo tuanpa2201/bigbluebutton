@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import React, { useEffect, useRef, useState } from 'react';
 import Styled from './styles';
-import Icon from '/imports/ui/components/common/icon/icon-ts/component';
+import SvgIcon from "/imports/ui/components/common/icon-svg/component";
 import humanizeSeconds from '/imports/utils/humanizeSeconds';
 import useTimeSync from '/imports/ui/core/local-states/useTimeSync';
 import useCurrentUser from '/imports/ui/core/hooks/useCurrentUser';
@@ -23,16 +23,16 @@ interface TimerIndicatorProps {
 }
 
 const TimerIndicator: React.FC<TimerIndicatorProps> = ({
-  passedTime,
-  stopwatch,
-  songTrack,
-  elapsed,
-  running,
-  isModerator,
-  sidebarNavigationIsOpen,
-  sidebarContentIsOpen,
-  startedOn,
-}) => {
+                                                         passedTime,
+                                                         stopwatch,
+                                                         songTrack,
+                                                         elapsed,
+                                                         running,
+                                                         isModerator,
+                                                         sidebarNavigationIsOpen,
+                                                         sidebarContentIsOpen,
+                                                         startedOn,
+                                                       }) => {
   const [time, setTime] = useState<number>(0);
   const timeRef = useRef<HTMLSpanElement>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval>>();
@@ -173,7 +173,7 @@ const TimerIndicator: React.FC<TimerIndicatorProps> = ({
         >
           <Styled.TimerContent>
             <Styled.TimerIcon>
-              <Icon iconName="time" />
+              <SvgIcon iconName="time" />
             </Styled.TimerIcon>
             <Styled.TimerTime
               aria-hidden
@@ -222,22 +222,22 @@ const TimerIndicatorContainer: React.FC = () => {
   const timeDifferenceMs: number = adjustedCurrent.getTime() - startedAtDate.getTime();
 
   const timePassed = stopwatch ? (
-    Math.floor(((running ? timeDifferenceMs : 0) + (accumulated ?? 0)))
+      Math.floor(((running ? timeDifferenceMs : 0) + (accumulated ?? 0)))
   ) : (
-    Math.floor(((time ?? 0) - ((accumulated ?? 0) + (running ? timeDifferenceMs : 0)))));
+      Math.floor(((time ?? 0) - ((accumulated ?? 0) + (running ? timeDifferenceMs : 0)))));
 
-  return ( running &&
-    <TimerIndicator
-      passedTime={timePassed}
-      stopwatch={stopwatch ?? false}
-      songTrack={songTrack ?? 'noTrack'}
-      elapsed={elapsed}
-      running={running ?? false}
-      isModerator={currentUser?.isModerator ?? false}
-      sidebarNavigationIsOpen={sidebarNavigationIsOpen}
-      sidebarContentIsOpen={sidebarContentIsOpen}
-      startedOn={startedOn ?? 0}
-    />
+  return (
+      <TimerIndicator
+          passedTime={timePassed}
+          stopwatch={stopwatch ?? false}
+          songTrack={songTrack ?? 'noTrack'}
+          elapsed={elapsed}
+          running={running ?? false}
+          isModerator={currentUser?.isModerator ?? false}
+          sidebarNavigationIsOpen={sidebarNavigationIsOpen}
+          sidebarContentIsOpen={sidebarContentIsOpen}
+          startedOn={startedOn ?? 0}
+      />
   );
 };
 
