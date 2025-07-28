@@ -26,6 +26,14 @@
 	font-family: "FS PFBeauSansPro", sans-serif !important;
 }
 
+.tl-text-shape__wrapper[data-font='draw'] {
+	font-family: var(--tl-font-draw) !important;
+}
+
+.tl-text {
+	font-family: inherit !important;
+}
+
 .font-regular-xs {
 	/* Regular/XS */
 	font-size: 12px!important;
