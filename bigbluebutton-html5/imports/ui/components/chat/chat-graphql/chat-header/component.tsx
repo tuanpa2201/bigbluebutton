@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { defineMessages, useIntl } from 'react-intl';
 import { GET_CHAT_DATA, GetChatDataResponse, CLOSE_PRIVATE_CHAT_MUTATION } from './queries';
 import closePrivateChat from './services';
 import { layoutSelect, layoutDispatch } from '../../../layout/context';
-import { useShortcut } from '../../../../core/hooks/useShortcut';
 import { Layout } from '../../../layout/layoutTypes';
 import { ACTIONS, PANELS } from '../../../layout/enums';
 import ChatActions from './chat-actions/component';
-import { ChatHeader as Header } from '../chat-message-list/page/chat-message/styles';
 
 interface ChatHeaderProps {
   chatId: string;
   isPublicChat: boolean;
-  title: string;
-  isRTL: boolean;
 }
 
 const intlMessages = defineMessages({
@@ -34,65 +30,53 @@ const intlMessages = defineMessages({
     id: 'app.chat.titlePrivate',
     description: 'Private chat title',
   },
+  titleDiscuss: {
+    id: 'app.chat.titleDiscuss',
+    description: 'Discuss title',
+  },
 });
 
 const ChatHeader: React.FC<ChatHeaderProps> = ({
-  chatId, isPublicChat, title, isRTL,
+  chatId, isPublicChat,
 }) => {
-  const HIDE_CHAT_AK = useShortcut('hideprivatechat');
-  const CLOSE_CHAT_AK = useShortcut('closeprivatechat');
   const layoutContextDispatch = layoutDispatch();
   const intl = useIntl();
   const [updateVisible] = useMutation(CLOSE_PRIVATE_CHAT_MUTATION);
+
+  const closePanel = useCallback(() => {
+    updateVisible({ variables: { chatId, visible: false } });
+    closePrivateChat(chatId);
+    layoutContextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
+      value: false,
+    });
+    layoutContextDispatch({
+      type: ACTIONS.SET_ID_CHAT_OPEN,
+      value: '',
+    });
+    layoutContextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
+      value: PANELS.NONE,
+    });
+  }, [layoutContextDispatch]);
+
   return (
-    <Header
-      isRTL={isRTL}
-      data-test="chatTitle"
-      leftButtonProps={{
-        accessKey: chatId !== 'public' ? HIDE_CHAT_AK : null,
-        'aria-label': intl.formatMessage(intlMessages.hideChatLabel, { 0: title }),
-        'data-test': isPublicChat ? 'hidePublicChat' : 'hidePrivateChat',
-        label: title,
-        onClick: () => {
-          layoutContextDispatch({
-            type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
-            value: false,
-          });
-          layoutContextDispatch({
-            type: ACTIONS.SET_ID_CHAT_OPEN,
-            value: '',
-          });
-          layoutContextDispatch({
-            type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
-            value: PANELS.NONE,
-          });
-        },
-      }}
-      rightButtonProps={{
-        accessKey: CLOSE_CHAT_AK,
-        'aria-label': intl.formatMessage(intlMessages.closeChatLabel, { 0: title }),
-        'data-test': 'closePrivateChat',
-        icon: 'close',
-        label: intl.formatMessage(intlMessages.closeChatLabel, { 0: title }),
-        onClick: () => {
-          updateVisible({ variables: { chatId, visible: false } });
-          closePrivateChat(chatId);
-          layoutContextDispatch({
-            type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
-            value: false,
-          });
-          layoutContextDispatch({
-            type: ACTIONS.SET_ID_CHAT_OPEN,
-            value: '',
-          });
-          layoutContextDispatch({
-            type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
-            value: PANELS.NONE,
-          });
-        },
-      }}
-      customRightButton={isPublicChat ? <ChatActions /> : null}
-    />
+    <>
+      <h2 className="sr-only chat-header">{intl.formatMessage(intlMessages.titleDiscuss)}</h2>
+      <div className="d-flex align-items-center justify-content-between chat-header-container">
+        <span className="chat-header">{intl.formatMessage(intlMessages.titleDiscuss)}</span>
+        <div className="d-flex align-items-center">
+          {/* eslint-disable-next-line max-len */}
+          {isPublicChat ? <ChatActions /> : null}
+          <button type="button" onClick={closePanel} style={{ background: 'none', border: 'none' }} className="btnClose">
+            <img
+              src={`${window.meetingClientSettings.public.app.basename}/resources/icon-bbb/close.png`}
+              alt="Close"
+            />
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -101,9 +85,7 @@ const isChatResponse = (data: unknown): data is GetChatDataResponse => {
 };
 
 const ChatHeaderContainer: React.FC = () => {
-  const intl = useIntl();
   const idChatOpen = layoutSelect((i: Layout) => i.idChatOpen);
-  const isRTL = layoutSelect((i: Layout) => i.isRTL);
 
   const {
     data: chatData,
@@ -131,16 +113,11 @@ const ChatHeaderContainer: React.FC = () => {
     );
   }
   const isPublicChat = chatData.chat[0]?.public;
-  const title = isPublicChat ? intl.formatMessage(intlMessages.titlePublic)
-    : intl.formatMessage(intlMessages.titlePrivate, { 0: chatData?.chat[0]?.participant?.name });
   return (
     <>
-      <h2 className="sr-only">{title}</h2>
       <ChatHeader
         chatId={idChatOpen}
         isPublicChat={isPublicChat}
-        title={title}
-        isRTL={isRTL}
       />
     </>
   );

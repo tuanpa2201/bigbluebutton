@@ -10,6 +10,7 @@ import { PROCESSED_PRESENTATIONS_SUBSCRIPTION } from '/imports/ui/components/whi
 import Service from './service';
 import { GET_PAD_ID, GetPadIdQueryResponse } from './queries';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
+import { notifyCustom } from '/imports/ui/services/notification';
 
 const DEBOUNCE_TIMEOUT = 15000;
 
@@ -25,6 +26,10 @@ const intlMessages = defineMessages({
   options: {
     id: 'app.notes.notesDropdown.notesOptions',
     description: 'Label for shared notes options',
+  },
+  pinnedNotification: {
+    id: 'app.notes.pinnedNotification',
+    description: 'Message for pin shared notes success',
   },
 });
 
@@ -78,6 +83,7 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
           label: intl.formatMessage(intlMessages.pinNotes),
           onClick: () => {
             handlePinSharedNotes(true);
+            notifyCustom(intl.formatMessage(intlMessages.pinnedNotification), 'success', 'checkCircle');
           },
         },
       );

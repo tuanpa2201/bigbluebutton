@@ -162,7 +162,7 @@ export const ChatHeader = styled(Header)`
 
 export const ChatAvatar = styled.div<ChatAvatarProps>`
   flex: 0 0 2.25rem;
-  margin: 0px calc(0.5rem) 0px 0px;
+  margin: 0px 8px 0px 0px;
   box-flex: 0;
   position: relative;
   height: 2.25rem;
@@ -247,7 +247,7 @@ export const Container = styled.div<{ $sequence: number }>`
   outline: none;
 
   &:not(:first-of-type) {
-    margin-top: calc((${fontSizeSmaller} + ${lgPadding} * 2) / 2);
+    margin-top: 8px;
   }
 
   &[data-focusable="false"] {
@@ -263,9 +263,6 @@ export const MessageItemWrapper = styled.div`
 
 export const DeleteMessage = styled.span`
   color: ${colorGrayLight};
-  padding: ${mdPadding} ${xlPadding};
-  border: 1px solid ${colorGrayLightest};
-  border-radius: 0.375rem;
 `;
 
 export const ChatHeading = styled.div`

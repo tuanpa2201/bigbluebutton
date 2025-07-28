@@ -168,9 +168,9 @@ class App extends Component {
 
     if (prevProps.currentUserRaiseHand !== currentUserRaiseHand) {
       if (currentUserRaiseHand === true) {
-        notify(intl.formatMessage(intlMessages.raisedHand), 'info', 'user');
+        notify(intl.formatMessage(intlMessages.raisedHand), 'success', 'user');
       } else {
-        notify(intl.formatMessage(intlMessages.loweredHand), 'info', 'clear_status');
+        notify(intl.formatMessage(intlMessages.loweredHand), 'success', 'clear_status');
       }
     }
   }

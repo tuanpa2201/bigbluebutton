@@ -3,6 +3,7 @@ import { capitalize } from 'radash';
 import TooltipContainer from '/imports/ui/components/common/tooltip/container';
 import { defineMessages, useIntl } from 'react-intl';
 import Styled from './styles';
+import JoypixelsEmoji from '/imports/ui/components/common/JoypixelsEmoji';
 
 const intlMessages = defineMessages({
   reactionLabel: {
@@ -77,15 +78,12 @@ const ReactionItem: React.FC<ReactionItemProps> = (props) => {
           }
         }}
       >
-        <em-emoji
+        <JoypixelsEmoji
+          native={reactionEmoji}
+          padding="0 2px 0 0"
           size={parseFloat(
             window.getComputedStyle(document.documentElement).fontSize,
           )}
-          emoji={{
-            id: reactionEmojiId,
-            native: reactionEmoji,
-          }}
-          native={reactionEmoji}
         />
         <span>{count}</span>
         <span className="sr-only" id={id}>{label}</span>

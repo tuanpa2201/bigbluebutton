@@ -14,8 +14,10 @@ export const ChatMessage = styled.div<ChatMessageProps>`
   word-break: break-word;
 
   & img {
-    max-width: 100%;
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    max-width: 24px;
+    max-height: 24px;
   }
 
   & p {
@@ -46,6 +48,19 @@ export const ChatMessage = styled.div<ChatMessageProps>`
   }
   & h6 {
     margin: 0;
+  }
+  
+  & span {
+    display: inline-flex;
+    align-items: center;
+    color: var(--Text-Primary, #313131);
+
+    /* Regular/M */
+    font-family: "FS PF BeauSans Pro", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px; /* 150% */
   }
 `;
 

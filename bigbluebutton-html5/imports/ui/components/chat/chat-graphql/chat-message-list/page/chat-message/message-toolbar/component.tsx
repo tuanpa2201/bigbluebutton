@@ -2,7 +2,6 @@ import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import {
   Container,
-  Divider,
   EmojiButton,
   Root,
 } from './styles';
@@ -79,7 +78,6 @@ const ChatMessageToolbar: React.FC<ChatMessageToolbarProps> = (props) => {
   const showReactionsButton = chatReactionsEnabled;
   const showEditButton = chatEditEnabled && own;
   const showDeleteButton = chatDeleteEnabled && (own || (amIModerator && !isBreakoutRoom));
-  const showDivider = (showReplyButton || showReactionsButton) && (showEditButton || showDeleteButton);
 
   const container = (
     <Container className="chat-message-toolbar">
@@ -88,7 +86,7 @@ const ChatMessageToolbar: React.FC<ChatMessageToolbarProps> = (props) => {
         <Tooltip title={intl.formatMessage(intlMessages.replyTooltip)}>
           <EmojiButton
             aria-label={intl.formatMessage(intlMessages.reply, { 0: messageSequence })}
-            icon="undo"
+            svgIcon="reply"
             color="light"
             onClick={onReply}
           />
@@ -103,19 +101,18 @@ const ChatMessageToolbar: React.FC<ChatMessageToolbarProps> = (props) => {
             e.stopPropagation();
             onReactionPopoverOpenChange(true);
           }}
-          svgIcon="reactions"
+          svgIcon="reaction"
           color="light"
           data-test="reactionsPickerButton"
         />
       </Tooltip>
       )}
-      {showDivider && <Divider role="separator" />}
       {showEditButton && (
       <Tooltip title={intl.formatMessage(intlMessages.editTooltip)}>
         <EmojiButton
           aria-label={intl.formatMessage(intlMessages.editTooltip)}
           onClick={onEdit}
-          icon="pen_tool"
+          svgIcon="pen"
           color="light"
           data-test="editMessageButton"
         />
@@ -126,7 +123,7 @@ const ChatMessageToolbar: React.FC<ChatMessageToolbarProps> = (props) => {
         <EmojiButton
           aria-label={intl.formatMessage(intlMessages.deleteTooltip)}
           onClick={onDelete}
-          icon="delete"
+          svgIcon="trash"
           color="light"
           data-test="deleteMessageButton"
         />

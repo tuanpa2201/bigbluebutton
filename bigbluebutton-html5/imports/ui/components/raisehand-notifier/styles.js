@@ -16,7 +16,6 @@ import {
 } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   fontSizeXL,
-  fontSizeSmall,
 } from '/imports/ui/stylesheets/styled-components/typography';
 import {
   smallOnly,
@@ -62,7 +61,7 @@ const AvatarsExtra = styled.div`
 const ToastContent = styled.div`
   margin-right: ${smPaddingX};
   display: flex;
-  justify-content: space-between;
+  gap: 12px;
   // justify-content: flex-end;
   [dir="rtl"] & {
     margin-right: 0;
@@ -71,40 +70,30 @@ const ToastContent = styled.div`
 `;
 
 const IconWrapper = styled.div`
-  background-color: ${colorPrimary};
-  width: ${toastIconSide};
-  height: ${toastIconSide};
+  background-color: #56D6FF;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   
-  & > i {
-    position: relative;
-    color: ${colorWhite};
-    top: ${toastMargin};
-    left: ${toastMargin};
-    font-size: ${fontSizeXL};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
   
-    [dir="rtl"] & {
-      left: 0;
-      right: 10px;
-    }
-    @media ${smallOnly} {
-      {
-        top: ${toastMarginMobile};
-        left: ${toastMarginMobile};
-
-        [dir="rtl"] & {
-          left: 0;
-          right: ${toastMargin};
-        }
-      }
-    }
-  }
 `;
 
 const ToastMessage = styled.div`
-  font-size: ${fontSizeSmall};
   margin-top: ${toastMargin};
-  color: black;
+  overflow: hidden;
+  color: var(--Text-Primary, #FCFCFD);
+  text-overflow: ellipsis;
+
+  /* Medium/S */
+  font-family: "FS PF BeauSans Pro", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px; /* 142.857% */
 
   & > div {
     font-weight: bold;

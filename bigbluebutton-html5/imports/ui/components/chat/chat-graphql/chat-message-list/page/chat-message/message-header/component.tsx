@@ -1,5 +1,5 @@
 import React from 'react';
-import { useIntl, defineMessages, FormattedTime } from 'react-intl';
+import { useIntl, defineMessages } from 'react-intl';
 import Icon from '/imports/ui/components/common/icon/component';
 import Styled from './styles';
 import Tooltip from '/imports/ui/components/common/tooltip/container';
@@ -38,9 +38,9 @@ const ChatMessageHeader: React.FC<ChatMessageHeaderProps> = ({
   if (sameSender) return null;
 
   return (
-    <Styled.HeaderContent role={role}>
+    <Styled.HeaderContent role={role} className="chat-message-header">
       <Styled.ChatHeaderText>
-        <Styled.ChatUserName currentlyInMeeting={currentlyInMeeting}>
+        <Styled.ChatUserName currentlyInMeeting={currentlyInMeeting} className="chat-message-header-name">
           {name}
         </Styled.ChatUserName>
         {
@@ -64,9 +64,6 @@ const ChatMessageHeader: React.FC<ChatMessageHeaderProps> = ({
             <Icon iconName="delete" />
           </Styled.EditLabel>
         )}
-        <Styled.ChatTime>
-          <FormattedTime value={dateTime} hour12={false} />
-        </Styled.ChatTime>
       </Styled.ChatHeaderText>
     </Styled.HeaderContent>
   );

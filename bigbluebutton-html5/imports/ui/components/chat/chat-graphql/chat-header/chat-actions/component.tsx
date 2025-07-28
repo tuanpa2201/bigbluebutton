@@ -109,7 +109,7 @@ const ChatActions: React.FC = () => {
       {
         key: uniqueIdsRef.current[0],
         enable: enableSaveAndCopyPublicChat,
-        icon: 'download',
+        svgIcon: 'document_save',
         dataTest: 'chatSave',
         label: intl.formatMessage(intlMessages.save),
         onClick: () => {
@@ -120,7 +120,7 @@ const ChatActions: React.FC = () => {
       {
         key: uniqueIdsRef.current[1],
         enable: enableSaveAndCopyPublicChat,
-        icon: 'copy',
+        svgIcon: 'copy',
         id: 'clipboardButton',
         dataTest: 'chatCopy',
         label: intl.formatMessage(intlMessages.copy),
@@ -133,7 +133,7 @@ const ChatActions: React.FC = () => {
         key: uniqueIdsRef.current[2],
         enable: true,
         disabled: !userIsModerator || meetingIsBreakout,
-        icon: 'delete',
+        svgIcon: 'trash',
         dataTest: 'chatClear',
         label: intl.formatMessage(intlMessages.clear),
         onClick: () => chatPublicClearHistory(),

@@ -3,8 +3,8 @@ import { colorGrayLightest, colorOffWhite, colorGrayLighter } from '/imports/ui/
 
 const EmojiWrapper = styled.button<{ highlighted: boolean }>`
   background: none;
-  border-radius: 1rem;
-  padding: 0.375rem 1rem;
+  border-radius: 8px;
+  padding: 4px;
   line-height: 1;
   display: flex;
   flex-wrap: nowrap;

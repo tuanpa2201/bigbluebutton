@@ -119,17 +119,20 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
 
   const renderHeaderOnMedia = () => {
     return amIPresenter ? (
-      <Styled.Header
-        rightButtonProps={{
-          'aria-label': intl.formatMessage(intlMessages.unpinNotes),
-          'data-test': 'unpinNotes',
-          icon: 'close',
-          label: intl.formatMessage(intlMessages.unpinNotes),
-          onClick: () => {
-            handlePinSharedNotes(false);
-          },
-        }}
-      />
+      <div className="unpinNotes">
+        <Styled.Header
+          rightButtonProps={{
+            'data-test': 'unpinNotes',
+            'aria-describedby': '',
+            icon: 'close',
+            onClick: () => {
+              handlePinSharedNotes(false);
+            },
+
+          }}
+        />
+        <span className="unpinNotes_tooltip">{intl.formatMessage(intlMessages.unpinNotes)}</span>
+      </div>
     ) : null;
   };
 

@@ -16,7 +16,7 @@ const PresentationUploaderToastContainer = (props) => {
     EXPORTING_PRESENTATIONS_SUBSCRIPTION,
   );
 
-  // Force show toast in first render, since default.pdf is completely uploaded at this point
+  // Force show toast in first render, since Default.pdf is completely uploaded at this point
   const [forceShowToast, setForceShowToast] = useState(true);
   const [setPresentationUploadCompletionNotified] = useMutation(SET_PRESENTATION_RENDERED_IN_TOAST);
   const presentations = presentationData?.pres_presentation || [];

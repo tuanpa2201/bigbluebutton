@@ -69,7 +69,7 @@ const Chat: React.FC<ChatProps> = ({ isRTL }) => {
   }, []);
 
   return (
-    <Styled.Chat isRTL={isRTL} isChrome={isChrome}>
+    <Styled.Chat isRTL={isRTL} isChrome={isChrome} className="chat-container">
       <ChatHeader />
       <ChatMessageListContainer />
       <ChatMessageFormContainer />

@@ -19,6 +19,14 @@ const defaultIcons = {
   default: 'about',
 };
 
+const defaultSvgIcons = {
+  info: 'info',
+  success: 'check_circle',
+  warning: 'alert_triangle',
+  error: 'cross_circle',
+  default: 'info',
+};
+
 const Toast = ({
   icon = null,
   svgIcon = null,
@@ -37,8 +45,9 @@ const Toast = ({
         )
         : (
           <Styled.ToastIcon className="toastIcon" small={small}>
-            {/*<Icon iconName={icon || defaultIcons[type]} />*/}
-            <SvgIcon iconName="checkCircle" />
+            {icon && <Icon iconName={icon || defaultIcons[type]} />}
+            {!icon && <SvgIcon iconName={defaultSvgIcons[type] || defaultSvgIcons.default} />}
+
           </Styled.ToastIcon>
         )}
       <Styled.ToastMessage data-test="toastSmallMsg">

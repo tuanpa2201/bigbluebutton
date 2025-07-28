@@ -1,11 +1,9 @@
 import styled from 'styled-components';
 import {
   colorBlueLight,
-  colorText,
   colorGrayLighter,
   colorDanger,
   colorGrayDark,
-  colorGrayLightest,
 } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   smPaddingX,
@@ -47,9 +45,9 @@ const Wrapper = styled.div`
 
 const Input = styled(TextareaAutosize)`
   flex: 1;
-  background: #fff;
+  background: #F7F8F9;
   background-clip: padding-box;
-  color: ${colorText};
+  color: #313131;
   -webkit-appearance: none;
   padding: calc(${smPaddingY} * 2.5) calc(${smPaddingX} * 1.25);
   resize: none;
@@ -76,6 +74,11 @@ const Input = styled(TextareaAutosize)`
     cursor: not-allowed;
     opacity: .75;
     background-color: rgba(167,179,189,0.25);
+  }
+
+  &::placeholder {
+    color: #bbb;
+    opacity: 1;
   }
 `;
 
@@ -169,10 +172,11 @@ const InputWrapper = styled.div`
   min-width: 0;
   z-index: 0;
   padding: 1px 0 1px 1px;
-  border: 1px solid ${colorGrayLightest};
+  border: none;
+  background-color: #F7F8F9;
 
   [dir='ltr'] & {
-    border-radius: 0.75rem 0 0 0.75rem;
+    border-radius: 8px;
   }
 
   [dir='rtl'] & {

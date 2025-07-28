@@ -1,5 +1,6 @@
 import React from 'react';
 import Styled from './styles';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 interface ChatMessageNotificationContentProps {
   text: string;
@@ -10,7 +11,7 @@ const ChatMessageNotificationContent: React.FC<ChatMessageNotificationContentPro
   const { text, iconName } = props;
   return (
     <Styled.Root data-test="chatMessageNotificationContent">
-      {iconName && <Styled.Icon iconName={iconName} />}
+      {iconName && <SvgIcon iconName={iconName} />}
       <Styled.Typography>
         {text}
       </Styled.Typography>

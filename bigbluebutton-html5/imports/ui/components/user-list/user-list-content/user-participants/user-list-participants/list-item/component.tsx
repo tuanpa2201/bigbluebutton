@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useContext } from 'react';
 import * as PluginSdk from 'bigbluebutton-html-plugin-sdk';
 import {
@@ -18,8 +17,11 @@ import useWhoIsTalking from '/imports/ui/core/hooks/useWhoIsTalking';
 import useWhoIsUnmuted from '/imports/ui/core/hooks/useWhoIsUnmuted';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
-import joypixels from 'emoji-toolkit';
+import { useMutation } from '@apollo/client';
 import Styled from './styles';
+import JoypixelsEmoji from '/imports/ui/components/common/JoypixelsEmoji';
+import { convertRemToPixels } from '/imports/utils/dom-utils';
+import { SET_RAISE_HAND } from '/imports/ui/core/graphql/mutations/userMutations';
 
 const messages = defineMessages({
   moderator: {
@@ -87,11 +89,6 @@ const renderUserListItemIconsFromPlugin = (
     </Styled.IconRightContainer>
   );
 });
-
-const Emoji: React.FC<EmojiProps> = ({ native, size }) => (
-  // <em-emoji emoji={emoji} native={native} size={size} />
-  <span dangerouslySetInnerHTML={{ __html: joypixels.toImage(native) }} />
-);
 
 const UserListItem: React.FC<UserListItemProps> = ({
   user, lockSettings, index, isSelected,
@@ -188,6 +185,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
       native: '⏰',
     },
   ];
+  const emojiSize = convertRemToPixels(1.3);
   const getIconUser = () => {
     if (user.isDialIn) {
       return <Icon iconName="volume_level_2" />;
@@ -199,11 +197,11 @@ const UserListItem: React.FC<UserListItemProps> = ({
     // }
     if (user.away === true) {
       return reactionsEnabled
-        ? <span dangerouslySetInnerHTML={{ __html: joypixels.toImage(emojiIcons[1].native) }} />
+        ? <JoypixelsEmoji native={emojiIcons[1].native} size={emojiSize} />
         : <Icon iconName="time" />;
     }
     if (user.reactionEmoji && user.reactionEmoji !== 'none') {
-      return <span className="user-avatar-icon" dangerouslySetInnerHTML={{ __html: joypixels.toImage(user.reactionEmoji) }} />;
+      return <JoypixelsEmoji native={user.reactionEmoji} size={24} />;
     }
     if (user.name && userAvatarFiltered.length === 0) {
       return user.name.toLowerCase().slice(0, 2);
@@ -237,7 +235,16 @@ const UserListItem: React.FC<UserListItemProps> = ({
     { key: 'whiteboardAccess', name: 'whiteboardAccess', clazzName: 'whiteboardAccess' },
     { key: 'micSlash', name: 'micSlash', clazzName: 'micSlash' },
   ];
+  const [setRaiseHand] = useMutation(SET_RAISE_HAND);
 
+  const lowerUserHands = (userId: string) => {
+    setRaiseHand({
+      variables: {
+        userId,
+        raiseHand: false,
+      },
+    });
+  };
   return (
     <Styled.UserItemContents id={`user-index-${index}`} tabIndex={-1} data-test={(user.userId === Auth.userID) ? 'userListItemCurrent' : 'userListItem'} role="listitem">
       <Styled.Avatar
@@ -274,7 +281,8 @@ const UserListItem: React.FC<UserListItemProps> = ({
         </Styled.UserNameSub>
       </Styled.UserNameContainer>
       <Styled.RightIconHandContainer hand={user.raiseHand}>
-        {user.raiseHand ? <span dangerouslySetInnerHTML={{ __html: joypixels.toImage(emojiIcons[0].native) }} /> : ''}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+        {user.raiseHand ? <div onClick={() => lowerUserHands(user.userId)}><JoypixelsEmoji native={emojiIcons[0].native} size={emojiSize} /></div> : ''}
       </Styled.RightIconHandContainer>
       <Styled.RightBlockIconsContainer
         className="rightIconNomal"
