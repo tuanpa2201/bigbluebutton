@@ -453,7 +453,7 @@ class App extends React.Component {
                         : intl.formatMessage({ id: 'app.learningDashboard.indicators.usersTotal', defaultMessage: 'Total Number Of Users' })
                     }
                     number={usersCount}
-                    cardClass={tab === TABS.OVERVIEW ? 'card-restyle-user' : 'hover:card-restyle-user border-transparent'}
+                    cardClass={tab === TABS.OVERVIEW ? 'card-restyle-user' : 'card-restyle-user card-restyle-inactive'}
                     iconClass="db-icon-restyle db-icon-user"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -472,7 +472,7 @@ class App extends React.Component {
                       minimumFractionDigits: 0,
                       maximumFractionDigits: 1,
                     })}
-                    cardClass={tab === TABS.OVERVIEW_ACTIVITY_SCORE ? 'card-restyle-score' : 'hover:card-restyle-score border-transparent'}
+                    cardClass={tab === TABS.OVERVIEW_ACTIVITY_SCORE ? 'card-restyle-score' : 'card-restyle-score card-restyle-inactive'}
                     iconClass="db-icon-restyle db-icon-score"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -495,7 +495,7 @@ class App extends React.Component {
                   <CardBody
                     name={intl.formatMessage({ id: 'app.learningDashboard.indicators.timeline', defaultMessage: 'Timeline' })}
                     number={totalOfReactions()}
-                    cardClass={tab === TABS.TIMELINE ? 'card-restyle-time' : 'hover:card-restyle-time border-transparent'}
+                    cardClass={tab === TABS.TIMELINE ? 'card-restyle-time' : 'card-restyle-time card-restyle-inactive'}
                     iconClass="db-icon-restyle db-icon-time"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -519,7 +519,7 @@ class App extends React.Component {
                   <CardBody
                     name={intl.formatMessage({ id: 'app.learningDashboard.indicators.polls', defaultMessage: 'Polls' })}
                     number={Object.values(activitiesJson.polls || {}).length}
-                    cardClass={tab === TABS.POLLING ? 'card-restyle-poll' : 'hover:card-restyle-poll border-transparent'}
+                    cardClass={tab === TABS.POLLING ? 'card-restyle-poll' : 'card-restyle-poll card-restyle-inactive'}
                     iconClass="db-icon-restyle db-icon-poll"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -536,7 +536,7 @@ class App extends React.Component {
                     <CardBody
                       name={genericDataCardTitle}
                       number={genericDataColumnTitleList.length}
-                      cardClass={tab === TABS.POLLING ? 'border-red-500' : 'hover:border-red-500 border-transparent'}
+                      cardClass={tab === TABS.POLLING ? 'border-red-500' : 'hover:border-red-500 card-restyle-inactive'}
                       iconClass="db-icon-restyle db-icon-user"
                     >
                       <svg
