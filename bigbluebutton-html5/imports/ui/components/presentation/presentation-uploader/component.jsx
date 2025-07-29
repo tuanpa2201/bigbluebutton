@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component, useCallback} from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import { TAB } from '/imports/utils/keyCodes';
@@ -14,6 +14,8 @@ import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import Radio from '/imports/ui/components/common/radio/component';
 import { unique } from 'radash';
 import Session from '/imports/ui/services/storage/in-memory';
+import { ACTIONS, PANELS } from '/imports/ui/components/layout/enums';
+import { layoutDispatch } from '/imports/ui/components/layout/context';
 
 const { isMobile } = deviceInfo;
 const propTypes = {
@@ -45,6 +47,7 @@ const propTypes = {
   }).isRequired,
   isPresenter: PropTypes.bool.isRequired,
   exportPresentation: PropTypes.func.isRequired,
+  contextDispatch: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -320,6 +323,20 @@ class PresentationUploader extends Component {
     this.getPresentationsToShow = this.getPresentationsToShow.bind(this);
     this.handleDownloadableChange = this.handleDownloadableChange.bind(this);
   }
+
+  closePanel = () => {
+    const { contextDispatch } = this.props;
+
+    contextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
+      value: false,
+    });
+
+    contextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
+      value: PANELS.NONE,
+    });
+  };
 
   componentDidUpdate(prevProps) {
     const { isOpen, presentations: propPresentations, currentPresentation, intl } = this.props;
@@ -1142,7 +1159,8 @@ class PresentationUploader extends Component {
                     <Styled.Title>{intl.formatMessage(intlMessages.title)}</Styled.Title>
                     <Styled.ActionWrapper>
                       <Styled.DismissButton
-                        onClick={this.handleDismiss}
+                        // onClick={this.handleDismiss}
+                        onClick={this.closePanel}
                         // label={intl.formatMessage(intlMessages.dismissLabel)}
                         // aria-describedby={intl.formatMessage(intlMessages.dismissDesc)}
                       >

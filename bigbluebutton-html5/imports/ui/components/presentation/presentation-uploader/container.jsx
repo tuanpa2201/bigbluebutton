@@ -23,6 +23,7 @@ import {
 } from '../mutations';
 import { useStorageKey } from '/imports/ui/services/storage/hooks';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
+import { layoutDispatch } from '/imports/ui/components/layout/context';
 
 const PresentationUploaderContainer = (props) => {
   const { data: currentUserData } = useCurrentUser((user) => ({
@@ -74,6 +75,7 @@ const PresentationUploaderContainer = (props) => {
   const PRESENTATION_CONFIG = window.meetingClientSettings.public.presentation;
   const isOpen = (useStorageKey('showUploadPresentationView') || false) && presentationEnabled;
   const selectedToBeNextCurrent = useStorageKey('selectedToBeNextCurrent') || null;
+  const contextDispatch = layoutDispatch();
 
   return userIsPresenter && (
     <ErrorBoundary Fallback={FallbackModal}>
@@ -103,6 +105,7 @@ const PresentationUploaderContainer = (props) => {
         handleFiledrop={Service.handleFiledrop}
         dispatchDisableDownloadable={Service.dispatchDisableDownloadable}
         dispatchEnableDownloadable={Service.dispatchEnableDownloadable}
+        contextDispatch={contextDispatch}
         {...props}
       />
     </ErrorBoundary>

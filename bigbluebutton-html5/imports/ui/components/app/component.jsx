@@ -16,7 +16,7 @@ import BannerBarContainer from '/imports/ui/components/banner-bar/container';
 import RaiseHandNotifier from '/imports/ui/components/raisehand-notifier/container';
 import ManyWebcamsNotifier from '/imports/ui/components/video-provider/many-users-notify/container';
 import AudioCaptionsSpeechContainer from '/imports/ui/components/audio/audio-graphql/audio-captions/speech/component';
-import UploaderContainer from '/imports/ui/components/presentation/presentation-uploader/container';
+// import UploaderContainer from '/imports/ui/components/presentation/presentation-uploader/container';
 import ScreenReaderAlertContainer from '../screenreader-alert/container';
 import ScreenReaderAlertAdapter from '../screenreader-alert/adapter';
 import WebcamContainer from '../webcam/component';
