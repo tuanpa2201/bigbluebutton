@@ -29,7 +29,7 @@
 }
 
 .card-restyle-user-inactive {
-  border-left: 4px solid transparent !important; !important;
+  border-left: 4px solid transparent !important;
   background-color: var(--Secondary-01, #FBE3E8) !important;
   align-items: center;
 }
