@@ -126,16 +126,16 @@ const UserListItem: React.FC<UserListItemProps> = ({
   if (user.mobile && LABEL.mobile) {
     subs.push(intl.formatMessage(messages.mobile));
   }
-  if ((user.locked || user.userLockSettings?.disablePublicChat)
-      && (user.userLockSettings?.disablePublicChat || lockSettings?.hasActiveLockSetting) && !user.isModerator) {
-    subs.push(
-      <span key={uniqueId('lock-')}>
-        <Icon iconName="lock" />
-        &nbsp;
-        {intl.formatMessage(messages.locked)}
-      </span>,
-    );
-  }
+  // if ((user.locked || user.userLockSettings?.disablePublicChat)
+  //     && (user.userLockSettings?.disablePublicChat || lockSettings?.hasActiveLockSetting) && !user.isModerator) {
+  //   subs.push(
+  //     <span key={uniqueId('lock-')}>
+  //       <Icon iconName="lock" />
+  //       &nbsp;
+  //       {intl.formatMessage(messages.locked)}
+  //     </span>,
+  //   );
+  // }
   if (user.lastBreakoutRoom?.currentlyInRoom) {
     subs.push(
       <span key={uniqueId('breakout-')}>
@@ -275,6 +275,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
           </TooltipContainer>
           &nbsp;
           {(user.userId === Auth.userID) ? `(${intl.formatMessage(messages.you)})` : ''}
+          {((user.locked || user.userLockSettings?.disablePublicChat) && (user.userLockSettings?.disablePublicChat || lockSettings?.hasActiveLockSetting) && !user.isModerator)? <div className='lock_user_chat'><SvgIcon iconName='lock2' /></div>:''}
         </Styled.UserName>
         <Styled.UserNameSub data-test={user.mobile ? 'mobileUser' : undefined}>
           {subs.length ? addSeparator(subs) : null}
