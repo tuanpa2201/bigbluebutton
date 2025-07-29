@@ -28,10 +28,25 @@
   border-radius: 8px;
 }
 
-.card-restyle-inactive {
-  --tw-border-opacity: 1;
-  border-color: transparent !important;
+.card-restyle-user-inactive {
+  border-left: 4px solid transparent !important; !important;
+  background-color: var(--Secondary-01, #FBE3E8) !important;
+  align-items: center;
+}
+.card-restyle-score-inactive {
   border-left: 4px solid transparent !important;
+  background: var(--Secondary-02, #DEF3E7) !important;
+  align-items: center;
+}
+.card-restyle-time-inactive {
+  border-left: 4px solid transparent !important;
+  background: var(--Secondary-05, #E2F5FD) !important;
+  align-items: center;
+}
+.card-restyle-poll-inactive {
+  border-left: 4px solid transparent !important;
+  background: var(--Secondary-04, #E4DFF9) !important;
+  align-items: center;
 }
 
 .card-restyle-user {
