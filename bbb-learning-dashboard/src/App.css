@@ -28,26 +28,31 @@
   border-radius: 8px;
 }
 
-.border-transparent {
+.card-restyle-inactive {
   --tw-border-opacity: 1;
-  border-color: transparent;
+  border-color: transparent !important;
+  border-left: 4px solid transparent !important;
 }
 
 .card-restyle-user {
   border-left: 4px solid var(--Highlight-Light-Red, #EB5366) !important;
   background-color: var(--Secondary-01, #FBE3E8) !important;
+  align-items: center;
 }
 .card-restyle-score {
-  border-left: 4px solid var(--Highlight-Green, #6CC17C);
-  background: var(--Secondary-02, #DEF3E7);
+  border-left: 4px solid var(--Highlight-Green, #6CC17C) !important;
+  background: var(--Secondary-02, #DEF3E7) !important;
+  align-items: center;
 }
 .card-restyle-time {
-  border-left: 4px solid var(--Highlight-Cyan, #1BC8FF);
-  background: var(--Secondary-05, #E2F5FD);
+  border-left: 4px solid var(--Highlight-Cyan, #1BC8FF) !important;
+  background: var(--Secondary-05, #E2F5FD) !important;
+  align-items: center;
 }
 .card-restyle-poll {
-  border-left: 4px solid var(--Highlight-Purple, #9207FF);
-  background: var(--Secondary-04, #E4DFF9);
+  border-left: 4px solid var(--Highlight-Purple, #9207FF) !important;
+  background: var(--Secondary-04, #E4DFF9) !important;
+  align-items: center;
 }
 
 .db-icon-restyle {
