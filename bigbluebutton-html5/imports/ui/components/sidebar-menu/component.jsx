@@ -120,7 +120,6 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
   const handleClick = (key) => {
     const panelKey = PANELS[key.toUpperCase()];
     if (currentPanel === panelKey) {
-      // Nếu đang mở đúng tab, thì ẩn đi
       contextDispatch({
         type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
         value: PANELS.NONE,
@@ -131,7 +130,6 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
       });
     } else {
       if (panelKey === PANELS.SHARED_NOTES && isPinned) return;
-      // Nếu chưa mở, thì mở tab đó
       contextDispatch({
         type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
         value: panelKey,

@@ -32,23 +32,29 @@
 }
 
 .btn.btn-primary:hover {
-    color: var(--Neutral-04, #D6D6D6) !important;
-    border-radius: var(--p-border-radius-button) !important;
-    background: var(--Color-01, #E03) !important;
+    &:not([aria-disabled="true"]){
+        color: var(--Neutral-04, #D6D6D6) !important;
+        border-radius: var(--p-border-radius-button) !important;
+        background: var(--Color-01, #E03) !important;
+    }
 }
 
 .btn.btn-primary:focus {
-    border: unset;
-    border-radius: var(--p-border-radius-button) !important;;
-    background: var(--Color-01, #E03) !important;
-    box-shadow: 0px 3px 0px 0px #CB132E inset !important;
+    &:not([aria-disabled="true"]){
+        border: unset;
+        border-radius: var(--p-border-radius-button) !important;;
+        background: var(--Color-01, #E03) !important;
+        box-shadow: 0px 3px 0px 0px #CB132E inset !important;
+    }
 }
 
 .btn.btn-primary:active {
-    border: unset;
-    border-radius: var(--p-border-radius-button) !important;;
-    background: var(--Color-01, #E03) !important;
-    box-shadow: 0px 3px 0px 0px #CB132E inset !important;
+    &:not([aria-disabled="true"]){
+        border: unset;
+        border-radius: var(--p-border-radius-button) !important;;
+        background: var(--Color-01, #E03) !important;
+        box-shadow: 0px 3px 0px 0px #CB132E inset !important;
+    }
 }
 
 .btn.btn-primary[aria-disabled="true"],

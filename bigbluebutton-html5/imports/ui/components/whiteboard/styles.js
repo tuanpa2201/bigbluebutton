@@ -146,6 +146,11 @@ const TldrawV2GlobalStyle = createGlobalStyle`
   .tlui-layout__mobile .tlui-button__tool {
     height: 30px !important;
     width: 20px !important;
+    color: #2F384C !important;
+  }
+  
+  .tlui-layout__mobile .tlui-button__tool[data-state='selected'] .tlui-icon {
+    color: #FFFFFF !important;
   }
 
   .tlui-layout__mobile .tlui-toolbar__overflow > div {

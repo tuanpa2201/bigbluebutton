@@ -200,13 +200,23 @@ const PollConfigButton = styled(Button)`
   }
 
   ${({ selected }) => selected && `
-    background-color: ${colorGrayLightest};
-    font-size: ${fontSizeBase};
+    // background-color: ${colorGrayLightest};
+    background: var(--Highlight-Light-Red, #EB5366);
+    // font-size: ${fontSizeBase};
 
+    box-shadow: none !important;
+    & > span {
+      color: var(--Neutral-00, #FFF);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px; /* 142.857% */
+    }
     &:hover,
     &:focus,
     &:active {
-      background-color: ${colorGrayLightest} !important;
+      // background-color: ${colorGrayLightest} !important;
+      background-color: var(--Highlight-Light-Red, #EB5366) !important;
       box-shadow: none !important;
     }
   `}
