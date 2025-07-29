@@ -20,3 +20,54 @@
     text-align: right;
   }
 }
+
+.card-restyle {
+  height: 120px;
+  padding: 16px 22px !important;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.border-transparent {
+  --tw-border-opacity: 1;
+  border-color: transparent;
+}
+
+.card-restyle-user {
+  border-left: 4px solid var(--Highlight-Light-Red, #EB5366) !important;
+  background-color: var(--Secondary-01, #FBE3E8) !important;
+}
+.card-restyle-score {
+  border-left: 4px solid var(--Highlight-Green, #6CC17C);
+  background: var(--Secondary-02, #DEF3E7);
+}
+.card-restyle-time {
+  border-left: 4px solid var(--Highlight-Cyan, #1BC8FF);
+  background: var(--Secondary-05, #E2F5FD);
+}
+.card-restyle-poll {
+  border-left: 4px solid var(--Highlight-Purple, #9207FF);
+  background: var(--Secondary-04, #E4DFF9);
+}
+
+.db-icon-restyle {
+  --tw-bg-opacity: 1;
+  --tw-text-opacity: 1;
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  padding: 0.7rem;
+}
+
+.db-icon-user {
+  background: var(--Highlight-Light-Red, #EB5366);
+}
+.db-icon-score {
+  background: var(--Highlight-Green, #6CC17C);
+}
+.db-icon-time {
+  background: var(--Highlight-Cyan, #1BC8FF);
+}
+.db-icon-poll {
+  background: var(--Highlight-Purple, #9207FF);
+}
