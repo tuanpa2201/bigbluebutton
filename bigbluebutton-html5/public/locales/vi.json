@@ -414,7 +414,7 @@
   "app.presentation.modal.clearAnnotationsConfirmLabel": "Xóa",
   "app.presentationUploder.title": "Tải lên/quản lý bài trình bày",
   "app.presentationUploder.message": "Với vai trò là người thuyết trình, bạn có thể tải lên bất kỳ tệp Office hoặc PDF nào. Chúng tôi khuyến nghị sử dụng tệp PDF để có kết quả hiển thị tốt nhất. Vui lòng đảm bảo rằng bạn đã chọn một bài trình bày bằng cách đánh dấu vào ô tròn bên trái",
-  "app.presentationUploader.exportHint": "Lưu ý: Trong menu “Tùy chọn xuất”, bạn có thể bật chức năng tải bản trình bày gốc và cung cấp liên kết tải kèm chú thích trên trò chuyện công kha",
+  "app.presentationUploader.exportHint": "Lưu ý: Trong menu “Tùy chọn xuất”, bạn có thể bật chức năng tải bản trình bày gốc và cung cấp liên kết tải kèm chú thích trên trò chuyện công khai",
   "app.presentationUploader.exportToastHeader": "Đang gửi đến trò chuyện ({0} mục)",
   "app.presentationUploader.exportToastHeaderPlural": "Đang gửi đến trò chuyện ({0} mục)",
   "app.presentationUploader.exporting": "Đang gửi đến trò chuyện",
