@@ -14,10 +14,10 @@ const Layout = styled(FlexColumn)``;
 
 const DtfInvert = `
   body {
-    background-color: var(--darkreader-neutral-background) !important;
+    background-color: #2B2E32 !important;
   }
   header[id="Navbar"] {
-    background-color: var(--darkreader-neutral-background) !important;
+    background-color: #3B3F43 !important;
   }
   section[id="ActionsBar"] {
     background-color: var(--darkreader-neutral-background) !important;
@@ -67,6 +67,24 @@ const DtfInvert = `
   }
   #connectionBars > div {
     background-color: var(--darkreader-neutral-text) !important;
+  }
+  .modal-header {
+    background-color: rgb(48, 51, 56) !important;
+  }
+  .modal-header .modal-title {
+    color: #FCFCFD !important;
+  }
+  
+  .audio_modal-content i {
+   color: #F2F2F2!important;
+    background:#303338 !important;
+  }
+ 
+  
+  .audio-settings-modal {
+    & .subtitle {
+      color: #C5C9CD !important; 
+    }
   }
 `;
 

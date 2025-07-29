@@ -29,7 +29,12 @@ export const setDarkTheme = (value) => {
 
   if (value && !DarkReader.isEnabled()) {
     DarkReader.enable(
-      { brightness: 100, contrast: 90 },
+      {
+        brightness: 100,
+        contrast: 90,
+        darkSchemeBackgroundColor: '#3B3F43',
+        darkSchemeTextColor: '#FCFCFD',
+      },
       {
         invert,
         ignoreInlineStyle: [Styled.DtfCss],

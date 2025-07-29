@@ -42,7 +42,6 @@
 
     & header {
         padding: 12px 16px;
-        background-color: var(--bg-00-light, #FFF);
         text-align: center;
         border-bottom: unset;
     }
@@ -51,32 +50,6 @@
         padding: 1rem;
     }
 
-    & button {
-        padding: 22px 2rem;
-
-        & i {
-            color: var(--icon-primary-light, #2F384C);
-
-            &:hover {
-                color: rgba(47, 56, 76, 0.75);
-            }
-        }
-
-        &:first-child {
-            margin: 0 2px 0 0 ;
-        }
-
-        & span:last-child {
-            color: var(--text-primary-light, #313131);
-            text-align: center;
-
-            /* Regular/S */
-            font-size: 14px!important;
-            font-style: normal;
-            font-weight: 400!important;
-            line-height: 20px; /* 142.857% */
-        }
-    }
 }
 
 /* SETTING MODAL */
@@ -89,7 +62,6 @@
     & header {
         padding: 12px 16px;
 
-        border-bottom: 1px solid var(--border-00-light, #EFEFEF);
         background: var(--bg-01-light, #F7F8F9);
 
         & h2 {

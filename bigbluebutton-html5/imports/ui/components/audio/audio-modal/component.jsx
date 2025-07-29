@@ -8,6 +8,7 @@ import {
   defineMessages, injectIntl, FormattedMessage,
 } from 'react-intl';
 import { useMutation } from '@apollo/client';
+import * as DarkReader from 'darkreader';
 import Styled from './styles';
 import AudioSettings from '../audio-settings/component';
 import EchoTest from '../echo-test/component';
@@ -25,7 +26,7 @@ import {
 } from '/imports/ui/components/audio/audio-graphql/audio-controls/input-stream-live-selector/service';
 import Session from '/imports/ui/services/storage/in-memory';
 import logger from '/imports/startup/client/logger';
-import ThreeBarsLoader from "/imports/ui/components/ThreeBarsLoader/ThreeBarsLoader";
+import ThreeBarsLoader from '/imports/ui/components/ThreeBarsLoader/ThreeBarsLoader';
 
 const propTypes = {
   intl: PropTypes.shape({
@@ -449,6 +450,7 @@ const AudioModal = ({
           {!hideMicrophone && !isMobileNative && (
             <>
               <Styled.AudioModalButton
+                isDarkThemeEnabled={DarkReader.isEnabled()}
                 label={intl.formatMessage(intlMessages.microphoneLabel)}
                 data-test="microphoneBtn"
                 className="microphoneBtn"
@@ -470,6 +472,7 @@ const AudioModal = ({
           {listenOnlyMode && (
             <>
               <Styled.AudioModalButton
+                isDarkThemeEnabled={DarkReader.isEnabled()}
                 label={intl.formatMessage(intlMessages.listenOnlyLabel)}
                 data-test="listenOnlyBtn"
                 className="listenOnlyBtn"
