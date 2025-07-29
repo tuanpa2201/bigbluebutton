@@ -34,34 +34,39 @@ const Toast = ({
   message,
   content,
   small,
-}) => (
-  <Styled.ToastContainer small={small} data-test="toastContainer">
-    <Styled.Toast type={type}>
-      {svgIcon
-        ? (
-          <Styled.ToastIcon small={small}>
-            <SvgIcon iconName={svgIcon} />
-          </Styled.ToastIcon>
-        )
-        : (
-          <Styled.ToastIcon className="toastIcon" small={small}>
-            {icon && <Icon iconName={icon || defaultIcons[type]} />}
-            {!icon && <SvgIcon iconName={defaultSvgIcons[type] || defaultSvgIcons.default} />}
+}) => {
+  if (icon && icon === 'polling') {
+    icon = null
+  }
+  return (
+      <Styled.ToastContainer small={small} data-test="toastContainer">
+        <Styled.Toast type={type}>
+          {svgIcon
+              ? (
+                  <Styled.ToastIcon small={small}>
+                    <SvgIcon iconName={svgIcon} />
+                  </Styled.ToastIcon>
+              )
+              : (
+                  <Styled.ToastIcon className="toastIcon" small={small}>
+                    {icon && <Icon iconName={icon || defaultIcons[type]} />}
+                    {!icon && <SvgIcon iconName={defaultSvgIcons[type] || defaultSvgIcons.default} />}
 
-          </Styled.ToastIcon>
-        )}
-      <Styled.ToastMessage data-test="toastSmallMsg">
-        <span className={['text-primary', !content ? 'font-regular-s ' : 'font-medium-s'].join(' ')}>{message}</span>
-      </Styled.ToastMessage>
-    </Styled.Toast>
-    {content
-      ? (
-        <Styled.BackgroundColorInherit>
-          <span className="font-regular-s text-secondary">{content}</span>
-        </Styled.BackgroundColorInherit>
-      ) : null}
-  </Styled.ToastContainer>
-);
+                  </Styled.ToastIcon>
+              )}
+          <Styled.ToastMessage data-test="toastSmallMsg">
+            <span className={['text-primary', !content ? 'font-regular-s ' : 'font-medium-s'].join(' ')}>{message}</span>
+          </Styled.ToastMessage>
+        </Styled.Toast>
+        {content
+            ? (
+                <Styled.BackgroundColorInherit>
+                  <span className="font-regular-s text-secondary">{content}</span>
+                </Styled.BackgroundColorInherit>
+            ) : null}
+      </Styled.ToastContainer>
+  );
+}
 
 export default Toast;
 
