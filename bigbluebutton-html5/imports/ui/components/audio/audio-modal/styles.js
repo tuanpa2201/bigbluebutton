@@ -17,11 +17,32 @@ const AudioOptions = styled.span`
 `;
 
 const AudioModalButton = styled(Button)`
-  i {
-    color: #3c5764;
+  padding: 22px 2rem;
+
+  & i {
+    display: flex;
+    width: 90px;
+    height: 90px;
+    padding: 12px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    color: var(--icon-primary-light, #2F384C);
+    background: var(--bg-01-light, #F2F2F2);
+  
+    &:hover {
+      ${({ isDarkThemeEnabled }) => (isDarkThemeEnabled ? `
+        filter: brightness(85%);
+        `
+    : `
+        filter: brightness(85%);
+    `)}
+    }
   }
 
   // Modifies the audio button icon colour
+
   & span:first-child {
     display: inline-block;
     color: #1b3c4b;
@@ -36,6 +57,7 @@ const AudioModalButton = styled(Button)`
   }
 
   // When hovering over a button of class audioBtn, change the border colour of first span-child
+
   &:hover span:first-child,
   &:focus span:first-child {
     border: 5px solid ${colorPrimary};
@@ -43,11 +65,12 @@ const AudioModalButton = styled(Button)`
   }
 
   // Modifies the button label text
+
   & span:last-child {
     display: block;
     color: black;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
     margin-top: ${btnSpacing};
     line-height: 1.5;
   }
@@ -121,8 +144,6 @@ const Content = styled.div`
   padding: 0.5rem 0;
 
   button:first-child {
-    margin: 0 3rem 0 0;
-
     [dir="rtl"] & {
       margin: 0 0 0 3rem;
     }

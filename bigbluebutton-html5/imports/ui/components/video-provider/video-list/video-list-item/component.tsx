@@ -17,11 +17,12 @@ import VideoService from '/imports/ui/components/video-provider/service';
 import Styled from './styles';
 import withDragAndDrop from './drag-and-drop/component';
 import Auth from '/imports/ui/services/auth';
-import { VideoItem } from '/imports/ui/components/video-provider/types';
+import { User, VideoItem } from '/imports/ui/components/video-provider/types';
 import useCurrentUser from '/imports/ui/core/hooks/useCurrentUser';
 import { VIDEO_TYPES } from '/imports/ui/components/video-provider/enums';
 import PluginButtonContainer from '../../../plugins/plugin-button/container';
 import { UserCameraHelperAreas } from '../../../plugins-engine/extensible-areas/components/user-camera-helper/types';
+import JoypixelsEmoji from '/imports/ui/components/common/JoypixelsEmoji';
 
 const intlMessages = defineMessages({
   disableDesc: {
@@ -73,24 +74,24 @@ const renderPluginItems = (
     return (
       <>
         {
-          pluginItems.filter(
-            (pluginItem) => (pluginItem.displayFunction?.({ userId, streamId }) ?? true),
-          ).map((pluginItem) => {
-            const pluginButton = pluginItem;
-            const returnComponent = (
-              <PluginButtonContainer
-                key={`${pluginButton.type}-${pluginButton.id}-${pluginButton.label}`}
-                dark
-                bottom={bottom}
-                right={right}
-                icon={pluginButton.icon}
-                label={pluginButton.label}
-                onClick={({ browserClickEvent }) => pluginButton.onClick({ browserClickEvent, streamId, userId })}
-              />
-            );
-            return returnComponent;
-          })
-        }
+            pluginItems.filter(
+              (pluginItem) => (pluginItem.displayFunction?.({ userId, streamId }) ?? true),
+            ).map((pluginItem) => {
+              const pluginButton = pluginItem;
+              const returnComponent = (
+                <PluginButtonContainer
+                  key={`${pluginButton.type}-${pluginButton.id}-${pluginButton.label}`}
+                  dark
+                  bottom={bottom}
+                  right={right}
+                  icon={pluginButton.icon}
+                  label={pluginButton.label}
+                  onClick={({ browserClickEvent }) => pluginButton.onClick({ browserClickEvent, streamId, userId })}
+                />
+              );
+              return returnComponent;
+            })
+          }
       </>
     );
   }
@@ -141,7 +142,7 @@ const VideoListItem: React.FC<VideoListItemProps> = (props) => {
   const { animations, webcamBorderHighlightColor } = Settings.application;
   const talking = voiceUser?.talking;
   const raiseHand = (stream.type === VIDEO_TYPES.GRID && stream.raiseHand)
-    || (stream.type === VIDEO_TYPES.STREAM && stream.user.raiseHand);
+      || (stream.type === VIDEO_TYPES.STREAM && stream.user.raiseHand);
   const { data: currentUser } = useCurrentUser((u) => ({
     userId: u.userId,
     pinned: u.pinned,
@@ -159,7 +160,7 @@ const VideoListItem: React.FC<VideoListItemProps> = (props) => {
     reactionEmoji: u.reactionEmoji,
   }));
 
-  let user;
+  let user: Partial<User>;
   switch (stream.type) {
     case VIDEO_TYPES.STREAM: {
       user = stream.user;
@@ -273,7 +274,7 @@ const VideoListItem: React.FC<VideoListItemProps> = (props) => {
         squeezed={false}
       />
       <Styled.TopBar>
-        {raiseHand && <Styled.RaiseHand>✋</Styled.RaiseHand>}
+        {raiseHand && <JoypixelsEmoji native="🖐" size={32} />}
       </Styled.TopBar>
       <Styled.BottomBar>
         <UserActions
@@ -359,7 +360,7 @@ const VideoListItem: React.FC<VideoListItemProps> = (props) => {
   const renderDefaultButtons = () => (
     <>
       <Styled.TopBar>
-        {raiseHand && <Styled.RaiseHand>✋</Styled.RaiseHand>}
+        {raiseHand && <JoypixelsEmoji native="🖐" size={32} />}
         <PinArea
           stream={stream}
           amIModerator={amIModerator}
