@@ -86,7 +86,7 @@ const icons = [
   { key: 'userlist', label: 'Users', file: 'users' },
   { key: 'chat', label: 'Chat', file: 'chat' },
   {
-    key: 'upload', label: 'Upload', file: 'upload', isPresenter: true,
+    key: 'upload', label: 'Upload', file: 'document', isPresenter: true,
   },
   { key: 'shared_notes', label: 'Slides', file: 'shareNote' },
   {

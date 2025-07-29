@@ -15,16 +15,14 @@ import {
   btnFontWeight,
   fontSizeBase,
   fontSizeLarge,
-  headingsFontWeight,
   lineHeightComputed,
 } from '/imports/ui/stylesheets/styled-components/typography';
 
 const Header = styled.header`
   padding: 12px 16px;
   align-items: center;
-  
+  background: var(--bg-01-light, #F2F2F2);
   border-bottom: 1px solid var(--Border-00, #EFEFEF);
-  background: var(--BG-01, #F7F8F9);
   
   margin: 0;
   //padding: 0;
