@@ -530,7 +530,7 @@ const AudioModal = ({
 
     return (
       <AudioSettings
-        className="audio-settings-modal"
+        className="audio-settings"
         animations={animations}
         handleBack={handleBack}
         handleConfirmation={confirmationCallback}
@@ -724,7 +724,7 @@ const AudioModal = ({
     : null;
 
   return (
-    <Styled.Background isBlurred={Session.getItem('audioModalIsOpen')}>
+    <Styled.Background isBlurred={Session.getItem('audioModalIsOpen')} className="audio-modal-background">
       <Styled.AudioModal
         className={content === 'settings' ? 'audio-settings-modal' : 'audio_modal'}
         modalName="AUDIO"

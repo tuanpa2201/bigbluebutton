@@ -122,6 +122,10 @@ const GlobalStyle = createGlobalStyle`
     & .Toastify__progress-bar-theme--light.Toastify__progress-bar--warning {
       background: #EBB94C!important;
     }
+
+    [data-darkreader-scheme="dark"] & {
+      color: #F2F2F2;
+    }
   }
   
   .Toastify__toast--info {

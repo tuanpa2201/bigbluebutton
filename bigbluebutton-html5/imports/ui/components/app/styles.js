@@ -68,24 +68,29 @@ const DtfInvert = `
   #connectionBars > div {
     background-color: var(--darkreader-neutral-text) !important;
   }
+  
+  .custom-dropdown__selected {
+    border: 0.66px solid #9A9A9A !important;
+    color: #FCFCFD !important;
+    background-color: #3B3F43 !important;
+    
+  }
+  
   .modal-header {
     background-color: rgb(48, 51, 56) !important;
-  }
-  .modal-header .modal-title {
-    color: #FCFCFD !important;
-  }
-  
-  .audio_modal-content i {
-   color: #F2F2F2!important;
-    background:#303338 !important;
-  }
- 
-  
-  .audio-settings-modal {
-    & .subtitle {
-      color: #C5C9CD !important; 
+    & .modal-title {
+      color: #FCFCFD !important;
     }
   }
+ 
+  .audio_modal-content {
+    & i {
+      color: #F2F2F2!important;
+      background:#303338 !important;
+    }
+  }
+
+  
 `;
 
 const DtfBrandingInvert = `

@@ -1091,7 +1091,7 @@ class VideoPreview extends Component {
           <Styled.Marker>{'0'}</Styled.Marker>
           <Styled.Marker>{'100'}</Styled.Marker>
         </Styled.MarkerWrapper>
-        <div style={{ display: 'flex' }}>
+        <div style={{ display: 'flex' }} className="whole-image-checkbox">
           <Checkbox
             onChange={this.handleBrightnessAreaChange}
             checked={wholeImageBrightness}
@@ -1299,7 +1299,7 @@ class VideoPreview extends Component {
                         onClick={closeModal}
                       />
                       <Styled.SharingButton
-                        className="btn btn-primary m-0-i"
+                        className="btn btn-primary svg-to-css-shadow m-0-i"
                         data-test="startSharingWebcam"
                         color={shared ? 'danger' : 'primary'}
                         label={intl.formatMessage(shared ? intlMessages.stopSharingLabel : intlMessages.startSharingLabel)}

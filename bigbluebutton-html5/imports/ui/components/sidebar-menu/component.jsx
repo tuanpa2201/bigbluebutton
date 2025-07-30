@@ -55,6 +55,9 @@ const ThemeSwitch = styled.div`
   padding: 4px;
   border-radius: 32px;
   background: #efefef;
+  [data-darkreader-scheme="dark"] & {
+    background: #333335;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,8 +68,16 @@ const ThemeSwitch = styled.div`
 const ThemeButton = styled.button`
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background: ${({ active }) => (active ? '#ffffff' : 'transparent')};
+  padding: 4px;
+  border-radius: 32px;
+  color: #2F384C;
+  background: ${({ active }) => (active ? '#F7F8F9' : 'transparent')};
+  box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.25), 0 -1px 1px 0 rgba(0, 0, 0, 0.04) inset, 0 2px 0 0 rgba(255, 255, 255, 0.25) inset;
+  box-shadow: ${({ active }) => (active ? '0 4px 8px -4px rgba(0, 0, 0, 0.25), 0 -1px 1px 0 rgba(0, 0, 0, 0.04) inset, 0 2px 0 0 rgba(255, 255, 255, 0.25) inset' : 'unset')};;
+  [data-darkreader-scheme="dark"] & {
+    color: #F2F2F2;
+    background: ${({ active }) => (active ? '#303338' : 'transparent')};
+  }
   border: none;
   cursor: pointer;
   display: flex;
@@ -203,9 +214,8 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
 
   const totalUnreadMessages = chats && chats.reduce((acc, chat) => acc + chat?.totalUnread, 0);
 
-
   return (
-    <Sidebar>
+    <Sidebar className="sidebar-menu-container">
       {icons.map((item) => (
         <>
           {(!item.isModerator || (isModerator && item.isModerator)) && (!item.isPresenter || (isPresenter && item.isPresenter))
@@ -230,14 +240,14 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
           active={!isDarkTheme}
           title="Light theme"
         >
-          <img src={`${BASE_NAME}/resources/icon-bbb/light.png`} alt="Light" />
+          <SvgIcon iconName="sun" />
         </ThemeButton>
         <ThemeButton
           onClick={() => switchDarkTheme(true)}
           active={isDarkTheme}
           title="Dark theme"
         >
-          <img src={`${BASE_NAME}/resources/icon-bbb/moon.png`} alt="Dark" />
+          <SvgIcon iconName="moon" />
         </ThemeButton>
       </ThemeSwitch>
     </Sidebar>

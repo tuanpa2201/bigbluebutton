@@ -247,6 +247,9 @@ const UserListColumn = styled.div`
   flex-flow: column;
   min-height: 0;
   flex-grow: 1;
+  [data-darkreader-scheme="dark"] & {
+    background: var(--bg-00-dark, #3B3F43);
+  }
 `;
 
 const pulse = (color: string) => keyframes`

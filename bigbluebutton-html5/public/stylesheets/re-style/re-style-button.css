@@ -89,12 +89,22 @@
     & span:hover {
         opacity: 1;
     }
+
+    [data-darkreader-scheme="dark"] & {
+        background: #282829!important;
+        box-shadow: 0 -1px 0 0 #B5B5B5 inset, -1px 0 0 0 #E3E3E3 inset, 1px 0 0 0 #E3E3E3 inset, 0 1px 0 0 #E3E3E3 inset!important;
+    }
 }
 
 .btn.btn-default:hover {
     color: var(--Text-Primary, #313131);
     background: var(--BG-04---hover, #EFEFEF) !important;
     box-shadow: 0px -1px 0px 0px #CCC inset, 1px 0px 0px 0px #EBEBEB inset, -1px 0px 0px 0px #EBEBEB inset, 0px 1px 0px 0px #EBEBEB inset !important;;
+
+    [data-darkreader-scheme="dark"] & {
+        background: rgba(40, 40, 41, 0.85) !important;
+        box-shadow: 0 -1px 0 0 #B5B5B5 inset, -1px 0 0 0 #E3E3E3 inset, 1px 0 0 0 #E3E3E3 inset, 0 1px 0 0 #E3E3E3 inset!important;
+    }
 }
 
 .btn.btn-default:focus {

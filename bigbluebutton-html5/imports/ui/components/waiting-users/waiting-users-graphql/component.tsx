@@ -287,7 +287,7 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
       key: 'allow-all-auth',
       policy: 'ALWAYS_ACCEPT_AUTH',
       dataTest: 'allowAllAuthenticated',
-      className: 'btn btn-primary',
+      className: 'btn btn-primary svg-to-css-shadow',
     },
     {
       messageId: intlMessages.allowAllGuests,
@@ -298,7 +298,7 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
       key: 'allow-all-guest',
       policy: 'ALWAYS_ACCEPT',
       dataTest: 'allowAllGuests',
-      className: 'btn btn-primary',
+      className: 'btn btn-primary svg-to-css-shadow',
     },
   ], [authedGuestUsers, unauthedGuestUsers, rememberChoice]);
 
@@ -317,7 +317,7 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
       key: 'allow-everyone',
       policy: 'ALWAYS_ACCEPT',
       dataTest: 'allowEveryone',
-      className: 'btn btn-primary',
+      className: 'btn btn-primary svg-to-css-shadow',
     },
   ], [unauthedGuestUsers, authedGuestUsers]);
 
