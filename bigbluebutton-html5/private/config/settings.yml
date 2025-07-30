@@ -27,8 +27,8 @@ public:
     enableDynamicAudioDeviceSelection: true
     #
     skipEchoTestIfPreviousDevice: false
-    clientTitle: BigBlueButton
-    appName: BigBlueButton HTML5 Client
+    clientTitle: VOPS Meeting
+    appName: VOPS Meeting
     bbbServerVersion: HTML5_FULL_BBB_VERSION
     displayBbbServerVersion: true
     copyright: '©2025 BigBlueButton Inc.'
