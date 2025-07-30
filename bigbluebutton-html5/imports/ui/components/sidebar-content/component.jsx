@@ -58,7 +58,7 @@ const SidebarContent = (props) => {
   const [isResizing, setIsResizing] = useState(false);
   const [resizeStartWidth, setResizeStartWidth] = useState(0);
   const [resizeStartHeight, setResizeStartHeight] = useState(0);
-
+  console.log(sidebarContentPanel)
   useEffect(() => {
     if (!isResizing) {
       setResizableWidth(width);
@@ -149,7 +149,7 @@ const SidebarContent = (props) => {
             <ChatContainer width={width} />
           </ErrorBoundary>
         )}
-      {!isSharedNotesPinned && (
+      {!isSharedNotesPinned && sidebarContentPanel === PANELS.SHARED_NOTES && (
         <NotesContainer
           isToSharedNotesBeShow={sidebarContentPanel === PANELS.SHARED_NOTES}
         />
