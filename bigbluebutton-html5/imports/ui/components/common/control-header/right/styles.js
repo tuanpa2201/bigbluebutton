@@ -23,6 +23,7 @@ const CloseButton = styled(Button)`
     & > i::before {
       width: auto;
       font-size: ${fontSizeBase};
+      margin-top: 2px;
     }
   }
 `;

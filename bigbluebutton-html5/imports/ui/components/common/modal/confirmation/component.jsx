@@ -115,7 +115,7 @@ class ConfirmationModal extends Component {
                 />
               </div>
               {!hideConfirmButton && (
-                  <Styled.ConfirmationButton className='remove-user-btnok btn btn-primary'
+                  <Styled.ConfirmationButton className='remove-user-btnok btn btn-primary svg-to-css-shadow'
                                              color={confirmButtonColor}
                                              label={confirmButtonLabel || intl.formatMessage(messages.yesLabel)}
                                              disabled={disableConfirmButton}

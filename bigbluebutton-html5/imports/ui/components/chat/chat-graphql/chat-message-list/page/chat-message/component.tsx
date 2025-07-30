@@ -629,7 +629,15 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
 
   const contentElement = (
     <ChatContent
-      className={[!messageContent.isSystemSender && 'chat-message-content', shouldRenderHeader && message.user?.userId !== currentUserId ? 'chat-message-content-with-header' : ''].join(' ')}
+      className={
+        // eslint-disable-next-line no-mixed-operators
+      [!messageContent.isSystemSender && 'chat-message-content', message.messageType === ChatMessageType.POLL && 'chat-message-content-poll',
+        shouldRenderHeader && message.user?.userId !== currentUserId && message.messageType !== ChatMessageType.POLL
+          ? 'chat-message-content-with-header' : ''].join(' ')
+    }
+      style={{
+        width: message.messageType === ChatMessageType.USER_IS_PRESENTER_MSG || message.messageType === ChatMessageType.POLL ? '100%' : 'fit-content',
+      }}
       ref={messageContentRef}
       sameSender={message?.user ? sameSender : false}
       isCustomPluginMessage={isCustomPluginMessage}

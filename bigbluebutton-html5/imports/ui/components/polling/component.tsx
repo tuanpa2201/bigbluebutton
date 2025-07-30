@@ -210,7 +210,7 @@ const PollingGraphql: React.FC<PollingGraphqlProps> = (props) => {
               ref={responseInput}
             />
             <Styled.SubmitVoteButton
-              className="btn btn-primary mt-12"
+              className="btn btn-primary svg-to-css-shadow mt-12"
               data-test="submitAnswer"
               disabled={typedAns.length === 0}
               color="primary"

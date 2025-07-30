@@ -153,7 +153,7 @@ class TextInput extends PureComponent {
           value={message}
         />
         <Styled.TextInputButton
-          className="btn btn-primary"
+          className="btn btn-primary svg-to-css-shadow"
           hideLabel
           icon="send"
           label={intl.formatMessage(messages.sendLabel)}
