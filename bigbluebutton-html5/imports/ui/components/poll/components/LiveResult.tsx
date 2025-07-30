@@ -171,7 +171,7 @@ const LiveResult: React.FC<LiveResultProps> = ({
               data-test="cancelPollLabel"
             />
             <Styled.PublishButton
-              className={'btn btn-primary svg-to-css-shadow'}
+              className={'btn btn-primary'}
               onClick={() => {
                 Session.setItem('pollInitiated', false);
                 publishPoll(pollId);

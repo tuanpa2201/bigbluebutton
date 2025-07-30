@@ -86,8 +86,9 @@ const UserListParticipants: React.FC<UserListParticipantsProps> = ({
         onKeyDown={rove}
         tabIndex={0}
         role="list"
+        className="user-list-participants"
       >
-        <Styled.VirtualizedList ref={userListRef}>
+        <Styled.VirtualizedList ref={userListRef} className="user-list-participants-virtualized-list">
           {
             Array.from({ length: amountOfPages }).map((_, i) => {
               const isLastItem = amountOfPages === (i + 1);

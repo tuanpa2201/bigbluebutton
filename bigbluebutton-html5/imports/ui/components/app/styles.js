@@ -16,14 +16,15 @@ const DtfInvert = `
   body {
     background-color: #2B2E32 !important;
   }
+  #layout,
   header[id="Navbar"] {
-    background-color: #3B3F43 !important;
+    background-color: #2B2E32 !important;
   }
   section[id="ActionsBar"] {
-    background-color: var(--darkreader-neutral-background) !important;
+    background-color: #2B2E32 !important;
   }
   div[id="app"] {
-    background-color: var(--darkreader-neutral-background) !important;
+    background-color: #2B2E32 !important;
   }
   select {
     border: 0.1rem solid #FFFFFF !important;
@@ -32,7 +33,7 @@ const DtfInvert = `
     border: unset !important;
   }
   div[data-test="presentationContainer"] {
-    background-color: var(--darkreader-neutral-background) !important;
+    background-color: #2B2E32 !important;
   }
   select {
     border-top: unset !important;
@@ -90,7 +91,11 @@ const DtfInvert = `
     }
   }
 
-  
+  .user-list-item,
+  .user-list-participants-virtualized-list,
+  .user-list-participants {
+    background: #3B3F43!important;
+  }
 `;
 
 const DtfBrandingInvert = `

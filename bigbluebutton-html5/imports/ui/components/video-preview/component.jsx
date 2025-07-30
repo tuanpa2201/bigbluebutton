@@ -1299,7 +1299,7 @@ class VideoPreview extends Component {
                         onClick={closeModal}
                       />
                       <Styled.SharingButton
-                        className="btn btn-primary svg-to-css-shadow m-0-i"
+                        className="btn btn-primary m-0-i"
                         data-test="startSharingWebcam"
                         color={shared ? 'danger' : 'primary'}
                         label={intl.formatMessage(shared ? intlMessages.stopSharingLabel : intlMessages.startSharingLabel)}

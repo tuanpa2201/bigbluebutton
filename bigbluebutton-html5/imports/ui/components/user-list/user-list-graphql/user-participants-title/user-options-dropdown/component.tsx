@@ -10,7 +10,7 @@ import CreateBreakoutRoomContainerGraphql from '../../../../breakout-room/create
 import BBBMenu from '/imports/ui/components/common/menu/component';
 import Styled from './styles';
 import { defineMessages, useIntl } from 'react-intl';
-import {layoutDispatch, layoutSelect} from '/imports/ui/components/layout/context';
+import { layoutDispatch, layoutSelect } from '/imports/ui/components/layout/context';
 import { Layout } from '/imports/ui/components/layout/layoutTypes';
 import { uid } from 'radash';
 import useMeeting from '/imports/ui/core/hooks/useMeeting';
@@ -25,7 +25,8 @@ import { useMutation, useLazyQuery } from '@apollo/client';
 import { SET_MUTED } from './mutations';
 import { GET_USER_NAMES } from '/imports/ui/core/graphql/queries/users';
 import logger from '/imports/startup/client/logger';
-import {ACTIONS, PANELS} from "/imports/ui/components/layout/enums";
+import { ACTIONS, PANELS } from '/imports/ui/components/layout/enums';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const intlMessages = defineMessages({
   optionsLabel: {
@@ -373,16 +374,15 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
           transformOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },
         }}
       />
-      <Styled.OptionsButton className="lastMenuBtn"
-        label={intl.formatMessage(intlMessages.closeLabel)}
-        // data-test="manageUsers"
-        icon="close"
-        color="light"
-        hideLabel
-        size="md"
-        circle
-        onClick={() => handleClick()}
-      />
+      <button
+        title={intl.formatMessage(intlMessages.closeLabel)}
+        type="button"
+        onClick={handleClick}
+        style={{ background: 'none', border: 'none' }}
+        className="btnClose"
+      >
+        <SvgIcon iconName="cross" />
+      </button>
       {renderModal({
         isOpen: isCreateBreakoutRoomModalOpen,
         setIsOpen: setCreateBreakoutRoomModalIsOpen,
