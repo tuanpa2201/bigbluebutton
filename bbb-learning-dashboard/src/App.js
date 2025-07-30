@@ -443,7 +443,7 @@ class App extends React.Component {
           }}
         >
           <TabsListUnstyled className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-            <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-pink-500 ring-offset-2 card-restyle" data-test="activeUsersPanelDashboard">
+            <TabUnstyled className={tab === TABS.OVERVIEW ? 'card-restyle card-restyle-uer' : 'card-restyle card-restyle-uer card-restyle-inactive'} data-test="activeUsersPanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
@@ -453,7 +453,7 @@ class App extends React.Component {
                         : intl.formatMessage({ id: 'app.learningDashboard.indicators.usersTotal', defaultMessage: 'Total Number Of Users' })
                     }
                     number={usersCount}
-                    cardClass={tab === TABS.OVERVIEW ? 'card-restyle-user' : 'card-restyle-user card-restyle-inactive'}
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-user"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -463,7 +463,7 @@ class App extends React.Component {
                 </CardContent>
               </Card>
             </TabUnstyled>
-            <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-green-500 ring-offset-2 card-restyle" data-test="activityScorePanelDashboard">
+            <TabUnstyled className={tab === TABS.OVERVIEW_ACTIVITY_SCORE ? 'card-restyle card-card-restyle-score' : 'card-restyle card-restyle-score card-restyle-inactive'} data-test="activityScorePanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
@@ -472,7 +472,7 @@ class App extends React.Component {
                       minimumFractionDigits: 0,
                       maximumFractionDigits: 1,
                     })}
-                    cardClass={tab === TABS.OVERVIEW_ACTIVITY_SCORE ? 'card-restyle-score' : 'card-restyle-score card-restyle-inactive'}
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-score"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -489,13 +489,13 @@ class App extends React.Component {
                 </CardContent>
               </Card>
             </TabUnstyled>
-            <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-purple-500 ring-offset-2 card-restyle" data-test="timelinePanelDashboard">
+            <TabUnstyled className={tab === TABS.TIMELINE ? 'card-restyle card-restyle-time' : 'card-restyle card-restyle-time card-restyle-inactive'} data-test="timelinePanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
                     name={intl.formatMessage({ id: 'app.learningDashboard.indicators.timeline', defaultMessage: 'Timeline' })}
                     number={totalOfReactions()}
-                    cardClass={tab === TABS.TIMELINE ? 'card-restyle-time' : 'card-restyle-time card-restyle-inactive'}
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-time"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -513,13 +513,13 @@ class App extends React.Component {
                 </CardContent>
               </Card>
             </TabUnstyled>
-            <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-blue-500 ring-offset-2 card-restyle" data-test="pollsPanelDashboard">
+            <TabUnstyled className={tab === TABS.TIMELINE ? 'card-restyle card-restyle-poll' : 'card-restyle card-restyle-poll card-restyle-inactive'} data-test="pollsPanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
                     name={intl.formatMessage({ id: 'app.learningDashboard.indicators.polls', defaultMessage: 'Polls' })}
                     number={Object.values(activitiesJson.polls || {}).length}
-                    cardClass={tab === TABS.POLLING ? 'card-restyle-poll' : 'card-restyle-poll card-restyle-inactive'}
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-poll"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -530,13 +530,13 @@ class App extends React.Component {
               </Card>
             </TabUnstyled>
             {genericDataColumnTitleList.length && (
-              <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-red-500 ring-offset-2 card-restyle" data-test="pluginsPanelDashboard">
+              <TabUnstyled className="card-restyle card-restyle-user" data-test="pluginsPanelDashboard">
                 <Card>
                   <CardContent classes={{ root: '!p-0' }}>
                     <CardBody
                       name={genericDataCardTitle}
                       number={genericDataColumnTitleList.length}
-                      cardClass={tab === TABS.POLLING ? 'border-red-500' : 'hover:border-red-500 card-restyle-inactive'}
+                      cardClass="card-restyle-content"
                       iconClass="db-icon-restyle db-icon-user"
                     >
                       <svg

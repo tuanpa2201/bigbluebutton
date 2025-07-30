@@ -12,6 +12,8 @@ import useUserChangedLocalSettings from '/imports/ui/services/settings/hooks/use
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import AppService from '/imports/ui/components/app/service';
 import useChat from '/imports/ui/core/hooks/useChat';
+import {defineMessages} from "react-intl";
+import intlHolder from "/imports/ui/core/singletons/intlHolder";
 
 // Styled sidebar container
 const Sidebar = styled.div`
@@ -93,20 +95,6 @@ const ThemeButton = styled.button`
   }
 `;
 
-const icons = [
-  { key: 'userlist', label: 'Users', file: 'users' },
-  { key: 'chat', label: 'Chat', file: 'chat' },
-  {
-    key: 'upload', label: 'Upload', file: 'document', isPresenter: true,
-  },
-  { key: 'shared_notes', label: 'Slides', file: 'shareNote' },
-  {
-    key: 'poll', label: 'Poll', file: 'poll', isPresenter: true,
-  },
-  {
-    key: 'timer', label: 'Timer', file: 'timer', isModerator: true,
-  },
-];
 
 const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
   const { data: pinnedPadData } = useDeduplicatedSubscription(
@@ -128,6 +116,50 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
   const [timerActivate] = useMutation(TIMER_ACTIVATE);
   const isPinned = !!pinnedPadData && pinnedPadData?.sharedNotes[0]?.sharedNotesExtId === NOTES_CONFIG.id;
   const BASE_NAME = window.meetingClientSettings.public.app.basename;
+
+
+  const intl = intlHolder.getIntl();
+
+  const messages = defineMessages({
+    usersTitle: {
+      id: 'app.userList.usersTitle',
+      description: 'Title for the Header',
+    },
+    chatTitlePublic: {
+      id: 'app.chat.titlePublic',
+      description: 'title for public chat',
+    },
+    presentationLabel: {
+      id: 'app.presentationUploder.title',
+      description: 'presentation area element label',
+    },
+    sharedNotes: {
+      id: 'app.notes.title',
+      description: 'Title for the shared notes',
+    },
+    pollPaneTitle: {
+      id: 'app.poll.pollPaneTitle',
+      description: 'heading label for the poll menu',
+    },
+    stopwatch: {
+      id: 'app.timer.button.stopwatch',
+      description: 'Stopwatch switch button',
+    },
+    timer: {
+      id: 'app.timer.button.timer',
+      description: 'Timer switch button',
+    },
+  });
+
+  const icons = [
+    {key: 'userlist', label: intl.formatMessage(messages.usersTitle), file: 'users' },
+    {key: 'chat', label: intl.formatMessage(messages.chatTitlePublic) , file: 'chat' },
+    {key: 'upload', label: intl.formatMessage(messages.presentationLabel), file: 'document', isPresenter: true,},
+    {key: 'shared_notes', label: intl.formatMessage(messages.sharedNotes), file: 'shareNote' },
+    {key: 'poll', label: intl.formatMessage(messages.pollPaneTitle), file: 'poll', isPresenter: true,},
+    {key: 'timer', label: `${intl.formatMessage(messages.timer)}/ ${intl.formatMessage(messages.stopwatch)}`, file: 'timer' , isModerator: true,},
+  ];
+
   const handleClick = (key) => {
     const panelKey = PANELS[key.toUpperCase()];
     if (currentPanel === panelKey) {

@@ -138,12 +138,7 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
               </Styled.JoinContainer>
             </div>
           )}
-          <div>
-            For help see these (short)&nbsp;
-            <a href="https://www.bigbluebutton.org/html5" target="_blank" rel="noreferrer">
-              <u>tutorial videos.</u>
-            </a>
-          </div>
+
           <div>
             <span>To join the audio bridge click the speaker button.</span>
             <span> Use a headset to avoid causing background noise for others.</span>

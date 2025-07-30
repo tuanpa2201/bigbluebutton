@@ -118,13 +118,13 @@ const PollQuestionArea = styled.textarea<PollQuestionAreaProps>`
   }
 
   width: 100%;
-  color: ${colorText};
+  //color: ${colorText};
   -webkit-appearance: none;
   padding: calc(${smPaddingY} * 2) ${smPaddingX};
   // border-radius: ${borderRadius};
   font-size: ${fontSizeBase};
   // border: 1px solid ${colorGrayLighter};
-  box-shadow: 0 0 0 1px ${colorGrayLighter};
+  //box-shadow: 0 0 0 1px ${colorGrayLighter};
 
   ${({ hasError }) => hasError && `
     border-color: ${colorDanger};
