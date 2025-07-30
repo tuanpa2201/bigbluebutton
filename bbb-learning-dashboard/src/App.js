@@ -453,7 +453,7 @@ class App extends React.Component {
                         : intl.formatMessage({ id: 'app.learningDashboard.indicators.usersTotal', defaultMessage: 'Total Number Of Users' })
                     }
                     number={usersCount}
-                    cardClass='card-restyle-content'
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-user"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -472,7 +472,7 @@ class App extends React.Component {
                       minimumFractionDigits: 0,
                       maximumFractionDigits: 1,
                     })}
-                    cardClass='card-restyle-content'
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-score"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -495,7 +495,7 @@ class App extends React.Component {
                   <CardBody
                     name={intl.formatMessage({ id: 'app.learningDashboard.indicators.timeline', defaultMessage: 'Timeline' })}
                     number={totalOfReactions()}
-                    cardClass='card-restyle-content'
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-time"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -519,7 +519,7 @@ class App extends React.Component {
                   <CardBody
                     name={intl.formatMessage({ id: 'app.learningDashboard.indicators.polls', defaultMessage: 'Polls' })}
                     number={Object.values(activitiesJson.polls || {}).length}
-                    cardClass='card-restyle-content'
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-poll"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -536,7 +536,7 @@ class App extends React.Component {
                     <CardBody
                       name={genericDataCardTitle}
                       number={genericDataColumnTitleList.length}
-                      cardClass='card-restyle-content'
+                      cardClass="card-restyle-content"
                       iconClass="db-icon-restyle db-icon-user"
                     >
                       <svg
