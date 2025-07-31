@@ -8,6 +8,10 @@
     box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.13) inset, -1px 0 0 0 rgba(0, 0, 0, 0.17) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.17) inset, 0 1px 0 0 rgba(204, 204, 204, 0.50) inset, 0 20px 20px -8px rgba(26, 26, 26, 0.28);
 
     & .modal-header {
+        height: 56px !important;
+        & .modal-title {
+            line-height: 32px !important;
+        }
         & button i {
             [data-darkreader-scheme="dark"] & {
                 color: var(--text-secondary-dark, #C5C9CD);
@@ -64,7 +68,7 @@
 }
 
 /* SETTING MODAL */
-.ReactModal__Content.audio-settings-modal, .ReactModal__Content.remove-user-modal {
+.ReactModal__Content.audio-settings-modal{
     width: 468px;
     min-height: max-content;
     border-radius: 12px;
@@ -293,4 +297,176 @@
 /* MODAL ABOUT */
 .ReactModal__Content.modal-about {
     width: 500px;
+}
+
+/*Remove user model*/
+.ReactModal__Content.remove-user-modal {
+    width: 500px;
+    & .modal-header {
+        border-bottom: 1px solid var(--Border-00, #EFEFEF);
+        [data-darkreader-scheme="dark"] & {
+            border-bottom: 1px solid var(--border-00-dark, #4E5358);
+        }
+    }
+    & .remove-user-content {
+        text-align: unset;
+        width: 100%;
+        line-height: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 16px;
+
+        & .remove-user-desc {
+            color: var(--Text-Primary, #313131);
+
+            /* Medium/S */
+            font-size: 14px!important;
+            font-style: normal;
+            font-weight: 400!important;
+            line-height: 20px; /* 142.857% */
+
+            [data-darkreader-scheme="dark"] & {
+                color: var(--text-primary-dark, #FCFCFD);
+            }
+        }
+
+        & .remove-user-checkbox {
+            grid-template-columns: unset;
+            color: var(--text-secondary-light, #6F767E);
+            /* Medium/S */
+            font-size: 14px!important;
+            font-weight: 400!important;
+            line-height: 20px; /* 142.857% */
+
+            [data-darkreader-scheme="dark"] & {
+                color: var(--text-secondary-dark, #C5C9CD);
+            }
+            & #confirmationCheckbox {
+                height: 14px;
+                width: 14px;
+            }
+        }
+    }
+
+    & .remove-user-footer {
+        padding: 16px 12px 0 12px;
+        margin: 0;
+        border-top: 1px solid var(--border-00-light, #EFEFEF);
+        justify-content: flex-end;
+        gap: 8px;
+        align-items: center;
+        width: 500px;
+        [data-darkreader-scheme="dark"] & {
+            border-top: 1px solid var(--border-00-dark, #4E5358);
+        }
+    }
+
+}
+
+.meetingEndedModal {
+    background-color: var(--bg-00-light, #FFF);
+    color: var(--Text-Primary, #313131);
+    [data-darkreader-scheme="dark"] & {
+        background-color: var(--bg-00-dark, #3B3F43);
+        color: var(--text-primary-dark, #FCFCFD);
+    }
+    & .meetingEndedModal-content {
+        & .meetingEndedModal-title {
+            margin-bottom: 8px !important;
+            [data-darkreader-scheme="dark"] & {
+                color: var(--text-primary-dark, #FCFCFD);
+            }
+        }
+        & .meetingEndedModal-messageEnded {
+            [data-darkreader-scheme="dark"] & {
+                color: var(--text-primary-dark, #FCFCFD);
+            }
+        }
+    }
+}
+
+/*Remove user model*/
+.ReactModal__Content.lock-viewer-modal {
+    width: 500px;
+    & .modal-header {
+        border-bottom: 1px solid var(--Border-00, #EFEFEF);
+        [data-darkreader-scheme="dark"] & {
+            border-bottom: 1px solid var(--border-00-dark, #4E5358);
+        }
+    }
+    & .modal-content {
+        padding: unset;
+        & .lock-viewer-content {
+            text-align: unset;
+            width: 100%;
+            line-height: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 16px 16px 0;
+
+            & .lock-viewer-desc {
+                margin-bottom: unset;
+                color: var(--Text-Secondary, #6F767E);
+                /* Regular/S */
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 20px; /* 142.857% */
+
+                [data-darkreader-scheme="dark"] & {
+                    color: var(--text-primary-dark, #C5C9CD);
+                }
+            }
+
+            & .lock-viewer-form {
+                border: unset;
+                & .lock-viewer-tbl-header {
+                    color: var(--Text-Secondary, #6F767E);
+                    /* Semibold/S */
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: 20px; /* 142.857% */
+
+                    [data-darkreader-scheme="dark"] & {
+                        color: var(--text-secondary-dark, #C5C9CD);
+                    }
+                }
+                & .lock-viewer-left-label {
+                    color: var(--Text-Primary, #313131);
+
+                    /* Regular/S */
+                    font-size: 14px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 20px; /* 142.857% */
+                    [data-darkreader-scheme="dark"] & {
+                        color: var(--text-primary-dark, #FCFCFD);
+                    }
+                }
+                & .lock-viewer-tbl-row {
+                    margin-bottom: 12px;
+                }
+            }
+        }
+
+        & .lock-viewer-footer {
+            padding: 12px 16px;
+            margin: 0;
+            border-top: 1px solid var(--border-00-light, #EFEFEF);
+            justify-content: flex-end;
+            gap: 8px;
+            align-items: center;
+            width: 500px;
+            [data-darkreader-scheme="dark"] & {
+                border-top: 1px solid var(--border-00-dark, #4E5358);
+            }
+            & .btn-primary {
+                margin: 0 0 0 8px;
+            }
+        }
+    }
+
 }

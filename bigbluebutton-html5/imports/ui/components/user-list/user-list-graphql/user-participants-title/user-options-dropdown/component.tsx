@@ -183,9 +183,7 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
   const users = usersData?.user || [];
   const isLearningDashboardEnabled = useIsLearningDashboardEnabled();
   const isBreakoutRoomsEnabled = useIsBreakoutRoomsEnabled();
-  const canInviteUsers = isModerator
-  && !isBreakout
-  && hasBreakoutRooms;
+  // const canInviteUsers = isModerator && !isBreakout && hasBreakoutRooms;
   const isInvitation = hasBreakoutRooms && isModerator;
 
   if (usersError) {
@@ -234,10 +232,7 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
   const { dynamicGuestPolicy } = window.meetingClientSettings.public.app;
 
   const actions = useMemo(() => {
-    const canCreateBreakout = isModerator
-      && !isBreakout
-      && !hasBreakoutRooms
-      && isBreakoutRoomsEnabled;
+    // const canCreateBreakout = isModerator && !isBreakout && !hasBreakoutRooms && isBreakoutRoomsEnabled;
     return [
       {
         allow: !isBreakout,
@@ -293,29 +288,29 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
         isSeparator: true,
         allow: true,
       },
-      {
-        allow: canCreateBreakout,
-        key: uuids.current[6],
-        icon: 'rooms',
-        label: intl.formatMessage(intlMessages.createBreakoutRoom),
-        description: intl.formatMessage(intlMessages.createBreakoutRoomDesc),
-        onClick: () => setCreateBreakoutRoomModalIsOpen(true),
-        dataTest: 'createBreakoutRooms',
-      },
-      {
-        allow: canInviteUsers,
-        key: uuids.current[7],
-        icon: 'rooms',
-        label: intl.formatMessage(intlMessages.invitationLabel),
-        description: intl.formatMessage(intlMessages.invitationDesc),
-        onClick: () => setCreateBreakoutRoomModalIsOpen(true),
-        dataTest: 'inviteUsers',
-      },
-      {
-        key: 'separator-02',
-        isSeparator: true,
-        allow: canCreateBreakout,
-      },
+      // {
+      //   allow: canCreateBreakout,
+      //   key: uuids.current[6],
+      //   icon: 'rooms',
+      //   label: intl.formatMessage(intlMessages.createBreakoutRoom),
+      //   description: intl.formatMessage(intlMessages.createBreakoutRoomDesc),
+      //   onClick: () => setCreateBreakoutRoomModalIsOpen(true),
+      //   dataTest: 'createBreakoutRooms',
+      // },
+      // {
+      //   allow: canInviteUsers,
+      //   key: uuids.current[7],
+      //   icon: 'rooms',
+      //   label: intl.formatMessage(intlMessages.invitationLabel),
+      //   description: intl.formatMessage(intlMessages.invitationDesc),
+      //   onClick: () => setCreateBreakoutRoomModalIsOpen(true),
+      //   dataTest: 'inviteUsers',
+      // },
+      // {
+      //   key: 'separator-02',
+      //   isSeparator: true,
+      //   allow: canCreateBreakout,
+      // },
       {
         allow: isLearningDashboardEnabled,
         // icon: 'multi_whiteboard',
@@ -354,7 +349,6 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
             label={intl.formatMessage(intlMessages.optionsLabel)}
             data-test="manageUsers"
             icon="more"
-            color="light"
             hideLabel
             size="md"
             circle
@@ -377,7 +371,6 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
         label={intl.formatMessage(intlMessages.closeLabel)}
         // data-test="manageUsers"
         icon="close"
-        color="light"
         hideLabel
         size="md"
         circle

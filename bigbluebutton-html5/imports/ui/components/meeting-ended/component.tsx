@@ -230,7 +230,7 @@ const MeetingEnded: React.FC<MeetingEndedProps> = ({
                 </Styled.Text>
               ) : null
           }
-          <Styled.Text>
+          <Styled.Text className='meetingEndedModal-messageEnded'>
             {intl.formatMessage(intlMessage.messageEnded)}
           </Styled.Text>
 
@@ -289,9 +289,9 @@ const MeetingEnded: React.FC<MeetingEndedProps> = ({
 
   return (
     <Styled.Parent>
-      <Styled.Modal data-test="meetingEndedModal">
-        <Styled.Content>
-          <Styled.Title>
+      <Styled.Modal data-test="meetingEndedModal" className="meetingEndedModal">
+        <Styled.Content className="meetingEndedModal-content">
+          <Styled.Title className="meetingEndedModal-title">
             {generateEndMessage(joinErrorCode, meetingEndedCode, endedBy)}
           </Styled.Title>
           {allowDefaultLogoutUrl ? logoutButton : null}
