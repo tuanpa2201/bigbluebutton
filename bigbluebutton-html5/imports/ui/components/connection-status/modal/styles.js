@@ -142,7 +142,7 @@ const NetworkDataContainer = styled(ScrollboxVertical)`
   flex-wrap: nowrap;
   overflow: auto;
   scroll-snap-type: x mandatory;
-  padding-bottom: 1.25rem;
+  padding-bottom: 16px;
 
   &:focus {
     outline: none;
@@ -172,6 +172,10 @@ const NetworkData = styled.div`
     display: flex;
     align-items: center;
     gap: 4px;
+    color: var(--Text-Primary, #313131);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
   }
 `;
 
@@ -186,7 +190,7 @@ const CopyContainer = styled.div`
 
 const ConnectionStatusModal = styled(ModalSimple)`
   padding: 0px;
-  height: 32rem;
+  min-height: 404px;
   border-radius: 12px !important;
 `;
 
@@ -263,8 +267,8 @@ const HelperWrapper = styled.div`
 `;
 
 const Helper = styled.div`
-  width: 15.142rem;
-  height: 15.142rem;
+  width: 212px;
+  height: 212px;
   border-radius: 8px;
   background-color: #F7F8F9;
   display: flex;
@@ -328,7 +332,6 @@ const ConnectionTabList = styled(TabList)`
 const ConnectionTabPanel = styled(TabPanel)`
   display: none;
   margin-top: 8px;
-  height: 13rem;
 
   [dir="rtl"] & {
     margin: 0 1rem 0 0;
@@ -362,7 +365,6 @@ const ConnectionTabSelector = styled(Tab)`
 
   border-radius: .2rem;
   cursor: pointer;
-  margin-bottom: ${smPaddingY};
   align-items: center;
   flex-grow: 0;
   min-width: 0;
