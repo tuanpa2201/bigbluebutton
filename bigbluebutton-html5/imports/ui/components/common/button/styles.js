@@ -186,6 +186,15 @@ const ButtonWrapper = styled(BaseButton)`
     box-shadow: none;
   }
 
+  &[data-test="presentationOptionsDownload"] {
+    width: 24px;
+    height: 24px;
+  }
+
+  &[data-test="presentationOptionsDownload"] > span {
+    border: 1px solid transparent !important;
+  }
+
   & > span {
     display: block;
     text-align: center;
