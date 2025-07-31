@@ -85,6 +85,7 @@ const SidebarContent = (props) => {
 
   const smallSidebar = width < (maxWidth / 2);
   const pollDisplay = sidebarContentPanel === PANELS.POLL ? 'inherit' : 'none';
+  InMemory.setItem('showUploadPresentationView', true);
   return (
     <Resizable
       minWidth={minWidth}

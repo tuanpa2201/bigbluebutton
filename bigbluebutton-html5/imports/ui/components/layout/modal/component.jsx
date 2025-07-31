@@ -195,7 +195,7 @@ const LayoutModalComponent = ({
       {Object.values(LAYOUT_TYPE)
         .filter((layout) => !HIDDEN_LAYOUTS.includes(layout))
         .map((layout) => (
-          <div className="d-flex justify-content-between align-items-center" key={layout}>
+          <div className="d-flex justify-content-between align-items-center gap-10" key={layout}>
             <Radio
               label={intl.formatMessage(intlMessages[`${layout}Layout`])}
               checked={layout === selectedLayout}

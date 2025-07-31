@@ -153,7 +153,7 @@ class ModalSimple extends Component {
             >
               {title || ''}
             </Styled.Header>
-            <Styled.Content className="simple-modal-content">
+            <Styled.Content className="simple-modal-content modal-content">
               {children}
             </Styled.Content>
           </div>

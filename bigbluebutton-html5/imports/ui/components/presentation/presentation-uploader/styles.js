@@ -190,7 +190,7 @@ const UploadIcon = styled(Icon)`
 `;
 
 const UploadToastTitle = styled.span`
-  position: fixed;
+  // position: fixed;
   overflow: hidden;
   color: var(--Text-Primary, #313131);
   text-overflow: ellipsis;
