@@ -100,8 +100,14 @@ const InputError = styled(ErrorSpacer)`
 `;
 
 const Instructions = styled.div`
+  color: var(--Text-Secondary, #6F767E);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  
   margin-bottom: ${lgPaddingX};
-  color: ${colorText};
+  //color: ${colorText};
 `;
 
 type PollQuestionAreaProps = {

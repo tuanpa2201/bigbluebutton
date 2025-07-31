@@ -243,7 +243,7 @@ const LayoutModalComponent = ({
       <Styled.ButtonBottomContainer>
         {/* {renderPushLayoutsOptions()} */}
         <Button
-          className="btn btn-primary svg-to-css-shadow"
+          className="btn btn-primary"
           label={intl.formatMessage(intlMessages.update)}
           onClick={() => handleUpdateLayout()}
           data-test="updateLayoutBtn"

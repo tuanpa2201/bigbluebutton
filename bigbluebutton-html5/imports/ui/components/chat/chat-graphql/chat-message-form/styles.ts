@@ -82,6 +82,51 @@ const Input = styled(TextareaAutosize)`
   }
 `;
 
+
+const ChatInput = styled(TextareaAutosize)`
+  flex: 1;
+  background: #F7F8F9;
+  background-clip: padding-box;
+  color: #313131;
+  -webkit-appearance: none;
+  padding: 12px 16px;
+  resize: none;
+  transition: none;
+  border-radius: ${borderRadius};
+  font-size: ${fontSizeBase};
+  min-height: 2.5rem;
+  max-height: 10rem;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  height: auto;
+  line-height: 32px;
+  [dir='ltr'] & {
+    border-radius: 0.75rem 0 0 0.75rem;
+  }
+
+  [dir='rtl'] & {
+    border-radius: 0 0.75rem 0.75rem 0;
+  }
+
+  &:disabled,
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: .75;
+    background-color: rgba(167,179,189,0.25);
+  }
+
+  &::placeholder {
+    color: #bbb;
+    opacity: 1;
+    line-height: 32px !important;
+  }
+  
+  &:focus { 
+    border: unset;
+  }
+`;
+
 // @ts-ignore - as button comes from JS, we can't provide its props
 const SendButton = styled(Button)`
   align-self: center;
@@ -184,7 +229,7 @@ const InputWrapper = styled.div`
   }
 
   &:focus-within {
-    border: 1px solid ${colorBlueLight};
+    //border: 1px solid ${colorBlueLight};
   }
 `;
 
@@ -192,6 +237,7 @@ export default {
   Form,
   Wrapper,
   Input,
+  ChatInput,
   SendButton,
   EmojiButton,
   EmojiButtonWrapper,

@@ -31,7 +31,7 @@ const CustomizedAxisTick = (props: any) => {
     <g>
       {/* eslint-disable-next-line react/jsx-props-no-spreading */}
       <path d={`M${pathX},${y - 13}v${-2}`} stroke="#C8C8C8" stroke-linecap="round"/>
-      <text {...restProps}>
+      <text {...restProps} fill="#6F767E">
         {payload.value.substring(0, restValue.length > 0 ? numberOfChars - ELLIPSIS.length : numberOfChars)}
         {restValue.length > 0 && ELLIPSIS}
       </text>

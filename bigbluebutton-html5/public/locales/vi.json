@@ -504,7 +504,7 @@
   "app.poll.closeLabel": "Đóng",
   "app.poll.waitingLabel": "Chờ phản hồi ({0}/{1})",
   "app.poll.ariaInputCount": "Tùy chọn Khảo sát {0} của {1}",
-  "app.poll.customPlaceholder": "Thêm tùy chọn Khảo sát",
+  "app.poll.customPlaceholder": "Thêm tùy chọn khảo sát",
   "app.poll.noPresentationSelected": "Không có bản trình bày nào được chọn! Vui lòng chọn một.",
   "app.poll.clickHereToSelect": "Bấm vào đây để chọn",
   "app.poll.question.label": "Nhập câu hỏi của bạn",

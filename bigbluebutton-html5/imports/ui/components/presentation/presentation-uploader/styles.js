@@ -399,8 +399,8 @@ const ModalHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 2rem;
-  padding: ${mdPaddingX} 0;
+  margin-bottom: 16px;
+  padding: 16px 0;
 
   div {
     display: flex;
@@ -645,8 +645,10 @@ const Title = styled.h1`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: ${fontSizeLarger};
-  font-weight: ${headingsFontWeight};
+  // font-size: ${fontSizeLarger};
+  font-size: 20px;
+  // font-weight: ${headingsFontWeight};
+  font-weight: 600;
   color: #313131;
 `;
 

@@ -92,7 +92,7 @@ export const Chevron = styled.div`
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid white;
-  top: -10px;
+  top: -14px;
   left: 50%;
   transform: translateX(-50%);
 `;

@@ -123,8 +123,8 @@ const LiveResult: React.FC<LiveResultProps> = ({
             data={responses}
             layout="horizontal"
           >
-            <XAxis stroke="#C8C8C8" width={ 0 } type="category" dataKey="optionDesc" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
-            <YAxis stroke="#C8C8C8" width={ 20 } type="number" allowDecimals={false}/>
+            <XAxis fill="#6F767E" stroke="#C8C8C8" width={ 0 } type="category" dataKey="optionDesc" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
+            <YAxis fill="#6F767E" stroke="#C8C8C8" width={ 20 } type="number" allowDecimals={false}/>
             <Bar dataKey="optionResponsesCount" fill="#0C57A7" radius={[8,8,0,0]} ></Bar>
           </BarChart>
         </ResponsiveContainer>
@@ -171,7 +171,7 @@ const LiveResult: React.FC<LiveResultProps> = ({
               data-test="cancelPollLabel"
             />
             <Styled.PublishButton
-              className={'btn btn-primary svg-to-css-shadow'}
+              className={'btn btn-primary'}
               onClick={() => {
                 Session.setItem('pollInitiated', false);
                 publishPoll(pollId);

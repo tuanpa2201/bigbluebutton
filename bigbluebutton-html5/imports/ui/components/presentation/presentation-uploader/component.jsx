@@ -298,6 +298,7 @@ class PresentationUploader extends Component {
       disableActions: false,
       presExporting: new Set(),
       shouldDisableExportButtonForAllDocuments: false,
+      fileSelectedCurrentId: null,
     };
 
     this.hasError = null;
@@ -645,6 +646,7 @@ class PresentationUploader extends Component {
       const presentationsUpdated = update(presentations, commands);
       return {
         presentations: presentationsUpdated,
+        fileSelectedCurrentId: id
       };
     });
   }
@@ -1137,11 +1139,12 @@ class PresentationUploader extends Component {
       isPresenter,
       intl,
       fileUploadConstraintsHint,
+      currentPresentation,
     } = this.props;
     if (!isPresenter) return null;
-    const { presentations, disableActions } = this.state;
+    const { presentations, disableActions, fileSelectedCurrentId } = this.state;
     const BASE_NAME = window.meetingClientSettings.public.app.basename;
-
+    const hasPendingChange = fileSelectedCurrentId && fileSelectedCurrentId !== currentPresentation;
     let hasNewUpload = false;
 
     presentations.forEach((item) => {
@@ -1184,14 +1187,16 @@ class PresentationUploader extends Component {
                   {/* {this.renderDropzone()} */}
                   {this.renderExternalUpload()}
                 </div>
-                <Styled.ConfirmButton
-                  data-test="confirmManagePresentation"
-                  onClick={() => this.handleConfirm()}
-                  disabled={disableActions}
-                  label={hasNewUpload
-                    ? intl.formatMessage(intlMessages.uploadLabel)
-                    : intl.formatMessage(intlMessages.confirmLabel)}
-                />
+                {hasPendingChange ? (
+                  <Styled.ConfirmButton
+                    data-test="confirmManagePresentation"
+                    onClick={() => this.handleConfirm()}
+                    disabled={disableActions}
+                    label={hasNewUpload
+                      ? intl.formatMessage(intlMessages.uploadLabel)
+                      : intl.formatMessage(intlMessages.confirmLabel)}
+                  />
+                ) : null}
               </Styled.ModalInner>
             </Styled.UploaderModal>
           )

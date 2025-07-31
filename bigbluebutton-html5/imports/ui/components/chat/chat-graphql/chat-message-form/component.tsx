@@ -556,8 +556,8 @@ const ChatMessageForm: React.FC<ChatMessageFormProps> = ({
         ) : null}
         <Styled.Wrapper>
           <Styled.InputWrapper>
-            <Styled.Input
-              id="message-input1"
+            <Styled.ChatInput
+              id="chat-input"
               ref={textAreaRef}
               placeholder={intl.formatMessage(messages.inputPlaceholder, { 0: title })}
               aria-label={intl.formatMessage(messages.inputLabel, { 0: title })}

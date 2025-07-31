@@ -100,7 +100,7 @@ const StartPollButton: React.FC<StartPollButtonProps> = ({
     <Styled.StartPoll>
       <Styled.StartPollBtn
         data-test="startPoll"
-        className={'btn btn-primary svg-to-css-shadow'}
+        className={'btn btn-primary'}
         label={intl.formatMessage(intlMessages.startPollLabel)}
         color="primary"
         disabled={hasNotMinOptions}

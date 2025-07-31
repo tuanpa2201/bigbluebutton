@@ -79,10 +79,11 @@ const Option = styled.div`
     margin-left: 1.65rem;
   }
 
-  ${({ textColor }) => textColor && `
-    color: ${textColor};
-  `}
-
+  // ${({ textColor }) => textColor && `
+  //   color: ${textColor};
+  // `}
+  color: #313131;
+  
   ${({ isHorizontal, isMobile }) => (isHorizontal || isMobile) && `
     margin-right: 0;
     margin-left: 0;
@@ -142,20 +143,31 @@ const BBBMenuInformation = styled.div`
 `;
 
 const BBBMenuItem = styled(MenuItem)`
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
   border-radius: 8px !important;
   padding: 6px 8px !important;
   transition: none !important;
   font-size: 90% !important;
-  color: var(--Text-Primary, #313131);
+  color: var(--Text-Primary, #313131) !important;
   &:focus,
   &:hover {
     i { 
       color: #FFF !important;
     }
     color: #FFF !important;
-    background-color: ${colorPrimary} !important;
+    // background-color: ${colorPrimary} !important;
+    background-color: #EFEFEF;
   }
-
+  
+  &:last-child{
+    margin-bottom: 0 !important;
+  }
+  
+  &:first-child {
+    margin-top: 0 !important;
+  }
+  
   ${({ emoji }) => emoji === 'yes' && `
     div,
     i {

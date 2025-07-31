@@ -766,6 +766,7 @@ class Presentation extends PureComponent {
     return (
       <>
         <Styled.PresentationContainer
+          className="presentationContainer"
           role="region"
           data-test="presentationContainer"
           ref={(ref) => {
@@ -788,6 +789,7 @@ class Presentation extends PureComponent {
         >
           <h2 className="sr-only">{intl.formatMessage(intlMessages.presentationHeader)}</h2>
           <Styled.Presentation
+            className="presentation"
             ref={(ref) => {
               this.refPresentation = ref;
             }}
