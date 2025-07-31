@@ -480,7 +480,7 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
           // Session.setItem('forcePollOpen', false);
           // Session.setItem('pollInitiated', false);
         }}>
-          <SvgIcon iconName="cross"></SvgIcon>
+          <SvgIcon iconName="cross_20"></SvgIcon>
         </Styled.ClosePollButton>
       </Styled.PollHeader>
 

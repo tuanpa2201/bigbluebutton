@@ -266,9 +266,9 @@ class ConnectionStatusComponent extends PureComponent {
       <Styled.Item last data-test="connectionStatusItemEmpty">
         <Styled.Left>
           <Styled.FullName>
-            <Styled.Text>
+            <Styled.Text2>
               {intl.formatMessage(intlMessages.empty)}
-            </Styled.Text>
+            </Styled.Text2>
           </Styled.FullName>
         </Styled.Left>
       </Styled.Item>

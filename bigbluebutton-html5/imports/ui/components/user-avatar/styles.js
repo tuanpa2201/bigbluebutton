@@ -101,7 +101,7 @@ const Avatar = styled.div`
   position: relative;
   height: 2.25rem;
   width: 2.25rem;
-  border-radius: 50%;
+  border-radius: 10px;
   text-align: center;
   font-size: .85rem;
   user-select: none;

@@ -845,6 +845,10 @@ button[data-test="whiteboardOptionsButton"],
     }
 }
 
+.recharts-text.recharts-cartesian-axis-tick-value{
+    fill: var(--Text-Secondary, #6F767E);
+}
+
 li[data-key="menuItem-directLogoutButton"] {
     & div:first-child {
         display: flex;

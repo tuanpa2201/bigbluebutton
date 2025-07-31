@@ -397,7 +397,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
           {`${intl.formatMessage(intlMessages.timer)}/ ${intl.formatMessage(intlMessages.stopwatch)}`}
         </div>
         <Styled.CloseTimerButton  className={'header-icon'} onClick={() => closePanel()}>
-          <SvgIcon iconName="cross"></SvgIcon>
+          <SvgIcon iconName="cross_20"></SvgIcon>
         </Styled.CloseTimerButton>
       </Styled.TimerHeader>
 
@@ -439,7 +439,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
   );
 };
 
-const TimerPanelContaier: React.FC = () => {
+const TimerPanelContainer: React.FC = () => {
   const [timeSync] = useTimeSync();
   const {
     loading: timerLoading,
@@ -490,4 +490,4 @@ const TimerPanelContaier: React.FC = () => {
   );
 };
 
-export default TimerPanelContaier;
+export default TimerPanelContainer;

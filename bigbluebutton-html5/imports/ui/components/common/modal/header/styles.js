@@ -19,7 +19,7 @@ import {
 } from '/imports/ui/stylesheets/styled-components/typography';
 
 const Header = styled.header`
-  padding: 12px 16px;
+  padding: 12px 16px 11px;
   align-items: center;
   background: var(--bg-01-light, #F2F2F2);
   border-bottom: 1px solid var(--Border-00, #EFEFEF);

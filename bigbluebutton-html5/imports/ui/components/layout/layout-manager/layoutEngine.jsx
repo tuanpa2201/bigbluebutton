@@ -266,7 +266,7 @@ const LayoutEngine = () => {
       } else {
         if (sidebarContentWidth === 0) {
           width = min(
-            max((windowWidth() * 0.2), sidebarContentMinWidth), sidebarContentMaxWidth,
+            max((windowWidth() * 0.1875), sidebarContentMinWidth), sidebarContentMaxWidth,
           );
         } else {
           width = min(max(sidebarContentWidth, sidebarContentMinWidth),

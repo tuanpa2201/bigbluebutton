@@ -82,8 +82,8 @@ class ConnectionStatusIcon extends PureComponent {
         <Styled.Label>
           {intl.formatMessage(intlMessages.label)}
         </Styled.Label>
-        {(currentStatus === 'critical' || currentStatus === 'danger') || isSettingsMenuModalOpen
-          ? (
+        {((currentStatus === 'critical' || currentStatus === 'danger') || isSettingsMenuModalOpen)
+          && (
             <div>
               <Styled.Settings
               // eslint-disable-next-line
@@ -105,9 +105,6 @@ class ConnectionStatusIcon extends PureComponent {
                   />
                 ) : null}
             </div>
-          )
-          : (
-            <div />
           )}
       </>
     );
