@@ -21,7 +21,7 @@ const Modal = styled.div`
   flex-direction: column;
   border-radius: 12px;
   max-width: 95vw;
-  width: 600px;
+  width: 500px;
 `;
 
 const Content = styled.div`
@@ -36,7 +36,6 @@ const Title = styled.div`
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
-  margin-bottom: 16px;
 `;
 
 const Text = styled.div`
@@ -46,6 +45,7 @@ const Text = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  margin-top: 8px;
 `;
 
 const Wrapper = styled.div`
@@ -63,7 +63,8 @@ const MeetingEndedButton = styled.span`
   color: var(--Text-Link, #1087FF);
   font-size: 14px;
   line-height: 20px;
-  margin-bottom: 8px;
+  margin-top: 16px;
+
 `;
 
 const TextArea = styled.textarea`
