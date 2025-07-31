@@ -12,6 +12,8 @@ import useUserChangedLocalSettings from '/imports/ui/services/settings/hooks/use
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import AppService from '/imports/ui/components/app/service';
 import useChat from '/imports/ui/core/hooks/useChat';
+import {defineMessages} from "react-intl";
+import intlHolder from "/imports/ui/core/singletons/intlHolder";
 
 // Styled sidebar container
 const Sidebar = styled.div`
@@ -53,6 +55,9 @@ const ThemeSwitch = styled.div`
   padding: 4px;
   border-radius: 32px;
   background: #efefef;
+  [data-darkreader-scheme="dark"] & {
+    background: #333335;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,8 +68,16 @@ const ThemeSwitch = styled.div`
 const ThemeButton = styled.button`
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background: ${({ active }) => (active ? '#ffffff' : 'transparent')};
+  padding: 4px;
+  border-radius: 32px;
+  color: #2F384C;
+  background: ${({ active }) => (active ? '#F7F8F9' : 'transparent')};
+  box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.25), 0 -1px 1px 0 rgba(0, 0, 0, 0.04) inset, 0 2px 0 0 rgba(255, 255, 255, 0.25) inset;
+  box-shadow: ${({ active }) => (active ? '0 4px 8px -4px rgba(0, 0, 0, 0.25), 0 -1px 1px 0 rgba(0, 0, 0, 0.04) inset, 0 2px 0 0 rgba(255, 255, 255, 0.25) inset' : 'unset')};;
+  [data-darkreader-scheme="dark"] & {
+    color: #F2F2F2;
+    background: ${({ active }) => (active ? '#303338' : 'transparent')};
+  }
   border: none;
   cursor: pointer;
   display: flex;
@@ -82,20 +95,6 @@ const ThemeButton = styled.button`
   }
 `;
 
-const icons = [
-  { key: 'userlist', label: 'Users', file: 'users' },
-  { key: 'chat', label: 'Chat', file: 'chat' },
-  {
-    key: 'upload', label: 'Upload', file: 'upload', isPresenter: true,
-  },
-  { key: 'shared_notes', label: 'Slides', file: 'shareNote' },
-  {
-    key: 'poll', label: 'Poll', file: 'poll', isPresenter: true,
-  },
-  {
-    key: 'timer', label: 'Timer', file: 'timer', isModerator: true,
-  },
-];
 
 const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
   const { data: pinnedPadData } = useDeduplicatedSubscription(
@@ -117,6 +116,50 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
   const [timerActivate] = useMutation(TIMER_ACTIVATE);
   const isPinned = !!pinnedPadData && pinnedPadData?.sharedNotes[0]?.sharedNotesExtId === NOTES_CONFIG.id;
   const BASE_NAME = window.meetingClientSettings.public.app.basename;
+
+
+  const intl = intlHolder.getIntl();
+
+  const messages = defineMessages({
+    usersTitle: {
+      id: 'app.userList.usersTitle',
+      description: 'Title for the Header',
+    },
+    chatTitlePublic: {
+      id: 'app.chat.titlePublic',
+      description: 'title for public chat',
+    },
+    presentationLabel: {
+      id: 'app.presentationUploder.title',
+      description: 'presentation area element label',
+    },
+    sharedNotes: {
+      id: 'app.notes.title',
+      description: 'Title for the shared notes',
+    },
+    pollPaneTitle: {
+      id: 'app.poll.pollPaneTitle',
+      description: 'heading label for the poll menu',
+    },
+    stopwatch: {
+      id: 'app.timer.button.stopwatch',
+      description: 'Stopwatch switch button',
+    },
+    timer: {
+      id: 'app.timer.button.timer',
+      description: 'Timer switch button',
+    },
+  });
+
+  const icons = [
+    {key: 'userlist', label: intl.formatMessage(messages.usersTitle), file: 'users' },
+    {key: 'chat', label: intl.formatMessage(messages.chatTitlePublic) , file: 'chat' },
+    {key: 'upload', label: intl.formatMessage(messages.presentationLabel), file: 'document', isPresenter: true,},
+    {key: 'shared_notes', label: intl.formatMessage(messages.sharedNotes), file: 'shareNote' },
+    {key: 'poll', label: intl.formatMessage(messages.pollPaneTitle), file: 'poll', isPresenter: true,},
+    {key: 'timer', label: `${intl.formatMessage(messages.timer)}/ ${intl.formatMessage(messages.stopwatch)}`, file: 'timer' , isModerator: true,},
+  ];
+
   const handleClick = (key) => {
     const panelKey = PANELS[key.toUpperCase()];
     if (currentPanel === panelKey) {
@@ -171,9 +214,8 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
 
   const totalUnreadMessages = chats && chats.reduce((acc, chat) => acc + chat?.totalUnread, 0);
 
-
   return (
-    <Sidebar>
+    <Sidebar className="sidebar-menu-container">
       {icons.map((item) => (
         <>
           {(!item.isModerator || (isModerator && item.isModerator)) && (!item.isPresenter || (isPresenter && item.isPresenter))
@@ -198,14 +240,14 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
           active={!isDarkTheme}
           title="Light theme"
         >
-          <img src={`${BASE_NAME}/resources/icon-bbb/light.png`} alt="Light" />
+          <SvgIcon iconName="sun" />
         </ThemeButton>
         <ThemeButton
           onClick={() => switchDarkTheme(true)}
           active={isDarkTheme}
           title="Dark theme"
         >
-          <img src={`${BASE_NAME}/resources/icon-bbb/moon.png`} alt="Dark" />
+          <SvgIcon iconName="moon" />
         </ThemeButton>
       </ThemeSwitch>
     </Sidebar>

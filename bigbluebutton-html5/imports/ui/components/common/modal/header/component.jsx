@@ -1,6 +1,7 @@
 import React from 'react';
 import Styled from './styles';
 import PropTypes from 'prop-types';
+import * as DarkReader from 'darkreader';
 
 const propTypes = {
   hideBorder: PropTypes.bool,
@@ -45,12 +46,15 @@ class Header extends React.Component {
 
     return (
       <Styled.Header
+        className="modal-header"
+        isDarkThemeEnabled={DarkReader.isEnabled()}
         $hideBorder={hideBorder}
         $headerOnTop={headerOnTop}
         $innerHeader={innerHeader}
         {...other}
       >
         <Styled.Title
+          className="modal-title"
           $hasMarginBottom={innerHeader}
           $headerOnTop={headerOnTop}
           $innerHeader={innerHeader}

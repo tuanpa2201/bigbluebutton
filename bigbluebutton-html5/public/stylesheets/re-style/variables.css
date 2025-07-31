@@ -179,7 +179,6 @@
 	--bg-red-light: #FBE3E8;
 	--bg-popup-blur-light: rgba(49, 49, 49, 0.4);   /* #313131 at 40% */
 	--bg-blur-light: rgba(255, 255, 255, 0.8);       /* #FFFFFF at 80% */
-
 	/* BG - Dark Theme */
 	--bg-00-dark: #3B3F43;
 	--bg-01-dark: #303338;
@@ -190,7 +189,7 @@
 	--bg-06-dark: #303338;
 	--bg-green-dark: #284A37;
 	--bg-orange-dark: #735B50;
-	--bg-red-dark: #5F4047;
+	--bg-red-dark: #A65C6B;
 	--bg-popup-blur-dark: rgba(27, 27, 27, 0.6);     /* #1B1B1B at 60% */
 	--bg-blur-dark: rgba(0, 0, 0, 0.2);              /* #000000 at 20% */
 

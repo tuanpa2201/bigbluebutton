@@ -311,6 +311,10 @@ const MarkerWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   user-select: none;
+
+  [data-darkreader-scheme="dark"] & {
+    color: var(--text-primary-dark, #FCFCFD)!important;
+  }
 `;
 
 const MarkerDynamicWrapper = styled.div`

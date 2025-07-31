@@ -7,6 +7,7 @@ import { layoutSelect, layoutDispatch } from '../../../layout/context';
 import { Layout } from '../../../layout/layoutTypes';
 import { ACTIONS, PANELS } from '../../../layout/enums';
 import ChatActions from './chat-actions/component';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 interface ChatHeaderProps {
   chatId: string;
@@ -69,10 +70,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           {/* eslint-disable-next-line max-len */}
           {isPublicChat ? <ChatActions /> : null}
           <button type="button" onClick={closePanel} style={{ background: 'none', border: 'none' }} className="btnClose">
-            <img
-              src={`${window.meetingClientSettings.public.app.basename}/resources/icon-bbb/close.png`}
-              alt="Close"
-            />
+            <SvgIcon iconName="cross" />
           </button>
         </div>
       </div>

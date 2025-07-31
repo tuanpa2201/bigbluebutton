@@ -443,7 +443,7 @@ class App extends React.Component {
           }}
         >
           <TabsListUnstyled className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
-            <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-pink-500 ring-offset-2 card-restyle" data-test="activeUsersPanelDashboard">
+            <TabUnstyled className={tab === TABS.OVERVIEW ? 'card-restyle card-restyle-uer' : 'card-restyle card-restyle-uer card-restyle-inactive'} data-test="activeUsersPanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
@@ -453,31 +453,17 @@ class App extends React.Component {
                         : intl.formatMessage({ id: 'app.learningDashboard.indicators.usersTotal', defaultMessage: 'Total Number Of Users' })
                     }
                     number={usersCount}
-                    cardClass={tab === TABS.OVERVIEW ? 'card-restyle-user' : 'hover:card-restyle-user border-transparent'}
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-user"
                   >
-                    {/*<svg*/}
-                    {/*  xmlns="http://www.w3.org/2000/svg"*/}
-                    {/*  className="h-6 w-6"*/}
-                    {/*  fill="none"*/}
-                    {/*  viewBox="0 0 24 24"*/}
-                    {/*  stroke="currentColor"*/}
-                    {/*>*/}
-                    {/*  <path*/}
-                    {/*    strokeLinecap="round"*/}
-                    {/*    strokeLinejoin="round"*/}
-                    {/*    strokeWidth="2"*/}
-                    {/*    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"*/}
-                    {/*  />*/}
-                    {/*</svg>*/}
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M12.5006 8.33268C14.3416 8.33268 15.834 6.8403 15.834 4.99935C15.834 3.1584 14.3416 1.66602 12.5006 1.66602M14.1673 18.3327H16.5006C17.9734 18.3327 19.1673 17.1388 19.1673 15.666V15.666C19.1673 13.4569 17.3765 11.666 15.1673 11.666H14.1673M10.0007 4.99935C10.0007 6.8403 8.50827 8.33268 6.66732 8.33268C4.82637 8.33268 3.33398 6.8403 3.33398 4.99935C3.33398 3.1584 4.82637 1.66602 6.66732 1.66602C8.50827 1.66602 10.0007 3.1584 10.0007 4.99935ZM3.50065 18.3327H9.83398C11.3067 18.3327 12.5006 17.1388 12.5006 15.666V15.666C12.5006 13.4569 10.7098 11.666 8.50065 11.666H4.83399C2.62485 11.666 0.833984 13.4569 0.833984 15.666V15.666C0.833984 17.1388 2.02789 18.3327 3.50065 18.3327Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M12.5006 8.33268C14.3416 8.33268 15.834 6.8403 15.834 4.99935C15.834 3.1584 14.3416 1.66602 12.5006 1.66602M14.1673 18.3327H16.5006C17.9734 18.3327 19.1673 17.1388 19.1673 15.666V15.666C19.1673 13.4569 17.3765 11.666 15.1673 11.666H14.1673M10.0007 4.99935C10.0007 6.8403 8.50827 8.33268 6.66732 8.33268C4.82637 8.33268 3.33398 6.8403 3.33398 4.99935C3.33398 3.1584 4.82637 1.66602 6.66732 1.66602C8.50827 1.66602 10.0007 3.1584 10.0007 4.99935ZM3.50065 18.3327H9.83398C11.3067 18.3327 12.5006 17.1388 12.5006 15.666V15.666C12.5006 13.4569 10.7098 11.666 8.50065 11.666H4.83399C2.62485 11.666 0.833984 13.4569 0.833984 15.666V15.666C0.833984 17.1388 2.02789 18.3327 3.50065 18.3327Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </CardBody>
                 </CardContent>
               </Card>
             </TabUnstyled>
-            <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-green-500 ring-offset-2 card-restyle" data-test="activityScorePanelDashboard">
+            <TabUnstyled className={tab === TABS.OVERVIEW_ACTIVITY_SCORE ? 'card-restyle card-card-restyle-score' : 'card-restyle card-restyle-score card-restyle-inactive'} data-test="activityScorePanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
@@ -486,36 +472,16 @@ class App extends React.Component {
                       minimumFractionDigits: 0,
                       maximumFractionDigits: 1,
                     })}
-                    cardClass={tab === TABS.OVERVIEW_ACTIVITY_SCORE ? 'card-restyle-score' : 'hover:card-restyle-score border-transparent'}
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-score"
                   >
-                    {/*<svg*/}
-                    {/*  xmlns="http://www.w3.org/2000/svg"*/}
-                    {/*  className="h-6 w-6"*/}
-                    {/*  fill="none"*/}
-                    {/*  viewBox="0 0 24 24"*/}
-                    {/*  stroke="currentColor"*/}
-                    {/*>*/}
-                    {/*  <path*/}
-                    {/*    strokeLinecap="round"*/}
-                    {/*    strokeLinejoin="round"*/}
-                    {/*    strokeWidth="2"*/}
-                    {/*    d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"*/}
-                    {/*  />*/}
-                    {/*  <path*/}
-                    {/*    strokeLinecap="round"*/}
-                    {/*    strokeLinejoin="round"*/}
-                    {/*    strokeWidth="2"*/}
-                    {/*    d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"*/}
-                    {/*  />*/}
-                    {/*</svg>*/}
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <g clip-path="url(#clip0_2577_37924)">
-                        <path d="M4.99935 9.99935L6.66602 9.99935L8.33268 12.4993L11.666 7.49935L13.3327 9.99935L14.9994 9.99935M6.46602 18.3327L13.5327 18.3327C15.2128 18.3327 16.0529 18.3327 16.6947 18.0057C17.2591 17.7181 17.7181 17.2591 18.0057 16.6946C18.3327 16.0529 18.3327 15.2128 18.3327 13.5327L18.3327 6.46601C18.3327 4.78586 18.3327 3.94578 18.0057 3.30404C17.7181 2.73956 17.2591 2.28061 16.6947 1.99299C16.0529 1.66601 15.2128 1.66601 13.5327 1.66601L6.46602 1.66601C4.78586 1.66602 3.94578 1.66602 3.30404 1.993C2.73956 2.28062 2.28062 2.73956 1.993 3.30404C1.66602 3.94578 1.66602 4.78586 1.66602 6.46602L1.66602 13.5327C1.66602 15.2128 1.66602 16.0529 1.993 16.6947C2.28062 17.2591 2.73956 17.7181 3.30405 18.0057C3.94578 18.3327 4.78586 18.3327 6.46602 18.3327Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <g clipPath="url(#clip0_2577_37924)">
+                        <path d="M4.99935 9.99935L6.66602 9.99935L8.33268 12.4993L11.666 7.49935L13.3327 9.99935L14.9994 9.99935M6.46602 18.3327L13.5327 18.3327C15.2128 18.3327 16.0529 18.3327 16.6947 18.0057C17.2591 17.7181 17.7181 17.2591 18.0057 16.6946C18.3327 16.0529 18.3327 15.2128 18.3327 13.5327L18.3327 6.46601C18.3327 4.78586 18.3327 3.94578 18.0057 3.30404C17.7181 2.73956 17.2591 2.28061 16.6947 1.99299C16.0529 1.66601 15.2128 1.66601 13.5327 1.66601L6.46602 1.66601C4.78586 1.66602 3.94578 1.66602 3.30404 1.993C2.73956 2.28062 2.28062 2.73956 1.993 3.30404C1.66602 3.94578 1.66602 4.78586 1.66602 6.46602L1.66602 13.5327C1.66602 15.2128 1.66602 16.0529 1.993 16.6947C2.28062 17.2591 2.73956 17.7181 3.30405 18.0057C3.94578 18.3327 4.78586 18.3327 6.46602 18.3327Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </g>
                       <defs>
                         <clipPath id="clip0_2577_37924">
-                          <rect width="20" height="20" fill="white"/>
+                          <rect width="20" height="20" fill="white" />
                         </clipPath>
                       </defs>
                     </svg>
@@ -523,22 +489,22 @@ class App extends React.Component {
                 </CardContent>
               </Card>
             </TabUnstyled>
-            <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-purple-500 ring-offset-2 card-restyle" data-test="timelinePanelDashboard">
+            <TabUnstyled className={tab === TABS.TIMELINE ? 'card-restyle card-restyle-time' : 'card-restyle card-restyle-time card-restyle-inactive'} data-test="timelinePanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
                     name={intl.formatMessage({ id: 'app.learningDashboard.indicators.timeline', defaultMessage: 'Timeline' })}
                     number={totalOfReactions()}
-                    cardClass={tab === TABS.TIMELINE ? 'card-restyle-time' : 'hover:card-restyle-time border-transparent'}
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-time"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <g clip-path="url(#clip0_2577_37931)">
-                        <path d="M10.0007 6.66732V10.0007L12.5006 11.6673M3.33398 0.833984L0.833984 3.33398M16.6673 0.833984L19.1673 3.33398M18.334 10.0007C18.334 14.603 14.603 18.334 10.0007 18.334C5.39828 18.334 1.66732 14.603 1.66732 10.0007C1.66732 5.39828 5.39828 1.66732 10.0007 1.66732C14.603 1.66732 18.334 5.39828 18.334 10.0007Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <g clipPath="url(#clip0_2577_37931)">
+                        <path d="M10.0007 6.66732V10.0007L12.5006 11.6673M3.33398 0.833984L0.833984 3.33398M16.6673 0.833984L19.1673 3.33398M18.334 10.0007C18.334 14.603 14.603 18.334 10.0007 18.334C5.39828 18.334 1.66732 14.603 1.66732 10.0007C1.66732 5.39828 5.39828 1.66732 10.0007 1.66732C14.603 1.66732 18.334 5.39828 18.334 10.0007Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                       </g>
                       <defs>
                         <clipPath id="clip0_2577_37931">
-                          <rect width="20" height="20" fill="white"/>
+                          <rect width="20" height="20" fill="white" />
                         </clipPath>
                       </defs>
                     </svg>
@@ -547,30 +513,30 @@ class App extends React.Component {
                 </CardContent>
               </Card>
             </TabUnstyled>
-            <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-blue-500 ring-offset-2 card-restyle" data-test="pollsPanelDashboard">
+            <TabUnstyled className={tab === TABS.TIMELINE ? 'card-restyle card-restyle-poll' : 'card-restyle card-restyle-poll card-restyle-inactive'} data-test="pollsPanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
                     name={intl.formatMessage({ id: 'app.learningDashboard.indicators.polls', defaultMessage: 'Polls' })}
                     number={Object.values(activitiesJson.polls || {}).length}
-                    cardClass={tab === TABS.POLLING ? 'card-restyle-poll' : 'hover:card-restyle-poll border-transparent'}
+                    cardClass="card-restyle-content"
                     iconClass="db-icon-restyle db-icon-poll"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                      <path d="M5.83268 6.66601L5.83268 13.3327M9.99935 9.16601L9.99935 13.3327M14.166 7.49935L14.166 13.3327M9.66602 18.3327L10.3327 18.3327C13.1329 18.3327 14.5331 18.3327 15.6026 17.7877C16.5434 17.3083 17.3084 16.5434 17.7877 15.6026C18.3327 14.5331 18.3327 13.1329 18.3327 10.3327L18.3327 9.66601C18.3327 6.86575 18.3327 5.46562 17.7877 4.39606C17.3083 3.45525 16.5434 2.69035 15.6026 2.21098C14.5331 1.66601 13.1329 1.66601 10.3327 1.66601L9.66601 1.66601C6.86575 1.66601 5.46562 1.66601 4.39606 2.21098C3.45525 2.69035 2.69035 3.45525 2.21098 4.39606C1.66602 5.46562 1.66602 6.86575 1.66602 9.66602L1.66602 10.3327C1.66602 13.1329 1.66602 14.5331 2.21099 15.6026C2.69035 16.5434 3.45526 17.3083 4.39607 17.7877C5.46562 18.3327 6.86576 18.3327 9.66602 18.3327Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M5.83268 6.66601L5.83268 13.3327M9.99935 9.16601L9.99935 13.3327M14.166 7.49935L14.166 13.3327M9.66602 18.3327L10.3327 18.3327C13.1329 18.3327 14.5331 18.3327 15.6026 17.7877C16.5434 17.3083 17.3084 16.5434 17.7877 15.6026C18.3327 14.5331 18.3327 13.1329 18.3327 10.3327L18.3327 9.66601C18.3327 6.86575 18.3327 5.46562 17.7877 4.39606C17.3083 3.45525 16.5434 2.69035 15.6026 2.21098C14.5331 1.66601 13.1329 1.66601 10.3327 1.66601L9.66601 1.66601C6.86575 1.66601 5.46562 1.66601 4.39606 2.21098C3.45525 2.69035 2.69035 3.45525 2.21098 4.39606C1.66602 5.46562 1.66602 6.86575 1.66602 9.66602L1.66602 10.3327C1.66602 13.1329 1.66602 14.5331 2.21099 15.6026C2.69035 16.5434 3.45526 17.3083 4.39607 17.7877C5.46562 18.3327 6.86576 18.3327 9.66602 18.3327Z" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </CardBody>
                 </CardContent>
               </Card>
             </TabUnstyled>
             {genericDataColumnTitleList.length && (
-              <TabUnstyled className="rounded focus:outline-none focus:ring focus:ring-red-500 ring-offset-2 card-restyle" data-test="pluginsPanelDashboard">
+              <TabUnstyled className="card-restyle card-restyle-user" data-test="pluginsPanelDashboard">
                 <Card>
                   <CardContent classes={{ root: '!p-0' }}>
                     <CardBody
                       name={genericDataCardTitle}
                       number={genericDataColumnTitleList.length}
-                      cardClass={tab === TABS.POLLING ? 'border-red-500' : 'hover:border-red-500 border-transparent'}
+                      cardClass="card-restyle-content"
                       iconClass="db-icon-restyle db-icon-user"
                     >
                       <svg

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import BaseIcon from '/imports/ui/components/common/icon/component';
-import { $3xlPadding, smPadding } from '/imports/ui/stylesheets/styled-components/general';
+import { smPadding } from '/imports/ui/stylesheets/styled-components/general';
 
 export const Root = styled.div`
   color: #313131;
@@ -10,8 +10,12 @@ export const Root = styled.div`
   align-items: center;
   justify-content: flex-start;
   gap: 4px;
-  
 
+
+  [data-darkreader-scheme="dark"] & {
+    color: var(--text-primary-dark, #FCFCFD);
+  }
+  
   & svg {
     width: 16px;
     height: 16px;
@@ -26,6 +30,10 @@ export const Root = styled.div`
     font-style: normal;
     font-weight: 400!important;
     line-height: 24px; /* 150% */
+
+    [data-darkreader-scheme="dark"] & {
+      color: var(--text-primary-dark, #FCFCFD);
+    }
   }
 `;
 
@@ -47,6 +55,10 @@ export const Typography = styled.p`
   vertical-align: baseline;
   overflow-wrap: break-word;
   white-space: pre-wrap;
+
+  [data-darkreader-scheme="dark"] & {
+    color: var(--text-primary-dark, #FCFCFD);
+  }
 `;
 
 export default {

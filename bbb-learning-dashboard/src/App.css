@@ -26,28 +26,36 @@
   padding: 16px 22px !important;
   align-items: center;
   border-radius: 8px;
+  border-left-width: 4px;
 }
 
-.border-transparent {
-  --tw-border-opacity: 1;
-  border-color: transparent;
+.card-restyle-inactive {
+  border-left-color: transparent !important;
 }
 
-.card-restyle-user {
-  border-left: 4px solid var(--Highlight-Light-Red, #EB5366) !important;
-  background-color: var(--Secondary-01, #FBE3E8) !important;
+.card-restyle .MuiPaper-root {
+  background: transparent;
+  box-shadow: none;
+  border-style: none;
+}
+
+.card-restyle-content {
+  align-items: center;
+  background-color: transparent !important;
+  border: none;
+}
+
+.card-restyle-uer {
+  border-left-color: var(--Highlight-Light-Red, #EB5366) !important;
 }
 .card-restyle-score {
-  border-left: 4px solid var(--Highlight-Green, #6CC17C);
-  background: var(--Secondary-02, #DEF3E7);
+  border-left-color: var(--Highlight-Green, #6CC17C) !important;
 }
 .card-restyle-time {
-  border-left: 4px solid var(--Highlight-Cyan, #1BC8FF);
-  background: var(--Secondary-05, #E2F5FD);
+  border-left-color: var(--Highlight-Cyan, #1BC8FF) !important;
 }
 .card-restyle-poll {
-  border-left: 4px solid var(--Highlight-Purple, #9207FF);
-  background: var(--Secondary-04, #E4DFF9);
+  border-left-color: var(--Highlight-Purple, #9207FF) !important;
 }
 
 .db-icon-restyle {

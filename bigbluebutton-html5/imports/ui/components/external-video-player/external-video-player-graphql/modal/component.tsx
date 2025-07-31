@@ -132,7 +132,7 @@ const ExternalVideoPlayerModal: React.FC<ExternalVideoPlayerModalProps> = ({
           onClick={onRequestClose}
         />
         <Styled.StartButton
-          className="btn btn-primary m-0-i"
+          className="btn btn-primary svg-to-css-shadow m-0-i"
           label={intl.formatMessage(intlMessages.start)}
           disabled={!valid || !videoUrl}
           onClick={() => {

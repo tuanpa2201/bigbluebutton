@@ -9,6 +9,9 @@ export const Container = styled.div`
   align-items: center;
   margin-bottom: ${lgPaddingY};
   margin-top: ${smPaddingX};
+  [data-darkreader-scheme="dark"] & {
+    background: var(--bg-00-dark, #3B3F43);
+  }
 `;
 
 export const SmallTitle = styled.h2`
@@ -19,6 +22,9 @@ export const SmallTitle = styled.h2`
   color: ${colorGray};
   flex: 1;
   margin: 0;
+  [data-darkreader-scheme="dark"] & {
+    background: var(--bg-00-dark, #3B3F43);
+  }
 `;
 
 export default {

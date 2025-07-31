@@ -279,7 +279,7 @@ const Avatar = styled.div<AvatarProps>`
 
   // ================ talking animation ================
   ${({ talking, animations, color }) => talking && animations && color && css`
-    animation: ${pulse(color)} 1s infinite ease-in;
+    animation: ${pulse(colorWhite)} 1s infinite ease-in;
   `}
 
   ${({ talking, animations }) => talking && !animations && `
@@ -287,11 +287,11 @@ const Avatar = styled.div<AvatarProps>`
   `}
   // ================ talking animation ================
   // ================ image ================
-  ${({ avatar, emoji, color }) => avatar?.length !== 0 && !emoji && css`
+  ${({ avatar, emoji }) => avatar?.length !== 0 && !emoji && css`
     background-image: url(${avatar});
     background-repeat: no-repeat;
     background-size: contain;
-    border: 2px solid ${color};
+    border: 2px solid ${colorWhite};
   `}
   // ================ image ================
 
@@ -418,6 +418,7 @@ const RightBlockIconsContainer = styled.div<RightBlockIconsProps>`
     & .talking {
       display: flex;
       background: var(--Color-02, #75C044);
+      color: ${colorWhite};
     }
     & .micSlash {
       display: none;
@@ -438,6 +439,7 @@ const RightBlockIconsContainer = styled.div<RightBlockIconsProps>`
     & .presentationLine {
       display: flex;
       background: var(--Color-05, #0A84FF);
+      color: ${colorWhite};
     }
   `}
   ${({ presenter }) => !presenter && `
@@ -461,7 +463,7 @@ const RightBlockIconsContainer = styled.div<RightBlockIconsProps>`
   // ================ talking animation ================
   ${({talking, animations, color}) => talking && animations && color && css`
     & .talking {
-      animation: ${pulse(color)} 1s infinite ease-in;
+      animation: ${pulse(colorWhite)} 1s infinite ease-in;
     }
   `}
 
@@ -557,7 +559,7 @@ const RightIconVoiceContainer = styled.div<RightIconVoiceProps>`
   `} // ================ talking animation ================
   ${({talking, animations, color}) => talking && animations && color && css`
     &:after {
-      animation: ${pulse(color)} 1s infinite ease-in;
+      animation: ${pulse(colorWhite)} 1s infinite ease-in;
     }
   `}
 

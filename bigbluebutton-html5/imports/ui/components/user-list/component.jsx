@@ -31,7 +31,7 @@ class UserList extends PureComponent {
     const logoUrl = DarkModeIsEnabled ? CustomDarkLogoUrl : CustomLogoUrl;
 
     return (
-      <Styled.UserList data-test="userListContainer">
+      <Styled.UserList data-test="userListContainer" className="userListContainer">
         {
           showBranding
             && !compact

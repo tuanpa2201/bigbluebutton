@@ -4,6 +4,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 import FocusTrap from 'focus-trap-react';
 import Styled from './styles';
 import deviceInfo from '/imports/utils/deviceInfo';
+import * as DarkReader from 'darkreader';
 
 const intlMessages = defineMessages({
   modalClose: {

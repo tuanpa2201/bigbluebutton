@@ -7,6 +7,9 @@
 
 .three-bars-loader span {
     display: inline-block;
+    [data-darkreader-scheme="dark"] & {
+        color: var(--text-primary-dark, #FCFCFD);
+    }
     animation: bar-bounce 1s infinite;
 }
 
