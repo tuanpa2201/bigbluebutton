@@ -105,6 +105,7 @@
   content: "\e902";
   display: inline-block;
   transform: rotate(90deg);
+  color: #5F6166;
 }
 .icon-bbb-promote:before {
   content: "\e903";

@@ -65,6 +65,10 @@ const TldrawV2GlobalStyle = createGlobalStyle`
   .tlui-popover__content {
     left: -50px !important;
   }
+  
+  .tlui-popover__content > div > button > div {
+    color: #BEBEBE !important;
+  }
 
   ${({ isPresenter, isMultiUserActive }) => !isPresenter && !isMultiUserActive && `
     .tl-cursor use {

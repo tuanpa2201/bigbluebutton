@@ -76,7 +76,6 @@ const Bounce2 = styled(Bounce)`
 `;
 
 const IconSvg = styled.img`
-  height: 16rem;
 `;
 
 export default {
