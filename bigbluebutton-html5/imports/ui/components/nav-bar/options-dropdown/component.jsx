@@ -449,7 +449,8 @@ class OptionsDropdown extends PureComponent {
         bottomItems.push({
           key: 'list-item-logout',
           dataTest: 'optionsLogoutButton',
-          icon: 'logout',
+          // icon: 'logout',
+          svgIcon: 'logOut',
           label: intl.formatMessage(intlMessages.leaveSessionLabel),
           description: intl.formatMessage(intlMessages.leaveSessionDesc),
           onClick: () => this.leaveSession(),
@@ -461,7 +462,8 @@ class OptionsDropdown extends PureComponent {
 
         bottomItems.push({
           key: 'list-item-end-meeting',
-          icon: 'close',
+          // icon: 'close',
+          svgIcon: 'cross',
           label: intl.formatMessage(intlMessages.endMeetingLabel),
           description: intl.formatMessage(intlMessages.endMeetingDesc),
           customStyles,

@@ -341,7 +341,7 @@
   "app.meeting.endedDueServiceInterruption": "Phiên bị gián đoạn tạm thời do lỗi dịch vụ",
   "app.meeting.meetingTimeRemaining": "Thời gian còn lại của cuộc họp: {0}",
   "app.meeting.meetingTimeHasEnded": "Thời gian đã kết thúc. Cuộc họp sẽ sớm kết thúc",
-  "app.meeting.endedByUserMessage": "Phòng họp này đã kết thúc bởi (0)",
+  "app.meeting.endedByUserMessage": "Phòng họp này đã kết thúc bởi {0}",
   "app.meeting.endedByNoModeratorMessageSingular": "Phiên làm việc đã tự động kết thúc do không có người điều hành trong 1 phút.",
   "app.meeting.endedByNoModeratorMessagePlural": "Phiên làm việc đã tự động kết thúc do vắng người điều hành trong {0} phút.",
   "app.meeting.endedMessage": "Bạn sẽ được chuyển tiếp trở lại màn hình chính.",
@@ -1174,7 +1174,7 @@
   "app.lock-viewers.notesLabel": "Chỉnh sửa chia sẻ ghi chú",
   "app.lock-viewers.userListLabel": "Xem những người khác trong danh sách Người dùng",
   "app.lock-viewers.ariaTitle": "Khóa phương thức cài đặt người xem",
-  "app.lock-viewers.button.apply": "ÁP dụng",
+  "app.lock-viewers.button.apply": "Áp dụng",
   "app.lock-viewers.button.cancel": "Hủy bỏ",
   "app.lock-viewers.locked": "Khóa",
   "app.lock-viewers.hideViewersCursor": "Xem con trỏ của người xem khác",
@@ -1642,6 +1642,7 @@
   "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Lỗi khi tải trang – vui lòng kiểm tra địa chỉ URL và kết nối mạng",
   "app.userList.menu.removeTitle.label": "Loại bỏ người dùng",
   "app.userList.menu.removeDescConfirmation.label": "Loại bỏ người dùng: {0}?",
+  "app.meeting.viewLearningAnalyticsDashboard": "Xem thông tin phân tích cuộc họp",
   "EOF": "EOF"
 }
 

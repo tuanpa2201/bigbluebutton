@@ -142,6 +142,10 @@ const intlMessage = defineMessages({
     id: 'app.meeting.endedDueServiceInterruption',
     description: '',
   },
+  viewLearningAnalyticsDashboard: {
+    id: 'app.meeting.viewLearningAnalyticsDashboard',
+    description: 'message view learning analytics dashboard',
+  }
 });
 
 interface MeetingEndedContainerProps {
@@ -213,7 +217,7 @@ const MeetingEnded: React.FC<MeetingEndedProps> = ({
             && setLearningDashboardCookie(learningDashboardAccessToken, meetingId, learningDashboardBase) === true
               ? (
                 <Styled.Text>
-                  <Styled.MeetingEndedButton
+                  <Styled.MeetingEndedButton className="viewLearningAnalyticsDashboard"
                     color="default"
                     onClick={() => openLearningDashboardUrl(learningDashboardAccessToken,
                       meetingId,
@@ -222,7 +226,7 @@ const MeetingEnded: React.FC<MeetingEndedProps> = ({
                       locale)}
                     aria-details={intl.formatMessage(intlMessage.open_activity_report_btn)}
                   >
-                    View the Learning Analytics Dashboard
+                    {intl.formatMessage(intlMessage.viewLearningAnalyticsDashboard)}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M6.66667 2H6.33333V2C5.09179 2 4.47102 2 3.97394 2.18092C3.14064 2.48422 2.48422 3.14064 2.18092 3.97394C2 4.47102 2 5.09179 2 6.33333V9.2C2 10.8802 2 11.7202 2.32698 12.362C2.6146 12.9265 3.07354 13.3854 3.63803 13.673C4.27976 14 5.11984 14 6.8 14H9.66667C10.9082 14 11.529 14 12.0261 13.8191C12.8594 13.5158 13.5158 12.8594 13.8191 12.0261C14 11.529 14 10.9082 14 9.66667V9.66667V9.33333M8 8L14 2M14 2H10M14 2V6" stroke="#1087FF" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>

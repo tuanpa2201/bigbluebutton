@@ -82,7 +82,7 @@ const Option = styled.div`
   // ${({ textColor }) => textColor && `
   //   color: ${textColor};
   // `}
-  color: #313131;
+  //color: #313131;
   
   ${({ isHorizontal, isMobile }) => (isHorizontal || isMobile) && `
     margin-right: 0;

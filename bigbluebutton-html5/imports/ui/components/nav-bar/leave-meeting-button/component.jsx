@@ -95,7 +95,8 @@ class LeaveMeetingButton extends PureComponent {
         {
           key: 'list-item-logout',
           dataTest: 'directLogoutButton',
-          icon: 'logout',
+          // icon: 'logout',
+          svgIcon: 'logOut',
           label: intl.formatMessage(intlMessages.leaveSessionLabel),
           description: intl.formatMessage(intlMessages.leaveSessionDesc),
           onClick: () => this.leaveSession(),
@@ -108,7 +109,8 @@ class LeaveMeetingButton extends PureComponent {
         {
           key: 'list-item-end-meeting',
           dataTest: 'endMeetingButton',
-          icon: 'close',
+          // icon: 'close',
+          svgIcon: 'cross',
           label: intl.formatMessage(intlMessages.endMeetingLabel),
           description: intl.formatMessage(intlMessages.endMeetingDesc),
           onClick: () => this.setEndMeetingConfirmationModalIsOpen(true),

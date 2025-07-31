@@ -1577,7 +1577,7 @@
     "app.screenshare.actionsDropdown.shareCamera": "Share camera",
     "app.screenshare.actionsDropdown.shareScreen": "Share screen",
     "app.screenshare.actionsDropdown.shareVideo": "Share video",
-
+    "app.meeting.viewLearningAnalyticsDashboard": "View the Learning Analytics Dashboard",
 
     "EOF": "EOF"
 }
