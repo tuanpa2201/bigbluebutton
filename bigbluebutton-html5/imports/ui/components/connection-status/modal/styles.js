@@ -8,7 +8,6 @@ import {
 } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   smPaddingX,
-  smPaddingY,
   lgPaddingY,
   titlePositionLeft,
 } from '/imports/ui/stylesheets/styled-components/general';
@@ -95,6 +94,24 @@ const Text = styled.div`
   }
 `;
 
+const Text2 = styled.div`
+  margin-top: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #313131;
+  font-weight: 400;
+
+  ${({ offline }) => offline && `
+    font-style: italic;
+  `}
+
+  [dir="rtl"] & {
+    padding: 0;
+    padding-right: 10px;
+  }
+`;
+
 const Avatar = styled.div`
   display: flex;
   height: 100%;
@@ -103,8 +120,8 @@ const Avatar = styled.div`
 `;
 
 const Icon = styled.div`
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.437rem;
+  height: 1.437rem;
 `;
 
 const Right = styled.div`
@@ -331,7 +348,7 @@ const ConnectionTabList = styled(TabList)`
 
 const ConnectionTabPanel = styled(TabPanel)`
   display: none;
-  margin-top: 8px;
+  margin-top: 9px;
 
   [dir="rtl"] & {
     margin: 0 1rem 0 0;
@@ -344,6 +361,7 @@ const ConnectionTabPanel = styled(TabPanel)`
 
   & ul {
     padding: 0;
+    margin: 4px 0px;
   }
 
   @media ${smallOnly} {
@@ -404,6 +422,7 @@ export default {
   Left,
   Name,
   Text,
+  Text2,
   Avatar,
   Icon,
   Right,
