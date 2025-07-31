@@ -321,6 +321,20 @@
 /* MODAL ABOUT */
 .ReactModal__Content.modal-about {
     width: 500px;
+
+    & .modal-header {
+        [data-darkreader-scheme="dark"] & {
+            background: var(--bg-00-dark, #3B3F43)!important;
+            border-bottom: none!important;
+        }
+    }
+
+    & span,
+    & div {
+        [data-darkreader-scheme="dark"] & {
+            color: var(--text-primary-dark, #FCFCFD);
+        }
+    }
 }
 
 /* MODAL SETTINGS */
@@ -459,6 +473,7 @@
     }
 
     & .session-details-content {
+        & b,
         & p,
         & div {
             [data-darkreader-scheme="dark"] & {
@@ -525,5 +540,64 @@
                 }
             }
         }
+
+        & .list-connections {
+            min-height: 272px;
+            [data-darkreader-scheme="dark"] & {
+                background: var(--bg-00-dark, #3B3F43);
+            }
+        }
+    }
+}
+
+/* MODAL END MEETING */
+.modal-dialog-centered {
+    [data-darkreader-scheme="dark"] & {
+        background: var(--bg-00-dark, #3B3F43);
+    }
+    & div {
+        [data-darkreader-scheme="dark"] & {
+            color: var(--text-primary-dark, #FCFCFD);
+        }
+    }
+
+    & .meeting-ended-button {
+        color: var(--text-link-light, #1087FF);
+        [data-darkreader-scheme="dark"] & {
+            color: var(--text-link-dark, #56D6FF);
+        }
+    }
+}
+
+/* SHORT_CUT HELP */
+.shortcut-help {
+    & .simple-modal-content {
+
+        & .shortcut-help-tabs {
+
+
+            & li,
+            & span {
+                [data-darkreader-scheme="dark"] & {
+                    color: var(--text-primary-dark, #FCFCFD);
+                }
+            }
+
+            & .is-selected {
+                [data-darkreader-scheme="dark"] & {
+                    background: var(--bg-04-hover-dark, #333335);
+                }
+            }
+
+            & .shortcut-help-general {
+                & div:first-child {
+                    [data-darkreader-scheme="dark"] & {
+                        background-image: none;
+                        background: var(--bg-00-dark, #3B3F43);
+                    }
+                }
+            }
+        }
+
     }
 }

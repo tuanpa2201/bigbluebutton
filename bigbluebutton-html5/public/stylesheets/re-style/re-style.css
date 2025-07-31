@@ -882,3 +882,40 @@ li[data-key="menuItem-directLogoutButton"] {
         background-color: var(--color-01-dark, #EE0033) !important;
     }
 }
+
+.MuiList-root.MuiList-padding.MuiMenu-list {
+    & li div {
+        [data-darkreader-scheme="dark"] & {
+            color: var(--text-primary-dark, #FCFCFD);
+        }
+    }
+}
+
+.tlui-layout__mobile .tlui-button__tool {
+    [data-darkreader-scheme="dark"] & {
+        color: var(--text-primary-dark, #FCFCFD) !important;
+    }
+}
+
+.layout-btn {
+    [data-darkreader-scheme="dark"] & {
+        background-color: var(--bg-00-dark, #3B3F43) !important;
+    }
+}
+
+.radio-label {
+    & span {
+        color: var(--Text-Primary, #313131) !important;
+        [data-darkreader-scheme="dark"] & {
+            color: var(--text-primary-dark, #FCFCFD) !important;
+        }
+    }
+}
+
+.rightIconNomal {
+    & .talking {
+        [data-darkreader-scheme="dark"] & {
+            background-color: var(--color-02-dark, #83BF6E) !important;
+        }
+    }
+}

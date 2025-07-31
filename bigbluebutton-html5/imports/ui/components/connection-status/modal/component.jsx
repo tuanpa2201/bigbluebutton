@@ -579,12 +579,12 @@ class ConnectionStatusComponent extends PureComponent {
               </div>
             </Styled.ConnectionTabPanel>
             <Styled.ConnectionTabPanel selectedClassName="is-selected">
-              <ul>{this.renderConnections()}</ul>
+              <ul className="list-connections">{this.renderConnections()}</ul>
             </Styled.ConnectionTabPanel>
             {amIModerator
               && (
                 <Styled.ConnectionTabPanel selectedClassName="is-selected">
-                  <ul>{this.renderConnections()}</ul>
+                  <ul className="list-connections">{this.renderConnections()}</ul>
                 </Styled.ConnectionTabPanel>
               )}
           </Styled.ConnectionTabs>

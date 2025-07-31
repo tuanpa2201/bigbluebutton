@@ -28,6 +28,7 @@ export default class Radio extends Base {
       <>
         {label ? (
           <Styled.Label
+            className="radio-label"
             label={label}
             control={radio}
           />

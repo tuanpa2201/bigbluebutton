@@ -207,7 +207,7 @@ const CopyContainer = styled.div`
 
 const ConnectionStatusModal = styled(ModalSimple)`
   padding: 0px;
-  min-height: 404px;
+  min-height: 300px;
   border-radius: 12px !important;
 `;
 
@@ -360,7 +360,7 @@ const ConnectionTabPanel = styled(TabPanel)`
 
   & ul {
     padding: 0;
-    margin: 4px 0px;
+    margin: 0;
   }
 
   @media ${smallOnly} {

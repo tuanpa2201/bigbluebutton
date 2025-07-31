@@ -11,6 +11,7 @@ import Tooltip from '/imports/ui/components/common/tooltip/component';
 import Auth from '/imports/ui/services/auth';
 import Storage from '/imports/ui/services/storage/session';
 import Radio from '../../common/radio/component';
+import { isDarkThemeEnabled } from '/imports/ui/components/app/service';
 
 const LayoutModalComponent = ({
   intl,
@@ -207,11 +208,12 @@ const LayoutModalComponent = ({
               }}
             />
             <Styled.LayoutBtn
+              className="layout-btn"
               layout={layout}
               label=""
               customIcon={(
                 <Styled.IconSvg
-                  src={`${LAYOUTS_PATH}${layout}.svg`}
+                  src={`${LAYOUTS_PATH}${layout}${isDarkThemeEnabled && '_dark'}.svg`}
                   alt={`${layout} ${intl.formatMessage(intlMessages.layoutSingular)}`}
                 />
               )}

@@ -1,7 +1,7 @@
 import React from 'react';
-import Styled from './styles';
 import PropTypes from 'prop-types';
 import * as DarkReader from 'darkreader';
+import Styled from './styles';
 
 const propTypes = {
   hideBorder: PropTypes.bool,

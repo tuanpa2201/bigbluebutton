@@ -370,6 +370,7 @@ class Settings extends Component {
         title={intl.formatMessage(intlMessages.SettingsLabel)}
         {...{
           isOpen,
+          onRequestClose: () => this.onHandleAction('cancel'),
           priority,
         }}
       >
