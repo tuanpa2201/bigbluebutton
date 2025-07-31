@@ -403,7 +403,7 @@
     "app.presentationUploder.clearErrors": "Clear errors",
     "app.presentationUploder.clearErrorsDesc": "Clears failed presentation uploads",
     "app.presentationUploder.uploadViewTitle": "Upload Presentation",
-    "app.poll.questionAndoptions.label": "Question text to be shown:\nA. Poll option *\nB. Poll option\nC. Poll option\nD. Poll option",
+    "app.poll.questionAndoptions.label": "Question text to be shown.\nA. Poll option *\nB. Poll option (optional)\nC. Poll option (optional)\nD. Poll option (optional)\nE. Poll option (optional)",
     "app.poll.customInput.label": "Custom Input",
     "app.poll.customInputInstructions.label": "Custom input is enabled – write poll question and option(s) in given format or drag and drop a text file in same format.",
     "app.poll.maxOptionsWarning.label": "Only first 5 options can be used!",

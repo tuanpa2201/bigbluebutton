@@ -35,9 +35,12 @@ const Toast = ({
   content,
   small,
 }) => {
+
   if (icon && icon === 'polling') {
     icon = null
+    type = 'success';
   }
+
   return (
       <Styled.ToastContainer small={small} data-test="toastContainer">
         <Styled.Toast type={type}>
