@@ -218,6 +218,11 @@ const iconsMap: { [key: string]: JSX.Element } = {
       <path d="M4 12L12 4M4 4L12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
+  cross_20: (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="m5 15 10 -10M5 5l10 10" stroke="currentColor" strokeWidth="1.875" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
   info: (
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
       <path d="M8.00016 10.6668L8.00016 7.3335M8.3335 5.3335C8.3335 5.51759 8.18426 5.66683 8.00016 5.66683C7.81607 5.66683 7.66683 5.51759 7.66683 5.3335M8.3335 5.3335C8.3335 5.1494 8.18426 5.00016 8.00016 5.00016C7.81607 5.00016 7.66683 5.1494 7.66683 5.3335M8.3335 5.3335L7.66683 5.3335M14.6668 8.00016C14.6668 11.6821 11.6821 14.6668 8.00016 14.6668C4.31826 14.6668 1.33349 11.6821 1.33349 8.00016C1.3335 4.31826 4.31826 1.3335 8.00016 1.3335C11.6821 1.3335 14.6668 4.31827 14.6668 8.00016Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -606,6 +611,16 @@ const iconsMap: { [key: string]: JSX.Element } = {
   moon: (
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
       <path fillRule="evenodd" clipRule="evenodd" d="M6.72139 5.02125C5.17765 6.07218 4.16667 7.84291 4.16667 9.84714C4.16667 13.0688 6.77834 15.6805 10 15.6805C12.0042 15.6805 13.775 14.6695 14.8259 13.1257C10.5681 12.6603 7.18684 9.27902 6.72139 5.02125ZM15.8333 11.5138C16.555 11.5138 17.1765 12.1499 16.8909 12.8126C15.7415 15.4799 13.0888 17.3471 10 17.3471C5.85786 17.3471 2.5 13.9893 2.5 9.84714C2.5 6.75832 4.36723 4.10563 7.0345 2.95623C7.69728 2.67062 8.33333 3.29211 8.33333 4.01381C8.33333 8.15595 11.6912 11.5138 15.8333 11.5138Z" fill="currentColor" />
+    </svg>
+  ),
+  logout: (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8.333 1.667H7c-1.867 0 -2.8 0 -3.513 0.363a3.333 3.333 0 0 0 -1.457 1.457C1.667 4.2 1.667 5.133 1.667 7v6c0 1.867 0 2.8 0.363 3.513a3.333 3.333 0 0 0 1.457 1.457C4.2 18.333 5.133 18.333 7 18.333H8.333m0 -8.333h10m0 0 -3.333 -3.333m3.333 3.333 -3.333 3.333" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  connect: (
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+      <path d="M34.5 5L34.5 35M24.4679 12.6056L24.4679 35M14.4357 21.4789L14.4357 35M4.5 29.0845L4.5 35" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
 };

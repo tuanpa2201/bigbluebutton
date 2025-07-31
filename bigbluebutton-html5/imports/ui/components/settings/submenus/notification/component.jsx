@@ -79,10 +79,10 @@ class NotificationMenu extends BaseMenu {
         <Styled.Form className="form">
           <Styled.Row className="row mb-0-i" aria-hidden>
             <Styled.Col className="col" />
-            <Styled.ColHeading className="font-medium-s text-secondary">
+            <Styled.ColHeading className="font-medium-s text-secondary text-secondary-dark">
               {intl.formatMessage(intlMessages.audioAlertLabel)}
             </Styled.ColHeading>
-            <Styled.ColHeading className="font-medium-s text-secondary">
+            <Styled.ColHeading className="font-medium-s text-secondary text-secondary-dark">
               {intl.formatMessage(intlMessages.pushAlertLabel)}
             </Styled.ColHeading>
           </Styled.Row>

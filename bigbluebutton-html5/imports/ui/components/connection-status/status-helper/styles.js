@@ -10,10 +10,10 @@ const StatusIconWrapper = styled.div`
   padding: 1.7857rem;
 
   ${({ color }) => {
-    let bgColor = '#6CC17C';
+    let bgColor = '#83BF6E';
     bgColor = color === 'warning' ? colorWarning : bgColor;
     bgColor = color === 'danger' ? colorDanger : bgColor;
-    return `background-color: ${bgColor};`;
+    return `background-color: ${bgColor}!important;`;
   }}
 `;
 

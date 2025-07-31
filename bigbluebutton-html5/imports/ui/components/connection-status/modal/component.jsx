@@ -305,7 +305,7 @@ class ConnectionStatusComponent extends PureComponent {
           last={(index + 1) === connections.length}
           data-test="connectionStatusItemUser"
         >
-          <Styled.Left>
+          <Styled.Left className="connection-status-item-left">
             <Styled.Avatar>
               <UserAvatar
                 you={conn.user.userId === Auth.userID}
@@ -317,7 +317,7 @@ class ConnectionStatusComponent extends PureComponent {
               </UserAvatar>
             </Styled.Avatar>
 
-            <Styled.Name>
+            <Styled.Name className="connection-status-item-name">
               <Styled.Text
                 offline={!conn.user.currentlyInMeeting}
                 data-test={!conn.user.currentlyInMeeting ? 'offlineUser' : null}
@@ -424,11 +424,12 @@ class ConnectionStatusComponent extends PureComponent {
 
     return (
       <Styled.NetworkDataContainer
+        className="network-data-container"
         data-test="networkDataContainer"
         tabIndex={0}
       >
         <Styled.HelperWrapper>
-          <Styled.Helper>
+          <Styled.Helper className="helper">
             <ConnectionStatusHelper
               connectionData={connectionData}
               closeModal={() => setModalIsOpen(false)}
@@ -442,7 +443,7 @@ class ConnectionStatusComponent extends PureComponent {
               <div>
                 {`${audioCurrentUploadRate}k`}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.00033 12.25L7.00033 1.75M7.00033 1.75L11.0837 5.83333M7.00033 1.75L2.91699 5.83333" stroke="#5F6166" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M7.00033 12.25L7.00033 1.75M7.00033 1.75L11.0837 5.83333M7.00033 1.75L2.91699 5.83333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             </Styled.NetworkData>
@@ -451,7 +452,7 @@ class ConnectionStatusComponent extends PureComponent {
               <div data-test="videoUploadRateData">
                 {`${videoCurrentUploadRate}k`}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.00033 12.25L7.00033 1.75M7.00033 1.75L11.0837 5.83333M7.00033 1.75L2.91699 5.83333" stroke="#5F6166" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M7.00033 12.25L7.00033 1.75M7.00033 1.75L11.0837 5.83333M7.00033 1.75L2.91699 5.83333" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             </Styled.NetworkData>
@@ -471,7 +472,7 @@ class ConnectionStatusComponent extends PureComponent {
               <div>
                 {`${audioCurrentDownloadRate}k`}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.00033 1.75L7.00033 12.25M7.00033 12.25L11.0837 8.16667M7.00033 12.25L2.91699 8.16667" stroke="#5F6166" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M7.00033 1.75L7.00033 12.25M7.00033 12.25L11.0837 8.16667M7.00033 12.25L2.91699 8.16667" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             </Styled.NetworkData>
@@ -480,7 +481,7 @@ class ConnectionStatusComponent extends PureComponent {
               <div>
                 {`${videoCurrentDownloadRate}k`}
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M7.00033 1.75L7.00033 12.25M7.00033 12.25L11.0837 8.16667M7.00033 12.25L2.91699 8.16667" stroke="#5F6166" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M7.00033 1.75L7.00033 12.25M7.00033 12.25L11.0837 8.16667M7.00033 12.25L2.91699 8.16667" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
             </Styled.NetworkData>
@@ -512,11 +513,12 @@ class ConnectionStatusComponent extends PureComponent {
 
     const { copyButtonText } = this.state;
     return (
-      <Styled.CopyContainer aria-live="polite">
+      <Styled.CopyContainer aria-live="polite" className="copy-container">
         <Styled.Copy
           disabled={!networkData?.ready}
           role="button"
           data-test="copyStats"
+          className="copyStats"
           // eslint-disable-next-line react/jsx-no-bind
           onClick={this.copyNetworkData.bind(this)}
           // eslint-disable-next-line react/jsx-no-bind
@@ -571,7 +573,7 @@ class ConnectionStatusComponent extends PureComponent {
                 )}
             </Styled.ConnectionTabList>
             <Styled.ConnectionTabPanel selectedClassName="is-selected">
-              <div>
+              <div className="connection-status-panel-content">
                 {this.renderNetworkData()}
                 {this.renderCopyDataButton()}
               </div>

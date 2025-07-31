@@ -111,6 +111,7 @@ const Right = styled.div`
   display: flex;
   width: 5rem;
   height: 100%;
+  gap: 12px;
 `;
 
 const Time = styled.div`
@@ -137,12 +138,10 @@ const TimeActive = styled.time`
 
 const NetworkDataContainer = styled(ScrollboxVertical)`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-wrap: nowrap;
   overflow: auto;
   scroll-snap-type: x mandatory;
-  padding-bottom: 1.25rem;
 
   &:focus {
     outline: none;
@@ -186,7 +185,7 @@ const CopyContainer = styled.div`
 
 const ConnectionStatusModal = styled(ModalSimple)`
   padding: 0px;
-  height: 32rem;
+  height: fit-content;
   border-radius: 12px !important;
 `;
 
@@ -328,8 +327,6 @@ const ConnectionTabList = styled(TabList)`
 const ConnectionTabPanel = styled(TabPanel)`
   display: none;
   margin-top: 8px;
-  height: 13rem;
-
   [dir="rtl"] & {
     margin: 0 1rem 0 0;
   }

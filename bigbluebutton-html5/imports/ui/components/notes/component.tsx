@@ -22,7 +22,7 @@ import {
 import useDeduplicatedSubscription from '../../core/hooks/useDeduplicatedSubscription';
 import { useIsPresentationEnabled } from '../../services/features';
 import { useStorageKey } from '/imports/ui/services/storage/hooks';
-import SvgIcon from "/imports/ui/components/common/icon-svg/component";
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const intlMessages = defineMessages({
   hide: {
@@ -121,17 +121,13 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
   const renderHeaderOnMedia = () => {
     return amIPresenter ? (
       <div className="unpinNotes">
-        <Styled.Header
-          rightButtonProps={{
-            'data-test': 'unpinNotes',
-            'aria-describedby': '',
-            icon: 'close',
-            onClick: () => {
-              handlePinSharedNotes(false);
-            },
-
-          }}
-        />
+        <button
+          type="button"
+          onClick={() => { handlePinSharedNotes(false); }}
+          style={{ background: 'none', border: 'none' }}
+        >
+          <SvgIcon iconName="cross_20" />
+        </button>
         <span className="unpinNotes_tooltip">{intl.formatMessage(intlMessages.unpinNotes)}</span>
       </div>
     ) : null;
