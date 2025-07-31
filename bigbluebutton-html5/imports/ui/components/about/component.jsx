@@ -59,7 +59,7 @@ const AboutComponent = (props) => {
     >
       <div className="text-base">
         <span className="font-regular-s text-primary">{`${intl.formatMessage(intlMessages.copyright)} ©${new Date().getFullYear()}`}</span>
-        <div className="mt-16">Developed: Viettel IT Center (VIC)</div>
+        <div className="mt-16 mb-8-i">Developed: Viettel IT Center (VIC)</div>
       </div>
     </ModalSimple>
   );

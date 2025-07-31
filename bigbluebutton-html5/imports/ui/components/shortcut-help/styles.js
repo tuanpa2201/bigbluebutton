@@ -10,8 +10,8 @@ const KeyCell = styled.td`
   text-align: center;
   padding: ${smPaddingX};
   margin: auto;
-  width: 6rem;
-  min-width: 6rem;
+  width: 8rem;
+  min-width: 8rem;
 `;
 
 const DescCell = styled.td`
