@@ -943,3 +943,14 @@ button[data-test="whiteboardOptionsButton"],
 .recharts-text.recharts-cartesian-axis-tick-value{
     fill: var(--Text-Secondary, #6F767E);
 }
+
+.arrow-title-room {
+    color: var(--Neutral-00, #FFF);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

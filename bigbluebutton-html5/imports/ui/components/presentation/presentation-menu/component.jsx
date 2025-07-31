@@ -246,13 +246,6 @@ const PresentationMenu = (props) => {
 
     return (
       <Styled.Line>
-        <Styled.ToastText>
-          <span>
-            {loading && !hasError && intl.formatMessage(intlMessages.downloading)}
-            {!loading && !hasError && intl.formatMessage(intlMessages.downloaded)}
-            {!loading && hasError && intl.formatMessage(intlMessages.downloadFailed)}
-          </span>
-        </Styled.ToastText>
         <Styled.StatusIcon>
           <Styled.ToastIcon
             done={!loading && !hasError}
@@ -261,6 +254,14 @@ const PresentationMenu = (props) => {
             iconName={icon}
           />
         </Styled.StatusIcon>
+
+        <Styled.ToastText>
+          <span>
+            {loading && !hasError && intl.formatMessage(intlMessages.downloading)}
+            {!loading && !hasError && intl.formatMessage(intlMessages.downloaded)}
+            {!loading && hasError && intl.formatMessage(intlMessages.downloadFailed)}
+          </span>
+        </Styled.ToastText>
       </Styled.Line>
     );
   }

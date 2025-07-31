@@ -94,10 +94,7 @@ const ChatPollContent: React.FC<ChatPollContentProps> = ({
       pollAnswer,
     };
   });
-  const barColors = ["#B5E4CA", "#FFBC99"]
-
   const useHeight = height || translatedAnswers.length * 50;
-
   return (
     <Styled.PollWrapper data-test="chatPollMessageText">
       <Styled.PollText>

@@ -100,7 +100,7 @@ class GuestPolicyComponent extends PureComponent {
     }
     // alert("selectedRole: " + this.state.selectedRole)
     changeGuestPolicy(policyRule);
-    notify(intl.formatMessage(intlMessages.feedbackMessage) + intl.formatMessage(messageId), 'success');
+    notify(intl.formatMessage(intlMessages.feedbackMessage) + ' ' + intl.formatMessage(messageId), 'success');
   }
 
   render() {

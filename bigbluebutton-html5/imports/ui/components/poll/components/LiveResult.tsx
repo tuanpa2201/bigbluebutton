@@ -1,22 +1,15 @@
-import { useMutation } from '@apollo/client';
-import React, { useCallback } from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+import {useMutation} from '@apollo/client';
+import React, {useCallback} from 'react';
+import {defineMessages, useIntl} from 'react-intl';
 import Session from '/imports/ui/services/storage/in-memory';
-import {
-  Bar, BarChart, Cell, ResponsiveContainer, XAxis, YAxis,
-} from 'recharts';
+import {Bar, BarChart, ResponsiveContainer, XAxis, YAxis,} from 'recharts';
 import Styled from '../styles';
-import {
-  ResponseInfo,
-  UserInfo,
-  getCurrentPollData,
-  getCurrentPollDataResponse,
-} from '../queries';
+import {getCurrentPollData, getCurrentPollDataResponse, ResponseInfo, UserInfo,} from '../queries';
 import logger from '/imports/startup/client/logger';
-import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
-import { POLL_CANCEL, POLL_PUBLISH_RESULT } from '../mutations';
-import { layoutDispatch } from '../../layout/context';
-import { ACTIONS, PANELS } from '../../layout/enums';
+import {getSettingsSingletonInstance} from '/imports/ui/services/settings';
+import {POLL_CANCEL, POLL_PUBLISH_RESULT} from '../mutations';
+import {layoutDispatch} from '../../layout/context';
+import {ACTIONS, PANELS} from '../../layout/enums';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
 import CustomizedAxisTick from './CustomizedAxisTick';
 import connectionStatus from '/imports/ui/core/graphql/singletons/connectionStatus';
@@ -58,6 +51,26 @@ const intlMessages = defineMessages({
     id: 'app.poll.activePollInstruction',
     description: 'instructions displayed when a poll is active',
   },
+  true: {
+    id: 'app.poll.t',
+    description: 'Poll true option value',
+  },
+  false: {
+    id: 'app.poll.f',
+    description: 'Poll false option value',
+  },
+  yes: {
+    id: 'app.poll.y',
+    description: 'Poll yes option value',
+  },
+  no: {
+    id: 'app.poll.n',
+    description: 'Poll no option value',
+  },
+  abstention: {
+    id: 'app.poll.abstention',
+    description: 'Poll Abstention option value',
+  },
 });
 
 interface LiveResultProps {
@@ -97,6 +110,27 @@ const LiveResult: React.FC<LiveResultProps> = ({
     });
   }, []);
 
+  const translatedAnswers = responses.map((answer: Answers) => {
+      const translationKey = intlMessages[answer.optionDesc.toLowerCase() as keyof typeof intlMessages];
+      const pollAnswer = translationKey ? intl.formatMessage(translationKey) : answer.key;
+      return {
+          ...answer,
+          pollAnswer,
+      };
+  });
+
+    const translatedOption = (options) => {
+        return options.map((o) => {
+            const translationKey = intlMessages[o.toLowerCase() as keyof typeof intlMessages];
+            return translationKey ? intl.formatMessage(translationKey) : o;
+        });
+    }
+
+    const translatedUsers = users.map((u) => {
+        u.optionDescIds = translatedOption(u.optionDescIds);
+        return u;
+    });
+
   return (
     <div>
       <Styled.Instructions>
@@ -120,10 +154,10 @@ const LiveResult: React.FC<LiveResultProps> = ({
         {/*</Styled.Status>*/}
         <ResponsiveContainer width="100%" height={275}>
           <BarChart
-            data={responses}
+            data={translatedAnswers}
             layout="horizontal"
           >
-            <XAxis fill="#6F767E" stroke="#C8C8C8" width={ 0 } type="category" dataKey="optionDesc" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
+            <XAxis fill="#6F767E" stroke="#C8C8C8" width={ 0 } type="category" dataKey="pollAnswer" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
             <YAxis fill="#6F767E" stroke="#C8C8C8" width={ 20 } type="number" allowDecimals={false}/>
             <Bar dataKey="optionResponsesCount" fill="#0C57A7" radius={[8,8,0,0]} ></Bar>
           </BarChart>
@@ -140,7 +174,7 @@ const LiveResult: React.FC<LiveResultProps> = ({
                 <Styled.THeading>{intl.formatMessage(intlMessages.responsesTitle)}</Styled.THeading>
               </tr>
               {
-                users.map((user) => (
+                translatedUsers.map((user) => (
                   <tr key={user.user.userId}>
                     <Styled.ResultLeft>{user.user.name}</Styled.ResultLeft>
                     <Styled.ResultRight data-test="userVoteLiveResult">{user.optionDescIds.join()}</Styled.ResultRight>

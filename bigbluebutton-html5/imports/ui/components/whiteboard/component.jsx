@@ -123,7 +123,7 @@ const Whiteboard = React.memo((props) => {
     isPhone,
     setEditor,
   } = props;
-
+  console.log(shapes)
   clearTldrawCache();
 
   const [isMounting, setIsMounting] = React.useState(true);
