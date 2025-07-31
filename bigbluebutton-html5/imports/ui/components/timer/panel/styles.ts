@@ -195,7 +195,7 @@ const StopwatchTime = styled.div`
 const StopwatchTimeInput = styled.div`
   display: flex;
   flex-direction: column;
-
+  width: 100%;
   .label {
     display: flex;
     font-size: small;
@@ -214,12 +214,19 @@ const StopwatchTimeInputLabel = styled.div`
     font-weight: 400;
     line-height: 16px; 
     margin-top: 4px;
+    text-transform: capitalize;
 `;
 
 const StopwatchTimeColon = styled.span`
     align-self: center;
     //padding: 0 .25rem;
     padding: 0 0 20px;
+
+  color: var(--Text-Primary, #313131);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
 `;
 
 const TimerSongsWrapper = styled.div`
@@ -321,12 +328,16 @@ const TimerInput = styled.input`
     background-color: rgba(167,179,189,0.25);
   }
 
-    &::-webkit-inner-spin-button {
-        //-webkit-appearance: none;
-        //-moz-appearance: none;
-        //appearance: none;
-        //margin: 0;
-    }
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    opacity: 1;
+  }
+
+  color: var(--Text-Primary, #313131);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
     
 `;
 

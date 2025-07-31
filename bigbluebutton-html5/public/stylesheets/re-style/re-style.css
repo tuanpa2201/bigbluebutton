@@ -854,3 +854,7 @@
         height: 12px;
     }
 }
+
+.recharts-text.recharts-cartesian-axis-tick-value{
+    fill: var(--Text-Secondary, #6F767E);
+}
