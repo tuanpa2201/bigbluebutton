@@ -607,7 +607,7 @@ class AudioSettings extends React.Component {
           />
           <Button
             data-test="joinEchoTestButton"
-            className="btn btn-primary svg-to-css-shadow"
+            className="btn btn-primary"
             label={isConnected
               ? intl.formatMessage(intlMessages.confirmLabel)
               : intl.formatMessage(intlMessages.retryLabel)}

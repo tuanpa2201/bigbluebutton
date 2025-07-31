@@ -369,7 +369,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
           />
 
           <Styled.TimerControlButton
-            className={'btn btn-primary svg-to-css-shadow'}
+            className={'btn btn-primary'}
             color={color}
             label={intl.formatMessage(label)}
             onClick={() => {

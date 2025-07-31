@@ -430,7 +430,7 @@ class LockViewersComponent extends Component {
               onClick={closeModal}
               color="secondary"
             />
-            <Styled.ButtonApply className="btn btn-primary svg-to-css-shadow"
+            <Styled.ButtonApply className="btn btn-primary"
               color="primary"
               label={intl.formatMessage(intlMessages.buttonApply)}
               onClick={() => {

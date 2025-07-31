@@ -246,7 +246,13 @@ const UserListItem: React.FC<UserListItemProps> = ({
     });
   };
   return (
-    <Styled.UserItemContents id={`user-index-${index}`} tabIndex={-1} data-test={(user.userId === Auth.userID) ? 'userListItemCurrent' : 'userListItem'} role="listitem">
+    <Styled.UserItemContents
+      id={`user-index-${index}`}
+      tabIndex={-1}
+      data-test={(user.userId === Auth.userID) ? 'userListItemCurrent' : 'userListItem'}
+      role="listitem"
+      className="user-list-item"
+    >
       <Styled.Avatar
         data-test={user.isModerator ? 'moderatorAvatar' : 'viewerAvatar'}
         data-test-presenter={user.presenter ? '' : undefined}
@@ -275,7 +281,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
           </TooltipContainer>
           &nbsp;
           {(user.userId === Auth.userID) ? `(${intl.formatMessage(messages.you)})` : ''}
-          {((user.locked || user.userLockSettings?.disablePublicChat) && (user.userLockSettings?.disablePublicChat || lockSettings?.hasActiveLockSetting) && !user.isModerator)? <div className='lock_user_chat'><SvgIcon iconName='lock2' /></div>:''}
+          {((user.locked || user.userLockSettings?.disablePublicChat) && (user.userLockSettings?.disablePublicChat || lockSettings?.hasActiveLockSetting) && !user.isModerator) ? <div className="lock_user_chat"><SvgIcon iconName="lock2" /></div> : ''}
         </Styled.UserName>
         <Styled.UserNameSub data-test={user.mobile ? 'mobileUser' : undefined}>
           {subs.length ? addSeparator(subs) : null}

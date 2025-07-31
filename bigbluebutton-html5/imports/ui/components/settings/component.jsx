@@ -386,7 +386,7 @@ class Settings extends Component {
           </button>
           <button
             type="button"
-            className="btn btn-primary svg-to-css-shadow"
+            className="btn btn-primary"
             onClick={() => this.onHandleAction('save')}
           >
             {intl.formatMessage(intlMessages.SaveLabel)}

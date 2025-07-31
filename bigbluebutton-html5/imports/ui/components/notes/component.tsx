@@ -22,6 +22,7 @@ import {
 import useDeduplicatedSubscription from '../../core/hooks/useDeduplicatedSubscription';
 import { useIsPresentationEnabled } from '../../services/features';
 import { useStorageKey } from '/imports/ui/services/storage/hooks';
+import SvgIcon from "/imports/ui/components/common/icon-svg/component";
 
 const intlMessages = defineMessages({
   hide: {
@@ -167,10 +168,7 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
                 {/* eslint-disable-next-line max-len */}
                 <NotesDropdown handlePinSharedNotes={handlePinSharedNotes} presentationEnabled={isPresentationEnabled} />
                 <button type="button" onClick={closePanel} style={{ background: 'none', border: 'none' }} className="btnClose">
-                  <img
-                    src={`${window.meetingClientSettings.public.app.basename}/resources/icon-bbb/close.png`}
-                    alt="Close"
-                  />
+                  <SvgIcon iconName="cross" />
                 </button>
               </div>
             </div>

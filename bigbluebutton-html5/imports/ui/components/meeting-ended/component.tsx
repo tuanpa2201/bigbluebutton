@@ -236,7 +236,7 @@ const MeetingEnded: React.FC<MeetingEndedProps> = ({
 
           <button
             type="button"
-            className="btn btn-primary svg-to-css-shadow mt-28"
+            className="btn btn-primary mt-28"
             onClick={() => confirmRedirect(isBreakout, allowDefaultLogoutUrl)}
           >
             {intl.formatMessage(intlMessage.buttonOkay)}
