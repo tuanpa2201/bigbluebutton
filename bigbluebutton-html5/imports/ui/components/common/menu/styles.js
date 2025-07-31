@@ -79,10 +79,11 @@ const Option = styled.div`
     margin-left: 1.65rem;
   }
 
-  ${({ textColor }) => textColor && `
-    color: ${textColor};
-  `}
-
+  // ${({ textColor }) => textColor && `
+  //   color: ${textColor};
+  // `}
+  color: #313131;
+  
   ${({ isHorizontal, isMobile }) => (isHorizontal || isMobile) && `
     margin-right: 0;
     margin-left: 0;
@@ -155,7 +156,8 @@ const BBBMenuItem = styled(MenuItem)`
       color: #FFF !important;
     }
     color: #FFF !important;
-    background-color: ${colorPrimary} !important;
+    // background-color: ${colorPrimary} !important;
+    background-color: #EFEFEF;
   }
   
   &:last-child{
