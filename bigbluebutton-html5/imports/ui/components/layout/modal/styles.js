@@ -16,6 +16,7 @@ const Content = styled.div`
 `;
 
 const LayoutModal = styled(ModalSimple)`
+  max-width: 500px;
   @media ${smallOnly} {
     height: unset;
   }
@@ -39,9 +40,7 @@ const BodyContainer = styled.div`
 `;
 
 const IconSvg = styled.img`
-  height: 8rem;
-  border-radius: 5px;
-  margin: 5px;
+  border-radius: 8px;
 
   @media ${smallOnly} {
     height: 20%;
@@ -55,7 +54,6 @@ const LayoutBtn = styled(Button)`
   align-items: center;
   flex-direction: column;
   padding: 0 !important;
-  margin-bottom: 6px;
   width: fit-content;
 
   @media ${smallOnly} {
@@ -79,7 +77,9 @@ const ButtonLayoutContainer = styled.div`
 `;
 
 const ButtonsContainer = styled.div`
-  
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 `;
 
 const ButtonBottomContainer = styled.div`

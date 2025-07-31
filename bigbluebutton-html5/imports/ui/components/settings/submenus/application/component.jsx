@@ -463,7 +463,7 @@ class ApplicationMenu extends BaseMenu {
             {intl.formatMessage(intlMessages.applicationSectionTitle)}
           </Styled.Title>
         </div>
-        <Styled.Form className="form mt-20">
+        <Styled.Form className="form mt-22">
           <Styled.Row className="row">
             <Styled.Col className="col" aria-hidden="true">
               <Styled.FormElement>

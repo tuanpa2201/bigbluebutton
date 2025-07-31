@@ -47,7 +47,7 @@ const SettingsTabList = styled(TabList)`
 const SettingsTabSelector = styled(Tab)`
   display: flex;
   flex-flow: row;
-  font-size: 0.9rem;
+  font-size: 12px;
   flex: 0 0 auto;
   justify-content: flex-start;
   border: none !important;
@@ -83,7 +83,10 @@ const SettingsTabSelector = styled(Tab)`
 
   &.is-selected {
     background: var(--BG-04---hover, #EFEFEF);
-    font-weight: semibold;
+    font-weight: 600;
+    span {
+      font-weight: 600;
+    }
   }
 `;
 
