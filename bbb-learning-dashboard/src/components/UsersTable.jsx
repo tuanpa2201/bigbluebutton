@@ -253,12 +253,13 @@ class UsersTable extends React.Component {
                         >
                           <span className="inline-block">
                             {user.name}
-                            {user.isModerator? (user.name + ' (' + + ')') : user.name}
                           </span>
                           {
                             user.isModerator ? (
                                 <span className="inline-block">
-                                  (<FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />)
+                                  (
+                                  <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
+                                  )
                                 </span>
                             ) : null
                           }
@@ -280,7 +281,7 @@ class UsersTable extends React.Component {
                                     second="2-digit"
                                   />
                                 </p>
-                                { session.leftOn > 0 ? (<span> | </span>): null}
+                                { session.leftOn > 0 ? (<span> | </span>) : null}
                                 { session.leftOn > 0
                                   ? (
                                     <p className="text-user-trace inline-block">
@@ -315,20 +316,26 @@ class UsersTable extends React.Component {
                         { tsToHHmm(Object.values(user.intIds).reduce((prev, intId) => (
                             prev + intId.sessions.reduce((prev2, session) => ((session.leftOn > 0
                                 ? prev2 + session.leftOn
-                                : prev2 + (new Date()).getTime()) - session.registeredOn), 0)), 0)) } &nbsp;min
+                                : prev2 + (new Date()).getTime()) - session.registeredOn), 0)), 0)) }
+                        &nbsp;
+                        min
                       </span>
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalTalkTimeDashboard">
                       { user.talk.totalTime > 0 ? (
                         <span className="text-center text-td-restyle">
-                          { tsToHHmm(user.talk.totalTime) }&nbsp;min
+                          { tsToHHmm(user.talk.totalTime) }
+                          &nbsp;
+                          min
                         </span>
                       ) : (<span>-</span>) }
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userWebcamTimeDashboard">
                       { getSumOfTime(user.webcams) > 0 ? (
                         <span className="text-center text-td-restyle">
-                          { tsToHHmm(getSumOfTime(user.webcams)) }&nbsp;min
+                          { tsToHHmm(getSumOfTime(user.webcams)) }
+                          &nbsp;
+                          min
                         </span>
                       ) : (<span>-</span>) }
                     </td>
