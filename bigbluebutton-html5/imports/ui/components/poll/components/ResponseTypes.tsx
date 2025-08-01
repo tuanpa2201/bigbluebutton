@@ -82,12 +82,13 @@ const ResponseTypes: React.FC<ResponseTypesProps> = ({
   const intl = useIntl();
   if (!customInput) {
     return (
-      <Styled.ResponseTypes data-test="responseTypes">
-        <Styled.SectionHeading>
+      <Styled.ResponseTypes data-test="responseTypes" className="response-types">
+        <Styled.SectionHeading className="response-types-heading">
           {intl.formatMessage(intlMessages.responseTypesLabel)}
         </Styled.SectionHeading>
         <Styled.ResponseType>
           <Styled.PollConfigButton
+            className={['poll-config-button', type === pollTypes.TrueFalse && 'selected'].join(' ')}
             selected={type === pollTypes.TrueFalse}
             small={false}
             label={intl.formatMessage(intlMessages.tf)}
@@ -103,6 +104,7 @@ const ResponseTypes: React.FC<ResponseTypesProps> = ({
             }}
           />
           <Styled.PollConfigButton
+            className={['poll-config-button', type === pollTypes.Letter && 'selected'].join(' ')}
             selected={type === pollTypes.Letter}
             small={false}
             label={intl.formatMessage(intlMessages.a4)}
@@ -122,6 +124,7 @@ const ResponseTypes: React.FC<ResponseTypesProps> = ({
             }}
           />
           <Styled.PollConfigButton
+            className={['poll-config-button', type === pollTypes.YesNoAbstention && 'selected'].join(' ')}
             selected={type === pollTypes.YesNoAbstention}
             small={false}
             full
@@ -139,6 +142,7 @@ const ResponseTypes: React.FC<ResponseTypesProps> = ({
             }}
           />
           <Styled.PollConfigButton
+            className={['poll-config-button', type === pollTypes.Response && 'selected'].join(' ')}
             selected={type === pollTypes.Response}
             small={false}
             full

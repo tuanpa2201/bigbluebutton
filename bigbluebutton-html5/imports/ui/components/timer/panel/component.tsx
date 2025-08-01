@@ -5,16 +5,15 @@ import React, {
   useRef,
   useState,
 } from 'react';
-import {defineMessages, useIntl} from 'react-intl';
+import { defineMessages, useIntl } from 'react-intl';
 import {
   useMutation,
 } from '@apollo/client';
-import Header from '/imports/ui/components/common/control-header/component';
 import Styled from './styles';
-import GET_TIMER, {GetTimerResponse, TimerData} from '../../../core/graphql/queries/timer';
+import GET_TIMER, { GetTimerResponse, TimerData } from '../../../core/graphql/queries/timer';
 import logger from '/imports/startup/client/logger';
-import {layoutDispatch} from '../../layout/context';
-import {ACTIONS, PANELS} from '../../layout/enums';
+import { layoutDispatch } from '../../layout/context';
+import { ACTIONS, PANELS } from '../../layout/enums';
 import {
   TIMER_RESET,
   TIMER_SET_SONG_TRACK,
@@ -109,14 +108,14 @@ interface TimerPanelProps extends Omit<TimerData, 'elapsed'> {
 }
 
 const TimerPanel: React.FC<TimerPanelProps> = ({
-                                                 stopwatch,
-                                                 songTrack,
-                                                 time,
-                                                 running,
-                                                 timePassed,
-                                                 startedOn,
-                                                 active,
-                                               }) => {
+  stopwatch,
+  songTrack,
+  time,
+  running,
+  timePassed,
+  startedOn,
+  active,
+}) => {
   const [timerReset] = useMutation(TIMER_RESET);
   const [timerStart] = useMutation(TIMER_START);
   const [timerStop] = useMutation(TIMER_STOP);
@@ -131,20 +130,16 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
   const [disabledReset, setDisabledReset] = useState<boolean>(true);
   const intervalRef = useRef<ReturnType<typeof setInterval>>();
 
-  const headerMessage = useMemo(() => {
-    return stopwatch ? intlMessages.stopwatch : intlMessages.timer;
-  }, [stopwatch]);
-
   const switchTimer = (stopwatch: boolean) => {
-    timerSwitchMode({variables: {stopwatch}});
+    timerSwitchMode({ variables: { stopwatch } });
   };
 
   const setTrack = (track: string) => {
-    timerSetSongTrack({variables: {track}});
+    timerSetSongTrack({ variables: { track } });
   };
 
   const setTime = (time: number) => {
-    timerSetTime({variables: {time}});
+    timerSetTime({ variables: { time } });
     timerStop();
     timerReset();
   };
@@ -280,7 +275,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
                   }}
                   data-test="hoursInput"
                 />
-                <Styled.StopwatchTimeInputLabel>
+                <Styled.StopwatchTimeInputLabel className="timer-hours">
                   {intl.formatMessage(intlMessages.hours)}
                 </Styled.StopwatchTimeInputLabel>
               </Styled.StopwatchTimeInput>
@@ -298,7 +293,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
                   }}
                   data-test="minutesInput"
                 />
-                <Styled.StopwatchTimeInputLabel>
+                <Styled.StopwatchTimeInputLabel className="timer-minutes">
                   {intl.formatMessage(intlMessages.minutes)}
                 </Styled.StopwatchTimeInputLabel>
               </Styled.StopwatchTimeInput>
@@ -316,7 +311,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
                   }}
                   data-test="secondsInput"
                 />
-                <Styled.StopwatchTimeInputLabel>
+                <Styled.StopwatchTimeInputLabel className="timer-seconds">
                   {intl.formatMessage(intlMessages.seconds)}
                 </Styled.StopwatchTimeInputLabel>
               </Styled.StopwatchTimeInput>
@@ -357,7 +352,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
           ) : null}
         <Styled.TimerControls>
           <Styled.TimerControlButton
-            className={'btn btn-default'}
+            className="btn btn-default"
             color="secondary"
             disabled={disabledReset}
             label={intl.formatMessage(intlMessages.reset)}
@@ -369,7 +364,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
           />
 
           <Styled.TimerControlButton
-            className={'btn btn-primary'}
+            className="btn btn-primary"
             color={color}
             label={intl.formatMessage(label)}
             onClick={() => {
@@ -378,7 +373,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
               } else {
                 timerStart();
               }
-              setDisabledReset(false)
+              setDisabledReset(false);
             }}
             data-test="startStopTimer"
           />
@@ -389,22 +384,24 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
 
   return (
     <Styled.TimerSidebarContent
+      className="timer-sidebar-content"
       data-test={`${stopwatch ? 'stopwatch' : 'timer'}Container`}
     >
       {/* @ts-ignore - JS code */}
       <Styled.TimerHeader data-test="timerHeader">
-        <div aria-label={intl.formatMessage(intlMessages.hideTimerLabel)} className={'header-title'}>
+        <div aria-label={intl.formatMessage(intlMessages.hideTimerLabel)} className="header-title">
           {`${intl.formatMessage(intlMessages.timer)}/ ${intl.formatMessage(intlMessages.stopwatch)}`}
         </div>
-        <Styled.CloseTimerButton  className={'header-icon'} onClick={() => closePanel()}>
-          <SvgIcon iconName="cross_20"></SvgIcon>
+        <Styled.CloseTimerButton className="header-icon" onClick={() => closePanel()}>
+          <SvgIcon iconName="cross_20" />
         </Styled.CloseTimerButton>
       </Styled.TimerHeader>
 
       <Styled.TimerContent>
 
-        <Styled.TimerType>
+        <Styled.TimerType className="timer-type">
           <Styled.TimerSwitchButton
+            className={['timer-switch-button', stopwatch ? 'active' : ''].join(' ')}
             label={intl.formatMessage(intlMessages.stopwatch)}
             onClick={() => {
               timerStop();
@@ -415,6 +412,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
             data-test="stopwatchButton"
           />
           <Styled.TimerSwitchButton
+            className={['timer-switch-button', !stopwatch ? 'active' : ''].join(' ')}
             label={intl.formatMessage(intlMessages.timer)}
             onClick={() => {
               timerStop();
@@ -429,6 +427,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
         <Styled.TimerCurrent
           aria-hidden
           data-test="timerCurrent"
+          className="timer-current"
         >
           {humanizeSeconds(Math.floor(runningTime / 1000))}
         </Styled.TimerCurrent>
