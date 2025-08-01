@@ -12,7 +12,6 @@ import { smPaddingX, borderSize } from '/imports/ui/stylesheets/styled-component
 
 const UserList = styled(FlexColumn)`
   justify-content: flex-start;
-  background-color: ${userListBg};
   color: ${userListText};
   height: 100%;
   width: 100%;

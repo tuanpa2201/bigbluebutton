@@ -397,8 +397,8 @@ const ModalInner = styled.div`
 
 const ModalHeader = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 16px;
   padding: 16px 0;
 
