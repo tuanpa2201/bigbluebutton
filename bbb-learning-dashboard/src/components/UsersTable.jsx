@@ -3,7 +3,7 @@ import {
   FormattedMessage, FormattedDate, FormattedNumber, injectIntl,
 } from 'react-intl';
 import { getUserReactionsSummary } from '../services/ReactionService';
-import { getActivityScore, getSumOfTime, tsToHHmmss, tsToHHmm } from '../services/UserService';
+import { getActivityScore, getSumOfTime, tsToHHmm } from '../services/UserService';
 import UserAvatar from './UserAvatar';
 import { UserDetailsContext } from './UserDetails/context';
 
@@ -65,7 +65,7 @@ class UsersTable extends React.Component {
 
   render() {
     const {
-      allUsers, totalOfActivityTime, totalOfPolls, tab,
+      allUsers, totalOfPolls, tab,
     } = this.props;
 
     const {
@@ -77,11 +77,6 @@ class UsersTable extends React.Component {
     Object.values(allUsers || {}).forEach((user) => {
       usersReactionsSummary[user.userKey] = getUserReactionsSummary(user);
     });
-
-    function getOnlinePercentage(registeredOn, leftOn) {
-      const totalUserOnlineTime = ((leftOn > 0 ? leftOn : (new Date()).getTime())) - registeredOn;
-      return Math.ceil((totalUserOnlineTime / totalOfActivityTime) * 100);
-    }
 
     const usersActivityScore = {};
     Object.values(allUsers || {}).forEach((user) => {
@@ -253,13 +248,12 @@ class UsersTable extends React.Component {
                         >
                           <span className="inline-block">
                             {user.name}
-                            {user.isModerator? (user.name + ' (' + + ')') : user.name}
                           </span>
                           {
                             user.isModerator ? (
-                                <span className="inline-block">
-                                  (<FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />)
-                                </span>
+                              <span className="inline-block">
+                                <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
+                              </span>
                             ) : null
                           }
                         </button>
@@ -269,7 +263,7 @@ class UsersTable extends React.Component {
                               <div className="user-join-trace">
                                 <p className="text-user-trace inline-block">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                    <path d="M7 1H7.25H7.8C8.9201 1 9.48016 1 9.90798 1.21799C10.2843 1.40973 10.5903 1.71569 10.782 2.09202C11 2.51984 11 3.07989 11 4.2V7.8C11 8.92011 11 9.48016 10.782 9.90798C10.5903 10.2843 10.2843 10.5903 9.90798 10.782C9.48016 11 8.9201 11 7.8 11H7.25H7M1 6H7M7 6L5 4M7 6L5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M7 1H7.25H7.8C8.9201 1 9.48016 1 9.90798 1.21799C10.2843 1.40973 10.5903 1.71569 10.782 2.09202C11 2.51984 11 3.07989 11 4.2V7.8C11 8.92011 11 9.48016 10.782 9.90798C10.5903 10.2843 10.2843 10.5903 9.90798 10.782C9.48016 11 8.9201 11 7.8 11H7.25H7M1 6H7M7 6L5 4M7 6L5 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                                   </svg>
                                   <FormattedDate
                                     value={session.registeredOn}
@@ -280,12 +274,12 @@ class UsersTable extends React.Component {
                                     second="2-digit"
                                   />
                                 </p>
-                                { session.leftOn > 0 ? (<span> | </span>): null}
+                                { session.leftOn > 0 ? (<span> | </span>) : null}
                                 { session.leftOn > 0
                                   ? (
                                     <p className="text-user-trace inline-block">
                                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-                                        <path d="M5 1H4.75H4.2C3.0799 1 2.51984 1 2.09202 1.21799C1.71569 1.40973 1.40973 1.71569 1.21799 2.09202C1 2.51984 1 3.07989 1 4.2V7.8C1 8.92011 1 9.48016 1.21799 9.90798C1.40973 10.2843 1.71569 10.5903 2.09202 10.782C2.51984 11 3.0799 11 4.2 11H4.75H5M5 6H11M11 6L9 4M11 6L9 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M5 1H4.75H4.2C3.0799 1 2.51984 1 2.09202 1.21799C1.71569 1.40973 1.40973 1.71569 1.21799 2.09202C1 2.51984 1 3.07989 1 4.2V7.8C1 8.92011 1 9.48016 1.21799 9.90798C1.40973 10.2843 1.71569 10.5903 2.09202 10.782C2.51984 11 3.0799 11 4.2 11H4.75H5M5 6H11M11 6L9 4M11 6L9 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                                       </svg>
 
                                       <FormattedDate
@@ -313,22 +307,25 @@ class UsersTable extends React.Component {
                     <td className={`px-4 py-3 text-sm text-center items-center ${opacity}`} data-test="userOnlineTimeDashboard">
                       <span className="text-center text-td-restyle">
                         { tsToHHmm(Object.values(user.intIds).reduce((prev, intId) => (
-                            prev + intId.sessions.reduce((prev2, session) => ((session.leftOn > 0
-                                ? prev2 + session.leftOn
-                                : prev2 + (new Date()).getTime()) - session.registeredOn), 0)), 0)) } &nbsp;min
+                          prev + intId.sessions.reduce((prev2, session) => ((session.leftOn > 0
+                            ? prev2 + session.leftOn
+                            : prev2 + (new Date()).getTime()) - session.registeredOn), 0)), 0)) }
+                        &nbsp; min
                       </span>
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalTalkTimeDashboard">
                       { user.talk.totalTime > 0 ? (
                         <span className="text-center text-td-restyle">
-                          { tsToHHmm(user.talk.totalTime) }&nbsp;min
+                          { tsToHHmm(user.talk.totalTime)}
+                          &nbsp;min
                         </span>
                       ) : (<span>-</span>) }
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userWebcamTimeDashboard">
                       { getSumOfTime(user.webcams) > 0 ? (
                         <span className="text-center text-td-restyle">
-                          { tsToHHmm(getSumOfTime(user.webcams)) }&nbsp;min
+                          { tsToHHmm(getSumOfTime(user.webcams)) }
+                          &nbsp;min
                         </span>
                       ) : (<span>-</span>) }
                     </td>
