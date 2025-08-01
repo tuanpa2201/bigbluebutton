@@ -70,7 +70,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
           {/* eslint-disable-next-line max-len */}
           {isPublicChat ? <ChatActions /> : null}
           <button type="button" onClick={closePanel} style={{ background: 'none', border: 'none' }} className="btnClose">
-            <SvgIcon iconName="cross" />
+            <SvgIcon iconName="cross_20" />
           </button>
         </div>
       </div>

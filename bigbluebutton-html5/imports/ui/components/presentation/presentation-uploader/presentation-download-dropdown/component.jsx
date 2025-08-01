@@ -194,6 +194,7 @@ class PresentationDownloadDropdown extends PureComponent {
             <Trigger
               disabled={disabled}
               data-test="presentationOptionsDownload"
+              className="presentation_options_download"
               icon="more"
               label={tooltipLabelForDropdown}
               aria-label={tooltipLabelForDropdown}

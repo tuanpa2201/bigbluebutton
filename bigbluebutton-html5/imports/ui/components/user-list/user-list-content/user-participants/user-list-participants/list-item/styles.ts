@@ -699,7 +699,7 @@ const RightIconMoreContainer = styled.div<RightIconMorePops>`
 
 const UserItemContents = styled.div<UserItemContentsProps>`
   position: static;
-  padding: .45rem;
+  padding: .45rem 0;
   width: 100%;
   
   ${({selected}) => selected && `

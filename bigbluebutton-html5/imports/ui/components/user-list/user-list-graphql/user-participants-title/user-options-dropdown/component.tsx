@@ -349,6 +349,7 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
           <Styled.OptionsButton
             label={intl.formatMessage(intlMessages.optionsLabel)}
             data-test="manageUsers"
+            className="manage_users"
             icon="more"
             hideLabel
             size="md"
@@ -375,7 +376,7 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
         style={{ background: 'none', border: 'none' }}
         className="btnClose"
       >
-        <SvgIcon iconName="cross" />
+        <SvgIcon iconName="cross_20" />
       </button>
       {renderModal({
         isOpen: isCreateBreakoutRoomModalOpen,
