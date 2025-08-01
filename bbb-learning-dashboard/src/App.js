@@ -361,10 +361,10 @@ class App extends React.Component {
       .length;
 
     return (
-      <div className="mx-10">
+      <div className="mx-10 learn-restyle">
         <div className="flex flex-col sm:flex-row items-start justify-between pb-3">
-          <h1 className="mt-3 text-2xl font-semibold inline-block">
-            <FormattedMessage id="app.learningDashboard.dashboardTitle" defaultMessage="Learning Dashboard" />
+          <h1 className="mt-3 text-2xl font-semibold inline-block font-semibold-h1">
+            <FormattedMessage id="app.learningDashboard.dashboardTitle" defaultMessage="Learning Dashboard"/>
             {
               ldAccessTokenCopied === true
                 ? (
@@ -396,11 +396,11 @@ class App extends React.Component {
                   <br />
                 </>
               )}
-            <span className="text-sm font-medium">{activitiesJson.name || ''}</span>
+            <span className="text-sm font-medium font-medium-restyle">{activitiesJson.name || ''}</span>
           </h1>
           <div className="mt-3 col-text-right py-1 text-gray-500 inline-block">
             <p className="font-bold">
-              <div className="inline" data-test="meetingDateDashboard">
+              <div className="inline meetingDateDashboard" data-test="meetingDateDashboard">
                 <FormattedDate
                   value={activitiesJson.createdOn}
                   year="numeric"
@@ -412,7 +412,7 @@ class App extends React.Component {
               {
                 activitiesJson.endedOn > 0
                   ? (
-                    <span className="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full">
+                    <span className="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full state-ended">
                       <FormattedMessage id="app.learningDashboard.indicators.meetingStatusEnded" defaultMessage="Ended" data-test="meetingStatusEndedDashboard" />
                     </span>
                   )
@@ -421,14 +421,14 @@ class App extends React.Component {
               {
                 activitiesJson.endedOn === 0
                   ? (
-                    <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full" data-test="meetingStatusActiveDashboard">
+                    <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full state-active" data-test="meetingStatusActiveDashboard">
                       <FormattedMessage id="app.learningDashboard.indicators.meetingStatusActive" defaultMessage="Active" />
                     </span>
                   )
                   : null
               }
             </p>
-            <p data-test="meetingDurationTimeDashboard">
+            <p data-test="meetingDurationTimeDashboard" className="meetingDurationTimeDashboard">
               <FormattedMessage id="app.learningDashboard.indicators.duration" defaultMessage="Duration" />
               :&nbsp;
               {tsToHHmmss(totalOfActivity())}
@@ -560,7 +560,7 @@ class App extends React.Component {
             )}
           </TabsListUnstyled>
           <TabPanelUnstyled value={0}>
-            <h2 className="block my-2 pr-2 text-xl font-semibold">
+            <h2 className="block my-2 pr-2 text-xl font-semibold font-semibold-h2">
               <FormattedMessage id="app.learningDashboard.usersTable.title" defaultMessage="Overview" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">

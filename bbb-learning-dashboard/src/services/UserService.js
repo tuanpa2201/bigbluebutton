@@ -83,6 +83,10 @@ export function tsToHHmmss(ts) {
   return (new Date(ts).toISOString().substr(11, 8));
 }
 
+export function tsToHHmm(ts) {
+  return (new Date(ts).toISOString().substr(11, 5));
+}
+
 const tableHeaderFields = [
   {
     id: 'name',
