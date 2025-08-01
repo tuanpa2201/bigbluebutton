@@ -20,6 +20,8 @@ import Separator from '/imports/ui/components/common/separator/component';
 import OptionsDropdownContainer from '/imports/ui/components/nav-bar/options-dropdown/container';
 import getFromUserSettings from '/imports/ui/services/users-settings';
 import LeaveMeetingButtonContainer from '../nav-bar/leave-meeting-button/container';
+import RecordingIndicator from "/imports/ui/components/nav-bar/nav-bar-graphql/recording-indicator/component";
+import Auth from "/imports/ui/services/auth";
 
 const intlMessages = defineMessages({
   actionsBarLabel: {
@@ -112,6 +114,7 @@ class ActionsBar extends PureComponent {
     const {
       amIPresenter,
       amIModerator,
+      currentUserId,
       enableVideo,
       presentationIsOpen,
       setPresentationIsOpen,
@@ -203,30 +206,37 @@ class ActionsBar extends PureComponent {
             />
           </Styled.Left>
           <Styled.Center>
-            {this.renderPluginsActionBarItems(ActionsBarPosition.LEFT)}
-            <AudioCaptionsButtonContainer />
-            <AudioControlsContainer />
-            {shouldShowVideoButton && enableVideo
-              ? (
-                <JoinVideoOptionsContainer />
-              )
-              : null}
-            {shouldShowPresentationButton && (
-              <ScreenshareButtonContainer {...{
-                amIPresenter,
-                isMeteorConnected,
-              }}
+            <Styled.CenterPadding>
+              <RecordingIndicator
+                amIModerator={amIModerator}
+                currentUserId={currentUserId}
               />
-            )}
-            {isReactionsButtonEnabled && this.renderReactionsButton()}
-            <RaiseHandButtonContainer />
-            <OptionsDropdownContainer
-              amIModerator={amIModerator}
-              isDirectLeaveButtonEnabled={IS_DIRECT_LEAVE_BUTTON_ENABLED}
-            />
-            {isDirectLeaveButtonEnabled && isMeteorConnected
-              ? <LeaveMeetingButtonContainer amIModerator={amIModerator} /> : null}
-            {this.renderPluginsActionBarItems(ActionsBarPosition.RIGHT)}
+              {this.renderPluginsActionBarItems(ActionsBarPosition.LEFT)}
+              <AudioCaptionsButtonContainer />
+              <AudioControlsContainer />
+              {shouldShowVideoButton && enableVideo
+                ? (
+                  <JoinVideoOptionsContainer />
+                )
+                : null}
+              {shouldShowPresentationButton && (
+                <ScreenshareButtonContainer {...{
+                  amIPresenter,
+                  isMeteorConnected,
+                }}
+                />
+              )}
+              {isReactionsButtonEnabled && this.renderReactionsButton()}
+              <RaiseHandButtonContainer />
+              <OptionsDropdownContainer
+                amIModerator={amIModerator}
+                isDirectLeaveButtonEnabled={IS_DIRECT_LEAVE_BUTTON_ENABLED}
+              />
+              {isDirectLeaveButtonEnabled && isMeteorConnected
+                ? <LeaveMeetingButtonContainer amIModerator={amIModerator} /> : null}
+              {this.renderPluginsActionBarItems(ActionsBarPosition.RIGHT)}
+            </Styled.CenterPadding>
+
           </Styled.Center>
           <Styled.Right>
             <Styled.Gap>

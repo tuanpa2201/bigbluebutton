@@ -129,6 +129,7 @@ const PresentationContainer = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
+  background: var(--BG-Meet-bg, #2B2E32);
 `;
 
 const Presentation = styled.div`

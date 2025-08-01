@@ -148,6 +148,7 @@ const ActionsBarContainer = (props) => {
         isPresentationEnabled,
         currentUser,
         amIModerator,
+        currentUserId: Auth.userID,
         layoutContextDispatch,
         actionsBarStyle,
         amIPresenter,
