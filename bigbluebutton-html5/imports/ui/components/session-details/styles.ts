@@ -97,9 +97,16 @@ export const Chevron = styled.div`
   transform: translateX(-50%);
 `;
 
+export const Content = styled.div`
+  br {
+    display: none;
+  }
+`;
+
 export default {
   WelcomeMessage,
   Container,
+  Content,
   JoinTitle,
   JoinContainer,
   CopyButton,
