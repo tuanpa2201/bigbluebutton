@@ -364,7 +364,7 @@ class App extends React.Component {
       <div className="mx-10 learn-restyle">
         <div className="flex flex-col sm:flex-row items-start justify-between pb-3">
           <h1 className="mt-3 text-2xl font-semibold inline-block font-semibold-h1">
-            <FormattedMessage id="app.learningDashboard.dashboardTitle" defaultMessage="Learning Dashboard"/>
+            <FormattedMessage id="app.learningDashboard.dashboardTitle" defaultMessage="Learning Dashboard" />
             {
               ldAccessTokenCopied === true
                 ? (
