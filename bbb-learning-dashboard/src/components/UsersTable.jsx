@@ -335,8 +335,8 @@ class UsersTable extends React.Component {
                       { user.totalOfMessages > 0
                         ? (
                           <span>
-                            <svg width="16" class="h-4 w-4 inline" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M5.98547 12.5794C5.74233 12.5342 5.51102 12.4715 5.28721 12.3915C4.8013 12.2176 4.55834 12.1307 4.46511 12.1088C3.60496 11.9065 3.24813 12.496 2.50679 12.6196C2.14267 12.6802 1.81868 12.3821 1.84889 12.0142C1.87531 11.6925 2.09779 11.3883 2.18656 11.0794C2.37111 10.4372 2.12068 9.95025 1.85611 9.37912C1.52107 8.65587 1.33398 7.85009 1.33398 7.00065C1.33398 3.87104 3.87104 1.33398 7.00065 1.33398C9.02856 1.33398 10.8077 2.39922 11.8089 4.00065M7.33398 10.0007C7.33398 12.2098 9.12485 14.0007 11.334 14.0007C11.7897 14.0007 12.1806 13.9357 12.5435 13.8059C12.8865 13.6832 13.058 13.6219 13.1238 13.6064C13.7309 13.4636 13.9828 13.8798 14.5061 13.9669C14.7632 14.0098 14.9918 13.7993 14.9705 13.5396C14.9519 13.3126 14.7948 13.0978 14.7322 12.8797C14.6019 12.4264 14.7787 12.0827 14.9654 11.6796C15.2019 11.169 15.334 10.6003 15.334 10.0007C15.334 7.79151 13.5431 6.00065 11.334 6.00065C9.12485 6.00065 7.33398 7.79151 7.33398 10.0007Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg width="16" className="h-4 w-4 inline" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.98547 12.5794C5.74233 12.5342 5.51102 12.4715 5.28721 12.3915C4.8013 12.2176 4.55834 12.1307 4.46511 12.1088C3.60496 11.9065 3.24813 12.496 2.50679 12.6196C2.14267 12.6802 1.81868 12.3821 1.84889 12.0142C1.87531 11.6925 2.09779 11.3883 2.18656 11.0794C2.37111 10.4372 2.12068 9.95025 1.85611 9.37912C1.52107 8.65587 1.33398 7.85009 1.33398 7.00065C1.33398 3.87104 3.87104 1.33398 7.00065 1.33398C9.02856 1.33398 10.8077 2.39922 11.8089 4.00065M7.33398 10.0007C7.33398 12.2098 9.12485 14.0007 11.334 14.0007C11.7897 14.0007 12.1806 13.9357 12.5435 13.8059C12.8865 13.6832 13.058 13.6219 13.1238 13.6064C13.7309 13.4636 13.9828 13.8798 14.5061 13.9669C14.7632 14.0098 14.9918 13.7993 14.9705 13.5396C14.9519 13.3126 14.7948 13.0978 14.7322 12.8797C14.6019 12.4264 14.7787 12.0827 14.9654 11.6796C15.2019 11.169 15.334 10.6003 15.334 10.0007C15.334 7.79151 13.5431 6.00065 11.334 6.00065C9.12485 6.00065 7.33398 7.79151 7.33398 10.0007Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                             <span className="ml-12">
                               {user.totalOfMessages}
@@ -347,14 +347,14 @@ class UsersTable extends React.Component {
                     <td className={`px-4 py-3 text-sm col-text-left ${opacity}`} data-test="userTotalReactionsDashboard">
                       {
                         usersReactionsSummary[user.userKey] ? (
-                            Object.keys(usersReactionsSummary[user.userKey] || {}).map((reaction) => (
-                                <div className="text-xs whitespace-nowrap">
-                                  {reaction}
+                          Object.keys(usersReactionsSummary[user.userKey] || {}).map((reaction) => (
+                            <div className="text-xs whitespace-nowrap">
+                              {reaction}
                                   &nbsp;
-                                  { usersReactionsSummary[user.userKey][reaction] }
+                              { usersReactionsSummary[user.userKey][reaction] }
                                   &nbsp;
-                                </div>
-                            ))
+                            </div>
+                          ))
                         ) : (<span>-</span>)
                       }
                     </td>
@@ -378,14 +378,14 @@ class UsersTable extends React.Component {
                             <div className={usersActivityScore[user.userKey] > 6 ? 'rectangle-score bd-pass-4' : 'rectangle-score'} />
                             <div className={usersActivityScore[user.userKey] > 8 ? 'rectangle-score bd-pass-5' : 'rectangle-score'} />
                             <span className="ml-12">
-                              <FormattedNumber value={usersActivityScore[user.userKey]} minimumFractionDigits="0" maximumFractionDigits="1"/>
+                              <FormattedNumber value={usersActivityScore[user.userKey]} minimumFractionDigits="0" maximumFractionDigits="1" />
                             </span>
                           </div>
                         </td>
                       ) : (
-                          <td className="px-4 py-3 text-sm text-center">
-                            <span>-</span>
-                          </td>
+                        <td className="px-4 py-3 text-sm text-center">
+                          <span>-</span>
+                        </td>
                       )
                     }
                     <td className="px-3.5 2xl:px-4 py-3 text-xs text-center" data-test="userStatusDashboard">
