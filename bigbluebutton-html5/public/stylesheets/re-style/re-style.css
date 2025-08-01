@@ -600,7 +600,7 @@
     }
     & span {
         color: var(--Text-Primary, #313131);
-
+        background-color: transparent !important;
         [data-darkreader-scheme="dark"] & {
             color: var(--text-primary-dark, #FCFCFD);
         }
