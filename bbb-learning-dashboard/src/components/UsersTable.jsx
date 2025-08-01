@@ -251,7 +251,17 @@ class UsersTable extends React.Component {
                           onClick={() => this.openUserModal(user)}
                           aria-label={`Open user details modal - ${user.name}`}
                         >
-                          {user.name}
+                          <span className="inline-block">
+                            {user.name}
+                            {user.isModerator? (user.name + ' (' + + ')') : user.name}
+                          </span>
+                          {
+                            user.isModerator ? (
+                                <span className="inline-block">
+                                  (<FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />)
+                                </span>
+                            ) : null
+                          }
                         </button>
                         { Object.values(user.intIds || {}).map((intId, index) => intId.sessions
                           .map((session, sessionIndex) => (
