@@ -385,6 +385,7 @@ const ShortcutHelpComponent = ({
 
   return (
     <ModalSimple
+      className="shortcut-help"
       contentLabel={intl.formatMessage(intlMessages.title)}
       dismiss={{
         label: intl.formatMessage(intlMessages.closeLabel),
@@ -402,7 +403,7 @@ const ShortcutHelpComponent = ({
         selectedIndex={selectedTab}
         role="presentation"
       >
-        <StyledSettings.SettingsTabList>
+        <StyledSettings.SettingsTabList className="shortcut-help-tabs">
           <StyledSettings.SettingsTabSelector selectedClassName="is-selected">
             <StyledSettings.SettingsIcon iconName="settings" />
             <span id="appicationTab">{intl.formatMessage(intlMessages.general)}</span>
@@ -424,7 +425,7 @@ const ShortcutHelpComponent = ({
           </StyledSettings.SettingsTabSelector>
         </StyledSettings.SettingsTabList>
 
-        <Styled.TabPanel selectedClassName="is-selected">
+        <Styled.TabPanel selectedClassName="is-selected" className="shortcut-help-general">
           {!accessMod ? <p>{intl.formatMessage(intlMessages.accessKeyNotAvailable)}</p>
             : (
               <Styled.TableWrapper>
@@ -440,7 +441,7 @@ const ShortcutHelpComponent = ({
               </Styled.TableWrapper>
             )}
         </Styled.TabPanel>
-        <Styled.TabPanel selectedClassName="is-selected">
+        <Styled.TabPanel selectedClassName="is-selected" className="shortcut-help-presentation">
           <Styled.TableWrapper>
             <Styled.ShortcutTable>
               <tbody>
@@ -453,7 +454,7 @@ const ShortcutHelpComponent = ({
             </Styled.ShortcutTable>
           </Styled.TableWrapper>
         </Styled.TabPanel>
-        <Styled.TabPanel selectedClassName="is-selected">
+        <Styled.TabPanel selectedClassName="is-selected" className="shortcut-help-whiteboard">
           <Styled.TableWrapper>
             <Styled.ShortcutTable>
               <tbody>
@@ -468,7 +469,7 @@ const ShortcutHelpComponent = ({
           </Styled.TableWrapper>
         </Styled.TabPanel>
 
-        <Styled.TabPanel selectedClassName="is-selected">
+        <Styled.TabPanel selectedClassName="is-selected" className="shortcut-help-gesture">
           <Styled.TableWrapper>
             <Styled.ShortcutTable>
               <tbody>

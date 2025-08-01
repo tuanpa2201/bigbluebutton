@@ -1188,7 +1188,7 @@ class VideoPreview extends Component {
       case VIEW_STATES.error:
         return (
           <Styled.Content>
-            <Styled.VideoCol><div>{deviceError}</div></Styled.VideoCol>
+            <div className="font-regular-s text-secondary m-auto mt-32 mb-32">{deviceError}</div>
           </Styled.Content>
         );
       case VIEW_STATES.found:

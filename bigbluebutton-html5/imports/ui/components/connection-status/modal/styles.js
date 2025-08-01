@@ -128,6 +128,7 @@ const Right = styled.div`
   display: flex;
   width: 5rem;
   height: 100%;
+  gap: 12px;
 `;
 
 const Time = styled.div`
@@ -154,7 +155,6 @@ const TimeActive = styled.time`
 
 const NetworkDataContainer = styled(ScrollboxVertical)`
   width: 100%;
-  height: 100%;
   display: flex;
   flex-wrap: nowrap;
   overflow: auto;
@@ -207,7 +207,7 @@ const CopyContainer = styled.div`
 
 const ConnectionStatusModal = styled(ModalSimple)`
   padding: 0px;
-  min-height: 404px;
+  min-height: 300px;
   border-radius: 12px !important;
 `;
 
@@ -348,8 +348,7 @@ const ConnectionTabList = styled(TabList)`
 
 const ConnectionTabPanel = styled(TabPanel)`
   display: none;
-  margin-top: 9px;
-
+  margin-top: 8px;
   [dir="rtl"] & {
     margin: 0 1rem 0 0;
   }
@@ -361,7 +360,7 @@ const ConnectionTabPanel = styled(TabPanel)`
 
   & ul {
     padding: 0;
-    margin: 4px 0px;
+    margin: 0;
   }
 
   @media ${smallOnly} {

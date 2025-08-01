@@ -2,10 +2,10 @@ import React, { Fragment, PureComponent } from 'react';
 import { defineMessages, injectIntl } from 'react-intl';
 import { useReactiveVar } from '@apollo/client';
 import Styled from './styles';
-import Icon from '/imports/ui/components/connection-status/icon/component';
 import SettingsMenuContainer from '/imports/ui/components/settings/container';
 import connectionStatus from '/imports/ui/core/graphql/singletons/connectionStatus';
 import { getWorstStatus } from '../service';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const intlMessages = defineMessages({
   label: {
@@ -30,10 +30,7 @@ class ConnectionStatusIcon extends PureComponent {
   renderIcon(level = 'normal') {
     return (
       <Styled.IconWrapper>
-        <Icon
-          level={level}
-          grayscale
-        />
+        <SvgIcon iconName="connect" />
       </Styled.IconWrapper>
     );
   }
@@ -76,7 +73,10 @@ class ConnectionStatusIcon extends PureComponent {
 
     return (
       <>
-        <Styled.StatusIconWrapper color={color}>
+        <Styled.StatusIconWrapper
+          color={color}
+          className={color === 'danger' ? 'connecting-status-error' : color === 'warning' ? 'connecting-status-warning' : 'connecting-status-green'}
+        >
           {this.renderIcon(currentStatus)}
         </Styled.StatusIconWrapper>
         <Styled.Label>

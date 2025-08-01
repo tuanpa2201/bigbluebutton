@@ -21,6 +21,12 @@ select {
     font-style: normal;
     font-weight: 400!important;
     line-height: 20px; /* 142.857% */
+
+    &:focus {
+        outline: none;
+        border-color: var(--highlight-blue-light, #1A64F6);
+        box-shadow: 0 0 0 2px rgba(51, 141, 241, 0.15);
+    }
 }
 
 /* Custom dropdown styles */
@@ -101,4 +107,12 @@ select {
 .custom-dropdown__option:hover,
 .custom-dropdown__option--selected {
     background: var(--bg-01-light, #F7F8F9);
+}
+
+#langSelector {
+    [data-darkreader-scheme="dark"] & {
+        background: var(--bg-00-dark, #3B3F43);
+        border-color: var(--border-01-dark, #4E5358) !important;
+        color: var(--text-primary-dark, #FCFCFD) !important;
+    }
 }

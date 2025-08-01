@@ -278,8 +278,8 @@ const Avatar = styled.div<AvatarProps>`
   `}
 
   // ================ talking animation ================
-  ${({ talking, animations, color }) => talking && animations && color && css`
-    animation: ${pulse(colorWhite)} 1s infinite ease-in;
+  ${({ talking, animations }) => talking && animations && css`
+    //animation: ${pulse()} 1s infinite ease-in;
   `}
 
   ${({ talking, animations }) => talking && !animations && `
@@ -318,12 +318,12 @@ const UserAdditionalInformationIcon = styled(Icon)`
   margin-right: ${smPaddingX};
 `;
 
-const pulse = (color: string) => keyframes`
+const pulse = () => keyframes`
     0% {
-      box-shadow: 0 0 0 0 ${color}80;
+      box-shadow: 0 0 0 0 #ffffff80;
     }
     100% {
-      box-shadow: 0 0 0 10px ${color}00;
+      box-shadow: 0 0 0 10px #ffffff00;
     }
   }
 `;
@@ -461,13 +461,13 @@ const RightBlockIconsContainer = styled.div<RightBlockIconsProps>`
   `}
     
   // ================ talking animation ================
-  ${({talking, animations, color}) => talking && animations && color && css`
+  ${({talking, animations}) => talking && animations && css`
     & .talking {
-      animation: ${pulse(colorWhite)} 1s infinite ease-in;
+      animation: ${pulse()} 1s infinite ease-in;
     }
   `}
 
-  ${({talking, animations}) => talking && !animations && css`
+  ${({talking, animations}) => talking && !animations && `
     & .talking {
         box-shadow: 0 0 0 4px currentColor;
     }
@@ -557,9 +557,9 @@ const RightIconVoiceContainer = styled.div<RightIconVoiceProps>`
       background-color: transparent;
     }
   `} // ================ talking animation ================
-  ${({talking, animations, color}) => talking && animations && color && css`
+  ${({talking, animations}) => talking && animations && css`
     &:after {
-      animation: ${pulse(colorWhite)} 1s infinite ease-in;
+      animation: ${pulse()} 1s infinite ease-in;
     }
   `}
 

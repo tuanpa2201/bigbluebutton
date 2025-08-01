@@ -473,7 +473,7 @@
     "app.polling.pollQuestionTitle": "Polling Question",
     "app.polling.submitLabel": "Submit",
     "app.polling.submitAriaLabel": "Submit poll response",
-    "app.polling.responsePlaceholder": "Enter answer",
+    "app.polling.responsePlaceholder": "Write your answer...",
     "app.polling.responseSecret": "Anonymous poll – the presenter can't see your answer.",
     "app.polling.responseNotSecret": "Normal poll – the presenter can see your answer.",
     "app.polling.pollAnswerLabel": "Poll answer {0}",

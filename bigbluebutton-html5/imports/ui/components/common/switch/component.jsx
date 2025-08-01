@@ -68,6 +68,7 @@ class Switch extends Toggle {
           </Styled.ToggleTrackX>
         </Styled.ToggleTrack>
         <Styled.ToggleThumb
+          className="toggle-thumb"
           checked={checked}
           hasFocus={hasFocus}
           disabled={disabled}

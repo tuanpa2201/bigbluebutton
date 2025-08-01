@@ -582,7 +582,7 @@ class ApplicationMenu extends BaseMenu {
           <div className="d-block">
             <div className="d-block">
               <Styled.FormElement>
-                <Styled.Label aria-hidden className="font-regular-s text-primary">
+                <Styled.Label aria-hidden className="font-regular-s text-primary text-primary-dark">
                   {intl.formatMessage(intlMessages.languageLabel)}
                 </Styled.Label>
               </Styled.FormElement>
@@ -612,7 +612,7 @@ class ApplicationMenu extends BaseMenu {
             <div className="d-block">
               <Styled.FormElement>
                 {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <Styled.Label className="font-regular-s text-primary">
+                <Styled.Label className="font-regular-s text-primary text-primary-dark">
                   {intl.formatMessage(intlMessages.fontSizeControlLabel)}
                 </Styled.Label>
               </Styled.FormElement>

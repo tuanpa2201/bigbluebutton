@@ -41,6 +41,7 @@ const ReactionsButton = (props) => {
 
   const handleReactionSelect = (reaction) => {
     setReactionEmoji({ variables: { reactionEmoji: reaction } });
+    handleClose();
   };
 
   const actionCustomStyles = {
@@ -79,6 +80,23 @@ const ReactionsButton = (props) => {
     );
   }
 
+  const menuRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!showEmojiPicker) return;
+
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        handleClose();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showEmojiPicker]);
+
   return (
     <div className="reactions-dropdown-container">
       <Styled.ReactionsButton
@@ -98,27 +116,17 @@ const ReactionsButton = (props) => {
       {showEmojiPicker && (
       <div
         className="reactions-dropdown-menu"
-        ref={(menuRef) => {
-          if (menuRef) {
-            const handleClickOutside = (event) => {
-              if (!menuRef.contains(event.target)) {
-                handleClose();
-              }
-            };
-            document.addEventListener('mousedown', handleClickOutside);
-            menuRef._removeClickOutside = () => {
-              document.removeEventListener('mousedown', handleClickOutside);
-            };
-          }
-        }}
-        onUnmount={() => {
-          if (menuRef && menuRef._removeClickOutside) {
-            menuRef._removeClickOutside();
-          }
-        }}
+        ref={menuRef}
       >
         {actions.map((action) => (
-          <button className="reactions-dropdown-item" type="button" key={action.key} onClick={() => { action.onClick(); handleClose(); }}>{action.label}</button>
+          <button
+            className="reactions-dropdown-item"
+            type="button"
+            key={action.key}
+            onClick={() => { action.onClick(); }}
+          >
+            {action.label}
+          </button>
         ))}
       </div>
       )}

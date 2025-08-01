@@ -13,7 +13,10 @@ const ScrollboxVertical = styled.div`
   background-color: transparent;
   background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
   background-attachment: local, local, scroll, scroll;
-
+  [data-darkreader-scheme="dark"] & {
+    background-image: none;
+    background-color: transparent;
+  }
   // Fancy scroll
   &::-webkit-scrollbar {
     width: 5px;

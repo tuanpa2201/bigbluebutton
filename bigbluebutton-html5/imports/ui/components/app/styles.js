@@ -96,6 +96,21 @@ const DtfInvert = `
   .user-list-participants {
     background: #3B3F43!important;
   }
+  
+  .shortcut-help-general,
+  .shortcut-help-whiteboard,
+  .shortcut-help-gesture,
+  .shortcut-help-presentation {
+      & table {
+          & th {
+              color: var(--text-secondary-dark, #C5C9CD) !important;
+          }
+
+          & td {
+              color: var(--text-primary-dark, #FCFCFD) !important;
+          }
+      }
+  }
 `;
 
 const DtfBrandingInvert = `

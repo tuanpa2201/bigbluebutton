@@ -750,7 +750,7 @@ const AudioModal = ({
             />
           </Styled.BrowserWarning>
         ) : null}
-        <Styled.Content className={content === 'settings' ? 'audio-settings-modal-content' : 'audio_modal-content'}>
+        <Styled.Content className={content === 'settings' ? 'audio-settings-modal-content' : 'audio-modal-content'}>
           {renderContent()}
         </Styled.Content>
       </Styled.AudioModal>
