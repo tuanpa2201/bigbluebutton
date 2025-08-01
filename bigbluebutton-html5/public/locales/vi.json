@@ -1490,7 +1490,7 @@
   "app.externalVideo.autoPlayWarning": "Phát video để bật đồng bộ hóa phương tiện",
   "app.externalVideo.refreshLabel": "Làm mới trình phát video",
   "app.externalVideo.fullscreenLabel": "Trình phát video",
-  "app.externalVideo.noteLabel": "Lưu ý: Các video bên ngoài được chia sẻ sẽ không xuất hiện trong bản ghi. Hỗ trợ các URL từ YouTube, Vimeo, Instructure Media, Twitch, Dailymotion và các tệp phương tiện (ví dụ: https://example.com/xy.mp4). [Hủy bỏ] [Chia sẻ video mới]",
+  "app.externalVideo.noteLabel": "Lưu ý: Các video bên ngoài được chia sẻ sẽ không xuất hiện trong bản ghi. Hỗ trợ các URL từ YouTube, Vimeo, Instructure Media, Twitch, Dailymotion và các tệp phương tiện (ví dụ: https://example.com/xy.mp4).",
   "app.externalVideo.subtitlesOn": "Tắt",
   "app.externalVideo.subtitlesOff": "Bật (nếu có thể)",
   "app.actionsBar.actionsDropdown.shareExternalVideo": "Chia sẻ video",
@@ -1657,6 +1657,9 @@
   "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Lỗi khi tải trang – vui lòng kiểm tra địa chỉ URL và kết nối mạng",
   "app.userList.menu.removeTitle.label": "Loại bỏ người dùng",
   "app.userList.menu.removeDescConfirmation.label": "Loại bỏ người dùng: {0}?",
+  "app.audio_help_1": "To join the audio bridge click the speaker button.",
+  "app.audio_help_2": "Use a headset to avoid causing background noise for others.",
+  "app.serverRunning": "This server is running.",
   "EOF": "EOF"
 }
 

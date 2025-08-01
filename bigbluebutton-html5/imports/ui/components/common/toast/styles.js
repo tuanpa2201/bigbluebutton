@@ -31,20 +31,22 @@ import {
 import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
-const CloseIcon = styled(SvgIcon)`
-  align-self: flex-start;
+const CloseIcon = styled.div`
+  //align-self: flex-start;
   background: transparent;
   outline: none;
   border: none;
   cursor: pointer;
-  opacity: .5;
+  //opacity: .5;
   font-size: ${fontSizeSmallest};
-  color: ${colorGrayDark};
+  //color: ${colorGrayDark};
+  color: #2F384C !important;
   line-height: 0;
   position: relative;
   font-size: 70%;
-  left: ${toastOffsetSm};
-  
+  //left: ${toastOffsetSm};
+  //left: 8px;
+  padding-left: 8px;
   [dir="rtl"] & {
     left: auto;
     right: ${toastOffsetSm};

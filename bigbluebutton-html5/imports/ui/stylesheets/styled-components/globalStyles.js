@@ -86,7 +86,8 @@ const GlobalStyle = createGlobalStyle`
     box-shadow: 0 8px 16px -4px rgba(26, 26, 26, 0.22);
     display: flex;
     justify-content: space-between;
-    color: ${colorText};
+    //color: ${colorText};
+    color: var(--Text-Primary, #313131);
     -webkit-animation-duration: 0.75s;
     animation-duration: 0.75s;
     -webkit-animation-fill-mode: both;

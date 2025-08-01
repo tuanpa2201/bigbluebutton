@@ -138,6 +138,8 @@ const Line = styled.div`
   display: flex;
   width: 100%;
   flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
   //padding: ${lgPaddingX} 0;
 `;
 
