@@ -68,7 +68,7 @@ const ReactionsButton = (props) => {
     });
   });
 
-  const svgIcon = currentUserReaction === 'none' ? 'reactions' : null;
+  const svgIcon = currentUserReaction === 'none' ? 'emotion-happy' : null;
   const currentUserReactionEmoji = REACTIONS.find(({ native }) => native === currentUserReaction);
 
   let customIcon = null;

@@ -406,10 +406,10 @@ class NavBar extends Component {
                 </Tooltip>
               </Styled.PresentationTitle>
               {this.renderModal(isModalOpen, this.setModalIsOpen, "low", SessionDetailsModal)}
-              <RecordingIndicator
-                amIModerator={amIModerator}
-                currentUserId={currentUserId}
-              />
+              {/*<RecordingIndicator*/}
+              {/*  amIModerator={amIModerator}*/}
+              {/*  currentUserId={currentUserId}*/}
+              {/*/>*/}
               {renderPluginItems(centerPluginItems)}
             </Styled.Center>
             <Styled.Right>

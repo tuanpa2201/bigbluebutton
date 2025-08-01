@@ -19,7 +19,8 @@ const Navbar = styled.header`
   text-align: center;
   font-size: 1.5rem;
   // background-color: ${colorBackground};
-  background-color: #303338;
+  //background-color: #303338;
+  background: var(--BG-Meet-bg, #2B2E32);
   padding: ${barsPadding} ${barsPadding} 0 ${barsPadding};
 `;
 

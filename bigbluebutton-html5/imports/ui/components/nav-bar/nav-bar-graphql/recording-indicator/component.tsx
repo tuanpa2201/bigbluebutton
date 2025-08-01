@@ -245,9 +245,9 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
   if (!record) return null;
   return (
     <>
-      {record && !isMobile ? (
-        <Styled.PresentationTitleSeparator aria-hidden="true">|</Styled.PresentationTitleSeparator>
-      ) : null}
+      {/*{record && !isMobile ? (*/}
+      {/*  <Styled.PresentationTitleSeparator aria-hidden="true">|</Styled.PresentationTitleSeparator>*/}
+      {/*) : null}*/}
       <Styled.RecordingIndicator
         data-test="recordingIndicator"
         isPhone={isMobile}

@@ -660,7 +660,7 @@
 
 .reactions-dropdown-container {
     position: relative;
-    z-index: 1000;
+    /*z-index: 1000;*/
     & .reactions-dropdown-menu {
         position: absolute;
         top: -50px;

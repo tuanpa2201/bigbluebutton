@@ -534,7 +534,7 @@
   "app.poll.answer.e": "E",
   "app.poll.liveResult.usersTitle": "Người dùng",
   "app.poll.liveResult.responsesTitle": "Phản hồi",
-  "app.poll.liveResult.secretLabel": "Đây là một Khảo sát ẩn danh. Các câu trả lời riêng lẻ không được hiển thị.",
+  "app.poll.liveResult.secretLabel": "Đây là một khảo sát ẩn danh. Các câu trả lời riêng lẻ không được hiển thị.",
   "app.poll.removePollOpt": "Đã xóa tùy chọn Khảo sát ​​{0}",
   "app.poll.emptyPollOpt": "Trống",
   "app.polling.pollingTitle": "Tùy chọn Khảo sát",

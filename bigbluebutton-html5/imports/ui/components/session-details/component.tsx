@@ -117,6 +117,7 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
       }}
       className="modal-session-details"
     >
+      <Styled.Chevron />
       <Styled.Container
         isFullWidth={isMobile || !(loginUrl || (formattedDialNum && formattedTelVoice))}
       >
