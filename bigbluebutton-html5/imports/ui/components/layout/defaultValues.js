@@ -18,12 +18,12 @@ const DEFAULT_VALUES = {
 
   bannerHeight: 34,
 
-  navBarHeight: 85,
+  navBarHeight: 88,
   navBarTop: 0,
   navBarTabOrder: 3,
 
-  actionBarHeight: 42,
-  actionBarPadding: 11.2,
+  actionBarHeight: 56,
+  actionBarPadding: 20,
   actionBarTabOrder: 6,
 
   sidebarNavMaxWidth: 70,

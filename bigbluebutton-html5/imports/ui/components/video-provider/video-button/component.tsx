@@ -150,6 +150,7 @@ const JoinVideoButton: React.FC<JoinVideoButtonProps> = ({
           hideLabel
           color={hasVideoStream ? 'primary' : 'default'}
           svgIcon={hasVideoStream ? 'video' : 'video_off'}
+          className={'actionbar-button'}
           size="lg"
           circle
           disabled={!!disableReason}

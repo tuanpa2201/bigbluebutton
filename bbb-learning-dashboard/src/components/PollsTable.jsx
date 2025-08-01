@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
-import UserAvatar from './UserAvatar';
 
 const PollsTable = (props) => {
   const {
@@ -148,16 +147,14 @@ const PollsTable = (props) => {
         isModerator: params?.row?.User?.isModerator,
       }),
       renderCell: (params) => (
-      <>
-        <span className="inline-block">{params?.value?.name}</span>
-        {params?.value?.isModerator ? (
-          <span className="inline-block" aria-label="Moderator">
-            (
-            <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
-            )
-          </span>
-        ) : null}
-      </>
+        <>
+          <span className="inline-block">{params?.value?.name}</span>
+          {params?.value?.isModerator ? (
+            <span className="inline-block" aria-label="Moderator">
+              <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
+            </span>
+          ) : null}
+        </>
       ),
     },
   ];
@@ -419,7 +416,8 @@ const PollsTable = (props) => {
 
   return (
     <div className="bg-white" style={{ width: '100%' }}>
-      <DataGrid className="polls-table"
+      <DataGrid
+        className="polls-table"
         {...commonGridProps}
         rows={gridRows}
         columns={gridCols}

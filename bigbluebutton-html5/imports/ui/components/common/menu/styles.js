@@ -143,8 +143,7 @@ const BBBMenuInformation = styled.div`
 `;
 
 const BBBMenuItem = styled(MenuItem)`
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
+  margin-bottom: 4px !important;
   border-radius: 8px !important;
   padding: 6px 8px !important;
   transition: none !important;
@@ -166,10 +165,6 @@ const BBBMenuItem = styled(MenuItem)`
 
   &:last-child{
     margin-bottom: 0 !important;
-  }
-  
-  &:first-child {
-    margin-top: 0 !important;
   }
   
   ${({ emoji }) => emoji === 'yes' && `
