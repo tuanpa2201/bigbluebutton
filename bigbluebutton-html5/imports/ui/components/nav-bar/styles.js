@@ -21,7 +21,7 @@ const Navbar = styled.header`
   // background-color: ${colorBackground};
   //background-color: #303338;
   background: var(--BG-Meet-bg, #2B2E32);
-  padding: ${barsPadding} ${barsPadding} 0 ${barsPadding};
+  padding: 16px 16px 20px 16px;
 `;
 
 const Top = styled.div`

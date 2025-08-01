@@ -171,7 +171,10 @@ class ActionsBar extends PureComponent {
             left: actionsBarStyle.left,
             height: actionsBarStyle.height,
             width: actionsBarStyle.width,
-            padding: actionsBarStyle.padding,
+            paddingTop: actionsBarStyle.padding - 4,
+            paddingBottom: actionsBarStyle.padding,
+            paddingLeft: actionsBarStyle.padding,
+            paddingRight: actionsBarStyle.padding,
           }
         }
       >

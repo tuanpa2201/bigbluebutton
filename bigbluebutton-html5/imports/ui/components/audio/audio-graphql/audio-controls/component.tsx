@@ -96,6 +96,7 @@ const AudioControls: React.FC<AudioControlsProps> = ({
         color="default"
         icon="no_audio"
         size="lg"
+        className={'actionbar-button'}
         circle
         accessKey={joinAudioShortcut}
         loading={isConnecting}
