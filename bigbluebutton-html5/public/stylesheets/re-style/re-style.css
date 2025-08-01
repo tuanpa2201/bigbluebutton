@@ -603,6 +603,9 @@
         background-color: transparent !important;
         [data-darkreader-scheme="dark"] & {
             color: var(--text-primary-dark, #FCFCFD);
+            .icon-bbb-more:before {
+                color: var(--text-primary-dark, #FCFCFD);
+            }
         }
     }
     & button {
