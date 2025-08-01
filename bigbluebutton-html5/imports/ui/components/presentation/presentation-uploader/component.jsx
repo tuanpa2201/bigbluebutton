@@ -11,11 +11,10 @@ import { registerTitleView, unregisterTitleView } from '/imports/utils/dom-utils
 import Styled from './styles';
 import PresentationDownloadDropdown from './presentation-download-dropdown/component';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
-import Radio from '/imports/ui/components/common/radio/component';
 import { unique } from 'radash';
 import Session from '/imports/ui/services/storage/in-memory';
 import { ACTIONS, PANELS } from '/imports/ui/components/layout/enums';
-import { layoutDispatch } from '/imports/ui/components/layout/context';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const { isMobile } = deviceInfo;
 const propTypes = {
@@ -871,7 +870,7 @@ class PresentationUploader extends Component {
     } = this.props;
 
     return allowDownloadWithAnnotations ? (
-      <Styled.ExportHint>
+      <Styled.ExportHint className="export_hint">
         {intl.formatMessage(intlMessages.exportHint)}
       </Styled.ExportHint>
     )
@@ -933,9 +932,10 @@ class PresentationUploader extends Component {
         animated={isProcessing}
         animations={animations}
         data-test="presentationItem"
+        className="presentation_item"
       >
         <div>
-          <Styled.RadioCircle
+          <Styled.RadioCircle className="radio_circle"
             animations={animations}
             // ariaLabel={`${intl.formatMessage(intlMessages.setAsCurrentPresentation)} ${item.name}`}
             checked={item.current}
@@ -944,32 +944,29 @@ class PresentationUploader extends Component {
             disabled={disableActions || hasError}
           />
         </div>
-        <Styled.FileIcon>
-            <img
-                src={`${BASE_NAME}/resources/icon-bbb/file-text-2.png`}
-                alt="File Text"
-            />
+        <Styled.FileIcon className="file_icon">
+          <SvgIcon iconName="file_text" />
         </Styled.FileIcon>
         <Styled.TableItemName colSpan={!isActualCurrent ? 2 : 0}>
-          <span>{item.name}</span>
+          <span className="table_item_name">{item.name}</span>
         </Styled.TableItemName>
         {
           isActualCurrent
             ? (
               <div>
-                <Styled.CurrentLabel>
+                <Styled.CurrentLabel className="current_label">
                   {intl.formatMessage(intlMessages.currentBadge)}
                 </Styled.CurrentLabel>
               </div>
             )
             : null
         }
-        <Styled.TableItemStatus colSpan={hasError ? 2 : 0}>
+        <Styled.TableItemStatus colSpan={hasError ? 2 : 0} className="status_item">
           {renderPresentationItemStatus(item, intl)}
         </Styled.TableItemStatus>
         {
         hasError ? null : (
-          <Styled.TableItemActions notDownloadable={!allowDownloadOriginal}>
+          <Styled.TableItemActions notDownloadable={!allowDownloadOriginal} className="actions_item">
             {allowDownloadOriginal || allowDownloadWithAnnotations || allowDownloadConverted ? (
               <PresentationDownloadDropdown
                 disabled={disableExportDropdown}
@@ -992,6 +989,7 @@ class PresentationUploader extends Component {
                 disabled={disableActions}
                 label={intl.formatMessage(intlMessages.removePresentation)}
                 data-test="removePresentation"
+                className="remove_presentation"
                 aria-label={`${intl.formatMessage(intlMessages.removePresentation)} ${item.name}`}
                 size="sm"
                 // icon="delete"
@@ -999,11 +997,7 @@ class PresentationUploader extends Component {
                 onClick={() => this.handleRemove(item)}
                 animations={animations}
               >
-                <img
-                    src={`${BASE_NAME}/resources/icon-bbb/trash.png`}
-                    alt="Trash"
-                    style={{ width: 16, height: 16 }}
-                />
+                <SvgIcon iconName="trash_20" />
               </Styled.RemoveButton>
             ) : null}
           </Styled.TableItemActions>
@@ -1041,22 +1035,19 @@ class PresentationUploader extends Component {
       // Error handling is being done in the onDrop prop.
       <Styled.UploaderDropzone
         multiple
+        className="dropzone"
         activeClassName="dropzoneActive"
         accept={fileValidMimeTypes.map((fileValid) => fileValid.extension)}
         disablepreview="true"
         onDrop={(files, files2) => this.handleFiledrop(files, files2, this, intl, intlMessages)}
       >
-        <Styled.DropzoneIcon >
-          <img
-              src={`${BASE_NAME}/resources/icon-bbb/cloud-upload.png`}
-              alt="Cloud Upload"
-              style={{ width: 16, height: 16 }}
-          />
+        <Styled.DropzoneIcon className="dropzoneIcon">
+          <SvgIcon iconName="cloud_upload_2" />
         </Styled.DropzoneIcon>
-        <Styled.DropzoneMessage>
+        <Styled.DropzoneMessage className="dropzoneMessage">
           {intl.formatMessage(intlMessages.dropzoneLabel)}
           &nbsp;
-          <Styled.DropzoneLink>
+          <Styled.DropzoneLink className="dropzoneLink">
             {intl.formatMessage(intlMessages.browseFilesLabel)}
           </Styled.DropzoneLink>
         </Styled.DropzoneMessage>
@@ -1159,24 +1150,13 @@ class PresentationUploader extends Component {
               <Styled.ModalInner>
                 <div>
                   <Styled.ModalHeader>
-                    <Styled.Title>{intl.formatMessage(intlMessages.title)}</Styled.Title>
-                    <Styled.ActionWrapper>
-                      <Styled.DismissButton
-                        // onClick={this.handleDismiss}
-                        onClick={this.closePanel}
-                        // label={intl.formatMessage(intlMessages.dismissLabel)}
-                        // aria-describedby={intl.formatMessage(intlMessages.dismissDesc)}
-                      >
-                        <img
-                          src={`${BASE_NAME}/resources/icon-bbb/close.png`}
-                          alt="Close"
-                          style={{ width: 16, height: 16 }}
-                        />
-                      </Styled.DismissButton>
-                    </Styled.ActionWrapper>
+                    <span className="title">{intl.formatMessage(intlMessages.title)}</span>
+                    <button type="button" className="dismiss" onClick={this.closePanel}>
+                      <SvgIcon iconName="cross_20" />
+                    </button>
                   </Styled.ModalHeader>
 
-                  <Styled.ModalHint>
+                  <Styled.ModalHint className="hint">
                     {`${intl.formatMessage(intlMessages.message)}`}
                     {fileUploadConstraintsHint ? this.renderExtraHint() : null}
                   </Styled.ModalHint>
@@ -1188,14 +1168,17 @@ class PresentationUploader extends Component {
                   {this.renderExternalUpload()}
                 </div>
                 {hasPendingChange ? (
-                  <Styled.ConfirmButton
-                    data-test="confirmManagePresentation"
-                    onClick={() => this.handleConfirm()}
-                    disabled={disableActions}
-                    label={hasNewUpload
-                      ? intl.formatMessage(intlMessages.uploadLabel)
-                      : intl.formatMessage(intlMessages.confirmLabel)}
-                  />
+                    <button
+                        type="button"
+                        className="btn btn-primary mt-auto"
+                        data-test="confirmManagePresentation"
+                        onClick={() => this.handleConfirm()}
+                        disabled={disableActions}
+                        >
+                      {hasNewUpload
+                          ? intl.formatMessage(intlMessages.uploadLabel)
+                          : intl.formatMessage(intlMessages.confirmLabel)}
+                    </button>
                 ) : null}
               </Styled.ModalInner>
             </Styled.UploaderModal>

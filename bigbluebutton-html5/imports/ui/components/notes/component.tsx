@@ -164,7 +164,7 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
                 {/* eslint-disable-next-line max-len */}
                 <NotesDropdown handlePinSharedNotes={handlePinSharedNotes} presentationEnabled={isPresentationEnabled} />
                 <button type="button" onClick={closePanel} style={{ background: 'none', border: 'none' }} className="btnClose">
-                  <SvgIcon iconName="cross" />
+                  <SvgIcon iconName="cross_20" />
                 </button>
               </div>
             </div>
