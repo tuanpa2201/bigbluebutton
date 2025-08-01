@@ -86,7 +86,7 @@ const ToastText = styled.span`
 `;
 
 const StatusIcon = styled.span`
-  margin-left: auto;
+  //margin-left: auto;
 
   [dir="rtl"] & {
     margin-right: auto;

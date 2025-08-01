@@ -3,7 +3,7 @@ import {
   FormattedMessage, FormattedDate, FormattedNumber, injectIntl,
 } from 'react-intl';
 import { getUserReactionsSummary } from '../services/ReactionService';
-import { getActivityScore, getSumOfTime, tsToHHmmss } from '../services/UserService';
+import { getActivityScore, getSumOfTime, tsToHHmmss, tsToHHmm } from '../services/UserService';
 import UserAvatar from './UserAvatar';
 import { UserDetailsContext } from './UserDetails/context';
 
@@ -167,7 +167,7 @@ class UsersTable extends React.Component {
     return (
       <table className="w-full">
         <thead>
-          <tr className="text-xs font-semibold tracking-wide text-left text-gray-700 uppercase border-b bg-gray-100">
+          <tr className="text-xs font-semibold tracking-wide text-left text-gray-700 border-b bg-gray-100 font-medium-th">
             <th
               className={`px-3.5 2xl:px-4 py-3 col-text-left ${tab === 'overview' ? 'cursor-pointer' : ''}`}
               onClick={() => { if (tab === 'overview') this.toggleOrder('userOrder'); }}
@@ -230,7 +230,7 @@ class UsersTable extends React.Component {
         <tbody className="bg-white divide-y whitespace-nowrap">
           { typeof allUsers === 'object' && Object.values(allUsers || {}).length > 0 ? (
             Object.values(allUsers || {})
-              .sort(tab === 'overview' ? sortFunctions[lastFieldClicked] : sortFunctions.activityscoreOrder)
+              .sort(sortFunctions.activityscoreOrder)
               .map((user) => {
                 const opacity = user.leftOn > 0 ? 'opacity-75' : '';
                 return (
@@ -246,69 +246,60 @@ class UsersTable extends React.Component {
                       &nbsp;&nbsp;&nbsp;
                       <div className="inline-block">
                         <button
-                          className="leading-none border-0 p-0 m-0 bg-none font-semibold truncate xl:max-w-sm max-w-xs cursor-pointer focus:rounded focus:outline-none focus:ring ring-offset-0 focus:ring-gray-500 focus:ring-opacity-50 underline decoration-dotted decoration-from-font hover:opacity-75 focus:no-underline active:opacity-95"
+                          className="leading-none border-0 p-0 m-0 bg-none font-semibold truncate xl:max-w-sm max-w-xs cursor-pointer focus:rounded focus:outline-none focus:ring ring-offset-0 focus:ring-gray-500 focus:ring-opacity-50 decoration-dotted decoration-from-font hover:opacity-75 focus:no-underline active:opacity-95"
                           type="button"
                           onClick={() => this.openUserModal(user)}
                           aria-label={`Open user details modal - ${user.name}`}
                         >
-                          {user.name}
+                          <span className="inline-block">
+                            {user.name}
+                            {user.isModerator? (user.name + ' (' + + ')') : user.name}
+                          </span>
+                          {
+                            user.isModerator ? (
+                                <span className="inline-block">
+                                  (<FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />)
+                                </span>
+                            ) : null
+                          }
                         </button>
                         { Object.values(user.intIds || {}).map((intId, index) => intId.sessions
                           .map((session, sessionIndex) => (
                             <>
-                              <p className="text-xs text-gray-700 dark:text-gray-400">
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="h-4 w-4 inline"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                >
-                                  <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                              <div className="user-join-trace">
+                                <p className="text-user-trace inline-block">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                    <path d="M7 1H7.25H7.8C8.9201 1 9.48016 1 9.90798 1.21799C10.2843 1.40973 10.5903 1.71569 10.782 2.09202C11 2.51984 11 3.07989 11 4.2V7.8C11 8.92011 11 9.48016 10.782 9.90798C10.5903 10.2843 10.2843 10.5903 9.90798 10.782C9.48016 11 8.9201 11 7.8 11H7.25H7M1 6H7M7 6L5 4M7 6L5 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                  </svg>
+                                  <FormattedDate
+                                    value={session.registeredOn}
+                                    month="short"
+                                    day="numeric"
+                                    hour="2-digit"
+                                    minute="2-digit"
+                                    second="2-digit"
                                   />
-                                </svg>
-                                <FormattedDate
-                                  value={session.registeredOn}
-                                  month="short"
-                                  day="numeric"
-                                  hour="2-digit"
-                                  minute="2-digit"
-                                  second="2-digit"
-                                />
-                              </p>
-                              { session.leftOn > 0
-                                ? (
-                                  <p className="text-xs text-gray-700 dark:text-gray-400">
-                                    <svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      className="h-4 w-4 inline"
-                                      fill="none"
-                                      viewBox="0 0 24 24"
-                                      stroke="currentColor"
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth="2"
-                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
-                                      />
-                                    </svg>
+                                </p>
+                                { session.leftOn > 0 ? (<span> | </span>): null}
+                                { session.leftOn > 0
+                                  ? (
+                                    <p className="text-user-trace inline-block">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                        <path d="M5 1H4.75H4.2C3.0799 1 2.51984 1 2.09202 1.21799C1.71569 1.40973 1.40973 1.71569 1.21799 2.09202C1 2.51984 1 3.07989 1 4.2V7.8C1 8.92011 1 9.48016 1.21799 9.90798C1.40973 10.2843 1.71569 10.5903 2.09202 10.782C2.51984 11 3.0799 11 4.2 11H4.75H5M5 6H11M11 6L9 4M11 6L9 8" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                      </svg>
 
-                                    <FormattedDate
-                                      value={session.leftOn}
-                                      month="short"
-                                      day="numeric"
-                                      hour="2-digit"
-                                      minute="2-digit"
-                                      second="2-digit"
-                                    />
-                                  </p>
-                                )
-                                : null }
+                                      <FormattedDate
+                                        value={session.leftOn}
+                                        month="short"
+                                        day="numeric"
+                                        hour="2-digit"
+                                        minute="2-digit"
+                                        second="2-digit"
+                                      />
+                                    </p>
+                                  )
+                                  : null }
+                              </div>
                               { index === Object.values(user.intIds).length - 1
                                 && sessionIndex === intId?.sessions.length - 1
                                 ? null
@@ -320,96 +311,26 @@ class UsersTable extends React.Component {
                       </div>
                     </td>
                     <td className={`px-4 py-3 text-sm text-center items-center ${opacity}`} data-test="userOnlineTimeDashboard">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 inline"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth="2"
-                          d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z"
-                        />
-                      </svg>
-                      &nbsp;
-                      { tsToHHmmss(Object.values(user.intIds).reduce((prev, intId) => (
-                        prev + intId.sessions.reduce((prev2, session) => ((session.leftOn > 0
-                          ? prev2 + session.leftOn
-                          : prev2 + (new Date()).getTime()) - session.registeredOn), 0)), 0)) }
-                      <br />
-                      {
-                        (function getPercentage() {
-                          const { intIds } = user;
-                          const percentage = Object.values(intIds || {}).reduce((prev, intId) => (
-                            prev + intId.sessions.reduce((prev2, session) => (
-                              prev2 + getOnlinePercentage(session.registeredOn, session.leftOn)
-                            ), 0)
-                          ), 0);
-
-                          return (
-                            <div
-                              className="bg-gray-200 transition-colors duration-500 rounded-full overflow-hidden"
-                              title={`${percentage.toString()}%`}
-                            >
-                              <div
-                                aria-label=" "
-                                className="bg-gradient-to-br from-green-100 to-green-600 transition-colors duration-900 h-1.5"
-                                style={{ width: `${percentage.toString()}%` }}
-                                role="progressbar"
-                              />
-                            </div>
-                          );
-                        }())
-                      }
+                      <span className="text-center text-td-restyle">
+                        { tsToHHmm(Object.values(user.intIds).reduce((prev, intId) => (
+                            prev + intId.sessions.reduce((prev2, session) => ((session.leftOn > 0
+                                ? prev2 + session.leftOn
+                                : prev2 + (new Date()).getTime()) - session.registeredOn), 0)), 0)) } &nbsp;min
+                      </span>
                     </td>
-                    <td className={`px-4 py-3 text-sm text-center items-center ${opacity}`} data-test="userTotalTalkTimeDashboard">
-                      { user.talk.totalTime > 0
-                        ? (
-                          <span className="text-center">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-4 w-4 inline"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"
-                              />
-                            </svg>
-                            &nbsp;
-                            { tsToHHmmss(user.talk.totalTime) }
-                          </span>
-                        ) : null }
+                    <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalTalkTimeDashboard">
+                      { user.talk.totalTime > 0 ? (
+                        <span className="text-center text-td-restyle">
+                          { tsToHHmm(user.talk.totalTime) }&nbsp;min
+                        </span>
+                      ) : (<span>-</span>) }
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userWebcamTimeDashboard">
-                      { getSumOfTime(user.webcams) > 0
-                        ? (
-                          <span className="text-center">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-4 w-4 inline"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"
-                              />
-                            </svg>
-                            &nbsp;
-                            { tsToHHmmss(getSumOfTime(user.webcams)) }
-                          </span>
-                        ) : null }
+                      { getSumOfTime(user.webcams) > 0 ? (
+                        <span className="text-center text-td-restyle">
+                          { tsToHHmm(getSumOfTime(user.webcams)) }&nbsp;min
+                        </span>
+                      ) : (<span>-</span>) }
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalMessagesDashboard">
                       { user.totalOfMessages > 0
@@ -432,7 +353,7 @@ class UsersTable extends React.Component {
                             &nbsp;
                             {user.totalOfMessages}
                           </span>
-                        ) : null }
+                        ) : (<span>-</span>) }
                     </td>
                     <td className={`px-4 py-3 text-sm col-text-left ${opacity}`} data-test="userTotalReactionsDashboard">
                       {
@@ -454,7 +375,7 @@ class UsersTable extends React.Component {
                             &nbsp;
                             {user.raiseHand.length}
                           </span>
-                        ) : null }
+                        ) : (<span>-</span>) }
                     </td>
                     {
                       !user.isModerator ? (
@@ -474,7 +395,7 @@ class UsersTable extends React.Component {
                         </td>
                       ) : (
                         <td className="px-4 py-3 text-sm text-center">
-                          <FormattedMessage id="app.learningDashboard.usersTable.notAvailable" defaultMessage="N/A" />
+                          <FormattedMessage id="app.learningDashboard.usersTable.notAvailable" defaultMessage="-" />
                         </td>
                       )
                     }
@@ -483,12 +404,12 @@ class UsersTable extends React.Component {
                         Object.values(user.intIds)[Object.values(user.intIds).length - 1]
                           .sessions.slice(-1)[0].leftOn > 0
                           ? (
-                            <span className="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full">
+                            <span className="px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full span-offline">
                               <FormattedMessage id="app.learningDashboard.usersTable.userStatusOffline" defaultMessage="Offline" />
                             </span>
                           )
                           : (
-                            <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
+                            <span className="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full span-online">
                               <FormattedMessage id="app.learningDashboard.usersTable.userStatusOnline" defaultMessage="Online" />
                             </span>
                           )
