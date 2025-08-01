@@ -365,6 +365,7 @@ const VirtualBgSelector = ({
               aria-label={intl.formatMessage(intlMessages.removeLabel)}
               aria-describedby={`vr-cam-btn-${index + 1}`}
               data-test="removeCustomBackground"
+              className="virtual-background-remove-button"
               icon="close"
               size="sm"
               color="dark"

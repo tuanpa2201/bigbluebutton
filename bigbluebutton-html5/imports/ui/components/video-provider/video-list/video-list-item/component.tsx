@@ -23,6 +23,7 @@ import { VIDEO_TYPES } from '/imports/ui/components/video-provider/enums';
 import PluginButtonContainer from '../../../plugins/plugin-button/container';
 import { UserCameraHelperAreas } from '../../../plugins-engine/extensible-areas/components/user-camera-helper/types';
 import JoypixelsEmoji from '/imports/ui/components/common/JoypixelsEmoji';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const intlMessages = defineMessages({
   disableDesc: {
@@ -356,7 +357,9 @@ const VideoListItem: React.FC<VideoListItemProps> = (props) => {
       </>
     );
   };
-
+  const listenOnly = voiceUser?.listenOnly;
+  const muted = voiceUser?.muted;
+  const voiceUserJoined = voiceUser?.joined;
   const renderDefaultButtons = () => (
     <>
       <Styled.TopBar>
@@ -367,29 +370,33 @@ const VideoListItem: React.FC<VideoListItemProps> = (props) => {
         />
       </Styled.TopBar>
       <Styled.BottomBar>
-        <UserActions
-          name={name}
-          stream={stream}
-          cameraId={cameraId}
-          numOfStreams={numOfStreams}
-          onHandleVideoFocus={onHandleVideoFocus}
-          focused={focused}
-          onHandleMirror={() => setIsMirrored((value) => !value)}
-          isMirrored={isMirrored}
-          isRTL={isRTL}
-          isStream={isStream}
-          onHandleDisableCam={() => setIsSelfViewDisabled((value) => !value)}
-          isSelfViewDisabled={isSelfViewDisabled}
-          amIModerator={amIModerator}
-          videoContainer={videoContainer}
-          isFullscreenContext={isFullscreenContext}
-          layoutContextDispatch={layoutContextDispatch}
-        />
-        <UserStatus
-          voiceUser={voiceUser}
-          user={user}
-          stream={stream}
-        />
+        <div className="bottom-bar">
+          <UserActions
+            name={name}
+            stream={stream}
+            cameraId={cameraId}
+            numOfStreams={numOfStreams}
+            onHandleVideoFocus={onHandleVideoFocus}
+            focused={focused}
+            onHandleMirror={() => setIsMirrored((value) => !value)}
+            isMirrored={isMirrored}
+            isRTL={isRTL}
+            isStream={isStream}
+            onHandleDisableCam={() => setIsSelfViewDisabled((value) => !value)}
+            isSelfViewDisabled={isSelfViewDisabled}
+            amIModerator={amIModerator}
+            videoContainer={videoContainer}
+            isFullscreenContext={isFullscreenContext}
+            layoutContextDispatch={layoutContextDispatch}
+          />
+          {(muted && !listenOnly) && <span className="iconMute"><SvgIcon iconName="micSlash" /></span> }
+          {(voiceUserJoined && !muted) && <span className="iconUnmute"><SvgIcon iconName="talking" /></span>}
+          <UserStatus
+            voiceUser={voiceUser}
+            user={user}
+            stream={stream}
+          />
+        </div>
       </Styled.BottomBar>
     </>
   );

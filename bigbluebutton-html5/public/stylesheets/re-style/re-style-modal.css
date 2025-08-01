@@ -310,6 +310,17 @@
 
                 }
             }
+
+            & .virtual-background-remove-button {
+                position: relative;
+
+                & span:first-child {
+                    position: absolute;
+                    top: 0;
+                    right: -6px;
+                    background-color: unset;
+                }
+            }
         }
 
         & .whole-image-checkbox {
@@ -317,6 +328,13 @@
                 [data-darkreader-scheme="dark"] & {
                     color: var(--text-primary-dark, #FCFCFD);
                 }
+            }
+        }
+
+        & i {
+            color: var(--text-primary-light, #313131) !important;
+            [data-darkreader-scheme="dark"] & {
+                color: var(--text-primary-dark, #FCFCFD) !important;
             }
         }
     }

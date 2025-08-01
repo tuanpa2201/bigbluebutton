@@ -16,7 +16,7 @@ const EXPORT_STATUSES = {
   EXPORTED: 'EXPORTED',
 };
 
-const TIMEOUT_CLOSE_TOAST = 2; // second
+const TIMEOUT_CLOSE_TOAST = 5; // second
 
 const intlMessages = defineMessages({
   item: {
@@ -252,11 +252,6 @@ function renderToastItem(item, intl) {
   const hasError = (('uploadErrorMsgKey' in item) && item.uploadErrorMsgKey);
   const isProcessing = (isUploading || uploadInProgress) && !hasError;
 
-  let icon = isProcessing ? 'blank' : 'check';
-  if (hasError) icon = 'circle_close';
-
-  const isDone = !isProcessing && !hasError;
-
   return (
     <Styled.UploadRow
       key={item.presentationId || item.temporaryPresentationId}
@@ -265,7 +260,7 @@ function renderToastItem(item, intl) {
       }}
     >
       <Styled.FileLine>
-        <span>
+        <span className="d-flex align-items-center gap-4">
           <SvgIcon iconName="file" />
           <span>{item.filename || item.name}</span>
         </span>

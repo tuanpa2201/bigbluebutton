@@ -186,6 +186,7 @@ const PollConfigButton = styled(Button)`
   min-height: ${pollInputHeight};
   font-size: ${fontSizeBase};
   width: calc(50% - 4px) !important;
+  white-space: pre-wrap;
   //margin-bottom: 1rem;
 
   border-radius: 8px;

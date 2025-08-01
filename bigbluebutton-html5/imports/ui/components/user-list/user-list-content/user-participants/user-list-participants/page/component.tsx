@@ -101,15 +101,15 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
           );
         })
       }
-      {/*{currentUser.isModerator && (*/}
-      {/*<button*/}
-      {/*  type="button"*/}
-      {/*  className="btn btn-default font-semibold-s text-primary btn-raised-all-hands"*/}
-      {/*  onClick={lowerAllUserHands}*/}
-      {/*>*/}
-      {/*  {intl.formatMessage(intlMessages.lowerAllHands)}*/}
-      {/*</button>*/}
-      {/*)}*/}
+      {currentUser.isModerator && users.some((user) => user.raiseHand) && (
+      <button
+        type="button"
+        className="btn btn-default font-semibold-s text-primary btn-raised-all-hands"
+        onClick={lowerAllUserHands}
+      >
+        {intl.formatMessage(intlMessages.lowerAllHands)}
+      </button>
+      )}
 
     </>
   );

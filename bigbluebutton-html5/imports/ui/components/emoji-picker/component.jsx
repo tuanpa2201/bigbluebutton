@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { injectIntl } from 'react-intl';
 import data from '@emoji-mart/data';
 import Picker from '@emoji-mart/react';
+import useCurrentLocale from '/imports/ui/core/local-states/useCurrentLocale';
 
 const propTypes = {
   intl: PropTypes.shape({
@@ -16,7 +17,7 @@ const EmojiPicker = (props) => {
     intl,
     onEmojiSelect,
   } = props;
-
+  const [currentLocale] = useCurrentLocale();
   const i18n = {
     search: intl.formatMessage({ id: 'app.emojiPicker.search' }),
     notfound: intl.formatMessage({ id: 'app.emojiPicker.notFound' }),
@@ -64,6 +65,7 @@ const EmojiPicker = (props) => {
       onEmojiSelect={(emojiObject, event) => onEmojiSelect(emojiObject, event)}
       emojiSize={24}
       i18n={i18n}
+      locale={currentLocale === 'vi-VN' ? 'vi' : 'en'}
       previewPosition="none"
       skinTonePosition="none"
       theme="light"

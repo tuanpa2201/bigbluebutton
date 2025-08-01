@@ -988,6 +988,7 @@ class PresentationUploader extends Component {
               <Styled.RemoveButton
                 disabled={disableActions}
                 label={intl.formatMessage(intlMessages.removePresentation)}
+                title={intl.formatMessage(intlMessages.removePresentation)}
                 data-test="removePresentation"
                 className="remove_presentation"
                 aria-label={`${intl.formatMessage(intlMessages.removePresentation)} ${item.name}`}

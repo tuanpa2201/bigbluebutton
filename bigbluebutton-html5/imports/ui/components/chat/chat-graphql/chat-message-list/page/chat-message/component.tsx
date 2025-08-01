@@ -47,6 +47,7 @@ import { EmojiPicker, EmojiPickerWrapper } from './message-toolbar/styles';
 import { isMobile } from '/imports/utils/deviceInfo';
 import { layoutSelect } from '/imports/ui/components/layout/context';
 import { Layout } from '/imports/ui/components/layout/layoutTypes';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 interface ChatMessageProps {
   message: Message;
@@ -332,7 +333,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
   const deleteTime = message.deletedAt ? new Date(message.deletedAt) : null;
 
   const msgTime = formattedTime;
-  const clearMessage = `${intl.formatMessage(intlMessages.chatClear)} ${msgTime}`;
+  const clearMessage = `${intl.formatMessage(intlMessages.chatClear)} at ${msgTime}`;
 
   const messageContent: {
     name: string;
@@ -341,6 +342,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
     isPresentationUpload?: boolean;
     component: React.ReactNode;
     avatarIcon?: string;
+    svgIcon?: string;
     isSystemSender: boolean;
     showAvatar: boolean;
     showHeading: boolean;
@@ -364,7 +366,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
       case ChatMessageType.PRESENTATION:
         return {
           name: '',
-          color: '#0F70D7',
+          color: '#EB5366',
           isModerator: false,
           isPresentationUpload: true,
           isSystemSender: true,
@@ -373,7 +375,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
               metadata={message.messageMetadata}
             />
           ),
-          avatarIcon: 'icon-bbb-download',
+          svgIcon: 'server',
           showAvatar: true,
           showHeading: true,
           showToolbar: false,
@@ -617,7 +619,9 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
 
   let avatarDisplay;
 
-  if (!messageContent.avatarIcon) {
+  if (messageContent.svgIcon) {
+    avatarDisplay = <SvgIcon iconName={messageContent.svgIcon} />;
+  } else if (!messageContent.avatarIcon) {
     if (!message.user || message.user?.avatar.length === 0) {
       avatarDisplay = messageContent.name.toLowerCase().slice(0, 2);
     } else {
@@ -804,7 +808,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
           <ChatHeading className="chat-header">
             {shouldRenderAvatar && message.user?.userId !== currentUserId && (
               <ChatAvatar
-                className="chat-avatar"
+                className={['chat-avatar', messageContent.isPresentationUpload && 'chat-avatar-presentation'].join(' ')}
                 avatar={message.user?.avatar || ''}
                 color={messageContent.color}
                 moderator={messageContent.isModerator}
