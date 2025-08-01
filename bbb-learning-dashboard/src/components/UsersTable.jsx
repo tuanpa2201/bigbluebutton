@@ -147,14 +147,14 @@ class UsersTable extends React.Component {
         return 0;
       },
       activityscoreOrder(a, b) {
+        if (a.isModerator === false && b.isModerator === true) return -1;
+        if (a.isModerator === true && b.isModerator === false) return 1;
         if (usersActivityScore[a.userKey] < usersActivityScore[b.userKey]) {
           return activityscoreOrder === 'desc' ? 1 : -1;
         }
         if (usersActivityScore[a.userKey] > usersActivityScore[b.userKey]) {
           return activityscoreOrder === 'desc' ? -1 : 1;
         }
-        if (a.isModerator === false && b.isModerator === true) return 1;
-        if (a.isModerator === true && b.isModerator === false) return -1;
         return 0;
       },
     };
@@ -234,7 +234,7 @@ class UsersTable extends React.Component {
                       <div className="inline-block relative w-8 h-8 rounded-full">
                         <UserAvatar user={user} />
                         <div
-                          className="absolute inset-0 rounded-full shadow-inner"
+                          className="absolute inset-0 shadow-inner"
                           aria-hidden="true"
                         />
                       </div>
@@ -251,8 +251,10 @@ class UsersTable extends React.Component {
                           </span>
                           {
                             user.isModerator ? (
-                              <span className="inline-block">
+                              <span className="inline-block" aria-label="Moderator">
+                                (
                                 <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
+                                )
                               </span>
                             ) : null
                           }
@@ -261,7 +263,7 @@ class UsersTable extends React.Component {
                           .map((session, sessionIndex) => (
                             <>
                               <div className="user-join-trace">
-                                <p className="text-user-trace inline-block">
+                                <p className="text-user-trace">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                                     <path d="M7 1H7.25H7.8C8.9201 1 9.48016 1 9.90798 1.21799C10.2843 1.40973 10.5903 1.71569 10.782 2.09202C11 2.51984 11 3.07989 11 4.2V7.8C11 8.92011 11 9.48016 10.782 9.90798C10.5903 10.2843 10.2843 10.5903 9.90798 10.782C9.48016 11 8.9201 11 7.8 11H7.25H7M1 6H7M7 6L5 4M7 6L5 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                                   </svg>
@@ -277,7 +279,7 @@ class UsersTable extends React.Component {
                                 { session.leftOn > 0 ? (<span> | </span>) : null}
                                 { session.leftOn > 0
                                   ? (
-                                    <p className="text-user-trace inline-block">
+                                    <p className="text-user-trace">
                                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                                         <path d="M5 1H4.75H4.2C3.0799 1 2.51984 1 2.09202 1.21799C1.71569 1.40973 1.40973 1.71569 1.21799 2.09202C1 2.51984 1 3.07989 1 4.2V7.8C1 8.92011 1 9.48016 1.21799 9.90798C1.40973 10.2843 1.71569 10.5903 2.09202 10.782C2.51984 11 3.0799 11 4.2 11H4.75H5M5 6H11M11 6L9 4M11 6L9 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                                       </svg>
@@ -310,7 +312,7 @@ class UsersTable extends React.Component {
                           prev + intId.sessions.reduce((prev2, session) => ((session.leftOn > 0
                             ? prev2 + session.leftOn
                             : prev2 + (new Date()).getTime()) - session.registeredOn), 0)), 0)) }
-                        &nbsp; min
+                        &nbsp;min
                       </span>
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalTalkTimeDashboard">
@@ -333,35 +335,27 @@ class UsersTable extends React.Component {
                       { user.totalOfMessages > 0
                         ? (
                           <span>
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-4 w-4 inline"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-                              />
+                            <svg width="16" class="h-4 w-4 inline" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M5.98547 12.5794C5.74233 12.5342 5.51102 12.4715 5.28721 12.3915C4.8013 12.2176 4.55834 12.1307 4.46511 12.1088C3.60496 11.9065 3.24813 12.496 2.50679 12.6196C2.14267 12.6802 1.81868 12.3821 1.84889 12.0142C1.87531 11.6925 2.09779 11.3883 2.18656 11.0794C2.37111 10.4372 2.12068 9.95025 1.85611 9.37912C1.52107 8.65587 1.33398 7.85009 1.33398 7.00065C1.33398 3.87104 3.87104 1.33398 7.00065 1.33398C9.02856 1.33398 10.8077 2.39922 11.8089 4.00065M7.33398 10.0007C7.33398 12.2098 9.12485 14.0007 11.334 14.0007C11.7897 14.0007 12.1806 13.9357 12.5435 13.8059C12.8865 13.6832 13.058 13.6219 13.1238 13.6064C13.7309 13.4636 13.9828 13.8798 14.5061 13.9669C14.7632 14.0098 14.9918 13.7993 14.9705 13.5396C14.9519 13.3126 14.7948 13.0978 14.7322 12.8797C14.6019 12.4264 14.7787 12.0827 14.9654 11.6796C15.2019 11.169 15.334 10.6003 15.334 10.0007C15.334 7.79151 13.5431 6.00065 11.334 6.00065C9.12485 6.00065 7.33398 7.79151 7.33398 10.0007Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                            &nbsp;
-                            {user.totalOfMessages}
+                            <span className="ml-12">
+                              {user.totalOfMessages}
+                            </span>
                           </span>
                         ) : (<span>-</span>) }
                     </td>
                     <td className={`px-4 py-3 text-sm col-text-left ${opacity}`} data-test="userTotalReactionsDashboard">
                       {
-                        Object.keys(usersReactionsSummary[user.userKey] || {}).map((reaction) => (
-                          <div className="text-xs whitespace-nowrap">
-                            {reaction}
-                            &nbsp;
-                            { usersReactionsSummary[user.userKey][reaction] }
-                            &nbsp;
-                          </div>
-                        ))
+                        usersReactionsSummary[user.userKey] ? (
+                            Object.keys(usersReactionsSummary[user.userKey] || {}).map((reaction) => (
+                                <div className="text-xs whitespace-nowrap">
+                                  {reaction}
+                                  &nbsp;
+                                  { usersReactionsSummary[user.userKey][reaction] }
+                                  &nbsp;
+                                </div>
+                            ))
+                        ) : (<span>-</span>)
                       }
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userRaiseHandDashboard">
@@ -377,23 +371,21 @@ class UsersTable extends React.Component {
                     {
                       !user.isModerator ? (
                         <td className={`px-4 py-3 text-sm text-center items ${opacity}`} data-test="userActivityScoreDashboard">
-                          <svg viewBox="0 0 82 12" width="82" height="12" className="flex-none m-auto inline">
-                            <rect width="12" height="12" fill={usersActivityScore[user.userKey] > 0 ? '#4BA381' : '#e4e4e7'} />
-                            <rect width="12" height="12" x="14" fill={usersActivityScore[user.userKey] > 2 ? '#338866' : '#e4e4e7'} />
-                            <rect width="12" height="12" x="28" fill={usersActivityScore[user.userKey] > 4 ? '#1A6653' : '#e4e4e7'} />
-                            <rect width="12" height="12" x="42" fill={usersActivityScore[user.userKey] > 6 ? '#055C42' : '#e4e4e7'} />
-                            <rect width="12" height="12" x="56" fill={usersActivityScore[user.userKey] > 8 ? '#023B34' : '#e4e4e7'} />
-                            <rect width="12" height="12" x="70" fill={usersActivityScore[user.userKey] === 10 ? '#02362B' : '#e4e4e7'} />
-                          </svg>
-                          &nbsp;
-                          <span className="text-xs bg-gray-200 rounded-full px-2">
-                            <FormattedNumber value={usersActivityScore[user.userKey]} minimumFractionDigits="0" maximumFractionDigits="1" />
-                          </span>
+                          <div className="rectangle-container">
+                            <div className={usersActivityScore[user.userKey] > 0 ? 'rectangle-score bd-pass-1' : 'rectangle-score'} />
+                            <div className={usersActivityScore[user.userKey] > 2 ? 'rectangle-score bd-pass-2' : 'rectangle-score'} />
+                            <div className={usersActivityScore[user.userKey] > 4 ? 'rectangle-score bd-pass-3' : 'rectangle-score'} />
+                            <div className={usersActivityScore[user.userKey] > 6 ? 'rectangle-score bd-pass-4' : 'rectangle-score'} />
+                            <div className={usersActivityScore[user.userKey] > 8 ? 'rectangle-score bd-pass-5' : 'rectangle-score'} />
+                            <span className="ml-12">
+                              <FormattedNumber value={usersActivityScore[user.userKey]} minimumFractionDigits="0" maximumFractionDigits="1"/>
+                            </span>
+                          </div>
                         </td>
                       ) : (
-                        <td className="px-4 py-3 text-sm text-center">
-                          <FormattedMessage id="app.learningDashboard.usersTable.notAvailable" defaultMessage="-" />
-                        </td>
+                          <td className="px-4 py-3 text-sm text-center">
+                            <span>-</span>
+                          </td>
                       )
                     }
                     <td className="px-3.5 2xl:px-4 py-3 text-xs text-center" data-test="userStatusDashboard">

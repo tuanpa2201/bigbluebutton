@@ -6,7 +6,7 @@ function UserAvatar(props) {
   } = props;
 
   return (
-    <div className="border-2 border-gray-800 items-center rounded-full-restyle">
+    <div className="border-2 items-center rounded-full-restyle">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         className="h-full w-full p-1"
