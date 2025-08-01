@@ -147,31 +147,30 @@
     box-shadow: 0px -1px 0px 0px #B5B5B5 inset, -1px 0px 0px 0px #E3E3E3 inset, 1px 0px 0px 0px #E3E3E3 inset, 0px 1px 0px 0px #E3E3E3 inset;
 }
 
-.svg-to-css-shadow {
-    height: 32px;
-    border-radius: 12.8px; /* Approximated from the SVG path curvature */
+.actionbar-button {
+  &[color="default"] {
+    span {
+      background: var(--BG-Meet-button, #383B3F);
+    }
+  }
 
-    /* Linear gradient background */
-    background: linear-gradient(
-            180deg,
-            rgba(255, 255, 255, 0.07) 88.54%,
-            rgba(255, 255, 255, 0.15) 100%
-    ) !important;
+  &[data-test="unmuteMicButton"] {
+    span {
+      background: #AA2007;
+    }
+  }
 
-    /* Multiple inner shadows to replicate the SVG filter effects */
-    box-shadow:
-        /* Inner shadow 1: dy="1" with orange-red color */
-            inset 0 1px 0 0 rgba(203, 19, 46, 1),
+  span {
+    display: flex;
+    width: 40px;
+    height: 40px;
+    padding: 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 100px;
 
-                /* Inner shadow 2: dy="-1" with similar orange-red color */
-            inset 0 -1px 0 0 rgba(203, 19, 46, 1),
+    color: white;
+  }
 
-                /* Inner shadow 3: dx="-2" with white color at 20% opacity */
-            inset -2px 0 0 0 rgba(255, 255, 255, 0.2),
-
-                /* Inner shadow 4: dx="2" with white color at 20% opacity */
-            inset 2px 0 0 0 rgba(255, 255, 255, 0.2),
-
-                /* Inner shadow 5: dy="2" with white color at 20% opacity */
-            inset 0 2px 0 0 rgba(255, 255, 255, 0.2) !important;
 }
