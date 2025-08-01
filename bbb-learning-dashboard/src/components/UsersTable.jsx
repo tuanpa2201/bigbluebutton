@@ -3,7 +3,7 @@ import {
   FormattedMessage, FormattedDate, FormattedNumber, injectIntl,
 } from 'react-intl';
 import { getUserReactionsSummary } from '../services/ReactionService';
-import { getActivityScore, getSumOfTime, tsToHHmmss } from '../services/UserService';
+import { getActivityScore, getSumOfTime, tsToHHmmss, tsToHHmm } from '../services/UserService';
 import UserAvatar from './UserAvatar';
 import { UserDetailsContext } from './UserDetails/context';
 
@@ -302,26 +302,23 @@ class UsersTable extends React.Component {
                     </td>
                     <td className={`px-4 py-3 text-sm text-center items-center ${opacity}`} data-test="userOnlineTimeDashboard">
                       <span className="text-center text-td-restyle">
-                        { Math.ceil(Object.values(user.intIds).reduce((prev, intId) =>
-                                prev + intId.sessions.reduce((prev2, session) =>
-                                        prev2 + ((session.leftOn > 0 ? session.leftOn : (new Date()).getTime()) - session.registeredOn)
-                                        , 0)
-                                , 0) / 60000
-                        )
-                        } &nbsp;min
+                        { tsToHHmm(Object.values(user.intIds).reduce((prev, intId) => (
+                            prev + intId.sessions.reduce((prev2, session) => ((session.leftOn > 0
+                                ? prev2 + session.leftOn
+                                : prev2 + (new Date()).getTime()) - session.registeredOn), 0)), 0)) } &nbsp;min
                       </span>
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalTalkTimeDashboard">
                       { user.talk.totalTime > 0 ? (
                         <span className="text-center text-td-restyle">
-                          { Math.ceil(user.talk.totalTime / 60000) }&nbsp;min
+                          { tsToHHmm(user.talk.totalTime) }&nbsp;min
                         </span>
                       ) : (<span>-</span>) }
                     </td>
                     <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userWebcamTimeDashboard">
                       { getSumOfTime(user.webcams) > 0 ? (
                         <span className="text-center text-td-restyle">
-                          { Math.ceil(getSumOfTime(user.webcams) / 60000) }&nbsp;min
+                          { tsToHHmm(getSumOfTime(user.webcams)) }&nbsp;min
                         </span>
                       ) : (<span>-</span>) }
                     </td>
