@@ -117,11 +117,10 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
       }}
       className="modal-session-details"
     >
-      <Styled.Chevron />
       <Styled.Container
         isFullWidth={isMobile || !(loginUrl || (formattedDialNum && formattedTelVoice))}
       >
-        <div className="session-details-content">
+        <Styled.Content className="session-details-content">
           <Styled.WelcomeMessage dangerouslySetInnerHTML={{ __html: welcomeMessage }} />
           {loginUrl && (
             <div>
@@ -164,7 +163,7 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
           <div>
             {intl.formatMessage(intlMessages.serverRunning)}
           </div>
-        </div>
+        </Styled.Content>
       </Styled.Container>
     </ModalSimple>
   );

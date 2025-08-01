@@ -1642,9 +1642,9 @@
   "mobileApp.portals.addPortalPopup.validation.urlInvalid": "Lỗi khi tải trang – vui lòng kiểm tra địa chỉ URL và kết nối mạng",
   "app.userList.menu.removeTitle.label": "Loại bỏ người dùng",
   "app.userList.menu.removeDescConfirmation.label": "Loại bỏ người dùng: {0}?",
-  "app.audio_help_1": "To join the audio bridge click the speaker button.",
-  "app.audio_help_2": "Use a headset to avoid causing background noise for others.",
-  "app.serverRunning": "This server is running.",
+  "app.audio_help_1": "Để tham gia cầu nối âm thanh, hãy nhấp vào loa.",
+  "app.audio_help_2": "Sử dụng tai nghe để tránh gây tiếng ồn nền cho người khác.",
+  "app.serverRunning": "Máy chủ này đang hoạt động.",
   "EOF": "EOF"
 }
 
