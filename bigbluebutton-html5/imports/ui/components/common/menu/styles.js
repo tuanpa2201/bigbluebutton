@@ -152,14 +152,18 @@ const BBBMenuItem = styled(MenuItem)`
   color: var(--Text-Primary, #313131) !important;
   &:focus,
   &:hover {
-    i { 
-      color: #FFF !important;
+    i {
+      //color: #FFF !important;
+      color: var(--Text-Primary, #313131);
+
     }
-    color: #FFF !important;
-    // background-color: ${colorPrimary} !important;
-    background-color: #EFEFEF;
+    //color: #FFF !important;
+    color: var(--Text-Primary, #313131);
+
+    //background-color: ${colorPrimary} !important;
+    background: var(--BG-04---hover, #EFEFEF);
   }
-  
+
   &:last-child{
     margin-bottom: 0 !important;
   }

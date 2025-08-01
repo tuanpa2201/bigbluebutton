@@ -312,7 +312,7 @@ const PresentationMenu = (props) => {
 
             toast.success(renderToastContent(), {
               hideProgressBar: true,
-              autoClose: 100000000000,
+              autoClose: false,
               newestOnTop: true,
               closeOnClick: true,
               toastId: toastId.current,
@@ -467,7 +467,7 @@ const PresentationMenu = (props) => {
       toast.update(toastId.current, {
         render: renderToastContent(),
         hideProgressBar: state.loading,
-        autoClose: 100000000000,
+        autoClose: state.loading ? false : 3000,
         newestOnTop: true,
         closeOnClick: true,
       });
