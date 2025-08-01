@@ -61,7 +61,7 @@ const Option = styled.div`
   //margin-right: 1.65rem;
   ${({ hasIcon }) => hasIcon && `
     margin-left: 8px;
-    margin-right: 8px;
+    margin-right: 0px;
   `}
   white-space: normal;
   overflow-wrap: anywhere;
@@ -75,7 +75,7 @@ const Option = styled.div`
   `}
 
   [dir="rtl"] & {
-    margin-right: .5rem;
+    margin-right: 0;
     margin-left: 1.65rem;
   }
 

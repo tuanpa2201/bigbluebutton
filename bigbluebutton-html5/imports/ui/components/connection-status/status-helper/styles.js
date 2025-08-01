@@ -8,6 +8,7 @@ import {
 const StatusIconWrapper = styled.div`
   border-radius: 50%;
   padding: 1.78571428571rem;
+  color: #FFF;
 
   ${({ color }) => {
     let bgColor = '#75C044';

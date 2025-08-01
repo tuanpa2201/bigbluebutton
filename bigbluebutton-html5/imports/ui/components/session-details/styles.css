@@ -1,7 +1,7 @@
 .modal-session-details {
   border-radius: 12px !important;
   background-color: #FFF;
-  max-width: 500px;
+  max-width: 500px !important;
 }
 
 .modal-session-details .modal-header {
