@@ -47,7 +47,7 @@ const InputUrl = styled.input`
     align-items: center !important;
     border-radius: var(--p-border-radius-button) !important;
     border: 0.66px solid var(--Border-01, #C8C8C8) !important;
-    background: var(--BG-00, #FFF) !important;
+    background: var(--BG-00, #FFF);
     line-height: 20px !important;
     margin: 4px 0 0 !important;
 `
@@ -83,14 +83,14 @@ const VideoUrl = styled.div<urlProps>`
   & > label input {
     display: block;
     margin: 10px 0 10px 0;
-    padding: 0.4em;
-    color: ${colorText};
-    line-height: 2rem;
+    //padding: 0.4em;
+    //color: ${colorText};
+    //line-height: 2rem;
     width: 100%;
     font-family: inherit;
     font-weight: inherit;
-    border: 1px solid ${colorGrayLighter};
-    border-radius: ${borderRadius};
+    //border: 1px solid ${colorGrayLighter};
+    //border-radius: ${borderRadius};
 
     ${({ animations }) => animations && `
       transition: box-shadow .2s;
@@ -98,8 +98,8 @@ const VideoUrl = styled.div<urlProps>`
 
     &:focus {
       outline: none;
-      border-radius: ${borderSize};
-      box-shadow: 0 0 0 ${borderSize} ${colorBlueLight}, inset 0 0 0 1px ${colorPrimary};
+      //border-radius: ${borderSize};
+      // box-shadow: 0 0 0 ${borderSize} ${colorBlueLight}, inset 0 0 0 1px ${colorPrimary};
     }
   }
 

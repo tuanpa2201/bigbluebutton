@@ -72,11 +72,11 @@ const Right = styled.div`
 
 const ToastText = styled.span`
   overflow: hidden;
-  text-overflow: ellipsis;
+  //text-overflow: ellipsis;
   text-align: left;
-  white-space: nowrap;
+  //white-space: nowrap;
   position: relative;
-  top: ${borderSizeLarge};
+  //top: ${borderSizeLarge};
   width: auto;
   font-weight: ${headingsFontWeight};
 
@@ -111,9 +111,7 @@ const ToastIcon = styled(Icon)`
   width: ${statusIconSize};
   height: ${statusIconSize};
   font-size: 117%;
-  bottom: ${borderSize};
-  left: ${statusInfoHeight};
-
+  
   [dir="rtl"] & {
     left: auto;
     right: ${statusInfoHeight};
@@ -140,7 +138,9 @@ const Line = styled.div`
   display: flex;
   width: 100%;
   flex-wrap: nowrap;
-  padding: ${lgPaddingX} 0;
+  align-items: center;
+  gap: 8px;
+  //padding: ${lgPaddingX} 0;
 `;
 
 const ButtonIcon = styled(Icon)`

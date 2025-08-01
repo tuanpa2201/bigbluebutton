@@ -22,6 +22,7 @@ import Tooltip from '/imports/ui/components/common/tooltip/component';
 import SessionDetailsModal from '/imports/ui/components/session-details/component';
 import Icon from '/imports/ui/components/common/icon/icon-ts/component';
 import getStorageSingletonInstance from '../../services/storage';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const intlMessages = defineMessages({
   toggleUserListLabel: {
@@ -398,9 +399,9 @@ class NavBar extends Component {
                 onClick={() => this.setModalIsOpen(true)}
               >
                 <Tooltip title={intl.formatMessage(intlMessages.openDetailsTooltip)}>
-                  <span>
+                  <span className={'arrow-title-room'}>
                     {presentationTitle}
-                    <Icon iconName="device_list_selector" />
+                    <SvgIcon iconName="chevron_down" />
                   </span>
                 </Tooltip>
               </Styled.PresentationTitle>

@@ -913,3 +913,14 @@ li[data-key="menuItem-directLogoutButton"] {
         }
     }
 }
+
+.arrow-title-room {
+    color: var(--Neutral-00, #FFF);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}

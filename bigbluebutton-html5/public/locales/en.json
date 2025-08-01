@@ -1578,6 +1578,8 @@
     "app.screenshare.actionsDropdown.shareScreen": "Share screen",
     "app.screenshare.actionsDropdown.shareVideo": "Share video",
     "app.meeting.viewLearningAnalyticsDashboard": "View the Learning Analytics Dashboard",
-
+    "app.audio_help_1": "To join the audio bridge click the speaker button.",
+    "app.audio_help_2": "Use a headset to avoid causing background noise for others.",
+    "app.serverRunning": "This server is running.",
     "EOF": "EOF"
 }

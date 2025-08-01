@@ -46,6 +46,18 @@ const intlMessages = defineMessages({
     id: 'app.sessionDetails.copied',
     description: 'Copied join data',
   },
+  audio_help_1: {
+    id: 'app.audio_help_1',
+    description: 'Audio help',
+  },
+  audio_help_2: {
+    id: 'app.audio_help_2',
+    description: 'Audio help',
+  },
+  serverRunning: {
+    id: 'app.serverRunning',
+    description: 'Server Running',
+  },
 });
 
 interface SessionDetailsContainerProps {
@@ -141,8 +153,8 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
           )}
 
           <div>
-            <span>To join the audio bridge click the speaker button.</span>
-            <span> Use a headset to avoid causing background noise for others.</span>
+            <span>{intl.formatMessage(intlMessages.audio_help_1)}</span>
+            <span> {intl.formatMessage(intlMessages.audio_help_2)}</span>
           </div>
 
           <div style={{
@@ -151,7 +163,7 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
           />
 
           <div>
-            This server is running.
+            {intl.formatMessage(intlMessages.serverRunning)}
           </div>
         </div>
       </Styled.Container>

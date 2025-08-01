@@ -1,6 +1,7 @@
 import React from 'react';
 import Styled from './styles';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 class ToastContainer extends React.Component {
   // we never want this component to update since will break Toastify
@@ -14,7 +15,9 @@ class ToastContainer extends React.Component {
 
     return (
       <Styled.ToastifyContainer
-        closeButton={(<Styled.CloseIcon data-test="closeToastBtn" iconName="close" animations={animations} />)}
+        closeButton={(<Styled.CloseIcon data-test="closeToastBtn" iconName="cross" animations={animations} >
+          <SvgIcon iconName="cross" />
+        </Styled.CloseIcon>)}
         autoClose={5000}
         toastClassName="toastClass"
         bodyClassName="toastBodyClass"

@@ -246,13 +246,6 @@ const PresentationMenu = (props) => {
 
     return (
       <Styled.Line>
-        <Styled.ToastText>
-          <span>
-            {loading && !hasError && intl.formatMessage(intlMessages.downloading)}
-            {!loading && !hasError && intl.formatMessage(intlMessages.downloaded)}
-            {!loading && hasError && intl.formatMessage(intlMessages.downloadFailed)}
-          </span>
-        </Styled.ToastText>
         <Styled.StatusIcon>
           <Styled.ToastIcon
             done={!loading && !hasError}
@@ -261,6 +254,14 @@ const PresentationMenu = (props) => {
             iconName={icon}
           />
         </Styled.StatusIcon>
+
+        <Styled.ToastText>
+          <span>
+            {loading && !hasError && intl.formatMessage(intlMessages.downloading)}
+            {!loading && !hasError && intl.formatMessage(intlMessages.downloaded)}
+            {!loading && hasError && intl.formatMessage(intlMessages.downloadFailed)}
+          </span>
+        </Styled.ToastText>
       </Styled.Line>
     );
   }
@@ -309,9 +310,9 @@ const PresentationMenu = (props) => {
               hasError: false,
             });
 
-            toast(renderToastContent(), {
+            toast.success(renderToastContent(), {
               hideProgressBar: true,
-              autoClose: false,
+              autoClose: 100000000000,
               newestOnTop: true,
               closeOnClick: true,
               toastId: toastId.current,
@@ -466,7 +467,7 @@ const PresentationMenu = (props) => {
       toast.update(toastId.current, {
         render: renderToastContent(),
         hideProgressBar: state.loading,
-        autoClose: state.loading ? false : 3000,
+        autoClose: 100000000000,
         newestOnTop: true,
         closeOnClick: true,
       });
