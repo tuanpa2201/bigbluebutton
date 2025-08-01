@@ -143,14 +143,21 @@ const PollsTable = (props) => {
   const gridCols = [
     {
       ...commonUserProps,
-      valueGetter: (params) => params?.row?.User?.name,
+      valueGetter: (params) => ({
+        name: params?.row?.User?.name,
+        isModerator: params?.row?.User?.isModerator,
+      }),
       renderCell: (params) => (
-        <>
-          <div className="relative hidden w-8 h-8 rounded-full md:block">
-            <UserAvatar user={params?.row?.User} />
-          </div>
-          <div className="mx-2 font-semibold text-gray-700">{params?.value}</div>
-        </>
+      <>
+        <span className="inline-block">{params?.value?.name}</span>
+        {params?.value?.isModerator ? (
+          <span className="inline-block" aria-label="Moderator">
+            (
+            <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
+            )
+          </span>
+        ) : null}
+      </>
       ),
     },
   ];
@@ -412,16 +419,19 @@ const PollsTable = (props) => {
 
   return (
     <div className="bg-white" style={{ width: '100%' }}>
-      <DataGrid
+      <DataGrid className="polls-table"
         {...commonGridProps}
         rows={gridRows}
         columns={gridCols}
         sortingOrder={['asc', 'desc']}
         sx={{
           '& .MuiDataGrid-columnHeaders': {
+            color: 'var(--text-secondary-light, #6F767E) !important',
+            fontSize: '14px',
+            fontStyle: 'normal',
+            fontWeight: '600',
+            lineHeight: '20px',
             backgroundColor: 'rgb(243 244 246/var(--tw-bg-opacity))',
-            color: 'rgb(55 65 81/1)',
-            textTransform: 'uppercase',
             letterSpacing: '.025em',
             minHeight: '40.5px !important',
             maxHeight: '40.5px !important',
@@ -432,7 +442,7 @@ const PollsTable = (props) => {
           },
           '& .MuiDataGrid-columnHeaderTitle': {
             fontWeight: '600',
-            fontSize: 'smaller !important',
+            fontSize: 'normal !important',
           },
         }}
       />
