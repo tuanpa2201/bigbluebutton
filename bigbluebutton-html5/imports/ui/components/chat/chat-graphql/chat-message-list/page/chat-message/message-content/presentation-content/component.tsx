@@ -1,6 +1,7 @@
 import React from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import Styled from './styles';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 interface ChatMessagePresentationContentProps {
   metadata: string;
@@ -31,6 +32,9 @@ const intlMessages = defineMessages({
     id: 'app.presentationUploader.export.withWhiteboardAnnotations',
     description: 'used for indicating that presentation has annotations',
   },
+  presentationFile: {
+    id: 'app.toast.chat.presentationFile',
+  },
 });
 
 const ChatMessagePresentationContent: React.FC<ChatMessagePresentationContentProps> = ({
@@ -54,22 +58,27 @@ const ChatMessagePresentationContent: React.FC<ChatMessagePresentationContentPro
   const parsedFileName = parseFilename(presentationData.filename);
 
   return (
-    <Styled.ChatDowloadContainer data-test="downloadPresentationContainer">
-      <span>
-        {presentationData.filename}
-        &nbsp;
-        (
-        {intl.formatMessage(intlMessages.withWhiteboardAnnotations)}
-        )
-      </span>
-      <Styled.ChatLink
-        href={downloadUrl}
-        type="application/pdf"
-        rel="noopener, noreferrer"
-        download={`${parsedFileName}.pdf`}
-      >
-        {intl.formatMessage(intlMessages.download)}
-      </Styled.ChatLink>
+    <Styled.ChatDowloadContainer data-test="downloadPresentationContainer" className="chat-presentation-download-container">
+      <span className="chat-presentation-title">{intl.formatMessage(intlMessages.presentationFile)}</span>
+      <div className="chat-presentation-download-link">
+        <span>
+          {presentationData.filename}
+          &nbsp;
+          (
+          {intl.formatMessage(intlMessages.withWhiteboardAnnotations)}
+          )
+        </span>
+        <Styled.ChatLink
+          href={downloadUrl}
+          className="btn-link"
+          type="application/pdf"
+          rel="noopener, noreferrer"
+          download={`${parsedFileName}.pdf`}
+        >
+          <SvgIcon iconName="import" />
+          {intl.formatMessage(intlMessages.download)}
+        </Styled.ChatLink>
+      </div>
     </Styled.ChatDowloadContainer>
   );
 };

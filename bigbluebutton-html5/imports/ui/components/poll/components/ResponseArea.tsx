@@ -74,7 +74,7 @@ const ResponseArea: React.FC<ResponseAreaProps> = ({
       <Styled.ResponseArea>
         {defaultPoll && (
           <div>
-            <Styled.PollCheckbox data-test="allowMultiple">
+            <Styled.PollCheckbox data-test="allowMultiple" className="poll-checkbox">
               <Checkbox
                 onChange={toggleIsMultipleResponse}
                 checked={isMultipleResponse}
@@ -109,7 +109,7 @@ const ResponseArea: React.FC<ResponseAreaProps> = ({
         )}
         <Styled.AnonymousRow>
           <Styled.AnonymousHeadingCol aria-hidden="true">
-            <Styled.AnonymousHeading>
+            <Styled.AnonymousHeading className="anonymous-heading">
               {intl.formatMessage(intlMessages.secretPollLabel)}
             </Styled.AnonymousHeading>
           </Styled.AnonymousHeadingCol>
@@ -130,7 +130,7 @@ const ResponseArea: React.FC<ResponseAreaProps> = ({
           </Styled.AnonymousToggleCol>
         </Styled.AnonymousRow>
         {secretPoll && (
-          <Styled.PollParagraph>
+          <Styled.PollParagraph className="poll-paragraph">
             {intl.formatMessage(intlMessages.isSecretPollLabel)}
           </Styled.PollParagraph>
         )}

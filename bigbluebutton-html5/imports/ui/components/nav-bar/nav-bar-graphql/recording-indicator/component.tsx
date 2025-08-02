@@ -172,7 +172,7 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
       titleMargin={!isPhone || recording}
       data-test="mainWhiteboard"
     >
-      <SvgIcon iconName="recording" />
+      <SvgIcon iconName="record" />
     </Styled.RecordingIndicatorIcon>
   ), [isPhone, recording]);
 

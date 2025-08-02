@@ -171,18 +171,20 @@ const PresentationToolbar = styled.div`
 const ToastSeparator = styled(ToastStyled.Separator)``;
 
 const Button = styled.button`
-  background-color: transparent;
+  background-color: ${colorOffWhite};
   border: none;
-  border-radius: 12px;
-  box-shadow: unset;
-  color: #313131;
+  color: #2d2d2d;
   cursor: pointer;
-  padding: 6px;
+  padding: 0;
+  width: 35px;
+  height: 35px;
+  border-radius: 8px;
+  background: var(--BG-04---hover, #EFEFEF);
+  box-shadow: 0 4px 6px -2px rgba(26, 26, 26, 0.20), 1px 0 0 0 rgba(0, 0, 0, 0.13) inset, -1px 0 0 0 rgba(0, 0, 0, 0.13) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.17) inset, 0 1px 0 0 rgba(204, 204, 204, 0.50) inset;
+  justify-content: center;
   display: flex;
   align-items: center;
-  justify-content: center;
-  tab-index: 0;
-
+  
   &:hover {
     background-color: ${colorGrayLightest};
   }
@@ -190,8 +192,8 @@ const Button = styled.button`
 
 const ExtraTools = styled.div`
   position: absolute;
-  bottom: -43px;
-  left: 20px;
+  top: 16px;
+  right: 67px;
   z-index: 399;
   display: flex;
   gap: 16px;

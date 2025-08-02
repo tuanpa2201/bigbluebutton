@@ -94,7 +94,7 @@ const AudioControls: React.FC<AudioControlsProps> = ({
         label={intl.formatMessage(joinAudioLabel)}
         data-test="joinAudio"
         color="default"
-        icon="no_audio"
+        svgIcon="no_audio"
         size="lg"
         className={'actionbar-button'}
         circle

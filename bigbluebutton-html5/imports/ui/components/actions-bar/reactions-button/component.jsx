@@ -105,6 +105,7 @@ const ReactionsButton = (props) => {
         customIcon={customIcon}
         label={intl.formatMessage(intlMessages.reactionsLabel)}
         description="Reactions"
+        className="actionbar-button"
         onKeyPress={() => {
         }}
         onClick={() => setShowEmojiPicker(true)}

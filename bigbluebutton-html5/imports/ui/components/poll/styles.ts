@@ -185,8 +185,8 @@ const PollConfigButton = styled(Button)`
   //border: solid ${colorGrayLight} 1px;
   min-height: ${pollInputHeight};
   font-size: ${fontSizeBase};
-  white-space: pre-wrap;
   width: calc(50% - 4px) !important;
+  white-space: pre-wrap;
   //margin-bottom: 1rem;
 
   border-radius: 8px;
@@ -724,6 +724,7 @@ const PollHeader = styled.div`
     font-weight: 600;
     line-height: 32px;
     padding: 16px 0px;
+    margin-bottom: 16px;
 `;
 
 const ClosePollButton = styled.button`

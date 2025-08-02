@@ -124,7 +124,8 @@
 	--highlight-purple-light: #9207FF;
 	--highlight-cyan-light: #1BC8FF;
 	--highlight-lightred-light: #EB5366;
-	--highlight-green-light: #83BF6E;
+	--highlight-green-light: #6CC17C;
+	--highlight-yellow-light: #FFA41B;
 
 	/* Highlight - Dark Theme */
 	--highlight-blue-dark: #2CB5FF;
@@ -132,6 +133,7 @@
 	--highlight-cyan-dark: #56D6FF;
 	--highlight-lightred-dark: #E4727F;
 	--highlight-green-dark: #83BF6E;
+	--highlight-yellow-dark: #EBB94C;
 
 	/* Icon - Light Theme */
 	--icon-primary-light: #2F384C;
