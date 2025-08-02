@@ -266,7 +266,7 @@ class UsersTable extends React.Component {
                             <>
                               <div className="user-join-trace">
                                 <p className="text-user-trace">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 12 12" fill="none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                                     <path d="M7 1H7.25H7.8C8.9201 1 9.48016 1 9.90798 1.21799C10.2843 1.40973 10.5903 1.71569 10.782 2.09202C11 2.51984 11 3.07989 11 4.2V7.8C11 8.92011 11 9.48016 10.782 9.90798C10.5903 10.2843 10.2843 10.5903 9.90798 10.782C9.48016 11 8.9201 11 7.8 11H7.25H7M1 6H7M7 6L5 4M7 6L5 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                                   </svg>
                                   <FormattedDate
@@ -278,11 +278,11 @@ class UsersTable extends React.Component {
                                     second="2-digit"
                                   />
                                 </p>
-                                { session.leftOn > 0 ? (<span> | </span>) : null}
+                                { session.leftOn > 0 ? (<span className="mg-lr-8">|</span>) : null}
                                 { session.leftOn > 0
                                   ? (
                                     <p className="text-user-trace">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 12 12" fill="none">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
                                         <path d="M5 1H4.75H4.2C3.0799 1 2.51984 1 2.09202 1.21799C1.71569 1.40973 1.40973 1.71569 1.21799 2.09202C1 2.51984 1 3.07989 1 4.2V7.8C1 8.92011 1 9.48016 1.21799 9.90798C1.40973 10.2843 1.71569 10.5903 2.09202 10.782C2.51984 11 3.0799 11 4.2 11H4.75H5M5 6H11M11 6L9 4M11 6L9 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                                       </svg>
 
