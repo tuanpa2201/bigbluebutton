@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 const IconWrapper = styled.div`
-  width: 1.025rem;
-  height: 1.025rem;
+  width: 20px;
+  height: 20px;
 `;
 
 const ButtonWrapper = styled.div`

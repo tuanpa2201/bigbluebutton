@@ -1335,8 +1335,9 @@ li[data-key="menuItem-directLogoutButton"] {
 .react-draggable {
     & .bottom-bar {
         position: relative;
-        width: fit-content;
-
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
         & .iconUnmute {
             color: var(--color-02-light, #75C044);
             [data-darkreader-scheme="dark"] & {

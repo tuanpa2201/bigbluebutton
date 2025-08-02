@@ -291,15 +291,29 @@
                 column-gap: 12px;
                 max-width: unset;
 
+                & .thumbnail-button{
+                    border: unset;
+                    box-shadow: unset;
+                    &:focus{
+                        box-shadow: unset;
+                    }
+                }
+
+                & .virtual-background-none-button{
+                    border: 0.66px solid var(--Border-01, #C8C8C8);
+                }
+                & .virtual-background-custom-button{
+                    border: 0.66px dashed var(--Border-01, #C8C8C8);
+                }
                 & .virtual-background-none-button,
                 & .virtual-background-custom-button,
                 & .thumbnail-button-wrapper {
                     margin: 0;
                 }
 
-                & .virtual-background-none-button,
-                & .virtual-background-custom-button,
-                & .thumbnail-button-wrapper button {
+                & .virtual-background-none-button:not(.virtual-background-remove-button),
+                & .virtual-background-custom-button:not(.virtual-background-remove-button),
+                & .thumbnail-button-wrapper button:not(.virtual-background-remove-button) {
                     width: 63px;
                     height: 63px;
                     padding: 0;
@@ -312,13 +326,12 @@
             }
 
             & .virtual-background-remove-button {
-                position: relative;
-
+                /*position: relative;*/
                 & span:first-child {
-                    position: absolute;
-                    top: 0;
-                    right: -6px;
                     background-color: unset;
+                    padding: 0;
+                    margin: 0;
+                    width: 16px;
                 }
             }
         }

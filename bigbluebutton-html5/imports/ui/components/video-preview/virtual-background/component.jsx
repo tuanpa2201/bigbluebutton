@@ -366,7 +366,7 @@ const VirtualBgSelector = ({
               aria-describedby={`vr-cam-btn-${index + 1}`}
               data-test="removeCustomBackground"
               className="virtual-background-remove-button"
-              icon="close"
+              svgIcon="cross"
               size="sm"
               color="dark"
               circle
@@ -391,7 +391,7 @@ const VirtualBgSelector = ({
       <>
         <Styled.BgCustomButton
           className="virtual-background-custom-button"
-          icon="upload"
+          svgIcon="cloud-upload"
           label={intl.formatMessage(intlMessages.customLabel)}
           aria-describedby="vr-cam-btn-custom"
           hideLabel
@@ -422,7 +422,7 @@ const VirtualBgSelector = ({
       <>
         <Styled.BgNoneButton
           className="virtual-background-none-button"
-          icon="close"
+          svgIcon="cross"
           label={intl.formatMessage(intlMessages.noneLabel)}
           aria-pressed={currentVirtualBg?.name === undefined}
           aria-describedby="vr-cam-btn-none"
