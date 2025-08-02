@@ -1358,6 +1358,6 @@ li[data-key="menuItem-directLogoutButton"] {
 
 #presentationInnerWrapper {
     & button {
-        color: var(--text-primary-dark, #FCFCFD) !important;
+        /*color: var(--text-primary-dark, #FCFCFD) !important;*/
     }
 }
