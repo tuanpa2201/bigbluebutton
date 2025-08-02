@@ -315,5 +315,6 @@
     font-size: 11px;
     font-style: normal;
     font-weight: 400;
+    color: var(--text-secondary-light, #6F767E) !important;
   }
 }
