@@ -1081,6 +1081,7 @@
   "app.toast.chat.system": "Hệ thống",
   "app.toast.chat.poll": "Kết quả khảo sát",
   "app.toast.chat.pollClick": "Kết quả khảo sát",
+  "app.toast.chat.presentationFile": "Tệp trình bày",
   "app.toast.usersJoinMutedOn.label": "Bật chế độ tự động tắt micro khi người dùng tham gia",
   "app.toast.usersJoinMutedOff.label": "Tắt chế độ tự động tắt micro khi người dùng tham gia",
   "app.toast.muteAllViewers.label": "Tất cả người xem đã bị tắt mic",

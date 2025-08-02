@@ -244,6 +244,11 @@ const iconsMap: { [key: string]: JSX.Element } = {
       <path d="M4 12L12 4M4 4L12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
+  cross_6: (
+    <svg width="6" height="6" viewBox="0 0 6 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 12L12 4M4 4L12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
   cross_20: (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="m5 15 10 -10M5 5l10 10" stroke="currentColor" strokeWidth="1.875" strokeLinecap="round" strokeLinejoin="round" />
@@ -706,6 +711,18 @@ const iconsMap: { [key: string]: JSX.Element } = {
   mute: (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M10 15.8334C7.14286 15.8334 3.33333 13.3334 3.33333 9.16669M10 15.8334V18.3334M10 15.8334C11.362 15.8334 12.9404 15.2653 14.2193 14.2194M16.6667 9.16669C16.6667 10.4419 16.3098 11.5611 15.7326 12.5002M5.83333 5.83335V9.16669C5.83333 11.4679 7.69881 13.3334 10 13.3334C10.9381 13.3334 11.8038 13.0233 12.5002 12.5002M2.5 2.50002L12.5002 12.5002M17.5 17.5L14.2193 14.2194M12.5002 12.5002L14.2193 14.2194M6.66667 3.33295C7.42686 2.32114 8.637 1.66669 10 1.66669C12.3012 1.66669 14.1667 3.53217 14.1667 5.83335V9.16669C14.1667 9.45208 14.138 9.73076 14.0833 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  "cloud-upload": (
+    <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g clip-path="url(#clip0_3814_105851)">
+        <path d="M2.63329 12.5007C1.75652 11.9906 1.16663 11.0374 1.16663 9.94559C1.16663 8.57087 2.10186 7.4158 3.36744 7.08863C3.3669 7.05779 3.36663 7.02689 3.36663 6.99592C3.36663 4.14506 5.6649 1.83398 8.49996 1.83398C10.914 1.83398 12.9389 3.50964 13.487 5.76738C14.8596 6.30035 15.8333 7.63992 15.8333 9.20817C15.8333 10.4145 15.2572 11.4854 14.3666 12.1581M8.49996 15.1673V9.16732M8.49996 9.16732L6.16663 11.5007M8.49996 9.16732L10.8333 11.5007" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+      <defs>
+        <clipPath id="clip0_3814_105851">
+          <rect width="16" height="16" fill="white" transform="translate(0.5 0.5)"/>
+        </clipPath>
+      </defs>
     </svg>
   ),
 };

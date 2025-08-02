@@ -6,7 +6,6 @@ import caseInsensitiveReducer from '/imports/utils/caseInsensitiveReducer';
 import { defineMessages, FormattedTime, useIntl } from 'react-intl';
 import Styled from './styles';
 import CustomizedAxisTick from '/imports/ui/components/poll/components/CustomizedAxisTick';
-import { ChatTime } from '/imports/ui/components/chat/chat-graphql/chat-message-list/page/chat-message/styles';
 
 interface ChatPollContentProps {
   metadata: string;
@@ -120,9 +119,9 @@ const ChatPollContent: React.FC<ChatPollContentProps> = ({
             <Bar dataKey="numVotes" fill="#0C57A7" width={60} radius={[8, 8, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
-        <ChatTime className="chat-time">
+        <Styled.ChatTime className="chat-time">
           <FormattedTime value={dateTimeStr} hour12={false} />
-        </ChatTime>
+        </Styled.ChatTime>
       </div>
 
     </Styled.PollWrapper>
