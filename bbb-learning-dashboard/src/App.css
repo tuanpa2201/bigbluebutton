@@ -64,6 +64,16 @@
     line-height: 20px; /* 142.857% */
   }
 
+  & .font-medium-td {
+    color: var(--text-primary-light, #313131) !important;
+
+    /* Semibold/S */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 142.857% */
+  }
+
   & .span-offline {
     color: var(--text-error-light, #ED1B2F) !important;
 
@@ -162,7 +172,6 @@
   }
 
   & .user-join-trace {
-    display: flex;
     align-items: center;
     gap: 8px;
     align-self: stretch;
@@ -171,7 +180,7 @@
       overflow: hidden;
       color: var(--text-secondary-light, #6F767E);
       text-overflow: ellipsis;
-      display: flex;
+      display: inline-flex !important;
       align-items: center;
       gap: 4px;
       /* Regular/XS */

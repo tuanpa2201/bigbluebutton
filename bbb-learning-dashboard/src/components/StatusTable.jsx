@@ -262,8 +262,8 @@ class StatusTable extends React.Component {
           { typeof allUsers === 'object' && Object.values(allUsers || {}).length > 0 ? (
             Object.values(allUsers || {})
               .sort((a, b) => {
-                if (a.isModerator === false && b.isModerator === true) return -1;
-                if (a.isModerator === true && b.isModerator === false) return 1;
+                if (a.isModerator === false && b.isModerator === true) return 1;
+                if (a.isModerator === true && b.isModerator === false) return -1;
                 if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
                 if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
                 return 0;
@@ -284,13 +284,14 @@ class StatusTable extends React.Component {
                       </div>
                       &nbsp;&nbsp;
                       <div>
-                        <span className="inline-block">
+                        <span className="inline-block font-medium-td">
                           {user.name}
                         </span>
                         {
                           user.isModerator ? (
-                            <span className="inline-block" aria-label="Moderator">
+                            <span className="inline-block font-medium-td" aria-label="Moderator">
                               (
+                              &nbsp;
                               <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
                               )
                             </span>

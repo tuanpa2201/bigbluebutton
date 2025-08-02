@@ -147,8 +147,8 @@ class UsersTable extends React.Component {
         return 0;
       },
       activityscoreOrder(a, b) {
-        if (a.isModerator === false && b.isModerator === true) return -1;
-        if (a.isModerator === true && b.isModerator === false) return 1;
+        if (a.isModerator === false && b.isModerator === true) return 1;
+        if (a.isModerator === true && b.isModerator === false) return -1;
         if (usersActivityScore[a.userKey] < usersActivityScore[b.userKey]) {
           return activityscoreOrder === 'desc' ? 1 : -1;
         }
@@ -241,18 +241,19 @@ class UsersTable extends React.Component {
                       &nbsp;&nbsp;&nbsp;
                       <div className="inline-block">
                         <button
-                          className="leading-none border-0 p-0 m-0 bg-none font-semibold truncate xl:max-w-sm max-w-xs cursor-pointer focus:rounded focus:outline-none focus:ring ring-offset-0 focus:ring-gray-500 focus:ring-opacity-50 decoration-dotted decoration-from-font hover:opacity-75 focus:no-underline active:opacity-95"
+                          className="leading-none border-0 p-0 m-0 bg-none truncate xl:max-w-sm max-w-xs cursor-pointer focus:rounded focus:outline-none focus:ring ring-offset-0 focus:ring-gray-500 focus:ring-opacity-50 decoration-dotted decoration-from-font hover:opacity-75 focus:no-underline active:opacity-95"
                           type="button"
                           onClick={() => this.openUserModal(user)}
                           aria-label={`Open user details modal - ${user.name}`}
                         >
-                          <span className="inline-block">
+                          <span className="inline-block font-medium-td">
                             {user.name}
                           </span>
                           {
                             user.isModerator ? (
-                              <span className="inline-block" aria-label="Moderator">
+                              <span className="inline-block font-medium-td" aria-label="Moderator">
                                 (
+                                &nbsp;
                                 <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
                                 )
                               </span>
@@ -264,7 +265,7 @@ class UsersTable extends React.Component {
                             <>
                               <div className="user-join-trace">
                                 <p className="text-user-trace">
-                                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 12 12" fill="none">
                                     <path d="M7 1H7.25H7.8C8.9201 1 9.48016 1 9.90798 1.21799C10.2843 1.40973 10.5903 1.71569 10.782 2.09202C11 2.51984 11 3.07989 11 4.2V7.8C11 8.92011 11 9.48016 10.782 9.90798C10.5903 10.2843 10.2843 10.5903 9.90798 10.782C9.48016 11 8.9201 11 7.8 11H7.25H7M1 6H7M7 6L5 4M7 6L5 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                                   </svg>
                                   <FormattedDate
@@ -280,7 +281,7 @@ class UsersTable extends React.Component {
                                 { session.leftOn > 0
                                   ? (
                                     <p className="text-user-trace">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 12 12" fill="none">
                                         <path d="M5 1H4.75H4.2C3.0799 1 2.51984 1 2.09202 1.21799C1.71569 1.40973 1.40973 1.71569 1.21799 2.09202C1 2.51984 1 3.07989 1 4.2V7.8C1 8.92011 1 9.48016 1.21799 9.90798C1.40973 10.2843 1.71569 10.5903 2.09202 10.782C2.51984 11 3.0799 11 4.2 11H4.75H5M5 6H11M11 6L9 4M11 6L9 8" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                                       </svg>
 
@@ -346,8 +347,8 @@ class UsersTable extends React.Component {
                     </td>
                     <td className={`px-4 py-3 text-sm col-text-left ${opacity}`} data-test="userTotalReactionsDashboard">
                       {
-                        usersReactionsSummary[user.userKey] ? (
-                          Object.keys(usersReactionsSummary[user.userKey] || {}).map((reaction) => (
+                        usersReactionsSummary[user.userKey] && Object.keys(usersReactionsSummary[user.userKey] || {}).length > 0  ? (
+                          Object.keys(usersReactionsSummary[user.userKey]).map((reaction) => (
                             <div className="text-xs whitespace-nowrap">
                               {reaction}
                                   &nbsp;
@@ -372,11 +373,11 @@ class UsersTable extends React.Component {
                       !user.isModerator ? (
                         <td className={`px-4 py-3 text-sm text-center items ${opacity}`} data-test="userActivityScoreDashboard">
                           <div className="rectangle-container">
-                            <div className={usersActivityScore[user.userKey] > 0 ? 'rectangle-score bd-pass-1' : 'rectangle-score'} />
-                            <div className={usersActivityScore[user.userKey] > 2 ? 'rectangle-score bd-pass-2' : 'rectangle-score'} />
-                            <div className={usersActivityScore[user.userKey] > 4 ? 'rectangle-score bd-pass-3' : 'rectangle-score'} />
-                            <div className={usersActivityScore[user.userKey] > 6 ? 'rectangle-score bd-pass-4' : 'rectangle-score'} />
-                            <div className={usersActivityScore[user.userKey] > 8 ? 'rectangle-score bd-pass-5' : 'rectangle-score'} />
+                            <div className={usersActivityScore[user.userKey] > 0 ? 'rectangle-score bd-pass-1' : 'rectangle-score bd-fail'} />
+                            <div className={usersActivityScore[user.userKey] > 2 ? 'rectangle-score bd-pass-2' : 'rectangle-score bd-fail'} />
+                            <div className={usersActivityScore[user.userKey] > 4 ? 'rectangle-score bd-pass-3' : 'rectangle-score bd-fail'} />
+                            <div className={usersActivityScore[user.userKey] > 6 ? 'rectangle-score bd-pass-4' : 'rectangle-score bd-fail'} />
+                            <div className={usersActivityScore[user.userKey] > 8 ? 'rectangle-score bd-pass-5' : 'rectangle-score bd-fail'} />
                             <span className="ml-12">
                               <FormattedNumber value={usersActivityScore[user.userKey]} minimumFractionDigits="0" maximumFractionDigits="1" />
                             </span>
