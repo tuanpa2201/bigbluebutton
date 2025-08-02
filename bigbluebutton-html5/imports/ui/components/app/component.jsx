@@ -282,7 +282,7 @@ class App extends Component {
           style={{
             width: '100%',
             height: '100%',
-            backgroundColor: '#303338',
+            backgroundColor: 'var(--BG-Meet-bg, #2B2E32)',
           }}
         >
           <ActivityCheckContainer />

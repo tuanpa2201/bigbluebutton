@@ -188,6 +188,11 @@ const Button = styled.button`
   &:hover {
     background-color: ${colorGrayLightest};
   }
+
+  [data-darkreader-scheme="dark"] & {
+    background-color: var(--bg-00-dark, #3B3F43);
+    color: var(--text-primary-dark, #FCFCFD) !important;
+  }
 `;
 
 const ExtraTools = styled.div`
