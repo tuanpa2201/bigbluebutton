@@ -95,7 +95,7 @@ const Text = styled.div`
 `;
 
 const Text2 = styled.div`
-  margin-top: 16px;
+  margin-top: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -349,7 +349,7 @@ const ConnectionTabList = styled(TabList)`
 
 const ConnectionTabPanel = styled(TabPanel)`
   display: none;
-  margin-top: 8px;
+  margin-top: 12px;
   [dir="rtl"] & {
     margin: 0 1rem 0 0;
   }
