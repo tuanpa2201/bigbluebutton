@@ -1,15 +1,17 @@
 import React from 'react';
 import {
-  Bar, BarChart, ResponsiveContainer, XAxis, YAxis, Cell
+  Bar, BarChart, ResponsiveContainer, XAxis, YAxis,
 } from 'recharts';
 import caseInsensitiveReducer from '/imports/utils/caseInsensitiveReducer';
-import { defineMessages, useIntl } from 'react-intl';
+import { defineMessages, FormattedTime, useIntl } from 'react-intl';
 import Styled from './styles';
 import CustomizedAxisTick from '/imports/ui/components/poll/components/CustomizedAxisTick';
+import { ChatTime } from '/imports/ui/components/chat/chat-graphql/chat-message-list/page/chat-message/styles';
 
 interface ChatPollContentProps {
   metadata: string;
   height?: number;
+  dateTime?: string;
 }
 
 interface Metadata {
@@ -49,6 +51,10 @@ const intlMessages = defineMessages({
     id: 'app.poll.abstention',
     description: 'Poll Abstention option value',
   },
+  pollResult: {
+    id: 'app.chat.pollResult',
+    description: 'Poll Abstention option value',
+  },
 });
 
 function assertAsMetadata(metadata: unknown): asserts metadata is Metadata {
@@ -78,6 +84,7 @@ function assertAsMetadata(metadata: unknown): asserts metadata is Metadata {
 const ChatPollContent: React.FC<ChatPollContentProps> = ({
   metadata: string,
   height = undefined,
+  dateTime = '',
 }) => {
   const intl = useIntl();
 
@@ -94,22 +101,30 @@ const ChatPollContent: React.FC<ChatPollContentProps> = ({
       pollAnswer,
     };
   });
+  const dateTimeStr = new Date(dateTime);
   const useHeight = height || translatedAnswers.length * 50;
   return (
     <Styled.PollWrapper data-test="chatPollMessageText">
-      <Styled.PollText>
+      <span className="poll-title">{intl.formatMessage(intlMessages.pollResult)}</span>
+      <Styled.PollText className="chat-poll-question">
         {pollData.questionText}
       </Styled.PollText>
-      <ResponsiveContainer width="100%" height={useHeight}>
-        <BarChart
-          data={translatedAnswers}
-          layout="horizontal"
-        >
-          <XAxis stroke="#C8C8C8" width={ 0 } type="category" dataKey="pollAnswer" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
-          <YAxis stroke="#C8C8C8" width={ 20 } type="number" allowDecimals={false}/>
-          <Bar dataKey="numVotes" fill="#0C57A7" width={60} radius={[8,8,0,0]} ></Bar>
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="d-flex">
+        <ResponsiveContainer width="100%" height={useHeight}>
+          <BarChart
+            data={translatedAnswers}
+            layout="horizontal"
+          >
+            <XAxis stroke="#C8C8C8" width={0} type="category" dataKey="pollAnswer" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick />} />
+            <YAxis stroke="#C8C8C8" width={20} type="number" allowDecimals={false} />
+            <Bar dataKey="numVotes" fill="#0C57A7" width={60} radius={[8, 8, 0, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+        <ChatTime className="chat-time">
+          <FormattedTime value={dateTimeStr} hour12={false} />
+        </ChatTime>
+      </div>
+
     </Styled.PollWrapper>
   );
 };
