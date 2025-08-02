@@ -932,7 +932,7 @@
     }
 
     & i {
-        color: var(--text-primary-light, #313131);
+        /*color: var(--text-primary-light, #313131);*/
         [data-darkreader-scheme="dark"] & {
             color: var(--text-primary-dark, #FCFCFD);
         }
