@@ -543,7 +543,7 @@
   "app.polling.submitAriaLabel": "Gửi phản hồi khảo sát",
   "app.polling.responsePlaceholder": "Nhập câu trả lời",
   "app.polling.responseSecret": "Khảo sát ẩn danh - người trình bày không thể thấy câu trả lời của bạn.",
-  "app.polling.responseNotSecret": "Khảo sát dò bình thường - người thuyết trình có thể thấy câu trả lời của bạn.",
+  "app.polling.responseNotSecret": "Khảo sát thăm dò thông thường - người thuyết trình có thể thấy câu trả lời của bạn.",
   "app.polling.pollAnswerLabel": "Câu trả lời {0}",
   "app.polling.pollAnswerDesc": "Chọn tùy chọn này để bỏ phiếu cho {0}",
   "app.failedMessage": "Xin lỗi, sự cố khi kết nối với máy chủ.",

@@ -1030,6 +1030,7 @@
         padding: 4px 6px;
         background-color: var(--bg-00-light, #FFFFFF);
         border-radius: 12px;
+        z-index: 100;
         [data-darkreader-scheme="dark"] & {
             background-color: var(--bg-00-dark, #3B3F43);
         }
@@ -1348,6 +1349,7 @@ li[data-key="menuItem-directLogoutButton"] {
             position: absolute;
             top: 13%;
             left: 12px;
+            color: var(--neutral-00-light, #FFFFFF);
         }
 
         & .webcam-dropdown-trigger {

@@ -333,7 +333,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
   const deleteTime = message.deletedAt ? new Date(message.deletedAt) : null;
 
   const msgTime = formattedTime;
-  const clearMessage = `${intl.formatMessage(intlMessages.chatClear)} at ${msgTime}`;
+  const clearMessage = `${intl.formatMessage(intlMessages.chatClear)} ${msgTime}`;
 
   const messageContent: {
     name: string;
