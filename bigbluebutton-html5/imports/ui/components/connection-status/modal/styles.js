@@ -95,7 +95,7 @@ const Text = styled.div`
 `;
 
 const Text2 = styled.div`
-  margin-top: 12px;
+  margin-top: 16px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -333,7 +333,7 @@ const ConnectionTabList = styled(TabList)`
   display: flex;
   flex-flow: row;
   margin: 0;
-  margin-bottom: .5rem;
+  margin-bottom: 8px;
   border: none;
   padding: 0;
   width: calc(100% / 3);

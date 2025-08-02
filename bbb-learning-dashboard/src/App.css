@@ -171,7 +171,9 @@
       overflow: hidden;
       color: var(--text-secondary-light, #6F767E);
       text-overflow: ellipsis;
-
+      display: flex;
+      align-items: center;
+      gap: 4px;
       /* Regular/XS */
       font-size: 12px;
       font-style: normal;
@@ -232,4 +234,68 @@
     font-weight: 400;
     line-height: 20px; /* 142.857% */
   }
+  & .ml-12 {
+    margin-left: 12px;
+  }
+
+  & .rectangle-container {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+
+    & .rectangle-score{
+      width: 25px;
+      height: 10px;
+      border-radius: 10px;
+    }
+    & .bd-pass-1{
+      background: rgba(117, 192, 68, 0.40);
+    }
+    & .bd-pass-2{
+      background: rgba(117, 192, 68, 0.55);
+    }
+    & .bd-pass-3{
+      background: rgba(117, 192, 68, 0.70);
+    }
+    & .bd-pass-4{
+      background: rgba(117, 192, 68, 0.85);
+    }
+    & .bd-pass-5{
+      background: var(--color-02-light, #75C044);
+    }
+    & .bd-fail{
+      background: var(--neutral-03-light, #EFEFEF);
+    }
+  }
+  & .downloadSessionDataDashboard {
+    color: var(--Text-Primary, #313131) !important;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+  }
+
+  & .text-dashboard-last-updated {
+    color: var(--text-secondary-light, #6F767E) !important;
+
+    /* Regular/S */
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px; /* 142.857% */
+  }
+
+  & .polls-table {
+    & .MuiDataGrid-cell--textLeft {
+      color: var(--Text-Primary, #313131) !important;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px;
+    }
+  }
+
 }

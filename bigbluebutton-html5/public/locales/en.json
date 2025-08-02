@@ -1132,7 +1132,7 @@
     "app.connection-status.label": "Connection status",
     "app.connection-status.settings": "Adjusting Your Settings",
     "app.connection-status.no": "No",
-    "app.connection-status.notification": "A loss in your connection was detected",
+    "app.connection-status.notification": "A loss in your connection has been detected",
     "app.connection-status.offline": "offline",
     "app.connection-status.clientNotRespondingWarning": "Client not responding",
     "app.connection-status.audioUploadRate": "Audio Upload Rate",

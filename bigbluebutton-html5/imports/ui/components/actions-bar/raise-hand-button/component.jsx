@@ -47,9 +47,10 @@ const RaiseHandButton = (props) => {
   return (
     <Styled.RaiseHandButton
       data-test={raiseHand ? 'lowerHandBtn' : 'raiseHandBtn'}
-      icon="hand"
+      svgIcon="hand"
       label={intl.formatMessage(label)}
       description="Reactions"
+      className={'actionbar-button'}
       onKeyPress={() => { }}
       onClick={() => handleRaiseHandButtonClick()}
       color={raiseHand ? 'primary' : 'default'}

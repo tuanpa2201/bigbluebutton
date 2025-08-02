@@ -335,6 +335,7 @@ const ScreenshareButton = ({
                                         disabled={(!isMeteorConnected && !isScreenBroadcasting) || !screenshareDataSavingSetting || !amIPresenter}
                                         svgIcon={amIBroadcasting || isSharingVideo || hasCameraAsContent ? 'desktop' : 'desktop_off'}
                                         data-test={dataTest}
+                                        className={'actionbar-button'}
                                         label={intl.formatMessage(intlMessages[`${info}Label`])}
                                         description={intl.formatMessage(intlMessages[`${info}Desc`])}
                                         color={amIBroadcasting || isSharingVideo || hasCameraAsContent ? 'primary' : 'default'}

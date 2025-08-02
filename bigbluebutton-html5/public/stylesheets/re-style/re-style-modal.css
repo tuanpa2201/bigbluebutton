@@ -698,7 +698,6 @@
     }
     & .meetingEndedModal-content {
         & .meetingEndedModal-title {
-            margin-bottom: 8px !important;
             [data-darkreader-scheme="dark"] & {
                 color: var(--text-primary-dark, #FCFCFD);
             }

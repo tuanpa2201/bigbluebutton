@@ -63,7 +63,7 @@ const MeetingEndedButton = styled.span`
   color: var(--Text-Link, #1087FF);
   font-size: 14px;
   line-height: 20px;
-  margin-top: 16px;
+  margin-top: 8px;
 
 `;
 

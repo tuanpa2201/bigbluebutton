@@ -61,7 +61,7 @@ const Option = styled.div`
   //margin-right: 1.65rem;
   ${({ hasIcon }) => hasIcon && `
     margin-left: 8px;
-    margin-right: 8px;
+    margin-right: 0px;
   `}
   white-space: normal;
   overflow-wrap: anywhere;
@@ -75,7 +75,7 @@ const Option = styled.div`
   `}
 
   [dir="rtl"] & {
-    margin-right: .5rem;
+    margin-right: 0;
     margin-left: 1.65rem;
   }
 
@@ -143,8 +143,7 @@ const BBBMenuInformation = styled.div`
 `;
 
 const BBBMenuItem = styled(MenuItem)`
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
+  margin-bottom: 4px !important;
   border-radius: 8px !important;
   padding: 6px 8px !important;
   transition: none !important;
@@ -166,10 +165,6 @@ const BBBMenuItem = styled(MenuItem)`
 
   &:last-child{
     margin-bottom: 0 !important;
-  }
-  
-  &:first-child {
-    margin-top: 0 !important;
   }
   
   ${({ emoji }) => emoji === 'yes' && `

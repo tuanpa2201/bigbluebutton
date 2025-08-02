@@ -155,9 +155,10 @@ export const MuteToggle: React.FC<MuteToggleProps> = ({
       label={label}
       aria-label={label}
       color={!muted ? 'primary' : 'default'}
-      icon={muted ? 'mute' : 'unmute'}
+      svgIcon={muted ? 'mute' : 'unmute'}
       size="lg"
       circle
+      className={'actionbar-button'}
       accessKey={toggleMuteShourtcut}
       $talking={talking || undefined}
       animations={animations}

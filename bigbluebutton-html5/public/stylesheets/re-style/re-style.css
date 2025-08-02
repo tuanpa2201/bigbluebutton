@@ -826,7 +826,7 @@
           [data-darkreader-scheme="dark"] & {
             color: var(--text-primary-dark, #FCFCFD);
             .icon-bbb-more:before {
-              color: var(--text-primary-dark, #FCFCFD);
+              color: var(--text-primary-dark, #FCFCFD) !important;
             }
           }
         }
@@ -941,7 +941,7 @@
 
 .reactions-dropdown-container {
     position: relative;
-    z-index: 1000;
+    /*z-index: 1000;*/
     & .reactions-dropdown-menu {
         position: absolute;
         top: -50px;

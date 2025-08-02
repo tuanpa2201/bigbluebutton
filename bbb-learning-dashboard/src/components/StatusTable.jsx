@@ -191,7 +191,7 @@ class StatusTable extends React.Component {
     return (
       <table className="w-full">
         <thead>
-          <tr className="text-xs font-semibold tracking-wide text-gray-700 uppercase border-b bg-gray-100">
+          <tr className="text-xs font-semibold tracking-wide text-gray-700 border-b bg-gray-100 font-medium-th">
             <th className={`z-30 bg-inherit px-4 py-3 col-text-left sticky ${isRTL ? 'right-0' : 'left-0'}`}>
               <FormattedMessage id="app.learningDashboard.user" defaultMessage="User" />
             </th>
@@ -262,8 +262,8 @@ class StatusTable extends React.Component {
           { typeof allUsers === 'object' && Object.values(allUsers || {}).length > 0 ? (
             Object.values(allUsers || {})
               .sort((a, b) => {
-                if (a.isModerator === false && b.isModerator === true) return 1;
-                if (a.isModerator === true && b.isModerator === false) return -1;
+                if (a.isModerator === false && b.isModerator === true) return -1;
+                if (a.isModerator === true && b.isModerator === false) return 1;
                 if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
                 if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
                 return 0;
@@ -284,7 +284,18 @@ class StatusTable extends React.Component {
                       </div>
                       &nbsp;&nbsp;
                       <div>
-                        <p className="font-semibold truncate xl:max-w-sm max-w-xs">{user.name}</p>
+                        <span className="inline-block">
+                          {user.name}
+                        </span>
+                        {
+                          user.isModerator ? (
+                            <span className="inline-block" aria-label="Moderator">
+                              (
+                              <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
+                              )
+                            </span>
+                          ) : null
+                        }
                       </div>
                     </div>
                   </th>

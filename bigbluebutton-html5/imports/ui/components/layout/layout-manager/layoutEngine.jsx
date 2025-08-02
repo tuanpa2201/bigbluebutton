@@ -160,7 +160,7 @@ const LayoutEngine = () => {
     const height = ((actionBarHeight / BASE_FONT_SIZE) * fontSize);
 
     return {
-      height: height + (actionBarPadding * 2),
+      height: height + (actionBarPadding * 2) - 4,
       innerHeight: height,
       padding: actionBarPadding,
     };

@@ -71,7 +71,7 @@ class App extends React.Component {
     link.style.display = 'none';
     document.body.appendChild(link);
     link.click();
-    downloadButton.innerHTML = intl.formatMessage({ id: 'app.learningDashboard.sessionDataDownloadedLabel', defaultMessage: 'Downloaded!' });
+    downloadButton.innerHTML = intl.formatMessage({ id: 'app.learningDashboard.downloadSessionDataLabel', defaultMessage: 'Download Session Data!' });
     setTimeout(() => {
       downloadButton.innerHTML = intl.formatMessage({ id: 'app.learningDashboard.downloadSessionDataLabel', defaultMessage: 'Download Session Data' });
       downloadButton.removeAttribute('disabled');
@@ -463,7 +463,7 @@ class App extends React.Component {
                 </CardContent>
               </Card>
             </TabUnstyled>
-            <TabUnstyled className={tab === TABS.OVERVIEW_ACTIVITY_SCORE ? 'card-restyle card-card-restyle-score' : 'card-restyle card-restyle-score card-restyle-inactive'} data-test="activityScorePanelDashboard">
+            <TabUnstyled className={tab === TABS.OVERVIEW_ACTIVITY_SCORE ? 'card-restyle card-restyle-score' : 'card-restyle card-restyle-score card-restyle-inactive'} data-test="activityScorePanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
@@ -513,7 +513,7 @@ class App extends React.Component {
                 </CardContent>
               </Card>
             </TabUnstyled>
-            <TabUnstyled className={tab === TABS.TIMELINE ? 'card-restyle card-restyle-poll' : 'card-restyle card-restyle-poll card-restyle-inactive'} data-test="pollsPanelDashboard">
+            <TabUnstyled className={tab === TABS.POLLING ? 'card-restyle card-restyle-poll' : 'card-restyle card-restyle-poll card-restyle-inactive'} data-test="pollsPanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
                   <CardBody
@@ -590,7 +590,7 @@ class App extends React.Component {
             </div>
           </TabPanelUnstyled>
           <TabPanelUnstyled value={2}>
-            <h2 className="block my-2 pr-2 text-xl font-semibold">
+            <h2 className="block my-2 pr-2 text-xl font-semibold-h2">
               <FormattedMessage id="app.learningDashboard.statusTimelineTable.title" defaultMessage="Timeline" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
@@ -604,7 +604,7 @@ class App extends React.Component {
             </div>
           </TabPanelUnstyled>
           <TabPanelUnstyled value={3}>
-            <h2 className="block my-2 pr-2 text-xl font-semibold">
+            <h2 className="block my-2 pr-2 text-xl font-semibold-h2">
               <FormattedMessage id="app.learningDashboard.pollsTable.title" defaultMessage="Polls" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
@@ -614,7 +614,7 @@ class App extends React.Component {
             </div>
           </TabPanelUnstyled>
           <TabPanelUnstyled value={4}>
-            <h2 className="block my-2 pr-2 text-xl font-semibold">
+            <h2 className="block my-2 pr-2 text-xl font-semibold-h2">
               {genericDataCardTitle}
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
@@ -653,7 +653,7 @@ class App extends React.Component {
           )}
         <div className="flex justify-between pb-8 text-xs text-gray-800 dark:text-gray-400 whitespace-nowrap flex-col sm:flex-row">
           <div className="flex flex-col justify-center mb-4 sm:mb-0">
-            <p className="text-gray-700">
+            <p className="text-dashboard-last-updated">
               {
                 lastUpdated && (
                   <>
@@ -683,7 +683,7 @@ class App extends React.Component {
                 <button
                   data-test="downloadSessionDataDashboard"
                   type="button"
-                  className="border-2 text-gray-700 border-gray-200 rounded-md px-4 py-2 bg-white focus:outline-none focus:ring ring-offset-2 focus:ring-gray-500 focus:ring-opacity-50"
+                  className="border-2 text-gray-700 border-gray-200 rounded-md px-4 py-2 bg-white focus:outline-none focus:ring ring-offset-2 focus:ring-gray-500 focus:ring-opacity-50 downloadSessionDataDashboard"
                   onClick={this.handleSaveSessionData.bind(this)}
                 >
                   <FormattedMessage

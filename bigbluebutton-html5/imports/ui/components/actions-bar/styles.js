@@ -12,11 +12,12 @@ const ActionsBar = styled.div`
 
 const ActionsBarWrapper = styled.section`
   flex: 1;
-  padding: ${barsPadding};
+  //padding: ${barsPadding};
   // background-color: ${colorBackground};
   background-color: #303338;
   position: relative;
   order: 3;
+  background: var(--BG-Meet-bg, #2B2E32);
 `;
 
 const Left = styled.div`
@@ -41,7 +42,7 @@ const Left = styled.div`
 const Center = styled.div`
   display: flex;
   flex-direction: row;
-  gap: ${smPaddingX};
+  //gap: ${smPaddingX};
   flex: 1;
   justify-content: center;
   > *:not(span):not(:last-child) {
@@ -119,6 +120,16 @@ const Gap = styled.div`
   gap: .5rem;
 `;
 
+const CenterPadding = styled.div`
+  display: flex;
+  padding: 8px;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 100px;
+  background: var(--BG-Meet-bg02, #2A2B2E);
+  align-items: center;
+`;
+
 export default {
   ActionsBar,
   Left,
@@ -131,4 +142,5 @@ export default {
   ActionsBarWrapper,
   Gap,
   Separator,
+  CenterPadding,
 };
