@@ -22,6 +22,12 @@ const iconsMap: { [key: string]: JSX.Element } = {
       </g>
     </svg>
   ),
+  record: (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 2.625C5.03147 2.625 2.625 5.03147 2.625 8C2.625 10.9685 5.03147 13.375 8 13.375C10.9685 13.375 13.375 10.9685 13.375 8C13.375 5.03147 10.9685 2.625 8 2.625Z" fill="white" stroke="#AA2007" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+  ),
   whiteboardOptions: (
     <svg width="22" height="22" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

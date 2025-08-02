@@ -33,16 +33,20 @@ interface SpinnerOverlayProps {
 }
 
 const RecordingIndicatorIcon = styled.span<RecordingIndicatorIconProps>`
-  width: ${fontSizeLarge};
-  height: ${fontSizeLarge};
+  //width: ${fontSizeLarge};
+  //height: ${fontSizeLarge};
+  width: 16px;
+  height: 16px;
   font-size: ${fontSizeBase};
   user-select: none;
 
   ${({ titleMargin }) => titleMargin && `
     [dir="ltr"] & {
-      margin-right: ${smPaddingX};
+      // margin-right: ${smPaddingX};
     }
   `}
+  
+  margin-right: 0;
 `;
 
 const RecordingControl = styled.button<RecordingIndicatorProps>`
@@ -50,7 +54,14 @@ const RecordingControl = styled.button<RecordingIndicatorProps>`
   align-items: center;
   user-select: none;
   background: none;
-
+  
+  padding: 6px 12px;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 100px;
+  background: var(--BG-Meet-button, #383B3F);
+  border: unset;
+  height: 40px;
   span {
     border: none;
     box-shadow: none;
@@ -65,29 +76,29 @@ const RecordingControl = styled.button<RecordingIndicatorProps>`
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 ${borderSize} ${colorPrimary};
+    //box-shadow: 0 0 0 ${borderSize} ${colorPrimary};
   }
 
   ${({ recording }) => recording && `
-    padding: 5px;
-    background-color: ${colorDangerDark};
-    border: ${borderSizeLarge} solid ${colorDangerDark};
-    border-radius: 10px;
+    // padding: 5px;
+    // background-color: ${colorDangerDark};
+    // border: ${borderSizeLarge} solid ${colorDangerDark};
+    // border-radius: 10px;
 
     &:focus {
       background-clip: padding-box;
-      border: ${borderSizeLarge} solid transparent;
+      // border: ${borderSizeLarge} solid transparent;
     }
   `}
 
   ${({ recording }) => !recording && `
-    padding: 7px;
-    border: ${borderSizeSmall} solid ${colorWhite};
-    border-radius: 2em 2em;
+    // padding: 7px;
+    // border: ${borderSizeSmall} solid ${colorWhite};
+    // border-radius: 2em 2em;
 
     &:focus {
-      padding: 5px;
-      border: ${borderSizeLarge} solid ${colorWhite};
+      // padding: 5px;
+      // border: ${borderSizeLarge} solid ${colorWhite};
       box-shadow: none;
     }
   `}
@@ -135,6 +146,12 @@ const VisuallyHidden = styled.span`
   margin: -1px;
   padding: 0;
   border: 0;
+
+  color: var(--Neutral-00, #FFF);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px; 
 `;
 
 const PresentationTitleSeparator = styled.span`
