@@ -105,8 +105,8 @@ const ChatPollContent: React.FC<ChatPollContentProps> = ({
           data={translatedAnswers}
           layout="horizontal"
         >
-          <XAxis stroke="#C8C8C8" type="category" dataKey="pollAnswer" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
-          <YAxis stroke="#C8C8C8" type="number" allowDecimals={false}/>
+          <XAxis stroke="#C8C8C8" width={ 0 } type="category" dataKey="pollAnswer" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
+          <YAxis stroke="#C8C8C8" width={ 20 } type="number" allowDecimals={false}/>
           <Bar dataKey="numVotes" fill="#0C57A7" width={60} radius={[8,8,0,0]} ></Bar>
         </BarChart>
       </ResponsiveContainer>
