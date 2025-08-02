@@ -226,7 +226,6 @@ class UsersTable extends React.Component {
           { typeof allUsers === 'object' && Object.values(allUsers || {}).length > 0 ? (
             Object.values(allUsers || {})
               .sort(tab === 'overview' ? sortFunctions[lastFieldClicked] : sortFunctions.activityscoreOrder)
-              .sort(sortFunctions.activityscoreOrder)
               .map((user) => {
                 const opacity = user.leftOn > 0 ? 'opacity-75' : '';
                 return (
