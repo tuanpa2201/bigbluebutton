@@ -347,7 +347,8 @@ class UsersTable extends React.Component {
                     </td>
                     <td className={`px-4 py-3 text-sm col-text-left ${opacity}`} data-test="userTotalReactionsDashboard">
                       {
-                        usersReactionsSummary[user.userKey] && Object.keys(usersReactionsSummary[user.userKey] || {}).length > 0  ? (
+                        // eslint-disable-next-line max-len
+                        usersReactionsSummary[user.userKey] && Object.keys(usersReactionsSummary[user.userKey] || {}).length > 0 ? (
                           Object.keys(usersReactionsSummary[user.userKey]).map((reaction) => (
                             <div className="text-xs whitespace-nowrap">
                               {reaction}
