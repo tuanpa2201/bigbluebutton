@@ -352,12 +352,12 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
       case ChatMessageType.POLL:
         return {
           name: intl.formatMessage(intlMessages.pollResult),
-          color: '#3B48A9',
+          color: '#EB5366',
           isModerator: true,
           component: (
-            <ChatPollContent metadata={message.messageMetadata} />
+            <ChatPollContent metadata={message.messageMetadata} dateTime={message?.createdAt} />
           ),
-          avatarIcon: 'icon-bbb-polling',
+          svgIcon: 'server',
           showAvatar: true,
           showHeading: true,
           showToolbar: false,
@@ -698,7 +698,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
                 />
               </div>
               )}
-              <div className="d-flex w-100 justify-content-between align-items-center gap-8">
+              <div className="d-flex w-100 justify-content-between gap-8">
 
                 {!deleteTime && (
                 <MessageItemWrapper className="chat-message-item-wrapper">
@@ -808,7 +808,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
           <ChatHeading className="chat-header">
             {shouldRenderAvatar && message.user?.userId !== currentUserId && (
               <ChatAvatar
-                className={['chat-avatar', messageContent.isPresentationUpload && 'chat-avatar-presentation'].join(' ')}
+                className={['chat-avatar', (messageContent.isPresentationUpload || message.messageType === ChatMessageType.POLL) && 'chat-avatar-presentation'].join(' ')}
                 avatar={message.user?.avatar || ''}
                 color={messageContent.color}
                 moderator={messageContent.isModerator}

@@ -197,7 +197,6 @@
         font-weight: 400 !important;
         line-height: 20px; /* 142.857% */
     }
-
 }
 
 .notes {
@@ -570,6 +569,60 @@
                 & .chat-avatar {
                     border-radius: 10px;
                 }
+
+                & .poll-title {
+                    color: var(--highlight-lightred-light, #EB5366);
+                    [data-darkreader-scheme="dark"] & {
+                        color: var(--highlight-lightred-dark, #E4727F);
+                    }
+                    /* Semibold/S */
+                    font-size: 14px!important;
+                    font-style: normal;
+                    font-weight: 600!important;
+                    line-height: 20px; /* 142.857% */
+
+                    margin-bottom: 16px;
+                }
+
+                & .chat-poll-question {
+                    color: var(--Text-Primary, #313131);
+                    [data-darkreader-scheme="dark"] & {
+                        color: var(--text-primary-dark, #FCFCFD);
+                    }
+                    /* Regular/M */
+                    font-size: 16px!important;
+                    font-style: normal;
+                    font-weight: 400!important;
+                    line-height: 24px; /* 150% */
+                }
+
+                & .recharts-responsive-container {
+                    & tspan {
+                        color: var(--text-secondary-light, #6F767E);
+                        text-align: center;
+                        font-family: "FS PF BeauSans Pro", sans-serif;
+                        font-size: 10px!important;
+                        font-style: normal;
+                        font-weight: 400!important;
+                        line-height: 16px; /* 160% */
+                        [data-darkreader-scheme="dark"] & {
+                            color: var(--text-secondary-dark, #C5C9CD) !important;
+                        }
+                    }
+
+                    & text {
+                        fill: var(--text-secondary-light, #6F767E);
+                        text-align: center;
+                        font-family: "FS PF BeauSans Pro", sans-serif;
+                        font-size: 10px!important;
+                        font-style: normal;
+                        font-weight: 400!important;
+                        line-height: 16px; /* 160% */
+                        [data-darkreader-scheme="dark"] & {
+                            fill: var(--text-secondary-dark, #C5C9CD) !important;
+                        }
+                    }
+                }
             }
 
             & .chat-avatar-presentation {
@@ -786,6 +839,14 @@
             }
         }
     }
+
+    & #chat-input {
+        color: var(--text-primary-light, #313131);
+
+        [data-darkreader-scheme="dark"] & {
+            color: var(--text-primary-dark, #FCFCFD);
+        }
+    }
 }
 
 .userListContainer {
@@ -932,10 +993,7 @@
     }
 
     & i {
-        /*color: var(--text-primary-light, #313131);*/
-        [data-darkreader-scheme="dark"] & {
-            color: var(--text-primary-dark, #FCFCFD);
-        }
+        color: var(--text-primary-dark, #FCFCFD);
     }
 }
 
@@ -1294,6 +1352,12 @@ li[data-key="menuItem-directLogoutButton"] {
 .tlui-popover__content > div > button > div {
     color: var(--Text-Primary, #313131) !important;
     [data-darkreader-scheme="dark"] & {
+        color: var(--text-primary-dark, #FCFCFD) !important;
+    }
+}
+
+#presentationInnerWrapper {
+    & button {
         color: var(--text-primary-dark, #FCFCFD) !important;
     }
 }

@@ -208,7 +208,7 @@ class ActionsBar extends PureComponent {
             }}
             />
           </Styled.Left>
-          <Styled.Center>
+          <Styled.Center className="actions-bar-center">
             <Styled.CenterPadding>
               <RecordingIndicator
                 amIModerator={amIModerator}

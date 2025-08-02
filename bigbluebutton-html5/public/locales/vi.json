@@ -908,7 +908,7 @@
   "app.audio.audioSettings.findingDevicesTitle": "Đang tìm thiết bị âm thanh của bạn, vui lòng chấp nhận mọi yêu cầu sử dụng thiết bị.",
   "app.audio.audioSettings.noMicSelectedWarning": "Không có micro nào được chọn. Bạn có thể nghe nhưng không thể nói.",
   "app.audio.audioSettings.noMicListenOnly": "Không có micro (chỉ nghe)",
-  "app.audio.audioSettings.microphoneSourceLabel": "Nguồn microphone",
+  "app.audio.audioSettings.microphoneSourceLabel": "Nguồn micro",
   "app.audio.audioSettings.speakerSourceLabel": "Nguồn loa",
   "app.audio.audioSettings.testSpeakerLabel": "Kiểm tra loa",
   "app.audio.audioSettings.microphoneStreamLabel": "Âm lượng âm thanh của bạn",
