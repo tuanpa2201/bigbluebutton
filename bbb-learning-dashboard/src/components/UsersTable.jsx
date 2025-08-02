@@ -332,7 +332,7 @@ class UsersTable extends React.Component {
                         </span>
                       ) : (<span>-</span>) }
                     </td>
-                    <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalMessagesDashboard">
+                    <td className={`px-4 py-3 text-sm col-text-left ${opacity}`} data-test="userTotalMessagesDashboard">
                       { user.totalOfMessages > 0
                         ? (
                           <span>
@@ -345,7 +345,7 @@ class UsersTable extends React.Component {
                           </span>
                         ) : (<span>-</span>) }
                     </td>
-                    <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalReactionsDashboard">
+                    <td className={`px-4 py-3 text-sm col-text-left ${opacity}`} data-test="userTotalReactionsDashboard">
                       {
                         // eslint-disable-next-line max-len
                         usersReactionsSummary[user.userKey] && Object.keys(usersReactionsSummary[user.userKey] || {}).length > 0 ? (
