@@ -1,10 +1,11 @@
 import React from 'react';
-import { defineMessages, useIntl } from 'react-intl';
+import { defineMessages, FormattedTime, useIntl } from 'react-intl';
 import Styled from './styles';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 interface ChatMessagePresentationContentProps {
   metadata: string;
+  createdAt?: string;
 }
 interface Metadata {
   fileURI: string;
@@ -39,6 +40,7 @@ const intlMessages = defineMessages({
 
 const ChatMessagePresentationContent: React.FC<ChatMessagePresentationContentProps> = ({
   metadata: string,
+  createdAt = '',
 }) => {
   const intl = useIntl();
   const presentationData = JSON.parse(string) as unknown;
@@ -56,28 +58,33 @@ const ChatMessagePresentationContent: React.FC<ChatMessagePresentationContentPro
     return filenameWithoutExtension;
   };
   const parsedFileName = parseFilename(presentationData.filename);
-
+  const dateTimeStr = new Date(createdAt);
   return (
     <Styled.ChatDowloadContainer data-test="downloadPresentationContainer" className="chat-presentation-download-container">
       <span className="chat-presentation-title">{intl.formatMessage(intlMessages.presentationFile)}</span>
-      <div className="chat-presentation-download-link">
-        <span>
-          {presentationData.filename}
-          &nbsp;
-          (
-          {intl.formatMessage(intlMessages.withWhiteboardAnnotations)}
-          )
-        </span>
-        <Styled.ChatLink
-          href={downloadUrl}
-          className="btn-link"
-          type="application/pdf"
-          rel="noopener, noreferrer"
-          download={`${parsedFileName}.pdf`}
-        >
-          <SvgIcon iconName="import" />
-          {intl.formatMessage(intlMessages.download)}
-        </Styled.ChatLink>
+      <div className="d-flex justify-content-between gap-4">
+        <div className="chat-presentation-download-link">
+          <span>
+            {presentationData.filename}
+            &nbsp;
+            (
+            {intl.formatMessage(intlMessages.withWhiteboardAnnotations)}
+            )
+          </span>
+          <Styled.ChatLink
+            href={downloadUrl}
+            className="btn-link"
+            type="application/pdf"
+            rel="noopener, noreferrer"
+            download={`${parsedFileName}.pdf`}
+          >
+            <SvgIcon iconName="import" />
+            {intl.formatMessage(intlMessages.download)}
+          </Styled.ChatLink>
+        </div>
+        <Styled.ChatTime className="chat-time">
+          <FormattedTime value={dateTimeStr} hour12={false} />
+        </Styled.ChatTime>
       </div>
     </Styled.ChatDowloadContainer>
   );

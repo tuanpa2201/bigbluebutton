@@ -698,6 +698,7 @@
                 & .chat-time {
                     display: flex;
                     align-items: flex-end;
+                    min-width: 35px;
 
                     color: var(--Text-Secondary, #6F767E);
                     text-align: center;
@@ -802,7 +803,7 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 6px;
-
+            width: auto;
             border-radius: 8px;
             border-left: 2px solid var(--icon-link-light, #1087FF);
             background: var(--bg-00-light, #FFF);
@@ -836,6 +837,25 @@
                 font-style: normal;
                 font-weight: 500!important;
                 line-height: 20px; /* 142.857% */
+            }
+        }
+
+        & .chat-time {
+            display: flex;
+            align-items: flex-end;
+            min-width: 35px;
+
+            color: var(--Text-Secondary, #6F767E);
+            text-align: center;
+
+            /* Regular/XS */
+            font-size: 12px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 16px; /* 133.333% */
+
+            [data-darkreader-scheme="dark"] & {
+                color: var(--text-secondary-dark, #C5C9CD);
             }
         }
     }
@@ -1357,7 +1377,5 @@ li[data-key="menuItem-directLogoutButton"] {
 }
 
 #presentationInnerWrapper {
-    & button {
-        /*color: var(--text-primary-dark, #FCFCFD) !important;*/
-    }
+
 }

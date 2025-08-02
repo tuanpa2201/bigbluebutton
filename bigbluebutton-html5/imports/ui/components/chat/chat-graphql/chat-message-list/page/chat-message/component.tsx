@@ -373,6 +373,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
           component: (
             <ChatMessagePresentationContent
               metadata={message.messageMetadata}
+              createdAt={message?.createdAt}
             />
           ),
           svgIcon: 'server',

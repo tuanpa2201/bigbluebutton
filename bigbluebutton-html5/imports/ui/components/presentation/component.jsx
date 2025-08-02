@@ -21,7 +21,7 @@ import { throttle } from '/imports/utils/throttle';
 import LocatedErrorBoundary from '/imports/ui/components/common/error-boundary/located-error-boundary/component';
 import FallbackView from '/imports/ui/components/common/fallback-errors/fallback-view/component';
 import TooltipContainer from '/imports/ui/components/common/tooltip/container';
-import SvgIcon from "/imports/ui/components/common/icon-svg/component";
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const intlMessages = defineMessages({
   presentationLabel: {
@@ -814,24 +814,26 @@ class Presentation extends PureComponent {
                 <Styled.VisuallyHidden id="currentSlideText">
                   {slideContent}
                 </Styled.VisuallyHidden>
-                {((userIsPresenter || hasWBAccess) && (!tldrawIsMounting && presentationWidth > 0 && currentSlide)) && <Styled.ExtraTools {...{isToolbarVisible}}>
-                  <TooltipContainer title={intl?.messages["app.shortcut-help.undo"]}>
+                {((userIsPresenter || hasWBAccess) && (!tldrawIsMounting && presentationWidth > 0 && currentSlide)) && (
+                <Styled.ExtraTools {...{ isToolbarVisible }}>
+                  <TooltipContainer title={intl?.messages['app.shortcut-help.undo']}>
                     <Styled.Button
-                      aria-label={intl?.messages["app.shortcut-help.undo"]}
+                      aria-label={intl?.messages['app.shortcut-help.undo']}
                       onClick={() => tldrawAPI?.undo()}
                     >
-                      <SvgIcon iconName="undo"></SvgIcon>
+                      <SvgIcon iconName="undo" />
                     </Styled.Button>
                   </TooltipContainer>
-                  <TooltipContainer title={intl?.messages["app.shortcut-help.redo"]}>
+                  <TooltipContainer title={intl?.messages['app.shortcut-help.redo']}>
                     <Styled.Button
-                      aria-label={intl?.messages["app.shortcut-help.redo"]}
+                      aria-label={intl?.messages['app.shortcut-help.redo']}
                       onClick={() => tldrawAPI?.redo()}
                     >
-                      <SvgIcon iconName="redo"></SvgIcon>
+                      <SvgIcon iconName="redo" />
                     </Styled.Button>
                   </TooltipContainer>
-                </Styled.ExtraTools>}
+                </Styled.ExtraTools>
+                )}
                 {!tldrawIsMounting
                   && presentationWidth > 0
                   && currentSlide
