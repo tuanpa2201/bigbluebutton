@@ -147,14 +147,14 @@ class UsersTable extends React.Component {
         return 0;
       },
       activityscoreOrder(a, b) {
-        if (a.isModerator === false && b.isModerator === true) return 1;
-        if (a.isModerator === true && b.isModerator === false) return -1;
         if (usersActivityScore[a.userKey] < usersActivityScore[b.userKey]) {
           return activityscoreOrder === 'desc' ? 1 : -1;
         }
         if (usersActivityScore[a.userKey] > usersActivityScore[b.userKey]) {
           return activityscoreOrder === 'desc' ? -1 : 1;
         }
+        if (a.isModerator === false && b.isModerator === true) return 1;
+        if (a.isModerator === true && b.isModerator === false) return -1;
         return 0;
       },
     };
@@ -225,6 +225,7 @@ class UsersTable extends React.Component {
         <tbody className="bg-white divide-y whitespace-nowrap">
           { typeof allUsers === 'object' && Object.values(allUsers || {}).length > 0 ? (
             Object.values(allUsers || {})
+              .sort(tab === 'overview' ? sortFunctions[lastFieldClicked] : sortFunctions.activityscoreOrder)
               .sort(sortFunctions.activityscoreOrder)
               .map((user) => {
                 const opacity = user.leftOn > 0 ? 'opacity-75' : '';
