@@ -396,14 +396,14 @@
         }
     }
 
-    & .poll-option-input {
-        color: var(--text-secondary-light, #6F767E);
-        border: 0.66px solid var(--border-01-light, #C8C8C8);
-        [data-darkreader-scheme="dark"] & {
-            color: var(--text-secondary-dark, #C5C9CD);
-            border: 0.66px solid var(--border-01-dark, #9A9A9A);
-        }
-    }
+    /*& .poll-option-input {*/
+        /*color: var(--text-secondary-light, #6F767E);*/
+        /*border: 0.66px solid var(--border-01-light, #C8C8C8);*/
+        /*[data-darkreader-scheme="dark"] & {*/
+        /*    color: var(--text-secondary-dark, #C5C9CD);*/
+        /*    border: 0.66px solid var(--border-01-dark, #9A9A9A);*/
+        /*}*/
+    /*}*/
 }
 
 #notes-options-dropdown {
