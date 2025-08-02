@@ -16,7 +16,7 @@ import {
   EJECT_FROM_VOICE,
   SET_PRESENTER,
   SET_LOCKED,
-  SET_USER_CHAT_LOCKED, SET_RAISE_HAND,
+  SET_USER_CHAT_LOCKED,
 } from '/imports/ui/core/graphql/mutations/userMutations';
 import {
   isVideoPinEnabledForCurrentUser,
@@ -359,17 +359,6 @@ const UserActions: React.FC<UserActionsProps> = ({
       item?.type === UserListDropdownItemType.TITLE_ACTION),
   );
 
-  const [setRaiseHand] = useMutation(SET_RAISE_HAND);
-
-  const lowerUserHands = (userId: string) => {
-    setRaiseHand({
-      variables: {
-        userId,
-        raiseHand: false,
-      },
-    });
-  };
-
   const dropdownOptions = [
     {
       allowed: false,
@@ -609,23 +598,6 @@ const UserActions: React.FC<UserActionsProps> = ({
       },
       icon: 'video_off',
       dataTest: 'ejectCamera',
-    },
-    {
-      allowed: user.raiseHand
-          && !user.isModerator
-          && currentUser.isModerator
-          && !isVoiceOnlyUser(user.userId),
-      key: 'raiseHand',
-      label: intl.formatMessage(messages.lowerHands),
-      onClick: () => {
-        try {
-          lowerUserHands(user.userId);
-        } catch (e) {
-          logger.error('Error on trying to toggle lowwer hands', e);
-        }
-        setOpenUserAction(null);
-      },
-      dataTest: 'togglePublicChat',
     },
     ...makeDropdownPluginItem(userDropdownItems.filter(
       (item: PluginSdk.UserListDropdownInterface) => (

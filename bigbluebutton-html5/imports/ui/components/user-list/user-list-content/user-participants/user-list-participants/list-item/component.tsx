@@ -52,6 +52,10 @@ const messages = defineMessages({
     id: 'app.userList.you',
     description: 'Text for identifying your user',
   },
+  lowerHands: {
+    id: 'app.statusNotifier.lowerHands',
+    description: 'Label for lower hands action',
+  },
 });
 
 const { isChrome, isFirefox, isEdge } = browserInfo;
@@ -289,7 +293,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
       </Styled.UserNameContainer>
       <Styled.RightIconHandContainer hand={user.raiseHand}>
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-        {user.raiseHand ? <div onClick={() => lowerUserHands(user.userId)}><JoypixelsEmoji native={emojiIcons[0].native} size={emojiSize} /></div> : ''}
+        {user.raiseHand ? <div onClick={() => lowerUserHands(user.userId)} title={intl.formatMessage(messages.lowerHands)}><JoypixelsEmoji native={emojiIcons[0].native} size={emojiSize} /></div> : ''}
       </Styled.RightIconHandContainer>
       <Styled.RightBlockIconsContainer
         className="rightIconNomal"
