@@ -18,17 +18,13 @@ const UserStatus: React.FC<UserStatusProps> = (props) => {
   const data = { ...user, ...stream };
 
   const listenOnly = voiceUser?.listenOnly;
-  const muted = voiceUser?.muted;
-  const voiceUserJoined = voiceUser?.joined;
   const emoji = data?.reactionEmoji;
   const away = data?.away;
   return (
     <div>
       {away && <JoypixelsEmoji native="⏰" size={24} /> }
       {(emoji && emoji !== 'none' && !away) && <JoypixelsEmoji native={emoji} size={24} />}
-      {(muted && !listenOnly) && <Styled.Muted iconName="unmute_filled" />}
       {listenOnly && <Styled.Voice iconName="listen" /> }
-      {(voiceUserJoined && !muted) && <Styled.Voice iconName="unmute" />}
     </div>
   );
 };

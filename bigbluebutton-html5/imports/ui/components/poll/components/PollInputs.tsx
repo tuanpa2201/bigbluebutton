@@ -54,6 +54,7 @@ const PollInputs: React.FC<PollInputsProps> = ({
             value={o.val}
             placeholder={intl.formatMessage(intlMessages.customPlaceholder)}
             data-test="pollOptionItem"
+            className="poll-option-input"
             onChange={(e) => handleInputChange(e, i)}
             maxLength={MAX_INPUT_CHARS}
             onPaste={(e) => { e.stopPropagation(); }}
@@ -66,6 +67,7 @@ const PollInputs: React.FC<PollInputsProps> = ({
               aria-describedby={`option-${i}`}
               svgIcon="trash_20"
               data-test="deletePollOption"
+              className="delete_poll_option"
               hideLabel
               circle
               color="default"

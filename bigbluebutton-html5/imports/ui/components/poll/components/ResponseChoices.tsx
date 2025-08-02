@@ -57,23 +57,23 @@ const ResponseChoices: React.FC<ResponseChoicesProps> = ({
   const intl = useIntl();
   if ((!customInput && type) || (questionAndOptions && customInput)) {
     return (
-      <Styled.ResponseChoices data-test="responseChoices">
+      <Styled.ResponseChoices data-test="responseChoices" className="response-choices">
         {customInput && questionAndOptions && (
           <Styled.Question>
-            <Styled.SectionHeading>
+            <Styled.SectionHeading className="section-heading">
               {intl.formatMessage(intlMessages.pollingQuestion)}
             </Styled.SectionHeading>
             <Styled.PollParagraph>
-              <span>{question}</span>
+              <span className="poll-paragraph">{question}</span>
             </Styled.PollParagraph>
           </Styled.Question>
         )}
-        <Styled.SectionHeading>
+        <Styled.SectionHeading className="section-heading">
           {intl.formatMessage(intlMessages.responseChoices)}
         </Styled.SectionHeading>
         {type === pollTypes.Response && (
           <Styled.PollParagraph>
-            <span>{intl.formatMessage(intlMessages.typedResponseDesc)}</span>
+            <span className="poll-paragraph">{intl.formatMessage(intlMessages.typedResponseDesc)}</span>
           </Styled.PollParagraph>
         )}
         <ResponseArea

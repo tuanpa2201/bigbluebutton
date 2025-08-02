@@ -121,9 +121,14 @@
 .btn.btn-default[aria-disabled="true"],
 .btn.btn-default:disabled {
     opacity: 1 !important;
-    background: var(--BG-05---disable, #EFEFEF) !important;
+    background: var(--bg-05-disable-light, #EFEFEF) !important;
     color: var(--Text-Disable, #BBB) !important;;
     box-shadow: unset !important;
+
+    [data-darkreader-scheme="dark"] & {
+        color: var(--text-disable-dark, #848484) !important;;
+        background: var(--bg-05-disable-dark, #5D5F62) !important;
+    }
 }
 
 .ant-input-group .ant-btn{

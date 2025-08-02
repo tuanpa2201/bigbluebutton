@@ -1014,6 +1014,7 @@
     "app.toast.chat.system": "System",
     "app.toast.chat.poll": "Poll Results",
     "app.toast.chat.pollClick": "Poll results were published. Click here to see.",
+    "app.toast.chat.presentationFile": "Presentation file",
     "app.toast.usersJoinMutedOn.label": "Users join muted have been enabled",
     "app.toast.usersJoinMutedOff.label": "Users join muted have been disabled",
     "app.toast.muteAllViewers.label": "All viewers have been muted",

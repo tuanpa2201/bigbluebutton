@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import useCurrentUser from '/imports/ui/core/hooks/useCurrentUser';
-import Header from '/imports/ui/components/common/control-header/component';
-import { useMutation } from '@apollo/client';
 import { Input } from '../layout/layoutTypes';
 import { layoutDispatch, layoutSelectInput } from '../layout/context';
 import { addAlert } from '../screenreader-alert/service';
 import { PANELS, ACTIONS } from '../layout/enums';
 import useMeeting from '/imports/ui/core/hooks/useMeeting';
-import { POLL_CANCEL } from './mutations';
 import { getSplittedQuestionAndOptions, pollTypes, validateInput } from './service';
 import Toggle from '/imports/ui/components/common/switch/component';
 import Styled from './styles';
@@ -17,7 +14,7 @@ import ResponseTypes from './components/ResponseTypes';
 import PollQuestionArea from './components/PollQuestionArea';
 import LiveResultContainer from './components/LiveResult';
 import Session from '/imports/ui/services/storage/in-memory';
-import SvgIcon from "/imports/ui/components/common/icon-svg/component";
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const intlMessages = defineMessages({
   pollPaneTitle: {
@@ -237,7 +234,6 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
   const POLL_SETTINGS = window.meetingClientSettings.public.poll;
   const ALLOW_CUSTOM_INPUT = POLL_SETTINGS.allowCustomResponseInput;
   const MAX_CUSTOM_FIELDS = POLL_SETTINGS.maxCustom;
-  const [stopPoll] = useMutation(POLL_CANCEL);
 
   const intl = useIntl();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -385,7 +381,7 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
           ALLOW_CUSTOM_INPUT && (
             <Styled.CustomInputRow>
               <Styled.CustomInputHeadingCol aria-hidden="true">
-                <Styled.CustomInputHeading>
+                <Styled.CustomInputHeading className="custom-input-heading">
                   {intl.formatMessage(intlMessages.customInputToggleLabel)}
                 </Styled.CustomInputHeading>
               </Styled.CustomInputHeadingCol>
@@ -410,7 +406,7 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
           )
         }
         {customInput && (
-          <Styled.PollParagraph>
+          <Styled.PollParagraph className="custom-input-instructions">
             {intl.formatMessage(intlMessages.customInputInstructionsLabel)}
           </Styled.PollParagraph>
         )}
@@ -462,28 +458,29 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
 
   return (
     <div>
-
       <Styled.PollHeader data-test="hidePollDesc">
-        <div aria-label={intl.formatMessage(intlMessages.hidePollDesc)} className={'header-title'}>
+        <div aria-label={intl.formatMessage(intlMessages.hidePollDesc)} className="header-title">
           {`${intl.formatMessage(intlMessages.pollPaneTitle)}`}
         </div>
-        <Styled.ClosePollButton className={'header-icon'} onClick={() => {
-          // if (hasPoll) stopPoll();
-          layoutContextDispatch({
-            type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
-            value: false,
-          });
-          layoutContextDispatch({
-            type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
-            value: PANELS.NONE,
-          });
-          // Session.setItem('forcePollOpen', false);
-          // Session.setItem('pollInitiated', false);
-        }}>
-          <SvgIcon iconName="cross_20"></SvgIcon>
+        <Styled.ClosePollButton
+          className="header-icon"
+          onClick={() => {
+            // if (hasPoll) stopPoll();
+            layoutContextDispatch({
+              type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
+              value: false,
+            });
+            layoutContextDispatch({
+              type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
+              value: PANELS.NONE,
+            });
+            // Session.setItem('forcePollOpen', false);
+            // Session.setItem('pollInitiated', false);
+          }}
+        >
+          <SvgIcon iconName="cross_20" />
         </Styled.ClosePollButton>
       </Styled.PollHeader>
-
 
       {pollOptions()}
       <span className="sr-only" id="poll-config-button">{intl.formatMessage(intlMessages.showRespDesc)}</span>

@@ -74,12 +74,9 @@ export const ChatWrapper = styled.div<ChatWrapperProps>`
   }
 
   ${({ isPresentationUpload }) => isPresentationUpload && `
-      border-left: 2px solid #1087FF;
-      border-radius: 8px;
       margin-top: 1rem;
-      padding: 0.5rem;
+      padding: 12px 12px 12px 0;
       word-break: break-word;
-      background-color: #F3F6F9;
     `}
   ${({ isSystemSender }) => isSystemSender && `
     background-color: #fef9f1;
