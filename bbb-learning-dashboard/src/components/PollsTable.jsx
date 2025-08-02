@@ -152,7 +152,9 @@ const PollsTable = (props) => {
           {params?.value?.isModerator ? (
             <span className="inline-block font-medium-td" aria-label="Moderator">
               &nbsp;
+              (
               <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
+              )
             </span>
           ) : null}
         </>

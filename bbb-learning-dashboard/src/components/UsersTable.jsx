@@ -252,8 +252,8 @@ class UsersTable extends React.Component {
                           {
                             user.isModerator ? (
                               <span className="inline-block font-medium-td" aria-label="Moderator">
-                                (
                                 &nbsp;
+                                (
                                 <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />
                                 )
                               </span>
@@ -345,7 +345,7 @@ class UsersTable extends React.Component {
                           </span>
                         ) : (<span>-</span>) }
                     </td>
-                    <td className={`px-4 py-3 text-sm col-text-left ${opacity}`} data-test="userTotalReactionsDashboard">
+                    <td className={`px-4 py-3 text-sm text-center ${opacity}`} data-test="userTotalReactionsDashboard">
                       {
                         // eslint-disable-next-line max-len
                         usersReactionsSummary[user.userKey] && Object.keys(usersReactionsSummary[user.userKey] || {}).length > 0 ? (
