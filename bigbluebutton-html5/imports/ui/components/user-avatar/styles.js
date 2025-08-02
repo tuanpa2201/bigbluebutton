@@ -99,8 +99,8 @@ const Talking = styled.div`
 
 const Avatar = styled.div`
   position: relative;
-  height: 2.25rem;
-  width: 2.25rem;
+  height: 32px;
+  width: 32px;
   border-radius: 10px;
   text-align: center;
   font-size: .85rem;

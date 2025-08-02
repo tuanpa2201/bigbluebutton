@@ -43,7 +43,8 @@ const SignalBars = styled.div`
 `;
 
 const Bar = styled.div`
-  width: 14%;
+  width: 10%;
+  min-width: 2px;
   border-radius: .46875em;
 `;
 

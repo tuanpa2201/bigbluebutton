@@ -120,8 +120,8 @@ const Avatar = styled.div`
 `;
 
 const Icon = styled.div`
-  width: 1.437rem;
-  height: 1.437rem;
+  width: 20px;
+  height: 20px;
 `;
 
 const Right = styled.div`
@@ -159,6 +159,7 @@ const NetworkDataContainer = styled(ScrollboxVertical)`
   flex-wrap: nowrap;
   overflow: auto;
   scroll-snap-type: x mandatory;
+  gap: 24px;
   padding-bottom: 16px;
 
   &:focus {
@@ -298,7 +299,7 @@ const Helper = styled.div`
 const NetworkDataContent = styled.div`
   margin: 0;
   display: flex;
-  justify-content: space-around;
+  gap: 48px;
   flex-grow: 1;
 
   @media ${mediumDown} {
@@ -311,7 +312,7 @@ const NetworkDataContent = styled.div`
 const DataColumn = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 12px;
 
   @media ${hasPhoneWidth} {
     flex-grow: 1;
