@@ -123,7 +123,7 @@ const BreakoutMessageForm: React.FC = () => {
         <Styled.Input
           id="message-input"
           innerRef={(ref) => { textAreaRef.current = ref; }}
-          placeholder={intl.formatMessage(intlMessages.inputPlaceholder, { 0: chatTitle.current })}
+          placeholder={intl.formatMessage(intlMessages.inputPlaceholder, { 0: chatTitle.current.toLowerCase() })}
           aria-label={intl.formatMessage(intlMessages.inputLabel, { 0: chatTitle.current })}
           aria-invalid={hasErrors ? 'true' : 'false'}
           autoCorrect="off"

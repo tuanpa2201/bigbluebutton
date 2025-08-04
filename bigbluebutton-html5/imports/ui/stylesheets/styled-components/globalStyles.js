@@ -127,6 +127,12 @@ const GlobalStyle = createGlobalStyle`
     [data-darkreader-scheme="dark"] & {
       color: #F2F2F2;
     }
+
+    //[data-test="closeToastBtn"] {
+    //  position: absolute;
+    //  top: 12px;
+    //  right: 12px;
+    //}
   }
   
   .Toastify__toast--info {

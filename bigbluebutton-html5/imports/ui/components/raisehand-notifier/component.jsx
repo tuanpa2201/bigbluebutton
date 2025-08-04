@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import { toast } from 'react-toastify';
+import {Bounce, toast} from 'react-toastify';
 import { ENTER } from '/imports/utils/keyCodes';
 import Styled from './styles';
 import TooltipContainer from '/imports/ui/components/common/tooltip/container';
@@ -75,14 +75,20 @@ class RaiseHandNotifier extends Component {
         });
       }
 
-      notifyCustom(this.getRaisedHandNames(), 'default', 'raised_hand');
-      // toast(this.renderRaisedHands(), {
-      //   autoClose: false,
-      //   closeOnClick: false,
-      //   closeButton: false,
-      //   className: 'raiseHandToast',
-      //   toastId: this.statusNotifierId,
-      // });
+      // notifyCustom(this.getRaisedHandNames(), 'default', 'raised_hand');
+      toast(this.renderRaisedHands(), {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        className: 'raiseHandToast',
+        toastId: this.statusNotifierId,
+      });
     }
 
     return true;

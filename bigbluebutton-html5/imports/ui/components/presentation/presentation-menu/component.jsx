@@ -241,14 +241,13 @@ const PresentationMenu = (props) => {
   function renderToastContent() {
     const { loading, hasError } = state;
 
-    let icon = loading ? 'blank' : 'check';
+    let icon = loading ? 'blank' : 'check_circle';
     if (hasError) icon = 'circle_close';
 
     return (
       <Styled.Line>
-        <Styled.StatusIcon>
+        <Styled.StatusIcon done={!loading && !hasError}>
           <Styled.ToastIcon
-            done={!loading && !hasError}
             error={hasError}
             loading={loading}
             iconName={icon}
@@ -256,7 +255,7 @@ const PresentationMenu = (props) => {
         </Styled.StatusIcon>
 
         <Styled.ToastText>
-          <span>
+          <span className="font-regular-s text-primary">
             {loading && !hasError && intl.formatMessage(intlMessages.downloading)}
             {!loading && !hasError && intl.formatMessage(intlMessages.downloaded)}
             {!loading && hasError && intl.formatMessage(intlMessages.downloadFailed)}

@@ -85,9 +85,10 @@ const ToastFileName = styled.span`
 `;
 
 const StatusIcon = styled.span`
+  margin-right: 6px;
   & > i {
-    height: ${statusIconSize};
-    width: ${statusIconSize};
+    height: ${statusIconSize}!important;
+    width: ${statusIconSize}!important;
   }
 `;
 
@@ -459,9 +460,9 @@ const ModalHint = styled.div`
 
 const ToastItemIcon = styled(Icon)`
   position: relative;
-  width: ${statusIconSize};
-  height: ${statusIconSize};
-  font-size: 117%;
+  width: ${statusIconSize}!important;
+  height: ${statusIconSize}!important;
+  font-size: 100%;
   left: ${statusInfoHeight};
 
   [dir="rtl"] & {

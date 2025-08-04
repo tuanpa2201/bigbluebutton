@@ -44,6 +44,7 @@ const CloseIcon = styled.div`
   line-height: 0;
   position: relative;
   font-size: 70%;
+  font-weight: 500;
   //left: ${toastOffsetSm};
   //left: 8px;
   padding-left: 8px;

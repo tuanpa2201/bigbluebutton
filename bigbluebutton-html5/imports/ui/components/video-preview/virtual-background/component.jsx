@@ -391,7 +391,7 @@ const VirtualBgSelector = ({
       <>
         <Styled.BgCustomButton
           className="virtual-background-custom-button"
-          svgIcon="cloud-upload"
+          svgIcon="cloud_upload_3"
           label={intl.formatMessage(intlMessages.customLabel)}
           aria-describedby="vr-cam-btn-custom"
           hideLabel

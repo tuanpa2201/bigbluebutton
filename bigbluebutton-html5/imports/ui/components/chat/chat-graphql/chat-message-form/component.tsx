@@ -638,8 +638,8 @@ const ChatMessageFormContainer: React.FC = () => {
   }));
 
   const title = chat?.participant?.name
-    ? intl.formatMessage(messages.titlePrivate, { 0: chat?.participant?.name })
-    : intl.formatMessage(messages.titlePublic);
+    ? intl.formatMessage(messages.titlePrivate, { 0: chat?.participant?.name }).toLowerCase()
+    : intl.formatMessage(messages.titlePublic).toLowerCase();
 
   const { data: meeting } = useMeeting((m) => ({
     lockSettings: m?.lockSettings,

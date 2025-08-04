@@ -15,6 +15,7 @@ import {
   borderSize,
   statusInfoHeight,
 } from '/imports/ui/stylesheets/styled-components/general';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 
 const DropdownButton = styled.button`
   background-color: ${colorOffWhite};
@@ -87,6 +88,7 @@ const ToastText = styled.span`
 
 const StatusIcon = styled.span`
   //margin-left: auto;
+  margin: 6px 10.5px 6px 0;
 
   [dir="rtl"] & {
     margin-right: auto;
@@ -99,6 +101,11 @@ const StatusIcon = styled.span`
     height: ${statusIconSize};
     width: ${statusIconSize};
   }
+
+  ${({ done }) => done && `
+    color: #75C044;
+  `}
+
 `;
 
 const rotate = keyframes`
@@ -106,7 +113,7 @@ const rotate = keyframes`
   100% { transform: rotate(360deg); }
 `;
 
-const ToastIcon = styled(Icon)`
+const ToastIcon = styled(SvgIcon)`
   position: relative;
   width: ${statusIconSize};
   height: ${statusIconSize};
@@ -116,11 +123,7 @@ const ToastIcon = styled(Icon)`
     left: auto;
     right: ${statusInfoHeight};
   }
-
-  ${({ done }) => done && `
-    color: ${colorSuccess};
-  `}
-
+  
   ${({ error }) => error && `
     color: ${colorDanger};
   `}
