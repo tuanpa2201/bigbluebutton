@@ -157,14 +157,6 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
             <span> {intl.formatMessage(intlMessages.audio_help_2)}</span>
           </div>
 
-          <div style={{
-            borderTop: '1px solid #EFEFEF',
-          }}
-          />
-
-          <div>
-            {intl.formatMessage(intlMessages.serverRunning)}
-          </div>
         </Styled.Content>
       </Styled.Container>
     </ModalSimple>
