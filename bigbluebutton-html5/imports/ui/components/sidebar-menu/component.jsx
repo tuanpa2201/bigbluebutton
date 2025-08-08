@@ -31,7 +31,7 @@ const Sidebar = styled.div`
   }
 
   @media (max-width: 1024px) {
-    padding: 8px 16px;
+    padding: 8px 16px 20px 8px;
     align-items: flex-start;
     .menu-title {
       font-size: 16px;
@@ -108,10 +108,9 @@ const CloseButton = styled(BaseButton)`
 `;
 
 const ThemeSwitchContainer = styled.div`
-  margin-top: auto;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: inherit;
   align-items: center;
 `;
 
@@ -166,6 +165,23 @@ const ThemeButton = styled.button`
   }
 `;
 
+const BottomSection = styled.div`
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
+
+const Line = styled.hr`
+  width: 100%;
+  border: none;
+  border-top: 1px solid #E0E0E0;
+  margin-bottom: 12px;
+  [data-darkreader-scheme="dark"] & {
+    border-top: 2px solid #ffffff;
+  }
+`;
 
 const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
   const { data: pinnedPadData } = useDeduplicatedSubscription(
@@ -342,33 +358,36 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
                 )}
         </>
       ))}
-      <ThemeSwitchContainer>
-        <MenuToggle>
-          <BaseButton
-            key="theme-switch-placeholder"
-            style={{ background: 'transparent' }}
-          >
-            <SvgIcon iconName="moon" />
-          </BaseButton>
-          <span>Cài đặt chủ đề</span>
-        </MenuToggle>
-        <ThemeSwitch>
-          <ThemeButton
-            onClick={() => switchDarkTheme(false)}
-            active={!isDarkTheme}
-            title="Light theme"
-          >
-            <SvgIcon iconName="sun" />
-          </ThemeButton>
-          <ThemeButton
-            onClick={() => switchDarkTheme(true)}
-            active={isDarkTheme}
-            title="Dark theme"
-          >
-            <SvgIcon iconName="moon" />
-          </ThemeButton>
-        </ThemeSwitch>
-      </ThemeSwitchContainer>
+      <BottomSection>
+        <Line />
+        <ThemeSwitchContainer>
+          <MenuToggle>
+            <BaseButton
+              key="theme-switch-placeholder"
+              style={{ background: 'transparent' }}
+            >
+              <SvgIcon iconName="moon" />
+            </BaseButton>
+            <span>Cài đặt chủ đề</span>
+          </MenuToggle>
+          <ThemeSwitch>
+            <ThemeButton
+              onClick={() => switchDarkTheme(false)}
+              active={!isDarkTheme}
+              title="Light theme"
+            >
+              <SvgIcon iconName="sun" />
+            </ThemeButton>
+            <ThemeButton
+              onClick={() => switchDarkTheme(true)}
+              active={isDarkTheme}
+              title="Dark theme"
+            >
+              <SvgIcon iconName="moon" />
+            </ThemeButton>
+          </ThemeSwitch>
+        </ThemeSwitchContainer>
+      </BottomSection>
     </Sidebar>
   );
 };
