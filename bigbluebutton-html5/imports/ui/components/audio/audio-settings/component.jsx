@@ -530,7 +530,7 @@ class AudioSettings extends React.Component {
             />
           </Styled.LabelSmall>
         </Styled.FormElement>
-        <div className="d-flex justify-content-between gap-20 pt-20 pb-16 border-separator">
+        <div className="d-flex justify-content-between gap-20 pt-20 pb-16 border-separator md-pt-24">
           <Styled.LabelSmall htmlFor="audioStreamVolume" className="mt-0-i w-50 ">
             {intl.formatMessage(intlMessages.streamVolumeLabel)}
             <div />
@@ -596,7 +596,7 @@ class AudioSettings extends React.Component {
         <Styled.Form className="audio-settings-form">
           {this.renderDeviceSelectors()}
         </Styled.Form>
-        <Styled.EnterAudio className="enter-audio-buttons">
+        <Styled.EnterAudio className="enter-audio-buttons footer-model-custom-mobile">
           <Styled.BackButton
             label={(isConnected || skipAudioOptions())
               ? intl.formatMessage(intlMessages.cancelLabel)

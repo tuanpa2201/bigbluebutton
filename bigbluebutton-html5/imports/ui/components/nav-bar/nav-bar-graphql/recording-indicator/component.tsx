@@ -210,7 +210,7 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
         {recording ? (
           <span aria-hidden>{humanizeSeconds(time)}</span>
         ) : (
-          <span>{recordTitle}</span>
+          <span className="md-hidden">{recordTitle}</span>
         )}
       </Styled.PresentationTitle>
     </Styled.RecordingControl>

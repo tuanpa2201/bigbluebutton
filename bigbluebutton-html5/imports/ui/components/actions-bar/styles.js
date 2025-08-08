@@ -128,6 +128,14 @@ const CenterPadding = styled.div`
   border-radius: 100px;
   background: var(--BG-Meet-bg02, #2A2B2E);
   align-items: center;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding: 12px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 12px;
+  }
 `;
 
 export default {

@@ -5,7 +5,6 @@ import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints
 import { colorPrimary } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   mdPaddingY,
-  btnSpacing,
 } from '/imports/ui/stylesheets/styled-components/general';
 import { lineHeightComputed } from '/imports/ui/stylesheets/styled-components/typography';
 
@@ -28,11 +27,12 @@ const AudioModalButton = styled(Button)`
     justify-content: center;
     align-items: center;
     border-radius: 12px;
-    color: var(--icon-primary-light, #2F384C);
-    background: var(--bg-01-light, #F2F2F2);
-  
+    color: var(--icon-primary-light, #2f384c);
+    background: var(--bg-01-light, #f2f2f2);
+
     &:hover {
-      ${({ isDarkThemeEnabled }) => (isDarkThemeEnabled ? `
+      ${({ isDarkThemeEnabled }) => (isDarkThemeEnabled
+    ? `
         filter: brightness(85%);
         `
     : `
@@ -71,9 +71,14 @@ const AudioModalButton = styled(Button)`
     color: black;
     font-size: 1rem;
     font-weight: 400;
-    margin-top: ${btnSpacing};
+    margin-top: 8px;
     line-height: 1.5;
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    padding: 13px 2rem;
+  }
+
 `;
 
 const AudioDial = styled(Button)`

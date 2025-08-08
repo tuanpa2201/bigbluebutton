@@ -90,6 +90,10 @@ const DismissButton = styled(Button)`
     &:focus{
       background: transparent !important;
     }
+
+    @media (max-width: 767px) {
+      padding: 2px;
+    }
   }
 
   ${({ $headerOnTop }) => $headerOnTop && `

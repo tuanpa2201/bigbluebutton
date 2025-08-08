@@ -1010,6 +1010,16 @@
                 background-color: unset !important;
             }
         }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            width: 54px;
+            height: 54px;
+
+            svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
     }
 
     & i {

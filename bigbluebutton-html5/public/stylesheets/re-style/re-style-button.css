@@ -29,6 +29,15 @@
     & span:hover {
         opacity: 1;
     }
+    @media (min-width: 768px) and (max-width: 1024px) {
+        padding: 12px !important;
+        height: 44px !important;
+    }
+
+    @media (max-width: 767px) {
+        padding: 12px !important;
+        height: 44px !important;
+    }
 }
 
 .btn.btn-primary:hover {
@@ -93,6 +102,16 @@
     [data-darkreader-scheme="dark"] & {
         background: #282829!important;
         box-shadow: 0 -1px 0 0 #B5B5B5 inset, -1px 0 0 0 #E3E3E3 inset, 1px 0 0 0 #E3E3E3 inset, 0 1px 0 0 #E3E3E3 inset!important;
+    }
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        padding: 12px !important;
+        height: 44px !important;
+    }
+
+    @media (max-width: 767px) {
+        padding: 12px !important;
+        height: 44px !important;
     }
 }
 
@@ -176,6 +195,16 @@
     border-radius: 100px;
 
     color: white;
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+        width: 54px;
+        height: 54px;
+
+        svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
   }
 
 }

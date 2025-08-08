@@ -156,6 +156,20 @@ const Content = styled.div`
     flex-direction: row;
     margin: 5px;
   }
+
+  >div {
+    margin-top: 32px;
+    margin-bottom: 32px;
+
+    @media (min-width: 768px) and (max-width: 1024px) {
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 767px) {
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
 `;
 
 const BrowserWarning = styled.p`
