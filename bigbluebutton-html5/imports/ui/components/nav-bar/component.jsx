@@ -169,7 +169,12 @@ class NavBar extends Component {
 
     this.state = {
       isModalOpen: props.showSessionDetailsOnJoin && !(ShownId === props.meetingId),
+      isScreenSmall: typeof window !== 'undefined' ? window.innerWidth < 1025 : false,
     };
+  }
+
+  updateScreenSize = () => {
+    this.setState({ isScreenSmall: window.innerWidth < 1025 });
   }
 
   renderModal(isOpen, setIsOpen, priority, Component, otherOptions) {
@@ -221,9 +226,12 @@ class NavBar extends Component {
         }
       });
     }
+
+    window.addEventListener('resize', this.updateScreenSize);
   }
 
   componentWillUnmount() {
+    window.removeEventListener('resize', this.updateScreenSize);
     clearInterval(this.interval);
   }
 
@@ -320,7 +328,8 @@ class NavBar extends Component {
       hideTopRow,
     } = this.props;
 
-    const { isModalOpen } = this.state;
+    const { isModalOpen, isScreenSmall } = this.state;
+    const hideSidebarMenu = isScreenSmall && sidebarNavigation.isOpen;
 
     const hasNotification = hasUnreadMessages || (hasUnreadNotes && !isPinned);
 
@@ -341,6 +350,10 @@ class NavBar extends Component {
 
     const APP_CONFIG = window.meetingClientSettings?.public?.app;
     const enableTalkingIndicator = APP_CONFIG?.enableTalkingIndicator;
+
+    if (hideSidebarMenu) {
+      return null;
+    }
 
     return (
       <Styled.Navbar
@@ -364,10 +377,10 @@ class NavBar extends Component {
         {!hideTopRow && (
           <Styled.Top>
             <Styled.Left>
-              {shouldShowNavBarToggleButton && isExpanded && document.dir === 'ltr'
-                && <Styled.ArrowLeft iconName="left_arrow" />}
-              {shouldShowNavBarToggleButton && !isExpanded && document.dir === 'rtl'
-                && <Styled.ArrowLeft iconName="left_arrow" />}
+              {/*{shouldShowNavBarToggleButton && isExpanded && document.dir === 'ltr'*/}
+              {/*  && <Styled.ArrowLeft iconName="left_arrow" />}*/}
+              {/*{shouldShowNavBarToggleButton && !isExpanded && document.dir === 'rtl'*/}
+              {/*  && <Styled.ArrowLeft iconName="left_arrow" />}*/}
               {shouldShowNavBarToggleButton && (
                 <Styled.NavbarToggleButton
                   tooltipplacement="right"
@@ -380,16 +393,16 @@ class NavBar extends Component {
                   label={intl.formatMessage(intlMessages.toggleUserListLabel)}
                   tooltipLabel={intl.formatMessage(intlMessages.toggleUserListLabel)}
                   aria-label={ariaLabel}
-                  icon="user"
+                  svgIcon="drown-down-menu"
                   aria-expanded={isExpanded}
                   accessKey={TOGGLE_USERLIST_AK}
                   hasNotification={hasNotification}
                 />
               )}
-              {shouldShowNavBarToggleButton && !isExpanded && document.dir === 'ltr'
-                && <Styled.ArrowRight iconName="right_arrow" />}
-              {shouldShowNavBarToggleButton && isExpanded && document.dir === 'rtl'
-                && <Styled.ArrowRight iconName="right_arrow" />}
+              {/*{shouldShowNavBarToggleButton && !isExpanded && document.dir === 'ltr'*/}
+              {/*  && <Styled.ArrowRight iconName="right_arrow" />}*/}
+              {/*{shouldShowNavBarToggleButton && isExpanded && document.dir === 'rtl'*/}
+              {/*  && <Styled.ArrowRight iconName="right_arrow" />}*/}
               {renderPluginItems(leftPluginItems)}
             </Styled.Left>
             <Styled.Center>
