@@ -944,5 +944,8 @@
                 width: 100%;
             }
         }
+        .modal-title{
+            padding: 0px !important;
+        }
     }
 }

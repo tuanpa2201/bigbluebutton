@@ -7,6 +7,7 @@ import React, {
 import useMeeting from '/imports/ui/core/hooks/useMeeting';
 import deviceInfo, { isMobile } from '/imports/utils/deviceInfo';
 import { defineMessages, useIntl } from 'react-intl';
+import classNames from 'classnames';
 import {
   GET_MEETING_RECORDING_DATA,
   GET_MEETING_RECORDING_POLICIES,
@@ -203,7 +204,10 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
       }}
     >
       {recordingIndicatorIcon}
-      <Styled.PresentationTitle>
+      <Styled.PresentationTitle className={classNames({
+        'md-hidden': !recording,
+      })}
+      >
         <Styled.VisuallyHidden id="recording-description">
           {`${title} ${recording ? humanizeSeconds(time) : ''}`}
         </Styled.VisuallyHidden>

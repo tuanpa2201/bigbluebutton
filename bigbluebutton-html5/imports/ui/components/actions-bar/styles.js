@@ -71,6 +71,9 @@ const Right = styled.div`
       margin: 0 ${smPaddingY};
     }
   }
+  @media (max-width: 767px) {
+    display: none !important;
+  }
 `;
 
 const RaiseHandButton = styled(Button)`
