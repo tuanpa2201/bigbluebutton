@@ -7,6 +7,7 @@ const phoneLandscape = 'only screen and (max-width: 480px) and (orientation: lan
 const largeUp = 'only screen and (min-width: 64.063em)';
 const hasPhoneDimentions = 'only screen and (max-height: 479px), only screen and (max-width: 479px)';
 const hasPhoneWidth = 'only screen and (max-width: 479px)';
+const phoneOnly = 'only screen and (max-width: 767px)';
 
 export {
   smallOnly,
@@ -18,4 +19,5 @@ export {
   hasPhoneDimentions,
   mediumDown,
   hasPhoneWidth,
+  phoneOnly,
 };
