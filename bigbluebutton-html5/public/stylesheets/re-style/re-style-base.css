@@ -289,6 +289,9 @@
     .xs-gap-12 {
         gap: 12px !important;
     }
+    .xs-flex-column {
+        flex-flow: column !important;
+    }
 }
 
 /* BORDER */

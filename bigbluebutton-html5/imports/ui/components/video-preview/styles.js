@@ -5,7 +5,6 @@ import {
   borderSizeLarge,
   mdPaddingX,
   titlePositionLeft,
-  lgPaddingY,
 } from '/imports/ui/stylesheets/styled-components/general';
 import {
   colorGrayLabel,
@@ -84,10 +83,6 @@ const InternCol = styled.div`
   justify-content: center;
   margin: 0 0.5rem 0 0.5rem;
   gap: 4px;
-  
-  @media ${smallOnly} {
-    width: 90%;
-  }
 `;
 
 const ContentCol = styled.div`
@@ -346,7 +341,7 @@ const Header = styled.div`
   padding: 0;
   border: none;
   line-height: ${titlePositionLeft};
-  margin-bottom: ${lgPaddingY};
+  margin-bottom: 8px;
 `;
 
 const WebcamTabs = styled(Tabs)`
