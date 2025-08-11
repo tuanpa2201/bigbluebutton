@@ -299,7 +299,7 @@ class BBBMenu extends React.Component {
           $isHorizontal={isHorizontal}
           PaperProps={{
             style: hasRoundedCorners ? roundedCornersStyles : {},
-            className: overrideMobileStyles ? '' : 'MuiPaper-root-mobile',
+            // className: overrideMobileStyles ? '' : 'MuiPaper-root-mobile',
           }}
         >
           {actionsItems}
