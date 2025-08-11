@@ -64,11 +64,11 @@ const ScrollableList = styled(ScrollboxVertical)`
 `;
 
 const List = styled.div`
-  margin: 0 0 1px ${mdPaddingY};
+  // margin: 0 0 1px ${mdPaddingY};
 
-  [dir="rtl"] & {
-    margin: 0 ${mdPaddingY} 1px 0;
-  }
+  // [dir="rtl"] & {
+  //   margin: 0 ${mdPaddingY} 1px 0;
+  // }
 `;
 
 const ListItem = styled(Styled.ListItem)`

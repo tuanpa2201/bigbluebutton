@@ -47,7 +47,7 @@ class UserContent extends PureComponent {
     return (
       <Styled.Content data-test="userListContent" className="userListContent">
         {isMobile || (isMobile && isPortrait) ? (
-          <Styled.ScrollableList role="tabpanel" tabIndex={0}>
+          <Styled.ScrollableList role="tabpanel" tabIndex={0} style={{ height: '100%', background: 'unset' }}>
             <Styled.List>
               {/*{isChatEnabled ? <ChatList /> : null}*/}
               {/*<UserNotesContainer />*/}

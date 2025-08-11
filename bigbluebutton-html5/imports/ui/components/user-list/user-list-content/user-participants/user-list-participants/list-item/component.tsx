@@ -258,6 +258,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
       className="user-list-item"
     >
       <Styled.Avatar
+        style={{ marginLeft: '2px' }}
         data-test={user.isModerator ? 'moderatorAvatar' : 'viewerAvatar'}
         data-test-presenter={user.presenter ? '' : undefined}
         data-test-avatar="userAvatar"

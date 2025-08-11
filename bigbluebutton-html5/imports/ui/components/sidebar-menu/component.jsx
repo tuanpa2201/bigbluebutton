@@ -31,7 +31,7 @@ const Sidebar = styled.div`
   }
 
   @media (max-width: 1024px) {
-    padding: 8px 16px 20px 8px;
+    padding: 8px;
     align-items: flex-start;
     .menu-title {
       font-size: 16px;
@@ -40,9 +40,9 @@ const Sidebar = styled.div`
     }
   }
 
-  @media (max-width: 430px) {
-    padding: 8px;
-  }
+  // @media (max-width: 430px) {
+  //   padding: 8px;
+  // }
 `;
 
 const MenuItem = styled.div`

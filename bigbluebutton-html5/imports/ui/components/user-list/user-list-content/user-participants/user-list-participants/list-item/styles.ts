@@ -338,7 +338,7 @@ const UserNameContainer = styled.div`
   margin: 0 0 0 ${smPaddingX};
   justify-content: center;
   font-size: 90%;
-  max-width: 70%;
+  // max-width: 70%;
 
   [dir="rtl"]  & {
     margin: 0 ${smPaddingX} 0 0;
@@ -412,7 +412,9 @@ const RightBlockIconsContainer = styled.div<RightBlockIconsProps>`
   gap: 5px;
   color: ${colorWhite};
   ${({isSelected}) => isSelected && `
-    display: none;
+    @media (min-width: 1025px) {
+      display: none;
+    }
   `}
   ${({voice}) => voice && `
     & .talking {
@@ -685,22 +687,36 @@ const RightIconMoreContainer = styled.div<RightIconMorePops>`
   color: ${colorBlack} !important;
   font-size: 110%;
   text-transform: capitalize;
-  display: none;
+  display: flex;
+  @media (min-width: 1025px) {
+    display: none;
+  }
   justify-content: center;
   align-items:center;
   background-color: transparent;
   transition: de;
-  top: 6px;
+  height: 36px;
   ${({isSelected}) => isSelected && `
     display: flex;
   `}
+  i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 
 const UserItemContents = styled.div<UserItemContentsProps>`
   position: static;
-  padding: .45rem 0;
+  padding: .45rem 0 !important;
+  border-radius: 5px 0px 0px 5px !important;
   width: 100%;
+  border-width: 3px 1px 3px 1px !important;
+  border-style: solid !important;
+  border-color: transparent !important;
   
   ${({selected}) => selected && `
     background-color: ${listItemBgHover};
@@ -715,10 +731,10 @@ const UserItemContents = styled.div<UserItemContentsProps>`
   ${({isActionsOpen}) => !isActionsOpen && `
     display: flex;
     flex-flow: row;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+    // border-top-left-radius: 5px;
+    // border-bottom-left-radius: 5px;
+    // border-top-right-radius: 0;
+    // border-bottom-right-radius: 0;
     cursor: pointer;
 
     [dir="rtl"] & {
@@ -748,14 +764,17 @@ const UserItemContents = styled.div<UserItemContentsProps>`
     }
     flex-flow: column;
     flex-shrink: 0;
-    & .${RightBlockIconsContainer}
-    {
-      display: flex;
-    }
-  
-    & .${RightIconMoreContainer}
-    {
-      display: none;
+
+    @media (min-width: 1025px) {
+      & .${RightBlockIconsContainer}
+      {
+        display: flex;
+      }
+    
+      & .${RightIconMoreContainer}
+      {
+        display: none;
+      }
     }
   `}
 
@@ -772,34 +791,38 @@ const UserItemContents = styled.div<UserItemContentsProps>`
       outline-style: solid;
       outline-color: transparent !important;
     }
-    & .${RightBlockIconsContainer}
-    {
-      display: none;
-    }
-  
-    & .${RightIconMoreContainer}
-    {
-      display: flex;
+    @media (min-width: 1025px) {
+      & .${RightBlockIconsContainer}
+      {
+        display: none;
+      }
+    
+      & .${RightIconMoreContainer}
+      {
+        display: flex;
+      }
     }
   `}
 
   flex-grow: 0;
   display: flex;
   flex-flow: row;
-  border: 3px solid transparent;
+  // border: 2px solid transparent !important;
 
   [dir="rtl"] & {
     padding: ${lgPaddingY} ${lgPaddingY} ${lgPaddingY} 0;
   }
 
-  &:hover ${RightBlockIconsContainer}
-  {
-    display: none;
-  }
+  @media (min-width: 1025px) {
+    &:hover ${RightBlockIconsContainer}
+    {
+      display: none;
+    }
 
-  &:hover ${RightIconMoreContainer}
-  {
-    display: flex;
+    &:hover ${RightIconMoreContainer}
+    {
+      display: flex;
+    }
   }
 `;
 
