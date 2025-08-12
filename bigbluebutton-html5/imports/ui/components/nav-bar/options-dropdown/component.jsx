@@ -32,6 +32,10 @@ const intlMessages = defineMessages({
     id: 'app.navBar.optionsDropdown.settingsLabel',
     description: 'Open settings option label',
   },
+  raiseLabel: {
+    id: 'app.actionsBar.reactions.raiseHand',
+    description: 'Raise option label',
+  },
   aboutLabel: {
     id: 'app.navBar.optionsDropdown.aboutLabel',
     description: 'About option label',
@@ -139,6 +143,11 @@ const propTypes = {
     type: PropTypes.string,
   })).isRequired,
   userLeaveMeeting: PropTypes.func.isRequired,
+  setRaiseHand: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape({
+    userId: PropTypes.string,
+    raiseHand: PropTypes.bool,
+  }),
 };
 
 const defaultProps = {
@@ -267,7 +276,8 @@ class OptionsDropdown extends PureComponent {
     const {
       intl, amIModerator, isBreakoutRoom, isMeteorConnected, audioCaptionsEnabled,
       audioCaptionsActive, audioCaptionsSet, isMobile, optionsDropdownItems,
-      isDirectLeaveButtonEnabled, isLayoutsEnabled, away, handleToggleAFK,
+      isDirectLeaveButtonEnabled, isLayoutsEnabled, away, handleToggleAFK, setRaiseHand,
+      currentUser,
     } = this.props;
 
     const { isIos } = deviceInfo;
@@ -293,6 +303,26 @@ class OptionsDropdown extends PureComponent {
       ? intl.formatMessage(intlMessages.awayLabel)
       : intl.formatMessage(intlMessages.availableLabel));
     const BBB_TABLET_APP_CONFIG = window.meetingClientSettings.public.app.bbbTabletApp;
+
+    const { isPhone } = deviceInfo;
+    if (isPhone) {
+      this.menuItems.push(
+        {
+          key: 'list-item-raise',
+          svgIcon: 'raise',
+          dataTest: 'raised',
+          label: intl.formatMessage(intlMessages.raiseLabel),
+          description: intl.formatMessage(intlMessages.raiseLabel),
+          onClick: () => setRaiseHand({
+            variables: {
+              userId: currentUser.userId,
+              raiseHand: !currentUser.raiseHand,
+            },
+          }),
+        },
+      );
+    }
+
     this.menuItems.push(
       {
         key: 'list-item-about',
@@ -496,7 +526,6 @@ class OptionsDropdown extends PureComponent {
       intl,
       shortcuts: OPEN_OPTIONS_AK,
       isDropdownOpen,
-      isMobile,
       isRTL,
     } = this.props;
 
@@ -505,13 +534,11 @@ class OptionsDropdown extends PureComponent {
       isEndMeetingConfirmationModalOpen, isMobileAppModalOpen, isLayoutModalOpen,
     } = this.state;
 
-    const customStyles = { top: '-3rem', left: '-8rem' };
 
     return (
       <>
         <BBBMenu
           accessKey={OPEN_OPTIONS_AK}
-          customStyles={!isMobile ? customStyles : null}
           trigger={(
             <Styled.DropdownButton
               state={isDropdownOpen ? 'open' : 'closed'}
