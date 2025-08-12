@@ -115,9 +115,9 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
         priority,
         anchorElement,
       }}
-      className="modal-session-details"
+      className="modal-session-details model-custom-mobile"
     >
-      <Styled.Chevron />
+      <Styled.Chevron className="xs-hidden" />
       <Styled.Container
         isFullWidth={isMobile || !(loginUrl || (formattedDialNum && formattedTelVoice))}
       >

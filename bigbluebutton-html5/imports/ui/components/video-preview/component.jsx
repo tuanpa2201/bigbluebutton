@@ -1188,14 +1188,14 @@ class VideoPreview extends Component {
       case VIEW_STATES.error:
         return (
           <Styled.Content>
-            <div className="font-regular-s text-secondary text-secondary-dark m-auto mt-32 mb-32">{deviceError}</div>
+            <div className="font-regular-s text-secondary text-secondary-dark m-auto">{deviceError}</div>
           </Styled.Content>
         );
       case VIEW_STATES.found:
       default:
         return (
-          <div className={cameraAsContent ? '' : 'd-flex align-items-start justify-content-between gap-20'}>
-            <div className={cameraAsContent ? 'video-preview-wrapper' : 'w-50'}>
+          <div className={cameraAsContent ? '' : 'd-flex align-items-start justify-content-between gap-20 xs-flex-column'}>
+            <div className={cameraAsContent ? 'video-preview-wrapper' : 'w-50 xs-w-100'}>
               {
                 previewError
                   ? (
@@ -1215,7 +1215,7 @@ class VideoPreview extends Component {
                   )
               }
             </div>
-            <div className={cameraAsContent ? '' : 'w-50'}>
+            <div className={cameraAsContent ? '' : 'w-50 xs-w-100'}>
               {this.renderTabsContent(selectedTab)}
             </div>
           </div>
@@ -1291,7 +1291,7 @@ class VideoPreview extends Component {
                 {!shared && camCapReached ? (
                   <span>{intl.formatMessage(intlMessages.camCapReached)}</span>
                 ) : (
-                  <div style={{ display: 'flex', gap: '8px' }}>
+                  <div className='footer-model-custom-mobile xs-w-100 xs-gap-12' style={{ display: 'flex', gap: '8px' }}>
                       <Styled.CancelButton
                         className="btn btn-default m-0-i"
                         data-test="cancelSharingWebcam"
@@ -1367,7 +1367,7 @@ class VideoPreview extends Component {
 
     return (
       <Styled.VideoPreviewModal
-        className={cameraAsContent ? 'video-preview-modal camera-as-content' : 'video-preview-modal'}
+        className={cameraAsContent ? 'video-preview-modal camera-as-content model-custom-mobile' : 'video-preview-modal model-custom-mobile'}
         onRequestClose={this.handleProceed}
         contentLabel={intl.formatMessage(intlMessages.webcamSettingsTitle)}
         title={intl.formatMessage(intlMessages.webcamSettingsTitle)}

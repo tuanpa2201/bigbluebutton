@@ -551,7 +551,7 @@ class ConnectionStatusComponent extends PureComponent {
         contentLabel={intl.formatMessage(intlMessages.ariaTitle)}
         data-test="connectionStatusModal"
         title={intl.formatMessage(intlMessages.title)}
-        className="modal-connection-status"
+        className="modal-connection-status model-custom-mobile"
       >
         <Styled.Container>
           <Styled.ConnectionTabs

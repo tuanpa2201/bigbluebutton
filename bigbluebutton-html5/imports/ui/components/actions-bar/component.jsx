@@ -158,6 +158,7 @@ class ActionsBar extends PureComponent {
       'bbb_direct_leave_button',
       PUBLIC_CONFIG.app.defaultSettings.application.directLeaveButton,
     );
+
     return (
       <Styled.ActionsBarWrapper
         id="ActionsBar"
@@ -210,10 +211,12 @@ class ActionsBar extends PureComponent {
           </Styled.Left>
           <Styled.Center className="actions-bar-center">
             <Styled.CenterPadding>
-              <RecordingIndicator
-                amIModerator={amIModerator}
-                currentUserId={currentUserId}
-              />
+              <div className="xs-hidden">
+                <RecordingIndicator
+                  amIModerator={amIModerator}
+                  currentUserId={currentUserId}
+                />
+              </div>
               {this.renderPluginsActionBarItems(ActionsBarPosition.LEFT)}
               <AudioCaptionsButtonContainer />
               <AudioControlsContainer />
@@ -230,7 +233,9 @@ class ActionsBar extends PureComponent {
                 />
               )}
               {isReactionsButtonEnabled && this.renderReactionsButton()}
-              <RaiseHandButtonContainer />
+              <div className="xs-hidden">
+                <RaiseHandButtonContainer />
+              </div>
               <OptionsDropdownContainer
                 amIModerator={amIModerator}
                 isDirectLeaveButtonEnabled={IS_DIRECT_LEAVE_BUTTON_ENABLED}

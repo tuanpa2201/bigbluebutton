@@ -269,6 +269,31 @@
     margin-left: 4px;
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+    .md-pt-24 {
+        padding-top: 24px !important;
+    }
+    .md-hidden{
+        display: none !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .xs-hidden {
+        display: none !important;
+    }
+    .xs-w-100 {
+        width: 100% !important;
+    }
+
+    .xs-gap-12 {
+        gap: 12px !important;
+    }
+    .xs-flex-column {
+        flex-flow: column !important;
+    }
+}
+
 /* BORDER */
 .border-separator {
     border-top: 1px solid var(--border-00-light, #EFEFEF);

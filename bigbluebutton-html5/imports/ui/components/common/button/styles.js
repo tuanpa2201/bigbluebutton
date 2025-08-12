@@ -349,10 +349,10 @@ const ButtonWrapper = styled(BaseButton)`
     animation: spin 1.5s ease infinite;
   }
 
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: 767px) {
 
     &::after {
-      height: 50px;
+      height: 40px;
       border-radius: 50%;
       position: absolute;
       line-height: 90px;
@@ -361,7 +361,7 @@ const ButtonWrapper = styled(BaseButton)`
       top: 0;
       left: -0.5px;
       right: 0;
-      width: 49px;
+      width: 40px;
     }
   }
 

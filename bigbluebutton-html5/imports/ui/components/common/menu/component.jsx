@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
-import {Divider} from '@mui/material';
+import { Divider } from '@mui/material';
 import Icon from '/imports/ui/components/common/icon/component';
-import { SMALL_VIEWPORT_BREAKPOINT } from '/imports/ui/components/layout/enums';
 import KEY_CODES from '/imports/utils/keyCodes';
 import MenuSkeleton from './skeleton';
 import GenericContentItem from '/imports/ui/components/generic-content/generic-content-item/component';
 import Styled from './styles';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import deviceInfo from '/imports/utils/deviceInfo';
 
 const intlMessages = defineMessages({
   close: {
@@ -105,6 +105,20 @@ class BBBMenu extends React.Component {
     const {
       actions, selectedEmoji, intl, isHorizontal, isEmoji, isMobile, roundButtons, keepOpen,
     } = this.props;
+
+    const { isPhone } = deviceInfo;
+    if (isPhone && !actions?.find((item) => item.key === 'list-item-close')) {
+      actions.push(
+        {
+          key: 'list-item-close',
+          svgIcon: 'remove',
+          dataTest: 'close',
+          label: intl.formatMessage(intlMessages.close),
+          description: intl.formatMessage(intlMessages.close),
+          onClick: () => {},
+        },
+      );
+    }
 
     return actions?.map((a) => {
       const {
@@ -290,7 +304,7 @@ class BBBMenu extends React.Component {
         >
           {actionsItems}
           {renderOtherComponents}
-          {!overrideMobileStyles && anchorEl && window.innerWidth < SMALL_VIEWPORT_BREAKPOINT
+          {/* {!overrideMobileStyles && anchorEl && window.innerWidth < SMALL_VIEWPORT_BREAKPOINT
             && (
             <Styled.CloseButton
               label={intl.formatMessage(intlMessages.close)}
@@ -298,7 +312,7 @@ class BBBMenu extends React.Component {
               color="default"
               onClick={this.handleClose}
             />
-            )}
+            )} */}
         </Styled.MenuWrapper>
       </>
     );

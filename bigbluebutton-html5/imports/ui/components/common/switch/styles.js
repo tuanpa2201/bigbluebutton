@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { borderSize } from '/imports/ui/stylesheets/styled-components/general';
 import { colorDanger, colorSuccess } from '/imports/ui/stylesheets/styled-components/palette';
+import { phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const Switch = styled.div`
   &:hover,
@@ -75,6 +76,10 @@ const ToggleTrack = styled.div`
   ${({ invertColors, checked }) => invertColors && checked && `
     background-color: ${colorDanger} !important;
   `}
+  @media ${phoneOnly} {
+    width: 40px;
+    height: 25px;
+  }
 
 `;
 
@@ -133,34 +138,50 @@ const ToggleThumb = styled.div`
   //background-color: #FAFAFA;
   box-sizing: border-box;
   //box-shadow: 2px 0px 10px -1px rgba(0,0,0,0.4);
-  
+
   top: 2px;
   width: 16px;
   height: 16px;
-  background: #FFFFFF;
-  box-shadow: 0px 0px 2px -1px rgba(0, 0, 0, 0.35), inset 0px -1px 1px rgba(0, 0, 0, 0.03);
+  background: #ffffff;
+  box-shadow:
+    0px 0px 2px -1px rgba(0, 0, 0, 0.35),
+    inset 0px -1px 1px rgba(0, 0, 0, 0.03);
   border-radius: 5px;
 
-  
-  ${({ animations }) => animations && `
+  ${({ animations }) => animations
+    && `
     transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   `}
 
-  ${({ checked }) => checked && css`
-    left: ${({ isRTL }) => (isRTL ? '2px' : 'calc(100% - 16px - 2px)')};
-    //box-shadow: -2px 0px 10px -1px rgba(0,0,0,0.4);
-    box-shadow: 0px 1px 2px rgba(240, 65, 87, 0.35), inset 0px -2px 1px rgba(0, 0, 0, 0.1);
-  `}
+  ${({ checked }) => checked
+    && css`
+      left: ${({ isRTL }) => (isRTL ? '2px' : 'calc(100% - 16px - 2px)')};
+      //box-shadow: -2px 0px 10px -1px rgba(0,0,0,0.4);
+      box-shadow:
+        0px 1px 2px rgba(240, 65, 87, 0.35),
+        inset 0px -2px 1px rgba(0, 0, 0, 0.1);
+    `}
 
-  ${({ hasFocus }) => hasFocus && `
+  ${({ hasFocus }) => hasFocus
+    && `
     // box-shadow: 0px 0px 2px 3px #0F70D7;
   `}
 
-  ${({ disabled }) => !disabled && `
+  ${({ disabled }) => !disabled
+    && `
     &:active{
       // box-shadow: 0px 0px 5px 5px #0F70D7;
     }
   `}
+
+  @media ${phoneOnly} {
+    width: 20px;
+    height: 20px;
+    ${({ checked }) => checked
+      && css`
+        left: ${({ isRTL }) => (isRTL ? '2px' : 'calc(100% - 16px - 6px)')};
+      `}
+  }
 `;
 
 const ScreenreaderInput = styled.input`

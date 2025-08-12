@@ -19,11 +19,12 @@ const GlobalStyle = createGlobalStyle`
       top: 0 !important;
     }
     .MuiPaper-root-mobile {
-      top: 0 !important;
+      top: unset !important;
       left: 0 !important;
       bottom: 0 !important;
       right: 0 !important;
       max-width: none !important;
+      padding: 16px !important;
     }
     .MuiPaper-root {
       width: 100%;

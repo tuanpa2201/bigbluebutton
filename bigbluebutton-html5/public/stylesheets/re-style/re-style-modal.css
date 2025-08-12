@@ -22,6 +22,16 @@
                 color: var(--text-secondary-dark, #C5C9CD);
             }
         }
+
+        @media (max-width: 767px) {
+            height: 48px !important;
+            padding-top: 12px;
+            padding-bottom: 12px;
+
+            & .modal-title {
+                line-height: 24px !important;
+            }
+        }
     }
 
     & .simple-modal-content {
@@ -200,7 +210,6 @@
             & .webcam-tab-item {
                 width: 50%;
                 display: flex;
-                height: 28px;
                 padding: var(--p-space-150) var(--p-space-300);
                 justify-content: center;
                 align-items: center;
@@ -220,6 +229,15 @@
                     [data-darkreader-scheme="dark"] & {
                         color: var(--text-primary-dark, #FCFCFD);
                     }
+
+                    @media (min-width: 768px) and (max-width: 1024px) {
+                        font-size: 16px !important;
+                        line-height: 24px;
+                    }
+                    @media (max-width: 767px) {
+                        font-size: 14px !important;
+                        line-height: 20px !important;
+                    }
                 }
 
                 &.is-selected {
@@ -231,6 +249,13 @@
                     & span {
                         font-weight: 600!important;
                     }
+                }
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    padding: 8px 12px;
+                }
+                @media (max-width: 767px) {
+                    padding: 16px 12px;
                 }
             }
         }
@@ -896,6 +921,31 @@
             & .btn-primary {
                 margin: 0 0 0 8px;
             }
+        }
+    }
+}
+
+
+@media (max-width: 767px) {
+    .modalOverlay {
+        &:has(.model-custom-mobile) {
+            align-items: end;
+        }
+    }
+
+    .model-custom-mobile {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        border-bottom-left-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        .footer-model-custom-mobile{
+            gap: 4px;
+            button {
+                width: 100%;
+            }
+        }
+        .modal-title{
+            padding: 0px !important;
         }
     }
 }

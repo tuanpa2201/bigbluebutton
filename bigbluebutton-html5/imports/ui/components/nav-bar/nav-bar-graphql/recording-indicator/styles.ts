@@ -107,6 +107,19 @@ const RecordingControl = styled.button<RecordingIndicatorProps>`
     cursor: not-allowed;
     opacity: .5;
   `}
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    min-width: 56px;
+    height: 56px;
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+    span {
+      min-width: 24px;
+      height: 24px;
+    }
+  }
 `;
 
 const PresentationTitle = styled.div`

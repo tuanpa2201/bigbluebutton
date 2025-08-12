@@ -5,7 +5,7 @@ import OptionsDropdown from './component';
 import FullscreenService from '/imports/ui/components/common/fullscreen-button/service';
 import { layoutSelect } from '../../layout/context';
 import { PluginsContext } from '/imports/ui/components/components-data/plugin-context/context';
-import { USER_LEAVE_MEETING } from '/imports/ui/core/graphql/mutations/userMutations';
+import { USER_LEAVE_MEETING, SET_RAISE_HAND } from '/imports/ui/core/graphql/mutations/userMutations';
 import { useMutation } from '@apollo/client';
 import useMeeting from '/imports/ui/core/hooks/useMeeting';
 import { useShortcut } from '/imports/ui/core/hooks/useShortcut';
@@ -47,6 +47,7 @@ const OptionsDropdownContainer = (props) => {
 
   const { data: currentUserData } = useCurrentUser((user) => ({
     away: user.away,
+    raiseHand: user.raiseHand,
   }));
   const voiceToggle = useToggleVoice();
   const { data: unmutedUsers } = useWhoIsUnmuted();
@@ -74,6 +75,13 @@ const OptionsDropdownContainer = (props) => {
   const isDropdownOpen = useStorageKey('dropdownOpen');
   const isLayoutsEnabled = useIsLayoutsEnabled();
 
+  const [setRaiseHand] = useMutation(SET_RAISE_HAND);
+
+  const currentUser = {
+    userId: Auth.userID,
+    raiseHand: currentUserData?.raiseHand,
+  };
+
   return (
     <OptionsDropdown {...{
       isRTL,
@@ -93,6 +101,8 @@ const OptionsDropdownContainer = (props) => {
       isLayoutsEnabled,
       away,
       handleToggleAFK,
+      setRaiseHand,
+      currentUser,
       ...props,
     }}
     />

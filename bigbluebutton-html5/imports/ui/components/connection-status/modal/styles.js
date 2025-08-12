@@ -20,6 +20,7 @@ import {
   mediumDown,
   hasPhoneWidth,
   smallOnly,
+  phoneOnly,
 } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import {
   ScrollboxVertical,
@@ -45,6 +46,7 @@ const Left = styled.div`
   width: 100%;
   height: 100%;
   align-items: center;
+  max-width: calc(100vw - 6em);
 `;
 
 const Name = styled.div`
@@ -54,8 +56,8 @@ const Name = styled.div`
   align-items: center;
   justify-content: flex-start;
 
-  @media ${hasPhoneDimentions} {
-    width: 100%;
+  @media ${phoneOnly} {
+    width: 40%;
   }
 `;
 
@@ -96,9 +98,6 @@ const Text = styled.div`
 
 const Text2 = styled.div`
   margin-top: 12px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   color: #313131;
   font-weight: 400;
 
@@ -109,6 +108,12 @@ const Text2 = styled.div`
   [dir="rtl"] & {
     padding: 0;
     padding-right: 10px;
+  }
+
+  @media ${phoneOnly} {
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 8px;
   }
 `;
 
@@ -170,7 +175,7 @@ const NetworkDataContainer = styled(ScrollboxVertical)`
     }
   }
 
-  @media ${mediumDown} {
+  @media ${phoneOnly} {
     justify-content: space-between;
   }
 `;
@@ -209,7 +214,6 @@ const CopyContainer = styled.div`
 const ConnectionStatusModal = styled(ModalSimple)`
   padding: 0px;
   min-height: 300px;
-  border-radius: 12px !important;
 `;
 
 const Container = styled.div`
@@ -275,7 +279,7 @@ const HelperWrapper = styled.div`
   min-width: 12.5rem;
   height: 100%;
 
-  @media ${mediumDown} {
+  @media ${phoneOnly} {
     flex: none;
     width: 100%;
     scroll-snap-align: start;
@@ -294,15 +298,20 @@ const Helper = styled.div`
   justify-content: center;
   align-items: center;
   padding: .5rem;
+
+  @media ${phoneOnly} {
+    width: 160px;
+    height: 160px;
+  }
 `;
 
 const NetworkDataContent = styled.div`
   margin: 0;
   display: flex;
-  gap: 48px;
+  gap: 0px 48px;
   flex-grow: 1;
 
-  @media ${mediumDown} {
+  @media ${phoneOnly} {
     flex: none;
     width: 100%;
     scroll-snap-align: start;
@@ -316,6 +325,9 @@ const DataColumn = styled.div`
 
   @media ${hasPhoneWidth} {
     flex-grow: 1;
+  }
+  @media (max-width: 767px) {
+    width: 100%
   }
 `;
 
@@ -339,11 +351,11 @@ const ConnectionTabList = styled(TabList)`
   padding: 0;
   width: calc(100% / 3);
 
-  @media ${smallOnly} {
+  @media ${phoneOnly} {
     width: 100%;
-    flex-flow: row;
-    flex-wrap: wrap;
     justify-content: center;
+    margin-bottom: 24px;
+    gap: 12px;
   }
 `;
 
@@ -367,8 +379,6 @@ const ConnectionTabPanel = styled(TabPanel)`
   @media ${smallOnly} {
     width: 100%;
     margin: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 `;
 
@@ -395,16 +405,19 @@ const ConnectionTabSelector = styled(Tab)`
     text-overflow: ellipsis;
   }
 
-  @media ${smallOnly} {
+  @media ${phoneOnly} {
     max-width: 100%;
-    margin: 0 ${smPaddingX} 0 0;
+    gap: 12px !important;
     & > i {
       display: none;
     }
 
     [dir="rtl"] & {
-       margin: 0 0 0 ${smPaddingX};
+       margin: 0 0 0 12px;
     }
+    padding: 12px;
+    font-size: 14px;
+
   }
 
   color: #313131 !important;

@@ -8,9 +8,7 @@ import {
   jumboPaddingX,
   jumboPaddingY,
 } from '/imports/ui/stylesheets/styled-components/general';
-import {
-  colorGrayLightest,
-} from '/imports/ui/stylesheets/styled-components/palette';
+import { colorGrayLightest } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   lineHeightComputed,
   fontSizeSmall,
@@ -39,6 +37,14 @@ const AudioNote = styled.div`
   @media ${smallOnly} {
     font-size: ${fontSizeSmall};
   }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    margin: 0 0 12px !important;
+  }
+
+  @media (max-width: 767px) {
+    margin: 0 0 12px !important;
+  }
 `;
 
 const FormElement = styled.div`
@@ -46,6 +52,18 @@ const FormElement = styled.div`
   display: flex;
   flex-flow: column;
   flex-grow: 1;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    &.pb-20 {
+      padding-bottom: 12px !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &.pb-20 {
+      padding-bottom: 12px !important;
+    }
+  }
 `;
 
 const LabelSmall = styled.label`
@@ -103,9 +121,10 @@ const FetchingAnimation = styled.span`
     width: 0;
     margin-left: 0.25em;
 
-    ${({ animations }) => animations && css`
-      animation: ${ellipsis} steps(4, end) 900ms infinite;
-    `}
+    ${({ animations }) => animations
+      && css`
+        animation: ${ellipsis} steps(4, end) 900ms infinite;
+      `}
   }
 `;
 
@@ -114,8 +133,8 @@ const BottomSeparator = styled.div`
   width: inherit;
   height: ${borderSizeSmall};
   background-color: ${colorGrayLightest};
-  margin: calc(${lineHeightComputed} * 1.25) ${mdPaddingX} calc(${lineHeightComputed} * 1.25) ${mdPaddingX};
-
+  margin: calc(${lineHeightComputed} * 1.25) ${mdPaddingX}
+    calc(${lineHeightComputed} * 1.25) ${mdPaddingX};
 `;
 
 export default {

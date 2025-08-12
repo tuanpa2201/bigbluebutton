@@ -10,7 +10,7 @@ import {
   fontSizeLarge,
   headingsFontWeight,
 } from '/imports/ui/stylesheets/styled-components/typography';
-import { mediumUp } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { mediumUp, phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import Menu from '@mui/material/Menu';
 
 const MenuWrapper = styled(Menu)`
@@ -45,6 +45,12 @@ const MenuItemWrapper = styled.div`
   ${({ hasSpaceBetween }) => hasSpaceBetween && `
     justify-content: space-between;
   `}
+  @media ${phoneOnly} {
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 `;
 
 const TitleAction = styled(Button)`
@@ -62,6 +68,9 @@ const Option = styled.div`
   ${({ hasIcon }) => hasIcon && `
     margin-left: 8px;
     margin-right: 0px;
+    @media ${phoneOnly} {
+      margin-left: 16px;
+    }
   `}
   white-space: normal;
   overflow-wrap: anywhere;

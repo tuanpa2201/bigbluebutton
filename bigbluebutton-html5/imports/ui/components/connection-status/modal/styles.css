@@ -1,7 +1,13 @@
 .modal-connection-status {
-  border-radius: 12px !important;
   background-color: #FFF;
   width: 632px;
+
+  @media (max-width: 767px) {
+    .network-data-container{
+      flex-flow: column;
+    }
+  }
+
 }
 
 .modal-connection-status .modal-header {
