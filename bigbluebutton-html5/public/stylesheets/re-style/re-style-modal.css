@@ -824,7 +824,9 @@
             justify-content: flex-end;
             gap: 8px;
             align-items: center;
-            width: 500px;
+            @media (min-width: 1025px) {
+                width: 500px;
+            }
             [data-darkreader-scheme="dark"] & {
                 border-top: 1px solid var(--border-00-dark, #4E5358);
             }
