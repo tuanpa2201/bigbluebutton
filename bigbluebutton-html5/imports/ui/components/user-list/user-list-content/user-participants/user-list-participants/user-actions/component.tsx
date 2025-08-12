@@ -654,6 +654,7 @@ const UserActions: React.FC<UserActionsProps> = ({
         }}
         open={open}
         customStyles={isSmallScreen ? { marginTop: '52px' } : undefined}
+        overrideMobileStyles={true}
       />
       {isConfirmationModalOpen ? (
         <ConfirmationModal
