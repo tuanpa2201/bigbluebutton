@@ -688,6 +688,16 @@ const RightIconMoreContainer = styled.div<RightIconMorePops>`
   font-size: 110%;
   text-transform: capitalize;
   display: flex;
+  // Hide if current user
+  &.current-user {
+    display: none !important;
+  }
+
+  // Show if not-presenter, even if current-user
+  &.current-user.not-presenter {
+    display: flex !important;
+  }
+
   @media (min-width: 1025px) {
     display: none;
   }

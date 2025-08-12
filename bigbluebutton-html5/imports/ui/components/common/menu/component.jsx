@@ -9,6 +9,7 @@ import GenericContentItem from '/imports/ui/components/generic-content/generic-c
 import Styled from './styles';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 import deviceInfo from '/imports/utils/deviceInfo';
+import { SMALL_VIEWPORT_BREAKPOINT } from '/imports/ui/components/layout/enums';
 
 const intlMessages = defineMessages({
   close: {
@@ -304,7 +305,7 @@ class BBBMenu extends React.Component {
         >
           {actionsItems}
           {renderOtherComponents}
-          {!overrideMobileStyles && anchorEl && window.innerWidth < SMALL_VIEWPORT_BREAKPOINT
+          {/* {!overrideMobileStyles && anchorEl && window.innerWidth < SMALL_VIEWPORT_BREAKPOINT
             && (
             <Styled.CloseButton
               label={intl.formatMessage(intlMessages.close)}
@@ -312,7 +313,7 @@ class BBBMenu extends React.Component {
               color="default"
               onClick={this.handleClose}
             />
-            )}
+            )} */}
         </Styled.MenuWrapper>
       </>
     );
