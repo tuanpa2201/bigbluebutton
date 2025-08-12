@@ -27,6 +27,7 @@ import humanizeSeconds from '/imports/utils/humanizeSeconds';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
 import connectionStatus from '/imports/ui/core/graphql/singletons/connectionStatus';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import styled from 'styled-components';
 
 const MAX_HOURS = 23;
 const MILLI_IN_HOUR = 3600000;
@@ -258,7 +259,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
     const TIMER_CONFIG = window.meetingClientSettings.public.timer;
 
     return (
-      <div>
+      <Styled.BottomSection>
         {
           !stopwatch ? (
             <Styled.StopwatchTime>
@@ -350,6 +351,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
               </Styled.TimerTracks>
             </Styled.TimerSongsWrapper>
           ) : null}
+        <div />
         <Styled.TimerControls>
           <Styled.TimerControlButton
             className="btn btn-default"
@@ -378,7 +380,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
             data-test="startStopTimer"
           />
         </Styled.TimerControls>
-      </div>
+      </Styled.BottomSection>
     );
   }, [songTrack, stopwatch, time, running]);
 
@@ -389,12 +391,17 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
     >
       {/* @ts-ignore - JS code */}
       <Styled.TimerHeader data-test="timerHeader">
-        <div aria-label={intl.formatMessage(intlMessages.hideTimerLabel)} className="header-title">
-          {`${intl.formatMessage(intlMessages.timer)}/ ${intl.formatMessage(intlMessages.stopwatch)}`}
+        <div className="header-title-container">
+          <Styled.CloseTimerButtonMobile className="header-icon" onClick={() => closePanel()}>
+            <SvgIcon iconName="chevronLeft" />
+          </Styled.CloseTimerButtonMobile>
+          <div aria-label={intl.formatMessage(intlMessages.hideTimerLabel)} className="header-title">
+            {`${intl.formatMessage(intlMessages.timer)}/ ${intl.formatMessage(intlMessages.stopwatch)}`}
+          </div>
         </div>
-        <Styled.CloseTimerButton className="header-icon" onClick={() => closePanel()}>
+        <Styled.CloseTimerButtonPC className="header-icon" onClick={() => closePanel()}>
           <SvgIcon iconName="cross_20" />
-        </Styled.CloseTimerButton>
+        </Styled.CloseTimerButtonPC>
       </Styled.TimerHeader>
 
       <Styled.TimerContent>

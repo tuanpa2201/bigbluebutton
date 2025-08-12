@@ -31,7 +31,7 @@ const TimerSidebarContent = styled.div`
   transform: translateZ(0);
 `;
 
-const CloseTimerButton = styled.button`
+const CloseTimerButtonPC = styled.button`
     background-color: transparent;
     border: none;
     border-radius: 12px;
@@ -39,7 +39,7 @@ const CloseTimerButton = styled.button`
     color: #2F384C;
     cursor: pointer;
     padding: 6px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     tab-index: 0;
@@ -48,6 +48,28 @@ const CloseTimerButton = styled.button`
     &:hover {
         background-color: ${colorGrayLightest};
     }
+
+    @media (min-width: 1024px) {
+      display: flex !important;
+    }
+`;
+
+const CloseTimerButtonMobile = styled.button`
+  border: none;
+  margin: 12px 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  background: none;
+
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
 `;
 
 
@@ -60,6 +82,17 @@ const TimerHeader = styled.div`
     font-weight: 600;
     line-height: 32px;
     padding: 16px 0px;
+
+    & > .header-title-container {
+      display: flex;
+      align-items: center;
+      flex: 1;
+    }
+
+    @media (max-width: 1024px) {
+      padding: 8px 0;
+      max-height: 64px;
+    }
 `;
 
 const TimerTitle = styled.div`
@@ -289,7 +322,10 @@ const TimerControls = styled.div`
   width: 100%;
   justify-content: center;
   margin-top: 4rem;
-    gap: 8px;
+  gap: 8px;
+  @media (max-width: 1024px) {
+    margin-bottom: 20px;
+  }
 `;
 // @ts-ignore - JS code
 const TimerControlButton = styled(Button)`
@@ -341,6 +377,16 @@ const TimerInput = styled.input`
     
 `;
 
+const BottomSection = styled.div`
+  @media (max-width: 1024px) {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+`;
+
 export default {
   TimerSidebarContent,
   TimerHeader,
@@ -361,5 +407,7 @@ export default {
   TimerControls,
   TimerControlButton,
   TimerInput,
-  CloseTimerButton,
+  CloseTimerButtonPC,
+  CloseTimerButtonMobile,
+  BottomSection,
 };
