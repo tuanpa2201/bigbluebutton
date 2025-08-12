@@ -299,12 +299,12 @@ class BBBMenu extends React.Component {
           $isHorizontal={isHorizontal}
           PaperProps={{
             style: hasRoundedCorners ? roundedCornersStyles : {},
-            // className: overrideMobileStyles ? '' : 'MuiPaper-root-mobile',
+            className: overrideMobileStyles ? '' : 'MuiPaper-root-mobile',
           }}
         >
           {actionsItems}
           {renderOtherComponents}
-          {/* {!overrideMobileStyles && anchorEl && window.innerWidth < SMALL_VIEWPORT_BREAKPOINT
+          {!overrideMobileStyles && anchorEl && window.innerWidth < SMALL_VIEWPORT_BREAKPOINT
             && (
             <Styled.CloseButton
               label={intl.formatMessage(intlMessages.close)}
@@ -312,7 +312,7 @@ class BBBMenu extends React.Component {
               color="default"
               onClick={this.handleClose}
             />
-            )} */}
+            )}
         </Styled.MenuWrapper>
       </>
     );
