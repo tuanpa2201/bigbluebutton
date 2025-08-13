@@ -163,7 +163,7 @@ class LockViewersComponent extends Component {
     const invertColors = true;
 
     return (
-      <Styled.LockViewersModal className="lock-viewer-modal"
+      <Styled.LockViewersModal className="lock-viewer-modal model-custom-mobile"
         onRequestClose={closeModal}
         contentLabel={intl.formatMessage(intlMessages.ariaModalTitle)}
         title={intl.formatMessage(intlMessages.lockViewersTitle)}
@@ -191,7 +191,7 @@ class LockViewersComponent extends Component {
                   </Styled.Label>
                 </Styled.FormElement>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.ColNoBasis>
                 <Styled.FormElementRight>
                   {/*{this.displayLockStatus(lockSettingsProps.disableCam)}*/}
                   <Toggle
@@ -206,7 +206,7 @@ class LockViewersComponent extends Component {
                     data-test="lockShareWebcam"
                   />
                 </Styled.FormElementRight>
-              </Styled.Col>
+              </Styled.ColNoBasis>
             </Styled.Row>
             <Styled.Row data-test="lockSeeOtherViewersWebcamItem" className="lock-viewer-tbl-row">
               <Styled.Col aria-hidden="true">
@@ -216,7 +216,7 @@ class LockViewersComponent extends Component {
                   </Styled.Label>
                 </Styled.FormElement>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.ColNoBasis>
                 <Styled.FormElementRight>
                   {/*{this.displayLockStatus(usersProp.webcamsOnlyForModerator)}*/}
                   <Toggle
@@ -231,7 +231,7 @@ class LockViewersComponent extends Component {
                     data-test="lockSeeOtherViewersWebcam"
                   />
                 </Styled.FormElementRight>
-              </Styled.Col>
+              </Styled.ColNoBasis>
             </Styled.Row>
             <Styled.Row data-test="lockShareMicrophoneItem" className="lock-viewer-tbl-row">
               <Styled.Col aria-hidden="true">
@@ -241,7 +241,7 @@ class LockViewersComponent extends Component {
                   </Styled.Label>
                 </Styled.FormElement>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.ColNoBasis>
                 <Styled.FormElementRight>
                   {/*{this.displayLockStatus(lockSettingsProps.disableMic)}*/}
                   <Toggle
@@ -256,7 +256,7 @@ class LockViewersComponent extends Component {
                     data-test="lockShareMicrophone"
                   />
                 </Styled.FormElementRight>
-              </Styled.Col>
+              </Styled.ColNoBasis>
             </Styled.Row>
 
             {isChatEnabled ? (
@@ -325,7 +325,7 @@ class LockViewersComponent extends Component {
                       </Styled.Label>
                     </Styled.FormElement>
                   </Styled.Col>
-                  <Styled.Col>
+                  <Styled.ColNoBasis>
                     <Styled.FormElementRight>
                       {/*{this.displayLockStatus(lockSettingsProps.disableNotes)}*/}
                       <Toggle
@@ -340,7 +340,7 @@ class LockViewersComponent extends Component {
                         data-test="lockEditSharedNotes"
                       />
                     </Styled.FormElementRight>
-                  </Styled.Col>
+                  </Styled.ColNoBasis>
                 </Styled.Row>
               )
               : null}
@@ -352,7 +352,7 @@ class LockViewersComponent extends Component {
                   </Styled.Label>
                 </Styled.FormElement>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.ColNoBasis>
                 <Styled.FormElementRight>
                   {/*{this.displayLockStatus(lockSettingsProps.hideUserList)}*/}
                   <Toggle
@@ -367,7 +367,7 @@ class LockViewersComponent extends Component {
                     data-test="lockUserList"
                   />
                 </Styled.FormElementRight>
-              </Styled.Col>
+              </Styled.ColNoBasis>
             </Styled.Row>
 
             <Styled.Row data-test="hideViewersCursorItem" className="lock-viewer-tbl-row">
@@ -378,7 +378,7 @@ class LockViewersComponent extends Component {
                   </Styled.Label>
                 </Styled.FormElement>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.ColNoBasis>
                 <Styled.FormElementRight>
                   {/*{this.displayLockStatus(lockSettingsProps.hideViewersCursor)}*/}
                   <Toggle
@@ -393,7 +393,7 @@ class LockViewersComponent extends Component {
                     data-test="hideViewersCursor"
                   />
                 </Styled.FormElementRight>
-              </Styled.Col>
+              </Styled.ColNoBasis>
             </Styled.Row>
 
             <Styled.Row data-test="hideViewersAnnotation" className="lock-viewer-tbl-row">
@@ -404,7 +404,7 @@ class LockViewersComponent extends Component {
                   </Styled.Label>
                 </Styled.FormElement>
               </Styled.Col>
-              <Styled.Col>
+              <Styled.ColNoBasis>
                 <Styled.FormElementRight>
                   {/*{this.displayLockStatus(lockSettingsProps.hideViewersAnnotation)}*/}
                   <Toggle
@@ -419,12 +419,12 @@ class LockViewersComponent extends Component {
                     data-test="hideViewersAnnotation"
                   />
                 </Styled.FormElementRight>
-              </Styled.Col>
+              </Styled.ColNoBasis>
             </Styled.Row>
           </Styled.Form>
         </Styled.Container>
         <Styled.Footer className="lock-viewer-footer">
-          <Styled.Actions>
+          <Styled.Actions className="footer-model-custom-mobile">
             <Styled.ButtonCancel className="btn btn-default"
               label={intl.formatMessage(intlMessages.buttonCancel)}
               onClick={closeModal}

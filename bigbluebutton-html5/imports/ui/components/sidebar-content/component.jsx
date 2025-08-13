@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Resizable from 're-resizable';
+import styled from 'styled-components';
 import { ACTIONS, PANELS } from '../layout/enums';
 import ChatContainer from '/imports/ui/components/chat/chat-graphql/component';
 import NotesContainer from '/imports/ui/components/notes/component';
@@ -16,6 +17,16 @@ import GenericContentSidekickContainer from '/imports/ui/components/generic-cont
 import PresentationUploaderContainer from '/imports/ui/components/presentation/presentation-uploader/container';
 import UserListContainer from '/imports/ui/components/user-list/container';
 import InMemory from '/imports/ui/services/storage/in-memory';
+
+const StyledResizable = styled(Resizable)`
+  left: ${({ left }) => (left === null ? 'unset' : `${left}px`)};
+  width: ${({ width }) => (width ? `${width}px` : '100%')};
+
+  @media (max-width: 1024px) {
+    width: 100% !important;
+    left: 0 !important;
+  }
+`;
 
 const propTypes = {
   top: PropTypes.number.isRequired,
@@ -87,14 +98,14 @@ const SidebarContent = (props) => {
   const pollDisplay = sidebarContentPanel === PANELS.POLL ? 'inherit' : 'none';
   InMemory.setItem('showUploadPresentationView', true);
   return (
-    <Resizable
+    <StyledResizable
       minWidth={minWidth}
-      maxWidth={maxWidth}
+      // maxWidth={maxWidth}
       minHeight={minHeight}
       maxHeight={maxHeight}
       size={{
         width,
-        height,
+        height: '100%',
       }}
       enable={{
         top: isResizable && resizableEdge.top,
@@ -114,14 +125,16 @@ const SidebarContent = (props) => {
         setResizeStartWidth(0);
         setResizeStartHeight(0);
       }}
+      left={left}
+      width={width}
       style={{
         position: 'absolute',
-        top,
-        left,
+        top: 0,
+        // left,
         right,
         zIndex,
-        width,
-        height,
+        // width,
+        height: '100%',
       }}
       handleStyles={{
         left: {
@@ -174,7 +187,7 @@ const SidebarContent = (props) => {
           genericSidekickContentId={sidebarContentPanel}
         />
       )}
-    </Resizable>
+    </StyledResizable>
   );
 };
 

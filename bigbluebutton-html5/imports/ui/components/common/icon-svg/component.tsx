@@ -472,7 +472,7 @@ const iconsMap: { [key: string]: JSX.Element } = {
   ),
   chevronLeft: (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M11.667 5L6.66699 10L11.667 15" stroke="#2F384C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M11.667 5L6.66699 10L11.667 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
   chevronRight: (
@@ -740,6 +740,11 @@ const iconsMap: { [key: string]: JSX.Element } = {
           <rect width="16" height="16" fill="white" transform="translate(0.5 0.5)"/>
         </clipPath>
       </defs>
+    </svg>
+  ),
+  "drown-down-menu": (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2.5 5H17.5M2.5 10H17.5M2.5 15H17.5" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
     </svg>
   ),
 };

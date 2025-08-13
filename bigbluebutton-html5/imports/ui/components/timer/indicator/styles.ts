@@ -25,6 +25,7 @@ const timerBorderRadius = '2rem';
 const TimerWrapper = styled.div`
   overflow: hidden;
   margin-left: auto;
+  z-index: 3;
 `;
 
 const Timer = styled.div`

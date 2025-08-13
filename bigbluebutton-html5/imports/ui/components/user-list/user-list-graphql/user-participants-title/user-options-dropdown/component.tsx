@@ -27,6 +27,14 @@ import { GET_USER_NAMES } from '/imports/ui/core/graphql/queries/users';
 import logger from '/imports/startup/client/logger';
 import { ACTIONS, PANELS } from '/imports/ui/components/layout/enums';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import { style } from '@mui/system';
+import styled from 'styled-components';
+
+const BtnClosePC = styled.button`
+  @media (max-width: 1024px) {
+    display: none !important;
+  } 
+`;
 
 const intlMessages = defineMessages({
   optionsLabel: {
@@ -369,7 +377,7 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
           transformOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },
         }}
       />
-      <button
+      <BtnClosePC
         title={intl.formatMessage(intlMessages.closeLabel)}
         type="button"
         onClick={handleClick}
@@ -377,7 +385,7 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
         className="btnClose"
       >
         <SvgIcon iconName="cross_20" />
-      </button>
+      </BtnClosePC>
       {renderModal({
         isOpen: isCreateBreakoutRoomModalOpen,
         setIsOpen: setCreateBreakoutRoomModalIsOpen,

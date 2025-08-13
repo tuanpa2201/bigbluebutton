@@ -18,10 +18,20 @@ import useWhoIsUnmuted from '/imports/ui/core/hooks/useWhoIsUnmuted';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 import { useMutation } from '@apollo/client';
+import styled from 'styled-components';
 import Styled from './styles';
 import JoypixelsEmoji from '/imports/ui/components/common/JoypixelsEmoji';
 import { convertRemToPixels } from '/imports/utils/dom-utils';
 import { SET_RAISE_HAND } from '/imports/ui/core/graphql/mutations/userMutations';
+
+const IconWrapper = styled.div<{ width: number, height: number }>`
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
+  & > svg {
+    width: 100%;
+    height: 100%;
+  }
+`;
 
 const messages = defineMessages({
   moderator: {
@@ -155,7 +165,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
     subs.push(
       <span key={uniqueId('breakout-')} className="d-inline-flex align-items-center gap-6">
         {user.pinned === true
-          ? <Icon iconName="pin-video_on" />
+          ? <IconWrapper width={12} height={13}><SvgIcon iconName="pinWebcam" /></IconWrapper>
           : <SvgIcon iconName="shareCamera3" />}
         &nbsp;
         {intl.formatMessage(messages.sharingWebcam)}
@@ -258,6 +268,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
       className="user-list-item"
     >
       <Styled.Avatar
+        style={{ marginLeft: '2px' }}
         data-test={user.isModerator ? 'moderatorAvatar' : 'viewerAvatar'}
         data-test-presenter={user.presenter ? '' : undefined}
         data-test-avatar="userAvatar"
@@ -338,7 +349,14 @@ const UserListItem: React.FC<UserListItemProps> = ({
         {/* /> */}
         {renderUserListItemIconsFromPlugin(userItemsFromPlugin)}
       </Styled.RightBlockIconsContainer>
-      <Styled.RightIconMoreContainer className="rightIconHover" isSelected={isSelected}>
+      <Styled.RightIconMoreContainer
+          className={
+            `rightIconHover` +
+            (user.userId === Auth.userID ? ' current-user' : '') +
+            (user.userId === Auth.userID && !user.presenter ? ' not-presenter' : '')
+          }
+        isSelected={isSelected}
+      >
         <Icon iconName="more" />
       </Styled.RightIconMoreContainer>
     </Styled.UserItemContents>

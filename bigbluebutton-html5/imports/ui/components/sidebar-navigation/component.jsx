@@ -1,10 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Resizable from 're-resizable';
+import styled from 'styled-components';
 import { ACTIONS } from '../layout/enums';
 // import UserListContainer from '../user-list/container';
 import SidebarMenuContainer from '../sidebar-menu/component';
 import { layoutSelectInput } from '../layout/context';
+
+const StyledResizable = styled(Resizable)`
+  width: 70px; /* Default width */
+  @media (max-width: 1024px) {
+    width: 100% !important;
+  }
+`;
 
 const propTypes = {
   top: PropTypes.number.isRequired,
@@ -59,12 +67,12 @@ const SidebarNavigation = ({
   };
 
   return (
-    <Resizable
+    <StyledResizable
       minWidth={minWidth}
-      maxWidth={maxWidth}
+      // maxWidth={maxWidth}
       size={{
-        width,
-        height,
+        // width,
+        height: '100%',
       }}
       enable={{
         top: isResizable && resizableEdge.top,
@@ -90,17 +98,17 @@ const SidebarNavigation = ({
       style={{
         position: 'absolute',
         display: 'flex',
-        top,
+        // top,
         left,
         right,
         zIndex,
-        width,
-        height,
+        // width,
+        height: '100%',
       }}
     >
       <SidebarMenuContainer contextDispatch={contextDispatch} currentPanel={currentPanel} />
       {/* <UserListContainer /> */}
-    </Resizable>
+    </StyledResizable>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { User } from '/imports/ui/Types/user';
 import { LockSettings, UsersPolicies } from '/imports/ui/Types/meeting';
 import { useIntl, defineMessages } from 'react-intl';
@@ -230,6 +230,15 @@ const UserActions: React.FC<UserActionsProps> = ({
 }) => {
   const intl = useIntl();
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(typeof window !== 'undefined' ? window.innerWidth <= 1024 : false);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 1024);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const layoutContextDispatch = layoutDispatch();
 
   const [presentationSetWriters] = useMutation(PRESENTATION_SET_WRITERS);
@@ -644,6 +653,8 @@ const UserActions: React.FC<UserActionsProps> = ({
           setOpenUserAction(null);
         }}
         open={open}
+        customStyles={isSmallScreen ? { marginTop: '52px' } : undefined}
+        overrideMobileStyles={true}
       />
       {isConfirmationModalOpen ? (
         <ConfirmationModal

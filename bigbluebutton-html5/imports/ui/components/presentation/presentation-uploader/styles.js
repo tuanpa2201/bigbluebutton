@@ -389,10 +389,10 @@ const ModalInner = styled.div`
   padding-bottom: .75rem;
   overflow-y: auto;
   align-items: space-between;
-  @media ${smallOnly} {
-    padding-left: ${statusInfoHeight};
-    padding-right: ${statusInfoHeight};
-  }
+  // @media ${smallOnly} {
+  //   padding-left: ${statusInfoHeight};
+  //   padding-right: ${statusInfoHeight};
+  // }
 `;
 
 const ModalHeader = styled.div`
@@ -406,6 +406,13 @@ const ModalHeader = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  @media (max-width: 1024px) {
+    height: 64px;
+    .dismiss {
+      display: none !important;
+    }
   }
 `;
 
@@ -446,6 +453,24 @@ const ConfirmButton = styled(Button)`
   &:disabled {
     background-color: #f5a5b5;
     cursor: not-allowed;
+  }
+`;
+
+const CloseButtonMobile = styled.button`
+  border: none;
+  // margin: 12px 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  background: none;
+
+  @media (min-width: 1024px) {
+    display: none !important;
   }
 `;
 
@@ -673,6 +698,7 @@ export default {
   TableItemStatus,
   ItemAction,
   RemoveButton,
+  CloseButtonMobile,
   UploaderDropzone,
   DropzoneIcon,
   DropzoneMessage,

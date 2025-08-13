@@ -80,6 +80,11 @@ const Col = styled.div`
   }
 `;
 
+const ColNoBasis = styled(Col)`
+  flex-grow: unset;
+  flex-basis: unset;
+`;
+
 const FormElement = styled.div`
   position: relative;
   display: flex;
@@ -133,6 +138,7 @@ export default {
   Bold,
   Row,
   Col,
+  ColNoBasis,
   FormElement,
   FormElementRight,
   Label,
