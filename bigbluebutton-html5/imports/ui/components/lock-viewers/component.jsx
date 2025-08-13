@@ -163,7 +163,7 @@ class LockViewersComponent extends Component {
     const invertColors = true;
 
     return (
-      <Styled.LockViewersModal className="lock-viewer-modal"
+      <Styled.LockViewersModal className="lock-viewer-modal model-custom-mobile"
         onRequestClose={closeModal}
         contentLabel={intl.formatMessage(intlMessages.ariaModalTitle)}
         title={intl.formatMessage(intlMessages.lockViewersTitle)}
@@ -424,7 +424,7 @@ class LockViewersComponent extends Component {
           </Styled.Form>
         </Styled.Container>
         <Styled.Footer className="lock-viewer-footer">
-          <Styled.Actions>
+          <Styled.Actions className="footer-model-custom-mobile">
             <Styled.ButtonCancel className="btn btn-default"
               label={intl.formatMessage(intlMessages.buttonCancel)}
               onClick={closeModal}

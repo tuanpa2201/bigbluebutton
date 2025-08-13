@@ -114,7 +114,7 @@ class GuestPolicyComponent extends PureComponent {
     } = this.props;
     const { selectedRole } = this.state;
     return (
-      <Styled.GuestPolicyModal className="policy-modal"
+      <Styled.GuestPolicyModal className="policy-modal model-custom-mobile"
         onRequestClose={() => setIsOpen(false)}
         contentLabel={intl.formatMessage(intlMessages.ariaModalTitle)}
         title={intl.formatMessage(intlMessages.guestPolicyTitle)}
@@ -204,7 +204,7 @@ class GuestPolicyComponent extends PureComponent {
           </div>
         </Styled.Container>
         <Styled.Footer className="policy-footer">
-          <Styled.Actions className="policy-action">
+          <Styled.Actions className="policy-action footer-model-custom-mobile">
             <Styled.ButtonCancel className="btn btn-default"
              label={intl.formatMessage(intlMessages.buttonCancel)}
              onClick={() => {
