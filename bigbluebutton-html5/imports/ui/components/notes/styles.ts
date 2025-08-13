@@ -31,7 +31,26 @@ const Header = styled(CommonHeader)`
   padding-bottom: .2rem;
 `;
 
+const CloseButtonMobile = styled.button`
+  border: none;
+  margin: 12px 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  background: none;
+
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
+`;
+
 export default {
   Notes,
+  CloseButtonMobile,
   Header,
 };

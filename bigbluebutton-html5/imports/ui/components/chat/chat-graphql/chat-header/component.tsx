@@ -8,6 +8,7 @@ import { Layout } from '../../../layout/layoutTypes';
 import { ACTIONS, PANELS } from '../../../layout/enums';
 import ChatActions from './chat-actions/component';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import styled from 'styled-components';
 
 interface ChatHeaderProps {
   chatId: string;
@@ -37,6 +38,24 @@ const intlMessages = defineMessages({
   },
 });
 
+const CloseButtonMobile = styled.button`
+  border: none;
+  // margin: 12px 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  background: none;
+
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
+`;
+
 const ChatHeader: React.FC<ChatHeaderProps> = ({
   chatId, isPublicChat,
 }) => {
@@ -65,7 +84,12 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
     <>
       <h2 className="sr-only chat-header">{intl.formatMessage(intlMessages.titleDiscuss)}</h2>
       <div className="d-flex align-items-center justify-content-between chat-header-container">
-        <span className="chat-header">{intl.formatMessage(intlMessages.titleDiscuss)}</span>
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <CloseButtonMobile className="header-icon" onClick={closePanel}>
+            <SvgIcon iconName="chevronLeft" />
+          </CloseButtonMobile>
+          <span className="chat-header">{intl.formatMessage(intlMessages.titleDiscuss)}</span>
+        </div>
         <div className="d-flex align-items-center">
           {/* eslint-disable-next-line max-len */}
           {isPublicChat ? <ChatActions /> : null}

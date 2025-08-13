@@ -1,4 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import useCurrentUser from '/imports/ui/core/hooks/useCurrentUser';
 import { Input } from '../layout/layoutTypes';
@@ -277,6 +282,17 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
     input.selectionEnd = caretEnd - charsRemovedCount;
   };
 
+  const closePanel = () => {
+    layoutContextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
+      value: false,
+    });
+    layoutContextDispatch({
+      type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
+      value: PANELS.NONE,
+    });
+  };
+
   const setQuestionAndOptionsFn = (input: string[] | string) => {
     const { splittedQuestion, optionsList } = getSplittedQuestionAndOptions(input);
     const optionsListLength = optionsList.length;
@@ -459,24 +475,15 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
   return (
     <div>
       <Styled.PollHeader data-test="hidePollDesc">
+        <Styled.ClosePollButtonMobile className="header-icon" onClick={() => closePanel()}>
+          <SvgIcon iconName="chevronLeft" />
+        </Styled.ClosePollButtonMobile>
         <div aria-label={intl.formatMessage(intlMessages.hidePollDesc)} className="header-title">
           {`${intl.formatMessage(intlMessages.pollPaneTitle)}`}
         </div>
         <Styled.ClosePollButton
           className="header-icon"
-          onClick={() => {
-            // if (hasPoll) stopPoll();
-            layoutContextDispatch({
-              type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
-              value: false,
-            });
-            layoutContextDispatch({
-              type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
-              value: PANELS.NONE,
-            });
-            // Session.setItem('forcePollOpen', false);
-            // Session.setItem('pollInitiated', false);
-          }}
+          onClick={() => closePanel()}
         >
           <SvgIcon iconName="cross_20" />
         </Styled.ClosePollButton>

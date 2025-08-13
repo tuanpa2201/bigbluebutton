@@ -1151,7 +1151,12 @@ class PresentationUploader extends Component {
               <Styled.ModalInner>
                 <div>
                   <Styled.ModalHeader>
-                    <span className="title">{intl.formatMessage(intlMessages.title)}</span>
+                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                      <Styled.CloseButtonMobile className="header-icon" onClick={this.closePanel}>
+                        <SvgIcon iconName="chevronLeft" />
+                      </Styled.CloseButtonMobile>
+                      <span className="title">{intl.formatMessage(intlMessages.title)}</span>
+                    </div>
                     <button type="button" className="dismiss" onClick={this.closePanel}>
                       <SvgIcon iconName="cross_20" />
                     </button>

@@ -159,7 +159,12 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
           <>
             <h2 className="sr-only">{intl.formatMessage(intlMessages.title)}</h2>
             <div className="d-flex align-items-center justify-content-between notes-header-container">
-              <span className="notes-header">{intl.formatMessage(intlMessages.title)}</span>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <Styled.CloseButtonMobile className="header-icon" onClick={() => closePanel()}>
+                  <SvgIcon iconName="chevronLeft" />
+                </Styled.CloseButtonMobile>
+                <span className="notes-header">{intl.formatMessage(intlMessages.title)}</span>
+              </div>
               <div className="d-flex align-items-center">
                 {/* eslint-disable-next-line max-len */}
                 <NotesDropdown handlePinSharedNotes={handlePinSharedNotes} presentationEnabled={isPresentationEnabled} />

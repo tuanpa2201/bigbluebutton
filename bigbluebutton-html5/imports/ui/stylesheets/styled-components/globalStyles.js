@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
   @media ${smallOnly} {
     .MuiPopover-root {
       top: 0 !important;
+      background-color: var(--color-overlay, rgba(6, 23, 42, 0.75));
     }
     .MuiPaper-root-mobile {
       top: unset !important;

@@ -725,6 +725,10 @@ const PollHeader = styled.div`
     line-height: 32px;
     padding: 16px 0px;
     margin-bottom: 16px;
+
+    @media (max-width: 1024px) {
+      max-height: 64px;
+    }
 `;
 
 const ClosePollButton = styled.button`
@@ -735,7 +739,7 @@ const ClosePollButton = styled.button`
     color: #2F384C;
     cursor: pointer;
     padding: 6px;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     tab-index: 0;
@@ -744,6 +748,28 @@ const ClosePollButton = styled.button`
     &:hover {
         background-color: ${colorGrayLightest};
     }
+
+    @media (min-width: 1024px) {
+      display: flex !important;
+    }
+`;
+
+const ClosePollButtonMobile = styled.button`
+  border: none;
+  margin: 12px 0;
+  padding: 0;
+  cursor: pointer;
+  outline: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 32px;
+  display: flex;
+  align-items: center;
+  background: none;
+
+  @media (min-width: 1024px) {
+    display: none !important;
+  }
 `;
 
 const TableResult = styled.table`
@@ -757,6 +783,7 @@ const TableResult = styled.table`
 
 export default {
   ClosePollButton,
+  ClosePollButtonMobile,
   PollHeader,
   ToggleLabel,
   PollOptionInput,

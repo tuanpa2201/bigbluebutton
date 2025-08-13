@@ -209,6 +209,10 @@
     }
     & .notes-header-container {
         margin-bottom: 16px;
+        @media (max-width: 1024px) {
+            max-height: 64px;
+            margin-top: -16px;
+        }
 
         & .notes-header {
             color: var(--Text-Primary, #313131);
@@ -242,13 +246,17 @@
         }
 
         & .btnClose {
-            display: flex;
+            display: none;
             align-items: center;
             padding-left: 12px;
 
             &:hover {
                 border-radius: 50%;
                 background: var(--bg-04-hover-light, #EFEFEF);
+            }
+
+            @media (min-width: 1024px) {
+                display: flex !important;
             }
         }
     }
@@ -536,6 +544,9 @@
             &:hover {
                 border-radius: 50%;
                 background: var(--bg-04-hover-light, #EFEFEF);
+            }
+            @media screen and (max-width: 1024px) {
+                display: none; 
             }
         }
     }
