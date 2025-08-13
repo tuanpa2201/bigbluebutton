@@ -85,6 +85,11 @@ const ChatMessageReactions: React.FC<ChatMessageReactionsProps> = (props) => {
     } = reaction;
 
     if (!newValue[reactionEmojiId]) {
+      // @ts-ignore
+      if (!emojiData.emojis[reactionEmojiId]) {
+        return newValue;
+      }
+
       const reactedByMe = user.userId === currentUser?.userId;
       newValue[reactionEmojiId] = {
         count: 1,
