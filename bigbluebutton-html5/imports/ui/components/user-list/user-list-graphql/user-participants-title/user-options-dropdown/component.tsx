@@ -377,6 +377,7 @@ const UserTitleOptions: React.FC<UserTitleOptionsProps> = ({
           anchorOrigin: { vertical: 'bottom', horizontal: isRTL ? 'right' : 'left' },
           transformOrigin: { vertical: 'top', horizontal: isRTL ? 'right' : 'left' },
         }}
+        phoneAndTabletSameType={true}
       />
       <BtnClosePC
         title={intl.formatMessage(intlMessages.closeLabel)}

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { smallOnly, phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { smallOnly, phoneOnly, tabletDown } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import {
   smPaddingX,
   borderRadius,
@@ -17,25 +17,32 @@ const GlobalStyle = createGlobalStyle`
   @media ${phoneOnly} {
     .MuiPopover-root {
       top: 0 !important;
-      // background-color: var(--color-overlay, rgba(6, 23, 42, 0.75));
-    }
-    .MuiPaper-root-mobile {
-      top: unset !important;
-      left: 0 !important;
-      bottom: 0 !important;
-      right: 0 !important;
-      max-width: none !important;
-      padding: 16px !important;
-    }
-    .MuiPaper-root {
-      // width: 100%;
     }
     .MuiPopover-root:has(.MuiPaper-root-mobile) {
       background-color: var(--color-overlay, rgba(6, 23, 42, 0.75));
-      // border-bottom-left-radius: 0px;
-      // border-bottom-right-radius: 0px;
-
       .MuiPaper-root-mobile {
+        top: unset !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        max-width: none !important;
+        padding: 16px !important;
+        border-bottom-left-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+      }
+    }
+  }
+  @media ${tabletDown} {
+    .MuiPopover-root:has(.MuiPaper-root-phone-and-tablet-same-type) {
+      top: 0 !important;
+      background-color: var(--color-overlay, rgba(6, 23, 42, 0.75));
+      .MuiPaper-root-mobile {
+        top: unset !important;
+        left: 0 !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        max-width: none !important;
+        padding: 16px !important;
         border-bottom-left-radius: 0px !important;
         border-bottom-right-radius: 0px !important;
       }
