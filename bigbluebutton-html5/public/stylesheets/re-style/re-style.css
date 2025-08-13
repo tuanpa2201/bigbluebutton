@@ -255,7 +255,7 @@
                 background: var(--bg-04-hover-light, #EFEFEF);
             }
 
-            @media (min-width: 1024px) {
+            @media (min-width: 1025px) {
                 display: flex !important;
             }
         }

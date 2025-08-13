@@ -29,6 +29,7 @@ import { ACTIONS, PANELS } from '/imports/ui/components/layout/enums';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 import { style } from '@mui/system';
 import styled from 'styled-components';
+import classNames from 'classnames';
 
 const BtnClosePC = styled.button`
   @media (max-width: 1024px) {
