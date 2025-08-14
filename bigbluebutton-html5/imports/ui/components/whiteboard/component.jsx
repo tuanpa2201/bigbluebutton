@@ -36,7 +36,7 @@ import { useMouseEvents, useCursor } from './hooks';
 import { notifyShapeNumberExceeded, getCustomEditorAssetUrls, getCustomAssetUrls } from './service';
 
 import NoopTool from './custom-tools/noop-tool/component';
-import DeleteAllTool from "./custom-tools/delete-all/component";
+import DeleteAllTool from './custom-tools/delete-all/component';
 
 const CAMERA_TYPE = 'camera';
 
@@ -70,6 +70,11 @@ const createLookup = (arr) =>
 const defaultUser = {
   userId: '',
 };
+
+const ALLOWED_TYPES = [
+  'group', 'text', 'bookmark', 'draw', 'geo', 'note', 'line',
+  'frame', 'arrow', 'highlight', 'embed', 'image', 'video', 'poll'
+];
 
 const Whiteboard = React.memo((props) => {
   const {
@@ -135,7 +140,7 @@ const Whiteboard = React.memo((props) => {
 
   const whiteboardRef = React.useRef(null);
   const zoomValueRef = React.useRef(null);
-  const prevShapesRef = React.useRef(shapes);
+  const prevShapesRef = React.useRef(shapes?.filter((item) => ALLOWED_TYPES.includes(item.type)));
   const tlEditorRef = React.useRef(null);
   const slideChanged = React.useRef(false);
   const slideNext = React.useRef(null);
@@ -232,7 +237,7 @@ const Whiteboard = React.memo((props) => {
 
   const debouncedUpdateShapes = debounce(() => {
     if (shapes && Object.keys(shapes).length > 0) {
-      prevShapesRef.current = shapes;
+      prevShapesRef.current = shapes.filter((item) => ALLOWED_TYPES.includes(item.type));
       tlEditorRef.current?.store.mergeRemoteChanges(() => {
         const remoteShapesArray = Object.values(prevShapesRef.current).reduce((acc, shape) => {
           if (shape.meta?.presentationId === presentationIdRef.current || shape?.whiteboardId?.includes(presentationIdRef.current)) {
@@ -789,7 +794,7 @@ const Whiteboard = React.memo((props) => {
     } else {
       logger.warn(
         { logCode: 'pollInnerWrapperDimensionsUntilStable' },
-        `Failed to store viewbox dimensions`
+        'Failed to store viewbox dimensions'
       );
       onReady({ containerWidth, containerHeight, innerWrapperWidth, innerWrapperHeight });
     }
@@ -1505,7 +1510,7 @@ const Whiteboard = React.memo((props) => {
       }, () => {
         logger.warn(
           { logCode: 'pollUntilMounted' },
-          `Failed to wait for component to be mounted`,
+          'Failed to wait for component to be mounted',
         );
       }, isMountedPollingFrameRef);
     });
@@ -1693,7 +1698,7 @@ const Whiteboard = React.memo((props) => {
             pages.push(...currentPage);
           }
           const allRecords = tlEditorRef.current.store.allRecords();
-          const cameraRecords = allRecords.filter(record => record.typeName === "camera" && record.id?.split(':').pop() == formattedPageId);
+          const cameraRecords = allRecords.filter(record => record.typeName === 'camera' && record.id?.split(':').pop() == formattedPageId);
           if (cameraRecords?.length < 1) {
             cameras.push(createCamera(formattedPageId, tlZ));
           }
