@@ -9,6 +9,9 @@ import {
 } from '/imports/ui/stylesheets/styled-components/general';
 import { colorGray } from '/imports/ui/stylesheets/styled-components/palette';
 import { lineHeightBase } from '/imports/ui/stylesheets/styled-components/typography';
+import deviceInfo from '/imports/utils/deviceInfo';
+
+const { isPhone } = deviceInfo;
 
 const ConfirmationModal = styled(ModalSimple)`
   //padding: ${mdPaddingX};
@@ -54,6 +57,7 @@ const ConfirmationButton = styled(Button)`
   padding-right: ${jumboPaddingY};
   padding-left: ${jumboPaddingY};
   //margin: 0 ${smPaddingX} 0 0;
+  ${isPhone ? 'width: 50%;' : ''};
 
   [dir="rtl"] & {
     margin: 0 0 0 ${smPaddingX};
@@ -62,6 +66,7 @@ const ConfirmationButton = styled(Button)`
 
 const CancelButton = styled(ConfirmationButton)`
   margin: 0;
+  ${isPhone ? 'width: 100%;' : ''}
 `;
 
 const Label = styled.label`

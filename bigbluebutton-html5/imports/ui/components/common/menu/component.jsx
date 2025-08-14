@@ -104,11 +104,11 @@ class BBBMenu extends React.Component {
 
   makeMenuItems() {
     const {
-      actions, selectedEmoji, intl, isHorizontal, isEmoji, isMobile, roundButtons, keepOpen, phoneAndTabletSameType
+      actions, selectedEmoji, intl, isHorizontal, isEmoji, isMobile, roundButtons, keepOpen, phoneAndTabletSameType, overrideMobileStyles
     } = this.props;
 
     const { isPhone } = deviceInfo;
-    if ((isPhone || phoneAndTabletSameType) && !actions?.find((item) => item.key === 'list-item-close')) {
+    if ((isPhone || phoneAndTabletSameType) && !overrideMobileStyles && !actions?.find((item) => item.key === 'list-item-close')) {
       actions.push(
         {
           key: 'list-item-close',

@@ -185,6 +185,7 @@ class LeaveMeetingButton extends PureComponent {
             anchorOrigin: { vertical: 'bottom', horizontal: isRTL ? 'left' : 'right' },
             transformorigin: { vertical: 'top', horizontal: isRTL ? 'left' : 'right' },
           }}
+          phoneAndTabletSameType={window.innerWidth <= 1024}
         />
         {this.renderModal(isEndMeetingConfirmationModalOpen,
           this.setEndMeetingConfirmationModalIsOpen,
