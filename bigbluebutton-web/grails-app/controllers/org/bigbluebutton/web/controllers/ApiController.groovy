@@ -315,8 +315,11 @@ class ApiController {
     if (!StringUtils.isEmpty(params.auth)) {
       authenticated = Boolean.parseBoolean(params.auth)
     }
-
-    String fullName = ParamsUtil.stripControlChars(params.fullName)
+    def nameInput = params.fullName
+    if (nameInput) {
+      nameInput = nameInput.replaceAll(/[^0-9A-Za-zÀ-ỹ _.-]/, "")
+    }
+    String fullName = ParamsUtil.stripControlChars(nameInput)
 
     String attPW = params.password
 
@@ -1204,9 +1207,10 @@ class ApiController {
 
         String method = 'join'
         String externalMeetingId = validationService.encodeString(meeting.getExternalId())
-        String fullName = validationService.encodeString(us.fullname)
+        String safeFullName = us.fullname?.replaceAll(/[^0-9A-Za-zÀ-ỹ _.-]/, "")
+        String fullName = validationService.encodeString(safeFullName)
         ListHashMap<String, String> queryParameters = new ListHashMap<>();
-        queryParameters.put("fullName", fullName);
+        queryParameters.put("fullName", safeFullName);
         queryParameters.put("meetingID", externalMeetingId);
         queryParameters.put("role", us.role.equals(ROLE_MODERATOR) ? ROLE_MODERATOR : ROLE_ATTENDEE);
         queryParameters.put("redirect", "true");
