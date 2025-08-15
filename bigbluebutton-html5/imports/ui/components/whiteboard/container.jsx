@@ -55,6 +55,11 @@ import useMeeting from '/imports/ui/core/hooks/useMeeting';
 
 const FORCE_RESTORE_PRESENTATION_ON_NEW_EVENTS = 'bbb_force_restore_presentation_on_new_events';
 
+const ALLOWED_TYPES = [
+  'group', 'text', 'bookmark', 'draw', 'geo', 'note', 'line',
+  'frame', 'arrow', 'highlight', 'embed', 'image', 'video', 'poll'
+];
+
 const WhiteboardContainer = (props) => {
   const {
     intl,
@@ -301,6 +306,7 @@ const WhiteboardContainer = (props) => {
         annotationsToBeRemoved.push(item.annotationId);
       } else {
         const annotationInfoParsed = JSON.parse(item.annotationInfo);
+        if (!ALLOWED_TYPES.includes(annotationInfoParsed?.type)) return;
         const existingShape = editor?.getShape(item.annotationId);
         if (existingShape) {
           updatedAnnotations.push({
