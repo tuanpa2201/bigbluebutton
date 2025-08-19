@@ -44,7 +44,7 @@ const CloseButtonMobile = styled.button`
   align-items: center;
   background: none;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     display: none !important;
   }
 `;

@@ -104,11 +104,11 @@ class BBBMenu extends React.Component {
 
   makeMenuItems() {
     const {
-      actions, selectedEmoji, intl, isHorizontal, isEmoji, isMobile, roundButtons, keepOpen,
+      actions, selectedEmoji, intl, isHorizontal, isEmoji, isMobile, roundButtons, keepOpen, phoneAndTabletSameType, overrideMobileStyles
     } = this.props;
 
     const { isPhone } = deviceInfo;
-    if (isPhone && !actions?.find((item) => item.key === 'list-item-close')) {
+    if ((isPhone || phoneAndTabletSameType) && !overrideMobileStyles && !actions?.find((item) => item.key === 'list-item-close')) {
       actions.push(
         {
           key: 'list-item-close',
@@ -248,6 +248,7 @@ class BBBMenu extends React.Component {
       customAnchorEl,
       hasRoundedCorners,
       overrideMobileStyles,
+      phoneAndTabletSameType,
       isHorizontal,
     } = this.props;
     const actionsItems = this.makeMenuItems();
@@ -300,7 +301,10 @@ class BBBMenu extends React.Component {
           $isHorizontal={isHorizontal}
           PaperProps={{
             style: hasRoundedCorners ? roundedCornersStyles : {},
-            className: overrideMobileStyles ? '' : 'MuiPaper-root-mobile',
+            className: [
+              overrideMobileStyles ? '' : 'MuiPaper-root-mobile',
+              phoneAndTabletSameType ? 'MuiPaper-root-phone-and-tablet-same-type' : '',
+            ].filter(Boolean).join(' '),
           }}
         >
           {actionsItems}

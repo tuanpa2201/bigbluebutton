@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { defineMessages } from 'react-intl';
 import PropTypes from 'prop-types';
 import Styled from './styles';
+import deviceInfo from '/imports/utils/deviceInfo';
 
 const messages = defineMessages({
   yesLabel: {
@@ -19,6 +20,7 @@ const propTypes = {
   disableConfirmButton: PropTypes.bool,
   description: PropTypes.string,
   hideConfirmButton: PropTypes.bool,
+  modalClass: 'mobile' || 'tablet',
 };
 
 const defaultProps = {
@@ -26,6 +28,7 @@ const defaultProps = {
   disableConfirmButton: false,
   description: '',
   hideConfirmButton: false,
+  modalClass: 'mobile',
 };
 
 class ConfirmationModal extends Component {
@@ -68,6 +71,7 @@ class ConfirmationModal extends Component {
       isOpen,
       onRequestClose,
       priority,
+      modalClass,
     } = this.props;
 
     const {
@@ -76,8 +80,10 @@ class ConfirmationModal extends Component {
 
     const hasCheckbox = !!checkboxMessageId;
 
+    const { isPhone } = deviceInfo;
+
     return (
-        <Styled.ConfirmationModal className="remove-user-modal"
+        <Styled.ConfirmationModal className={`remove-user-modal model-custom-${modalClass}`}
                                   onRequestClose={() => setIsOpen(false)}
                                   contentLabel={title}
                                   title={title || intl.formatMessage({ id: titleMessageId }, { 0: titleMessageExtra })}
@@ -106,8 +112,8 @@ class ConfirmationModal extends Component {
               ) : null }
             </Styled.Description>
 
-            <Styled.Footer className='remove-user-footer'>
-              <div ref={this.cancelButtonRef}>
+            <Styled.Footer className={`remove-user-footer`}>
+              <div ref={this.cancelButtonRef} style={{ width: isPhone ? '50%' : '' }}>
                 <Styled.CancelButton className='btn btn-default'
                                      color="secondary"
                                      label={cancelButtonLabel || intl.formatMessage(messages.noLabel)}

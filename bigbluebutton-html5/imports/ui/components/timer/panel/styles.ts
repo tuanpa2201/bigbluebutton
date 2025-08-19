@@ -49,7 +49,7 @@ const CloseTimerButtonPC = styled.button`
         background-color: ${colorGrayLightest};
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 1025px) {
       display: flex !important;
     }
 `;
@@ -67,7 +67,7 @@ const CloseTimerButtonMobile = styled.button`
   align-items: center;
   background: none;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     display: none !important;
   }
 `;
