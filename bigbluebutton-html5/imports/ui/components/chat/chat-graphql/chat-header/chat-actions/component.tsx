@@ -158,11 +158,12 @@ const ChatActions: React.FC = () => {
           label={intl.formatMessage(intlMessages.options)}
           aria-label={intl.formatMessage(intlMessages.options)}
           hideLabel
-          icon="more"
+          svgIcon="more"
           data-test="chatOptionsMenu"
           onClick={() => {}}
         />
       )}
+      overrideMobileStyles
       opts={{
         id: 'chat-options-dropdown-menu',
         keepMounted: true,

@@ -10,7 +10,7 @@ import {
   fontSizeLarge,
   headingsFontWeight,
 } from '/imports/ui/stylesheets/styled-components/typography';
-import { mediumUp, phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { mediumUp, phoneOnly, tabletDown } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import Menu from '@mui/material/Menu';
 
 const MenuWrapper = styled(Menu)`
@@ -68,7 +68,7 @@ const Option = styled.div`
   ${({ hasIcon }) => hasIcon && `
     margin-left: 8px;
     margin-right: 0px;
-    @media ${phoneOnly} {
+    @media ${tabletDown} {
       margin-left: 16px;
     }
   `}

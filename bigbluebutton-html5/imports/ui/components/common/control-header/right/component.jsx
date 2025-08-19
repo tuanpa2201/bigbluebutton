@@ -23,6 +23,7 @@ Right.propTypes = {
   'aria-label': PropTypes.string,
   'data-test': PropTypes.string,
   icon: PropTypes.string,
+  svgIcon: PropTypes.string,
   label: PropTypes.string,
   onClick: PropTypes.func,
 };
