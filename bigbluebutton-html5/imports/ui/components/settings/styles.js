@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {
   smPaddingX,
 } from '/imports/ui/stylesheets/styled-components/general';
-import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { smallOnly, tabletDown } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import { fontSizeLarge } from '/imports/ui/stylesheets/styled-components/typography';
 import {
   Tab, Tabs, TabList, TabPanel,
@@ -22,9 +22,16 @@ const SettingsTabs = styled(Tabs)`
   flex-flow: row;
   justify-content: flex-start;
   margin-top: 0px;
-  @media ${smallOnly} {
+  @media ${tabletDown} {
     width: 100%;
     flex-flow: column;
+    ul {
+      display: flex;
+      flex-flow: row;
+      overflow-x: auto;
+      width: 100% !important;
+      justify-content: flex-start;
+    }
   }
 `;
 
@@ -110,8 +117,6 @@ const SettingsTabPanel = styled(TabPanel)`
   @media ${smallOnly} {
     width: 100%;
     margin: 0;
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 `;
 
