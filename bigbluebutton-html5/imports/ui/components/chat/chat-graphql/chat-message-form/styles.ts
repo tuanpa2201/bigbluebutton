@@ -26,7 +26,7 @@ const Form = styled.form<FormProps>`
   align-self: flex-end;
   width: 100%;
   position: relative;
-  margin-top: .2rem;
+  margin-top: 16px;
 
   ${({ isRTL }) => isRTL && `
     padding-left: ${smPaddingX};

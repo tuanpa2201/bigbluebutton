@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import deviceInfo from '/imports/utils/deviceInfo';
 import browserInfo from '/imports/utils/browserInfo';
+import { useMutation } from '@apollo/client';
 import OptionsDropdown from './component';
 import FullscreenService from '/imports/ui/components/common/fullscreen-button/service';
 import { layoutSelect } from '../../layout/context';
 import { PluginsContext } from '/imports/ui/components/components-data/plugin-context/context';
 import { USER_LEAVE_MEETING, SET_RAISE_HAND } from '/imports/ui/core/graphql/mutations/userMutations';
-import { useMutation } from '@apollo/client';
 import useMeeting from '/imports/ui/core/hooks/useMeeting';
 import { useShortcut } from '/imports/ui/core/hooks/useShortcut';
 import { useStorageKey } from '/imports/ui/services/storage/hooks';
@@ -20,6 +20,8 @@ import { SET_AWAY } from '/imports/ui/components/user-list/user-list-content/use
 import {
   muteAway,
 } from '/imports/ui/components/audio/audio-graphql/audio-controls/input-stream-live-selector/service';
+import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
+import { GET_MEETING_RECORDING_DATA } from '../nav-bar-graphql/recording-indicator/queries';
 
 const { isIphone } = deviceInfo;
 const { isSafari, isValidSafariVersion } = browserInfo;
@@ -60,6 +62,16 @@ const OptionsDropdownContainer = (props) => {
 
   const [userLeaveMeeting] = useMutation(USER_LEAVE_MEETING);
   const [setAway] = useMutation(SET_AWAY);
+  const {
+    data: meetingRecordingData,
+  } = useDeduplicatedSubscription(GET_MEETING_RECORDING_DATA);
+
+  const meetingRecording = meetingRecordingData?.meeting_recording[0] || {
+    isRecording: false,
+    previousRecordedTimeInSeconds: 0,
+    startedAt: '',
+    startedBy: '',
+  };
 
   const handleToggleAFK = () => {
     muteAway(muted, away, voiceToggle);
@@ -103,6 +115,7 @@ const OptionsDropdownContainer = (props) => {
       handleToggleAFK,
       setRaiseHand,
       currentUser,
+      isRecording: meetingRecording.isRecording,
       ...props,
     }}
     />

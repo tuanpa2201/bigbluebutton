@@ -22,4 +22,6 @@ export {
   mediumDown,
   hasPhoneWidth,
   phoneOnly,
+  tabletOnly,
+  tabletDown,
 };

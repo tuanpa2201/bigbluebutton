@@ -5,7 +5,7 @@ import React, {
   useState,
 } from 'react';
 import useMeeting from '/imports/ui/core/hooks/useMeeting';
-import deviceInfo, { isMobile } from '/imports/utils/deviceInfo';
+import deviceInfo, { isIphone as isPhoneOnly } from '/imports/utils/deviceInfo';
 import { defineMessages, useIntl } from 'react-intl';
 import classNames from 'classnames';
 import {
@@ -173,7 +173,7 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
       titleMargin={!isPhone || recording}
       data-test="mainWhiteboard"
     >
-      <SvgIcon iconName="record" />
+      <SvgIcon iconName={!isPhoneOnly ? 'record' : 'record-mobile'} />
     </Styled.RecordingIndicatorIcon>
   ), [isPhone, recording]);
 
@@ -247,6 +247,8 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
   const defaultRecordTooltip = intl.formatMessage(intlMessages.notificationRecordingStop);
   const customRecordTooltip = Service.getCustomRecordTooltip(defaultRecordTooltip);
   if (!record) return null;
+  if (isPhoneOnly && !recording) return null;
+
   return (
     <>
       {/*{record && !isMobile ? (*/}
@@ -254,7 +256,7 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
       {/*) : null}*/}
       <Styled.RecordingIndicator
         data-test="recordingIndicator"
-        isPhone={isMobile}
+        isPhone={isPhone}
         recording={recording}
         disabled={!showButton}
       >
@@ -308,7 +310,7 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
 };
 
 const RecordingIndicatorContainer: React.FC = () => {
-  const { isMobile } = deviceInfo;
+  const { isPhone } = deviceInfo;
 
   const {
     data: meetingRecordingPoliciesData,
@@ -409,7 +411,7 @@ const RecordingIndicatorContainer: React.FC = () => {
       record={meetingRecordingPolicies?.record ?? false}
       recording={meetingRecording?.isRecording ?? false}
       micUser={(currentUser?.voice && !currentUser?.voice.listenOnly) ?? false}
-      isPhone={isMobile}
+      isPhone={isPhone}
       recordingNotificationEnabled={
         (meetingRecording?.startedBy !== currentUser?.userId
           && currentMeeting?.notifyRecordingIsOn)

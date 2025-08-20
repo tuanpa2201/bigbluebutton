@@ -18,6 +18,7 @@ import Session from '/imports/ui/services/storage/in-memory';
 import { LAYOUT_TYPE } from '/imports/ui/components/layout/enums';
 import { getSettingsSingletonInstance } from '/imports/ui/services/settings';
 import Toggle from '/imports/ui/components/common/switch/component';
+import RecordingContainer from '../../recording/container';
 
 const intlMessages = defineMessages({
   optionsLabel: {
@@ -35,6 +36,14 @@ const intlMessages = defineMessages({
   raiseLabel: {
     id: 'app.actionsBar.reactions.raiseHand',
     description: 'Raise option label',
+  },
+  recordLabel: {
+    id: 'app.actionsBar.reactions.record',
+    description: 'Record option label',
+  },
+  stopRecord: {
+    id: 'app.actionsBar.reactions.stopRecord',
+    description: 'Record option label',
   },
   aboutLabel: {
     id: 'app.navBar.optionsDropdown.aboutLabel',
@@ -148,6 +157,7 @@ const propTypes = {
     userId: PropTypes.string,
     raiseHand: PropTypes.bool,
   }),
+  isRecording: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -157,6 +167,7 @@ const defaultProps = {
   isBreakoutRoom: false,
   isDropdownOpen: false,
   audioCaptionsEnabled: false,
+  isRecording: false,
 };
 
 const { isSafari, isTabletApp } = browserInfo;
@@ -174,6 +185,7 @@ class OptionsDropdown extends PureComponent {
       isMobileAppModalOpen: false,
       isFullscreen: false,
       isLayoutModalOpen: false,
+      isRecordingModalOpen: false,
     };
 
     // Set the logout code to 680 because it's not a real code and can be matched on the other side
@@ -187,6 +199,7 @@ class OptionsDropdown extends PureComponent {
     this.setAboutModalIsOpen = this.setAboutModalIsOpen.bind(this);
     this.setShortcutHelpModalIsOpen = this.setShortcutHelpModalIsOpen.bind(this);
     this.setLayoutModalIsOpen = this.setLayoutModalIsOpen.bind(this);
+    this.setIsRecordingModalOpen = this.setIsRecordingModalOpen.bind(this);
   }
 
   componentDidMount() {
@@ -272,15 +285,17 @@ class OptionsDropdown extends PureComponent {
     this.setState({ isLayoutModalOpen: value });
   }
 
+  setIsRecordingModalOpen(value) {
+    this.setState({ isRecordingModalOpen: value });
+  }
+
   renderMenuItems() {
     const {
       intl, amIModerator, isBreakoutRoom, isMeteorConnected, audioCaptionsEnabled,
       audioCaptionsActive, audioCaptionsSet, isMobile, optionsDropdownItems,
       isDirectLeaveButtonEnabled, isLayoutsEnabled, away, handleToggleAFK, setRaiseHand,
-      currentUser,
+      currentUser, isRecording,
     } = this.props;
-
-    const { isIos } = deviceInfo;
 
     const allowedToEndMeeting = amIModerator && !isBreakoutRoom;
 
@@ -321,6 +336,19 @@ class OptionsDropdown extends PureComponent {
           }),
         },
       );
+      this.menuItems.push(
+        {
+          key: 'list-item-rec',
+          svgIcon: isRecording
+            ? 'rec_stop' : 'rec',
+          dataTest: 'rec',
+          label: isRecording
+            ? intl.formatMessage(intlMessages.stopRecord)
+            : intl.formatMessage(intlMessages.recordLabel),
+          description: intl.formatMessage(intlMessages.recordLabel),
+          onClick: () => this.setIsRecordingModalOpen(true),
+        },
+      );
     }
 
     this.menuItems.push(
@@ -348,19 +376,19 @@ class OptionsDropdown extends PureComponent {
       );
     }
 
-    if (isIos
-        && !isTabletApp
-        && BBB_TABLET_APP_CONFIG.enabled === true
-        && BBB_TABLET_APP_CONFIG.iosAppStoreUrl !== '') {
-      this.menuItems.push(
-        {
-          key: 'list-item-help',
-          icon: 'popout_window',
-          label: intl.formatMessage(intlMessages.openAppLabel),
-          onClick: () => this.setMobileAppModalIsOpen(true),
-        },
-      );
-    }
+    // if (isIos
+    //     && !isTabletApp
+    //     && BBB_TABLET_APP_CONFIG.enabled === true
+    //     && BBB_TABLET_APP_CONFIG.iosAppStoreUrl !== '') {
+    //   this.menuItems.push(
+    //     {
+    //       key: 'list-item-help',
+    //       icon: 'popout_window',
+    //       label: intl.formatMessage(intlMessages.openAppLabel),
+    //       onClick: () => this.setMobileAppModalIsOpen(true),
+    //     },
+    //   );
+    // }
 
     this.menuItems.push(
       {
@@ -532,6 +560,7 @@ class OptionsDropdown extends PureComponent {
     const {
       isAboutModalOpen, isShortcutHelpModalOpen, isOptionsMenuModalOpen,
       isEndMeetingConfirmationModalOpen, isMobileAppModalOpen, isLayoutModalOpen,
+      isRecordingModalOpen,
     } = this.state;
 
 
@@ -573,7 +602,8 @@ class OptionsDropdown extends PureComponent {
           'low', ShortcutHelpComponent)}
         {this.renderModal(isOptionsMenuModalOpen, this.setOptionsMenuModalIsOpen,
           'low', OptionsMenuContainer)}
-        {this.renderModal(isEndMeetingConfirmationModalOpen, this.setEndMeetingConfirmationModalIsOpen,
+        {this.renderModal(isEndMeetingConfirmationModalOpen,
+          this.setEndMeetingConfirmationModalIsOpen,
           'low', EndMeetingConfirmationContainer)}
         {this.renderModal(isMobileAppModalOpen, this.setMobileAppModalIsOpen, 'low',
           MobileAppModal)}
@@ -582,6 +612,16 @@ class OptionsDropdown extends PureComponent {
           this.setLayoutModalIsOpen,
           'low',
           LayoutModalContainer,
+        )}
+        {this.renderModal(
+          isRecordingModalOpen,
+          this.setIsRecordingModalOpen,
+          'low',
+          RecordingContainer,
+          {
+            amIModerator: this.props.amIModerator,
+            priority: 'high',
+          },
         )}
 
       </>

@@ -366,7 +366,7 @@ class Settings extends Component {
 
     return (
       <ModalSimple
-        className="settings-modal"
+        className="settings-modal model-custom-tablet"
         title={intl.formatMessage(intlMessages.SettingsLabel)}
         {...{
           isOpen,
@@ -377,7 +377,7 @@ class Settings extends Component {
         <div className="settings-modal-content">
           {this.renderModalContent()}
         </div>
-        <div className="d-flex justify-content-end align-items-center gap-8 mt-12 settings-modal-actions">
+        <div className="d-flex justify-content-end align-items-center gap-8 mt-12 settings-modal-actions footer-model-custom-tablet">
           <button
             type="button"
             className="btn btn-default"

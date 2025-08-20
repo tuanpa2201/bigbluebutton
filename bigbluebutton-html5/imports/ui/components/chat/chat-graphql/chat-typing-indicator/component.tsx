@@ -98,6 +98,10 @@ const TypingIndicator: React.FC<TypingIndicatorProps> = ({
     );
   }
 
+  if (!element) {
+    return null;
+  }
+
   return (
     <Styled.TypingIndicatorWrapper>
       <Styled.TypingIndicator data-test="typingIndicator">{element}</Styled.TypingIndicator>

@@ -419,10 +419,6 @@ class NavBar extends Component {
                 </Tooltip>
               </Styled.PresentationTitle>
               {this.renderModal(isModalOpen, this.setModalIsOpen, "low", SessionDetailsModal)}
-              {/*<RecordingIndicator*/}
-              {/*  amIModerator={amIModerator}*/}
-              {/*  currentUserId={currentUserId}*/}
-              {/*/>*/}
               {renderPluginItems(centerPluginItems)}
             </Styled.Center>
             <Styled.Right>
@@ -435,6 +431,12 @@ class NavBar extends Component {
         )}
         <Styled.Bottom>
           <h2 className="sr-only">{intl.formatMessage(intlMessages.speakersListLabel)}</h2>
+          {isPhone && (
+            <RecordingIndicator
+              amIModerator={amIModerator}
+              currentUserId={currentUserId}
+            />
+          )}
           {enableTalkingIndicator ? <TalkingIndicator amIModerator={amIModerator} /> : null}
           <TimerIndicatorContainer />
         </Styled.Bottom>

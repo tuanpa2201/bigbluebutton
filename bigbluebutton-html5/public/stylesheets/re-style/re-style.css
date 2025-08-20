@@ -84,7 +84,7 @@
     }
 
     & .pollingQuestionText {
-        margin-top: 16px;
+        margin-top: 20px;
         color: var(--Text-Primary, #313131);
         [data-darkreader-scheme="dark"] & {
             color: var(--text-primary-dark, #FCFCFD);
@@ -100,7 +100,7 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
-        padding: 20px 0;
+        padding: 12px 0 20px 0;
         border-bottom: 1px solid var(--border-00-light, #EFEFEF) !important;
 
         & .pollingButtonWrapper {
@@ -1412,4 +1412,8 @@ li[data-key="menuItem-directLogoutButton"] {
 
 #presentationInnerWrapper {
 
+}
+
+.css-ton3fx-MuiButtonBase-root-MuiMenuItem-root{
+    min-height: auto !important;
 }

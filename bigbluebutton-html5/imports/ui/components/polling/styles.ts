@@ -30,7 +30,7 @@ import {
   colorWhite,
   colorPrimary,
 } from '/imports/ui/stylesheets/styled-components/palette';
-import { hasPhoneDimentions } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { hasPhoneDimentions, phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import Button from '/imports/ui/components/common/button/component';
 import TextareaAutosize from 'react-autosize-textarea';
 
@@ -216,12 +216,14 @@ const PollingContainer = styled.aside<{ autoWidth: boolean }>`
     right: auto;
   }
 
-  @media ${hasPhoneDimentions} {
-    bottom: auto;
-    right: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  @media ${phoneOnly} {
+    bottom: 0;
+    right: 0;
+    width: 100vw !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border: none;
+    
     max-height: 95%;
     overflow-y: auto;
 
