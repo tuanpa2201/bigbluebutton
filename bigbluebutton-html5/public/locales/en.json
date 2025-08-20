@@ -719,6 +719,8 @@
     "app.actionsBar.actionsDropdown.takePresenterDesc": "Assign yourself as the new presenter",
     "app.actionsBar.reactions.reactionsButtonLabel": "Share a reaction",
     "app.actionsBar.reactions.raiseHand": "Raise your hand",
+    "app.actionsBar.reactions.record": "Start recording",
+    "app.actionsBar.reactions.stopRecord": "Pause recording",
     "app.actionsBar.reactions.lowHand": "Lower your hand",
     "app.actionsBar.reactions.autoCloseReactionsBarLabel": "Auto close the reactions bar",
     "app.actionsBar.reactions.away": "away",

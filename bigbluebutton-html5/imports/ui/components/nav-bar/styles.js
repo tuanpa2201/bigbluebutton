@@ -122,6 +122,7 @@ const Right = styled.div`
 const Bottom = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 
   @media ${phoneLandscape} {
     margin-top: .25rem;

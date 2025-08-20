@@ -89,6 +89,12 @@ const RecordingControl = styled.button<RecordingIndicatorProps>`
       background-clip: padding-box;
       // border: ${borderSizeLarge} solid transparent;
     }
+    @media (max-width: 767px) {
+      background-color: #AA2007;
+      height: 26px;
+      border-radius: 6px;
+      margin-top: 8px;
+    }
   `}
 
   ${({ recording }) => !recording && `
@@ -175,8 +181,11 @@ const PresentationTitleSeparator = styled.span`
 
 const RecordingIndicator = styled.div<RecordingIndicatorProps>`
   ${({ isPhone }) => isPhone && `
-    margin-left: ${smPaddingX};
+    @media (min-width: 768px) and (max-width: 1024px) {
+      margin-left: ${smPaddingX};
+    }
   `}
+  z-index: 2;
 
   &:hover {
     outline: transparent;
