@@ -5,7 +5,7 @@ import React, {
   useState,
 } from 'react';
 import useMeeting from '/imports/ui/core/hooks/useMeeting';
-import deviceInfo, { isIphone as isPhoneOnly } from '/imports/utils/deviceInfo';
+import deviceInfo from '/imports/utils/deviceInfo';
 import { defineMessages, useIntl } from 'react-intl';
 import classNames from 'classnames';
 import {
@@ -173,7 +173,7 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
       titleMargin={!isPhone || recording}
       data-test="mainWhiteboard"
     >
-      <SvgIcon iconName={!isPhoneOnly ? 'record' : 'record-mobile'} />
+      <SvgIcon iconName={!isPhone ? 'record' : 'record-mobile'} />
     </Styled.RecordingIndicatorIcon>
   ), [isPhone, recording]);
 
@@ -247,13 +247,13 @@ const RecordingIndicator: React.FC<RecordingIndicatorProps> = ({
   const defaultRecordTooltip = intl.formatMessage(intlMessages.notificationRecordingStop);
   const customRecordTooltip = Service.getCustomRecordTooltip(defaultRecordTooltip);
   if (!record) return null;
-  if (isPhoneOnly && !recording) return null;
+  if (isPhone && !recording) return null;
 
   return (
     <>
-      {/*{record && !isMobile ? (*/}
-      {/*  <Styled.PresentationTitleSeparator aria-hidden="true">|</Styled.PresentationTitleSeparator>*/}
-      {/*) : null}*/}
+      {/* {record && !isMobile ? (
+        <Styled.PresentationTitleSeparator aria-hidden="true">|</Styled.PresentationTitleSeparator>
+      ) : null} */}
       <Styled.RecordingIndicator
         data-test="recordingIndicator"
         isPhone={isPhone}

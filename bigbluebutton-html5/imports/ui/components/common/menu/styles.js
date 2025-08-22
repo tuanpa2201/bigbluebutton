@@ -38,6 +38,13 @@ const MenuItemWrapper = styled.div`
   width: 100%;
   align-items: center;
 
+  @media (min-width: 768px) and (max-width: 1024px) {
+      min-height: 42px !important;
+  }
+  @media (max-width: 767px) {
+      min-height: 32px !important;
+  }
+
   ${({ isMobile }) => isMobile && `
     flex-flow: column;
     align-items: center;

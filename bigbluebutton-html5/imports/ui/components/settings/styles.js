@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import {
   smPaddingX,
 } from '/imports/ui/stylesheets/styled-components/general';
-import { smallOnly, tabletDown } from '/imports/ui/stylesheets/styled-components/breakpoints';
-import { fontSizeLarge } from '/imports/ui/stylesheets/styled-components/typography';
+import {
+  phoneOnly, tabletDown, tabletOnly,
+} from '/imports/ui/stylesheets/styled-components/breakpoints';
 import {
   Tab, Tabs, TabList, TabPanel,
 } from 'react-tabs';
@@ -43,11 +44,12 @@ const SettingsTabList = styled(TabList)`
   padding: 0;
   width: calc(100% / 3);
 
-  @media ${smallOnly} {
+  @media ${phoneOnly} {
     width: 100%;
     flex-flow: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: start;
+    overflow-x: auto;
+    margin-bottom: 24px;
   }
 `;
 
@@ -76,9 +78,9 @@ const SettingsTabSelector = styled(Tab)`
     text-overflow: ellipsis;
   }
 
-  @media ${smallOnly} {
+  @media ${phoneOnly} {
     max-width: 100%;
-    margin: 0 ${smPaddingX} 0 0;
+    margin: 0 8px 0 0;
     & > i {
       display: none;
     }
@@ -94,6 +96,13 @@ const SettingsTabSelector = styled(Tab)`
     span {
       font-weight: 600;
     }
+  }
+  @media ${tabletOnly} {
+    font-size: 16px;
+  }
+  @media ${phoneOnly} {
+    font-size: 14px;
+    height: 40px;
   }
 `;
 
@@ -114,7 +123,7 @@ const SettingsTabPanel = styled(TabPanel)`
     display: block;
   }
 
-  @media ${smallOnly} {
+  @media ${phoneOnly} {
     width: 100%;
     margin: 0;
   }

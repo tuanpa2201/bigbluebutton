@@ -22,7 +22,6 @@ const LayoutModal = styled(ModalSimple)`
   }
 
    ${({ isPhone }) => isPhone && `
-    min-height: 100%;
     min-width: 100%;
     border-radius: 0;
   `}

@@ -4,7 +4,7 @@ import { Tabs } from 'react-tabs';
 import { ScrollboxVertical } from '/imports/ui/stylesheets/styled-components/scrollable';
 import StyledSettings from '../settings/styles';
 
-import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { phoneOnly, smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const KeyCell = styled.td`
   text-align: center;
@@ -17,6 +17,9 @@ const KeyCell = styled.td`
 const DescCell = styled.td`
   padding: ${smPaddingX};
   margin: auto;
+  @media ${phoneOnly} {
+    padding: 0px;
+  }
 `;
 
 const ShortcutTable = styled.table`
@@ -38,6 +41,9 @@ const ShortcutTable = styled.table`
     line-height: 20px;
     &:first-child {
       text-align: left;
+    }
+    @media ${phoneOnly} {
+      padding: 0px;
     }
   }
 `;

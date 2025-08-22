@@ -70,6 +70,12 @@ const TextInputButton = styled(Button)`
     -o-transform: scale(-1, 1);
     transform: scale(-1, 1);
   }
+    &.btn.btn-primary{
+      @media only screen and (max-width: 767px) {
+        width: 40px;
+        height: 40px !important;
+      }
+    }
 `;
 
 export default {

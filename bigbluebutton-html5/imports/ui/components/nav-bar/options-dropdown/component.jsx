@@ -595,6 +595,7 @@ class OptionsDropdown extends PureComponent {
             anchorOrigin: { vertical: 'bottom', horizontal: isRTL ? 'left' : 'right' },
             transformorigin: { vertical: 'top', horizontal: isRTL ? 'left' : 'right' },
           }}
+          phoneAndTabletSameType
         />
         {this.renderModal(isAboutModalOpen, this.setAboutModalIsOpen, 'low',
           AboutContainer)}
