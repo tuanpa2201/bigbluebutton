@@ -327,11 +327,11 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
 
   return (
     <Styled.Panel className="waiting-users-container" data-test="note" isChrome={isChrome}>
-      <div className="d-flex justify-content-between header-waiting-user">
+      <div className="d-flex justify-content-between header-waiting-user align-items-center">
         <span
           role="button"
           tabIndex={0}
-          className="d-flex gap-8"
+          className="d-flex gap-8 align-items-center"
           onClick={closePanel}
           onKeyDown={(e) => {
             if (e.key === 'Enter' || e.key === ' ') {

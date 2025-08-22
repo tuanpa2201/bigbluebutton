@@ -20,7 +20,9 @@ import {
   indicatorPadding,
 } from '/imports/ui/stylesheets/styled-components/general';
 import { fontSizeBase } from '/imports/ui/stylesheets/styled-components/typography';
-import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import {
+  phoneOnly, smallOnly, tabletDown, tabletOnly,
+} from '/imports/ui/stylesheets/styled-components/breakpoints';
 import Button from '/imports/ui/components/common/button/component';
 import { ScrollboxVertical } from '/imports/ui/stylesheets/styled-components/scrollable';
 
@@ -99,7 +101,9 @@ const UserName = styled.p`
 
   font-size: 14px;
   font-weight: 500;
-  line-height: 20px;
+  @media ${phoneOnly} {
+    font-size: 16px;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -184,6 +188,10 @@ const MainTitle = styled.p`
   font-weight: 600;
   margin-top: 20px;
   margin-bottom: 12px;
+
+  @media ${tabletDown} {
+    font-size: 16px;
+  }
 `;
 
 const UsersWrapper = styled.div`
@@ -234,6 +242,12 @@ const LobbyMessage = styled.div`
     background: var(--BG-01, #F7F8F9);
     margin-top: 20px;
     margin-bottom: 20px;
+    @media ${tabletOnly} {
+      font-size: 16px;
+    }
+    @media ${phoneOnly} {
+      font-size: 14px;
+    }
   }
 `;
 
@@ -250,8 +264,8 @@ const PrivateLobbyMessage = styled.div`
 `;
 
 const RememberContainer = styled.div`
-  margin: 22px 0px 18px;
-  height: 2rem;
+  margin: 16px 0px 12px;
+  height: 32px;
   display: flex;
   align-items: center;
   gap: 12px;

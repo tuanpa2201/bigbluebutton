@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import { phoneOnly, tabletOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const Container = styled.div`
   display: flex;
@@ -28,6 +29,13 @@ const Heading = styled.h1`
   font-weight: 500;
   line-height: 32px;
   margin-top: 48px;
+
+  @media ${tabletOnly} {
+    font-size: 20px;
+  }
+  @media ${phoneOnly} {
+    font-size: 18px;
+  }
 `;
 
 const Position = styled.div`
@@ -38,6 +46,13 @@ const Position = styled.div`
   font-family: "FS PF BeauSans Pro";
   font-size: 18px;
   line-height: 24px;
+
+  @media ${tabletOnly} {
+    font-size: 16px;
+  }
+  @media ${phoneOnly} {
+    font-size: 14px;
+  }
 `;
 
 const sk_bouncedelay = keyframes`
@@ -76,6 +91,14 @@ const Bounce2 = styled(Bounce)`
 `;
 
 const IconSvg = styled.img`
+  @media ${tabletOnly} {
+    width: 174px;
+    height: 160px;
+  }
+  @media ${phoneOnly} {
+    width: 130px;
+    height: 120px;
+  }
 `;
 
 export default {

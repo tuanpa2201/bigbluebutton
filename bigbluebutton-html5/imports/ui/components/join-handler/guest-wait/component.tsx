@@ -182,12 +182,14 @@ const GuestWait: React.FC<GuestWaitProps> = (props) => {
           src={`${BASE_NAME}/resources/images/guest-lobby.svg`}
         />
         <Styled.Heading id="heading">Vops Meet - Guest Lobby</Styled.Heading>
-        <p
-          aria-live="polite"
-          data-test="guestMessage"
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: message }}
-        />
+        <Styled.Position id="positionInWaitingQueue">
+          <p
+            aria-live="polite"
+            data-test="guestMessage"
+            // eslint-disable-next-line react/no-danger
+            dangerouslySetInnerHTML={{ __html: message }}
+          />
+        </Styled.Position>
         <Styled.Position id="positionInWaitingQueue">
           <p aria-live="polite">{positionMessage}</p>
         </Styled.Position>

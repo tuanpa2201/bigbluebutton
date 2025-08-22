@@ -155,7 +155,7 @@ class TextInput extends PureComponent {
         <Styled.TextInputButton
           className="btn btn-primary"
           hideLabel
-          icon="send"
+          svgIcon="send"
           label={intl.formatMessage(messages.sendLabel)}
           onClick={() => this.handleOnClick()}
         />

@@ -232,6 +232,7 @@ const LayoutModalComponent = ({
       data-test="layoutChangeModal"
       onRequestClose={() => setIsOpen(false)}
       title={intl.formatMessage(intlMessages.title)}
+      className="model-custom-tablet"
       {...{
         isOpen,
         onRequestClose,
@@ -242,7 +243,7 @@ const LayoutModalComponent = ({
           {renderLayoutButtons()}
         </Styled.BodyContainer>
       </Styled.Content>
-      <Styled.ButtonBottomContainer>
+      <Styled.ButtonBottomContainer className="footer-model-custom-tablet">
         {/* {renderPushLayoutsOptions()} */}
         <Button
           className="btn btn-primary"
