@@ -45,7 +45,7 @@ const AboutComponent = (props) => {
   return (
     <ModalSimple
       data-test="aboutModalTitleLabel"
-      className="modal-about"
+      className="modal-about model-custom-mobile"
       title={intl.formatMessage(intlMessages.title)}
       dismiss={{
         label: intl.formatMessage(intlMessages.dismissLabel),
