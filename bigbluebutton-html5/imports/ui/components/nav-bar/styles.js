@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Icon from '/imports/ui/components/common/icon/component';
-import { barsPadding, borderSize } from '/imports/ui/stylesheets/styled-components/general';
+import { borderSize } from '/imports/ui/stylesheets/styled-components/general';
 import {
   colorWhite,
   colorDanger,
@@ -77,6 +77,10 @@ const PresentationTitle = styled.h1`
   text-overflow: ellipsis;
   max-width: 30vw;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 
   > [class^="icon-bbb-"] {
     font-size: 75%;
@@ -86,6 +90,9 @@ const PresentationTitle = styled.h1`
     margin-left: .5rem;
     margin-right: .5rem;
     font-size: .75rem;
+  }
+  svg {
+    flex-shrink: 0;
   }
 `;
 

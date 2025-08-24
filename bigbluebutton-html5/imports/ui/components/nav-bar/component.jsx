@@ -414,9 +414,9 @@ class NavBar extends Component {
                 <Tooltip title={intl.formatMessage(intlMessages.openDetailsTooltip)}>
                   <span className={'arrow-title-room'}>
                     {presentationTitle}
-                    <SvgIcon iconName="chevron_down" />
                   </span>
                 </Tooltip>
+                <SvgIcon iconName="chevron_down" />
               </Styled.PresentationTitle>
               {this.renderModal(isModalOpen, this.setModalIsOpen, "low", SessionDetailsModal)}
               {renderPluginItems(centerPluginItems)}
