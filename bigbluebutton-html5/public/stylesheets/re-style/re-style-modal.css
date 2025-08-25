@@ -217,6 +217,19 @@
         }
     }
     & .video-preview-container {
+        @media (max-width: 767px) {
+            .xs-flex-column{
+                min-height: 417px;
+            }
+        }
+        .min-h-custom {
+            @media (min-width: 1025px) {
+                min-height: 230px;
+            }
+            @media (min-width: 768px) and (max-width: 1024px) {
+                min-height: 245px;
+            }
+        }
         padding: 0;
         & .webcam-tab-list {
             margin: 0 0 16px;
@@ -348,6 +361,8 @@
                 & .virtual-background-custom-button,
                 & .thumbnail-button-wrapper {
                     margin: 0;
+                    width: 63px;
+                    height: 63px;
                 }
 
                 & .virtual-background-none-button:not(.virtual-background-remove-button),

@@ -350,9 +350,10 @@ const ConnectionTabList = styled(TabList)`
 
   @media ${phoneOnly} {
     width: 100%;
-    justify-content: center;
+    justify-content: start;
     margin-bottom: 24px;
     gap: 12px;
+    overflow-x: auto;
   }
 `;
 
@@ -376,6 +377,7 @@ const ConnectionTabPanel = styled(TabPanel)`
   @media ${smallOnly} {
     width: 100%;
     margin: 0;
+    min-height: 438px;
   }
 `;
 

@@ -1194,8 +1194,8 @@ class VideoPreview extends Component {
       case VIEW_STATES.found:
       default:
         return (
-          <div className={cameraAsContent ? '' : 'd-flex align-items-start justify-content-between gap-20 xs-flex-column'}>
-            <div className={cameraAsContent ? 'video-preview-wrapper' : 'w-50 xs-w-100'}>
+          <div className={cameraAsContent ? '' : 'd-flex align-items-start gap-20 xs-flex-column'}>
+            <div className={cameraAsContent ? 'video-preview-wrapper min-h-custom' : 'w-50 xs-w-100 min-h-custom'}>
               {
                 previewError
                   ? (
@@ -1215,7 +1215,7 @@ class VideoPreview extends Component {
                   )
               }
             </div>
-            <div className={cameraAsContent ? '' : 'w-50 xs-w-100'}>
+            <div className={cameraAsContent ? 'min-h-custom' : 'w-50 xs-w-100 min-h-custom'}>
               {this.renderTabsContent(selectedTab)}
             </div>
           </div>
