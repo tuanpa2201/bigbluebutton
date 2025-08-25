@@ -385,7 +385,7 @@ const ShortcutHelpComponent = ({
 
   return (
     <ModalSimple
-      className="shortcut-help"
+      className="shortcut-help model-custom-mobile"
       contentLabel={intl.formatMessage(intlMessages.title)}
       dismiss={{
         label: intl.formatMessage(intlMessages.closeLabel),

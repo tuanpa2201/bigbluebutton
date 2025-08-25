@@ -82,7 +82,6 @@ const InternCol = styled.div`
   height: 100%;
   justify-content: center;
   margin: 0 0.5rem 0 0.5rem;
-  gap: 4px;
 `;
 
 const ContentCol = styled.div`
