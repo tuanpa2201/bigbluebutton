@@ -748,6 +748,7 @@
   "app.settings.transcriptionTab.partialUtterances": "Hiển thị phát âm từng phần",
   "app.settings.transcriptionTab.minUtteranceLength": "Độ dài tối thiểu (giây) cho từng phần",
   "app.settings.save-notification.label": "Cài đặt đã được lưu",
+  "app.settings.theme.switch.label": "Cài đặt chủ đề",
   "app.statusNotifier.lowerHands": "Hạ tay",
   "app.statusNotifier.lowerHandDescOneUser": "Hạ tay {0}",
   "app.statusNotifier.raisedHandsTitle": "Giơ tay",

@@ -115,6 +115,7 @@ const Option = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 20px; 
+
   @media ${tabletDown} {
     font-size: 16px;
   }

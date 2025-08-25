@@ -10,6 +10,7 @@ const ScreenshareButtonContainer = (props) => {
   const screenIsBroadcasting = useIsScreenBroadcasting();
   const { screenIsShared: isScreenGloballyBroadcasting } = useIsScreenGloballyBroadcasting();
   const enabled = useIsScreenSharingEnabled();
+  console.log('ScreenshareButtonContainer render');
   return (
     <ScreenshareButton
       screenshareDataSavingSetting={screenshareDataSavingSetting}
