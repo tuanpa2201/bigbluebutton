@@ -68,8 +68,8 @@ const AudioModalButton = styled(Button)`
 
   & span:last-child {
     display: block;
-    color: black;
-    font-size: 1rem;
+    color: #313131;
+    font-size: 14px;
     font-weight: 400;
     margin-top: 8px;
     line-height: 1.5;
@@ -77,6 +77,9 @@ const AudioModalButton = styled(Button)`
 
   @media (min-width: 768px) and (max-width: 1024px) {
     padding: 13px 2rem;
+    & span:last-child {
+      font-size: 16px;
+    }
   }
 
 `;
@@ -129,6 +132,11 @@ const ConnectingAnimation = styled.span`
 const AudioModal = styled(ModalSimple)`
   padding: 1rem;
   min-height: 20rem;
+
+  & .modal-header {
+    background-color: transparent;
+    border-bottom: none;
+  }
 `;
 
 const BrowserWarning = styled.p`

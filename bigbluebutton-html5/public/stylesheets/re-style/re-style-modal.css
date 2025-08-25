@@ -59,6 +59,12 @@
             [data-darkreader-scheme="dark"] & {
                 color: var(--text-primary-dark, #FCFCFD);
             }
+            color: #313131;
+
+            @media (max-width: 1024px) {
+                font-size: 16px !important;
+                line-height: 24px;
+            }
         }
 
         & .connecting-animation {
@@ -140,6 +146,10 @@
                 [data-darkreader-scheme="dark"] & {
                     color: var(--text-secondary-dark, #C5C9CD);
                 }
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    font-size: 16px !important;
+                    line-height: 24px;
+                }
             }
         }
 
@@ -158,6 +168,10 @@
                 line-height: 20px; /* 142.857% */
                 [data-darkreader-scheme="dark"] & {
                     color: var(--text-primary-dark, #FCFCFD);
+                }
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    font-size: 16px !important;
+                    line-height: 24px;
                 }
             }
 

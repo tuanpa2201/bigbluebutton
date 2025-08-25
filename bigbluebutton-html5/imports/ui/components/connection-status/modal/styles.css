@@ -6,7 +6,11 @@
     .network-data-container{
       flex-flow: column;
     }
+    .modal-title{
+      font-size: 18px !important;
+    }
   }
+  
 
 }
 
