@@ -22,6 +22,13 @@ const LocalEchoTestButton = styled(Button)`
 
   background-color: transparent !important;
   color: ${colorPrimary} !important;
+
+  font-size: 14px;
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 16px !important;
+    line-height: 24px;
+  }
 `;
 
 export default {

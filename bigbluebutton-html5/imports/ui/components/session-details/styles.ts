@@ -19,7 +19,6 @@ const Container = styled.div<{ isFullWidth: boolean }>`
   & > div {
     flex: ${({ isFullWidth }) => (isFullWidth ? '1 1 100%' : '1 1 50%')};
     box-sizing: border-box;
-    padding: 2px;
     overflow: auto;
     overflow-wrap: break-word;
   }
@@ -56,12 +55,12 @@ const Container = styled.div<{ isFullWidth: boolean }>`
 `;
 
 const JoinTitle = styled.p`
-  font-size: 1rem;
+  font-size: 14px;
   color: var(--text-primary-light, #313131);
 `;
 
 const JoinContainer = styled.div`
-  font-size: 1rem;
+  font-size: 14px;
   color: var(--text-primary-light, #313131);
   display: flex;
   align-items: center;

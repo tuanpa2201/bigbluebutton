@@ -98,7 +98,7 @@ function CustomDropdown({
         onKeyDown={handleKeyDown}
         style={{ pointerEvents: disabled ? 'none' : undefined, opacity: disabled ? 0.6 : 1 }}
       >
-        {selected ? selected.label : ''}
+        <span className="text-one-line">{selected ? selected.label : ''}</span>
         <span style={{ float: 'right', marginTop: '2px' }}>
           <img src={`${window.meetingClientSettings.public.app.basename}/svgs/ic-arrow-down.svg`} alt="arrow down" />
         </span>

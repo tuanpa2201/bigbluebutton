@@ -12,8 +12,6 @@ import {
 import {
   listItemBgHover,
   itemFocusBorder,
-  colorGray,
-  colorGrayDark,
   colorPrimary,
   colorWhite,
   userListBg,
@@ -347,14 +345,22 @@ const UserNameContainer = styled.div`
 
 const UserName = styled.span`
   margin: 0;
-  font-size: 90%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-weight: 400;
-  color: ${colorGrayDark};
+
   display: flex;
   flex-direction: row;
+
+  color: var(--Text-Primary, #313131);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    line-height: 24px; /* 133.333% */
+  }
 
   > span {
     text-overflow: ellipsis;
@@ -371,9 +377,9 @@ const UserNameSub = styled.span`
   align-items: center;
   gap: 4px;
   margin: 0;
-  font-size: 0.75rem;
-  font-weight: 200;
-  color: ${colorGray};
+  font-size: 12px;
+  font-weight: 400;
+  color: #6F767E;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

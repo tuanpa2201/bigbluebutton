@@ -82,7 +82,7 @@ class ConnectionStatusIcon extends PureComponent {
         <Styled.Label>
           {intl.formatMessage(intlMessages.label)}
         </Styled.Label>
-        {((currentStatus === 'critical' || currentStatus === 'danger') || isSettingsMenuModalOpen)
+        {/* {((currentStatus === 'critical' || currentStatus === 'danger') || isSettingsMenuModalOpen)
           && (
             <div>
               <Styled.Settings
@@ -105,7 +105,7 @@ class ConnectionStatusIcon extends PureComponent {
                   />
                 ) : null}
             </div>
-          )}
+          )} */}
       </>
     );
   }

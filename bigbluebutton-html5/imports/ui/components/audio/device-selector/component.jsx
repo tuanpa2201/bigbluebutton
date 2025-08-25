@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import {
   defineMessages,
 } from 'react-intl';
-import Styled from './styles';
 import { uniqueId } from '/imports/utils/string-utils';
 // Import CustomDropdown
 import CustomDropdown from '/imports/ui/components/CustomDropdown/CustomDropdown';
-import logger from "/imports/startup/client/logger";
 
 const propTypes = {
   intl: PropTypes.shape({

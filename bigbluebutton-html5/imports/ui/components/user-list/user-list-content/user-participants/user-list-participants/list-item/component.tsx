@@ -352,7 +352,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
       <Styled.RightIconMoreContainer
           className={
             `rightIconHover` +
-            (user.userId === Auth.userID ? ' current-user' : '') +
+            // (user.userId === Auth.userID ? ' current-user' : '') +
             (user.userId === Auth.userID && !user.presenter ? ' not-presenter' : '')
           }
         isSelected={isSelected}

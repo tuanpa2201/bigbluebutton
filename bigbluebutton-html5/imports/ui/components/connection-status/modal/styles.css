@@ -6,7 +6,11 @@
     .network-data-container{
       flex-flow: column;
     }
+    .modal-title{
+      font-size: 18px !important;
+    }
   }
+  
 
 }
 
@@ -29,9 +33,6 @@
   text-decoration: underline;
 }
 
-.text-base {
-  font-size: 1rem;
-}
 .font-semibold {
   font-weight: 600;
 }

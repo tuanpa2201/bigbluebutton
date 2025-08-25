@@ -7,17 +7,14 @@ import {
   colorDanger,
 } from '/imports/ui/stylesheets/styled-components/palette';
 import {
-  smPaddingX,
   lgPaddingY,
   titlePositionLeft,
 } from '/imports/ui/stylesheets/styled-components/general';
 import {
-  fontSizeBase,
   fontSizeXL,
 } from '/imports/ui/stylesheets/styled-components/typography';
 import {
   hasPhoneDimentions,
-  mediumDown,
   hasPhoneWidth,
   smallOnly,
   phoneOnly,
@@ -181,7 +178,7 @@ const NetworkDataContainer = styled(ScrollboxVertical)`
 `;
 
 const NetworkData = styled.div`
-  font-size: ${fontSizeBase};
+  font-size: 14px;
 
   ${({ invisible }) => invisible && `
     visibility: hidden;
@@ -415,8 +412,9 @@ const ConnectionTabSelector = styled(Tab)`
     [dir="rtl"] & {
        margin: 0 0 0 12px;
     }
-    padding: 12px;
+    padding: 6px 12px;
     font-size: 14px;
+    height: 40px;
 
   }
 

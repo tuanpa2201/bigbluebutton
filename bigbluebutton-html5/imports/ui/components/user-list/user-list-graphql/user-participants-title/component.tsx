@@ -28,8 +28,16 @@ const BaseButton = styled.button`
   align-items: center;
   background: none;
 
+
   @media (min-width: 1025px) {
     display: none !important;
+  }
+
+  @media (max-width: 767px) {
+    width: 20px;
+    height: 20px;
+    padding: 0px;
+    margin-right: 4px;
   }
 `;
 
