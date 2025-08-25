@@ -267,13 +267,6 @@ const ScreenshareButton = ({
 
   const dropdownOptions = [
     {
-      svgIcon: 'shareScreen',
-      label: intl.formatMessage(intlMessages.shareScreen),
-      key: 'shareScreen',
-      onClick: onClickShareScreen,
-      dataTest: 'shareScreen',
-    },
-    {
       svgIcon: 'shareCamera',
       label: intl.formatMessage(intlMessages.shareCamera),
       key: 'shareCamera',
@@ -288,6 +281,16 @@ const ScreenshareButton = ({
       dataTest: 'shareVideo',
     }
   ]
+
+  if (shouldAllowScreensharing) {
+    dropdownOptions.unshift({
+      svgIcon: 'shareScreen',
+      label: intl.formatMessage(intlMessages.shareScreen),
+      key: 'shareScreen',
+      onClick: onClickShareScreen,
+      dataTest: 'shareScreen',
+    });
+  }
 
   const onClickScreensharing = () => {
     if (amIBroadcasting) {
@@ -319,10 +322,11 @@ const ScreenshareButton = ({
   return (
     <>
       {
-        shouldAllowScreensharing
+        true
             ? (
                 <>
                     <BBBMenu
+                        phoneAndTabletSameType={window.innerWidth <= 1024}
                         opts={{
                             id: 'screensharing-dropdown-menu',
                             anchorOrigin: {vertical: 'top', horizontal: 'center'},

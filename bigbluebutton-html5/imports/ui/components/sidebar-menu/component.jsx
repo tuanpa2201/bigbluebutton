@@ -37,6 +37,7 @@ const Sidebar = styled.div`
       font-size: 16px;
       margin-left: 8px;
       display: block;
+      color: #313131;
     }
   }
 
@@ -51,6 +52,7 @@ const MenuItem = styled.div`
 
   @media (max-width: 1024px) {
     max-height: 56px;
+    width: 100%;
   }
 `;
 
@@ -213,7 +215,7 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
       description: 'Title for the Header',
     },
     chatTitlePublic: {
-      id: 'app.chat.titlePublic',
+      id: 'app.chat.titleDiscuss',
       description: 'title for public chat',
     },
     presentationLabel: {
@@ -235,6 +237,10 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
     timer: {
       id: 'app.timer.button.timer',
       description: 'Timer switch button',
+    },
+    themeSwitch: {
+      id: 'app.settings.theme.switch.label',
+      description: 'Theme switch label',
     },
   });
 
@@ -340,11 +346,10 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
         <>
           {(!item.isModerator || (isModerator && item.isModerator)) && (!item.isPresenter || (isPresenter && item.isPresenter))
                 && (
-                  <MenuItem>
+                  <MenuItem onClick={() => handleClick(item.key)}>
                     <IconButton
                       key={item.key}
                       title={item.label}
-                      onClick={() => handleClick(item.key)}
                       className={[`sidebar_${PANELS[item.key.toUpperCase()]}`, currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''].join(' ')}
                     >
                       <SvgIcon iconName={item.file} />
@@ -368,7 +373,7 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
             >
               <SvgIcon iconName="moon" />
             </BaseButton>
-            <span>Cài đặt chủ đề</span>
+            <span>{intl.formatMessage(messages.themeSwitch)}</span>
           </MenuToggle>
           <ThemeSwitch>
             <ThemeButton

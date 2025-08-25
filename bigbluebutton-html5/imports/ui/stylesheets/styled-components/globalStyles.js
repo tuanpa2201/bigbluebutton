@@ -29,6 +29,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 16px !important;
         border-bottom-left-radius: 0px !important;
         border-bottom-right-radius: 0px !important;
+        font-size: 16px !important;
       }
     }
   }
