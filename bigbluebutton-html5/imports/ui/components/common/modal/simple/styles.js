@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import Styled from '../base/component';
 import {
   borderSize,
-  mdPaddingX,
 } from '/imports/ui/stylesheets/styled-components/general';
 import {
   colorWhite,
   colorText,
 } from '/imports/ui/stylesheets/styled-components/palette';
 import ModalHeader from '/imports/ui/components/common/modal/header/component';
+import { tabletOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const SimpleModal = styled(Styled.BaseModal)`
   outline: transparent;
@@ -30,6 +30,10 @@ const Content = styled.div`
   //padding: 0;
   
   padding: 16px;
+
+  @media ${tabletOnly} {
+    padding-bottom: 24px;
+  }
 `;
 
 export default {

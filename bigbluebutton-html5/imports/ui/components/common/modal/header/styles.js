@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import Button from '/imports/ui/components/common/button/component';
 import { TitleElipsis } from '/imports/ui/stylesheets/styled-components/placeholders';
-import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import {
   colorGrayDark,
   colorGrayLighter,
-  colorText,
 } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   mdPaddingX,
@@ -13,7 +12,6 @@ import {
 } from '/imports/ui/stylesheets/styled-components/general';
 import {
   btnFontWeight,
-  fontSizeBase,
   fontSizeLarge,
   lineHeightComputed,
 } from '/imports/ui/stylesheets/styled-components/typography';
@@ -61,8 +59,8 @@ const Title = styled(TitleElipsis)`
   //margin: ${smPadding} 0 0;
   //line-height: calc(${lineHeightComputed} * 2);
 
-  @media ${smallOnly} {
-    font-size: ${fontSizeBase};
+  @media ${phoneOnly} {
+    font-size: 16px;
     padding: 0 ${mdPaddingX};
   }
 
@@ -86,7 +84,7 @@ const DismissButton = styled(Button)`
     box-shadow: unset !important;
     padding: 6px;
     border: unset;
-    & > i { color: ${colorText}; }
+    & > i { color: #5F6166; }
     &:focus{
       background: transparent !important;
     }

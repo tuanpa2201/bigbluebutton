@@ -48,6 +48,10 @@ select {
     font-weight: 400;
     line-height: 20px;
     transition: border-color 0.2s, box-shadow 0.2s;
+
+    display: grid;
+    grid-template-columns: auto 18px;
+    gap: 4px;
 }
 .custom-dropdown__selected:focus,
 .custom-dropdown__selected:active {

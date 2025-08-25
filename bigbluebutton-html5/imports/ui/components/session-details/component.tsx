@@ -129,7 +129,7 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
                 {intl.formatMessage(intlMessages.joinByUrlLabel)}
               </Styled.JoinTitle>
               <Styled.JoinContainer className="join-container">
-                {loginUrl}
+                <span className="text-one-line">{loginUrl}</span>
                 <Styled.CopyButton
                   key="copy-join-url"
                   className="copy-join-url"
@@ -152,9 +152,9 @@ const SessionDetails: React.FC<SessionDetailsProps> = (props) => {
             </div>
           )}
 
-          <div>
+          <div className="text-base">
             <span>{intl.formatMessage(intlMessages.audio_help_1)}</span>
-            <span> {intl.formatMessage(intlMessages.audio_help_2)}</span>
+            <span>{intl.formatMessage(intlMessages.audio_help_2)}</span>
           </div>
 
         </Styled.Content>
