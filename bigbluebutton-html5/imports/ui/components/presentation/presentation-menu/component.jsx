@@ -524,6 +524,7 @@ const PresentationMenu = (props) => {
                 container: fullscreenRef,
               }}
               actions={options}
+              phoneAndTabletSameType
           />
           <input
               type="file"

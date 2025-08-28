@@ -52,6 +52,12 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .button-end-okay {
+    @media screen and (max-width: 1024px) {
+      width: 100%;
+    }
+  }
 `;
 
 const MeetingEndedButton = styled.span`

@@ -743,6 +743,11 @@
             [data-darkreader-scheme="dark"] & {
                 color: var(--text-primary-dark, #FCFCFD);
             }
+
+            @media screen and (max-width: 1024px) {
+                font-size: 16px !important;
+                line-height: 20px;
+            }
         }
 
         & .remove-user-checkbox {
@@ -759,6 +764,11 @@
             & #confirmationCheckbox {
                 height: 14px;
                 width: 14px;
+            }
+
+            @media screen and (max-width: 1024px) {
+                font-size: 16px !important;
+                line-height: 20px;
             }
         }
     }
@@ -790,10 +800,18 @@
             [data-darkreader-scheme="dark"] & {
                 color: var(--text-primary-dark, #FCFCFD);
             }
+
+            @media screen and (max-width: 1024px) {
+                font-size: 20px !important;
+            }
         }
         & .meetingEndedModal-messageEnded {
             [data-darkreader-scheme="dark"] & {
                 color: var(--text-primary-dark, #FCFCFD);
+            }
+
+            @media screen and (max-width: 1024px) {
+                font-size: 16px !important;
             }
         }
         & .viewLearningAnalyticsDashboard {
@@ -834,6 +852,9 @@
                 [data-darkreader-scheme="dark"] & {
                     color: var(--text-primary-dark, #C5C9CD);
                 }
+                @media (max-width: 1024px) {
+                    font-size: 16px !important;
+                }
             }
 
             & .lock-viewer-form {
@@ -863,6 +884,10 @@
                     line-height: 20px; /* 142.857% */
                     [data-darkreader-scheme="dark"] & {
                         color: var(--text-primary-dark, #FCFCFD);
+                    }
+
+                    @media (max-width: 1024px) {
+                        font-size: 16px !important;
                     }
                 }
                 & .lock-viewer-tbl-row {
@@ -932,6 +957,10 @@
                 [data-darkreader-scheme="dark"] & {
                     color: var(--text-primary-dark, #FCFCFD);
                 }
+                
+                @media (max-width: 1024px) {
+                    font-size: 16px !important;
+                }
             }
 
             & .policy-radio-group {
@@ -942,6 +971,7 @@
 
                 @media (max-width: 1024px) {
                     width: 100%;
+                    font-size: 16px !important;
                 }
 
                 & .policy-radio-label {
@@ -977,6 +1007,7 @@
 
                     @media (max-width: 1024px) {
                         width: 100%;
+                        font-size: 16px !important;
                     }
                 }
             }

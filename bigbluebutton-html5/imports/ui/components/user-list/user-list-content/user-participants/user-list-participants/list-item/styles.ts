@@ -362,6 +362,12 @@ const UserName = styled.span`
     line-height: 24px; /* 133.333% */
   }
 
+  @media screen and (max-width: 1024px) {
+    font-size: 18px;
+    line-height: 24px; /* 133.333% */
+  }
+  
+
   > span {
     text-overflow: ellipsis;
     white-space: nowrap;
