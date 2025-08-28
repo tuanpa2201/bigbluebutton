@@ -9,7 +9,6 @@ import GenericContentItem from '/imports/ui/components/generic-content/generic-c
 import Styled from './styles';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 import deviceInfo from '/imports/utils/deviceInfo';
-import { SMALL_VIEWPORT_BREAKPOINT } from '/imports/ui/components/layout/enums';
 
 const intlMessages = defineMessages({
   close: {
@@ -104,11 +103,12 @@ class BBBMenu extends React.Component {
 
   makeMenuItems() {
     const {
-      actions, selectedEmoji, intl, isHorizontal, isEmoji, isMobile, roundButtons, keepOpen, phoneAndTabletSameType, overrideMobileStyles
+      actions, selectedEmoji, intl, isHorizontal, isEmoji, isMobile, roundButtons,
+      keepOpen, phoneAndTabletSameType, overrideMobileStyles,
     } = this.props;
 
-    const { isPhone } = deviceInfo;
-    if ((isPhone || phoneAndTabletSameType) && !overrideMobileStyles && !actions?.find((item) => item.key === 'list-item-close')) {
+    const { isPhone, isMobile: isTabletDown } = deviceInfo;
+    if ((isPhone || (phoneAndTabletSameType && isTabletDown)) && !overrideMobileStyles && !actions?.find((item) => item.key === 'list-item-close')) {
       actions.push(
         {
           key: 'list-item-close',

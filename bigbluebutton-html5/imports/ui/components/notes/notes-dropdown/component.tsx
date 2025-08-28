@@ -99,6 +99,7 @@ const NotesDropdownGraphql: React.FC<NotesDropdownGraphqlProps> = (props) => {
   return (
     <>
       <BBBMenu
+        phoneAndTabletSameType
         className="notes-options-menu"
         trigger={(
           <Trigger
