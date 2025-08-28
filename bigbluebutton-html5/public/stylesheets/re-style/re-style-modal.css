@@ -343,6 +343,12 @@
                 column-gap: 12px;
                 max-width: unset;
 
+                @media (max-width: 1024px) {
+                    display: flex;
+                    justify-content: start;
+                    flex-wrap: wrap;
+                }
+
                 & .thumbnail-button{
                     border: unset;
                     box-shadow: unset;

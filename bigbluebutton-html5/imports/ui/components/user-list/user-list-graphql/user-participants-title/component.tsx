@@ -17,12 +17,11 @@ import { ACTIONS, PANELS } from '/imports/ui/components/layout/enums';
 
 const BaseButton = styled.button`
   border: none;
-  margin: 12px 0;
   padding: 0;
   cursor: pointer;
   outline: none;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   border-radius: 32px;
   display: flex;
   align-items: center;

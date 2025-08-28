@@ -37,6 +37,10 @@ const intlMessages = defineMessages({
     id: 'app.actionsBar.reactions.raiseHand',
     description: 'Raise option label',
   },
+  lowHand: {
+    id: 'app.actionsBar.reactions.lowHand',
+    description: 'Raise option label',
+  },
   recordLabel: {
     id: 'app.actionsBar.reactions.record',
     description: 'Record option label',
@@ -324,10 +328,12 @@ class OptionsDropdown extends PureComponent {
       this.menuItems.push(
         {
           key: 'list-item-raise',
-          svgIcon: 'raise',
+          svgIcon: !currentUser.raiseHand ? 'raise' : 'raiseLower',
           dataTest: 'raised',
-          label: intl.formatMessage(intlMessages.raiseLabel),
-          description: intl.formatMessage(intlMessages.raiseLabel),
+          label: !currentUser.raiseHand ? intl.formatMessage(intlMessages.raiseLabel)
+            : intl.formatMessage(intlMessages.lowHand),
+          description: !currentUser.raiseHand ? intl.formatMessage(intlMessages.raiseLabel)
+            : intl.formatMessage(intlMessages.lowHand),
           onClick: () => setRaiseHand({
             variables: {
               userId: currentUser.userId,

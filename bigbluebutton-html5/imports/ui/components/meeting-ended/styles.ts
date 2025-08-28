@@ -4,6 +4,7 @@ import {
   colorWhite,
   colorBackground,
 } from '/imports/ui/stylesheets/styled-components/palette';
+import { tabletOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const Parent = styled.div`
   height: 100%;
@@ -32,10 +33,15 @@ const Title = styled.div`
   color: var(--Text-Primary, #313131);
   text-align: center;
 
-  font-size: 18px;
   font-style: normal;
   font-weight: 600;
+  font-size: 18px;
   line-height: 24px;
+
+  @media ${tabletOnly} {
+    font-size: 20px;
+    line-height: 32px;
+  }
 `;
 
 const Text = styled.div`
@@ -46,18 +52,16 @@ const Text = styled.div`
   font-weight: 400;
   line-height: 20px;
   margin-top: 8px;
+  @media ${tabletOnly} {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  .button-end-okay {
-    @media screen and (max-width: 1024px) {
-      width: 100%;
-    }
-  }
 `;
 
 const MeetingEndedButton = styled.span`
@@ -70,6 +74,11 @@ const MeetingEndedButton = styled.span`
   font-size: 14px;
   line-height: 20px;
   margin-top: 8px;
+
+  @media ${tabletOnly} {
+    font-size: 16px;
+    line-height: 24px;
+  }
 
 `;
 

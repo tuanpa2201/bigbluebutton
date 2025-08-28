@@ -276,6 +276,9 @@
     .md-hidden{
         display: none !important;
     }
+    .md-w-100 {
+        width: 100% !important;
+    }
 }
 
 @media (max-width: 767px) {
