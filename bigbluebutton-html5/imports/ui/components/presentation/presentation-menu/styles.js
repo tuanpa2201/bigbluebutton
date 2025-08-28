@@ -44,7 +44,7 @@ const DropdownButton = styled.button`
 const Right = styled.div`
   cursor: pointer;
   position: absolute;
-  right: 16px;
+  right: 10px;
   top: 16px;
   z-index: 999;
 

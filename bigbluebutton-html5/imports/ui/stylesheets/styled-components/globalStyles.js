@@ -125,7 +125,7 @@ const GlobalStyle = createGlobalStyle`
     
     & .Toastify__progress-bar-theme--light,
     & .Toastify__progress-bar-theme--light.Toastify__progress-bar--default {
-      background: #C8C8C8!important;
+      background: #6CC17C!important;
     }
 
     & .Toastify__progress-bar-theme--light.Toastify__progress-bar--info {

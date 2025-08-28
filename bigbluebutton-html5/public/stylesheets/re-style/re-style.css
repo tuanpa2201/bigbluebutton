@@ -910,7 +910,7 @@
                 [data-darkreader-scheme="dark"] & {
                     color: var(--text-primary-dark, #FCFCFD);
                 }
-                @media screen and (max-width: 767px) {
+                @media screen and (max-width: 375px) {
                     font-size: 18px!important;
                     line-height: 24px!important; /* 133.333% */
                 }

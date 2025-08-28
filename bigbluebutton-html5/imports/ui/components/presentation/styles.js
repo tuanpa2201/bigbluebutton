@@ -198,7 +198,7 @@ const Button = styled.button`
 const ExtraTools = styled.div`
   position: absolute;
   top: 16px;
-  right: 67px;
+  right: 61px;
   z-index: 399;
   display: flex;
   gap: 16px;
