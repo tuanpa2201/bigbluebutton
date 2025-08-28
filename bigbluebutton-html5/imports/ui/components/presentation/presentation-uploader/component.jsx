@@ -1151,7 +1151,7 @@ class PresentationUploader extends Component {
               <Styled.ModalInner>
                 <div>
                   <Styled.ModalHeader>
-                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                       <Styled.CloseButtonMobile className="header-icon" onClick={this.closePanel}>
                         <SvgIcon iconName="chevronLeft" />
                       </Styled.CloseButtonMobile>
