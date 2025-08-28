@@ -301,7 +301,7 @@ const UserActions: React.FC<UserActionProps> = (props) => {
   );
 
   const renderDefaultButton = () => (
-    <Styled.MenuWrapper className="user-actions-menu-wrapper">
+    <Styled.MenuWrapper className="user-actions-menu-wrapper text-one-line">
       {enableVideoMenu && getAvailableActions().length >= 1
         ? (
           <BBBMenu
@@ -309,7 +309,7 @@ const UserActions: React.FC<UserActionProps> = (props) => {
               <Styled.DropdownTrigger
                 tabIndex={0}
                 data-test="dropdownWebcamButton"
-                className="webcam-dropdown-trigger"
+                className="webcam-dropdown-trigger text-one-line"
                 $isRTL={isRTL}
                 role="button"
               >

@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { useMutation, useQuery } from '@apollo/client';
 import { defineMessages, useIntl } from 'react-intl';
+import styled from 'styled-components';
 import { GET_CHAT_DATA, GetChatDataResponse, CLOSE_PRIVATE_CHAT_MUTATION } from './queries';
 import closePrivateChat from './services';
 import { layoutSelect, layoutDispatch } from '../../../layout/context';
@@ -8,7 +9,6 @@ import { Layout } from '../../../layout/layoutTypes';
 import { ACTIONS, PANELS } from '../../../layout/enums';
 import ChatActions from './chat-actions/component';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
-import styled from 'styled-components';
 
 interface ChatHeaderProps {
   chatId: string;
@@ -40,12 +40,11 @@ const intlMessages = defineMessages({
 
 const CloseButtonMobile = styled.button`
   border: none;
-  // margin: 12px 0;
   padding: 0;
   cursor: pointer;
   outline: none;
-  width: 40px;
-  height: 40px;
+  width: 20px;
+  height: 20px;
   border-radius: 32px;
   display: flex;
   align-items: center;
@@ -84,7 +83,7 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
     <>
       <h2 className="sr-only chat-header">{intl.formatMessage(intlMessages.titleDiscuss)}</h2>
       <div className="d-flex align-items-center justify-content-between chat-header-container">
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <CloseButtonMobile className="header-icon" onClick={closePanel}>
             <SvgIcon iconName="chevronLeft" />
           </CloseButtonMobile>

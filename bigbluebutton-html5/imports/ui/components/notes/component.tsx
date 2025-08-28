@@ -159,7 +159,7 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
           <>
             <h2 className="sr-only">{intl.formatMessage(intlMessages.title)}</h2>
             <div className="d-flex align-items-center justify-content-between notes-header-container">
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <Styled.CloseButtonMobile className="header-icon" onClick={() => closePanel()}>
                   <SvgIcon iconName="chevronLeft" />
                 </Styled.CloseButtonMobile>

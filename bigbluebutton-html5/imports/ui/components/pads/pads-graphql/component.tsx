@@ -67,12 +67,12 @@ const PadGraphql: React.FC<PadGraphqlProps> = (props) => {
           pointerEvents: isResizing ? 'none' : 'inherit',
         }}
       />
-      {/* <Styled.Hint */}
-      {/*  id="padEscapeHint" */}
-      {/*  aria-hidden */}
-      {/* > */}
-      {/*  {intl.formatMessage(intlMessages.hint)} */}
-      {/* </Styled.Hint> */}
+      {/* <Styled.Hint
+        id="padEscapeHint"
+        aria-hidden
+      >
+        {intl.formatMessage(intlMessages.hint)}
+      </Styled.Hint> */}
     </Styled.Pad>
   );
 };

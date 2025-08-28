@@ -9,6 +9,7 @@ export const Container = styled.div`
   align-items: center;
   margin-bottom: ${lgPaddingY};
   margin-top: ${smPaddingX};
+  gap: 8px;
 `;
 
 export const SmallTitle = styled.h2`
