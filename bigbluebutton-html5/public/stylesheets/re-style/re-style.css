@@ -565,6 +565,7 @@
         & .chat-message-wrapper {
             & .chat-message-header,
             & .chat-message-header-name {
+                white-space: break-spaces;
                 color: var(--Highlight-Light-Red, #EB5366);
 
                 /* Semibold/S */
