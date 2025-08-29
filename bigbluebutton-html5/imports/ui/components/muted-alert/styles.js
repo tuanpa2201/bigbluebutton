@@ -2,11 +2,9 @@ import styled from 'styled-components';
 import { mdPaddingX, borderRadius } from '/imports/ui/stylesheets/styled-components/general';
 import {
   fontSizeXL,
-  fontSizeMD,
-  fontSizeSmall,
 } from '/imports/ui/stylesheets/styled-components/typography';
 import { colorWhite, colorTipBg } from '/imports/ui/stylesheets/styled-components/palette';
-import { smallOnly, mediumOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { smallOnly, phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const MuteWarning = styled.div`
   position: absolute !important;
@@ -23,12 +21,17 @@ const MuteWarning = styled.div`
   z-index: 100;
   cursor: pointer;
 
+  @media ${phoneOnly} {
+    transform: translate(0%, -50%);
+  }
+
   > span {
     white-space: nowrap;
+     font-size: 16px;
   }
 
   @media ${smallOnly} {
-    font-size: ${fontSizeMD};
+    font-size: 16px;
   }
 
   ${({ alignForMod }) => alignForMod && `
@@ -36,10 +39,6 @@ const MuteWarning = styled.div`
 
     [dir="rtl"] & {
       left: 20%;
-    }
-
-    @media ${mediumOnly} {
-      font-size: ${fontSizeSmall};
     }
   `}
 
@@ -49,11 +48,6 @@ const MuteWarning = styled.div`
     [dir="rtl"] & {
       left: 20%;
     }
-
-    @media ${mediumOnly} {
-      font-size: ${fontSizeSmall};
-    }
-
   `}
 `;
 

@@ -286,10 +286,10 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
       type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
       value: PANELS.NONE,
     });
-    contextDispatch({
-      type: ACTIONS.SET_ID_CHAT_OPEN,
-      value: '',
-    });
+    // contextDispatch({
+    //   type: ACTIONS.SET_ID_CHAT_OPEN,
+    //   value: '',
+    // });
     contextDispatch({
       type: ACTIONS.SET_SIDEBAR_NAVIGATION_IS_OPEN,
       value: false,

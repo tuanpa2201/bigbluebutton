@@ -23,6 +23,7 @@ import useDeduplicatedSubscription from '../../core/hooks/useDeduplicatedSubscri
 import { useIsPresentationEnabled } from '../../services/features';
 import { useStorageKey } from '/imports/ui/services/storage/hooks';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import deviceInfo from '/imports/utils/deviceInfo';
 
 const intlMessages = defineMessages({
   hide: {
@@ -82,13 +83,17 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
 
   const { isChrome } = browserInfo;
   const isOnMediaArea = area === 'media';
-  const widthFull = sharedNotesOutput.width;
-  sharedNotesOutput.width = 1440;
-  sharedNotesOutput.left += (widthFull - 1440) / 2;
+  const { isMobile } = deviceInfo;
+
   const style = isOnMediaArea ? {
     position: 'absolute',
     borderRadius: '8px',
     ...sharedNotesOutput,
+    ...(!isMobile && {
+      marginLeft: '20px',
+      marginRight: '20px',
+      width: `${sharedNotesOutput.width - 40}px`,
+    }),
   } : {};
 
   const isHidden = (isOnMediaArea && (style.width === 0 || style.height === 0))
@@ -147,42 +152,40 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
   }, [layoutContextDispatch]);
 
   return (shouldRenderNotes || shouldShowSharedNotesOnPresentationArea) && (
-    <div style={{ width: isOnMediaArea ? widthFull : 'unset', height: '100%' }}>
-      <Styled.Notes
-        className="notes"
-        data-test="notes"
-        isChrome={isChrome}
-        style={style}
-      >
-        {!isOnMediaArea ? (
-        // @ts-ignore Until everything in Typescript
-          <>
-            <h2 className="sr-only">{intl.formatMessage(intlMessages.title)}</h2>
-            <div className="d-flex align-items-center justify-content-between notes-header-container">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <Styled.CloseButtonMobile className="header-icon" onClick={() => closePanel()}>
-                  <SvgIcon iconName="chevronLeft" />
-                </Styled.CloseButtonMobile>
-                <span className="notes-header">{intl.formatMessage(intlMessages.title)}</span>
-              </div>
-              <div className="d-flex align-items-center">
-                {/* eslint-disable-next-line max-len */}
-                <NotesDropdown handlePinSharedNotes={handlePinSharedNotes} presentationEnabled={isPresentationEnabled} />
-                <button type="button" onClick={closePanel} style={{ background: 'none', border: 'none' }} className="btnClose">
-                  <SvgIcon iconName="cross_20" />
-                </button>
-              </div>
+    <Styled.Notes
+      className="notes"
+      data-test="notes"
+      isChrome={isChrome}
+      style={style}
+    >
+      {!isOnMediaArea ? (
+      // @ts-ignore Until everything in Typescript
+        <>
+          <h2 className="sr-only">{intl.formatMessage(intlMessages.title)}</h2>
+          <div className="d-flex align-items-center justify-content-between notes-header-container">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Styled.CloseButtonMobile className="header-icon" onClick={() => closePanel()}>
+                <SvgIcon iconName="chevronLeft" />
+              </Styled.CloseButtonMobile>
+              <span className="notes-header">{intl.formatMessage(intlMessages.title)}</span>
             </div>
-          </>
-        ) : renderHeaderOnMedia()}
-        <PadContainer
-          externalId={NOTES_CONFIG.id}
-          hasPermission={hasPermission}
-          isResizing={isResizing}
-          isRTL={isRTL}
-        />
-      </Styled.Notes>
-    </div>
+            <div className="d-flex align-items-center">
+              {/* eslint-disable-next-line max-len */}
+              <NotesDropdown handlePinSharedNotes={handlePinSharedNotes} presentationEnabled={isPresentationEnabled} />
+              <button type="button" onClick={closePanel} style={{ background: 'none', border: 'none' }} className="btnClose">
+                <SvgIcon iconName="cross_20" />
+              </button>
+            </div>
+          </div>
+        </>
+      ) : renderHeaderOnMedia()}
+      <PadContainer
+        externalId={NOTES_CONFIG.id}
+        hasPermission={hasPermission}
+        isResizing={isResizing}
+        isRTL={isRTL}
+      />
+    </Styled.Notes>
   );
 };
 
