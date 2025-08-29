@@ -30,7 +30,7 @@ import {
   colorWhite,
   colorPrimary,
 } from '/imports/ui/stylesheets/styled-components/palette';
-import { hasPhoneDimentions, phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { hasPhoneDimentions, phoneOnly, tabletOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import Button from '/imports/ui/components/common/button/component';
 import TextareaAutosize from 'react-autosize-textarea';
 
@@ -230,6 +230,10 @@ const PollingContainer = styled.aside<{ autoWidth: boolean }>`
     [dir="rtl"] & {
       left: 50%;
     }
+  }
+
+  @media ${tabletOnly} {
+    font-size: 16px;
   }
 
   ${({ autoWidth }) => autoWidth

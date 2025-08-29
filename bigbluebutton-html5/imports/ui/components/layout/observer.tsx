@@ -261,6 +261,12 @@ const LayoutObserver: React.FC = () => {
             type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
             value: false,
           });
+
+          const PUBLIC_CHAT_ID = window.meetingClientSettings.public.chat.public_group_id;
+          layoutContextDispatch({
+            type: ACTIONS.SET_ID_CHAT_OPEN,
+            value: PUBLIC_CHAT_ID,
+          });
         }
 
         checkedUserSettings.current = true;
