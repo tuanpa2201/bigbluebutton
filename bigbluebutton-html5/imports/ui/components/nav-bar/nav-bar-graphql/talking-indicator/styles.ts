@@ -153,7 +153,7 @@ const Speaking = styled.div`
   flex-wrap: nowrap;
   overflow-x: auto;
   overflow-y: hidden;
-  max-height: ${talkerPaddingXl};
+  // max-height: ${talkerPaddingXl};
   scrollbar-width: 0; // firefox
   scrollbar-color: transparent;
 

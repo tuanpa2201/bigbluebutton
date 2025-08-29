@@ -69,10 +69,10 @@ const ChatHeader: React.FC<ChatHeaderProps> = ({
       type: ACTIONS.SET_SIDEBAR_CONTENT_IS_OPEN,
       value: false,
     });
-    layoutContextDispatch({
-      type: ACTIONS.SET_ID_CHAT_OPEN,
-      value: '',
-    });
+    // layoutContextDispatch({
+    //   type: ACTIONS.SET_ID_CHAT_OPEN,
+    //   value: '',
+    // });
     layoutContextDispatch({
       type: ACTIONS.SET_SIDEBAR_CONTENT_PANEL,
       value: PANELS.NONE,
