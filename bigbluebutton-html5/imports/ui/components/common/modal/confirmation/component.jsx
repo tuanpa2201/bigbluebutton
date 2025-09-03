@@ -113,7 +113,7 @@ class ConfirmationModal extends Component {
             </Styled.Description>
 
             <Styled.Footer className={`remove-user-footer`}>
-              <div ref={this.cancelButtonRef} style={{ width: isPhone ? '50%' : '' }}>
+              <div ref={this.cancelButtonRef} style={{ width: isPhone ? '100%' : '' }}>
                 <Styled.CancelButton className='btn btn-default'
                                      color="secondary"
                                      label={cancelButtonLabel || intl.formatMessage(messages.noLabel)}
