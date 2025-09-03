@@ -255,7 +255,7 @@ class App extends React.Component {
     // This line will eliminate duplicates.
     const genericDataColumnTitleList = [...new Set(genericDataColumnTitleWithDuplicates)];
 
-    document.title = `${intl.formatMessage({ id: 'app.learningDashboard.bigbluebuttonTitle', defaultMessage: 'BigBlueButton' })} - ${intl.formatMessage({ id: 'app.learningDashboard.dashboardTitle', defaultMessage: 'Learning Analytics Dashboard' })} - ${activitiesJson.name}`;
+    document.title = `${intl.formatMessage({ id: 'app.learningDashboard.bigbluebuttonTitle', defaultMessage: 'VOPS Meeting' })} - ${intl.formatMessage({ id: 'app.learningDashboard.dashboardTitle', defaultMessage: 'Learning Analytics Dashboard' })} - ${activitiesJson.name}`;
 
     function totalOfReactions() {
       if (activitiesJson && activitiesJson.users) {
@@ -442,7 +442,7 @@ class App extends React.Component {
             this.setState({ tab: v });
           }}
         >
-          <TabsListUnstyled className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+          <TabsListUnstyled className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 tab-list-mb">
             <TabUnstyled className={tab === TABS.OVERVIEW ? 'card-restyle card-restyle-uer' : 'card-restyle card-restyle-uer card-restyle-inactive'} data-test="activeUsersPanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>
