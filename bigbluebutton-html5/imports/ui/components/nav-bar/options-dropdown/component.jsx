@@ -437,7 +437,7 @@ class OptionsDropdown extends PureComponent {
             <Toggle
               icons={false}
               checked={!away}
-              onChange={handleToggleAFK}
+              // onChange={handleToggleAFK}
               ariaLabel={ToggleAFKLabel()}
               showToggleLabel={false}
             />
@@ -447,6 +447,7 @@ class OptionsDropdown extends PureComponent {
       key: 'none',
       isToggle: true,
       customStyles: { ...actionCustomStyles, width: 'auto' },
+      onClick: () => handleToggleAFK(),
     });
 
     if (audioCaptionsEnabled && isMobile) {
