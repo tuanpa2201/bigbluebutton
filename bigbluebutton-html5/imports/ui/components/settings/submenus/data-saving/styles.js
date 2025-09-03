@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import Styled from '/imports/ui/components/settings/submenus/styles';
 
-const Title = styled(Styled.Title)``;
+const Title = styled(Styled.Title)`
+
+`;
 
 const SubTitle = styled(Styled.SubTitle)``;
 
