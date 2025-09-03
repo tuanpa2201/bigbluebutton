@@ -1428,8 +1428,12 @@ li[data-key="menuItem-directLogoutButton"] {
     }
 }
 
-#presentationInnerWrapper {
-
+#presentationToolbarWrapper,
+#presentationInnerWrapper,
+#presentationToolbar{
+    @media screen and (max-width: 1024px) {
+        width: 100% !important;
+    }
 }
 
 .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root{
