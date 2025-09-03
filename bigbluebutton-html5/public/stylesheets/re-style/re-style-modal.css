@@ -499,14 +499,14 @@
                             color: var(--text-primary-dark, #FCFCFD);
                         }
                         /* Semibold/L */
-                        font-size: 18px !important;
+                        font-size: 18px;
                         font-style: normal;
-                        font-weight: 600 !important;
+                        font-weight: 600;
                         line-height: 24px; /* 133.333% */
                         margin-bottom: 12px;
 
                         @media only screen and (max-width: 767px) {
-                            font-size: 16px !important;
+                            font-size: 16px;
                         }
                     }
 
@@ -516,7 +516,7 @@
                             color: var(--text-primary-dark, #FCFCFD);
                         }
                         /* Regular/S */
-                        font-size: 14px!important;
+                        font-size: 14px;
                         font-style: normal;
                         font-weight: 400!important;
                         line-height: 20px; /* 142.857% */
@@ -545,7 +545,7 @@
                                 line-height: 20px; /* 142.857% */
                                 margin-bottom: 0;
                                 @media only screen and (min-width: 768px) and (max-width: 1024px) {
-                                    font-size: 16px !important;
+                                    font-size: 16px;
                                 }
                             }
 
@@ -574,6 +574,18 @@
 
                 @media only screen and (max-width: 1024px) {
                     width: 100% !important;
+                }
+                min-height: 534px;
+                @media only screen and (min-width: 768px) and (max-width: 1024px) {
+                    min-height: 540px;
+                    max-height: 540px;
+                    overflow: auto;
+                }
+
+                @media only screen and (max-width: 767px) {
+                    min-height: 580px;
+                    max-height: 580px;
+                    overflow: auto;
                 }
             }
         }
