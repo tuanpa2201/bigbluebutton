@@ -102,6 +102,10 @@
     align-items: center;
     border-radius: 8px;
     border-left-width: 4px;
+
+    @media screen and (max-width: 1024px) {
+      width: 320px;
+    }
   }
 
   & .card-restyle-inactive {
@@ -316,5 +320,13 @@
     font-style: normal;
     font-weight: 400;
     color: var(--text-secondary-light, #6F767E) !important;
+  }
+
+  & .tab-list-mb {
+    @media screen and (max-width: 1024px) {
+      grid-auto-flow: column;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
   }
 }
