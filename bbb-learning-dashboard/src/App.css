@@ -322,11 +322,11 @@
     color: var(--text-secondary-light, #6F767E) !important;
   }
 
-  & .tab-list-mb {
-    @media screen and (max-width: 1024px) {
-      grid-auto-flow: column;
-      overflow-x: auto;
-      overflow-y: hidden;
-    }
-  }
+  /*& .tab-list-mb {*/
+  /*  @media screen and (max-width: 1024px) {*/
+  /*    grid-auto-flow: column;*/
+  /*    overflow-x: auto;*/
+  /*    overflow-y: hidden;*/
+  /*  }*/
+  /*}*/
 }
