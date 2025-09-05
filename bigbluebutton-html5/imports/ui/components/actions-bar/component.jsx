@@ -239,6 +239,7 @@ class ActionsBar extends PureComponent {
               <OptionsDropdownContainer
                 amIModerator={amIModerator}
                 isDirectLeaveButtonEnabled={IS_DIRECT_LEAVE_BUTTON_ENABLED}
+                presentationIsOpen={presentationIsOpen}
               />
               {isDirectLeaveButtonEnabled && isMeteorConnected
                 ? <LeaveMeetingButtonContainer amIModerator={amIModerator} /> : null}

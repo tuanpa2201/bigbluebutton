@@ -41,6 +41,14 @@ const intlMessages = defineMessages({
     id: 'app.actionsBar.reactions.lowHand',
     description: 'Raise option label',
   },
+  presentation: {
+    id: 'app.actionsBar.reactions.presentation',
+    description: 'Presentation option label',
+  },
+  restorePresentation: {
+    id: 'app.actionsBar.reactions.restorePresentation',
+    description: 'Presentation option label',
+  },
   recordLabel: {
     id: 'app.actionsBar.reactions.record',
     description: 'Record option label',
@@ -298,7 +306,7 @@ class OptionsDropdown extends PureComponent {
       intl, amIModerator, isBreakoutRoom, isMeteorConnected, audioCaptionsEnabled,
       audioCaptionsActive, audioCaptionsSet, isMobile, optionsDropdownItems,
       isDirectLeaveButtonEnabled, isLayoutsEnabled, away, handleToggleAFK, setRaiseHand,
-      currentUser, isRecording,
+      currentUser, isRecording, presentationIsOpen, setPresentationIsOpen, layoutContextDispatch,
     } = this.props;
 
     const allowedToEndMeeting = amIModerator && !isBreakoutRoom;
@@ -334,12 +342,29 @@ class OptionsDropdown extends PureComponent {
             : intl.formatMessage(intlMessages.lowHand),
           description: !currentUser.raiseHand ? intl.formatMessage(intlMessages.raiseLabel)
             : intl.formatMessage(intlMessages.lowHand),
-          onClick: () => setRaiseHand({
-            variables: {
-              userId: currentUser.userId,
-              raiseHand: !currentUser.raiseHand,
-            },
-          }),
+          onClick: () => {
+            setRaiseHand({
+              variables: {
+                userId: currentUser.userId,
+                raiseHand: !currentUser.raiseHand,
+              },
+            });
+          },
+        },
+      );
+      this.menuItems.push(
+        {
+          key: 'list-item-minimize-presentation',
+          svgIcon: presentationIsOpen ? 'presentation' : 'presentation_off',
+          dataTest: 'raised',
+          label: presentationIsOpen ? intl.formatMessage(intlMessages.presentation)
+            : intl.formatMessage(intlMessages.restorePresentation),
+          description: !currentUser.raiseHand ? intl.formatMessage(intlMessages.presentation)
+            : intl.formatMessage(intlMessages.restorePresentation),
+          onClick: () => {
+            setPresentationIsOpen(layoutContextDispatch, !presentationIsOpen);
+            Session.setItem('presentationLastState', !presentationIsOpen);
+          },
         },
       );
       this.menuItems.push(

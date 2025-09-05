@@ -802,7 +802,6 @@ const iconsMap: { [key: string]: JSX.Element } = {
         </clipPath>
       </defs>
     </svg>
-
   ),
 };
 
