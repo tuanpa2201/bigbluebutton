@@ -720,6 +720,8 @@
     "app.actionsBar.actionsDropdown.takePresenterDesc": "Assign yourself as the new presenter",
     "app.actionsBar.reactions.reactionsButtonLabel": "Share a reaction",
     "app.actionsBar.reactions.raiseHand": "Raise your hand",
+    "app.actionsBar.reactions.presentation": "Minimize presentation",
+    "app.actionsBar.reactions.restorePresentation": "Restore presentation",
     "app.actionsBar.reactions.record": "Start recording",
     "app.actionsBar.reactions.stopRecord": "Pause recording",
     "app.actionsBar.reactions.lowHand": "Lower your hand",

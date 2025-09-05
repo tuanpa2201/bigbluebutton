@@ -4,7 +4,7 @@ import browserInfo from '/imports/utils/browserInfo';
 import { useMutation } from '@apollo/client';
 import OptionsDropdown from './component';
 import FullscreenService from '/imports/ui/components/common/fullscreen-button/service';
-import { layoutSelect } from '../../layout/context';
+import { layoutDispatch, layoutSelect } from '../../layout/context';
 import { PluginsContext } from '/imports/ui/components/components-data/plugin-context/context';
 import { USER_LEAVE_MEETING, SET_RAISE_HAND } from '/imports/ui/core/graphql/mutations/userMutations';
 import useMeeting from '/imports/ui/core/hooks/useMeeting';
@@ -22,6 +22,7 @@ import {
 } from '/imports/ui/components/audio/audio-graphql/audio-controls/input-stream-live-selector/service';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
 import { GET_MEETING_RECORDING_DATA } from '../nav-bar-graphql/recording-indicator/queries';
+import MediaService from '../../media/service';
 
 const { isIphone } = deviceInfo;
 const { isSafari, isValidSafariVersion } = browserInfo;
@@ -94,6 +95,8 @@ const OptionsDropdownContainer = (props) => {
     raiseHand: currentUserData?.raiseHand,
   };
 
+  const layoutContextDispatch = layoutDispatch();
+
   return (
     <OptionsDropdown {...{
       isRTL,
@@ -104,6 +107,8 @@ const OptionsDropdownContainer = (props) => {
       audioCaptionsActive,
       isDropdownOpen,
       handleToggleFullscreen: FullscreenService.toggleFullScreen,
+      layoutContextDispatch,
+      setPresentationIsOpen: MediaService.setPresentationIsOpen,
       audioCaptionsSet: (value) => setAudioCaptions(value),
       isMobile: deviceInfo.isMobile,
       noIOSFullscreen,

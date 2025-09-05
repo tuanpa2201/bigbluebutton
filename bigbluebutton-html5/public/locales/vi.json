@@ -803,6 +803,8 @@
   "app.actionsBar.actionsDropdown.takePresenterDesc": "Chỉ định bạn là người điều hành mới",
   "app.actionsBar.reactions.reactionsButtonLabel": "Chia sẻ biểu cảm",
   "app.actionsBar.reactions.raiseHand": "Giơ tay",
+  "app.actionsBar.reactions.presentation": "Thu nhỏ trình bày",
+    "app.actionsBar.reactions.restorePresentation": "Khôi phục trình bày",
   "app.actionsBar.reactions.record": "Bắt đầu ghi hình",
   "app.actionsBar.reactions.stopRecord": "Dừng ghi hình",
   "app.actionsBar.reactions.lowHand": "Hạ tay",
