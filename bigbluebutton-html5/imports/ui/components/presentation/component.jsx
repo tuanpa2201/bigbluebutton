@@ -873,6 +873,7 @@ class Presentation extends PureComponent {
               </div>
               {!tldrawIsMounting && presentationWidth > 0 && (
                 <Styled.PresentationToolbar
+                  id="presentationToolbar"
                   ref={(ref) => {
                     this.refPresentationToolbar = ref;
                   }}

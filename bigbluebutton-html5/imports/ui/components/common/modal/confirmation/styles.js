@@ -57,7 +57,7 @@ const ConfirmationButton = styled(Button)`
   padding-right: ${jumboPaddingY};
   padding-left: ${jumboPaddingY};
   //margin: 0 ${smPaddingX} 0 0;
-  ${isPhone ? 'width: 50%;' : ''};
+  ${isPhone ? 'width: 100%;' : ''};
 
   [dir="rtl"] & {
     margin: 0 0 0 ${smPaddingX};

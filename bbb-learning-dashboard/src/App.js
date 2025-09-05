@@ -442,7 +442,7 @@ class App extends React.Component {
             this.setState({ tab: v });
           }}
         >
-          <TabsListUnstyled className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4 tab-list-mb">
+          <TabsListUnstyled className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
             <TabUnstyled className={tab === TABS.OVERVIEW ? 'card-restyle card-restyle-uer' : 'card-restyle card-restyle-uer card-restyle-inactive'} data-test="activeUsersPanelDashboard">
               <Card>
                 <CardContent classes={{ root: '!p-0' }}>

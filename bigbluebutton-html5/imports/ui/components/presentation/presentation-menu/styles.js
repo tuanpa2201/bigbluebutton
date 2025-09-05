@@ -46,11 +46,11 @@ const Right = styled.div`
   position: absolute;
   right: 10px;
   top: 16px;
-  z-index: 999;
+  z-index: 299;
 
   > div {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;

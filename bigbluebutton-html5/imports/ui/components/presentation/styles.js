@@ -176,8 +176,8 @@ const Button = styled.button`
   color: #2d2d2d;
   cursor: pointer;
   padding: 0;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border-radius: 8px;
   background: var(--BG-04---hover, #EFEFEF);
   box-shadow: 0 4px 6px -2px rgba(26, 26, 26, 0.20), 1px 0 0 0 rgba(0, 0, 0, 0.13) inset, -1px 0 0 0 rgba(0, 0, 0, 0.13) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.17) inset, 0 1px 0 0 rgba(204, 204, 204, 0.50) inset;
