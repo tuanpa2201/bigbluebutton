@@ -152,6 +152,11 @@ const Separator = styled.div`
 const Toast = styled.div`
   display: flex;
 
+  & .toastIcon:has(.icon-bbb-mute),
+  & .toastIcon:has(.icon-bbb-unmute) {
+    color: inherit;
+  }
+
   ${({ type }) => type === 'default' && `
     & .toastIcon {
       color: #C8C8C8;
