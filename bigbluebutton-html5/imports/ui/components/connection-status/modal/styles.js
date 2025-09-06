@@ -18,6 +18,7 @@ import {
   hasPhoneWidth,
   smallOnly,
   phoneOnly,
+  tabletOnly,
 } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import {
   ScrollboxVertical,
@@ -270,6 +271,10 @@ const Copy = styled.span`
   ${({ disabled }) => disabled && `
     cursor: not-allowed !important;
   `}
+
+  @media ${tabletOnly} {
+    font-size: 16px;
+  }
 `;
 
 const HelperWrapper = styled.div`
@@ -346,7 +351,8 @@ const ConnectionTabList = styled(TabList)`
   margin-bottom: 8px;
   border: none;
   padding: 0;
-  width: calc(100% / 3);
+  gap: 12px;
+
 
   @media ${phoneOnly} {
     width: 100%;
@@ -402,6 +408,22 @@ const ConnectionTabSelector = styled(Tab)`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  @media ${tabletOnly} {
+    max-width: 100%;
+    gap: 12px !important;
+    & > i {
+      display: none;
+    }
+
+    [dir="rtl"] & {
+       margin: 0 0 0 12px;
+    }
+    padding: 6px 12px;
+    font-size: 16px;
+    height: 40px;
+
   }
 
   @media ${phoneOnly} {
