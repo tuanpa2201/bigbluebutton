@@ -18,7 +18,7 @@ const MuteWarning = styled.div`
   top: -100%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 1;
   cursor: pointer;
 
   @media ${phoneOnly} {

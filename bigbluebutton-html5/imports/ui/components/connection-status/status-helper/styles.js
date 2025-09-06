@@ -4,6 +4,7 @@ import {
   colorWarning,
   colorDanger,
 } from '/imports/ui/stylesheets/styled-components/palette';
+import { tabletOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const StatusIconWrapper = styled.div`
   border-radius: 50%;
@@ -28,6 +29,10 @@ const Label = styled.div`
   margin-top: 12px;
   color: #6F767E;
   font-size: 1rem;
+
+  @media ${tabletOnly} {
+    font-size: 16px;
+  }
 `;
 
 const Settings = styled.span`

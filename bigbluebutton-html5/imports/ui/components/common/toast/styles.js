@@ -8,28 +8,16 @@ import {
 } from '/imports/ui/stylesheets/styled-components/typography';
 import {
   colorGrayDark,
-  toastDefaultColor,
-  toastDefaultBg,
-  toastInfoColor,
-  toastInfoBg,
-  toastSuccessColor,
-  toastSuccessBg,
-  toastErrorColor,
-  toastErrorBg,
-  toastWarningColor,
-  toastWarningBg,
   colorGrayLighter,
 } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   toastOffsetSm,
   smPaddingX,
   borderSizeSmall,
-  toastIconMd,
   toastIconSm,
   jumboPaddingY,
 } from '/imports/ui/stylesheets/styled-components/general';
-import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
-import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import { phoneOnly, smallOnly, tabletOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const CloseIcon = styled.div`
   //align-self: flex-start;
@@ -87,9 +75,9 @@ const ToastContainer = styled.div`
 
 const ToastIcon = styled.div`
   align-self: flex-start;
-  margin: auto ${smPaddingX} auto 0;
-  width: ${toastIconMd};
-  height: ${toastIconMd};
+  margin: auto 8px auto 0;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   position: relative;
   flex-shrink: 0;
@@ -121,6 +109,16 @@ const ToastIcon = styled.div`
       font-size: 70%;
     }
   `}
+
+  @media ${phoneOnly} {
+    width: 16px;
+    height: 16px;
+  }
+
+  @media ${tabletOnly} {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 const ToastMessage = styled.div`

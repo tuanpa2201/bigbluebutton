@@ -60,7 +60,7 @@ const Title = styled(TitleElipsis)`
   //line-height: calc(${lineHeightComputed} * 2);
 
   @media ${phoneOnly} {
-    font-size: 16px;
+    font-size: 18px;
     padding: 0 ${mdPaddingX};
   }
 

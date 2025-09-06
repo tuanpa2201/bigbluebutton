@@ -12,6 +12,10 @@ const KeyCell = styled.td`
   margin: auto;
   width: 8rem;
   min-width: 8rem;
+
+  @media ${phoneOnly} {
+    padding: 10px;
+  }
 `;
 
 const DescCell = styled.td`
@@ -62,6 +66,10 @@ const SettingsTabs = styled(Tabs)`
 const TableWrapper = styled(ScrollboxVertical)`
   height: 50vh;
   width: 100%;
+
+  @media ${smallOnly} {
+    height: 75vh;
+  }
 `;
 
 const TabPanel = styled(StyledSettings.SettingsTabPanel)`
