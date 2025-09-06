@@ -14,7 +14,6 @@ import {
   fontSizeXL,
 } from '/imports/ui/stylesheets/styled-components/typography';
 import {
-  hasPhoneDimentions,
   hasPhoneWidth,
   smallOnly,
   phoneOnly,
@@ -45,6 +44,9 @@ const Left = styled.div`
   height: 100%;
   align-items: center;
   max-width: calc(100vw - 6em);
+  @media ${phoneOnly} {
+    max-width: unset;
+  }
 `;
 
 const Name = styled.div`
@@ -65,14 +67,16 @@ const FullName = styled(Name)`
 
 const ClientNotRespondingText = styled.div`
   display: flex;
-  width: 27.5%;
+  width: 30%;
   height: 100%;
   align-items: center;
   justify-content: flex-start;
   color: ${colorDanger};
 
-  @media ${hasPhoneDimentions} {
+  @media ${phoneOnly} {
     width: 100%;
+    min-width: 200px;
+    justify-content: center;
   }
 `;
 
@@ -140,6 +144,7 @@ const Time = styled.div`
   width: 100%;
   height: 100%;
   justify-content: flex-end;
+  white-space: pre;
   >time {
     color: #6F767E !important;
     font-size: 1rem;
@@ -256,6 +261,10 @@ const Status = styled.div`
   height: 100%;
   justify-content: center;
   align-items: center;
+
+  @media ${phoneOnly} {
+    width: 200px;
+  }
 `;
 
 const Copy = styled.span`
@@ -380,10 +389,12 @@ const ConnectionTabPanel = styled(TabPanel)`
     margin: 0;
   }
 
-  @media ${smallOnly} {
+  @media ${phoneOnly} {
     width: 100%;
     margin: 0;
-    min-height: 438px;
+    min-height: 457px;
+    overflow: auto;
+    min-width: 500px;
   }
 `;
 
