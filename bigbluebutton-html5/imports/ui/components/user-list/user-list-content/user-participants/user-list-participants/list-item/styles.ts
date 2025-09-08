@@ -357,16 +357,16 @@ const UserName = styled.span`
   font-weight: 500;
   line-height: 20px;
 
-  @media screen and (max-width: 767px) {
-    font-size: 16px;
-    line-height: 24px; /* 133.333% */
-  }
-
+  
   @media screen and (max-width: 1024px) {
     font-size: 18px;
     line-height: 24px; /* 133.333% */
   }
-  
+    
+  @media screen and (max-width: 767px) {
+    font-size: 16px;
+    line-height: 24px; /* 133.333% */
+  }
 
   > span {
     text-overflow: ellipsis;
@@ -393,6 +393,10 @@ const UserNameSub = styled.span`
   i {
     line-height: 0;
     font-size: 75%;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 14px;
   }
 `;
 

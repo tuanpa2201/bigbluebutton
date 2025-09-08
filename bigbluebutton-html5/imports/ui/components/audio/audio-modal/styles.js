@@ -75,7 +75,7 @@ const AudioModalButton = styled(Button)`
     line-height: 1.5;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px) {
+  @media (max-width: 1024px) {
     padding: 13px 2rem;
     & span:last-child {
       font-size: 16px;
@@ -136,6 +136,12 @@ const AudioModal = styled(ModalSimple)`
   & .modal-header {
     background-color: transparent;
     border-bottom: none;
+  }
+  @media only screen and (max-width: 767px) {
+    .modal-title {
+      font-size: 16px;
+      padding: 0px;
+    }
   }
 `;
 
