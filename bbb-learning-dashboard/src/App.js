@@ -255,7 +255,7 @@ class App extends React.Component {
     // This line will eliminate duplicates.
     const genericDataColumnTitleList = [...new Set(genericDataColumnTitleWithDuplicates)];
 
-    document.title = `${intl.formatMessage({ id: 'app.learningDashboard.bigbluebuttonTitle', defaultMessage: 'VOPS Meeting' })} - ${intl.formatMessage({ id: 'app.learningDashboard.dashboardTitle', defaultMessage: 'Learning Analytics Dashboard' })} - ${activitiesJson.name}`;
+    document.title = `VOPS Meeting - ${intl.formatMessage({ id: 'app.learningDashboard.dashboardTitle', defaultMessage: 'Learning Analytics Dashboard' })} - ${activitiesJson.name}`;
 
     function totalOfReactions() {
       if (activitiesJson && activitiesJson.users) {
