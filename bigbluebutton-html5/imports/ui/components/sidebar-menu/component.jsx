@@ -242,6 +242,14 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
       id: 'app.settings.theme.switch.label',
       description: 'Theme switch label',
     },
+    light: {
+      id: 'app.settings.theme.switch.light',
+      description: 'light',
+    },
+    dark: {
+      id: 'app.settings.theme.switch.dark',
+      description: 'dark',
+    },
   });
 
   const icons = [
@@ -379,14 +387,14 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
             <ThemeButton
               onClick={() => switchDarkTheme(false)}
               active={!isDarkTheme}
-              title="Light theme"
+              title={intl.formatMessage(messages.light)}
             >
               <SvgIcon iconName="sun" />
             </ThemeButton>
             <ThemeButton
               onClick={() => switchDarkTheme(true)}
               active={isDarkTheme}
-              title="Dark theme"
+              title={intl.formatMessage(messages.dark)}
             >
               <SvgIcon iconName="moon" />
             </ThemeButton>
