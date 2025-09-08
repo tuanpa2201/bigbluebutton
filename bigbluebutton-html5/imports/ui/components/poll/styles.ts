@@ -347,10 +347,12 @@ const StartPollBtn = styled(Button)`
 const StartPoll = styled.div`
     width: 100%;
     position: absolute;
-    bottom: 28px;
+    bottom: 0;
     left: 0;
     padding-left: 16px;
     padding-right: 16px;
+    padding-bottom: 28px;
+    background: #FFF;
 `;
 
 const NoSlidePanelContainer = styled.div`
@@ -642,14 +644,15 @@ const ConnectingAnimation = styled.span<ConnectingAnimationProps>`
 
 const ButtonsActions = styled.div`
   display: flex;
-  width: 100%;
   justify-content: space-between;
-    
-    position: absolute;
-    bottom: 28px;
-    left: 0;
-    padding-left: 16px;
-    padding-right: 16px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 28px;
+  background: #FFF;
 `;
 
 // @ts-ignore - Button is a JS Component
