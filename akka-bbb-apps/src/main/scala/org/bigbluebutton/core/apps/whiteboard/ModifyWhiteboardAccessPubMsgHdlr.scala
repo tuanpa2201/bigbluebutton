@@ -33,8 +33,8 @@ trait ModifyWhiteboardAccessPubMsgHdlr extends RightsManagementTrait {
         val notifyEvent = MsgBuilder.buildNotifyUserInMeetingEvtMsg(
           u,
           liveMeeting.props.meetingProp.intId,
-          "info",
-          "pen_tool",
+          "success",
+          "",
           "app.whiteboard.available",
           "Notification to when the user received whiteboard access",
           Vector()
@@ -47,8 +47,8 @@ trait ModifyWhiteboardAccessPubMsgHdlr extends RightsManagementTrait {
         val notifyEvent = MsgBuilder.buildNotifyUserInMeetingEvtMsg(
           u,
           liveMeeting.props.meetingProp.intId,
-          "info",
-          "pen_tool",
+          "success",
+          "",
           "app.whiteboard.unavailable",
           "Notification to when the user lost whiteboard access",
           Vector()
