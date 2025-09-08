@@ -207,6 +207,9 @@
     [data-darkreader-scheme="dark"] & {
         background: var(--bg-00-dark, #3B3F43) !important;
     }
+    @media (max-width: 1024px) {
+        padding-top: 40px !important;
+    }
     & .notes-header-container {
         margin-bottom: 16px;
         @media (max-width: 1024px) {

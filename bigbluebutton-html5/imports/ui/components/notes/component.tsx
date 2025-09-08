@@ -87,9 +87,9 @@ const NotesGraphql: React.FC<NotesGraphqlProps> = (props) => {
 
   const style = isOnMediaArea ? {
     position: 'absolute',
-    borderRadius: '8px',
     ...sharedNotesOutput,
     ...(!isMobile && {
+      borderRadius: '8px',
       marginLeft: '20px',
       marginRight: '20px',
       width: `${sharedNotesOutput.width - 40}px`,

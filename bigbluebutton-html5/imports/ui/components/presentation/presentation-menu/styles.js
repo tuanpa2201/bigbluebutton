@@ -15,6 +15,7 @@ import {
   borderSize,
   statusInfoHeight,
 } from '/imports/ui/stylesheets/styled-components/general';
+import { phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const DropdownButton = styled.button`
   background-color: ${colorOffWhite};
@@ -54,6 +55,11 @@ const Right = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media ${phoneOnly} {
+      width: 32px;
+      height: 32px;
+    }
   }
 
   button {
