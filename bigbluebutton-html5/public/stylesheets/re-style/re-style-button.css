@@ -178,7 +178,7 @@
     }
   }
 
-  &[data-test="unmuteMicButton"],&[data-test="joinAudio"]  {
+  &[data-test="unmuteMicButton"],&[data-test="joinAudio"], &[data-test="joinVideo"]  {
     span {
       background: #AA2007;
     }

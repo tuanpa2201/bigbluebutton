@@ -16,6 +16,7 @@ import {
 } from '/imports/ui/stylesheets/styled-components/typography';
 import FullscreenButtonContainer from '/imports/ui/components/common/fullscreen-button/container';
 import ToastStyled from '/imports/ui/components/common/toast/styles';
+import { phoneOnly } from '../../stylesheets/styled-components/breakpoints';
 
 const VisuallyHidden = styled.span`
   position: absolute;
@@ -193,6 +194,11 @@ const Button = styled.button`
     background-color: var(--bg-00-dark, #3B3F43);
     color: var(--text-primary-dark, #FCFCFD) !important;
   }
+
+  @media ${phoneOnly} {
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 const ExtraTools = styled.div`
@@ -211,6 +217,11 @@ const ExtraTools = styled.div`
   ${({ isToolbarVisible }) => !isToolbarVisible && `
     display: none;
   `}
+
+  @media ${phoneOnly} {
+    gap: 8px;
+    right: 50px;
+  }
 `;
 
 export default {

@@ -148,9 +148,9 @@ const JoinVideoButton: React.FC<JoinVideoButtonProps> = ({
           data-test={hasVideoStream ? 'leaveVideo' : 'joinVideo'}
           onClick={handleOnClick}
           hideLabel
-          color={hasVideoStream ? 'primary' : 'default'}
+          color={hasVideoStream ? 'default' : 'default'}
           svgIcon={hasVideoStream ? 'video' : 'video_off'}
-          className={'actionbar-button'}
+          className="actionbar-button"
           size="lg"
           circle
           disabled={!!disableReason}
