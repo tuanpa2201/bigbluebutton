@@ -1398,6 +1398,14 @@ li[data-key="menuItem-directLogoutButton"] {
             color: var(--neutral-00-light, #FFFFFF);
         }
 
+        & .iconUnmute {
+          color: #75C044;  
+        }
+
+        &:has(.iconUnmute) .webcam-dropdown-trigger, &:has(.iconMute) .webcam-dropdown-trigger{
+            padding-left: 36px !important;
+        }
+
         & .webcam-dropdown-trigger {
             color: var(--Neutral-00, #FFF);
 
