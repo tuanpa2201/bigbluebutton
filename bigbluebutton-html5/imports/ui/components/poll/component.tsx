@@ -473,7 +473,7 @@ const PollCreationPanel: React.FC<PollCreationPanelProps> = ({
   };
 
   return (
-    <div>
+    <div style={{ height: 'inherit', overflow: 'auto' }}>
       <Styled.PollHeader data-test="hidePollDesc">
         <Styled.ClosePollButtonMobile className="header-icon" onClick={() => closePanel()}>
           <SvgIcon iconName="chevronLeft" />
