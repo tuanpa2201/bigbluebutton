@@ -1169,7 +1169,7 @@ class PresentationUploader extends Component {
                   {this.renderDropzone()}
                   {this.renderPresentationList()}
                   {this.renderDownloadableWithAnnotationsHint()}
-                  {isMobile ? this.renderPicDropzone() : null}
+                  {/*{isMobile ? this.renderPicDropzone() : null}*/}
                   {/* {this.renderDropzone()} */}
                   {this.renderExternalUpload()}
                 </div>
