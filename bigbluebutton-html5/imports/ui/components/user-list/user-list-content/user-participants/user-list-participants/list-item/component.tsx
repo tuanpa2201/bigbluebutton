@@ -304,7 +304,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
       </Styled.UserNameContainer>
       <Styled.RightIconHandContainer hand={user.raiseHand}>
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-        {user.raiseHand ? <div onClick={() => lowerUserHands(user.userId)} title={intl.formatMessage(messages.lowerHands)}><JoypixelsEmoji native={emojiIcons[0].native} size={emojiSize} /></div> : ''}
+        {user.raiseHand ? <div onClick={() => lowerUserHands(user.userId)} title={intl.formatMessage(messages.lowerHands)}><JoypixelsEmoji title={intl.formatMessage(messages.lowerHands)} native={emojiIcons[0].native} size={emojiSize} /></div> : ''}
       </Styled.RightIconHandContainer>
       <Styled.RightBlockIconsContainer
         className="rightIconNomal"

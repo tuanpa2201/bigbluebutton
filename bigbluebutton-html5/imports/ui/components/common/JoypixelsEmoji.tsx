@@ -5,9 +5,10 @@ interface JoypixelsEmojiProps {
   native: string;
   size?: number;
   padding?: string;
+  title?: string;
 }
 
-const JoypixelsEmoji: React.FC<JoypixelsEmojiProps> = ({ native, size = 16, padding = '0px' }) => {
+const JoypixelsEmoji: React.FC<JoypixelsEmojiProps> = ({ native, size = 16, padding = '0px', title = '', }) => {
   const spanRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -19,6 +20,7 @@ const JoypixelsEmoji: React.FC<JoypixelsEmojiProps> = ({ native, size = 16, padd
         img.height = size;
         img.style.width = `${size}px`;
         img.style.height = `${size}px`;
+        img.title = title;
       }
     }
   }, [native, size]);
