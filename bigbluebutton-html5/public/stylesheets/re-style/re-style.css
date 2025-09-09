@@ -94,6 +94,11 @@
         font-style: normal;
         font-weight: 500 !important;
         line-height: 20px; /* 142.857% */
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 16px !important;
+            line-height: 24px; /* 142.857% */
+        }
     }
 
     .pollingAnswers {
@@ -123,11 +128,18 @@
                 font-style: normal;
                 font-weight: 400 !important;
                 line-height: 20px; /* 142.857% */
+
                 [data-darkreader-scheme="dark"] & {
                     color: var(--text-primary-dark, #FCFCFD);
                     background: var(--bg-00-dark, #3B3F43) !important;
                     border: 0.66px solid var(--border-01-dark, #9A9A9A) !important;
                 }
+
+                @media (min-width: 768px) and (max-width: 1024px) {
+                    font-size: 16px !important;
+                    line-height: 24px; /* 142.857% */
+                }
+                
                 &:hover {
                     background: var(--Highlight-Light-Red, #EB5366) !important;
                     color: var(--neutral-00-light, #FFF) !important;
@@ -168,6 +180,11 @@
             /* Disable horizontal resize */
             resize: vertical;
 
+            @media (min-width: 768px) and (max-width: 1024px) {
+                font-size: 16px !important;
+                line-height: 24px; /* 142.857% */
+            }
+
             &:hover,
             &:focus,
             &:focus-visible {
@@ -196,6 +213,11 @@
         font-style: normal;
         font-weight: 400 !important;
         line-height: 20px; /* 142.857% */
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            font-size: 16px !important;
+            line-height: 24px; /* 142.857% */
+        }
     }
 }
 

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useContext } from 'react';
 import * as PluginSdk from 'bigbluebutton-html-plugin-sdk';
 import {
@@ -304,7 +305,16 @@ const UserListItem: React.FC<UserListItemProps> = ({
       </Styled.UserNameContainer>
       <Styled.RightIconHandContainer hand={user.raiseHand}>
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-        {user.raiseHand ? <div onClick={() => lowerUserHands(user.userId)} title={intl.formatMessage(messages.lowerHands)}><JoypixelsEmoji title={intl.formatMessage(messages.lowerHands)} native={emojiIcons[0].native} size={emojiSize} /></div> : ''}
+        {user.raiseHand ? (
+          <TooltipContainer
+            title={intl.formatMessage(messages.lowerHands)}
+          >
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+            <span onClick={() => lowerUserHands(user.userId)}>
+              <JoypixelsEmoji native={emojiIcons[0].native} size={emojiSize} />
+            </span>
+          </TooltipContainer>
+        ) : ''}
       </Styled.RightIconHandContainer>
       <Styled.RightBlockIconsContainer
         className="rightIconNomal"
@@ -350,10 +360,10 @@ const UserListItem: React.FC<UserListItemProps> = ({
         {renderUserListItemIconsFromPlugin(userItemsFromPlugin)}
       </Styled.RightBlockIconsContainer>
       <Styled.RightIconMoreContainer
-          className={
-            `rightIconHover` +
+        className={
+            `rightIconHover${
             // (user.userId === Auth.userID ? ' current-user' : '') +
-            (user.userId === Auth.userID && !user.presenter ? ' not-presenter' : '')
+              user.userId === Auth.userID && !user.presenter ? ' not-presenter' : ''}`
           }
         isSelected={isSelected}
       >
