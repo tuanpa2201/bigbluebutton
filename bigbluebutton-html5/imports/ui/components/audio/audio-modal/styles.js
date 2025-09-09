@@ -136,6 +136,9 @@ const AudioModal = styled(ModalSimple)`
   & .modal-header {
     background-color: transparent;
     border-bottom: none;
+    .modal-title {
+      max-width: calc(100vw - 55px);
+    }
   }
   @media only screen and (max-width: 767px) {
     .modal-title {
