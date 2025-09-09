@@ -1280,6 +1280,11 @@ button[data-test="whiteboardOptionsButton"],
 
         & .actions_item {
             & .presentation_options_download {
+                & .icon-bbb-more {
+                    width: 16px !important;
+                    height: 16px !important;
+                    margin-top: -1px !important;
+                }
                 & span:first-child {
                     & i::before {
                         color: var(--text-secondary-light, #6F767E);
@@ -1301,6 +1306,11 @@ button[data-test="whiteboardOptionsButton"],
                 [data-darkreader-scheme="dark"] & {
                     color: var(--text-secondary-dark, #C5C9CD);
                 }
+
+                svg {
+                    width: 16px;
+                    height: 16px;
+                }
             }
         }
     }
@@ -1310,6 +1320,30 @@ button[data-test="whiteboardOptionsButton"],
         [data-darkreader-scheme="dark"] & {
             color: var(--text-secondary-dark, #C5C9CD);
         }
+    }
+}
+
+.toast-file-line {
+    .toast-file-name,
+    .toast-info-span {
+        color: var(--text-secondary-light, #6F767E);
+        [data-darkreader-scheme="dark"] & {
+            color: var(--text-secondary-dark, #C5C9CD);
+        }
+    }
+}
+
+#presentationUploaderExportPresentationId {
+    align-items: flex-start;
+    > div:nth-of-type(2) {
+        margin-top: 7px;
+    }
+}
+
+.theme-switch-title {
+    color: var(#313131);
+    [data-darkreader-scheme="dark"] & {
+        color: var(--text-secondary-dark, #C5C9CD);
     }
 }
 

@@ -381,7 +381,7 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
             >
               <SvgIcon iconName="moon" />
             </BaseButton>
-            <span>{intl.formatMessage(messages.themeSwitch)}</span>
+            <span className="theme-switch-title">{intl.formatMessage(messages.themeSwitch)}</span>
           </MenuToggle>
           <ThemeSwitch>
             <ThemeButton

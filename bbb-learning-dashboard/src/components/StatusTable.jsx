@@ -191,8 +191,8 @@ class StatusTable extends React.Component {
     return (
       <table className="w-full">
         <thead>
-          <tr className="text-xs font-semibold tracking-wide text-gray-700 border-b bg-gray-100 font-medium-th">
-            <th className={`z-30 bg-inherit px-4 py-3 col-text-left sticky ${isRTL ? 'right-0' : 'left-0'}`}>
+          <tr className="text-xs font-semibold tracking-wide text-[16px] text-gray6f7 border-b bg-gray-100">
+            <th className={`z-30 bg-inherit px-3.5 2xl:px-4 py-3 col-text-left sticky ${isRTL ? 'right-0' : 'left-0'}`}>
               <FormattedMessage id="app.learningDashboard.user" defaultMessage="User" />
             </th>
             <th
@@ -284,12 +284,12 @@ class StatusTable extends React.Component {
                       </div>
                       &nbsp;&nbsp;
                       <div>
-                        <span className="inline-block font-medium-td">
+                        <span className="inline-block tablet:text-[16px] font-medium-td-1">
                           {user.name}
                         </span>
                         {
                           user.isModerator ? (
-                            <span className="inline-block font-medium-td" aria-label="Moderator">
+                            <span className="inline-block tablet:text-[16px] font-medium-td-1" aria-label="Moderator">
                               &nbsp;
                               (
                               <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />

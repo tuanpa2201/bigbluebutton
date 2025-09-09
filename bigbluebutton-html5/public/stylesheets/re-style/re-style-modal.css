@@ -1052,6 +1052,20 @@
     }
 }
 
+.modal-end-meeting {
+    .modal-header {
+        .modal-title {
+            padding-left: 0;
+        }
+    }
+    .modal-content {
+        .remove-user-footer {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
 
 @media (max-width: 767px) {
     .modalOverlay {

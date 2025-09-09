@@ -361,9 +361,9 @@ class App extends React.Component {
       .length;
 
     return (
-      <div className="mx-10 learn-restyle">
+      <div className="mx-[16px] tablet:mx-[20px] desktop:mx-[80px] learn-restyle">
         <div className="flex flex-col sm:flex-row items-start justify-between pb-3">
-          <h1 className="mt-3 text-2xl font-semibold inline-block font-semibold-h1">
+          <h1 className="mt-3 font-medium inline-block text-[20px] sm:text-[24px]">
             <FormattedMessage id="app.learningDashboard.dashboardTitle" defaultMessage="Learning Dashboard" />
             {
               ldAccessTokenCopied === true
@@ -560,7 +560,7 @@ class App extends React.Component {
             )}
           </TabsListUnstyled>
           <TabPanelUnstyled value={0}>
-            <h2 className="block my-2 pr-2 text-xl font-semibold font-semibold-h2">
+            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313">
               <FormattedMessage id="app.learningDashboard.usersTable.title" defaultMessage="Overview" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
@@ -575,7 +575,7 @@ class App extends React.Component {
             </div>
           </TabPanelUnstyled>
           <TabPanelUnstyled value={1}>
-            <h2 className="block my-2 pr-2 text-xl font-semibold">
+            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313">
               <FormattedMessage id="app.learningDashboard.usersTable.title" defaultMessage="Overview" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
@@ -590,7 +590,7 @@ class App extends React.Component {
             </div>
           </TabPanelUnstyled>
           <TabPanelUnstyled value={2}>
-            <h2 className="block my-2 pr-2 text-xl font-semibold-h2">
+            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313">
               <FormattedMessage id="app.learningDashboard.statusTimelineTable.title" defaultMessage="Timeline" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
@@ -604,10 +604,10 @@ class App extends React.Component {
             </div>
           </TabPanelUnstyled>
           <TabPanelUnstyled value={3}>
-            <h2 className="block my-2 pr-2 text-xl font-semibold-h2">
+            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313">
               <FormattedMessage id="app.learningDashboard.pollsTable.title" defaultMessage="Polls" />
             </h2>
-            <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
+            <div className="w-full overflow-hidden rounded-md shadow-xs">
               <div className="w-full overflow-x-auto">
                 <PollsTable polls={activitiesJson.polls} allUsers={activitiesJson.users} />
               </div>

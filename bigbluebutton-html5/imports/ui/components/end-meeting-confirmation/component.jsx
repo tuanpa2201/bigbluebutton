@@ -70,7 +70,7 @@ class EndMeetingComponent extends PureComponent {
           priority,
           setIsOpen,
         }}
-        modalClass=""
+        modalClass=" modal-end-meeting"
       />
     );
   }

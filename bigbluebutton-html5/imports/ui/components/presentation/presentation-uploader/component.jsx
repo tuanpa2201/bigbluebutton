@@ -15,6 +15,7 @@ import { unique } from 'radash';
 import Session from '/imports/ui/services/storage/in-memory';
 import { ACTIONS, PANELS } from '/imports/ui/components/layout/enums';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+import Tooltip from "/imports/ui/components/common/tooltip/component";
 
 const { isMobile } = deviceInfo;
 const propTypes = {
@@ -934,7 +935,11 @@ class PresentationUploader extends Component {
         data-test="presentationItem"
         className="presentation_item"
       >
-        <div>
+        <div style={{
+          "display": "flex",
+          "align-items": "center",
+          "height": "100%"
+        }}>
           <Styled.RadioCircle className="radio_circle"
             animations={animations}
             // ariaLabel={`${intl.formatMessage(intlMessages.setAsCurrentPresentation)} ${item.name}`}
@@ -1155,7 +1160,9 @@ class PresentationUploader extends Component {
                       <Styled.CloseButtonMobile className="header-icon" onClick={this.closePanel}>
                         <SvgIcon iconName="chevronLeft" />
                       </Styled.CloseButtonMobile>
-                      <span className="title">{intl.formatMessage(intlMessages.title)}</span>
+                      <Tooltip title={intl.formatMessage(intlMessages.title)}>
+                        <span className="title">{intl.formatMessage(intlMessages.title)}</span>
+                      </Tooltip>
                     </div>
                     <button type="button" className="dismiss" onClick={this.closePanel}>
                       <SvgIcon iconName="cross_20" />
@@ -1180,6 +1187,9 @@ class PresentationUploader extends Component {
                         data-test="confirmManagePresentation"
                         onClick={() => this.handleConfirm()}
                         disabled={disableActions}
+                        style={{
+                          "margin-bottom": "12px"
+                        }}
                         >
                       {hasNewUpload
                           ? intl.formatMessage(intlMessages.uploadLabel)

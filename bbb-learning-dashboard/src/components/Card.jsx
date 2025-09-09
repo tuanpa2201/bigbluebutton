@@ -41,10 +41,10 @@ function Card(props) {
       }
     >
       <div className="w-70 text-left rtl:text-right">
-        <p className="text-lg font-semibold text-gray-700">
+        <p className="text-[24px] font-medium text-gray-700">
           { number }
         </p>
-        <p className="mb-2 text-sm font-medium text-gray-600 font-medium-restyle">
+        <p className="mb-2 text-sm font-normal text-gray-600 font-medium-restyle">
           { name }
         </p>
       </div>

@@ -131,12 +131,15 @@ const NextSlideButton = styled(Button)`
 `;
 
 const SkipSlideSelect = styled.select`
+  -webkit-appearance: none;
   appearance: none;
-  padding: 0 ${smPaddingY};
+  //padding: 0 ${smPaddingY};
+  padding: 6px 24px 6px 12px !important;
+  background-position: right 6px top 50%;
   margin: ${borderSize};
   margin-left: ${whiteboardToolbarMargin};
   border: unset !important;
-  width: 90px !important;
+  width: fit-content;
   font-size: 14px !important;
   font-weight: 400 !important;
   [dir="rtl"] & {
