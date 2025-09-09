@@ -393,19 +393,19 @@ class OptionsDropdown extends PureComponent {
       },
     );
 
-    if (helpButton) {
-      this.menuItems.push(
-        {
-          key: 'list-item-help',
-          svgIcon: 'question',
-          svgIconRight: 'external_link',
-          label: intl.formatMessage(intlMessages.helpLabel),
-          dataTest: 'helpButton',
-          description: intl.formatMessage(intlMessages.helpDesc),
-          onClick: () => window.open(`${helpLink}`),
-        },
-      );
-    }
+    // if (helpButton) {
+    //   this.menuItems.push(
+    //     {
+    //       key: 'list-item-help',
+    //       svgIcon: 'question',
+    //       svgIconRight: 'external_link',
+    //       label: intl.formatMessage(intlMessages.helpLabel),
+    //       dataTest: 'helpButton',
+    //       description: intl.formatMessage(intlMessages.helpDesc),
+    //       onClick: () => window.open(`${helpLink}`),
+    //     },
+    //   );
+    // }
 
     // if (isIos
     //     && !isTabletApp
