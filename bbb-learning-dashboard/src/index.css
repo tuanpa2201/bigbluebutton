@@ -7,6 +7,10 @@
   .text-gray-700 {
     color: #374151 !important;
   }
+
+  th {
+    @apply whitespace-nowrap;
+  }
 }
 
 @layer utilities {

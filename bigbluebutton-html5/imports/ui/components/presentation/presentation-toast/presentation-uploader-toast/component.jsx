@@ -370,25 +370,26 @@ function renderToastExportItem(item, intl) {
   return (
     <Styled.UploadRow
       key={item.presentationId || item.temporaryPresentationId}
+      className="toast-file-line"
     >
       <Styled.FileLine>
-        <span>
-          <Icon iconName="file" />
-        </span>
-        <Styled.ToastFileName>
-          <span>{item.name}</span>
-        </Styled.ToastFileName>
+        {/*<span>*/}
+        {/*  <Icon iconName="file" />*/}
+        {/*</span>*/}
         <Styled.StatusIcon>
-          <Styled.ToastItemIcon
+          <Styled.ToastItemIcon1
             loading={loading}
             done={done}
             iconName={icon}
             color="#0F70D7"
           />
         </Styled.StatusIcon>
+        <Styled.ToastFileName className="toast-file-name">
+          {item.name}
+        </Styled.ToastFileName>
       </Styled.FileLine>
       <Styled.StatusInfo>
-        <Styled.StatusInfoSpan>
+        <Styled.StatusInfoSpan className="toast-info-span">
           {renderExportationStatus(item, intl)}
         </Styled.StatusInfoSpan>
       </Styled.StatusInfo>
@@ -420,9 +421,11 @@ function renderExportToast(presToShow, intl, exportToastId) {
     : 'exportToastHeaderPlural';
 
   return (
-    <Styled.ToastWrapper data-test="downloadPresentationToast">
+    <Styled.ToastWrapper1 data-test="downloadPresentationToast">
       <Styled.UploadToastHeader>
-        <Styled.UploadIcon iconName="download" />
+        <Styled.UploadIcon>
+          <SvgIcon iconName="fileDownload1" />
+        </Styled.UploadIcon>
         <Styled.UploadToastTitle>
           {intl.formatMessage(intlMessages[headerLabelId], { 0: presToShowSorted.length })}
         </Styled.UploadToastTitle>
@@ -434,7 +437,7 @@ function renderExportToast(presToShow, intl, exportToastId) {
           </div>
         </div>
       </Styled.InnerToast>
-    </Styled.ToastWrapper>
+    </Styled.ToastWrapper1>
   );
 }
 

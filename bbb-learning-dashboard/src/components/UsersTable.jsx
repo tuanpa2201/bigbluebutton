@@ -162,7 +162,7 @@ class UsersTable extends React.Component {
     return (
       <table className="w-full">
         <thead>
-          <tr className="text-xs font-semibold tracking-wide text-left text-gray-700 border-b bg-gray-100 font-medium-th">
+          <tr className="text-xs font-semibold tracking-wide text-[16px] text-gray6f7 border-b bg-gray-100">
             <th
               className={`px-3.5 2xl:px-4 py-3 col-text-left ${tab === 'overview' ? 'cursor-pointer' : ''}`}
               onClick={() => { if (tab === 'overview') this.toggleOrder('userOrder'); }}
@@ -246,12 +246,12 @@ class UsersTable extends React.Component {
                           onClick={() => this.openUserModal(user)}
                           aria-label={`Open user details modal - ${user.name}`}
                         >
-                          <span className="inline-block font-medium-td">
+                          <span className="inline-block tablet:text-[16px] font-medium-td-1">
                             {user.name}
                           </span>
                           {
                             user.isModerator ? (
-                              <span className="inline-block font-medium-td" aria-label="Moderator">
+                              <span className="inline-block tablet:text-[16px] font-medium-td-1" aria-label="Moderator">
                                 &nbsp;
                                 (
                                 <FormattedMessage id="app.userList.moderator" defaultMessage="Moderator" />

@@ -62,7 +62,7 @@ const UploadRow = styled.div`
 const FileLine = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: baseline;
   padding-bottom: ${iconPaddingMd};
   width: ${fileLineWidth};
 `;
@@ -75,7 +75,10 @@ const ToastFileName = styled.span`
   margin-left: ${mdPaddingY};
   width: auto;
   text-align: left;
-  font-weight: ${headingsFontWeight};
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
 
   [dir="rtl"] & {
     margin-right: ${mdPaddingY};
@@ -164,10 +167,15 @@ const ToastWrapper = styled.div`
   width: ${fileLineWidth};
 `;
 
+const ToastWrapper1 = styled.div`
+  max-height: 50%;
+  width: 90%;
+`;
+
 const UploadToastHeader = styled.div`
   position: relative;
   margin-bottom: ${toastMdMargin};
-  padding-bottom: ${smPaddingX};
+  padding-bottom: 5px;
   display: flex;
   align-items: center; 
   gap: 12px;
@@ -176,12 +184,12 @@ const UploadToastHeader = styled.div`
 const UploadIcon = styled(Icon)`
   background-color: ${colorPrimary};
   color: ${colorWhite};
-  height: ${uploadIconSize};
-  width: ${uploadIconSize};
+  height: 24px !important; 
+  width: 24px !important;
   border-radius: 50%;
   font-size: 135%;
-  line-height: ${iconLineHeight};
-  margin-right: ${smPaddingX};
+  line-height: 29px;
+  //margin-right: ${smPaddingX};
 
   [dir="rtl"] & {
     margin-left: ${smPaddingX};
@@ -285,6 +293,10 @@ const TableItemName = styled.span`
   color: #313131;
   min-width: 110px;
   max-width:110px;
+  @media (min-width: 1025px) and (max-width: 1366px) {
+      min-width: 82px;
+      max-width: 82px;
+  }
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -344,6 +356,13 @@ const UploaderDropzone = styled(Dropzone)`
   & .dropzoneActive {
     background-color: ${colorGrayLighter};
   }
+  @media (min-width: 1025px) and (max-width: 1366px) {
+      flex-direction: column;
+      
+      & .dropzoneMessage {
+          display: block;
+      }
+  }
 `;
 
 const DropzoneIcon = styled(Icon)`
@@ -376,11 +395,17 @@ const UploaderModal = styled.div`
   padding: 0 16px 16px 16px;
   width: 100%;
   min-width: 360px;
+  @media (min-width: 1025px) and (max-width: 1366px) {
+    min-width: unset;
+  }
   z-index: 100;
 `;
 
 const ModalInner = styled.div`
   display: grid;
+  //@media (min-width: 1025px) and (max-width: 1366px) {
+  //    display: unset;
+  //}
   margin-left: auto;
   margin-right: auto;
   width: ${modalInnerWidth};
@@ -414,6 +439,15 @@ const ModalHeader = styled.div`
       display: none !important;
     }
   }
+    
+  .title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @media (min-width: 1025px) and (max-width: 1366px) {
+          max-width: 230px;
+      }
+  }  
 `;
 
 const ActionWrapper = styled.div`
@@ -508,10 +542,42 @@ const ToastItemIcon = styled(Icon)`
   `}
 `;
 
-const StatusInfoSpan = styled.span`
-  font-size: 70%;
+const ToastItemIcon1 = styled(Icon)`
+  position: relative;
+  width: 16px !important;
+  height: 16px !important;
+  font-size: 117%;
+  left: 0;
 
-  ${({ styles }) => styles === 'error' && `
+  [dir="rtl"] & {
+    left: unset;
+    right: ${statusInfoHeight};
+  }
+
+  ${({ done }) => done && `
+    color: ${colorSuccess};
+  `}
+
+  ${({ error }) => error && `
+    color: ${colorDanger};
+  `}
+
+  ${({ loading }) => loading && css`
+    color: ${colorGrayLightest};
+    border: 1px solid;
+    border-radius: 50%;
+    border-right-color: ${({ color }) => color || colorGray};
+    animation: ${rotate} 1s linear infinite;
+  `}
+`;
+
+const StatusInfoSpan = styled.span`
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+
+
+    ${({ styles }) => styles === 'error' && `
     display: inline-block;
     color: ${colorDanger};
   `}
@@ -684,6 +750,7 @@ export default {
   Table,
   VisuallyHidden,
   ToastWrapper,
+  ToastWrapper1,
   UploadToastHeader,
   UploadIcon,
   UploadToastTitle,
@@ -708,6 +775,7 @@ export default {
   ConfirmButton,
   ModalHint,
   ToastItemIcon,
+  ToastItemIcon1,
   StatusInfoSpan,
   PresentationItem,
   TableItemActions,

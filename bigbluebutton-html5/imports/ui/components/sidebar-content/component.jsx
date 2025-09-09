@@ -26,6 +26,12 @@ const StyledResizable = styled(Resizable)`
     width: 100% !important;
     left: 0 !important;
   }
+  //
+  //@media (min-width: 1025px) and (max-width: 1366px) {
+  //    width: 320px !important;
+  //    max-width: 320px !important;
+  //    min-width: 320px !important;
+  //}  
 `;
 
 const propTypes = {

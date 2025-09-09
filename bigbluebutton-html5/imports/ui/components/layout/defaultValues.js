@@ -1,5 +1,17 @@
 import { LAYOUT_TYPE, CAMERADOCK_POSITION, PANELS } from './enums';
 
+const getSidebarSizes = () => {
+  if (typeof window !== 'undefined') {
+    const width = window.innerWidth;
+    if (width >= 1025 && width <= 1366) {
+      return { sidebarContentMaxWidth: 320, sidebarContentMinWidth: 320 };
+    }
+  }
+  return { sidebarContentMaxWidth: 612, sidebarContentMinWidth: 360 };
+};
+
+const { sidebarContentMaxWidth, sidebarContentMinWidth } = getSidebarSizes();
+
 const DEFAULT_VALUES = {
   layoutType: LAYOUT_TYPE.CUSTOM_LAYOUT,
   panelType: PANELS.USERLIST,
@@ -34,8 +46,8 @@ const DEFAULT_VALUES = {
   sidebarNavTabOrder: 1,
   sidebarNavPanel: PANELS.USERLIST,
 
-  sidebarContentMaxWidth: 612,
-  sidebarContentMinWidth: 360,
+  sidebarContentMaxWidth,
+  sidebarContentMinWidth,
   sidebarContentMinHeight: 200,
   sidebarContentHeight: '100%',
   sidebarContentTop: 0,

@@ -363,7 +363,7 @@ class NavBar extends Component {
             ? {
               position: 'absolute',
               top: style.top,
-              left: style.left,
+              left: style.left + 2,
               height: style.height,
               width: style.width,
               zIndex: 2
