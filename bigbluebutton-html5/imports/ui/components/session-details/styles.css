@@ -10,6 +10,9 @@
     top: unset !important;
     left: unset !important;
   }
+  @media (max-width: 1024px) {
+    left: unset !important;
+  }
   .modal-header{
     background-color: #fff !important;
     border-bottom: none !important;
