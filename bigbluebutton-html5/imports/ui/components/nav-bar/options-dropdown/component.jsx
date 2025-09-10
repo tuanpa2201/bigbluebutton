@@ -256,6 +256,7 @@ class OptionsDropdown extends PureComponent {
       menuItems.push(
         {
           key: 'list-item-fullscreen',
+          dataTest: 'fullscreen',
           svgIcon: fullscreenIcon,
           label: fullscreenLabel,
           description: fullscreenDesc,
@@ -352,6 +353,9 @@ class OptionsDropdown extends PureComponent {
           },
         },
       );
+    }
+
+    if (isMobile) {
       this.menuItems.push(
         {
           key: 'list-item-minimize-presentation',
@@ -367,6 +371,9 @@ class OptionsDropdown extends PureComponent {
           },
         },
       );
+    }
+
+    if (isPhone) {
       this.menuItems.push(
         {
           key: 'list-item-rec',
@@ -424,6 +431,7 @@ class OptionsDropdown extends PureComponent {
     this.menuItems.push(
       {
         key: 'list-item-shortcuts',
+        dataTest: 'keyboard',
         svgIcon: 'keyboard',
         label: intl.formatMessage(intlMessages.hotkeysLabel),
         description: intl.formatMessage(intlMessages.hotkeysDesc),
