@@ -169,6 +169,7 @@ const PollsTable = (props) => {
         name: params?.row?.User?.name,
         isModerator: params?.row?.User?.isModerator,
       }),
+      minWidth: 400,
       renderCell: (params) => (
         <div className="flex items-center h-full">
           <div>
@@ -198,6 +199,7 @@ const PollsTable = (props) => {
 
   gridCols.push({
     ...commonCountProps,
+    minWidth: 240,
     valueGetter: (params) => Object.keys(params?.row?.User?.answers)?.length || 0,
     renderCell: (params) => params?.value,
   });
@@ -357,6 +359,7 @@ const PollsTable = (props) => {
     gridCols.push({
       ...commonColProps,
       sortable: true,
+      minWidth: 240,
       valueGetter: (params) => {
         const colVal = params?.row[params?.field];
         const key = pollAnswerIds[colVal[0]?.toLowerCase()]

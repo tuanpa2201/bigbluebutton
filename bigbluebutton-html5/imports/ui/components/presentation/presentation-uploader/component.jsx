@@ -1183,12 +1183,11 @@ class PresentationUploader extends Component {
                 {hasPendingChange ? (
                     <button
                         type="button"
-                        className="btn btn-primary mt-auto"
+                        className="btn btn-primary mt-auto btn-confrim-uploadPresent"
                         data-test="confirmManagePresentation"
                         onClick={() => this.handleConfirm()}
                         disabled={disableActions}
                         style={{
-                          "margin-bottom": "12px"
                         }}
                         >
                       {hasNewUpload

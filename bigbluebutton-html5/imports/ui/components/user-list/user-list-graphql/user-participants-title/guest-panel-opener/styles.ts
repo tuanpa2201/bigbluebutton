@@ -152,8 +152,7 @@ const ListItem = styled.div`
 
   > span {
     font-weight: 400;
-    font-size: ${fontSizeSmall};
-    color: ${colorGrayDark};
+    font-size: 14px;
     position: relative;
     flex-grow: 1;
     line-height: 2;
@@ -166,6 +165,11 @@ const ListItem = styled.div`
     [dir="rtl"] & {
       text-align: right;
       padding-right: ${mdPaddingX};
+    }
+
+    color: #313131;
+    [data-darkreader-scheme="dark"] & {
+      color: var(--text-secondary-dark, #C5C9CD);
     }
   }
 

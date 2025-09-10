@@ -409,7 +409,7 @@ const PresentationMenu = (props) => {
         dataTest: 'toolVisibility',
         label: formattedVisibilityLabel(isToolbarVisible),
         // icon: isToolbarVisible ? 'close' : 'pen_tool',
-        svgIcon: isToolbarVisible ? 'cross_21' : 'cross_21',
+        svgIcon: window.innerWidth < 1024 ? 'cross_21' : 'cross',
         onClick: () => {
           setIsToolbarVisible(!isToolbarVisible);
         },

@@ -124,6 +124,7 @@ class PresentationDownloadDropdown extends PureComponent {
         this.menuItems.push({
           key: this.actionsKey[0],
           dataTest: 'disableOriginalPresentationDownload',
+          svgIcon: 'fileSlash',
           label: intl.formatMessage(intlMessages.disableOriginalPresentationDownload,
             { 0: originalFileExtension }),
           onClick: () => changeDownloadOriginalOrConvertedPresentation(false, 'Original'),
@@ -132,6 +133,7 @@ class PresentationDownloadDropdown extends PureComponent {
         this.menuItems.push({
           key: this.actionsKey[0],
           dataTest: 'enableOriginalPresentationDownload',
+          svgIcon: 'document',
           label: intl.formatMessage(intlMessages.enableOriginalPresentationDownload,
             { 0: originalFileExtension }),
           onClick: () => changeDownloadOriginalOrConvertedPresentation(true, 'Original'),
@@ -146,6 +148,7 @@ class PresentationDownloadDropdown extends PureComponent {
           this.menuItems.push({
             key: this.actionsKey[0],
             dataTest: 'disableOriginalPresentationDownload',
+            svgIcon: 'fileSlash',
             label: intl.formatMessage(intlMessages.disableOriginalPresentationDownload,
               { 0: convertedFileExtension }),
             onClick: () => changeDownloadOriginalOrConvertedPresentation(false, 'Converted'),
@@ -154,6 +157,7 @@ class PresentationDownloadDropdown extends PureComponent {
           this.menuItems.push({
             key: this.actionsKey[0],
             dataTest: 'enableOriginalPresentationDownload',
+            svgIcon: 'document',
             label: intl.formatMessage(intlMessages.enableOriginalPresentationDownload,
               { 0: convertedFileExtension }),
             onClick: () => changeDownloadOriginalOrConvertedPresentation(true, 'Converted'),
@@ -166,6 +170,7 @@ class PresentationDownloadDropdown extends PureComponent {
         key: this.actionsKey[1],
         id: 'sendCurrentStateDocument',
         dataTest: 'sendCurrentStateDocument',
+        svgIcon: 'fileDownload',
         label: intl.formatMessage(intlMessages.sendCurrentStateDocument),
         onClick: () => {
           // closeModal();
@@ -186,7 +191,7 @@ class PresentationDownloadDropdown extends PureComponent {
     }
 
     return (
-      <PresentationDownloadDropdownWrapper>
+      <PresentationDownloadDropdownWrapper className="presentation-menu-wrapper">
         <BBBMenu
           disabled={disabled}
           customStyles={customStyles}

@@ -118,6 +118,7 @@
 }
 .icon-bbb-user:before {
   content: "\e905";
+  z-index: 20000;
 }
 .icon-bbb-up_arrow:before {
   content: "\e906";

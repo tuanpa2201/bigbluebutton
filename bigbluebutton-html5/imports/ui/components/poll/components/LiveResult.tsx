@@ -156,6 +156,7 @@ const LiveResult: React.FC<LiveResultProps> = ({
           <BarChart
             data={translatedAnswers}
             layout="horizontal"
+            className="live-result-barchart"
           >
             <XAxis fill="#6F767E" stroke="#C8C8C8" width={ 0 } type="category" dataKey="pollAnswer" tickLine={false} tickMargin={10} tick={<CustomizedAxisTick/>}/>
             <YAxis fill="#6F767E" stroke="#C8C8C8" width={ 20 } type="number" allowDecimals={false}/>

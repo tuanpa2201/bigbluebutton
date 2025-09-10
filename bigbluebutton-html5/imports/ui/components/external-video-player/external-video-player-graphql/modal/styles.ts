@@ -23,6 +23,7 @@ type urlProps = {
 const UrlError = styled.div<urlProps>`
   color: red;
   padding: 1em 0 2.5em 0;
+  font-size: 12px;
 
   ${({ animations }) => animations && `
     transition: 1s;
@@ -40,6 +41,9 @@ const Label = styled.label`
     font-style: normal;
     font-weight: 500;
     line-height: 20px;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
 `
 const InputUrl = styled.input`
     display: flex !important;
@@ -50,6 +54,10 @@ const InputUrl = styled.input`
     background: var(--BG-00, #FFF);
     line-height: 20px !important;
     margin: 4px 0 0 !important;
+    font-weight: 400 !important;
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 16px;
+  }
 `
 
 const Content = styled.div`
@@ -120,6 +128,9 @@ const ExternalVideoNote = styled.div`
   //font-size: ${fontSizeSmall};
   //font-style: italic;
   //padding-top: ${smPaddingY};
+  @media (min-width: 768px) and (max-width: 1024px) {
+    font-size: 14px;
+  }
 `;
 
 const CancelButton = styled(Button)`

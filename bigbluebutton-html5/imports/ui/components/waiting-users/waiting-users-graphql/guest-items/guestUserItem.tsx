@@ -61,7 +61,8 @@ const renderGuestUserItem = (
             </Styled.Avatar>
           </Styled.UserAvatarContainer>
           <Styled.UserName key={`user-name-${userId}`}>
-            {`[${sequence}] ${name}`}
+            {/* {`[${sequence}] ${name}`}*/}
+            {`${name}`}
           </Styled.UserName>
         </Styled.UserContentContainer>
 

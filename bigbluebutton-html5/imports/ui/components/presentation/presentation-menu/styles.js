@@ -84,7 +84,8 @@ const ToastText = styled.span`
   position: relative;
   //top: ${borderSizeLarge};
   width: auto;
-  font-weight: ${headingsFontWeight};
+  font-weight: 400;
+  font-size: 14px;
 
   [dir="rtl"] & {
     text-align: right;

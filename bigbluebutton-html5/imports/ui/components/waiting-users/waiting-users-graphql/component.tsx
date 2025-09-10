@@ -357,18 +357,18 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
           }}
           aria-label={intl.formatMessage(intlMessages.title)}
         >
-          <SvgIcon iconName="cancel" />
+          <SvgIcon iconName="cross_20" />
         </span>
       </div>
       <Styled.ScrollableArea>
         {isGuestLobbyMessageEnabled ? (
-          <Styled.LobbyMessage data-test="lobbyMessage">
+          <Styled.LobbyMessage data-test="lobbyMessage" className="lobbyMessage">
             <TextInput
               maxLength={128}
               placeholder={intl.formatMessage(intlMessages.inputPlaceholder)}
               send={setGuestLobbyMessage}
             />
-            <p>
+            <p className="text-lobby-message">
               &quot;
               {
                 guestLobbyMessage && guestLobbyMessage !== ''
@@ -385,7 +385,7 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
           {allowRememberChoice ? (
             <Styled.RememberContainer>
               <input id="rememberCheckboxId" type="checkbox" onChange={onCheckBoxChange} />
-              <label htmlFor="rememberCheckboxId">
+              <label htmlFor="rememberCheckboxId" className="remember-choice-label">
                 {intl.formatMessage(intlMessages.rememberChoice)}
               </label>
             </Styled.RememberContainer>
