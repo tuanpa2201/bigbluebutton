@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import { LAYOUT_TYPE, CAMERADOCK_POSITION, HIDDEN_LAYOUTS } from '/imports/ui/components/layout/enums';
 import SettingsService from '/imports/ui/components/settings/service';
-import deviceInfo from '/imports/utils/deviceInfo';
+import deviceInfo, { isMobile } from '/imports/utils/deviceInfo';
 import Button from '/imports/ui/components/common/button/component';
 import Toggle from '/imports/ui/components/common/switch/component';
 import Styled from './styles';
@@ -154,7 +154,6 @@ const LayoutModalComponent = ({
 
     return (
       <Styled.ToggleStatusWrapper>
-        {displayToggleStatus(keepPushingLayout)}
         <Toggle
           id="TogglePush"
           icons={false}
@@ -193,7 +192,7 @@ const LayoutModalComponent = ({
   const renderLayoutButtons = () => (
     <Styled.ButtonsContainer>
       {Object.values(LAYOUT_TYPE)
-        .filter((layout) => !HIDDEN_LAYOUTS.includes(layout))
+        .filter((layout) => !HIDDEN_LAYOUTS.includes(layout) && (!isMobile || layout !== LAYOUT_TYPE.CUSTOM_LAYOUT))
         .map((layout) => (
           <div className="d-flex justify-content-between align-items-center gap-10" key={layout}>
             <Radio
@@ -241,10 +240,10 @@ const LayoutModalComponent = ({
       <Styled.Content>
         <Styled.BodyContainer>
           {renderLayoutButtons()}
+          {renderPushLayoutsOptions()}
         </Styled.BodyContainer>
       </Styled.Content>
       <Styled.ButtonBottomContainer className="footer-model-custom-tablet">
-        {/* {renderPushLayoutsOptions()} */}
         <Button
           className="btn btn-primary"
           label={intl.formatMessage(intlMessages.update)}
