@@ -115,6 +115,10 @@ const ButtonContainer = styled.div`
     padding: ${mdPaddingY};
     font-size: ${fontSizeBase};
     border-radius: 50%;
+
+    @media (max-width: 375px) {
+      padding: 8px;
+    }
   }
 `;
 // @ts-ignore - Button is JS
@@ -301,9 +305,12 @@ const pulse = (color: string) => keyframes`
 
 const Avatar = styled.div<AvatarProps>`
   position: relative;
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 36px;
+  width: 36px;
   border-radius: 6px;
+  @media (max-width: 375px) {
+    border-radius: 10px;
+  }
   text-align: center;
   font-size: .85rem;
   border: 2px solid transparent;

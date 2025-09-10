@@ -54,11 +54,12 @@ export default class Checkbox extends Base {
       <>
         {label ? (
           <Styled.Label
+            className="checkbox-label"
             label={label}
             control={checkbox}
           />
         ) : checkbox}
-        <div id={ariaDescribedBy} hidden>{ariaDesc}</div>
+        <div id={ariaDescribedBy} className="checkbox-desc" hidden>{ariaDesc}</div>
       </>
     );
   }

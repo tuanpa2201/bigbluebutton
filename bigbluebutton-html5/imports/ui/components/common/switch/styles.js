@@ -78,7 +78,7 @@ const ToggleTrack = styled.div`
   `}
   @media ${phoneOnly} {
     width: 40px;
-    height: 25px;
+    height: 24px;
   }
 `;
 

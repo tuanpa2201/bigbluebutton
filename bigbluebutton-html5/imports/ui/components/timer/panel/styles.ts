@@ -87,6 +87,10 @@ const TimerHeader = styled.div`
       display: flex;
       align-items: center;
       flex: 1;
+
+      @media (max-width: 768px) {
+        font-size: 18px;
+      }
     }
 
     @media (max-width: 1024px) {
@@ -207,6 +211,17 @@ const TimerSwitchButton = styled(Button)`
             opacity: 1;
         }
     }
+
+
+  @media (max-width: 1366px) {
+    font-size: 16px;
+    height: 40px;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    height: 40px;
+  }
 `;
 
 const StopwatchTime = styled.div`
@@ -246,7 +261,7 @@ const StopwatchTimeInputLabel = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: 16px; 
-    margin-top: 4px;
+    margin-top: 8px;
     text-transform: capitalize;
 `;
 
@@ -321,7 +336,7 @@ const TimerControls = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
-  margin-top: 4rem;
+  margin-top: 48px;
   gap: 8px;
   @media (max-width: 1024px) {
     margin-bottom: 20px;

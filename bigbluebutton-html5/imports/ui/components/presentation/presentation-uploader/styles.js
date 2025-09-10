@@ -414,6 +414,15 @@ const ModalInner = styled.div`
   padding-bottom: .75rem;
   overflow-y: auto;
   align-items: space-between;
+  @media (max-width: 768px) {
+    padding-bottom: 0;
+  }
+  .btn-confrim-uploadPresent {
+    margin-bottom: 12px;
+    @media (max-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
   // @media ${smallOnly} {
   //   padding-left: ${statusInfoHeight};
   //   padding-right: ${statusInfoHeight};
@@ -446,6 +455,9 @@ const ModalHeader = styled.div`
       text-overflow: ellipsis;
       @media (min-width: 1025px) and (max-width: 1366px) {
           max-width: 230px;
+      }
+      @media (max-width: 375px) {
+        font-size: 18px;
       }
   }  
 `;
@@ -607,6 +619,16 @@ const PresentationItem = styled.div`
   height: 52px;
   width: 100%;
   padding: 12px;
+  
+  @media (max-width: 375px) {
+    height: 64px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    height: 72px;
+  }
+  @media (min-width: 769px) and (max-width: 1366px) {
+    height: 52px;
+  }
 `;
 
 const TableItemActions = styled.div`
@@ -660,6 +682,12 @@ const ExportHint = styled(ModalHint)`
   font-weight: 400;
   line-height: 16px;
   color: #6F767E;
+  @media (max-width: 375px) {
+    font-size: 14px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const SetCurrentAction = styled.td`

@@ -108,7 +108,7 @@ class LeaveMeetingButton extends PureComponent {
         {
           key: 'list-item-end-meeting',
           dataTest: 'endMeetingButton',
-          svgIcon: 'cross_21',
+          svgIcon: window.innerWidth < 1024 ? 'cross_21' : 'cross',
           label: intl.formatMessage(intlMessages.endMeetingLabel),
           description: intl.formatMessage(intlMessages.endMeetingDesc),
           onClick: () => this.setEndMeetingConfirmationModalIsOpen(true),

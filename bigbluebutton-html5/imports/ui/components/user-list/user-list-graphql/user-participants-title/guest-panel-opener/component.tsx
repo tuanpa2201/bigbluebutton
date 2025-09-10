@@ -61,7 +61,7 @@ const GuestPanelOpener: React.FC<GuestPanelOpenerProps> = ({
               }
             }}
           >
-            <span>{intl.formatMessage(intlMessages.title)}</span>
+            <span className="waiting-user-title">{intl.formatMessage(intlMessages.title)}</span>
             {pendingUsers > 0 && (
               <Styled.UnreadMessages>
                 <Styled.UnreadMessagesText>

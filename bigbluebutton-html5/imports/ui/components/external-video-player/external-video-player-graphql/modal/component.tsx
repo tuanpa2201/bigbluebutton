@@ -84,7 +84,7 @@ const ExternalVideoPlayerModal: React.FC<ExternalVideoPlayerModalProps> = ({
 
   return (
     <Styled.ExternalVideoModal
-      className="external-video-modal"
+      className="external-video-modal model-custom-mobile"
       onRequestClose={onRequestClose}
       contentLabel={intl.formatMessage(intlMessages.title)}
       title={intl.formatMessage(intlMessages.title)}
@@ -124,7 +124,7 @@ const ExternalVideoPlayerModal: React.FC<ExternalVideoPlayerModalProps> = ({
               : null
           }
       </Styled.Content>
-      <Styled.ButtonFooter>
+      <Styled.ButtonFooter className="footer-model-custom-mobile">
         <Styled.CancelButton
           className="btn btn-default m-0-i"
           data-test="cancelSharingWebcam"

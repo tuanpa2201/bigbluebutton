@@ -440,6 +440,15 @@
         /*    border: 0.66px solid var(--border-01-dark, #9A9A9A);*/
         /*}*/
     /*}*/
+
+
+  & .live-result-barchart {
+    .recharts-surface {
+      @media (min-width: 768px) and (max-width: 1024px) {
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 #notes-options-dropdown {
@@ -1227,6 +1236,10 @@ button[data-test="whiteboardOptionsButton"],
         [data-darkreader-scheme="dark"] & {
             color: var(--text-primary-dark, #FCFCFD);
         }
+
+        @media (min-width: 376px) and (max-width: 768px) {
+          font-size: 16px;
+        }
     }
 
     & .dropzone {
@@ -1242,6 +1255,10 @@ button[data-test="whiteboardOptionsButton"],
             [data-darkreader-scheme="dark"] & {
                 color: var(--text-secondary-dark, #C5C9CD);
             }
+
+            @media (min-width: 376px) and (max-width: 768px) {
+              font-size: 16px;
+            }
         }
 
         & .dropzoneLink {
@@ -1249,6 +1266,9 @@ button[data-test="whiteboardOptionsButton"],
             [data-darkreader-scheme="dark"] & {
                 color: var(--text-link-dark, #56D6FF);
             }
+        }
+        @media (min-width: 376px) and (max-width: 768px) {
+            justify-content: center;
         }
     }
 
@@ -1284,9 +1304,12 @@ button[data-test="whiteboardOptionsButton"],
         & .actions_item {
             & .presentation_options_download {
                 & .icon-bbb-more {
-                    width: 16px !important;
-                    height: 16px !important;
-                    margin-top: -1px !important;
+                    @media (min-width: 1024px) and (max-width: 1366px) {
+                      width: 16px !important;
+                      height: 16px !important;
+                      margin-top: -1px !important;
+                    }
+                    margin-top: 1px !important;
                 }
                 & span:first-child {
                     & i::before {
@@ -1310,9 +1333,11 @@ button[data-test="whiteboardOptionsButton"],
                     color: var(--text-secondary-dark, #C5C9CD);
                 }
 
-                svg {
+                @media (min-width: 1024px) and (max-width: 1366px) {
+                  svg {
                     width: 16px;
                     height: 16px;
+                  }
                 }
             }
         }
@@ -1336,6 +1361,14 @@ button[data-test="whiteboardOptionsButton"],
     }
 }
 
+#presentation-download-dropdown {
+  .MuiPaper-root {
+    svg {
+      min-width: fit-content;
+    }
+  }
+}
+
 #presentationUploaderExportPresentationId {
     align-items: flex-start;
     > div:nth-of-type(2) {
@@ -1343,8 +1376,34 @@ button[data-test="whiteboardOptionsButton"],
     }
 }
 
+.lobbyMessage {
+  textarea {
+    @media (max-width: 375px) {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
+.waiting-user-title {
+
+}
+
+.text-lobby-message {
+  color: #6F767E;
+  [data-darkreader-scheme="dark"] & {
+    color: var(--text-secondary-dark, #C5C9CD);
+  }
+}
+
+.remember-choice-label {
+  color: #313131;
+  [data-darkreader-scheme="dark"] & {
+    color: var(--text-secondary-dark, #C5C9CD);
+  }
+}
+
 .theme-switch-title {
-    color: var(#313131);
+    color: #313131;
     [data-darkreader-scheme="dark"] & {
         color: var(--text-secondary-dark, #C5C9CD);
     }
