@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {
   colorWhite,
 } from '/imports/ui/stylesheets/styled-components/palette';
-import { phoneOnly, smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { phoneOnly, smallOnly, tabletOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import Button from '/imports/ui/components/common/button/component';
 import ModalSimple from '/imports/ui/components/common/modal/simple/component';
 import ModalStyles from '/imports/ui/components/common/modal/simple/styles';
@@ -166,13 +166,28 @@ const ToggleStatusWrapper = styled.div`
 
 const PushContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 12px;
+
+  border-top: 1px solid #EFEFEF;
+  padding: 18px 0px 10px;
+  margin-top: 18px;
 `;
 
 const LabelPushLayout = styled.div`
-  padding-right: 0.5rem;
+  color: var(--Text-Primary, #313131);
+
+  /* Regular/S */
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+
+  @media ${tabletOnly} {
+    font-size: 16px;
+    line-height: 24px;
+  }
 `;
 
 export default {
