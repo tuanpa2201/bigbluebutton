@@ -394,7 +394,7 @@ const ConnectionTabPanel = styled(TabPanel)`
     margin: 0;
     min-height: 457px;
     overflow: auto;
-    min-width: 500px;
+    // min-width: 500px;
   }
 `;
 
