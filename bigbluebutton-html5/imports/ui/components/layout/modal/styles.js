@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import {
   colorWhite,
 } from '/imports/ui/stylesheets/styled-components/palette';
-import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { phoneOnly, smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import Button from '/imports/ui/components/common/button/component';
 import ModalSimple from '/imports/ui/components/common/modal/simple/component';
 import ModalStyles from '/imports/ui/components/common/modal/simple/styles';
@@ -13,6 +13,9 @@ const Content = styled.div`
   flex-direction: column;
   padding: 2px 0 12px 0;
   overflow: hidden;
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    padding: 0px 0 20px 0;
+  }
 `;
 
 const LayoutModal = styled(ModalSimple)`
@@ -31,6 +34,27 @@ const LayoutModal = styled(ModalSimple)`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .footer-model-custom-tablet{
+      padding-top: 20px;
+    }
+    .modal-content {
+      padding: 20px !important;
+    }
+    .modal-header {
+      padding-left: 20px !important;
+      padding-right: 20px !important;
+    }
+  }
+
+  @media ${phoneOnly} {
+    .footer-model-custom-tablet{
+      padding-top: 12px;
+    }
+    .modal-content {
+      padding-bottom: 12px !important;
+    }
   }
 `;
 
@@ -79,6 +103,19 @@ const ButtonsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
+
+  .MuiFormControlLabel-label {
+    font-size: 14px!important;
+    line-height: 20px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .MuiFormControlLabel-label {
+      /* Medium/M */
+      font-size: 16px!important;
+      line-height: 24px; /* 150% */
+    }
+  }
 `;
 
 const ButtonBottomContainer = styled.div`
@@ -94,7 +131,6 @@ const ButtonBottomContainer = styled.div`
     align-self: center;
     padding-right: unset;
     position: relative;
-    right: 1rem;
   }
 `;
 
