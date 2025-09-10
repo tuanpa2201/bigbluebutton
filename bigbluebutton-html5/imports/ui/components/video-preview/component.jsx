@@ -1215,7 +1215,7 @@ class VideoPreview extends Component {
                   )
               }
             </div>
-            <div className={cameraAsContent ? 'min-h-custom' : 'w-50 xs-w-100 min-h-custom'}>
+            <div className={cameraAsContent ? '' : 'w-50 xs-w-100 min-h-custom'}>
               {this.renderTabsContent(selectedTab)}
             </div>
           </div>
