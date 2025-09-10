@@ -1034,6 +1034,9 @@
             width: unset;
         }
     }
+
+
+    
 }
 
 /* ActionsBar */
@@ -1505,4 +1508,15 @@ li[data-key="menuItem-directLogoutButton"] {
 
 .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root{
     min-height: auto !important;
+
+
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        &[data-test="aboutModal"], &[data-test="keyboard"], &[data-test="menuItem-settings"], &[data-test="manageLayoutBtn"], &[data-test="fullscreen"] {
+            svg {
+                width: 20px !important;
+                height: 20px !important;
+            }
+            
+        }
+    }
 }

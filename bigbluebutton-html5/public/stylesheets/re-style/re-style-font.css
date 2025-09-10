@@ -139,3 +139,19 @@
 		line-height: 24px; /* 150% */
 	}
 }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.md-font-medium-m {
+		/* Medium/M */
+		font-size: 16px!important;
+		font-style: normal;
+		font-weight: 500!important;
+		line-height: 24px; /* 150% */
+	}
+
+	.md-text-m {
+		/* Medium/M */
+		font-size: 16px!important;
+		line-height: 24px; /* 150% */
+	}
+}

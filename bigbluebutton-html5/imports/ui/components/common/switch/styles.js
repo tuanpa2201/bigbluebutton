@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { borderSize } from '/imports/ui/stylesheets/styled-components/general';
 import { colorDanger, colorSuccess } from '/imports/ui/stylesheets/styled-components/palette';
-import { phoneOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { phoneOnly, tabletOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
 
 const Switch = styled.div`
   &:hover,
@@ -49,7 +49,7 @@ const ToggleTrack = styled.div`
   //width: 2.5rem;
   //height: 1.5rem;
   padding: 0;
-  border-radius: 6px;
+  border-radius: 8px;
   // background-color: ${colorDanger};
   
   width: 32px;
@@ -80,7 +80,6 @@ const ToggleTrack = styled.div`
     width: 40px;
     height: 25px;
   }
-
 `;
 
 const ToggleTrackCheck = styled.div`
@@ -146,7 +145,7 @@ const ToggleThumb = styled.div`
   box-shadow:
     0px 0px 2px -1px rgba(0, 0, 0, 0.35),
     inset 0px -1px 1px rgba(0, 0, 0, 0.03);
-  border-radius: 5px;
+  border-radius: 6px;
 
   ${({ animations }) => animations
     && `

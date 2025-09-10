@@ -57,7 +57,7 @@ const Toast = ({
             </Styled.ToastIcon>
           )}
         <Styled.ToastMessage data-test="toastSmallMsg">
-          <span className={['text-primary', !content ? 'font-regular-s ' : 'font-medium-s'].join(' ')}>{message}</span>
+          <span className={['text-primary', 'font-medium-s md-font-medium-m'].join(' ')}>{message}</span>
         </Styled.ToastMessage>
       </Styled.Toast>
       {content

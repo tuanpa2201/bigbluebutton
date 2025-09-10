@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { smallOnly } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { smallOnly, tabletDown } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import { smPaddingX, smPaddingY, barsPadding } from '/imports/ui/stylesheets/styled-components/general';
 import { colorWhite, colorBackground } from '/imports/ui/stylesheets/styled-components/palette';
 import Button from '/imports/ui/components/common/button/component';
@@ -71,7 +71,7 @@ const Right = styled.div`
       margin: 0 ${smPaddingY};
     }
   }
-  @media (max-width: 767px) {
+  @media ${tabletDown} {
     display: none !important;
   }
 `;
