@@ -136,6 +136,13 @@ const WaitingUsersButton = styled(Button)`
     color: ${colorPrimary};
     background-color: ${listItemBgHover} !important;
   }
+
+  @media (min-width: 376px) {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
 `;
 // @ts-ignore - Button is JS
 const WaitingUsersButtonMsg = styled(Button)`
@@ -172,6 +179,12 @@ const WaitingUsersButtonDeny = styled(Button)`
   &:hover {
     color: #ff0e0e;
     background-color: ${listItemBgHover} !important;
+  }
+  @media (min-width: 376px) {
+    svg {
+      width: 16px;
+      height: 16px;
+    }
   }
 `;
 
@@ -214,7 +227,7 @@ const CustomButton = styled(Button)`
 
 const Panel = styled.div<PanelProps>`
   background-color: ${colorWhite};
-  padding: ${smPaddingX};
+  padding: 16px;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -310,6 +323,10 @@ const Avatar = styled.div<AvatarProps>`
   border-radius: 6px;
   @media (max-width: 375px) {
     border-radius: 10px;
+  }
+  @media (max-width: 768px) {
+    height: 44px;
+    width: 44px;
   }
   text-align: center;
   font-size: .85rem;

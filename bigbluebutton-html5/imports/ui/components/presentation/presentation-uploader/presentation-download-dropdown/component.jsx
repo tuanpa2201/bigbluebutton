@@ -203,9 +203,7 @@ class PresentationDownloadDropdown extends PureComponent {
               icon="more"
               label={tooltipLabelForDropdown}
               aria-label={tooltipLabelForDropdown}
-              onClick={() => {
-                // setTimeout(() => { debugger; }, 2000);
-              }}
+              onClick={() => null}
             />
           )}
           opts={{
