@@ -27,7 +27,11 @@ const UrlError = styled.div<urlProps>`
 
   ${({ animations }) => animations && `
     transition: 1s;
-  `}
+  `};
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
 `;
 
 const ExternalVideoModal = styled(ModalSimple)`
@@ -128,7 +132,7 @@ const ExternalVideoNote = styled.div`
   //font-size: ${fontSizeSmall};
   //font-style: italic;
   //padding-top: ${smPaddingY};
-  @media (min-width: 768px) and (max-width: 1024px) {
+  @media (max-width: 1024px) {
     font-size: 14px;
   }
 `;

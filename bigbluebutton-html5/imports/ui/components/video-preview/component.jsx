@@ -1370,7 +1370,7 @@ class VideoPreview extends Component {
         className={cameraAsContent ? 'video-preview-modal camera-as-content model-custom-mobile' : 'video-preview-modal model-custom-mobile'}
         onRequestClose={this.handleProceed}
         contentLabel={intl.formatMessage(intlMessages.webcamSettingsTitle)}
-        title={intl.formatMessage(intlMessages.webcamSettingsTitle)}
+        title={this.getModalTitle()}
         shouldShowCloseButton={allowCloseModal}
         shouldCloseOnOverlayClick={allowCloseModal}
         isPhone={deviceInfo.isPhone}

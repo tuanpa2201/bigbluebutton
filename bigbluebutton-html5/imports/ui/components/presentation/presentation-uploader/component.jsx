@@ -652,6 +652,7 @@ class PresentationUploader extends Component {
   }
 
   handleConfirm() {
+    setTimeout(() => { debugger; }, 3000);
     const {
       handleSave,
       selectedToBeNextCurrent,

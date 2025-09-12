@@ -72,7 +72,7 @@ const renderGuestUserItem = (
             aria-label={intl.formatMessage(intlMessages.accept)}
             ghost
             hideLabel
-            svgIcon="accept"
+            svgIcon="accept1"
             onClick={handleAccept}
             data-test="acceptGuest"
           />
@@ -94,7 +94,7 @@ const renderGuestUserItem = (
             hideLabel
             onClick={handleDeny}
             data-test="denyGuest"
-            svgIcon="cancel"
+            svgIcon="cancel1"
           />
         </Styled.ButtonContainer>
       </Styled.ListItem>

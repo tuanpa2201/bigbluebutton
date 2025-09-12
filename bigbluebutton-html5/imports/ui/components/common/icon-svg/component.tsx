@@ -459,6 +459,11 @@ const iconsMap: { [key: string]: JSX.Element } = {
       <path d="M6.66699 12.6667L10.0003 16L17.3337 8" stroke="#2F384C" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   ),
+  accept1: (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3.33325 10.8333L7.49992 15L16.6666 5" stroke="#5F6166" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  ),
   chevronLeft: (
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M11.667 5L6.66699 10L11.667 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -472,6 +477,11 @@ const iconsMap: { [key: string]: JSX.Element } = {
   cancel: (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M8 16L16 8M8 8L16 16" stroke="#AA2007" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  ),
+  cancel1: (
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 15L15 5M5 5L15 15" stroke="#AA2007" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   ),
   remove: (

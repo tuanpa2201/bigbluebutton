@@ -92,7 +92,7 @@ const DeletePollOptionButton = styled(Button)`
 
 const ErrorSpacer = styled.div`
   position: relative;
-  height: 12px;
+  height: 10px;
 `;
 
 const InputError = styled(ErrorSpacer)`
@@ -382,8 +382,15 @@ const StartPoll = styled.div`
     left: 0;
     //padding-left: 16px;
     //padding-right: 16px;
-    padding-bottom: 28px;
+    padding: 28px;
+  @media (min-width: 376px) and (max-width: 768px) {
+    padding: 20px;
+  }
+  @media (max-width: 375px) {
+    padding: 16px;
+  }
     background: #FFF;
+  position: fixed;
 `;
 
 const NoSlidePanelContainer = styled.div`
@@ -507,6 +514,8 @@ const AnonymousToggleCol = styled(CustomInputToggleCol)``;
 const AnonymousRow = styled(Row)`
   flex-flow: nowrap;
   width: 100%;
+  border-top: 1px solid rgb(239, 239, 239);
+  padding-top: 20px;
 `;
 
 const ResultLeft = styled.td`
