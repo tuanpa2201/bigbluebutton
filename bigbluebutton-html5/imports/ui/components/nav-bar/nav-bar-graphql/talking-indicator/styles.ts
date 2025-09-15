@@ -71,10 +71,10 @@ const TalkingIndicatorButton = styled(Button)`
   }
 
   i {
-    font-size: ${fontSizeSmaller};
+    font-size: 12px;
     width: 1rem;
     height: 1rem;
-    line-height: 1rem;
+    line-height: 20px;
     background-color: ${colorSuccess};
     border-radius: 50%;
     position: relative;

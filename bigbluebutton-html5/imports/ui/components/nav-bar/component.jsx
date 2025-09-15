@@ -366,7 +366,7 @@ class NavBar extends Component {
               left: style.left + 2,
               height: style.height,
               width: style.width,
-              zIndex: 2
+              zIndex: 1
             }
             : {
               position: 'relative',

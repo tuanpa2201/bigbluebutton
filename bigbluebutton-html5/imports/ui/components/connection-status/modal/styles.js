@@ -36,6 +36,11 @@ const Item = styled.li`
   ${({ last }) => last && `
     border: none;
   `}
+
+  @media ${phoneOnly} {
+    width: max-content;
+    min-width: 100%;
+  }
 `;
 
 const Left = styled.div`
@@ -57,7 +62,8 @@ const Name = styled.div`
   justify-content: flex-start;
 
   @media ${phoneOnly} {
-    width: 40%;
+    width: 180px;
+    flex-shrink: 0;
   }
 `;
 
@@ -74,8 +80,7 @@ const ClientNotRespondingText = styled.div`
   color: ${colorDanger};
 
   @media ${phoneOnly} {
-    width: 100%;
-    min-width: 200px;
+    width: 200px;
     justify-content: center;
   }
 `;

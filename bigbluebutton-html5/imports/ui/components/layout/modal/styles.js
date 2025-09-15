@@ -132,6 +132,10 @@ const ButtonBottomContainer = styled.div`
     padding-right: unset;
     position: relative;
   }
+
+  @media ${tabletOnly} {
+    border-top: unset !important;
+  }
 `;
 
 const LabelLayoutNames = styled.label`
@@ -162,6 +166,10 @@ const ToggleStatusWrapper = styled.div`
   position: relative;
   right: 2rem;
   }
+
+  @media ${tabletOnly} {
+    height: 40px;
+  }
 `;
 
 const PushContainer = styled.div`
@@ -173,6 +181,10 @@ const PushContainer = styled.div`
   border-top: 1px solid #EFEFEF;
   padding: 18px 0px 10px;
   margin-top: 18px;
+
+  @media ${tabletOnly} {
+    padding: 20px 0px 0px;
+  }
 `;
 
 const LabelPushLayout = styled.div`
