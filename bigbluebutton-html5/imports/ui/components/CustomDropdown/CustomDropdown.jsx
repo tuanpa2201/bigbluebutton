@@ -2,6 +2,7 @@ import React, {
   useState, useRef, useEffect, useLayoutEffect,
 } from 'react';
 import ReactDOM from 'react-dom';
+import deviceInfo from '/imports/utils/deviceInfo';
 
 function CustomDropdown({
   options, value, onChange, disabled,
@@ -10,6 +11,8 @@ function CustomDropdown({
   const [dropdownStyle, setDropdownStyle] = useState({});
   const ref = useRef(null);
   const dropdownListRef = useRef(null);
+
+  const {isMobile} = deviceInfo;
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -37,7 +40,10 @@ function CustomDropdown({
       const rect = ref.current.getBoundingClientRect();
       const style = {
         position: 'absolute',
-        top: rect.bottom + window.scrollY,
+        top: isMobile
+          ? rect.top + window.scrollY
+            - dropdownListRef.current.getBoundingClientRect().height
+          : rect.bottom + window.scrollY,
         left: rect.left + window.scrollX,
         width: rect.width,
         zIndex: 1000,

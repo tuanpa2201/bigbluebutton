@@ -17,6 +17,12 @@
     background-color: #fff !important;
     border-bottom: none !important;
   }
+  @media only screen and (min-width: 1025px) {
+    .modal-content {
+      padding-bottom: 24px;
+    }
+    max-width: 500px !important;
+  }
 }
 
 .modal-session-details .modal-header {
