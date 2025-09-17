@@ -32,9 +32,6 @@ const Message = styled.div`
 
 export const DeleteMessage = styled.span`
   color: ${colorGrayLight};
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 `;
 
 export const Markdown = styled(ReactMarkdown)`

@@ -741,6 +741,8 @@
                         [data-darkreader-scheme="dark"] & {
                             color: var(--text-primary-dark, #FCFCFD);
                         }
+                        word-break: break-all;
+                        white-space: pre-wrap;
                     }
 
                 }

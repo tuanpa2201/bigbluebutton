@@ -186,7 +186,7 @@ const QText = styled.div`
   word-break: break-word;
   white-space: pre-wrap;
   font-size: ${fontSizeLarge};
-  max-width: ${pollWidth};
+  // max-width: ${pollWidth};
   padding-right: ${smPaddingX};
 `;
 
