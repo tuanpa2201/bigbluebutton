@@ -169,6 +169,10 @@
     padding-left: 24px;
 }
 
+.pr-40 {
+    padding-right: 40px !important;
+}
+
 /* MARGIN */
 .m-0 {
     margin: 0;

@@ -552,7 +552,6 @@ const ChatMessageList: React.FC<ChatListProps> = ({
           </MessageList>,
           renderUnreadNotification,
           <ChatReplyIntention key="chatReplyIntention" />,
-          <ChatEditingWarning key="chatEditingWarning" />,
         ]
       }
     </>

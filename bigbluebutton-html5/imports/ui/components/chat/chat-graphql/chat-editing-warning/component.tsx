@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { defineMessages, useIntl } from 'react-intl';
 import { ChatEvents } from '/imports/ui/core/enums/chat';
-import Icon from '/imports/ui/components/common/icon/component';
+import SvgIcon from '/imports/ui/components/common/icon-svg/component';
+
 import {
-  Cancel, Container, Highlighted, Left, Root,
+  Container, Left, Root,
 } from './styles';
 
 const intlMessages = defineMessages({
@@ -16,8 +17,6 @@ const intlMessages = defineMessages({
     description: '',
   },
 });
-
-const CANCEL_KEY_LABEL = 'esc';
 
 const ChatEditingWarning = () => {
   const [show, setShow] = useState(false);
@@ -46,30 +45,15 @@ const ChatEditingWarning = () => {
 
   if (!show) return null;
 
-  const cancelMessage = intl.formatMessage(intlMessages.cancel, { 0: CANCEL_KEY_LABEL });
   const editingMessage = intl.formatMessage(intlMessages.editing);
 
   return (
     <Root role="note" aria-describedby="cancel-editing-msg">
       <Container>
         <Left>
-          <Icon iconName="pen_tool" />
+          <SvgIcon iconName="edit" />
           {editingMessage}
         </Left>
-        <Cancel
-          onClick={() => {
-            window.dispatchEvent(new CustomEvent(ChatEvents.CHAT_CANCEL_EDIT_REQUEST));
-          }}
-        >
-          {cancelMessage.split(CANCEL_KEY_LABEL)[0]}
-        &nbsp;
-          <Highlighted>{CANCEL_KEY_LABEL}</Highlighted>
-        &nbsp;
-          {cancelMessage.split(CANCEL_KEY_LABEL)[1]}
-        </Cancel>
-        <span className="sr-only" id="cancel-editing-msg">
-          {`${editingMessage} ${cancelMessage}`}
-        </span>
       </Container>
     </Root>
   );
