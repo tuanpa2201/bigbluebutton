@@ -34,7 +34,6 @@ import MessageReadConfirmation from './message-read-confirmation/component';
 import ChatMessageToolbar from './message-toolbar/component';
 import ChatMessageReactions from './message-reactions/component';
 import ChatMessageReplied from './message-replied/component';
-import Icon from '/imports/ui/components/common/icon/component';
 import { colorBlueLighterChannel } from '/imports/ui/stylesheets/styled-components/palette';
 import ChatMessageNotificationContent from './message-content/notification-content/component';
 import { getValueByPointer } from '/imports/utils/object-utils';
@@ -683,9 +682,7 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
               sameSender={message?.user ? sameSender : false}
               name={messageContent.name}
               currentlyInMeeting={message.user?.currentlyInMeeting ?? true}
-              dateTime={dateTime}
               deleteTime={deleteTime}
-              editTime={editTime}
               role="listitem"
             />
             )}
@@ -699,10 +696,15 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
                 />
               </div>
               )}
-              <div className="d-flex w-100 justify-content-between gap-8">
-
+              <div className={classNames('d-flex w-100 justify-content-between gap-8', {
+                'flex-column gap-2': !deleteTime && editTime,
+              })}
+              >
                 {!deleteTime && (
-                <MessageItemWrapper className="chat-message-item-wrapper">
+                <MessageItemWrapper className={classNames('chat-message-item-wrapper', {
+                  'pr-40': editTime,
+                })}
+                >
                   {messageContent.component}
                   {messageReadFeedbackEnabled && (
                   <MessageReadConfirmation
@@ -720,8 +722,11 @@ const ChatMessage = React.forwardRef<ChatMessageRef, ChatMessageProps>(({
                   {!deleteTime && editTime && (
                   <Tooltip title={intl.formatTime(editTime, { hour12: false })}>
                     <EditLabel>
-                      <Icon iconName="pen_tool" />
-                      <span>{intl.formatMessage(intlMessages.edited)}</span>
+                      <span>
+                        (
+                        {intl.formatMessage(intlMessages.edited)}
+                        )
+                      </span>
                     </EditLabel>
                   </Tooltip>
                   )}

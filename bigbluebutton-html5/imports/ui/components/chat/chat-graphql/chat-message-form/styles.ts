@@ -39,8 +39,9 @@ const Form = styled.form<FormProps>`
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border-radius: 0.75rem;
+  background: #F7F8F9;
 `;
 
 const Input = styled(TextareaAutosize)`
@@ -82,10 +83,8 @@ const Input = styled(TextareaAutosize)`
   }
 `;
 
-
 const ChatInput = styled(TextareaAutosize)`
   flex: 1;
-  background: #F7F8F9;
   background-clip: padding-box;
   color: #313131;
   -webkit-appearance: none;
@@ -125,6 +124,10 @@ const ChatInput = styled(TextareaAutosize)`
   &:focus { 
     border: unset;
   }
+  background-color: unset !important;
+  shadow: unset !important;
+  box-shadow: unset !important;
+  border: unset !important;
 `;
 
 // @ts-ignore - as button comes from JS, we can't provide its props

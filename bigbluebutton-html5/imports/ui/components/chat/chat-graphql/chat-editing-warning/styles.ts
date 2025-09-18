@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { colorGrayLight, colorWhite } from '/imports/ui/stylesheets/styled-components/palette';
-import { xlPadding, xsPadding } from '/imports/ui/stylesheets/styled-components/general';
+import { colorGrayLight } from '/imports/ui/stylesheets/styled-components/palette';
 
 export const Root = styled.div`
   position: relative;
@@ -11,17 +10,17 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-wrap: nowrap;
-  color: ${colorGrayLight};
-  z-index: 10;
-  background-color: ${colorWhite};
+  color: var(--Text-Secondary, #6F767E);
 
-  [dir='ltr'] & {
-    margin-right: ${xlPadding};
-  }
+  /* Semibold/XS */
+  font-family: "FS PF BeauSans Pro";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px; /* 133.333% */
+  padding: 16px;
+  padding-bottom: 0px;
 
-  [dir='rtl'] & {
-    margin-left: ${xlPadding};
-  }
 `;
 
 export const Highlighted = styled.span`
@@ -31,7 +30,7 @@ export const Highlighted = styled.span`
 export const Left = styled.span`
   display: flex;
   align-items: center;
-  gap: ${xsPadding};
+  gap: 4px;
 `;
 
 export const Cancel = styled.button`

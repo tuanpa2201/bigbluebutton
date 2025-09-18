@@ -46,6 +46,7 @@ import {
 } from './queries';
 import Auth from '/imports/ui/services/auth';
 import connectionStatus from '/imports/ui/core/graphql/singletons/connectionStatus';
+import ChatEditingWarning from '/imports/ui/components/chat/chat-graphql/chat-editing-warning/component';
 
 const CLOSED_CHAT_LIST_KEY = 'closedChatList';
 const START_TYPING_THROTTLE_INTERVAL = 1000;
@@ -555,6 +556,7 @@ const ChatMessageForm: React.FC<ChatMessageFormProps> = ({
           </Styled.EmojiPickerWrapper>
         ) : null}
         <Styled.Wrapper>
+          <ChatEditingWarning key="chatEditingWarning" />
           <Styled.InputWrapper>
             <Styled.ChatInput
               id="chat-input"

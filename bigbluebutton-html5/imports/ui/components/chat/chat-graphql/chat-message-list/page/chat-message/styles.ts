@@ -268,18 +268,15 @@ export const ChatHeading = styled.div`
 `;
 
 export const EditLabel = styled.span`
-  color: ${colorGrayLight};
-  font-style: italic;
-  font-size: 75%;
-  display: flex;
-  align-items: center;
-  gap: 0.125rem;
-  line-height: 1;
+  color: var(--Text-Secondary, #6F767E);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
 `;
 
 export const ChatTime = styled(ChatTimeBase)`
   font-style: italic;
-  color: ${colorGrayDark};
+  color: #6F767E;
   display: none;
 
   .chat-message-container:focus &,
