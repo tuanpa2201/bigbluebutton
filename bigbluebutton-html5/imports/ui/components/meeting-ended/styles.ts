@@ -23,6 +23,10 @@ const Modal = styled.div`
   border-radius: 12px;
   max-width: 95vw;
   width: 500px;
+
+  @media ${tabletOnly} {
+    padding: 24px 16px 16px;
+  }
 `;
 
 const Content = styled.div`

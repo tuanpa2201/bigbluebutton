@@ -13,7 +13,7 @@ import {
   LAYOUT_ELEMENTS,
   PANELS,
 } from '../enums';
-import { isMobile, LAYOUTS_SYNC } from '../utils';
+import { isMobile, isTablet, LAYOUTS_SYNC } from '../utils';
 import { updateSettings, isKeepPushingLayoutEnabled } from '/imports/ui/components/settings/service';
 import Session from '/imports/ui/services/storage/in-memory';
 import usePreviousValue from '/imports/ui/hooks/usePreviousValue';
@@ -119,7 +119,7 @@ const PushLayoutEngine = (props) => {
       || meetingLayout;
 
     let { selectedLayout: actualLayout } = Settings.application;
-    if (isMobile()) {
+    if (isMobile() || isTablet()) {
       actualLayout = actualLayout === 'custom' ? 'smart' : actualLayout;
       Settings.application.selectedLayout = actualLayout;
     }
@@ -208,7 +208,7 @@ const PushLayoutEngine = (props) => {
 
     const replicateLayoutType = () => {
       let contextLayout = LAYOUT_TYPE[enforceLayoutResult] || meetingLayout;
-      if (isMobile()) {
+      if (isMobile() || isTablet()) {
         if (contextLayout === LAYOUT_TYPE.CUSTOM_LAYOUT) {
           contextLayout = LAYOUT_TYPE.SMART_LAYOUT;
         }

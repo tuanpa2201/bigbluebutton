@@ -80,7 +80,7 @@ const ClientNotRespondingText = styled.div`
   color: ${colorDanger};
 
   @media ${phoneOnly} {
-    width: 200px;
+    width: 230px;
     justify-content: center;
   }
 `;
@@ -92,10 +92,7 @@ const Text = styled.div`
   text-overflow: ellipsis;
   color: #313131;
   font-weight: 500;
-
-  ${({ offline }) => offline && `
-    font-style: italic;
-  `}
+  font-size: 14px;
 
   [dir="rtl"] & {
     padding: 0;
@@ -120,7 +117,7 @@ const Text2 = styled.div`
   @media ${phoneOnly} {
     font-size: 14px;
     line-height: 20px;
-    margin-top: 8px;
+    margin-top: 12px;
   }
 `;
 
@@ -150,9 +147,10 @@ const Time = styled.div`
   height: 100%;
   justify-content: flex-end;
   white-space: pre;
+  font-size: 14px;
   >time {
     color: #6F767E !important;
-    font-size: 1rem;
+    font-size: 14px;
     font-weight: 500;
   }
 `;
@@ -371,7 +369,7 @@ const ConnectionTabList = styled(TabList)`
   @media ${phoneOnly} {
     width: 100%;
     justify-content: start;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     gap: 12px;
     overflow-x: auto;
   }
