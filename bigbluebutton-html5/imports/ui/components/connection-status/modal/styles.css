@@ -1,17 +1,16 @@
 .modal-connection-status {
   background-color: #FFF;
   width: 632px;
+}
 
-  @media (max-width: 767px) {
-    .network-data-container{
-      flex-flow: column;
-    }
-    .modal-title{
-      font-size: 18px !important;
-    }
+@media (max-width: 767px) {
+  .modal-connection-status .network-data-container {
+    flex-flow: column;
   }
-  
 
+  .modal-connection-status .modal-title {
+    font-size: 18px !important;
+  }
 }
 
 .modal-connection-status .modal-header {
@@ -21,11 +20,11 @@
   align-items: center;
   background-color: #F7F8F9;
   height: 56px;
+}
 
-  >h2 {
-    margin: 0px !important;
-    color: #313131;
-  }
+.modal-connection-status .modal-header>h2 {
+  margin: 0px !important;
+  color: #313131;
 }
 
 .modal-connection-status u {

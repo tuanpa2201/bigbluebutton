@@ -1,32 +1,35 @@
 .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPopover-paper {
-    padding: 6px;
-    border-radius: 12px;
-    background: var(--BG-00, #FFF);
-    box-shadow: 0 4px 6px -2px rgba(26, 26, 26, 0.20), 1px 0 0 0 rgba(0, 0, 0, 0.13) inset, -1px 0 0 0 rgba(0, 0, 0, 0.13) inset, 0 -1px 0 0 rgba(0, 0, 0, 0.17) inset, 0 1px 0 0 rgba(204, 204, 204, 0.50) inset;
-      
-    /* @media only screen and (max-width: 767px) {
-        border-bottom-left-radius: 0px;
-        border-bottom-right-radius: 0px;
-    } */
-
+  padding: 6px;
+  border-radius: 12px;
+  background: var(--BG-00, #fff);
+  box-shadow:
+    0 4px 6px -2px rgba(26, 26, 26, 0.2),
+    1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+    -1px 0 0 0 rgba(0, 0, 0, 0.13) inset,
+    0 -1px 0 0 rgba(0, 0, 0, 0.17) inset,
+    0 1px 0 0 rgba(204, 204, 204, 0.5) inset;
+  /* @media only screen and (max-width: 767px) {
+   border-bottom-left-radius: 0px;
+   border-bottom-right-radius: 0px;
+   } */
 }
-
-.MuiMenu-root#app-leave-meeting-menu {
-    & .MuiList-root {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-        & .MuiMenuItem-root {
-            display: flex;
-            padding: 6px 8px !important;
-            align-items: center;
-            gap: 8px;
-            align-self: stretch;
-            color: var(--Text-Primary, #313131) !important;
-            [data-darkreader-scheme="dark"] & {
-                color: var(--text-primary-dark, #FCFCFD) !important;
-            }
-        }
-    }
+.MuiMenu-root#app-leave-meeting-menu .MuiList-root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.MuiMenu-root#app-leave-meeting-menu .MuiList-root .MuiMenuItem-root {
+  display: flex;
+  padding: 6px 8px !important;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  color: var(--Text-Primary, #313131) !important;
+}
+[data-darkreader-scheme="dark"]
+  .MuiMenu-root#app-leave-meeting-menu
+  .MuiList-root
+  .MuiMenuItem-root {
+  color: var(--text-primary-dark, #fcfcfd) !important;
 }

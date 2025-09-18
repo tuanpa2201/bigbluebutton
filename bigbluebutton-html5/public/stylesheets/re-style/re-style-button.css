@@ -1,115 +1,129 @@
 .rcx-button:focus.focus-visible,
 .rcx-button.focus.focus-visible {
-    box-shadow: 0px 0px 0px 2px #005BD3 !important;
+    box-shadow: 0px 0px 0px 2px #005bd3 !important;
 }
 
 .btn.btn-primary {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 32px !important;
     padding: 6px 12px !important;
     border-radius: 8px !important;
-    background: var(--Color-01, #E03) !important;
+    background: var(--Color-01, #e03) !important;
     border: #ffffff00 !important;
-
-    color: var(--Neutral-00, #FFF) !important;
+    color: var(--Neutral-00, #fff) !important;
     font-size: 14px !important;
     font-style: normal !important;
     font-weight: 600 !important;
     line-height: 20px !important;
-    &.button--small {
-        height: 28px !important;
-        line-height: 16px !important;
-    }
-    box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.2), inset 2px 0px 0px rgba(255, 255, 255, 0.2), inset -2px 0px 0px rgba(255, 255, 255, 0.2), inset 0px -1px 0px 1px #CB132E, inset 0px 1px 0px #CB132E;
+    box-shadow:
+        inset 0px 2px 0px rgba(255, 255, 255, 0.2),
+        inset 2px 0px 0px rgba(255, 255, 255, 0.2),
+        inset -2px 0px 0px rgba(255, 255, 255, 0.2),
+        inset 0px -1px 0px 1px #cb132e,
+        inset 0px 1px 0px #cb132e;
+    gap: 6px;
+}
 
-	gap: 6px;
+.btn.btn-primary.button--small {
+    height: 28px !important;
+    line-height: 16px !important;
+}
 
-    & span:hover {
-        opacity: 1;
-    }
-    @media (min-width: 768px) and (max-width: 1024px) {
+.btn.btn-primary span:hover {
+    opacity: 1;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .btn.btn-primary {
         padding: 12px !important;
         height: 44px !important;
     }
+}
 
-    @media (max-width: 767px) {
+@media (max-width: 767px) {
+    .btn.btn-primary {
         padding: 12px !important;
         height: 44px !important;
     }
 }
 
-.btn.btn-primary:hover {
-    &:not([aria-disabled="true"]){
-        color: var(--Neutral-04, #D6D6D6) !important;
-        border-radius: var(--p-border-radius-button) !important;
-        background: var(--Color-01, #E03) !important;
-    }
+.btn.btn-primary:hover:not([aria-disabled="true"]) {
+    color: var(--Neutral-04, #d6d6d6) !important;
+    border-radius: var(--p-border-radius-button) !important;
+    background: var(--Color-01, #e03) !important;
 }
 
-.btn.btn-primary:focus {
-    &:not([aria-disabled="true"]){
-        border: unset;
-        border-radius: var(--p-border-radius-button) !important;;
-        background: var(--Color-01, #E03) !important;
-        box-shadow: 0px 3px 0px 0px #CB132E inset !important;
-    }
+.btn.btn-primary:focus:not([aria-disabled="true"]) {
+    border: unset;
+    border-radius: var(--p-border-radius-button) !important;
+    background: var(--Color-01, #e03) !important;
+    box-shadow: 0px 3px 0px 0px #cb132e inset !important;
 }
 
-.btn.btn-primary:active {
-    &:not([aria-disabled="true"]){
-        border: unset;
-        border-radius: var(--p-border-radius-button) !important;;
-        background: var(--Color-01, #E03) !important;
-        box-shadow: 0px 3px 0px 0px #CB132E inset !important;
-    }
+.btn.btn-primary:active:not([aria-disabled="true"]) {
+    border: unset;
+    border-radius: var(--p-border-radius-button) !important;
+    background: var(--Color-01, #e03) !important;
+    box-shadow: 0px 3px 0px 0px #cb132e inset !important;
 }
 
 .btn.btn-primary[aria-disabled="true"],
 .btn.btn-primary:disabled {
-    background: var(--Neutral-05, #C0C0C0) !important;
-    color: var(--Neutral-00, #FFF) !important;
+    background: var(--Neutral-05, #c0c0c0) !important;
+    color: var(--Neutral-00, #fff) !important;
 }
 
 .btn.btn-default {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 32px !important;
     padding: 6px 12px !important;
     border-radius: 8px !important;
-    background: var(--BG-02, #FFF) !important;
-    box-shadow: 0px -1px 0px 0px #B5B5B5 inset, -1px 0px 0px 0px #E3E3E3 inset, 1px 0px 0px 0px #E3E3E3 inset, 0px 1px 0px 0px #E3E3E3 inset !important;
+    background: var(--BG-02, #fff) !important;
+    box-shadow:
+        0px -1px 0px 0px #b5b5b5 inset,
+        -1px 0px 0px 0px #e3e3e3 inset,
+        1px 0px 0px 0px #e3e3e3 inset,
+        0px 1px 0px 0px #e3e3e3 inset !important;
     border: #ffffff00 !important;
-
     color: var(--Text-Primary, #313131) !important;
     font-size: 14px !important;
     font-style: normal !important;
     font-weight: 600 !important;
     line-height: 20px !important;
-    &.button--small {
-        height: 28px !important;
-        line-height: 16px !important;
-    }
+    gap: 6px;
+}
 
-	gap: 6px;
+.btn.btn-default.button--small {
+    height: 28px !important;
+    line-height: 16px !important;
+}
 
-    & span:hover {
-        opacity: 1;
-    }
+.btn.btn-default span:hover {
+    opacity: 1;
+}
 
-    [data-darkreader-scheme="dark"] & {
-        background: #282829!important;
-        box-shadow: 0 -1px 0 0 #B5B5B5 inset, -1px 0 0 0 #E3E3E3 inset, 1px 0 0 0 #E3E3E3 inset, 0 1px 0 0 #E3E3E3 inset!important;
-    }
+[data-darkreader-scheme="dark"] .btn.btn-default {
+    background: #282829 !important;
+    box-shadow:
+        0 -1px 0 0 #b5b5b5 inset,
+        -1px 0 0 0 #e3e3e3 inset,
+        1px 0 0 0 #e3e3e3 inset,
+        0 1px 0 0 #e3e3e3 inset !important;
+}
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+    .btn.btn-default {
         padding: 12px !important;
         height: 44px !important;
     }
+}
 
-    @media (max-width: 767px) {
+@media (max-width: 767px) {
+    .btn.btn-default {
         padding: 12px !important;
         height: 44px !important;
     }
@@ -117,40 +131,52 @@
 
 .btn.btn-default:hover {
     color: var(--Text-Primary, #313131);
-    background: var(--BG-04---hover, #EFEFEF) !important;
-    box-shadow: 0px -1px 0px 0px #CCC inset, 1px 0px 0px 0px #EBEBEB inset, -1px 0px 0px 0px #EBEBEB inset, 0px 1px 0px 0px #EBEBEB inset !important;;
+    background: var(--BG-04---hover, #efefef) !important;
+    box-shadow:
+        0px -1px 0px 0px #ccc inset,
+        1px 0px 0px 0px #ebebeb inset,
+        -1px 0px 0px 0px #ebebeb inset,
+        0px 1px 0px 0px #ebebeb inset !important;
+}
 
-    [data-darkreader-scheme="dark"] & {
-        background: rgba(40, 40, 41, 0.85) !important;
-        box-shadow: 0 -1px 0 0 #B5B5B5 inset, -1px 0 0 0 #E3E3E3 inset, 1px 0 0 0 #E3E3E3 inset, 0 1px 0 0 #E3E3E3 inset!important;
-    }
+[data-darkreader-scheme="dark"] .btn.btn-default:hover {
+    background: rgba(40, 40, 41, 0.85) !important;
+    box-shadow:
+        0 -1px 0 0 #b5b5b5 inset,
+        -1px 0 0 0 #e3e3e3 inset,
+        1px 0 0 0 #e3e3e3 inset,
+        0 1px 0 0 #e3e3e3 inset !important;
 }
 
 .btn.btn-default:focus {
-    border: 1px solid rgba(0, 0, 0, 0.00) !important;
-    box-shadow: 0px 0px 0px 2px #005BD3 !important;
+    border: 1px solid rgba(0, 0, 0, 0) !important;
+    box-shadow: 0px 0px 0px 2px #005bd3 !important;
     color: var(--Neutral-09, #313131) !important;
 }
 
 .btn.btn-default:active {
-    background: var(--BG-04---hover, #EFEFEF) !important;
-    box-shadow: -1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset, 1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset, 0px 2px 1px 0px rgba(26, 26, 26, 0.20) inset !important;
+    background: var(--BG-04---hover, #efefef) !important;
+    box-shadow:
+        -1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset,
+        1px 0px 1px 0px rgba(26, 26, 26, 0.12) inset,
+        0px 2px 1px 0px rgba(26, 26, 26, 0.2) inset !important;
 }
 
 .btn.btn-default[aria-disabled="true"],
 .btn.btn-default:disabled {
     opacity: 1 !important;
-    background: var(--bg-05-disable-light, #EFEFEF) !important;
-    color: var(--Text-Disable, #BBB) !important;;
+    background: var(--bg-05-disable-light, #efefef) !important;
+    color: var(--Text-Disable, #bbb) !important;
     box-shadow: unset !important;
-
-    [data-darkreader-scheme="dark"] & {
-        color: var(--text-disable-dark, #848484) !important;;
-        background: var(--bg-05-disable-dark, #5D5F62) !important;
-    }
 }
 
-.ant-input-group .ant-btn{
+[data-darkreader-scheme="dark"] .btn.btn-default[aria-disabled="true"],
+[data-darkreader-scheme="dark"] .btn.btn-default:disabled {
+    color: var(--text-disable-dark, #848484) !important;
+    background: var(--bg-05-disable-dark, #5d5f62) !important;
+}
+
+.ant-input-group .ant-btn {
     border-radius: 0 8px 8px 0 !important;
 }
 
@@ -159,7 +185,7 @@
     line-height: 16px !important;
 }
 
-.lb-shorcut{
+.lb-shorcut {
     display: flex;
     padding: 4px 8px 4px 8px;
     justify-content: center;
@@ -168,23 +194,24 @@
     font-weight: 600;
     border-radius: 8px;
     height: 28px;
-    box-shadow: 0px -1px 0px 0px #B5B5B5 inset, -1px 0px 0px 0px #E3E3E3 inset, 1px 0px 0px 0px #E3E3E3 inset, 0px 1px 0px 0px #E3E3E3 inset;
+    box-shadow:
+        0px -1px 0px 0px #b5b5b5 inset,
+        -1px 0px 0px 0px #e3e3e3 inset,
+        1px 0px 0px 0px #e3e3e3 inset,
+        0px 1px 0px 0px #e3e3e3 inset;
 }
 
-.actionbar-button {
-  &[color="default"] {
-    span {
-      background: var(--BG-Meet-button, #383B3F);
-    }
-  }
+.actionbar-button[color="default"] span {
+    background: var(--BG-Meet-button, #383b3f);
+}
 
-  &[data-test="unmuteMicButton"],&[data-test="joinAudio"], &[data-test="joinVideo"]  {
-    span {
-      background: #AA2007;
-    }
-  }
+.actionbar-button[data-test="unmuteMicButton"] span,
+.actionbar-button[data-test="joinAudio"] span,
+.actionbar-button[data-test="joinVideo"] span {
+    background: #aa2007;
+}
 
-  span {
+.actionbar-button span {
     display: flex;
     width: 40px;
     height: 40px;
@@ -193,21 +220,21 @@
     align-items: center;
     gap: 16px;
     border-radius: 100px;
-
     color: white;
+}
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1024px) {
+    .actionbar-button span {
         width: 54px;
         height: 54px;
-
-        svg {
-            width: 24px;
-            height: 24px;
-        }
     }
-  }
 
+    .actionbar-button span svg {
+        width: 24px;
+        height: 24px;
+    }
 }
-button[data-test="restorePresentation"] span{
-    background: var(--BG-Meet-button, #383B3F);
+
+button[data-test="restorePresentation"] span {
+    background: var(--BG-Meet-button, #383b3f);
 }
