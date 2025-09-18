@@ -36,74 +36,83 @@
 
 .font-regular-xs {
 	/* Regular/XS */
-	font-size: 12px!important;
+	font-size: 12px !important;
 	font-style: normal;
-	font-weight: 400!important;
-	line-height: 16px; /* 133.333% */
+	font-weight: 400 !important;
+	line-height: 16px;
+	/* 133.333% */
 }
 
 .font-regular-s {
 	/* Regular/S */
-	font-size: 14px!important;
+	font-size: 14px !important;
 	font-style: normal;
-	font-weight: 400!important;
-	line-height: 20px; /* 142.857% */
+	font-weight: 400 !important;
+	line-height: 20px;
+	/* 142.857% */
 }
 
 .font-regular-m {
 	/* Regular/M */
-	font-size: 16px!important;
+	font-size: 16px !important;
 	font-style: normal;
-	font-weight: 400!important;
-	line-height: 24px; /* 150% */
+	font-weight: 400 !important;
+	line-height: 24px;
+	/* 150% */
 }
 
 .font-regular-l {
 	/* Regular/L */
-	font-size: 18px!important;
+	font-size: 18px !important;
 	font-style: normal;
-	font-weight: 400!important;
-	line-height: 24px; /* 133.333% */
+	font-weight: 400 !important;
+	line-height: 24px;
+	/* 133.333% */
 }
 
 .font-medium-s {
 	/* Medium/S */
-	font-size: 14px!important;
+	font-size: 14px !important;
 	font-style: normal;
-	font-weight: 500!important;
-	line-height: 20px; /* 142.857% */
+	font-weight: 500 !important;
+	line-height: 20px;
+	/* 142.857% */
 }
 
 .font-medium-m {
 	/* Medium/M */
-	font-size: 16px!important;
+	font-size: 16px !important;
 	font-style: normal;
-	font-weight: 500!important;
-	line-height: 24px; /* 150% */
+	font-weight: 500 !important;
+	line-height: 24px;
+	/* 150% */
 }
 
 .font-medium-l {
 	/* Medium/L */
-	font-size: 18px!important;
+	font-size: 18px !important;
 	font-style: normal;
-	font-weight: 500!important;
-	line-height: 24px; /* 133.333% */
+	font-weight: 500 !important;
+	line-height: 24px;
+	/* 133.333% */
 }
 
 .font-semibold-xs {
 	/* Semibold/XS */
-	font-size: 12px!important;
+	font-size: 12px !important;
 	font-style: normal;
-	font-weight: 600!important;
-	line-height: 16px; /* 133.333% */
+	font-weight: 600 !important;
+	line-height: 16px;
+	/* 133.333% */
 }
 
 .font-semibold-s {
 	/* Semibold/S */
-	font-size: 14px!important;
+	font-size: 14px !important;
 	font-style: normal;
-	font-weight: 600!important;
-	line-height: 20px; /* 142.857% */
+	font-weight: 600 !important;
+	line-height: 20px;
+	/* 142.857% */
 }
 
 .font-semibold-m {
@@ -111,47 +120,53 @@
 	font-size: 16px !important;
 	font-style: normal;
 	font-weight: 600 !important;
-	line-height: 24px; /* 150% */
+	line-height: 24px;
+	/* 150% */
 }
 
 .font-semibold-l {
 	/* Semibold/L */
-	font-size: 18px!important;
+	font-size: 18px !important;
 	font-style: normal;
-	font-weight: 600!important;
-	line-height: 24px; /* 133.333% */
+	font-weight: 600 !important;
+	line-height: 24px;
+	/* 133.333% */
 }
 
 .font-semibold-xl {
 	/* Semibold/XL */
-	font-size: 20px!important;
+	font-size: 20px !important;
 	font-style: normal;
-	font-weight: 600!important;
-	line-height: 32px; /* 160% */
+	font-weight: 600 !important;
+	line-height: 32px;
+	/* 160% */
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
 	.md-font-regular-m {
 		/* Regular/M */
-		font-size: 16px!important;
+		font-size: 16px !important;
 		font-style: normal;
-		font-weight: 400!important;
-		line-height: 24px; /* 150% */
+		font-weight: 400 !important;
+		line-height: 24px;
+		/* 150% */
 	}
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
 	.md-font-medium-m {
 		/* Medium/M */
-		font-size: 16px!important;
+		font-size: 16px !important;
 		font-style: normal;
-		font-weight: 500!important;
-		line-height: 24px; /* 150% */
+		font-weight: 500 !important;
+		line-height: 24px;
+		/* 150% */
 	}
 
 	.md-text-m {
 		/* Medium/M */
-		font-size: 16px!important;
-		line-height: 24px; /* 150% */
+		font-size: 16px !important;
+		line-height: 24px;
+		/* 150% */
 	}
 }

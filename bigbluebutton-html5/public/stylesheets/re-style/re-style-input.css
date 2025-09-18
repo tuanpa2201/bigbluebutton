@@ -1,38 +1,55 @@
-input:not([type]), input[type="text"], textarea {
+input:not([type]),
+input[type="text"],
+textarea {
     border-radius: var(--p-border-radius-button) !important;
-    border: 0.66px solid var(--Border-01, #C8C8C8);
-    background: var(--BG-00, #FFF);
+    border: 0.66px solid var(--Border-01, #c8c8c8);
+    background: var(--BG-00, #fff);
     display: flex;
     padding: 6px 12px;
     align-items: center;
     box-shadow: unset;
-
     color: var(--Text-Primary, #313131);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
+}
 
-    &::placeholder{
-        color: var(--Text-Secondary, #6F767E);
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        line-height: 20px;
-    }
+input:not([type])::placeholder,
+input[type="text"]::placeholder,
+textarea::placeholder {
+    color: var(--Text-Secondary, #6f767e);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+}
 
-    &:hover{
-        border-color: var(--Border-02-hover, #989898);
-    }
+input:not([type]):hover,
+input[type="text"]:hover,
+textarea:hover {
+    border-color: var(--Border-02-hover, #989898);
+}
 
-    &:focus,
-    &:active{
-        border-color: rgba(0, 0, 0, 0.00) !important;
-        background: var(--BG-04---hover, #EFEFEF);
-        box-shadow: -1px 0 1px 0 rgba(26, 26, 26, 0.12) inset, 1px 0 1px 0 rgba(26, 26, 26, 0.12) inset, 0 2px 1px 0 rgba(26, 26, 26, 0.20) inset;
+input:not([type]):focus,
+input[type="text"]:focus,
+textarea:focus,
+input:not([type]):active,
+input[type="text"]:active,
+textarea:active {
+    border-color: rgba(0, 0, 0, 0) !important;
+    background: var(--BG-04---hover, #efefef);
+    box-shadow:
+        -1px 0 1px 0 rgba(26, 26, 26, 0.12) inset,
+        1px 0 1px 0 rgba(26, 26, 26, 0.12) inset,
+        0 2px 1px 0 rgba(26, 26, 26, 0.2) inset;
+}
 
-        [data-darkreader-scheme="dark"] & {
-            background: var(--bg-01-dark, #303338);
-        }
-    }
+[data-darkreader-scheme="dark"] input:not([type]):focus,
+[data-darkreader-scheme="dark"] input[type="text"]:focus,
+[data-darkreader-scheme="dark"] textarea:focus,
+[data-darkreader-scheme="dark"] input:not([type]):active,
+[data-darkreader-scheme="dark"] input[type="text"]:active,
+[data-darkreader-scheme="dark"] textarea:active {
+    background: var(--bg-01-dark, #303338);
 }
