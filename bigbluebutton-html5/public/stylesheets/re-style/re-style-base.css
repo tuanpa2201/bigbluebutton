@@ -202,6 +202,10 @@
     margin-bottom: 0 !important;
 }
 
+.mt-8-i {
+    margin-top: 8px !important;
+}
+
 .mt-auto {
     margin-top: auto;
 }
