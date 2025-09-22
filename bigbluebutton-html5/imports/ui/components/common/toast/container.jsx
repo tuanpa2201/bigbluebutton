@@ -15,7 +15,7 @@ class ToastContainer extends React.Component {
 
     return (
       <Styled.ToastifyContainer
-        closeButton={(<Styled.CloseIcon data-test="closeToastBtn" iconName="cross" animations={animations}><SvgIcon iconName="cross" /></Styled.CloseIcon>)}
+        closeButton={(<Styled.CloseIcon data-test="closeToastBtn" className="text-primary-dark" iconName="cross" animations={animations}><SvgIcon iconName="cross" /></Styled.CloseIcon>)}
         autoClose={5000}
         toastClassName="toastClass"
         bodyClassName="toastBodyClass"

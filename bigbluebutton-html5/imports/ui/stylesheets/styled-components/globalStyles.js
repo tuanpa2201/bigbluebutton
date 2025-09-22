@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { smallOnly, phoneOnly, tabletDown } from '/imports/ui/stylesheets/styled-components/breakpoints';
+import { phoneOnly, tabletDown } from '/imports/ui/stylesheets/styled-components/breakpoints';
 import {
   smPaddingX,
   borderRadius,
@@ -8,7 +8,6 @@ import {
   dropdownBg,
   colorText,
   colorWhite,
-  colorGrayLighter,
   colorOverlay,
 } from '/imports/ui/stylesheets/styled-components/palette';
 
@@ -226,6 +225,9 @@ const GlobalStyle = createGlobalStyle`
     i.close {
       left: none !important;
     }
+  }
+  .Toastify__progress-bar {
+    opacity: 1;
   }
 `;
 

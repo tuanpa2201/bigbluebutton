@@ -1686,7 +1686,7 @@ li[data-key="menuItem-directLogoutButton"] div:first-child {
 
     .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root[data-test="aboutModal"] svg,
     .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root[data-test="keyboard"] svg,
-    .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root[data-test="menuItem-settings"] svg,
+    .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root[data-test="settings"] svg,
     .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root[data-test="manageLayoutBtn"] svg,
     .css-ton3fx-MuiButtonBase-root-MuiMenuItem-root[data-test="fullscreen"] svg {
         width: 20px !important;

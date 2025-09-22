@@ -100,7 +100,7 @@ const Avatar = styled.div<AvatarProps>`
   height: 36px;
   width: 36px;
   min-width: 36px;
-  border-radius: 50%;
+  border-radius: 5px;
   text-align: center;
   font-size: .85rem;
   border: 2px solid transparent;
