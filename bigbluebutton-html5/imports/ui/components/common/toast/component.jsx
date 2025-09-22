@@ -45,7 +45,7 @@ const Toast = ({
       <Styled.Toast type={type}>
         {svgIcon
           ? (
-            <Styled.ToastIcon small={small}>
+            <Styled.ToastIcon className="toastIcon" small={small}>
               <SvgIcon iconName={svgIcon} />
             </Styled.ToastIcon>
           )
@@ -57,7 +57,7 @@ const Toast = ({
             </Styled.ToastIcon>
           )}
         <Styled.ToastMessage data-test="toastSmallMsg">
-          <span className={['text-primary', 'font-medium-s md-font-medium-m'].join(' ')}>{message}</span>
+          <span className={['text-primary text-primary-dark', 'font-medium-s md-font-medium-m'].join(' ')}>{message}</span>
         </Styled.ToastMessage>
       </Styled.Toast>
       {content
