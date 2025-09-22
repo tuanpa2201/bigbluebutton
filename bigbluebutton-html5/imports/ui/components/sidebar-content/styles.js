@@ -20,6 +20,10 @@ const Poll = styled.div`
   
   padding: 0 16px 16px 16px;
   
+  @media (min-width: 376px) and (max-width: 768px) {
+   padding: 0 20px 20px 20px;
+  }
+  
   @media ${smallOnly} {
     top: 0;
     right: 0;

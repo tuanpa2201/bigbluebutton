@@ -64,7 +64,7 @@ const FileLine = styled.div`
   flex-direction: row;
   align-items: baseline;
   padding-bottom: ${iconPaddingMd};
-  width: ${fileLineWidth};
+  // width: ${fileLineWidth};
 `;
 
 const ToastFileName = styled.span`
@@ -89,8 +89,8 @@ const ToastFileName = styled.span`
 
 const StatusIcon = styled.span`
   & > i {
-    height: ${statusIconSize};
-    width: ${statusIconSize};
+    height: ${statusIconSize} !important;
+    width: ${statusIconSize} !important;
   }
 `;
 
@@ -179,6 +179,11 @@ const UploadToastHeader = styled.div`
   display: flex;
   align-items: center; 
   gap: 12px;
+  span {
+    @media (min-width: 376px) and (max-width: 768px) {
+      font-size: 16px !important;
+    }
+  }
 `;
 
 const UploadIcon = styled(Icon)`
@@ -260,7 +265,7 @@ const CurrentLabel = styled.span`
   white-space: nowrap;
   vertical-align: baseline;
   border-radius: 8px;
-  text-transform: uppercase;
+  //text-transform: uppercase;
 `;
 
 const TableItemName = styled.span`
@@ -288,11 +293,18 @@ const TableItemName = styled.span`
   //     right: 1rem;
   //   }
   // }
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px;
+  }
   font-weight: 400;
   font-size: 14px;
   color: #313131;
   min-width: 110px;
   max-width:110px;
+  @media (max-width: 1024px) {
+    min-width: unset;
+    max-width: unset;
+  }
   @media (min-width: 1025px) and (max-width: 1366px) {
       min-width: 82px;
       max-width: 82px;
@@ -358,7 +370,7 @@ const UploaderDropzone = styled(Dropzone)`
   }
   @media (min-width: 1025px) and (max-width: 1366px) {
       flex-direction: column;
-      
+    padding: 8px;
       & .dropzoneMessage {
           display: block;
       }
@@ -397,6 +409,9 @@ const UploaderModal = styled.div`
   min-width: 360px;
   @media (min-width: 1025px) and (max-width: 1366px) {
     min-width: unset;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    padding: 0 20px 20px 20px;
   }
   z-index: 100;
 `;
@@ -514,6 +529,13 @@ const CloseButtonMobile = styled.button`
 
   @media (min-width: 1025px) {
     display: none !important;
+  }
+  
+  @media (min-width: 376px) and (max-width: 768px) {
+    svg {
+      height: 24px;
+      width: 24px;
+    }
   }
 `;
 

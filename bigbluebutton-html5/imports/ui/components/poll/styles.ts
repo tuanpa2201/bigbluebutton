@@ -66,6 +66,10 @@ const PollOptionInput = styled.input`
     border: 0.66px solid var(--Border-01, #C8C8C8);
     background: var(--BG-00, #FFF);
     padding: 6px 12px;
+  
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px !important;
+  }
 `;
 // @ts-ignore - Button is a JS Component
 const DeletePollOptionButton = styled(Button)` 
@@ -93,6 +97,9 @@ const DeletePollOptionButton = styled(Button)`
 const ErrorSpacer = styled.div`
   position: relative;
   height: 10px;
+  @media (min-width: 376px) and (max-width: 1366px) {
+    height: 12px;
+  }
 `;
 
 const InputError = styled(ErrorSpacer)`
@@ -158,6 +165,12 @@ const SectionHeading = styled.h4`
   //color: ${colorHeading};
   //margin-bottom: .25rem; 
   margin-bottom: 16px;
+  @media (min-width: 769px) and (max-width: 1366px) {
+    margin-bottom: 14px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    margin-bottom: 12px;
+  }
   padding-bottom: 0 !important;
 
   color: var(--Text-Primary, #313131);
@@ -175,6 +188,9 @@ const ResponseTypes = styled.div`
 
 const ResponseChoices = styled.div`
   margin-top: 16px;
+  @media (min-width: 376px) and (max-width: 768px) {
+    margin-top: 24px;
+  }
 `;
 
 const ResponseType = styled.div`
@@ -190,6 +206,13 @@ const ResponseType = styled.div`
     position: relative;
     width: 100%;
   }
+  @media (min-width: 769px) and (max-width: 1366px) {
+    margin-bottom: 20px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    margin-bottom: 24px;
+    gap: 12px;
+  }
 `;
 
 // @ts-ignore - Button is a JS Component
@@ -198,6 +221,9 @@ const PollConfigButton = styled(Button)`
   min-height: ${pollInputHeight};
   font-size: ${fontSizeBase};
   width: calc(50% - 4px) !important;
+  @media (min-width: 376px) and (max-width: 768px) {
+    width: calc(50% - 6px) !important;
+  }
   white-space: pre-wrap;
   //margin-bottom: 1rem;
 
@@ -272,6 +298,9 @@ const PollCheckbox = styled.div`
   //margin-right: ${pollSmMargin};
   //margin-bottom: ${pollMdMargin};
     margin-bottom: 22px;
+  @media (min-width: 376px) and (max-width: 768px) {
+    margin-bottom: 16px;
+  }
 
   .checkbox-label {
     span:nth-of-type(2) {
@@ -377,12 +406,13 @@ const StartPollBtn = styled(Button)`
 `;
 const StartPoll = styled.div`
     width: 100%;
-    //position: absolute;
+    position: absolute;
     bottom: 0;
     left: 0;
-    //padding-left: 16px;
-    //padding-right: 16px;
-    padding: 28px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 28px;
+    
   @media (min-width: 376px) and (max-width: 768px) {
     padding: 20px;
   }
@@ -390,7 +420,10 @@ const StartPoll = styled.div`
     padding: 16px;
   }
     background: #FFF;
-  position: fixed;
+  @media (max-width: 768px) {
+    padding: 28px;
+    position: fixed;
+  }
 `;
 
 const NoSlidePanelContainer = styled.div`
@@ -516,6 +549,14 @@ const AnonymousRow = styled(Row)`
   width: 100%;
   border-top: 1px solid rgb(239, 239, 239);
   padding-top: 20px;
+  @media (min-width: 769px) and (max-width: 1366px) {
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
 `;
 
 const ResultLeft = styled.td`
@@ -536,6 +577,9 @@ const ResultLeft = styled.td`
     line-height: 20px;
     //padding-bottom: 12px;
     padding-top: 12px;
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const ResultRight = styled.td`
@@ -549,6 +593,9 @@ const ResultRight = styled.td`
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const Main = styled.div`
@@ -747,6 +794,10 @@ const THeading = styled.th`
     font-style: normal;
     font-weight: 600;
     line-height: 20px;
+  
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const DndTextArea = styled.textarea<{ active: boolean }>`

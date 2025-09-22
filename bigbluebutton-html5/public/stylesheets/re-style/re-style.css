@@ -1366,6 +1366,10 @@ button[data-test="whiteboardOptionsButton"],
     #upload-modal .dropzone .dropzoneMessage {
         font-size: 16px;
     }
+
+  #upload-modal .dropzone .dropzoneLink {
+    font-size: 16px;
+  }
 }
 
 #upload-modal .dropzone .dropzoneLink {

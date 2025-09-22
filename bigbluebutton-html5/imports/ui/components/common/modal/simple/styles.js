@@ -34,6 +34,10 @@ const Content = styled.div`
   @media ${tabletOnly} {
     padding-bottom: 24px;
   }
+  
+  @media (min-width: 376px) and (max-width: 768px) {
+    padding-bottom: 12px;
+  }
 `;
 
 export default {

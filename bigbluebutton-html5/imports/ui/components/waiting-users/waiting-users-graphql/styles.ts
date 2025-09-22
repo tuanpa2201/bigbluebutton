@@ -266,6 +266,16 @@ const LobbyMessage = styled.div`
       font-size: 14px;
     }
   }
+  
+  textarea {
+    height: 32px !important;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    @media (max-width: 768px) {
+      height: 40px !important;
+    }
+  }
 `;
 
 const PrivateLobbyMessage = styled.div`

@@ -23,7 +23,9 @@ const TextArea = styled(TextareaAutosize)`
   flex: 1;
   background-clip: padding-box;
   margin: 0;
-  color: ${colorText};
+  &::placeholder {
+    color: ${colorText};
+  }
   -webkit-appearance: none;
   padding: 7px 10px;
   resize: none;
@@ -71,7 +73,7 @@ const TextInputButton = styled(Button)`
     transform: scale(-1, 1);
   }
     &.btn.btn-primary{
-      @media only screen and (max-width: 767px) {
+      @media only screen and (max-width: 768px) {
         width: 40px;
         height: 40px !important;
       }

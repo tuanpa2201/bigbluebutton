@@ -114,6 +114,13 @@ const GlobalStyle = createGlobalStyle`
     max-width: 320px !important;
     min-width: 320px !important;
     width: 320px !important;
+    
+    @media (min-width: 376px) and (max-width: 768px) {
+      max-width: 400px !important;
+      min-width: 400px !important;
+      width: 400px !important;
+    }
+    
     cursor: pointer;
     background-color: ${colorWhite};
 

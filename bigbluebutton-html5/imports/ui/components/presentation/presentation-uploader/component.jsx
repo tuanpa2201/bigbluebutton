@@ -652,7 +652,7 @@ class PresentationUploader extends Component {
   }
 
   handleConfirm() {
-    setTimeout(() => { debugger; }, 3000);
+    // setTimeout(() => { debugger; }, 3000);
     const {
       handleSave,
       selectedToBeNextCurrent,
@@ -924,6 +924,8 @@ class PresentationUploader extends Component {
     const disableExportDropdown = shouldDisableExportButtonForAllDocuments
     || shouldDisableExportButton;
 
+    const isMobile = deviceInfo.isMobile;
+
     return (
       <Styled.PresentationItem
         key={item.presentationId}
@@ -957,7 +959,7 @@ class PresentationUploader extends Component {
           <span className="table_item_name">{item.name}</span>
         </Styled.TableItemName>
         {
-          isActualCurrent
+          isActualCurrent && !isMobile
             ? (
               <div>
                 <Styled.CurrentLabel className="current_label">
@@ -973,6 +975,17 @@ class PresentationUploader extends Component {
         {
         hasError ? null : (
           <Styled.TableItemActions notDownloadable={!allowDownloadOriginal} className="actions_item">
+            {
+              isActualCurrent && isMobile
+                ? (
+                  <div>
+                    <Styled.CurrentLabel className="current_label">
+                      {intl.formatMessage(intlMessages.currentBadge)}
+                    </Styled.CurrentLabel>
+                  </div>
+                )
+                : null
+            }
             {allowDownloadOriginal || allowDownloadWithAnnotations || allowDownloadConverted ? (
               <PresentationDownloadDropdown
                 disabled={disableExportDropdown}

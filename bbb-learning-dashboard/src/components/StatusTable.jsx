@@ -250,7 +250,7 @@ class StatusTable extends React.Component {
                           <p id={`thumb-desc-${presentationId}`} className="absolute w-0 h-0 p-0 border-0 m-0 overflow-hidden">
                             {`${intl.formatMessage(intlMessages.thumbnail)} - ${intl.formatMessage(intlMessages.presentation)} ${presentationName} - ${intl.formatMessage(intlMessages.pageNumber)} ${pageNum} - ${intl.formatMessage(intlMessages.setAt)} ${start}`}
                           </p>
-                          <div className="text-xs text-center mt-1 text-gray-500">{tsToHHmmss(slide.setOn - periods[0].start)}</div>
+                          <div className="text-[14px] text-center mt-1 text-gray6f7">{tsToHHmmss(slide.setOn - periods[0].start)}</div>
                         </div>
                       </div>
                     ) }

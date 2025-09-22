@@ -560,7 +560,7 @@ class App extends React.Component {
             )}
           </TabsListUnstyled>
           <TabPanelUnstyled value={0}>
-            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313">
+            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313 font-medium">
               <FormattedMessage id="app.learningDashboard.usersTable.title" defaultMessage="Overview" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
@@ -575,7 +575,7 @@ class App extends React.Component {
             </div>
           </TabPanelUnstyled>
           <TabPanelUnstyled value={1}>
-            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313">
+            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313 font-medium">
               <FormattedMessage id="app.learningDashboard.usersTable.title" defaultMessage="Overview" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
@@ -590,7 +590,7 @@ class App extends React.Component {
             </div>
           </TabPanelUnstyled>
           <TabPanelUnstyled value={2}>
-            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313">
+            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313 font-medium">
               <FormattedMessage id="app.learningDashboard.statusTimelineTable.title" defaultMessage="Timeline" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
@@ -604,7 +604,7 @@ class App extends React.Component {
             </div>
           </TabPanelUnstyled>
           <TabPanelUnstyled value={3}>
-            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313">
+            <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313 font-medium">
               <FormattedMessage id="app.learningDashboard.pollsTable.title" defaultMessage="Polls" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs">
