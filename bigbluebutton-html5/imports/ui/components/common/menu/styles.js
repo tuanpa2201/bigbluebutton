@@ -52,7 +52,7 @@ const MenuItemWrapper = styled.div`
   ${({ hasSpaceBetween }) => hasSpaceBetween && `
     justify-content: space-between;
   `}
-  @media ${phoneOnly} {
+  @media ${tabletDown} {
     svg {
       width: 20px;
       height: 20px;

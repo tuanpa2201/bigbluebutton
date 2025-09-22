@@ -47,7 +47,7 @@ const Right = styled.div`
   position: absolute;
   right: 10px;
   top: 16px;
-  z-index: 299;
+  z-index: 302;
 
   > div {
     width: 40px;

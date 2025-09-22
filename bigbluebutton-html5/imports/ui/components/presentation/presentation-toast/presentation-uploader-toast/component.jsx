@@ -252,8 +252,14 @@ function renderToastItem(item, intl) {
   const hasError = (('uploadErrorMsgKey' in item) && item.uploadErrorMsgKey);
   const isProcessing = (isUploading || uploadInProgress) && !hasError;
 
+  // setTimeout(() => {
+  //   // eslint-disable-next-line no-debugger
+  //   debugger; // sẽ dừng ở đây
+  // }, 2000);
+
   return (
     <Styled.UploadRow
+      className="uploader-toast-file-line"
       key={item.presentationId || item.temporaryPresentationId}
       onClick={() => {
         if (hasError || isProcessing) Session.setItem('showUploadPresentationView', true);
@@ -261,8 +267,16 @@ function renderToastItem(item, intl) {
     >
       <Styled.FileLine>
         <span className="d-flex align-items-center gap-4">
-          <SvgIcon iconName="file" />
-          <span>{item.filename || item.name}</span>
+          {/*<SvgIcon iconName="file" />*/}
+          <Styled.StatusIcon>
+            <Styled.ToastItemIcon1
+              loading={isProcessing}
+              done={!isProcessing}
+              iconName={isProcessing ? 'blank' : 'check'}
+              color="#0F70D7"
+            />
+          </Styled.StatusIcon>
+          <span style={{ marginLeft: "8px" }}>{item.filename || item.name}</span>
         </span>
       </Styled.FileLine>
       <Styled.StatusInfo>

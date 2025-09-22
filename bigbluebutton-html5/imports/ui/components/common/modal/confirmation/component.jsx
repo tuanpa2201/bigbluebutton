@@ -80,7 +80,7 @@ class ConfirmationModal extends Component {
 
     const hasCheckbox = !!checkboxMessageId;
 
-    const { isPhone } = deviceInfo;
+    const { isPhone, isMobile } = deviceInfo;
 
     return (
         <Styled.ConfirmationModal className={`remove-user-modal model-custom-${modalClass}`}

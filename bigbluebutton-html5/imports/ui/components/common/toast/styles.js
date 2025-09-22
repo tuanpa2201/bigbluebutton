@@ -150,6 +150,7 @@ const Separator = styled.div`
 const Toast = styled.div`
   display: flex;
 
+  & .toastIcon:has(.icon-bbb-user),
   & .toastIcon:has(.icon-bbb-mute),
   & .toastIcon:has(.icon-bbb-unmute) {
     color: inherit;
@@ -191,6 +192,9 @@ const ToastifyContainer = styled(Toastify)`
   position: fixed;
   min-width: 20rem !important;
   max-width: 320px !important;
+  @media (min-width: 376px) and (max-width: 768px) {
+    max-width: 400px !important;
+  }
   box-sizing: border-box;
   right: ${jumboPaddingY};
   left: auto;

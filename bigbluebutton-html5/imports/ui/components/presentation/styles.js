@@ -204,10 +204,10 @@ const Button = styled.button`
 const ExtraTools = styled.div`
   position: absolute;
   top: 16px;
-  right: 61px;
+  right: 58px;
   z-index: 399;
   display: flex;
-  gap: 16px;
+  gap: 8px;
 
   [dir="rtl"] & {
     right: auto;

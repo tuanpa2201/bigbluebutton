@@ -70,6 +70,13 @@ const CloseTimerButtonMobile = styled.button`
   @media (min-width: 1025px) {
     display: none !important;
   }
+  
+  svg {
+    @media (min-width: 376px) and (max-width: 768px) {
+      width: 24px;
+      height: 24px;
+    }
+  }
 `;
 
 
@@ -164,6 +171,10 @@ const TimerCurrent = styled.span`
     font-weight: 500;
     line-height: 48px;
     margin-top: 36px;
+  
+  @media (min-width: 376px) and (max-width: 768px) {
+    line-height: 136px;
+  }
 `;
 
 const TimerType = styled.div`
@@ -213,12 +224,17 @@ const TimerSwitchButton = styled(Button)`
     }
 
 
-  @media (max-width: 1366px) {
+  @media (min-width: 769px) and (max-width: 1366px) {
+    font-size: 16px;
+    height: 40px;
+  }
+  
+  @media (min-width: 376px) and (max-width: 768px) {
     font-size: 16px;
     height: 40px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 376px) {
     font-size: 14px;
     height: 40px;
   }
@@ -263,6 +279,9 @@ const StopwatchTimeInputLabel = styled.div`
     line-height: 16px; 
     margin-top: 8px;
     text-transform: capitalize;
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const StopwatchTimeColon = styled.span`
@@ -361,6 +380,10 @@ const TimerInput = styled.input`
   //border-radius: ${borderRadius};
   background-clip: padding-box;
   outline: none;
+  
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 18px;
+  }
 
   &::placeholder {
     color: ${colorGray};

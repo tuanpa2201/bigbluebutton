@@ -22,7 +22,7 @@ type urlProps = {
 
 const UrlError = styled.div<urlProps>`
   color: red;
-  padding: 1em 0 2.5em 0;
+  padding-top: 16px;
   font-size: 12px;
 
   ${({ animations }) => animations && `
@@ -59,8 +59,11 @@ const InputUrl = styled.input`
     line-height: 20px !important;
     margin: 4px 0 0 !important;
     font-weight: 400 !important;
-  @media (min-width: 768px) and (max-width: 1024px) {
+  @media (min-width: 376px) and (max-width: 1024px) {
     font-size: 16px;
+  }
+  @media (min-width: 376px) and (max-width: 768px) {
+    line-height: 34px !important;
   }
 `
 
