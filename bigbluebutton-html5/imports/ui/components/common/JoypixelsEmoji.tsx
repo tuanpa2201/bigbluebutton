@@ -11,6 +11,12 @@ interface JoypixelsEmojiProps {
 const JoypixelsEmoji: React.FC<JoypixelsEmojiProps> = ({ native, size = 16, padding = '0px', title = '', }) => {
   const spanRef = useRef<HTMLSpanElement>(null);
 
+  const CDN = window.meetingClientSettings.public.app.cdn;
+  const BASENAME = window.meetingClientSettings.public.app.basename;
+  const HOST = CDN + BASENAME;
+  joypixels.imagePathPNG = `${HOST}/resources/emojis/`;
+  joypixels.sprites = false;
+
   useEffect(() => {
     if (spanRef.current) {
       // Find the img inside the span and set its width/height
