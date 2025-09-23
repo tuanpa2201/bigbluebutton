@@ -208,7 +208,7 @@ const TldrawV2GlobalStyle = createGlobalStyle`
     const topValue = interpolateTop(presentationHeight);
 
     let additionalStyles = '';
-    if (presentationHeight <= 405) {
+    if (presentationHeight <= 445) {
       additionalStyles += `
         .tlui-layout__mobile .tlui-button__tool > .tlui-icon {
           height: 10px !important;
