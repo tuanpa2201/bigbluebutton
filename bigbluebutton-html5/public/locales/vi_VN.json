@@ -1592,6 +1592,7 @@
   "app.learningDashboard.userDetails.pollVotes": "Bình chọn",
   "app.learningDashboard.userDetails.onlineIndicator": "Thời gian online của {0}",
   "app.learningDashboard.usersTable.title": "Tổng quan",
+  "app.learningDashboard.activityScore.title": "Điểm hoạt động",
   "app.learningDashboard.usersTable.colOnline": "Thời gian trực tuyến",
   "app.learningDashboard.usersTable.colTalk": "Thời gian phát biểu",
   "app.learningDashboard.usersTable.colWebcam": "Thời gian bật webcam",
