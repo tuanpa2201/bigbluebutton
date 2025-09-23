@@ -29,6 +29,7 @@ const LocalEchoTestButton = styled(Button)`
     font-size: 16px !important;
     line-height: 24px;
   }
+  white-space: break-spaces;
 `;
 
 export default {

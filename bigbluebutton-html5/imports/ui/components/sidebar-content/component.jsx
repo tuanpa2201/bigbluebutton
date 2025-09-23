@@ -26,6 +26,9 @@ const StyledResizable = styled(Resizable)`
     width: 100% !important;
     left: 0 !important;
   }
+  @media (min-width: 1025px) {
+    max-width: 612px !important;
+  }
   //
   //@media (min-width: 1025px) and (max-width: 1366px) {
   //    width: 320px !important;
