@@ -576,7 +576,7 @@ class App extends React.Component {
           </TabPanelUnstyled>
           <TabPanelUnstyled value={1}>
             <h2 className="block my-2 pr-2 text-[18px] desktop:text-[20px] text-gray313 font-medium">
-              <FormattedMessage id="app.learningDashboard.usersTable.title" defaultMessage="Overview" />
+              <FormattedMessage id="app.learningDashboard.activityScore.title" defaultMessage="Activities Score" />
             </h2>
             <div className="w-full overflow-hidden rounded-md shadow-xs border-2 border-gray-100">
               <div className="w-full overflow-x-auto">
