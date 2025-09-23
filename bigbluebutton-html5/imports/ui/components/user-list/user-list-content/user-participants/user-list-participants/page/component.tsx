@@ -140,18 +140,19 @@ const UserListParticipantsPageContainer: React.FC<UserListParticipantsContainerP
     loading: usersLoading,
   } = useLoadedUserList({ offset, limit: limit.current }, (u) => u) as GraphqlDataHookSubscriptionResponse<Array<User>>;
 
-  if (usersData && usersData.length > 0) {
-    for (let i = 0; i < usersData.length; i++) {
-      usersData[i].color = '';
-      if (!usersData[i].avatar) {
+  const usersDataClone = usersData ? [...usersData] : [];
+  if (usersDataClone && usersDataClone.length > 0) {
+    for (let i = 0; i < usersDataClone.length; i++) {
+      usersDataClone[i].color = '';
+      if (!usersDataClone[i].avatar) {
         const urlAvatar = `${process.env.VOPS_URL}/avatar/`;
-        const userName = usersData[i].username || usersData[i].userName || usersData[i].name || 'user';
-        usersData[i].avatar = urlAvatar + encodeURIComponent(userName);
+        const userName = usersDataClone[i].username || usersDataClone[i].userName || usersDataClone[i].name || 'user';
+        usersDataClone[i].avatar = urlAvatar + encodeURIComponent(userName);
       }
     }
   }
 
-  const users = usersData ?? [];
+  const users = usersDataClone ?? [];
 
   const { data: currentUser, loading: currentUserLoading } = useCurrentUser((c: Partial<User>) => ({
     userId: c.userId,

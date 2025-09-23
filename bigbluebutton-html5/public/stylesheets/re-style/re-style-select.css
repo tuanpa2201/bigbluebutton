@@ -108,7 +108,7 @@ select:focus {
 
 .custom-dropdown__option {
     padding: 8px 12px;
-    overflow: hidden;
+    /* overflow: hidden; */
     color: var(--Text-Primary, #313131);
     text-overflow: ellipsis;
     /* Regular/S */
