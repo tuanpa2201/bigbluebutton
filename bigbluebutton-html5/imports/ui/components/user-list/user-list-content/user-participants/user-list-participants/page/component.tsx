@@ -35,12 +35,12 @@ interface UsersListParticipantsPage {
 }
 
 const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
-  users,
-  currentUser,
-  meeting,
-  pageId,
-  offset,
-}) => {
+                                                                          users,
+                                                                          currentUser,
+                                                                          meeting,
+                                                                          pageId,
+                                                                          offset,
+                                                                        }) => {
   const intlMessages = defineMessages({
     lowerAllHands: {
       id: 'app.userList.lowerAllHands',
@@ -102,13 +102,13 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
         })
       }
       {currentUser.isModerator && users.some((user) => user.raiseHand) && (
-      <button
-        type="button"
-        className="btn btn-default font-semibold-s text-primary btn-raised-all-hands"
-        onClick={lowerAllUserHands}
-      >
-        {intl.formatMessage(intlMessages.lowerAllHands)}
-      </button>
+        <button
+          type="button"
+          className="btn btn-default font-semibold-s text-primary btn-raised-all-hands"
+          onClick={lowerAllUserHands}
+        >
+          {intl.formatMessage(intlMessages.lowerAllHands)}
+        </button>
       )}
 
     </>
@@ -116,11 +116,11 @@ const UsersListParticipantsPage: React.FC<UsersListParticipantsPage> = ({
 };
 
 const UserListParticipantsPageContainer: React.FC<UserListParticipantsContainerProps> = ({
-  index,
-  isLastItem,
-  restOfUsers,
-  setVisibleUsers,
-}) => {
+                                                                                           index,
+                                                                                           isLastItem,
+                                                                                           restOfUsers,
+                                                                                           setVisibleUsers,
+                                                                                         }) => {
   const offset = index * 50;
   const limit = useRef(50);
 
@@ -140,19 +140,7 @@ const UserListParticipantsPageContainer: React.FC<UserListParticipantsContainerP
     loading: usersLoading,
   } = useLoadedUserList({ offset, limit: limit.current }, (u) => u) as GraphqlDataHookSubscriptionResponse<Array<User>>;
 
-  const usersDataClone = usersData ? [...usersData] : [];
-  if (usersDataClone && usersDataClone.length > 0) {
-    for (let i = 0; i < usersDataClone.length; i++) {
-      usersDataClone[i].color = '';
-      if (!usersDataClone[i].avatar) {
-        const urlAvatar = `${process.env.VOPS_URL}/avatar/`;
-        const userName = usersDataClone[i].username || usersDataClone[i].userName || usersDataClone[i].name || 'user';
-        usersDataClone[i].avatar = urlAvatar + encodeURIComponent(userName);
-      }
-    }
-  }
-
-  const users = usersDataClone ?? [];
+  const users = usersData ?? [];
 
   const { data: currentUser, loading: currentUserLoading } = useCurrentUser((c: Partial<User>) => ({
     userId: c.userId,
@@ -217,6 +205,17 @@ const UserListParticipantsPageContainer: React.FC<UserListParticipantsContainerP
 
   if (offset === 0) {
     users.unshift(currentUser as User);
+  }
+
+  if (users && users.length > 0) {
+    for (let i = 0; i < users.length; i++) {
+      users[i].color = '';
+      if (!users[i].avatar) {
+        const urlAvatar = `${process.env.VOPS_URL}/avatar/`;
+        const userName = users[i].username || users[i].userName || users[i].name || 'user';
+        users[i].avatar = urlAvatar + encodeURIComponent(userName);
+      }
+    }
   }
 
   return (

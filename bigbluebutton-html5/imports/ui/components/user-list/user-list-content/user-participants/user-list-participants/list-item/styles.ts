@@ -285,7 +285,7 @@ const Avatar = styled.div<AvatarProps>`
   `}
   // ================ talking animation ================
   // ================ image ================
-  ${({ avatar, emoji }) => avatar?.length !== 0 && !emoji && css`
+  ${({ avatar }) => avatar?.length !== 0 && css`
     background-image: url(${avatar});
     background-repeat: no-repeat;
     background-size: contain;
