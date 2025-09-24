@@ -188,7 +188,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
 
   const reactionsEnabled = useIsReactionsEnabled();
 
-  const userAvatarFiltered = (user.raiseHand === true || user.away === true || (user.reactionEmoji && user.reactionEmoji !== 'none')) ? '' : user.avatar;
+  const userAvatarFiltered = user.avatar;
 
   const emojiIcons = [
     {
