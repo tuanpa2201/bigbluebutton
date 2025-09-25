@@ -102,10 +102,6 @@ select:focus {
     overflow-y: auto;
 }
 
-[data-darkreader-scheme="dark"] .custom-dropdown__list {
-    background: var(--bg-00-dark, #3b3f43);
-}
-
 .custom-dropdown__option {
     padding: 8px 12px;
     /* overflow: hidden; */
@@ -120,17 +116,7 @@ select:focus {
     cursor: pointer;
 }
 
-[data-darkreader-scheme="dark"] .custom-dropdown__option {
-    color: var(--text-primary-dark, #fcfcfd);
-}
-
 .custom-dropdown__option:hover,
 .custom-dropdown__option--selected {
     background: var(--bg-01-light, #f7f8f9);
-}
-
-[data-darkreader-scheme="dark"] #langSelector {
-    background: var(--bg-00-dark, #3b3f43);
-    border-color: var(--border-01-dark, #4e5358) !important;
-    color: var(--text-primary-dark, #fcfcfd) !important;
 }

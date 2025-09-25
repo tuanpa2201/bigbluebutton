@@ -315,6 +315,10 @@
     .xs-mt-32 {
         margin-top: 32px !important;
     }
+
+    .xs-mt-0-i {
+        margin-top: 0px !important;
+    }
 }
 
 /* BORDER */

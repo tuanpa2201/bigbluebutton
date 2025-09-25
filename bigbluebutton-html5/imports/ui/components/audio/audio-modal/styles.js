@@ -141,6 +141,10 @@ const AudioModal = styled(ModalSimple)`
     }
   }
   @media only screen and (max-width: 767px) {
+    &.ReactModal__Content.ReactModal__Content--after-open .modal-header{
+      height: auto !important;
+      min-height: 48px;
+    }
     .modal-title {
       font-size: 16px;
       padding: 0px;

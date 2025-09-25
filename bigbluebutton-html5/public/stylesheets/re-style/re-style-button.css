@@ -106,14 +106,7 @@
     opacity: 1;
 }
 
-[data-darkreader-scheme="dark"] .btn.btn-default {
-    background: #282829 !important;
-    box-shadow:
-        0 -1px 0 0 #b5b5b5 inset,
-        -1px 0 0 0 #e3e3e3 inset,
-        1px 0 0 0 #e3e3e3 inset,
-        0 1px 0 0 #e3e3e3 inset !important;
-}
+
 
 @media (min-width: 768px) and (max-width: 1024px) {
     .btn.btn-default {
@@ -139,14 +132,7 @@
         0px 1px 0px 0px #ebebeb inset !important;
 }
 
-[data-darkreader-scheme="dark"] .btn.btn-default:hover {
-    background: rgba(40, 40, 41, 0.85) !important;
-    box-shadow:
-        0 -1px 0 0 #b5b5b5 inset,
-        -1px 0 0 0 #e3e3e3 inset,
-        1px 0 0 0 #e3e3e3 inset,
-        0 1px 0 0 #e3e3e3 inset !important;
-}
+
 
 .btn.btn-default:focus {
     border: 1px solid rgba(0, 0, 0, 0) !important;
@@ -170,11 +156,7 @@
     box-shadow: unset !important;
 }
 
-[data-darkreader-scheme="dark"] .btn.btn-default[aria-disabled="true"],
-[data-darkreader-scheme="dark"] .btn.btn-default:disabled {
-    color: var(--text-disable-dark, #848484) !important;
-    background: var(--bg-05-disable-dark, #5d5f62) !important;
-}
+
 
 .ant-input-group .ant-btn {
     border-radius: 0 8px 8px 0 !important;

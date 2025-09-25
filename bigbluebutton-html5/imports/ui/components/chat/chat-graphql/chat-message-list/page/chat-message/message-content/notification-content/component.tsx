@@ -12,7 +12,7 @@ const ChatMessageNotificationContent: React.FC<ChatMessageNotificationContentPro
   return (
     <Styled.Root data-test="chatMessageNotificationContent">
       {iconName && <SvgIcon iconName={iconName} />}
-      <Styled.Typography>
+      <Styled.Typography className="text-secondary-dark">
         {text}
       </Styled.Typography>
     </Styled.Root>

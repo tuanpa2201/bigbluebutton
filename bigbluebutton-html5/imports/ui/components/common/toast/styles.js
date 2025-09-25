@@ -96,7 +96,6 @@ const ToastIcon = styled.div`
     
   & > svg {
     position: absolute;
-    width: 100%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -164,7 +163,7 @@ const Toast = styled.div`
 
   ${({ type }) => type === 'error' && `
     & .toastIcon {
-      color: #FF5565;
+      color: #ED1B2F;
     }
   `}
 

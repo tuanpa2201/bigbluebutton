@@ -120,7 +120,7 @@ class ModalSimple extends Component {
         content: {
           top: `${anchorRect.bottom + window.scrollY + 10}px`,
           left: isMobile ? null : `${modalLeft + window.scrollX}px`,
-          overflow: 'visible',
+          overflow: 'hidden',
           position: 'fixed',
         },
       };

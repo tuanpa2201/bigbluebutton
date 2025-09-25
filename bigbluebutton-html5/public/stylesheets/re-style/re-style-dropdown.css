@@ -27,9 +27,4 @@
   align-self: stretch;
   color: var(--Text-Primary, #313131) !important;
 }
-[data-darkreader-scheme="dark"]
-  .MuiMenu-root#app-leave-meeting-menu
-  .MuiList-root
-  .MuiMenuItem-root {
-  color: var(--text-primary-dark, #fcfcfd) !important;
-}
+

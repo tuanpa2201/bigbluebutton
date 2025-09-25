@@ -266,7 +266,7 @@ const Status = styled.div`
   align-items: center;
 
   @media ${phoneOnly} {
-    width: 200px;
+    width: 230px;
   }
 `;
 

@@ -632,8 +632,8 @@ class OptionsDropdown extends PureComponent {
             elevation: 3,
             getcontentanchorel: null,
             fullwidth: 'true',
-            anchorOrigin: { vertical: 'bottom', horizontal: isRTL ? 'left' : 'right' },
-            transformorigin: { vertical: 'top', horizontal: isRTL ? 'left' : 'right' },
+            anchorOrigin: { vertical: 'top', horizontal: 'center' },
+          transformOrigin: { vertical: 'bottom', horizontal: 'center' },
           }}
           phoneAndTabletSameType
         />
