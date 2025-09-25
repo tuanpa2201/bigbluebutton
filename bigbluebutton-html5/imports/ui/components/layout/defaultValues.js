@@ -30,7 +30,7 @@ const DEFAULT_VALUES = {
 
   bannerHeight: 34,
 
-  navBarHeight: 88,
+  navBarHeight: 94,
   navBarTop: 0,
   navBarTabOrder: 3,
 
