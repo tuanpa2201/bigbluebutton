@@ -1087,9 +1087,9 @@ class VideoPreview extends Component {
           {intl.formatMessage(intlMessages.sliderDesc)}
         </div>
         <Styled.MarkerWrapper aria-hidden>
-          <Styled.Marker>{'-100'}</Styled.Marker>
-          <Styled.Marker>{'0'}</Styled.Marker>
-          <Styled.Marker>{'100'}</Styled.Marker>
+          <Styled.Marker className='text-secondary-dark'>{'-100'}</Styled.Marker>
+          <Styled.Marker className='text-secondary-dark'>{'0'}</Styled.Marker>
+          <Styled.Marker className='text-secondary-dark'>{'100'}</Styled.Marker>
         </Styled.MarkerWrapper>
         <div style={{ display: 'flex' }} className="whole-image-checkbox">
           <Checkbox

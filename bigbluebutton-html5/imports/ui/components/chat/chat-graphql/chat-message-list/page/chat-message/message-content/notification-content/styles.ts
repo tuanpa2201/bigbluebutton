@@ -57,7 +57,7 @@ export const Typography = styled.p`
   white-space: pre-wrap;
 
   [data-darkreader-scheme="dark"] & {
-    color: var(--text-primary-dark, #FCFCFD);
+    color: #FCFCFD;
   }
 `;
 

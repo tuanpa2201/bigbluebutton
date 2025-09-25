@@ -44,12 +44,3 @@ textarea:active {
         1px 0 1px 0 rgba(26, 26, 26, 0.12) inset,
         0 2px 1px 0 rgba(26, 26, 26, 0.2) inset;
 }
-
-[data-darkreader-scheme="dark"] input:not([type]):focus,
-[data-darkreader-scheme="dark"] input[type="text"]:focus,
-[data-darkreader-scheme="dark"] textarea:focus,
-[data-darkreader-scheme="dark"] input:not([type]):active,
-[data-darkreader-scheme="dark"] input[type="text"]:active,
-[data-darkreader-scheme="dark"] textarea:active {
-    background: var(--bg-01-dark, #303338);
-}

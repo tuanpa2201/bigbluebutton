@@ -572,7 +572,7 @@ class ConnectionStatusComponent extends PureComponent {
                   </Styled.ConnectionTabSelector>
                 )}
             </Styled.ConnectionTabList>
-            <Styled.ConnectionTabPanel selectedClassName="is-selected mt-8-i">
+            <Styled.ConnectionTabPanel selectedClassName="is-selected mt-8-i xs-mt-0-i">
               <div className="connection-status-panel-content">
                 {this.renderNetworkData()}
                 {this.renderCopyDataButton()}

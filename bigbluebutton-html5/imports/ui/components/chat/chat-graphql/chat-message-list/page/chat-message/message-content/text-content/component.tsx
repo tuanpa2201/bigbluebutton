@@ -29,7 +29,7 @@ const ChatMessageTextContent: React.FC<ChatMessageTextContentProps> = ({
   });
 
   // Convert text to markdown format
-  const markdownText = <span dangerouslySetInnerHTML={{ __html: safeHtml }} />;
+  const markdownText = <span className="text-primary-dark" dangerouslySetInnerHTML={{ __html: safeHtml }} />;
   return (
     <Styled.ChatMessage data-test={dataTest}>
       {markdownText}
