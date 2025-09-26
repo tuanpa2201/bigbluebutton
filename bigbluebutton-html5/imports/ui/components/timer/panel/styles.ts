@@ -29,6 +29,10 @@ const TimerSidebarContent = styled.div`
   overflow: hidden;
   height: 100%;
   transform: translateZ(0);
+  
+  @media (min-width: 376px) and (max-width: 768px) {
+    padding: 0 20px;
+  }
 `;
 
 const CloseTimerButtonPC = styled.button`
@@ -163,7 +167,7 @@ const TimerCurrent = styled.span`
 
     border-radius: 8px;
     border: 0.66px solid var(--Border-01, #C8C8C8);
-    padding: 24px 0;
+    padding: 12px 0;
     color: var(--Text-Primary, #313131);
     text-align: center;
     font-size: 44px;

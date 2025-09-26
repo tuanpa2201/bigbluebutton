@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
         bottom: 0 !important;
         right: 0 !important;
         max-width: none !important;
-        padding: 16px !important;
+        padding: 20px !important;
         border-bottom-left-radius: 0px !important;
         border-bottom-right-radius: 0px !important;
       }

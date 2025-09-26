@@ -1195,7 +1195,7 @@ class VideoPreview extends Component {
       default:
         return (
           <div className={cameraAsContent ? '' : 'd-flex align-items-start gap-20 xs-flex-column'}>
-            <div className={cameraAsContent ? 'video-preview-wrapper min-h-custom' : 'w-50 xs-w-100 min-h-custom'}>
+            <div className={cameraAsContent ? 'video-preview-wrapper' : 'w-50 xs-w-100 min-h-custom'}>
               {
                 previewError
                   ? (

@@ -276,7 +276,7 @@ function renderToastItem(item, intl) {
               color="#0F70D7"
             />
           </Styled.StatusIcon>
-          <span style={{ marginLeft: "8px" }}>{item.filename || item.name}</span>
+          <Styled.StatusLabel className="upload-status-label">{item.filename || item.name}</Styled.StatusLabel>
         </span>
       </Styled.FileLine>
       <Styled.StatusInfo>
@@ -330,7 +330,7 @@ const renderToastList = (presentations, intl) => {
     <Styled.ToastWrapper data-test="presentationUploadProgressToast">
       <Styled.UploadToastHeader>
         <SvgIcon iconName="cloud_upload" />
-        <span className="font-medium-s text-primary">{toastHeading}</span>
+        <span className="font-medium-s text-primary uploading-toast">{toastHeading}</span>
       </Styled.UploadToastHeader>
       <Styled.InnerToast>
         <div>

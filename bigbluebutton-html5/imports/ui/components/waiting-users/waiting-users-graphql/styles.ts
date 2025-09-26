@@ -192,6 +192,9 @@ const PendingUsers = styled.div`
   display: flex;
   flex-direction: column;
   border-top: 1px solid #EFEFEF;
+  p {
+    color: var(--Text-Primary, #313131);
+  }
 `;
 
 const NoPendingUsers = styled.p`
