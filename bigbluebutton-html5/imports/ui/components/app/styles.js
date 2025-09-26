@@ -64,9 +64,6 @@ const DtfInvert = `
   textarea {
     caret-color: black !important;
   }
-  #connectionBars > div {
-    background-color: var(--darkreader-neutral-text) !important;
-  }
   
   .custom-dropdown__selected {
     border: 0.66px solid #9A9A9A !important;
@@ -968,9 +965,19 @@ const DtfInvert = `
     [data-darkreader-scheme="dark"] div[id="cameraDock"] {
         background-color: #2B2E32 !important;
     }
-    [data-darkreader-scheme="dark"] #connectionBars > div {
+    [data-darkreader-scheme="dark"] [data-level="critical"] > div {
+        background-color: #EE0033;
+    }
+    [data-darkreader-scheme="dark"] [data-level="danger"] > div {
+        background-color: #F26724;
+    }
+    [data-darkreader-scheme="dark"] [data-level="warning"] > div {
+        background-color: #9207FF;
+    }
+    [data-darkreader-scheme="dark"] header #connectionBars > div {
         background-color: #FFF !important;
     }
+        
     [data-darkreader-scheme="dark"] .last-theme-button {
         box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.25), 0 -1px 1px 0 rgba(0, 0, 0, 0.49) inset, 0 2px 1px 0 rgba(255, 255, 255, 0.06) inset !important;
     }
