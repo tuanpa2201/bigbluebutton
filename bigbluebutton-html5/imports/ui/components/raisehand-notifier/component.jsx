@@ -75,7 +75,7 @@ class RaiseHandNotifier extends Component {
         });
       }
 
-      notifyCustom(this.getRaisedHandNames(), 'default', 'raised_hand');
+      notifyCustom(this.getRaisedHandNames(), 'info', 'raised_hand');
       // toast(this.renderRaisedHands(), {
       //   autoClose: false,
       //   closeOnClick: false,
