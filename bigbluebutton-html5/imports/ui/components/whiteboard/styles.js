@@ -236,6 +236,19 @@ const TldrawV2GlobalStyle = createGlobalStyle`
         [data-side="top"][role="dialog"]:has(.tlui-style-panel) {
           left: 10rem !important;
         }
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+          .tlui-layout__mobile .tlui-button__tool > .tlui-icon {
+            height: 20px !important;
+            width: 20px !important;
+          }
+          .tlui-toolbar__tools.tlui-toolbar__tools__mobile.fade-in {
+            height: 40px !important;
+          }
+          .tlui-layout__mobile .tlui-button__tool {
+            height: 40px !important;
+            width: 40px !important;
+          }
+        }
       `;
     }
 

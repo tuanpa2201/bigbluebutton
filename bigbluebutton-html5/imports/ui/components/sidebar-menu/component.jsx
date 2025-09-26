@@ -395,8 +395,9 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
               onClick={() => switchDarkTheme(true)}
               active={isDarkTheme}
               title={intl.formatMessage(messages.dark)}
+              className="last-theme-button"
             >
-              <SvgIcon iconName="moon" />
+              <SvgIcon iconName={isDarkTheme ? 'dark' : 'moon'} />
             </ThemeButton>
           </ThemeSwitch>
         </ThemeSwitchContainer>
