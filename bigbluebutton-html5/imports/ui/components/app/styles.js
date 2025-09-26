@@ -937,6 +937,9 @@ const DtfInvert = `
     [data-darkreader-scheme="dark"]  .btn.btn-primary {
         color: #fff !important;
     }
+    [data-darkreader-scheme="dark"] .local-echo-button {
+        color: #0F70D7 !important;
+    }
 `;
 
 const DtfBrandingInvert = `
