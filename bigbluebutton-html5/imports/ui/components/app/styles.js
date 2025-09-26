@@ -133,9 +133,27 @@ const DtfInvert = `
   [data-darkreader-scheme="dark"] .presentationContainer option {
       color: var(--text-primary-dark, #fcfcfd) !important;
   }
+  [data-darkreader-scheme="dark"] .dropzoneIcon {
+    color: #CECFD2 !important;
+  }
+  
+  [data-darkreader-scheme="dark"] #radio_checked {
+    background-color: white !important;
+  }
+  
+  [data-darkreader-scheme="dark"] #radio_unchecked {
+    background-color: transparent !important;
+  }
+  
+  [data-darkreader-scheme="dark"] #dm-dark-reader {
+    border-color: #4E5358 !important;
+    i::before {
+        color: #CECFD2;
+    }
+  }
 
   [data-darkreader-scheme="dark"] #presentationToolbarWrapper {
-      background-color: var(--bg-01-dark, #303338);
+<!--      background-color: var(&#45;&#45;bg-01-dark, #303338);-->
   }
 
   [data-darkreader-scheme="dark"] .pollingContainer {
@@ -538,6 +556,30 @@ const DtfInvert = `
   [data-darkreader-scheme="dark"] #upload-modal .export_hint {
       color: var(--text-secondary-dark, #c5c9cd);
   }
+  
+  [data-darkreader-scheme="dark"] .toast-header #upload-icon {
+    background-color: #56D6FF !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .presentation-upload-icon {
+    svg,
+     rect {
+        fill: #56D6FF !important;
+    }
+  }
+  
+  [data-darkreader-scheme="dark"] #upload-status-label-override,
+  [data-darkreader-scheme="dark"] #status-info-span-override {
+      color: var(--text-secondary-dark, #c5c9cd) !important;
+  }
+  
+  [data-darkreader-scheme="dark"] #dark-reader-override {
+      color: var(--text-primary-dark, #FCFCFD) !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .toast-file-line .toast-info-span {
+      color: var(--text-secondary-dark, #c5c9cd) !important;
+  }
 
   [data-darkreader-scheme="dark"] .toast-file-line .toast-file-name,
   [data-darkreader-scheme="dark"] .toast-file-line .toast-info-span {
@@ -887,7 +929,7 @@ const DtfInvert = `
     }
 
     [data-darkreader-scheme="dark"] .ReactModal__Content.policy-modal .modal-content .policy-container .policy-radio-group .policy-radio-label {
-        border-top: 1px solid var(--border-00-dark, #4e5358);
+        border: 1px solid var(--border-00-dark, #4e5358);
         background-color: var(--bg-00-dark, #3b3f43);
         color: var(--text-primary-dark, #fcfcfd);
     }

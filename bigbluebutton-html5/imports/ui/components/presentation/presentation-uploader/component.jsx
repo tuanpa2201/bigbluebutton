@@ -938,6 +938,7 @@ class PresentationUploader extends Component {
         animations={animations}
         data-test="presentationItem"
         className="presentation_item"
+        id="dm-dark-reader"
       >
         <Styled.PresentationItemInfo
           isActualCurrent={isActualCurrent}
@@ -947,7 +948,9 @@ class PresentationUploader extends Component {
           "align-items": "center",
           "height": "100%"
         }}>
-          <Styled.RadioCircle className="radio_circle"
+          <Styled.RadioCircle
+            id={item.current ? "radio_checked" : "radio_unchecked"}
+            className="radio_circle"
             animations={animations}
             // ariaLabel={`${intl.formatMessage(intlMessages.setAsCurrentPresentation)} ${item.name}`}
             checked={item.current}

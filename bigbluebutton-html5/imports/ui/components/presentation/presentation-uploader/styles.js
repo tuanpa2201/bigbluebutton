@@ -100,6 +100,9 @@ const StatusLabel = styled.span`
   font-size: 14px;
   line-height: 20px;
   color: var(--Text-Secondary, #6F767E);
+  [data-darkreader-scheme="dark"] & {
+    color: var(--text-secondary-dark, #c5c9cd) !important;
+  }
 `;
 
 const StatusInfo = styled.div`
@@ -197,6 +200,9 @@ const UploadToastHeader = styled.div`
     @media (min-width: 376px) and (max-width: 768px) {
       font-size: 16px !important;
     }
+    [data-darkreader-scheme="dark"] & {
+      color: var(--text-primary-dark, #FCFCFD) !important;
+    }
   }
 `;
 
@@ -220,6 +226,9 @@ const UploadToastTitle = styled.span`
   // position: fixed;
   overflow: hidden;
   color: var(--Text-Primary, #313131);
+  [data-darkreader-scheme="dark"] & {
+    color: var(--text-primary-dark, #FCFCFD) !important;
+  }
   text-overflow: ellipsis;
 
   /* Medium/S */
@@ -388,6 +397,12 @@ const UploaderDropzone = styled(Dropzone)`
       & .dropzoneMessage {
           display: block;
       }
+  }
+
+  [data-darkreader-scheme="dark"] & {
+    background: #303338 !important;
+    border: 1px dashed #9A9A9A;
+    border-radius: 8px;
   }
 `;
 
@@ -630,6 +645,10 @@ const StatusInfoSpan = styled.span`
     display: inline-block;
     color: ${colorDanger};
   `}
+
+    [data-darkreader-scheme="dark"] & {
+      color: var(--text-secondary-dark, #C5C9CD) !important;
+    }
 `;
 
 const PresentationItemInfo = styled.div`
@@ -675,6 +694,11 @@ const PresentationItem = styled.div`
   }
   @media (min-width: 769px) and (max-width: 1366px) {
     height: 52px;
+  }
+
+  [data-darkreader-scheme="dark"] & {
+    background: transparent !important;
+    border: 1px solid #4E5358 !important;
   }
 `;
 
@@ -770,6 +794,11 @@ const RadioCircle = styled.span`
   background: #fff;
   box-sizing: border-box;
   margin-right: 12px;
+
+  [data-darkreader-scheme="dark"] & {
+    box-shadow: 0 0 0 1px #9A9A9A;
+    background-color: ${({ checked }) => checked ? 'white' : 'transparent'};
+  }
 `;
 
 const FileIcon = styled.span`
