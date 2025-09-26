@@ -36,6 +36,22 @@ const PresentationToolbarWrapper = styled.div`
   background: var(--Neutral-01, #F7F8F9);
   height: 54px;
   border-radius: 0 0 8px 8px;
+
+  [data-darkreader-scheme="dark"] & {
+    background-color: #303338;
+  }
+  
+  button {
+    [data-darkreader-scheme="dark"] & {
+      background-color: #303338;
+    }
+  }
+  
+  span {
+    [data-darkreader-scheme="dark"] & {
+      background-color: #303338;
+    }
+  }
   
   select {
     &:-moz-focusring {
@@ -43,6 +59,9 @@ const PresentationToolbarWrapper = styled.div`
     }
     border: 0;
     background-color: ${colorOffWhite};
+    [data-darkreader-scheme="dark"] & {
+      background-color: #303338;
+    }
     color: ${toolbarButtonColor};
     cursor: pointer;
     //margin: 0 ${whiteboardToolbarMargin} 0 0;
@@ -57,6 +76,9 @@ const PresentationToolbarWrapper = styled.div`
 
     & > option {
       color: ${toolbarButtonColor};
+      [data-darkreader-scheme="dark"] & {
+        background-color: #303338;
+      }
       background-color: ${colorOffWhite};
     }
   }
