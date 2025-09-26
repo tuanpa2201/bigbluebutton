@@ -1071,7 +1071,7 @@ class VideoPreview extends Component {
         </div>
         <input
           id="brightness"
-          style={{ width: '100%' }}
+          style={{ width: '100%', accentColor: '#1087FF' }}
           type="range"
           min={0}
           max={200}

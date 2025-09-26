@@ -1005,12 +1005,12 @@ const DtfInvert = `
 
     /* The (optimum) bar in Firefox */
     meter:-moz-meter-optimum::-moz-meter-bar {
-    background: var(--optimum);
+        background: var(--optimum);
     }
 
     /* The (optimum) bar in Chrome etc. */
     meter::-webkit-meter-optimum-value {
-    background: var(--optimum);
+        background: var(--optimum);
     }
 `;
 
