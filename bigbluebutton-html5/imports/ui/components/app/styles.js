@@ -987,6 +987,31 @@ const DtfInvert = `
     [data-darkreader-scheme="dark"] .local-echo-button {
         color: #0F70D7 !important;
     }
+    meter {
+        --background: #EFEFEF;
+        --optimum: #1087FF;
+
+        height: 7px !important;
+        flex-shrink: 0;
+        align-self: stretch;
+        border-radius: 20px;
+        background: var(--background);
+    }
+
+    /* The gray background in Chrome, etc. */
+    meter::-webkit-meter-bar {
+        background: var(--background);
+    }
+
+    /* The (optimum) bar in Firefox */
+    meter:-moz-meter-optimum::-moz-meter-bar {
+    background: var(--optimum);
+    }
+
+    /* The (optimum) bar in Chrome etc. */
+    meter::-webkit-meter-optimum-value {
+    background: var(--optimum);
+    }
 `;
 
 const DtfBrandingInvert = `

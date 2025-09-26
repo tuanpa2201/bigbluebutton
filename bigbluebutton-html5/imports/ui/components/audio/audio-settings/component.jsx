@@ -534,7 +534,7 @@ class AudioSettings extends React.Component {
           <Styled.LabelSmall htmlFor="audioStreamVolume" className="mt-0-i w-50 ">
             {intl.formatMessage(intlMessages.streamVolumeLabel)}
             <div />
-            <div className="mt-6">
+            <div className="mt-12">
               <AudioStreamVolume stream={stream} />
             </div>
           </Styled.LabelSmall>
