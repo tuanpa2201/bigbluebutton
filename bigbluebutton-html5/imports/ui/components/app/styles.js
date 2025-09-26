@@ -40,11 +40,9 @@ const DtfInvert = `
     border-right: unset !important;
     border-left: unset !important;
   }
-  .tl-container {
-    .tl-image {
-      background-color: white !important;
+  .tl-container .tl-image {
+        background-color: white !important;
     }
-  }
   .tlui-slider__thumb {
     background-color: var(--darkreader-text--color-text-1) !important;
   }
@@ -642,7 +640,7 @@ const DtfInvert = `
     }
 
     [data-darkreader-scheme="dark"] .ReactModal__Content.ReactModal__Content--after-open .modal-header button i {
-        color: var(--text-secondary-dark, #c5c9cd);
+        color: var(--icon-secondary-dark, #CECFD2);
     }
 
     [data-darkreader-scheme="dark"] .ReactModal__Content.ReactModal__Content--after-open .simple-modal-content {
@@ -936,6 +934,9 @@ const DtfInvert = `
     }
     [data-darkreader-scheme="dark"]  .btn.btn-primary {
         color: #fff !important;
+    }
+    [data-darkreader-scheme="dark"] .local-echo-button {
+        color: #0F70D7 !important;
     }
 `;
 

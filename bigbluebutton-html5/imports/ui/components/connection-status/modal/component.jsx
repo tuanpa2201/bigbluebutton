@@ -345,11 +345,11 @@ class ConnectionStatusComponent extends PureComponent {
               ) : null}
           </Styled.Left>
           <Styled.Right>
-            <Styled.Time>
+            <Styled.Time className="text-secondary-dark">
               {
                 !conn.clientNotResponding
                   ? (
-                    <time className="font-medium" dateTime={dateTime}>
+                    <time className="font-medium text-secondary-dark" dateTime={dateTime}>
                       <FormattedTime value={dateTime} />
                     </time>
                   )
@@ -358,8 +358,8 @@ class ConnectionStatusComponent extends PureComponent {
                       placement="top"
                       title={intl.formatMessage(intlMessages.lastTimeActive)}
                     >
-                      <Styled.TimeActive dateTime={lastActiveConnection}>
-                        <FormattedTime value={lastActiveConnection} />
+                      <Styled.TimeActive className="text-secondary-dark" dateTime={lastActiveConnection}>
+                        <FormattedTime className="text-secondary-dark" value={lastActiveConnection} />
                       </Styled.TimeActive>
                     </TooltipContainer>
                   )

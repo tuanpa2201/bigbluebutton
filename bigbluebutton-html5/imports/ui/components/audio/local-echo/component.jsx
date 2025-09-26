@@ -87,6 +87,7 @@ const LocalEcho = ({
       color="primary"
       onClick={() => setHearing(!hearing)}
       animations={animations}
+      className="local-echo-button"
     />
   );
 };

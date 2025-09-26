@@ -21,7 +21,7 @@ const LocalEchoTestButton = styled(Button)`
   }
 
   background-color: transparent !important;
-  color: ${colorPrimary} !important;
+  color: #0F70D7 !important;
 
   font-size: 14px;
 

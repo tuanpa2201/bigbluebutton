@@ -4,7 +4,6 @@ import {
   colorGrayDark,
   colorGrayLightest,
   colorPrimary,
-  colorDanger,
 } from '/imports/ui/stylesheets/styled-components/palette';
 import {
   lgPaddingY,
@@ -77,7 +76,7 @@ const ClientNotRespondingText = styled.div`
   height: 100%;
   align-items: center;
   justify-content: flex-start;
-  color: ${colorDanger};
+  color: #ED1B2F !important;
 
   @media ${phoneOnly} {
     width: 230px;
