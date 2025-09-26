@@ -1150,6 +1150,9 @@
   .policy-radio-label
   input[type="radio"]:checked {
   accent-color: var(--Primary-01, #ee0033) !important;
+  [data-darkreader-scheme="dark"] & {
+    accent-color: #ff665a !important;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -1241,5 +1244,11 @@
 
   .model-custom-tablet .modal-title {
     padding: 0px !important;
+  }
+}
+
+.css-ton3fx-MuiButtonBase-root-MuiMenuItem-root:hover {
+  [data-darkreader-scheme="dark"] & {
+    background-color: #333335 !important;
   }
 }

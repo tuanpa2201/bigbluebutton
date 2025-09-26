@@ -276,11 +276,11 @@ function renderToastItem(item, intl) {
               color="#0F70D7"
             />
           </Styled.StatusIcon>
-          <Styled.StatusLabel className="upload-status-label">{item.filename || item.name}</Styled.StatusLabel>
+          <Styled.StatusLabel id="upload-status-label-override" className="upload-status-label">{item.filename || item.name}</Styled.StatusLabel>
         </span>
       </Styled.FileLine>
       <Styled.StatusInfo>
-        <Styled.StatusInfoSpan data-test={isProcessing && 'processingPresentationItem'} styles={hasError ? 'error' : 'info'}>
+        <Styled.StatusInfoSpan id="status-info-span-override" data-test={isProcessing && 'processingPresentationItem'} styles={hasError ? 'error' : 'info'}>
           {renderPresentationItemStatus(item, intl)}
         </Styled.StatusInfoSpan>
       </Styled.StatusInfo>
@@ -328,9 +328,9 @@ const renderToastList = (presentations, intl) => {
 
   return (
     <Styled.ToastWrapper data-test="presentationUploadProgressToast">
-      <Styled.UploadToastHeader>
+      <Styled.UploadToastHeader className="presentation-upload-icon">
         <SvgIcon iconName="cloud_upload" />
-        <span className="font-medium-s text-primary uploading-toast">{toastHeading}</span>
+        <span id="dark-reader-override" className="font-medium-s text-primary uploading-toast">{toastHeading}</span>
       </Styled.UploadToastHeader>
       <Styled.InnerToast>
         <div>
@@ -436,11 +436,11 @@ function renderExportToast(presToShow, intl, exportToastId) {
 
   return (
     <Styled.ToastWrapper1 data-test="downloadPresentationToast">
-      <Styled.UploadToastHeader>
-        <Styled.UploadIcon>
+      <Styled.UploadToastHeader className="toast-header">
+        <Styled.UploadIcon id="upload-icon">
           <SvgIcon iconName="fileDownload1" />
         </Styled.UploadIcon>
-        <Styled.UploadToastTitle>
+        <Styled.UploadToastTitle id="dark-reader-override">
           {intl.formatMessage(intlMessages[headerLabelId], { 0: presToShowSorted.length })}
         </Styled.UploadToastTitle>
       </Styled.UploadToastHeader>
