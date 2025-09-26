@@ -722,11 +722,12 @@ const AudioModal = ({
   title = (!skipAudioOptions() && !findingDevices) || content
     ? title
     : null;
+  const className = `${skipAudioOptions() ? '' : 'model-custom-mobile'} ${content === 'settings' ? 'audio-settings-modal' : 'audio_modal'}`;
 
   return (
     <Styled.Background isBlurred={Session.getItem('audioModalIsOpen')} className="audio-modal-background">
       <Styled.AudioModal
-        className={content === 'settings' ? 'audio-settings-modal model-custom-mobile' : 'audio_modal model-custom-mobile'}
+        className={className}
         modalName="AUDIO"
         onRequestClose={closeModal}
         data-test="audioModal"

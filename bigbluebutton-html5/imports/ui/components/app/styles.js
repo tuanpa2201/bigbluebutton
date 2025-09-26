@@ -931,6 +931,12 @@ const DtfInvert = `
     [data-darkreader-scheme="dark"] #connectionBars > div {
         background-color: #FFF !important;
     }
+    [data-darkreader-scheme="dark"] .last-theme-button {
+        box-shadow: 0 4px 8px -4px rgba(0, 0, 0, 0.25), 0 -1px 1px 0 rgba(0, 0, 0, 0.49) inset, 0 2px 1px 0 rgba(255, 255, 255, 0.06) inset !important;
+    }
+    [data-darkreader-scheme="dark"]  .btn.btn-primary {
+        color: #fff !important;
+    }
 `;
 
 const DtfBrandingInvert = `
