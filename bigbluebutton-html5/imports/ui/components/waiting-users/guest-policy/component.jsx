@@ -171,7 +171,11 @@ class GuestPolicyComponent extends PureComponent {
 
             <Styled.RadioGroup className="policy-radio-group">
               <Styled.RadioLabel className="policy-radio-label">
-                <input type="radio"
+                <Styled.RadioCircle
+                  id={selectedRole === 'askModerator' ? 'radio_checked' : ''}
+                  checked={selectedRole === 'askModerator'}
+                />
+                <Styled.RadioInput type="radio"
                        name="role"
                        value="askModerator"
                        checked={selectedRole === 'askModerator'}
@@ -180,7 +184,11 @@ class GuestPolicyComponent extends PureComponent {
                 <span>{intl.formatMessage(intlMessages.askModerator)}</span>
               </Styled.RadioLabel>
               <Styled.RadioLabel className="policy-radio-label">
-                <input type="radio"
+                <Styled.RadioCircle
+                  id={selectedRole === 'alwaysAccept' ? 'radio_checked' : ''}
+                  checked={selectedRole === 'alwaysAccept'}
+                />
+                <Styled.RadioInput type="radio"
                        name="role"
                        value="alwaysAccept"
                        checked={selectedRole === 'alwaysAccept'}
@@ -189,7 +197,11 @@ class GuestPolicyComponent extends PureComponent {
                 <span>{intl.formatMessage(intlMessages.alwaysAccept)}</span>
               </Styled.RadioLabel>
               <Styled.RadioLabel className="policy-radio-label">
-                <input type="radio"
+                <Styled.RadioCircle
+                  id={selectedRole === 'alwaysDeny' ? 'radio_checked' : ''}
+                  checked={selectedRole === 'alwaysDeny'}
+                />
+                <Styled.RadioInput type="radio"
                        name="role"
                        value="alwaysDeny"
                        checked={selectedRole === 'alwaysDeny'}

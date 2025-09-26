@@ -83,6 +83,28 @@ const RadioLabel = styled.label`
   }
 `;
 
+const RadioInput = styled.input`
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+`;
+
+const RadioCircle = styled.div`
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: ${({ checked }) => checked ? '4px solid #EE0033' : '1.5px solid #C8C8C8'};
+  border-radius: 20px;
+  position: relative;
+  background: #fff;
+  box-sizing: border-box;
+
+  [data-darkreader-scheme="dark"] & {
+    box-shadow: 0 0 0 1px #9A9A9A;
+    background-color: ${({ checked }) => checked ? 'white' : 'transparent'};
+  }
+`;
+
 export default {
   GuestPolicyModal,
   Container,
@@ -95,4 +117,6 @@ export default {
   ButtonApply,
   RadioGroup,
   RadioLabel,
+  RadioInput,
+  RadioCircle,
 };
