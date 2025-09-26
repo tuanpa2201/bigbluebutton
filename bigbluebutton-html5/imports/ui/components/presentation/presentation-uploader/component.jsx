@@ -16,6 +16,7 @@ import Session from '/imports/ui/services/storage/in-memory';
 import { ACTIONS, PANELS } from '/imports/ui/components/layout/enums';
 import SvgIcon from '/imports/ui/components/common/icon-svg/component';
 import Tooltip from "/imports/ui/components/common/tooltip/component";
+import {itemActionsWidth} from "/imports/ui/stylesheets/styled-components/general";
 
 const { isMobile } = deviceInfo;
 const propTypes = {
@@ -833,29 +834,29 @@ class PresentationUploader extends Component {
     return (
       <Styled.FileList>
         <Styled.Table>
-          <thead>
-            <tr>
-              <Styled.VisuallyHidden>
-                {intl.formatMessage(intlMessages.setAsCurrentPresentation)}
-              </Styled.VisuallyHidden>
-              <Styled.VisuallyHidden colSpan={2}>
-                {intl.formatMessage(intlMessages.filename)}
-              </Styled.VisuallyHidden>
-              <Styled.VisuallyHidden>
-                {intl.formatMessage(intlMessages.status)}
-              </Styled.VisuallyHidden>
-              <Styled.VisuallyHidden>
-                {intl.formatMessage(intlMessages.options)}
-              </Styled.VisuallyHidden>
-            </tr>
-            {/* <Styled.Head>
-              <th colSpan={4}>{intl.formatMessage(intlMessages.currentLabel)}</th>
-              <th>{intl.formatMessage(intlMessages.actionsLabel)}</th>
-            </Styled.Head> */}
-          </thead>
-          <tbody>
+          {/*<thead>*/}
+          {/*  <tr>*/}
+          {/*    <Styled.VisuallyHidden>*/}
+          {/*      {intl.formatMessage(intlMessages.setAsCurrentPresentation)}*/}
+          {/*    </Styled.VisuallyHidden>*/}
+          {/*    <Styled.VisuallyHidden colSpan={2}>*/}
+          {/*      {intl.formatMessage(intlMessages.filename)}*/}
+          {/*    </Styled.VisuallyHidden>*/}
+          {/*    <Styled.VisuallyHidden>*/}
+          {/*      {intl.formatMessage(intlMessages.status)}*/}
+          {/*    </Styled.VisuallyHidden>*/}
+          {/*    <Styled.VisuallyHidden>*/}
+          {/*      {intl.formatMessage(intlMessages.options)}*/}
+          {/*    </Styled.VisuallyHidden>*/}
+          {/*  </tr>*/}
+          {/*  /!* <Styled.Head>*/}
+          {/*    <th colSpan={4}>{intl.formatMessage(intlMessages.currentLabel)}</th>*/}
+          {/*    <th>{intl.formatMessage(intlMessages.actionsLabel)}</th>*/}
+          {/*  </Styled.Head> *!/*/}
+          {/*</thead>*/}
+          <Styled.TableContent>
             {unique(presentationsSorted, p => p.presentationId) .map((item) => this.renderPresentationItem(item))}
-          </tbody>
+          </Styled.TableContent>
         </Styled.Table>
       </Styled.FileList>
     );
@@ -938,6 +939,9 @@ class PresentationUploader extends Component {
         data-test="presentationItem"
         className="presentation_item"
       >
+        <Styled.PresentationItemInfo
+          isActualCurrent={isActualCurrent}
+        >
         <div style={{
           "display": "flex",
           "align-items": "center",
@@ -972,6 +976,7 @@ class PresentationUploader extends Component {
         <Styled.TableItemStatus colSpan={hasError ? 2 : 0} className="status_item">
           {renderPresentationItemStatus(item, intl)}
         </Styled.TableItemStatus>
+        </Styled.PresentationItemInfo>
         {
         hasError ? null : (
           <Styled.TableItemActions notDownloadable={!allowDownloadOriginal} className="actions_item">

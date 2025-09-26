@@ -51,7 +51,7 @@ const Label = styled.label`
 `
 const InputUrl = styled.input`
     display: flex !important;
-    padding: 6px 12px !important;
+    padding: 3px 12px !important;
     align-items: center !important;
     border-radius: var(--p-border-radius-button) !important;
     border: 0.66px solid var(--Border-01, #C8C8C8) !important;
@@ -60,7 +60,8 @@ const InputUrl = styled.input`
     margin: 4px 0 0 !important;
     font-weight: 400 !important;
   @media (min-width: 376px) and (max-width: 1024px) {
-    font-size: 16px;
+    font-size: 16px !important;
+    line-height: 24px !important;
   }
   @media (min-width: 376px) and (max-width: 768px) {
     line-height: 34px !important;

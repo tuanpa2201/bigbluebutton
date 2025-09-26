@@ -329,6 +329,14 @@
   padding-right: 84px;
   height: 169px;
   margin-bottom: 16px;
+  @media (max-width: 375px) {
+    padding-left: unset;
+    padding-right: unset;
+    height: fit-content;
+    margin-bottom: 14px;
+    justify-content: center;
+    display: flex;
+  }
 }
 
 .ReactModal__Content.video-preview-modal

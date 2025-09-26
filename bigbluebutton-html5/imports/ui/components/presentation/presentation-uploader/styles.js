@@ -77,7 +77,7 @@ const ToastFileName = styled.span`
   text-align: left;
 
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 20px;
 
   [dir="rtl"] & {
@@ -92,6 +92,14 @@ const StatusIcon = styled.span`
     height: ${statusIconSize} !important;
     width: ${statusIconSize} !important;
   }
+`;
+
+const StatusLabel = styled.span`
+  margin-left: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--Text-Secondary, #6F767E);
 `;
 
 const StatusInfo = styled.div`
@@ -114,7 +122,7 @@ const FileList = styled(ScrollboxVertical)`
   // overflow-x: hidden;
 `;
 
-const Table = styled.table`
+const Table = styled.div`
   position: relative;
   width: 100%;
   border-spacing: 0;
@@ -152,6 +160,12 @@ const Table = styled.table`
       }
     }
   }
+`;
+
+const TableContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 `;
 
 const VisuallyHidden = styled.th`
@@ -260,7 +274,7 @@ const CurrentLabel = styled.span`
   font-weight: 700;
   line-height: 1;
   color: #0A84FF;
-  background: #CFE9F5;
+  background: #CFE9F5 !important;
   text-align: center;
   white-space: nowrap;
   vertical-align: baseline;
@@ -417,7 +431,8 @@ const UploaderModal = styled.div`
 `;
 
 const ModalInner = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   //@media (min-width: 1025px) and (max-width: 1366px) {
   //    display: unset;
   //}
@@ -609,12 +624,21 @@ const StatusInfoSpan = styled.span`
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-
+    color: var(--Text-Secondary, #6F767E);
 
     ${({ styles }) => styles === 'error' && `
     display: inline-block;
     color: ${colorDanger};
   `}
+`;
+
+const PresentationItemInfo = styled.div`
+  display: flex;
+  align-items: center;
+  //max-width: calc(100% - 53px);
+  max-width: ${({ isActualCurrent }) => `
+    calc(100% - ${isActualCurrent ? 108 : 53}px - 4px)
+  `};
 `;
 
 const PresentationItem = styled.div`
@@ -635,6 +659,7 @@ const PresentationItem = styled.div`
   `}
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background: #FFFFFF; 
   border: 1px solid #EFEFEF;
   border-radius: 8px;
@@ -657,7 +682,7 @@ const TableItemActions = styled.div`
   text-align: left;
   align-items: center;
   display: flex;
-  margin-left: auto;
+  //margin-left: auto;
   [dir="rtl"] & {
     text-align: right;
   }
@@ -795,9 +820,11 @@ export default {
   FileLine,
   ToastFileName,
   StatusIcon,
+  StatusLabel,
   StatusInfo,
   FileList,
   Table,
+  TableContent,
   VisuallyHidden,
   ToastWrapper,
   ToastWrapper1,
@@ -828,6 +855,7 @@ export default {
   ToastItemIcon1,
   StatusInfoSpan,
   PresentationItem,
+  PresentationItemInfo,
   TableItemActions,
   ExtraHint,
   ExternalUpload,

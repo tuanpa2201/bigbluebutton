@@ -110,6 +110,8 @@ const Label = styled.label`
   font-size: 0.85rem;
   font-weight: bold;
   color: ${colorGrayLabel};
+  line-height: 20px;
+  margin-bottom: 4px;
 `;
 
 const Select = styled.select`
@@ -178,6 +180,9 @@ const BrowserWarning = styled.p`
 const Footer = styled.div`
   display: flex;
   flex-direction: column;
+  @media (max-width: 375px) {
+    margin-bottom: -4px;
+  }
 `;
 
 const FooterContainer = styled.div`
@@ -298,6 +303,10 @@ const VideoPreview = styled.video`
   @media ${smallOnly} {
     height: 10rem;
   }
+  
+  @media (max-width: 375px) {
+    width: unset;
+  }
 
   ${({ mirroredVideo }) => mirroredVideo && `
     transform: scale(-1, 1);
@@ -387,8 +396,8 @@ const BottomSeparator = styled.div`
   width: 100%;
   height: ${borderSizeSmall};
   background-color: ${colorGrayLightest};
-  margin-top: calc(${lineHeightComputed} * 1.25);
-  margin-bottom: calc(${lineHeightComputed} * 1.25);
+  margin-top: 16px;
+  margin-bottom: 12px;
 `;
 
 const IconSvg = styled.img`

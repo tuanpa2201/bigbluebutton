@@ -69,6 +69,10 @@ const PollOptionInput = styled.input`
   
   @media (min-width: 376px) and (max-width: 768px) {
     font-size: 16px !important;
+
+    ::placeholder {
+      font-size: 16px !important;
+    }
   }
 `;
 // @ts-ignore - Button is a JS Component
@@ -97,7 +101,7 @@ const DeletePollOptionButton = styled(Button)`
 const ErrorSpacer = styled.div`
   position: relative;
   height: 10px;
-  @media (min-width: 376px) and (max-width: 1366px) {
+  @media (max-width: 1366px) {
     height: 12px;
   }
 `;
@@ -141,9 +145,15 @@ const PollQuestionArea = styled.textarea<PollQuestionAreaProps>`
   padding: calc(${smPaddingY} * 2) ${smPaddingX};
   // border-radius: ${borderRadius};
   font-size: ${fontSizeBase};
+  ::placeholder {
+    font-size: ${fontSizeBase};
+  }
 
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 16px;
+    ::placeholder {
+      font-size: 16px;
+    }
   }
   // border: 1px solid ${colorGrayLighter};
   //box-shadow: 0 0 0 1px ${colorGrayLighter};
@@ -184,6 +194,9 @@ const SectionHeading = styled.h4`
 
 const ResponseTypes = styled.div`
   margin-top: 16px;
+  @media (min-width: 376px) and (max-width: 768px) {
+    margin-top: 24px;
+  }
 `;
 
 const ResponseChoices = styled.div`
@@ -243,7 +256,7 @@ const PollConfigButton = styled(Button)`
     }
 
     @media (min-width: 768px) and (max-width: 1024px) {
-      font-size: 16px;
+      font-size: 16px !important;
     }
   }
 
@@ -281,7 +294,7 @@ const PollConfigButton = styled(Button)`
 const PollParagraph = styled.div`
   //color: ${colorText};
   //margin-bottom: 0.9rem;
-  margin-bottom: 16px;
+  //margin-bottom: 16px;
 
   color: var(--Text-Primary, #313131);
   font-size: 14px;
@@ -517,6 +530,9 @@ const OptionWrapper = styled.div`
 const ResponseArea = styled.div`
   display: flex;
   flex-flow: column wrap;
+  @media (max-width: 768px) {
+    margin-bottom: 60px;
+  }
 `;
 
 const CustomInputHeading = styled(SectionHeading)`
