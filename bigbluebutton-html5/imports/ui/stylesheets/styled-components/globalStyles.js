@@ -131,7 +131,7 @@ const GlobalStyle = createGlobalStyle`
     
     & .Toastify__progress-bar-theme--light,
     & .Toastify__progress-bar-theme--light.Toastify__progress-bar--default {
-      background: #6CC17C!important;
+      background: #83BF6E!important;
     }
 
     & .Toastify__progress-bar-theme--light.Toastify__progress-bar--info {
@@ -143,7 +143,7 @@ const GlobalStyle = createGlobalStyle`
     }
     
     & .Toastify__progress-bar-theme--light.Toastify__progress-bar--success {
-      background: #6CC17C!important;
+      background: #83BF6E!important;
     }
     
     & .Toastify__progress-bar-theme--light.Toastify__progress-bar--warning {
@@ -163,7 +163,7 @@ const GlobalStyle = createGlobalStyle`
 
   .Toastify__toast--success {
     & .toastWrapper {
-      color: #6CC17C!important;
+      color: #83BF6E!important;
     }
   }
 
