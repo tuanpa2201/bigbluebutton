@@ -62,10 +62,11 @@ const InputUrl = styled.input`
   @media (min-width: 376px) and (max-width: 1024px) {
     font-size: 16px !important;
     line-height: 24px !important;
+    padding: 8px 12px !important;
   }
-  @media (min-width: 376px) and (max-width: 768px) {
-    line-height: 34px !important;
-  }
+  //@media (min-width: 376px) and (max-width: 768px) {
+  //  line-height: 34px !important;
+  //}
 `
 
 const Content = styled.div`

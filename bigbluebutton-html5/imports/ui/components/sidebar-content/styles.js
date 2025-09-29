@@ -18,7 +18,7 @@ const Poll = styled.div`
   min-width: 20em;
   //padding: ${smPaddingX};
   
-  padding: 0 16px 16px 16px;
+  padding: 0 16px;
   
   @media (min-width: 376px) and (max-width: 768px) {
    padding: 0 20px 20px 20px;

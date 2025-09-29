@@ -35,6 +35,7 @@ import {
 } from '../mutations';
 import useDeduplicatedSubscription from '/imports/ui/core/hooks/useDeduplicatedSubscription';
 import connectionStatus from '/imports/ui/core/graphql/singletons/connectionStatus';
+import Checkbox from "/imports/ui/components/common/checkbox/component";
 
 interface LayoutDispatchProps {
   type: string,
@@ -220,9 +221,8 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
     });
   }, []);
 
-  const onCheckBoxChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const { checked } = e.target;
-    setRememberChoice(checked);
+  const onCheckBoxChange = useCallback(() => {
+    setRememberChoice(!rememberChoice);
   }, []);
 
   const getPrivateGuestLobbyMessage = useCallback((userId: string) => {
@@ -384,10 +384,18 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
           <Styled.MainTitle>{intl.formatMessage(intlMessages.optionTitle)}</Styled.MainTitle>
           {allowRememberChoice ? (
             <Styled.RememberContainer>
-              <input style={{ borderRadius: '4px' }} id="rememberCheckboxId" type="checkbox" onChange={onCheckBoxChange} />
-              <label htmlFor="rememberCheckboxId" className="remember-choice-label">
-                {intl.formatMessage(intlMessages.rememberChoice)}
-              </label>
+              {/*<input style={{ borderRadius: '4px' }} id="rememberCheckboxId" type="checkbox" onChange={onCheckBoxChange} />*/}
+              {/*<label htmlFor="rememberCheckboxId" className="remember-choice-label">*/}
+              {/*  {intl.formatMessage(intlMessages.rememberChoice)}*/}
+              {/*</label>*/}
+              <div id="rememberCheckboxId">
+                <Checkbox
+                  onChange={onCheckBoxChange}
+                  checked={rememberChoice}
+                  ariaLabelledBy="rememberCheckboxId"
+                  label={intl.formatMessage(intlMessages.rememberChoice)}
+                />
+              </div>
             </Styled.RememberContainer>
           ) : null}
           <div className="d-flex gap-8">

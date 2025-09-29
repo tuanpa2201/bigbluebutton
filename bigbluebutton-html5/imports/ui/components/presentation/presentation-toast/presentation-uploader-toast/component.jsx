@@ -272,7 +272,7 @@ function renderToastItem(item, intl) {
             <Styled.ToastItemIcon1
               loading={isProcessing}
               done={!isProcessing}
-              iconName={isProcessing ? 'blank' : 'check'}
+              iconName={isProcessing ? 'blank' : 'presentation'}
               color="#0F70D7"
             />
           </Styled.StatusIcon>
