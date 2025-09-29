@@ -129,7 +129,7 @@
 .icon-bbb-presentation {
   align-content: center;
   position: unset !important;
-  margin-left: 6px;
+  margin-bottom: 6px;
 }
 .icon-bbb-presentation:before {
   /* content: "\e90b"; */
@@ -138,6 +138,7 @@
   width: 16px !important;
   height: 16px !important;
   display: flex;
+  margin-right: 8px;
 }
 .icon-bbb-listen:before {
   content: "\e90c";

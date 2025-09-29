@@ -103,6 +103,10 @@ const StatusLabel = styled.span`
   [data-darkreader-scheme="dark"] & {
     color: var(--text-secondary-dark, #c5c9cd) !important;
   }
+  
+  @media (min-width: 376px) and (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const StatusInfo = styled.div`
@@ -620,6 +624,9 @@ const ToastItemIcon1 = styled(Icon)`
 
   ${({ done }) => done && `
     color: ${colorSuccess};
+    .icon-bbb-presentation {
+      color: unset;
+    }
   `}
 
   ${({ error }) => error && `
@@ -648,6 +655,10 @@ const StatusInfoSpan = styled.span`
 
     [data-darkreader-scheme="dark"] & {
       color: var(--text-secondary-dark, #C5C9CD) !important;
+    }
+  
+    @media (min-width: 376px) and (max-width: 768px) {
+      font-size: 14px;
     }
 `;
 

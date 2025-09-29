@@ -94,7 +94,7 @@ const ExternalVideoPlayerModal: React.FC<ExternalVideoPlayerModalProps> = ({
     >
       <Styled.Content>
         <Styled.VideoUrl animations={animations}>
-          <Styled.Label htmlFor="video-modal-input">
+          <Styled.Label id="video-modal-input-label" htmlFor="video-modal-input">
             {intl.formatMessage(intlMessages.input)}
             <Styled.InputUrl
               id="video-modal-input"
@@ -124,7 +124,7 @@ const ExternalVideoPlayerModal: React.FC<ExternalVideoPlayerModalProps> = ({
               : null
           }
       </Styled.Content>
-      <Styled.ButtonFooter className="footer-model-custom-mobile">
+      <Styled.ButtonFooter id="footer-model-custom-mobile-dark" className="footer-model-custom-mobile">
         <Styled.CancelButton
           className="btn btn-default m-0-i"
           data-test="cancelSharingWebcam"

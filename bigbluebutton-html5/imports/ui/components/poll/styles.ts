@@ -155,6 +155,13 @@ const PollQuestionArea = styled.textarea<PollQuestionAreaProps>`
       font-size: 16px;
     }
   }
+  @media (max-width: 375px) {
+    font-size: 14px;
+    ::placeholder {
+      font-size: 14px;
+    }
+  }
+  
   // border: 1px solid ${colorGrayLighter};
   //box-shadow: 0 0 0 1px ${colorGrayLighter};
 
@@ -419,12 +426,12 @@ const StartPollBtn = styled(Button)`
 `;
 const StartPoll = styled.div`
     width: 100%;
-    position: absolute;
+    position: sticky;
     bottom: 0;
     left: 0;
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-bottom: 28px;
+    //padding-left: 16px;
+    //padding-right: 16px;
+    padding-bottom: 36px;
     
   @media (min-width: 376px) and (max-width: 768px) {
     padding: 20px;
@@ -531,7 +538,7 @@ const ResponseArea = styled.div`
   display: flex;
   flex-flow: column wrap;
   @media (max-width: 768px) {
-    margin-bottom: 60px;
+    margin-bottom: 102px;
   }
 `;
 

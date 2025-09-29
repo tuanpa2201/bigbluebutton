@@ -50,7 +50,7 @@ const DtfInvert = `
     background-color: var(--darkreader-selection-background) !important;
   }
   div.tlui-toolbar__inner > div.tlui-toolbar__tools.fade-in {
-    background: var(--darkreader-border--color-selected) !important;
+<!--    background: var(&#45;&#45;darkreader-border&#45;&#45;color-selected) !important;-->
   }
   div[id="cameraDock"] {
     background-color: var(--darkreader-neutral-background) !important;
@@ -122,6 +122,43 @@ const DtfInvert = `
   [data-darkreader-scheme="dark"] .presentationContainer .presentation {
       background-color: var(--meet-bg, #2b2e32);
   }
+  
+  [data-darkreader-scheme="dark"] #presentationToolbarWrapper {
+    background-color: #303338;
+    button {
+        background-color: #303338;
+    }
+    span {
+        background-color: #303338;
+    }
+    select {
+        background-color: #303338; 
+        & > option {
+            background-color: #303338;
+        }
+    }
+  } 
+  
+  [data-darkreader-scheme="dark"] #video-modal-input-label {
+    color: var(--text-primary-dark, #fcfcfd) !important;
+  }
+  
+  [data-darkreader-scheme="dark"] #video-modal-input {
+    color: var(--text-secondary-dark, #C5C9CD) !important;
+  }
+  [data-darkreader-scheme="dark"] #video-modal-input::placeholder {
+    color: var(--text-secondary-dark, #C5C9CD) !important;
+  }
+  [data-darkreader-scheme="dark"] #external-video-note {
+    color: var(--text-secondary-dark, #C5C9CD) !important;
+  }
+  [data-darkreader-scheme="dark"] #footer-model-custom-mobile-dark {
+    background: transparent !important;
+    border-top: 1px solid #4E5358;
+  }
+  
+  
+  
 
   [data-darkreader-scheme="dark"] .presentationContainer i,
   [data-darkreader-scheme="dark"] .presentationContainer button[aria-describedby="resetZoomDescription"],
@@ -574,6 +611,10 @@ const DtfInvert = `
       color: var(--text-primary-dark, #FCFCFD) !important;
   }
   
+  [data-darkreader-scheme="dark"] #user-list-tab {
+      background-color: #3b3f43 !important;
+  }
+  
   [data-darkreader-scheme="dark"] .toast-file-line .toast-info-span {
       color: var(--text-secondary-dark, #c5c9cd) !important;
   }
@@ -902,7 +943,7 @@ const DtfInvert = `
     }
 
     [data-darkreader-scheme="dark"] .ReactModal__Content.lock-viewer-modal .modal-content .lock-viewer-content .lock-viewer-desc {
-        color: var(--text-primary-dark, #c5c9cd);
+        color: var(--text-secondary-dark, #c5c9cd);
     }
 
     [data-darkreader-scheme="dark"] .ReactModal__Content.lock-viewer-modal .modal-content .lock-viewer-content .lock-viewer-form .lock-viewer-tbl-header {
