@@ -302,6 +302,8 @@
 
     .xs-w-100 {
         width: 100% !important;
+        justify-content: center;
+        display: flex;
     }
 
     .xs-gap-12 {
