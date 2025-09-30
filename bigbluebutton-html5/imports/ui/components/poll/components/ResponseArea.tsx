@@ -98,6 +98,7 @@ const ResponseArea: React.FC<ResponseAreaProps> = ({
         )}
         {defaultPoll && (
           <Styled.AddItemButton
+            className="add-item-button-elm"
             data-test="addPollItem"
             label={intl.formatMessage(intlMessages.addOptionLabel)}
             aria-describedby="add-item-button"

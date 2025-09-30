@@ -308,6 +308,7 @@ const PollParagraph = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+  margin-bottom: 16px;
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 16px;
   }
@@ -356,6 +357,10 @@ const AddItemButton = styled(Button)`
 
   @media (min-width: 768px) and (max-width: 1024px) {
     font-size: 16px;
+  }
+  
+  span {
+    height: 16px;
   }
     
   &:hover {

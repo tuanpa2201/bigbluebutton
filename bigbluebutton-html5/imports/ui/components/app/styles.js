@@ -301,8 +301,17 @@ const DtfInvert = `
   }
 
   [data-darkreader-scheme="dark"] #pollPanel .response-choices .delete_poll_option span {
-      color: var(--text-secondary-dark, #c5c9cd);
+      color: #CECFD2;
   }
+  
+  [data-darkreader-scheme="dark"] .add-item-button-elm {
+    background: transparent !important;
+    color: #EE0033 !important;
+  }
+  
+<!--  [data-darkreader-scheme="dark"] .current_label {-->
+<!--    color: #fcfcfd !important;-->
+<!--  }-->
 
   [data-darkreader-scheme="dark"] #pollPanel .poll-checkbox span {
       color: var(--text-primary-dark, #fcfcfd);
@@ -654,6 +663,44 @@ const DtfInvert = `
 
   [data-darkreader-scheme="dark"] .MuiList-root.MuiList-padding.MuiMenu-list li div {
       color: var(--text-primary-dark, #fcfcfd);
+  }
+  
+  [data-darkreader-scheme="dark"] .MuiList-root.MuiList-padding.MuiMenu-list li svg {
+      color: #f2f2f2;
+  }
+  
+  [data-darkreader-scheme="dark"] .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPopover-paper {
+      background: #3B3F43;
+  }
+  
+  [data-darkreader-scheme="dark"] #WhiteboardOptionButton {
+    button {
+        background-color: #3B3F43 !important;
+        color: #F2F2F2 !important;
+    }
+  }
+  
+  [data-darkreader-scheme="dark"] #nextPreWhiteBoard {
+    button {
+        background-color: #3B3F43 !important;
+        color: #F2F2F2 !important;
+    }
+  }
+  
+  [data-darkreader-scheme="dark"] .header-icon {
+    svg {
+        color: #F2F2F2 !important;
+    }
+  }
+  
+  [data-darkreader-scheme="dark"] .toggle-track-checked {
+    background-color: #EE0033 !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .poll-option-input {
+    background: transparent !important;
+    color: #C5C9CD !important;
+    border: 1px solid #9A9A9A !important;
   }
 
   [data-darkreader-scheme="dark"] .tlui-layout__mobile .tlui-button__tool {
@@ -1024,6 +1071,7 @@ const DtfInvert = `
     }
     [data-darkreader-scheme="dark"]  .btn.btn-primary {
         color: #fff !important;
+        background: #EE0033 !important;
     }
     [data-darkreader-scheme="dark"] .local-echo-button {
         color: #0F70D7 !important;
