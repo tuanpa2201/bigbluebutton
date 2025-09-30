@@ -69,6 +69,7 @@ const JoinContainer = styled.div`
   padding: 8px 12px;
   border-radius: 8px;
   margin-top: 8px;
+  height: 48px;
 `;
 
 // @ts-ignore - as button comes from JS, we can't provide its props

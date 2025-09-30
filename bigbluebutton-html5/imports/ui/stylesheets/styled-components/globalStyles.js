@@ -139,7 +139,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     & .Toastify__progress-bar-theme--light.Toastify__progress-bar--error {
-      background: #ED1B2F!important;
+      background: #FF5565!important;
     }
     
     & .Toastify__progress-bar-theme--light.Toastify__progress-bar--success {

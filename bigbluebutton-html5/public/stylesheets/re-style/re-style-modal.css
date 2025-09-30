@@ -220,7 +220,7 @@
   .ReactModal__Content.video-preview-modal
     .video-preview-container
     .min-h-custom {
-    min-height: 230px;
+    min-height: 260px;
   }
 }
 
@@ -228,7 +228,7 @@
   .ReactModal__Content.video-preview-modal
     .video-preview-container
     .min-h-custom {
-    min-height: 245px;
+    min-height: 260px;
   }
 }
 

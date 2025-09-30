@@ -164,7 +164,7 @@ const Toast = styled.div`
 
   ${({ type }) => type === 'error' && `
     & .toastIcon {
-      color: #ED1B2F;
+      color: #FF5565;
     }
   `}
 

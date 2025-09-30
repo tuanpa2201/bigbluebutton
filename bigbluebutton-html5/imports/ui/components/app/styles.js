@@ -1076,6 +1076,12 @@ const DtfInvert = `
     [data-darkreader-scheme="dark"] .local-echo-button {
         color: #0F70D7 !important;
     }
+    [data-darkreader-scheme="dark"] [type="error"] .toastIcon {
+        color: #FF5565;
+    }
+    [data-darkreader-scheme="dark"] .toastClass .Toastify__progress-bar-theme--light.Toastify__progress-bar--error {
+        background: #FF5565 !important;
+    }
 `;
 
 const DtfBrandingInvert = `
