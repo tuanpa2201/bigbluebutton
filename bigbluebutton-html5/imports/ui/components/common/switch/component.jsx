@@ -54,6 +54,8 @@ class Switch extends Toggle {
         animations={animations}
       >
         <Styled.ToggleTrack
+          className={`toggle-track 
+            ${checked ? 'toggle-track-checked' : 'toggle-track-unchecked'}`}
           aria-hidden="true"
           checked={checked}
           invertColors={invertColors}

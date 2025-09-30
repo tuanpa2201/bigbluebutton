@@ -815,7 +815,7 @@ class Presentation extends PureComponent {
                   {slideContent}
                 </Styled.VisuallyHidden>
                 {((userIsPresenter || hasWBAccess) && (!tldrawIsMounting && presentationWidth > 0 && currentSlide)) && (
-                <Styled.ExtraTools {...{ isToolbarVisible }}>
+                <Styled.ExtraTools id="nextPreWhiteBoard" {...{ isToolbarVisible }}>
                   <TooltipContainer title={intl?.messages['app.shortcut-help.undo']}>
                     <Styled.Button
                       aria-label={intl?.messages['app.shortcut-help.undo']}
