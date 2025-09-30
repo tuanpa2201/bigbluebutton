@@ -339,6 +339,12 @@
   }
 }
 
+
+.video-content-preview {
+  justify-content: center;
+  display: flex;
+}
+
 .ReactModal__Content.video-preview-modal
   .video-preview-container
   .video-preview {
