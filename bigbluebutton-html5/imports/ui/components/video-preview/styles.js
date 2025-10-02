@@ -85,7 +85,7 @@ const InternCol = styled.div`
   
   .custom-dropdown__selected {
     height: 40px !important;
-    padding-top: 9px !important;
+    padding: 10px 12px;
   }
 `;
 
