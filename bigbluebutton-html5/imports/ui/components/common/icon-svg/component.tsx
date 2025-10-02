@@ -343,6 +343,12 @@ const iconsMap: { [key: string]: JSX.Element } = {
       <rect x="5.5" y="5.5" width="13" height="13" rx="6.5" fill="white" stroke="#C8C8C8" />
     </svg>
   ),
+  circleDark: (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5.5" y="5.5" width="13" height="13" rx="6.5" fill="#3B3F43" stroke="#9A9A9A"/>
+    </svg>
+
+  ),
   check: (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect x="5" y="5" width="14" height="14" rx="7" fill="#EE0033" />

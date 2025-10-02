@@ -175,8 +175,8 @@ const LayoutModalComponent = ({
     if (isKeepPushingLayoutEnabled) {
       return (
         <Tooltip title={intl.formatMessage(intlMessages.pushToggleWarningTooltip)}>
-          <Styled.PushContainer>
-            <Styled.LabelPushLayout>
+          <Styled.PushContainer className="border-00-dark">
+            <Styled.LabelPushLayout className="text-primary-dark">
               {isPresenter
                 ? intl.formatMessage(intlMessages.updateAll)
                 : intl.formatMessage(intlMessages.followPresentersLayout)}
@@ -243,7 +243,7 @@ const LayoutModalComponent = ({
           {renderPushLayoutsOptions()}
         </Styled.BodyContainer>
       </Styled.Content>
-      <Styled.ButtonBottomContainer className="footer-model-custom-tablet">
+      <Styled.ButtonBottomContainer className="footer-model-custom-tablet border-00-dark">
         <Button
           className="btn btn-primary"
           label={intl.formatMessage(intlMessages.update)}
