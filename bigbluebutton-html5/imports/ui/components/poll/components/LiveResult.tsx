@@ -132,8 +132,8 @@ const LiveResult: React.FC<LiveResultProps> = ({
     });
 
   return (
-    <div>
-      <Styled.Instructions>
+    <div className="live-result">
+      <Styled.Instructions className="live-result-instructions">
         {intl.formatMessage(intlMessages.activePollInstruction)}
       </Styled.Instructions>
       <Styled.Stats>
@@ -168,17 +168,17 @@ const LiveResult: React.FC<LiveResultProps> = ({
       {
         !isSecret
           ? (
-            <Styled.TableResult>
+            <Styled.TableResult className="live-result-table">
               <tbody>
               <tr>
-                <Styled.THeading>{intl.formatMessage(intlMessages.usersTitle)}</Styled.THeading>
-                <Styled.THeading>{intl.formatMessage(intlMessages.responsesTitle)}</Styled.THeading>
+                <Styled.THeading className="live-result-heading">{intl.formatMessage(intlMessages.usersTitle)}</Styled.THeading>
+                <Styled.THeading className="live-result-heading">{intl.formatMessage(intlMessages.responsesTitle)}</Styled.THeading>
               </tr>
               {
                 translatedUsers.map((user) => (
                   <tr key={user.user.userId}>
-                    <Styled.ResultLeft>{user.user.name}</Styled.ResultLeft>
-                    <Styled.ResultRight data-test="userVoteLiveResult">{user.optionDescIds.join()}</Styled.ResultRight>
+                    <Styled.ResultLeft className="live-result-data">{user.user.name}</Styled.ResultLeft>
+                    <Styled.ResultRight data-test="userVoteLiveResult" className="live-result-data">{user.optionDescIds.join()}</Styled.ResultRight>
                   </tr>
                 ))
               }

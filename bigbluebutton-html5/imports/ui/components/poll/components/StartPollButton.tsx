@@ -97,7 +97,7 @@ const StartPollButton: React.FC<StartPollButtonProps> = ({
     && optList.filter((o) => o.val.trim().length > 0).length < 2;
 
   return (
-    <Styled.StartPoll>
+    <Styled.StartPoll className="start-poll-button-elm">
       <Styled.StartPollBtn
         data-test="startPoll"
         className={'btn btn-primary'}

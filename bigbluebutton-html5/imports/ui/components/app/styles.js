@@ -144,7 +144,8 @@ const DtfInvert = `
   }
   
   [data-darkreader-scheme="dark"] #video-modal-input {
-    color: var(--text-secondary-dark, #C5C9CD) !important;
+    color: var(--text-primary-dark, #fcfcfd) !important;
+    background: transparent !important;
   }
   [data-darkreader-scheme="dark"] #video-modal-input::placeholder {
     color: var(--text-secondary-dark, #C5C9CD) !important;
@@ -155,6 +156,10 @@ const DtfInvert = `
   [data-darkreader-scheme="dark"] #footer-model-custom-mobile-dark {
     background: transparent !important;
     border-top: 1px solid #4E5358;
+    margin-left: -16px;
+    margin-right: -16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
   
   
@@ -665,6 +670,15 @@ const DtfInvert = `
       color: var(--text-primary-dark, #fcfcfd);
   }
   
+  [data-darkreader-scheme="dark"] .timerInput {
+    background-color: #303338 !important;
+    color: #FCFCFD !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .toastClass .Toastify__progress-bar-theme--light.Toastify__progress-bar--success {
+      background-color: #83BF6E !important;
+  }
+  
   [data-darkreader-scheme="dark"] .MuiList-root.MuiList-padding.MuiMenu-list li svg {
       color: #f2f2f2;
   }
@@ -697,10 +711,36 @@ const DtfInvert = `
     background-color: #EE0033 !important;
   }
   
+  [data-darkreader-scheme="dark"] .toggle-track-unchecked {
+    background-color: #333335 !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .icon-bbb-check:before {
+    color: #4CCE77 !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .live-result-instructions,
+  [data-darkreader-scheme="dark"] .live-result-heading, 
+  [data-darkreader-scheme="dark"] .live-result-data {
+    color: #C5C9CD !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .live-result-table {
+    border: 1px solid #9A9A9A !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .start-poll-button-elm {
+    background-color: #3b3f43 !important;
+  }
+  
   [data-darkreader-scheme="dark"] .poll-option-input {
     background: transparent !important;
-    color: #C5C9CD !important;
+    color: #FCFCFD !important;
     border: 1px solid #9A9A9A !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .poll-option-input::placeholder {
+    color: #C5C9CD !important;
   }
 
   [data-darkreader-scheme="dark"] .tlui-layout__mobile .tlui-button__tool {

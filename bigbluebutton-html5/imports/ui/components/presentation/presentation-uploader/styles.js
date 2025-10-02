@@ -63,7 +63,7 @@ const FileLine = styled.div`
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  padding-bottom: ${iconPaddingMd};
+  margin-bottom: 4px;
   // width: ${fileLineWidth};
 `;
 
@@ -98,7 +98,7 @@ const StatusLabel = styled.span`
   margin-left: 8px;
   font-weight: 400;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 24px;
   color: var(--Text-Secondary, #6F767E);
   [data-darkreader-scheme="dark"] & {
     color: var(--text-secondary-dark, #c5c9cd) !important;
@@ -645,7 +645,7 @@ const ToastItemIcon1 = styled(Icon)`
 const StatusInfoSpan = styled.span`
     font-weight: 400;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 20px;
     color: var(--Text-Secondary, #6F767E);
 
     ${({ styles }) => styles === 'error' && `

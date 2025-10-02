@@ -265,6 +265,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
             <Styled.StopwatchTime>
               <Styled.StopwatchTimeInput>
                 <Styled.TimerInput
+                  className="timerInput"
                   type="number"
                   disabled={stopwatch}
                   defaultValue={hours}
@@ -283,6 +284,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
               <Styled.StopwatchTimeColon>:</Styled.StopwatchTimeColon>
               <Styled.StopwatchTimeInput>
                 <Styled.TimerInput
+                  className="timerInput"
                   type="number"
                   disabled={stopwatch}
                   defaultValue={minutes}
@@ -301,6 +303,7 @@ const TimerPanel: React.FC<TimerPanelProps> = ({
               <Styled.StopwatchTimeColon>:</Styled.StopwatchTimeColon>
               <Styled.StopwatchTimeInput>
                 <Styled.TimerInput
+                  className="timerInput"
                   type="number"
                   disabled={stopwatch}
                   defaultValue={seconds}
