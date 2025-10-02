@@ -140,6 +140,18 @@
     }
 }
 
+.border-00-dark {
+    [data-darkreader-scheme="dark"] & {
+        border-color: #4E5358 !important;
+    }
+}
+
+.toggle-track-unchecked {
+    [data-darkreader-scheme="dark"] & {
+        background-color: #333335 !important;
+    }
+}
+
 
 
 /* PADDING */
