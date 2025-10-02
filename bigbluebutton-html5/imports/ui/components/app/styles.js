@@ -979,6 +979,10 @@ const DtfInvert = `
         color: var(--text-primary-dark, #fcfcfd);
     }
 
+    [data-darkreader-scheme="dark"] .shortcut-help .simple-modal-content .shortcut-help-tabs svg {
+        color: var(--icon-primary-dark, #f2f2f2);
+    }
+
     [data-darkreader-scheme="dark"] .shortcut-help .simple-modal-content .shortcut-help-tabs .is-selected {
         background: var(--bg-04-hover-dark, #333335);
     }
