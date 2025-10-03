@@ -17,9 +17,9 @@ const renderPendingUsers = (
 ) => {
   if (!usersArray.length) return null;
   return (
-    <Styled.PendingUsers>
-      <Styled.MainTitle>{message}</Styled.MainTitle>
-      <Styled.UsersWrapper>
+    <Styled.PendingUsers className="pending-users">
+      <Styled.MainTitle className="pending-users-main-title">{message}</Styled.MainTitle>
+      <Styled.UsersWrapper className="pending-users-users-wrapper">
         <Styled.Users role="list">
           {usersArray.map((user, idx) => renderGuestUserItem(
             user.user.name ?? '',

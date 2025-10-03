@@ -344,21 +344,21 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
           <SvgIcon iconName="chevronLeft" />
           <span>{intl.formatMessage(intlMessages.title)}</span>
         </span>
-        {/*<span*/}
-        {/*  className="icon_cancel"*/}
-        {/*  role="button"*/}
-        {/*  tabIndex={0}*/}
-        {/*  onClick={closePanel}*/}
-        {/*  onKeyDown={(e) => {*/}
-        {/*    if (e.key === 'Enter' || e.key === ' ') {*/}
-        {/*      e.preventDefault();*/}
-        {/*      closePanel();*/}
-        {/*    }*/}
-        {/*  }}*/}
-        {/*  aria-label={intl.formatMessage(intlMessages.title)}*/}
-        {/*>*/}
-        {/*  <SvgIcon iconName="cross_20" />*/}
-        {/*</span>*/}
+        <span
+          className="icon_cancel close-waiting-user-panel"
+          role="button"
+          tabIndex={0}
+          onClick={closePanel}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              closePanel();
+            }
+          }}
+          aria-label={intl.formatMessage(intlMessages.title)}
+        >
+          <SvgIcon iconName="cross_20" />
+        </span>
       </div>
       <Styled.ScrollableArea>
         {isGuestLobbyMessageEnabled ? (
@@ -381,9 +381,9 @@ const GuestUsersManagementPanel: React.FC<GuestUsersManagementPanelProps> = ({
           </Styled.LobbyMessage>
         ) : null}
         <Styled.ModeratorActions>
-          <Styled.MainTitle>{intl.formatMessage(intlMessages.optionTitle)}</Styled.MainTitle>
+          <Styled.MainTitle className="main-title-moderator-action">{intl.formatMessage(intlMessages.optionTitle)}</Styled.MainTitle>
           {allowRememberChoice ? (
-            <Styled.RememberContainer>
+            <Styled.RememberContainer className="remember-choice-container">
               {/*<input style={{ borderRadius: '4px' }} id="rememberCheckboxId" type="checkbox" onChange={onCheckBoxChange} />*/}
               {/*<label htmlFor="rememberCheckboxId" className="remember-choice-label">*/}
               {/*  {intl.formatMessage(intlMessages.rememberChoice)}*/}

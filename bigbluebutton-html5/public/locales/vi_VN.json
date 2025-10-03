@@ -1072,7 +1072,7 @@
   "app.userList.guest.pendingGuestAlert": "Đã tham gia phiên và đang chờ sự chấp thuận của bạn.",
   "app.userList.guest.rememberChoice": "Ghi nhớ lựa chọn",
   "app.userList.guest.emptyMessage": "Hiện tại không có tin nhắn",
-  "app.userList.guest.inputPlaceholder": "Thông báo đến phòng chờ của khách",
+  "app.userList.guest.inputPlaceholder": "Tin nhắn đến phòng chờ",
   "app.userList.guest.privateInputPlaceholder": "Tin nhắn gửi tới {0}",
   "app.userList.guest.privateMessageLabel": "Tin nhắn",
   "app.userList.guest.acceptLabel": "Chấp nhận",

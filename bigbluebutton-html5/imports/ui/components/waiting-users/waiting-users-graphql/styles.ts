@@ -245,6 +245,12 @@ const Panel = styled.div<PanelProps>`
   @media ${smallOnly} {
     transform: none !important;
   }
+  
+  @media (max-width: 768px) {
+    .close-waiting-user-panel {
+      display: none;
+    }
+  }
 `;
 
 const LobbyMessage = styled.div`
@@ -277,6 +283,13 @@ const LobbyMessage = styled.div`
     }
     @media (max-width: 768px) {
       height: 40px !important;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .text-input-send-button {
+      height: 35px !important;
+      width: 35px !important;
     }
   }
 `;

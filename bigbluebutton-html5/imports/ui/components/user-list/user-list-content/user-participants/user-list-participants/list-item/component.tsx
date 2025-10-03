@@ -299,7 +299,7 @@ const UserListItem: React.FC<UserListItemProps> = ({
           {(user.userId === Auth.userID) ? `(${intl.formatMessage(messages.you)})` : ''}
           {((user.locked || user.userLockSettings?.disablePublicChat) && (user.userLockSettings?.disablePublicChat || lockSettings?.hasActiveLockSetting) && !user.isModerator) ? <div className="lock_user_chat"><SvgIcon iconName="lock2" /></div> : ''}
         </Styled.UserName>
-        <Styled.UserNameSub data-test={user.mobile ? 'mobileUser' : undefined}>
+        <Styled.UserNameSub className="user-name-sub" data-test={user.mobile ? 'mobileUser' : undefined}>
           {subs.length ? addSeparator(subs) : null}
         </Styled.UserNameSub>
       </Styled.UserNameContainer>

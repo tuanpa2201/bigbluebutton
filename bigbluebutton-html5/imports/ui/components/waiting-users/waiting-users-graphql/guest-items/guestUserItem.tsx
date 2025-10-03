@@ -52,6 +52,7 @@ const renderGuestUserItem = (
         <Styled.UserContentContainer key={`user-content-container-${userId}`} role="listitem">
           <Styled.UserAvatarContainer key={`user-avatar-container-${userId}`}>
             <Styled.Avatar
+              className="guest-user-item-avatar"
               key={`user-avatar-${userId}`}
               moderator={role === 'MODERATOR'}
               avatar={avatar}
@@ -60,7 +61,7 @@ const renderGuestUserItem = (
               {getNameInitials(name)}
             </Styled.Avatar>
           </Styled.UserAvatarContainer>
-          <Styled.UserName key={`user-name-${userId}`}>
+          <Styled.UserName className="guest-user-item-username" key={`user-name-${userId}`}>
             {/* {`[${sequence}] ${name}`}*/}
             {`${name}`}
           </Styled.UserName>
@@ -75,6 +76,7 @@ const renderGuestUserItem = (
             svgIcon="accept1"
             onClick={handleAccept}
             data-test="acceptGuest"
+            className="guest-accept-button"
           />
           {/* {isGuestLobbyMessageEnabled ? (
             <Styled.WaitingUsersButtonMsg
@@ -95,6 +97,7 @@ const renderGuestUserItem = (
             onClick={handleDeny}
             data-test="denyGuest"
             svgIcon="cancel1"
+            className="guest-deny-button"
           />
         </Styled.ButtonContainer>
       </Styled.ListItem>

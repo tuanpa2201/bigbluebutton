@@ -52,6 +52,7 @@ const GuestPanelOpener: React.FC<GuestPanelOpenerProps> = ({
         <Styled.List>
           <Styled.ListItem
             role="button"
+            className="waiting-users-button"
             data-test="waitingUsersBtn"
             tabIndex={0}
             onClick={toggleWaitingPanel}
@@ -63,14 +64,15 @@ const GuestPanelOpener: React.FC<GuestPanelOpenerProps> = ({
           >
             <span className="waiting-user-title">{intl.formatMessage(intlMessages.title)}</span>
             {pendingUsers > 0 && (
-              <Styled.UnreadMessages>
-                <Styled.UnreadMessagesText>
+              <Styled.UnreadMessages className="unread-messages">
+                <Styled.UnreadMessagesText className="unread-messages-text">
                   {pendingUsers}
                 </Styled.UnreadMessagesText>
               </Styled.UnreadMessages>
             )}
             <SvgIcon iconName="chevronRight" />
           </Styled.ListItem>
+          <div className="vertical-bar" />
         </Styled.List>
       </Styled.ScrollableList>
     </Styled.Messages>

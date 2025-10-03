@@ -1326,3 +1326,13 @@ li[data-key="menuItem-directLogoutButton"] div:first-child {
         height: 20px !important;
     }
 }
+
+.pending-users-main-title {
+  margin-top: 0 !important;
+  padding-top: 20px !important;
+}
+
+.main-title-moderator-action {
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+}
