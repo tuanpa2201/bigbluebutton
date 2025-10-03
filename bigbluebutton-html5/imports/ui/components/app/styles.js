@@ -505,7 +505,108 @@ const DtfInvert = `
   }
 
   [data-darkreader-scheme="dark"] .userListContainer .menuUserTitle span .icon-bbb-more:before {
+      color: #fcfcfd !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .waiting-users-button {
+    background-color: transparent !important;
+    span {
+       color: #FCFCFD !important;
+    }
+    path {
+        stroke: #FCFCFD !important;
+    }
+    color: #FCFCFD !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .vertical-bar { 
+    border-bottom: 1px solid #4E5358 !important;
+    margin-right: 16px;
+    margin-left: 9px;
+  }
+  
+  [data-darkreader-scheme="dark"] .unread-messages-text {
+    color: #FFFFFF !important;
+    background-color: #EE0033 !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .user-name-sub {
+    color: #C5C9CD !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .micSlash {
+    color: #CECFD2 !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .waiting-users-container {
+    background-color: #3B3F43 !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .header-waiting-user {
+    span {
+        color: #FCFCFD !important;
+    }
+  }
+  
+  [data-darkreader-scheme="dark"] .header-waiting-user .icon_cancel path {
+    stroke: #FCFCFD !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .lobbyMessage {
+    textarea {
+        color: #FCFCFD !important;
+        border: 1px solid #9A9A9A !important;
+    }
+    textarea::placeholder {
+        color: #C5C9CD !important;
+    }
+  }
+  
+  [data-darkreader-scheme="dark"] .text-lobby-message {
+    background-color: #303338 !important;
+    color: #C5C9CD !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .main-title-moderator-action {
+    color: #FCFCFD !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .remember-choice-container {
+    .css-1sqr02w-MuiFormControlLabel-root .MuiFormControlLabel-label {
+        color: #FCFCFD !important;
+    }
+    input {
+        border-color: #BBBBBB !important;
+    }
+  }
+  
+  [data-darkreader-scheme="dark"] .pending-users-main-title {
+    color: #FCFCFD !important;
+    border-top: 1px solid #4E5358 !important;
+  }
+  [data-darkreader-scheme="dark"] .pending-users-users-wrapper {
+    .guest-user-item-username {
+        color: #FCFCFD !important;
+    }
+    .guest-user-item-avatar {
+      color: #FFFFFF !important;
+    }
+    .guest-accept-button {
       color: #F2F2F2 !important;
+      path { 
+        stroke: #F2F2F2 !important;
+      }
+    }
+    .guest-deny-button {
+      color: #F66248 !important;
+      path { 
+        stroke: #F66248 !important;
+      }
+    }
+  }
+  
+  [data-darkreader-scheme="dark"] .no-pending-users {
+    color: #FCFCFD !important;
   }
 
   [data-darkreader-scheme="dark"] .userListContainer .menuUserTitle .manage_users span:first-child {
@@ -720,9 +821,20 @@ const DtfInvert = `
   }
   
   [data-darkreader-scheme="dark"] .live-result-instructions,
-  [data-darkreader-scheme="dark"] .live-result-heading, 
-  [data-darkreader-scheme="dark"] .live-result-data {
+  [data-darkreader-scheme="dark"] .live-result-heading {
     color: #C5C9CD !important;
+  }
+  
+  [data-darkreader-scheme="dark"] .sideBarBtn {
+    background-color: #3B3F43;
+  }
+  
+  [data-darkreader-scheme="dark"] .sideBarBtn.active {
+    background-color: #EE0033;
+  }
+   
+  [data-darkreader-scheme="dark"] .live-result-data {
+    color: #FCFCFD !important;
   }
   
   [data-darkreader-scheme="dark"] .live-result-table {

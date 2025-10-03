@@ -300,6 +300,7 @@ class PresentationUploader extends Component {
       presExporting: new Set(),
       shouldDisableExportButtonForAllDocuments: false,
       fileSelectedCurrentId: null,
+      haveDeletedItems: false,
     };
 
     this.hasError = null;
@@ -611,6 +612,8 @@ class PresentationUploader extends Component {
 
       const updatedCurrent = update(updatedPresentations, commands);
       this.setState({ presentations: updatedCurrent });
+      this.setState({haveDeletedItems: true})
+
     });
   }
 
@@ -675,6 +678,7 @@ class PresentationUploader extends Component {
     }
 
     this.setState({ disableActions: true });
+    this.setState({haveDeletedItems: false});
 
     presentations.forEach((item) => {
       if (item.uploadCompleted) {
@@ -1164,6 +1168,7 @@ class PresentationUploader extends Component {
     const { presentations, disableActions, fileSelectedCurrentId } = this.state;
     const BASE_NAME = window.meetingClientSettings.public.app.basename;
     const hasPendingChange = fileSelectedCurrentId && fileSelectedCurrentId !== currentPresentation;
+    const hasDeletedItems = this.state.haveDeletedItems;
     let hasNewUpload = false;
 
     presentations.forEach((item) => {
@@ -1202,7 +1207,7 @@ class PresentationUploader extends Component {
                   {/* {this.renderDropzone()} */}
                   {this.renderExternalUpload()}
                 </div>
-                {hasPendingChange ? (
+                {(hasPendingChange || hasDeletedItems) ? (
                     <button
                         type="button"
                         className="btn btn-primary mt-auto btn-confrim-uploadPresent"

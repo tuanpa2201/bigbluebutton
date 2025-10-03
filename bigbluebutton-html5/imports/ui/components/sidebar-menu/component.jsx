@@ -358,7 +358,7 @@ const SidebarMenuContainer = ({ contextDispatch, currentPanel }) => {
                     <IconButton
                       key={item.key}
                       title={item.label}
-                      className={[`sidebar_${PANELS[item.key.toUpperCase()]}`, currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''].join(' ')}
+                      className={[`sideBarBtn sidebar_${PANELS[item.key.toUpperCase()]}`, currentPanel === PANELS[item.key.toUpperCase()] ? 'active' : ''].join(' ')}
                     >
                       <SvgIcon iconName={item.file} />
                       {PANELS[item.key.toUpperCase()] === PANELS.CHAT
