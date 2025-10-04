@@ -786,7 +786,7 @@
   "app.actionsBar.actionsDropdown.createBreakoutRoomDesc": "Tạo thảo luận nhóm để chia nhỏ cuộc họp hiện tại",
   "app.actionsBar.actionsDropdown.captionsLabel": "Viết phụ đề",
   "app.actionsBar.actionsDropdown.captionsDesc": "Chuyển đổi ngăn phụ đề",
-  "app.actionsBar.actionsDropdown.takePresenter": "Nhận quyền điều hành",
+  "app.actionsBar.actionsDropdown.takePresenter": "Thu hồi quyền trình bày",
   "app.actionsBar.actionsDropdown.takePresenterDesc": "Chỉ định bạn là người điều hành mới",
   "app.actionsBar.reactions.reactionsButtonLabel": "Chia sẻ biểu cảm",
   "app.actionsBar.reactions.raiseHand": "Giơ tay",

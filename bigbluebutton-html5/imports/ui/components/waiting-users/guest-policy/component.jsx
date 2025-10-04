@@ -62,8 +62,26 @@ const propTypes = {
 class GuestPolicyComponent extends PureComponent {
   constructor(props) {
     super(props);
+    const {
+      guestPolicy,
+    } = this.props;
+
+    let currentPolicy;
+    switch (guestPolicy) {
+      case ALWAYS_ACCEPT:
+        currentPolicy = 'alwaysAccept';
+        break;
+      case ALWAYS_DENY:
+        currentPolicy = 'alwaysDeny';
+        break;
+      case ASK_MODERATOR:
+        currentPolicy = 'askModerator';
+        break;
+      default:
+    }
+
     this.state = {
-      selectedRole: 'askModerator', // default value
+      selectedRole: currentPolicy, // default value
     };
     this.handleChangePolicy = this.handleChangePolicy.bind(this);
   }
