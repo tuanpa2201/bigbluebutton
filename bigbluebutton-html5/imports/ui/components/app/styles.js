@@ -1244,6 +1244,9 @@ const DtfInvert = `
     [data-darkreader-scheme="dark"] [type="success"] .toastIcon {
         color: #4CCE77;
     }
+    [data-darkreader-scheme="dark"] .toastClass {
+        background-color: #3b3f43 !important;
+    }
 `;
 
 const DtfBrandingInvert = `
