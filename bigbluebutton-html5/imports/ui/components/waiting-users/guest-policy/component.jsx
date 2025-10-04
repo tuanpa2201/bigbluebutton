@@ -62,26 +62,8 @@ const propTypes = {
 class GuestPolicyComponent extends PureComponent {
   constructor(props) {
     super(props);
-    const {
-      guestPolicy,
-    } = this.props;
-
-    let currentPolicy;
-    switch (guestPolicy) {
-      case ALWAYS_ACCEPT:
-        currentPolicy = 'alwaysAccept';
-        break;
-      case ALWAYS_DENY:
-        currentPolicy = 'alwaysDeny';
-        break;
-      case ASK_MODERATOR:
-        currentPolicy = 'askModerator';
-        break;
-      default:
-    }
-
     this.state = {
-      selectedRole: currentPolicy, // default value
+      selectedRole: this.props.guestPolicy, // default value
     };
     this.handleChangePolicy = this.handleChangePolicy.bind(this);
   }
@@ -109,10 +91,10 @@ class GuestPolicyComponent extends PureComponent {
     // default askModerator
     let policyRule= ASK_MODERATOR;
     let messageId = intlMessages.askModerator;
-    if ("alwaysAccept" === this.state.selectedRole) {
+    if (ALWAYS_ACCEPT === this.state.selectedRole) {
       policyRule= ALWAYS_ACCEPT;
       messageId = intlMessages.alwaysAccept;
-    } else if ("alwaysDeny" === this.state.selectedRole) {
+    } else if (ALWAYS_DENY === this.state.selectedRole) {
       policyRule= ALWAYS_DENY;
       messageId = intlMessages.alwaysDeny;
     }
@@ -190,39 +172,39 @@ class GuestPolicyComponent extends PureComponent {
             <Styled.RadioGroup className="policy-radio-group">
               <Styled.RadioLabel className="policy-radio-label">
                 <Styled.RadioCircle
-                  id={selectedRole === 'askModerator' ? 'radio_checked' : ''}
-                  checked={selectedRole === 'askModerator'}
+                  id={selectedRole === ASK_MODERATOR ? 'radio_checked' : ''}
+                  checked={selectedRole === ASK_MODERATOR}
                 />
                 <Styled.RadioInput type="radio"
                        name="role"
-                       value="askModerator"
-                       checked={selectedRole === 'askModerator'}
+                       value={ASK_MODERATOR}
+                       checked={selectedRole === ASK_MODERATOR}
                        onChange={this.handleChange}
                 />
                 <span>{intl.formatMessage(intlMessages.askModerator)}</span>
               </Styled.RadioLabel>
               <Styled.RadioLabel className="policy-radio-label">
                 <Styled.RadioCircle
-                  id={selectedRole === 'alwaysAccept' ? 'radio_checked' : ''}
-                  checked={selectedRole === 'alwaysAccept'}
+                  id={selectedRole === ALWAYS_ACCEPT ? 'radio_checked' : ''}
+                  checked={selectedRole === ALWAYS_ACCEPT}
                 />
                 <Styled.RadioInput type="radio"
                        name="role"
-                       value="alwaysAccept"
-                       checked={selectedRole === 'alwaysAccept'}
+                       value={ALWAYS_ACCEPT}
+                       checked={selectedRole === ALWAYS_ACCEPT}
                        onChange={this.handleChange}
                 />
                 <span>{intl.formatMessage(intlMessages.alwaysAccept)}</span>
               </Styled.RadioLabel>
               <Styled.RadioLabel className="policy-radio-label">
                 <Styled.RadioCircle
-                  id={selectedRole === 'alwaysDeny' ? 'radio_checked' : ''}
-                  checked={selectedRole === 'alwaysDeny'}
+                  id={selectedRole === ALWAYS_DENY ? 'radio_checked' : ''}
+                  checked={selectedRole === ALWAYS_DENY}
                 />
                 <Styled.RadioInput type="radio"
                        name="role"
-                       value="alwaysDeny"
-                       checked={selectedRole === 'alwaysDeny'}
+                       value={ALWAYS_DENY}
+                       checked={selectedRole === ALWAYS_DENY}
                        onChange={this.handleChange}
                 />
                 <span>{intl.formatMessage(intlMessages.alwaysDeny)}</span>
