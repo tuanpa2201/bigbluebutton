@@ -270,6 +270,7 @@ function renderToastItem(item, intl) {
           {/*<SvgIcon iconName="file" />*/}
           <Styled.StatusIcon>
             <Styled.ToastItemIcon1
+              className="toast-item-spinner-icon"
               loading={isProcessing}
               done={!isProcessing}
               iconName={isProcessing ? 'blank' : 'presentation'}
@@ -381,6 +382,11 @@ function renderToastExportItem(item, intl) {
 
   const icon = statusIconMap[status] || '';
 
+  setTimeout(() => {
+    // eslint-disable-next-line no-debugger
+    debugger; // sẽ dừng ở đây
+  }, 2000);
+
   return (
     <Styled.UploadRow
       key={item.presentationId || item.temporaryPresentationId}
@@ -392,6 +398,7 @@ function renderToastExportItem(item, intl) {
         {/*</span>*/}
         <Styled.StatusIcon>
           <Styled.ToastItemIcon1
+            className="toast-item-spinner-icon"
             loading={loading}
             done={done}
             iconName={icon}

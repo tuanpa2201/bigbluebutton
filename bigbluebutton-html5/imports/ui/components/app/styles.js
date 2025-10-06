@@ -1247,6 +1247,13 @@ const DtfInvert = `
     [data-darkreader-scheme="dark"] .toastClass {
         background-color: #3b3f43 !important;
     }
+    
+    [data-darkreader-scheme="dark"] .toast-item-spinner-icon {
+        border-right-color: #F2F2F2 !important;
+        border-top-color: #CECFD2 !important;
+        border-bottom-color: #CECFD2 !important;
+        border-left-color: transparent !important;
+    }
 `;
 
 const DtfBrandingInvert = `
