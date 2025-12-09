@@ -194,6 +194,14 @@ const MeetingEnded: React.FC<MeetingEndedProps> = ({
   }, []);
 
   const confirmRedirect = (isBreakout: boolean, allowRedirect: boolean) => {
+    if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+      window.ReactNativeWebView.postMessage(
+        JSON.stringify({
+          action: "vopsActionLeaveMeeting",
+          params: {},
+        })
+      );
+    }
     if (isBreakout) window.close();
     if (allowRedirect) {
       if (isURL(logoutUrl)) {
