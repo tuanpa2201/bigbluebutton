@@ -2003,4 +2003,90 @@ class ApiController {
     return response
   }
 
+
+  def removeUser() {
+    log.info("removeUser API called")
+
+    String API_CALL = "removeUser"
+    ApiErrors errors = new ApiErrors()
+
+    // Validate checksum
+    if (!paramsProcessorUtil.isChecksumSame(API_CALL, params.checksum, request.getQueryString())) {
+        errors.checksumError()
+        respondWithErrors(errors)
+        return
+    }
+
+    // Validate required parameters
+    if (StringUtils.isEmpty(params.meetingID)) {
+        errors.missingParamError("meetingID")
+    }
+
+    if (StringUtils.isEmpty(params.userID)) {
+        errors.missingParamError("userID")
+    }
+
+    if (errors.hasErrors()) {
+        respondWithErrors(errors)
+        return
+    }
+
+    // Get parameters
+    String meetingID = params.meetingID
+    String userID = params.userID
+    Boolean banUser = params.banUser?.toBoolean() ?: false
+
+    // Validate meeting exists
+    Meeting meeting = meetingService.getMeeting(meetingID)
+    if (meeting == null) {
+        errors.invalidMeetingIdError()
+        respondWithErrors(errors)
+        return
+    }
+
+    String internalMeetingId = meeting.getInternalId()
+
+    // Validate user exists in meeting
+    Boolean userExists = meetingService.isUserInMeeting(internalMeetingId, userID)
+    if (!userExists) {
+        errors.addError("userNotFound", "User with ID ${userID} not found in meeting")
+        respondWithErrors(errors)
+        return
+    }
+
+    // Send eject user message
+    try {
+        String ejectedBy = "system-api" // hoặc có thể lấy từ moderator nếu có
+
+        meetingService.ejectUserFromMeeting(
+            internalMeetingId,
+            userID,
+            ejectedBy,
+            banUser
+        )
+
+        log.info("User ${userID} has been ${banUser ? 'banned' : 'ejected'} from meeting ${meetingID}")
+
+        // Success response
+        withFormat {
+            xml {
+                render(contentType: "text/xml") {
+                    response {
+                        returncode("SUCCESS")
+                        messageKey("userRemoved")
+                        message("User ${userID} has been ${banUser ? 'banned' : 'ejected'} from meeting ${meetingID}")
+                        userID(userID)
+                        meetingID(meetingID)
+                        banUser(banUser)
+                    }
+                }
+            }
+        }
+    } catch (Exception e) {
+        log.error("Error removing user: ${e.message}", e)
+        errors.addError("removeUserError", "Failed to remove user: ${e.message}")
+        respondWithErrors(errors)
+    }
+}
+
 }
