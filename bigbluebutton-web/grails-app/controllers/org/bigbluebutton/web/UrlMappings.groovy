@@ -63,10 +63,6 @@ class UrlMappings {
       action = [GET: 'downloadFile']
     }
 
-    "/bigbluebutton/api/removeUser"(controller: "api") {
-      action = [GET: 'removeUser', POST: 'removeUser']
-    }
-
     "/bigbluebutton/api/create"(controller: "api") {
       action = [GET: 'create', POST: 'create']
     }

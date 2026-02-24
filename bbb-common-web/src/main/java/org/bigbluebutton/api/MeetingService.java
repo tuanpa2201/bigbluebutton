@@ -1562,32 +1562,4 @@ public class MeetingService implements MessageListener {
     this.notifier = notifier;
   }
 
-  public Boolean isUserInMeeting(String internalMeetingId, String userId) {
-    Meeting meeting = getMeetingWithId(internalMeetingId)
-    if (meeting == null) {
-        return false
-    }
-
-    // Get users from meeting
-    Map<String, User> users = meeting.getUsers()
-    return users.containsKey(userId)
-  }
-
-  public void ejectUserFromMeeting(String internalMeetingId, String userId, String ejectedBy, Boolean banUser) {
-      log.info("Ejecting user ${userId} from meeting ${internalMeetingId}, ban=${banUser}")
-
-      // Create eject user message
-      HashMap<String, Object> message = new HashMap<>()
-      message.put("meetingId", internalMeetingId)
-      message.put("userId", userId)
-      message.put("ejectedBy", ejectedBy)
-      message.put("banUser", banUser)
-
-      // Send to message bus (Redis/Akka)
-      messagingService.send(MessagingConstants.TO_AKKA_APPS_CHANNEL,
-                           new EjectUserFromMeetingCmdMsg(message))
-
-      log.info("Eject user message sent successfully")
-  }
-
 }
